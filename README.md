@@ -6,8 +6,7 @@ https://github.com/open-sauced/open-sauced#readme
 <div align="center">
   <br>
   <img alt="Ribon Logo" src="https://ribon.io/wp-content/uploads/2021/03/cropped-Ribon-logo-verde.png" width="300px">
-  <h1>Ribon DApp</h1>
-  <strong>The decentralized giving protocol on the Web 3.0</strong>
+  <h1>Ribon Manager</h1>
 </div>
 <br>
 <p align="center">

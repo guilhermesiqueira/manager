@@ -1,7 +1,8 @@
 {
     "env": {
         "browser": true,
-        "es2021": true
+        "es2021": true,
+        "jest": true
     },
     "extends": [
         "plugin:react/recommended",
@@ -15,7 +16,7 @@
         "ecmaFeatures": {
             "jsx": true
         },
-        "ecmaVersion": "latest",
+        "ecmaVersion": 11,
         "sourceType": "module"
     },
     "plugins": [
@@ -84,5 +85,17 @@
                 ]
             }
         }
+    },
+    "globals": {
+        "React": true,
+        "google": true,
+        "mount": true,
+        "mountWithRouter": true,
+        "shallow": true,
+        "shallowWithRouter": true,
+        "context": true,
+        "expect": true,
+        "jsdom": true,
+        "JSX": true
     }
 }
