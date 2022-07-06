@@ -10,10 +10,10 @@ https://github.com/open-sauced/open-sauced#readme
 </div>
 <br>
 <p align="center">
-  <img src="https://img.shields.io/github/languages/code-size/RibonDAO/interface" alt="GitHub code size in bytes">
-  <img src="https://img.shields.io/github/commit-activity/w/RibonDAO/interface" alt="GitHub commit activity">
-  <a href="https://github.com/RibonDAO/interface/issues">
-    <img src="https://img.shields.io/github/issues/RibonDAO/interface" alt="GitHub issues">
+  <img src="https://img.shields.io/github/languages/code-size/RibonDAO/manager" alt="GitHub code size in bytes">
+  <img src="https://img.shields.io/github/commit-activity/w/RibonDAO/manager" alt="GitHub commit activity">
+  <a href="https://github.com/RibonDAO/manager/issues">
+    <img src="https://img.shields.io/github/issues/RibonDAO/manager" alt="GitHub issues">
   </a>
   <a href="https://discord.gg/DBcwmDrkpy">
     <img src="https://img.shields.io/discord/341989911450091522.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2" alt="Discord">
