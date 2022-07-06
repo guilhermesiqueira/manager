@@ -47,6 +47,18 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/cli": "^16.0.2",
+    "@commitlint/config-conventional": "^16.0.0",
+    "@storybook/addon-actions": "^6.4.13",
+    "@storybook/addon-essentials": "^6.4.13",
+    "@storybook/addon-links": "^6.4.13",
+    "@storybook/addon-viewport": "^6.4.14",
+    "@storybook/builder-webpack5": "^6.4.13",
+    "@storybook/manager-webpack5": "^6.4.13",
+    "@storybook/node-logger": "^6.4.13",
+    "@storybook/preset-create-react-app": "^4.0.0",
+    "@storybook/react": "^6.4.13",
+    "@types/styled-components": "^5.1.20",
     "@typescript-eslint/eslint-plugin": "^5.30.4",
     "@typescript-eslint/parser": "^5.30.4",
     "eslint": "^7.32.0 || ^8.2.0",
@@ -57,7 +69,8 @@
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "jest-styled-components": "^7.0.8"
   },
   "jest": {
     "collectCoverageFrom": [
