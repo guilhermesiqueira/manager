@@ -5,7 +5,7 @@ import snakeCaseKeys from "snakecase-keys";
 const RIBON_API = "http://dev-api.eba-fktmq9bg.us-east-1.elasticbeanstalk.com/";
 
 export const baseURL = process.env.REACT_APP_RIBON_API || RIBON_API;
-export const API_SCOPE = "/api/admin";
+export const API_SCOPE = "/api/v1";
 
 const api = Axios.create({
   baseURL,
