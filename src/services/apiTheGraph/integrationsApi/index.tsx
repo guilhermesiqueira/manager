@@ -6,7 +6,6 @@ export const integrationsApi = {
   fetchAllIntegrations: (): Promise<ApolloQueryResult<any>> =>
     client.query({
       query: QUERY_ALL_INTEGRATIONS,
-      variables: {},
       fetchPolicy: "no-cache",
     }),
 };
