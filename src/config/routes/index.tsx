@@ -8,9 +8,25 @@ import PrivateRoute from "./privateRoute";
 function RoutesComponent(): JSX.Element {
   return (
     <Routes>
-      <Route path="/" element={<><Navigation /><LoginPage /></>} />
+      <Route
+        path="/"
+        element={
+          <>
+            <Navigation />
+            <LoginPage />
+          </>
+        }
+      />
 
-      <Route path="test" element={<><Navigation /><TestPage/></>} />
+      <Route
+        path="test"
+        element={
+          <>
+            <Navigation />
+            <TestPage />
+          </>
+        }
+      />
 
       <Route
         path="dashboard"

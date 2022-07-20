@@ -18,14 +18,14 @@ function Navigation(): JSX.Element {
       path: "/",
       iconOn: DashboardIconOn,
       iconOff: DashboardIconOff,
-      title: "Dashboard"
+      title: "Dashboard",
     },
     {
       path: "/test",
       iconOn: IntegrationsIconOn,
       iconOff: IntegrationsIconOff,
-      title: "Integrations" 
-    }
+      title: "Integrations",
+    },
   ];
 
   return (
