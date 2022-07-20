@@ -32,6 +32,7 @@ function RoutesComponent(): JSX.Element {
         path="dashboard"
         element={
           <PrivateRoute>
+            <Navigation />
             <DashboardPage />
           </PrivateRoute>
         }
