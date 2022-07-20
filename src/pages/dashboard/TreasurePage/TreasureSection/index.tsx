@@ -7,13 +7,12 @@ import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
 import { useContract } from "hooks/useContract";
 import { formatFromWei } from "lib/web3Helpers/etherFormatters";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import { Pie } from "react-chartjs-2";
 import theme from "styles/theme";
 import * as S from "./styles";
 
 function TreasureSection(): JSX.Element {
-  const [assignedValue, setAssignedValue] = useState<any>(0);
-  const [unassignedValue, setUnassignedValue] = useState<any>(0);
+  const [assignedValue, setAssignedValue] = useState<number>(0);
+  const [unassignedValue, setUnassignedValue] = useState<number>(0);
   const { currentNetwork } = useNetwork();
   const { getAllIntegrations } = useIntegrations();
 
@@ -33,8 +32,8 @@ function TreasureSection(): JSX.Element {
 
   const fecthAssignedBalance = useCallback(async () => {
     try {
-      const integrationss = await getAllIntegrations();
-      const assignedAmount = integrationss.integrations
+      const allIntegrations = await getAllIntegrations();
+      const assignedAmount = allIntegrations.integrations
         .map((item: any) => parseFloat(formatFromWei(item.balance)))
         .reduce((prev: any, curr: any) => prev + curr, 0);
       setAssignedValue(assignedAmount);
@@ -57,7 +56,6 @@ function TreasureSection(): JSX.Element {
   function renderGraph() {
     fecthAssignedBalance();
     const data = {
-      labels: ["Assigned", "Unassigned"],
       datasets: [
         {
           data: [assignedValue, unassignedValue],
@@ -66,15 +64,23 @@ function TreasureSection(): JSX.Element {
         },
       ],
     };
-    return <Pie data={data} />;
+    return <S.Graph data={data} />;
   }
 
   return (
     <S.Container>
       <S.Card>
-        Donation Treasure balance (USDC): {contractBalance}
-        <S.Subtitle>Assigned (USDC): {assignedValue}</S.Subtitle>
-        <S.Subtitle>Unassigned (USDC) {unassignedValue}</S.Subtitle>
+        <S.MainContent>
+          Donation Treasure balance (USDC)
+          <S.MainValue> {contractBalance}</S.MainValue>
+        </S.MainContent>
+
+        <S.SecondaryContent>
+          Assigned (USDC) <S.SecondaryValue>{assignedValue}</S.SecondaryValue>
+          Unassigned (USDC){" "}
+          <S.SecondaryValue>{unassignedValue.toFixed(2)}</S.SecondaryValue>
+        </S.SecondaryContent>
+
         {renderGraph()}
       </S.Card>
     </S.Container>
