@@ -1,19 +1,28 @@
 import React, { Suspense } from "react";
-import { Switch, Route } from "react-router-dom";
 import TreasurePage from "pages/dashboard/TreasurePage";
 import MainLayout from "layouts/MainLayout";
+import LoginPage from "presentation/pages/Login";
+import { Routes, Route } from "react-router-dom";
+import PrivateRoute from "./privateRoute";
 
 function RoutesComponent(): JSX.Element {
   return (
-    <Switch>
-      <Route path="/" exact>
-        <Suspense fallback={<div />}>
-          <MainLayout>
-            <TreasurePage />
-          </MainLayout>
-        </Suspense>
-      </Route>
-    </Switch>
+    <Routes>
+      <Route path="/" element={<LoginPage />} />
+
+      <Route
+        path="/dashboard"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <MainLayout>
+                <TreasurePage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+    </Routes>
   );
 }
 

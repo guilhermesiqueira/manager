@@ -1,62 +1,125 @@
 import React from "react";
-import {
-  act,
-  fireEvent,
-  render,
-  RenderResult,
-  screen,
-} from "@testing-library/react";
+import { act, render, RenderResult } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import { createMemoryHistory, MemoryHistory } from "history";
 import { Router } from "react-router-dom";
 import theme from "styles/theme";
-import { QueryClient, QueryClientProvider } from "react-query";
-
-export function renderWithTheme(children: React.ReactNode): RenderResult {
-  return render(<ThemeProvider theme={theme}>{children}</ThemeProvider>);
-}
+import AuthenticationProvider, {
+  AuthenticationContext,
+  IAuthenticationContext,
+} from "contexts/authenticationContext";
+import {
+  renderHook as renderTestingLibraryHook,
+  RenderHookResult,
+} from "@testing-library/react-hooks";
 
 export interface RenderWithContextResult {
   component: RenderResult;
   history: MemoryHistory;
 }
 
+function renderProvider(
+  RProvider: any,
+  RContext: React.Context<any>,
+  value: Record<any, any>,
+  children: JSX.Element,
+) {
+  return (
+    <RProvider>
+      <RContext.Consumer>
+        {(val: Record<any, any>) => (
+          <RContext.Provider
+            // eslint-disable-next-line react/jsx-no-constructed-context-values
+            value={{
+              ...val,
+              ...value,
+            }}
+          >
+            {children}
+          </RContext.Provider>
+        )}
+      </RContext.Consumer>
+    </RProvider>
+  );
+}
+
+export type RenderComponentProps = {
+  history?: MemoryHistory;
+  authenticationProviderValue?: Partial<IAuthenticationContext>;
+  locationState?: Record<any, any>;
+};
+
+function renderAllProviders(
+  children: any,
+  {
+    history = createMemoryHistory(),
+    authenticationProviderValue = {},
+    locationState = {},
+  }: RenderComponentProps = {},
+) {
+  const historyObject = {
+    ...history,
+    location: { ...history.location, ...locationState },
+  };
+  historyObject.location.state = locationState;
+
+  return {
+    component: (
+      <ThemeProvider theme={theme}>
+        <Router location={locationState} navigator={historyObject}>
+          {renderProvider(
+            AuthenticationProvider,
+            AuthenticationContext,
+            authenticationProviderValue,
+            children,
+          )}
+        </Router>
+      </ThemeProvider>
+    ),
+    history: historyObject,
+  };
+}
+
+export function renderComponent(
+  component: JSX.Element,
+  renderComponentProps: RenderComponentProps = {},
+): RenderWithContextResult {
+  const { component: componentWithProviders, history } = renderAllProviders(
+    component,
+    renderComponentProps,
+  );
+  return {
+    component: render(componentWithProviders),
+    history,
+  };
+}
+
+type RenderHookReturn = {
+  hook: RenderHookResult<any, any>;
+  history: MemoryHistory;
+};
+
 export async function waitForPromises() {
   // eslint-disable-next-line no-promise-executor-return
   await act(() => new Promise((resolve) => setTimeout(resolve, 0)));
 }
 
-export type RenderComponentProps = {
-  history?: MemoryHistory;
-  locationState?: Record<any, any>;
-};
-export function renderComponent(
-  component: JSX.Element,
-  {
-    history = createMemoryHistory(),
-    locationState = {},
-  }: RenderComponentProps = {},
-): RenderWithContextResult {
-  const queryClient = new QueryClient();
-  const historyObject = history;
-  historyObject.location.state = locationState;
+export function renderHook(
+  hook: (props: any) => any,
+  renderComponentProps: RenderComponentProps = {},
+): RenderHookReturn {
+  let history = createMemoryHistory();
+  const wrapper = ({ children }: any) => {
+    const { component, history: historyObject } = renderAllProviders(
+      children,
+      renderComponentProps,
+    );
+    history = historyObject;
+    return component;
+  };
 
   return {
-    component: render(
-      <ThemeProvider theme={theme}>
-        <QueryClientProvider client={queryClient}>
-          <Router history={historyObject} />
-        </QueryClientProvider>
-      </ThemeProvider>,
-    ),
+    hook: renderTestingLibraryHook(hook, { wrapper }),
     history,
   };
-}
-
-export function clickOn(textOrComponent: string | any) {
-  if (typeof textOrComponent === "string") {
-    return fireEvent.click(screen.getByText(textOrComponent));
-  }
-
-  return fireEvent.click(textOrComponent);
 }

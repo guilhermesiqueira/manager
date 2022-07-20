@@ -77,6 +77,8 @@ function TreasureSection(): JSX.Element {
 
         <S.SecondaryContent>
           Assigned (USDC) <S.SecondaryValue>{assignedValue}</S.SecondaryValue>
+        </S.SecondaryContent>
+        <S.SecondaryContent>
           Unassigned (USDC){" "}
           <S.SecondaryValue>{unassignedValue.toFixed(2)}</S.SecondaryValue>
         </S.SecondaryContent>
