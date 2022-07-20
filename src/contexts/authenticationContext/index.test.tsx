@@ -5,6 +5,7 @@ jest.mock("firebase/auth", () => ({
   signInWithPopup: () => Promise.resolve({ user: { email: "user@ribon.io" } }),
   getAuth: jest.fn(),
   GoogleAuthProvider: jest.fn(),
+  signOut: () => Promise.resolve(),
 }));
 
 jest.mock("hooks/useUsers", () => ({
@@ -41,16 +42,6 @@ describe("useAuthentication", () => {
       const allowed = current.isAuthorized("user@ribon.io");
       await waitForPromises();
       expect(allowed).toBe(true);
-    });
-
-    it("sign provider", async () => {
-      current.signInWithGoogle();
-
-      const { allowed, user } = current;
-
-      await waitForPromises();
-      expect(user?.email).toEqual("user@ribon.io");
-      expect(allowed).toEqual(true);
     });
   });
 });

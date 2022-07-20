@@ -1,16 +1,24 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
-import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  signInWithPopup,
+  getAuth,
+  signOut,
+  User,
+} from "firebase/auth";
 import firebaseApp from "services/firebase";
 import { useNavigate } from "react-router-dom";
 import useUsers from "hooks/useUsers";
-import User from "types/entities/user";
+import { decodeJwt } from "utils/decodedToken";
 
 export interface IAuthenticationContext {
   signInWithGoogle: () => void;
   isAuthorized: (email: string) => boolean;
   user: User | undefined;
   allowed: boolean;
+  logout: () => void;
+  accessToken: string | null;
 }
 
 export type Props = {
@@ -26,48 +34,67 @@ function AuthenticationProvider({ children }: Props) {
   const navigate = useNavigate();
   const { findOrCreateUser } = useUsers();
   const [user, setUser] = useState<User>();
-  const [allowed, setAllowed] = useState(true);
 
   function isAuthorized(email: string) {
     if (!email) return false;
     return email.includes("@ribon.io");
   }
 
+  const allowed = useMemo(() => isAuthorized(user?.email ?? ""), [user]);
+
   function signInWithGoogle() {
     const provider = new GoogleAuthProvider();
 
     signInWithPopup(firebaseAuth, provider)
       .then(async (result) => {
-        if (!isAuthorized(result.user.email ?? "")) {
+        if (isAuthorized(result.user.email ?? "")) {
+          const currentUser = await findOrCreateUser(result.user.email ?? "");
+          if (currentUser) {
+            setUser(result.user);
+          }
           const token = await result.user.getIdToken();
           localStorage.setItem("token", token);
-          setAllowed(false);
-          navigate("/");
-        } else {
-          setAllowed(true);
-          const currentUser = await findOrCreateUser(result.user.email ?? "");
-          console.log(currentUser);
-          setUser(currentUser);
-          console.log(user);
           navigate("dashboard");
+        } else {
+          navigate("/", { state: { incorrectDomain: true } });
         }
       })
       .catch((error) => {
-        console.error(error);
+        navigate("/", { state: { error } });
       });
   }
 
-  const accessToken = () => localStorage.getItem("token");
+  function logout() {
+    signOut(firebaseAuth)
+      .then(() => {
+        localStorage.removeItem("token");
+        setUser(undefined);
+      })
+      .catch((err) => {
+        console.error(err);
+      })
+      .finally(() => {
+        navigate("/");
+      });
+  }
+
+  const accessToken = localStorage.getItem("token");
 
   useEffect(() => {
-    if (!accessToken || !isAuthorized(user?.email ?? "")) {
-      navigate("/");
-      setAllowed(false);
+    if (!accessToken || !isAuthorized(decodeJwt(accessToken)?.email ?? "")) {
+      logout();
     }
   }, [user]);
 
   const authenticationObject: IAuthenticationContext = useMemo(
-    () => ({ signInWithGoogle, user, allowed, isAuthorized }),
+    () => ({
+      signInWithGoogle,
+      user,
+      allowed,
+      isAuthorized,
+      logout,
+      accessToken,
+    }),
     [user, allowed],
   );
 
