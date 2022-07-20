@@ -19,6 +19,7 @@ function DashboardPage(): JSX.Element {
       <Grid maxH="600px" w="100%" marginLeft="8px" overflowY="auto" fontFamily="Inter" templateColumns="repeat(4, 176px)" gridAutoRows="max-content" gap="8px" bgColor='white'>
         {integrationsArray
           .sort((a, b) => parseInt(removeDotComma(b.value), 10) - parseInt(removeDotComma(a.value), 10))
+          .reverse()
           .map(integration => (
             <IntegrationCard
               key={integration.id}
