@@ -15,7 +15,7 @@ function DashboardPage(): JSX.Element {
   return (
     <>
       <Heading fontFamily="Inter" fontSize="4xl" display="block">Treasure Dashboard</Heading>
-      <Grid fontFamily="Inter" templateColumns="repeat(4, 1fr)" gap="8px" bgColor='white' gridAutoFlow="row">
+      <Grid maxH="500px" overflowY="scroll" fontFamily="Inter" templateColumns="repeat(4, 1fr)" gridAutoRows="max-content" gap="8px" bgColor='white'>
         {integrationsArray
           .sort((a, b) => parseInt(removeDotComma(b.value), 10) - parseInt(removeDotComma(a.value), 10))
           .map(integration => (
