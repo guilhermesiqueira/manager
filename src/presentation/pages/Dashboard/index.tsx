@@ -14,14 +14,14 @@ function DashboardPage(): JSX.Element {
       <Heading fontFamily="Inter" fontSize="4xl" display="block">Treasure Dashboard</Heading>
       <Grid fontFamily="Inter" templateColumns="repeat(4, 1fr)" gap="8px" bgColor='white' gridAutoFlow="row">
         {integrationsArray
-        .sort((a, b) => parseInt(b.value.replaceAll(",", ""), 10) - parseInt(a.value.replaceAll(",", ""), 10))
-        .map(integration => (
-          <IntegrationCard
-            key={integration.id}
-            title={integration.name}
-            subtitle={integration.type}
-            value={integration.value} />
-        ))}
+          .sort((a, b) => parseInt(b.value.replaceAll(",", ""), 10) - parseInt(a.value.replaceAll(",", ""), 10))
+          .map(integration => (
+            <IntegrationCard
+              key={integration.id}
+              title={integration.name}
+              subtitle={integration.type}
+              value={integration.value} />
+          ))}
       </Grid>
     </>
   )
