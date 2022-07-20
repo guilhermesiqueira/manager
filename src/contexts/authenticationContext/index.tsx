@@ -56,7 +56,7 @@ function AuthenticationProvider({ children }: Props) {
           localStorage.setItem("token", token);
           navigate("dashboard");
         } else {
-          navigate("/", { state: { error: true } });
+          navigate("/", { state: { incorrectDomain: true } });
         }
       })
       .catch((error) => {
