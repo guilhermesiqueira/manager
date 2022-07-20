@@ -43,15 +43,5 @@ describe("useAuthentication", () => {
       await waitForPromises();
       expect(allowed).toBe(true);
     });
-
-    it.skip("sign provider", async () => {
-      current.signInWithGoogle();
-
-      const { allowed, user } = current;
-
-      await waitForPromises();
-      expect(user?.email).toEqual("user@ribon.io");
-      expect(allowed).toEqual(true);
-    });
   });
 });

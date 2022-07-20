@@ -81,7 +81,6 @@ function AuthenticationProvider({ children }: Props) {
   const accessToken = localStorage.getItem("token");
 
   useEffect(() => {
-    console.log(decodeJwt(accessToken ?? "")?.email);
     if (!accessToken || !isAuthorized(decodeJwt(accessToken)?.email ?? "")) {
       logout();
     }
