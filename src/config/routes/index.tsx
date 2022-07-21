@@ -1,6 +1,7 @@
 import React, { Suspense } from "react";
 import DashboardPage from "pages/DashboardPage";
 import LoginPage from "pages/LoginPage";
+import IntegrationsPage from "pages/IntegrationsPage";
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "layouts/MainLayout";
 import Navigation from "./Navigation";
@@ -37,7 +38,7 @@ function RoutesComponent(): JSX.Element {
             <Suspense fallback={<div />}>
               <Navigation />
               <MainLayout>
-                <DashboardPage />
+                <IntegrationsPage />
               </MainLayout>
             </Suspense>
           </PrivateRoute>
