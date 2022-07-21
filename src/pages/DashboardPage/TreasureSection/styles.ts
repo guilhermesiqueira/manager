@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-import { Pie } from "react-chartjs-2";
 
 export const Container = styled.div`
   ${() => css`
@@ -38,12 +37,6 @@ export const SecondaryContent = styled.div`
 `;
 
 export const SecondaryValue = styled.div`
-  ${() => css`
-    font-family: "Inter";
-  `}
-`;
-
-export const Graph = styled(Pie)`
   ${() => css`
     font-family: "Inter";
   `}

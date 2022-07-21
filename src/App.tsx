@@ -11,8 +11,8 @@ function App() {
   const queryClient = new QueryClient();
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <ChakraProvider theme={extendTheme(theme)}>
+    <ChakraProvider theme={extendTheme(theme)}>
+      <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
           <GlobalStyle />
           <BrowserRouter>
@@ -21,8 +21,8 @@ function App() {
             </AuthenticationProvider>
           </BrowserRouter>
         </ThemeProvider>
-      </ChakraProvider>
-    </QueryClientProvider>
+      </QueryClientProvider>
+    </ChakraProvider>
   );
 }
 

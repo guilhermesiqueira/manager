@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback, useState } from "react";
+import { useTranslation } from "react-i18next";
 import { useNetwork } from "hooks/useNetwork";
 import DonationTokenAbi from "utils/abis/DonationToken.json";
 import RibonAbi from "utils/abis/RibonAbi.json";
@@ -16,6 +17,10 @@ function TreasureSection(): JSX.Element {
   const [unassignedValue, setUnassignedValue] = useState<number>(0);
   const { currentNetwork } = useNetwork();
   const { getAllIntegrations } = useIntegrations();
+
+  const { t } = useTranslation("translation", {
+    keyPrefix: "dashboard.treasureDashboard.treasureSection",
+  });
 
   const donationTokenContract = useContract({
     address: currentNetwork.donationTokenContractAddress,
@@ -70,10 +75,10 @@ function TreasureSection(): JSX.Element {
     <S.Container>
       <CardTextGraph
         data={renderGraph()}
-        title="Donation Treasure Balance (USDC)"
+        title={t("mainText")}
         mainText={contractBalance}
-        rightText="Assigned (USDC)"
-        leftText="Unassigned (USDC)"
+        rightText={t("assignedText")}
+        leftText={t("unassignedText")}
         rightSecondaryText={assignedValue}
         leftSecondaryText={unassignedValue.toFixed(2)}
       />
