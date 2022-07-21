@@ -26,7 +26,7 @@ function TreasureSection(): JSX.Element {
     address: currentNetwork.donationTokenContractAddress,
     ABI: DonationTokenAbi.abi,
   });
-  
+
   const contract = useContract({
     address: currentNetwork.ribonContractAddress,
     ABI: RibonAbi.abi,
@@ -44,7 +44,6 @@ function TreasureSection(): JSX.Element {
         .map((item: any) => parseFloat(formatFromWei(item.balance)))
         .reduce((prev: any, curr: any) => prev + curr, 0);
       setAssignedValue(assignedAmount);
-      console.log(allIntegrations);
       if (contractBalance) {
         setUnassignedValue(parseFloat(contractBalance) - assignedValue);
       }
