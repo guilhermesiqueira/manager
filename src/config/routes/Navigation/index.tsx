@@ -1,4 +1,5 @@
 import { useLocation } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import DashboardIconOn from "./assets/dashboardIconOn.svg";
 import DashboardIconOff from "./assets/dashboardIconOff.svg";
 import IntegrationsIconOff from "./assets/integrationsIconOff.svg";
@@ -8,6 +9,9 @@ import NavigationLink from "./NavigationLink";
 
 function Navigation(): JSX.Element {
   const location = useLocation();
+  const { t } = useTranslation("translation", {
+    keyPrefix: "menu",
+  });
 
   function isInPath(path: string) {
     return [path].includes(location.pathname);
@@ -18,13 +22,13 @@ function Navigation(): JSX.Element {
       path: "/dashboard",
       iconOn: DashboardIconOn,
       iconOff: DashboardIconOff,
-      title: "Dashboard",
+      title: t("dashboardLabel"),
     },
     {
       path: "/integrations",
       iconOn: IntegrationsIconOn,
       iconOff: IntegrationsIconOff,
-      title: "Integrations",
+      title: t("integrationsLabel"),
     },
   ];
 

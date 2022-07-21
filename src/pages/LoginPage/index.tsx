@@ -1,15 +1,19 @@
 import { useAuthentication } from "contexts/authenticationContext";
-import ButtonSecondary from "presentation/components/atomics/Buttons/ButtonSecondary";
-import { GoogleIcon } from "presentation/components/icons/googleIcon";
+import { useTranslation } from "react-i18next";
+import ButtonSecondary from "components/atomics/Buttons/ButtonSecondary";
+import { GoogleIcon } from "assets/icons/googleIcon";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import RibonIcon from "../../components/icons/ribon-icon.svg";
+import RibonIcon from "assets/icons/ribon-icon.svg";
 import * as S from "./styles";
 
 function LoginPage(): JSX.Element {
   const { signInWithGoogle, allowed, accessToken } = useAuthentication();
   const navigate = useNavigate();
   const { state } = useLocation();
+  const { t } = useTranslation("translation", {
+    keyPrefix: "login",
+  });
 
   useEffect(() => {
     if (accessToken) {
@@ -20,19 +24,17 @@ function LoginPage(): JSX.Element {
   return (
     <S.Container>
       <img src={RibonIcon} alt="Ribon" />
-      <S.Title>Dapp Manager</S.Title>
+      <S.Title>{t("title")}</S.Title>
       <ButtonSecondary
-        text="Login com o Google"
+        text={t("buttonText")}
         onClick={() => signInWithGoogle()}
         leftIcon={<GoogleIcon />}
       />
 
       {!allowed && !!state && (
         <>
-          <S.TitleError>Login failed</S.TitleError>
-          <S.SubTitleError>
-            Make sure your e-mail domain is @ribon.io
-          </S.SubTitleError>
+          <S.TitleError>{t("errorText")}</S.TitleError>
+          <S.SubTitleError>{t("errorDescription")}</S.SubTitleError>
         </>
       )}
     </S.Container>

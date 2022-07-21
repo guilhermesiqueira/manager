@@ -1,9 +1,7 @@
 import React from "react";
-import { act, render, RenderResult } from "@testing-library/react";
+import { render, RenderResult } from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import { createMemoryHistory, MemoryHistory } from "history";
-import { Router } from "react-router-dom";
-import theme from "styles/theme";
 import { I18nextProvider } from "react-i18next";
 import i18n from "i18n-test";
 import AuthenticationProvider, {
@@ -11,6 +9,9 @@ import AuthenticationProvider, {
   IAuthenticationContext,
 } from "contexts/authenticationContext";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { Router } from "react-router-dom";
+import theme from "styles/theme";
+
 import {
   renderHook as renderTestingLibraryHook,
   RenderHookResult,
@@ -20,6 +21,12 @@ export interface RenderWithContextResult {
   component: RenderResult;
   history: MemoryHistory;
 }
+
+export type RenderComponentProps = {
+  history?: MemoryHistory;
+  authenticationProviderValue?: Partial<IAuthenticationContext>;
+  locationState?: Record<any, any>;
+};
 
 function renderProvider(
   RProvider: any,
@@ -45,12 +52,6 @@ function renderProvider(
     </RProvider>
   );
 }
-
-export type RenderComponentProps = {
-  history?: MemoryHistory;
-  authenticationProviderValue?: Partial<IAuthenticationContext>;
-  locationState?: Record<any, any>;
-};
 
 function renderAllProviders(
   children: any,
@@ -106,12 +107,6 @@ type RenderHookReturn = {
   hook: RenderHookResult<any, any>;
   history: MemoryHistory;
 };
-
-export async function waitForPromises() {
-  // eslint-disable-next-line no-promise-executor-return
-  await act(() => new Promise((resolve) => setTimeout(resolve, 0)));
-}
-
 export function renderHook(
   hook: (props: any) => any,
   renderComponentProps: RenderComponentProps = {},

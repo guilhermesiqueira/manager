@@ -1,7 +1,8 @@
-import DashboardPage from "presentation/pages/Dashboard";
-import LoginPage from "presentation/pages/Login";
-import TestPage from "presentation/pages/TestPage";
+import { Suspense } from "react";
+import DashboardPage from "pages/DashboardPage";
+import LoginPage from "pages/LoginPage";
 import { Routes, Route } from "react-router-dom";
+import MainLayout from "layouts/MainLayout";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
 
@@ -23,17 +24,21 @@ function RoutesComponent(): JSX.Element {
         element={
           <>
             <Navigation />
-            <TestPage />
+            <h1>oi</h1>
           </>
         }
       />
 
       <Route
-        path="dashboard"
+        path="/dashboard"
         element={
           <PrivateRoute>
-            <Navigation />
-            <DashboardPage />
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <DashboardPage />
+              </MainLayout>
+            </Suspense>
           </PrivateRoute>
         }
       />
