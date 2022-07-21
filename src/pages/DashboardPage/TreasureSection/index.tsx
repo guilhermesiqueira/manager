@@ -2,6 +2,7 @@ import React, { useEffect, useCallback, useState } from "react";
 import { useNetwork } from "hooks/useNetwork";
 import DonationTokenAbi from "utils/abis/DonationToken.json";
 import RibonAbi from "utils/abis/RibonAbi.json";
+import { logError } from "services/crashReport";
 import useContractBalance from "hooks/apiHooks/useContractBalance";
 import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
 import { useContract } from "hooks/useContract";
@@ -41,7 +42,7 @@ function TreasureSection(): JSX.Element {
         setUnassignedValue(parseFloat(contractBalance) - assignedValue);
       }
     } catch (e) {
-      console.log(e);
+      logError(e);
     }
   }, [contractBalance, getAllIntegrations]);
 

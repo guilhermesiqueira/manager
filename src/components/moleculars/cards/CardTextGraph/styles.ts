@@ -34,7 +34,7 @@ export const MainValue = styled.p`
 `;
 
 export const Teste = styled.div`
-  ${({ theme }) => css`
+  ${() => css`
     display: flex;
     width: 100%;
     justify-content: space-between;
