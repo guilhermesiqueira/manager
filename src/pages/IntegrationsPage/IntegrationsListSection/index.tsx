@@ -2,6 +2,8 @@ import { useEffect, useState, useCallback } from "react";
 import useIntegrations from "hooks/useIntegrations";
 import { logError } from "services/crashReport";
 import CopyableTableCell from "components/atomics/CopyableTableCell";
+import infoIcon from "assets/icons/info-icon.svg";
+import editIcon from "assets/icons/edit-icon.svg";
 import * as S from "./styles";
 
 function IntegrationsListSection(): JSX.Element {
@@ -33,6 +35,12 @@ function IntegrationsListSection(): JSX.Element {
           <CopyableTableCell text={`https://dapp.ribon.io/integration/${item.id}`}/>
         </th>
         <th>HARDCODED</th>
+        <th>
+          <S.ActionsTableCell>
+            <img src={infoIcon} alt="view integration info" />
+            <img src={editIcon} alt="edit integration info" />
+          </S.ActionsTableCell>
+        </th>
       </tr>
     ));
   }

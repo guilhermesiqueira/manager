@@ -39,3 +39,13 @@ export const Table = styled.table`
     }
   `}
 `;
+
+export const ActionsTableCell = styled.div`
+  ${() => css`
+    display: flex;
+
+    img {
+      margin-right: .5rem;
+    }
+  `}
+`;
