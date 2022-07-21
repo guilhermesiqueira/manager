@@ -4,7 +4,6 @@ import TreasureSection from "./TreasureSection";
 import * as S from "./styles";
 import IntegrationsSection from "./IntegrationsSection";
 
-
 function DashboardPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "dashboard.treasureDashboard",
@@ -14,11 +13,11 @@ function DashboardPage(): JSX.Element {
     <S.Container>
       <S.Title>{t("title")}</S.Title>
 
-      <Flex >
+      <Flex>
         <TreasureSection />
-        <IntegrationsSection/>
+        <IntegrationsSection />
       </Flex>
     </S.Container>
-  )
+  );
 }
 export default DashboardPage;

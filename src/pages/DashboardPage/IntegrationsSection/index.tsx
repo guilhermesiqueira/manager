@@ -9,7 +9,6 @@ import { useContract } from "hooks/useContract";
 import { useNetwork } from "hooks/useNetwork";
 import RibonAbi from "utils/abis/RibonAbi.json";
 
-
 function IntegrationsSection(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "dashboard.treasureDashboard.integrationsSection",
@@ -56,19 +55,20 @@ function IntegrationsSection(): JSX.Element {
       fontFamily="Inter"
       templateColumns="repeat(4, 176px)"
       gridAutoRows="max-content"
-      gap="8px">
-
+      gap="8px"
+    >
       {allIntegrations
         .sort((a, b) => b.balance - a.balance)
         .reverse()
-        .map(integration => (
+        .map((integration) => (
           <IntegrationCard
             key={integration.id}
-            title={integration.name? integration.name : "Nome da integração"}
+            title={integration.name ? integration.name : "Nome da integração"}
             subtitle={t("subtitle")}
-            value={formatFromWei(integration.balance)} />
+            value={formatFromWei(integration.balance)}
+          />
         ))}
     </Grid>
-  )
+  );
 }
 export default IntegrationsSection;
