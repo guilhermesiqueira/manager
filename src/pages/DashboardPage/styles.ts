@@ -12,7 +12,7 @@ export const Title = styled.h1`
     margin: 4px 0;
     font-weight: 800;
     font-size: 28px;
-    margin-bottom: 16px;
+    margin-bottom: 87px;
     margin-top: 84px;
   `}
 `;

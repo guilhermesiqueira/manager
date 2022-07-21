@@ -1,5 +1,5 @@
 import React from "react";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Chart as ChartJS, ArcElement } from "chart.js";
 import * as S from "./styles";
 
 export type Props = {
@@ -21,7 +21,7 @@ function CardTextGraph({
   rightSecondaryText,
   leftSecondaryText,
 }: Props): JSX.Element {
-  ChartJS.register(ArcElement, Tooltip, Legend);
+  ChartJS.register(ArcElement);
 
   return (
     <S.Container>
@@ -29,16 +29,16 @@ function CardTextGraph({
         {title}
         <S.MainValue>{mainText}</S.MainValue>
       </S.MainText>
-
-      <S.SecondaryText>
-        {rightText}
-        <S.SecondaryLeftValue>{rightSecondaryText}</S.SecondaryLeftValue>
-      </S.SecondaryText>
-      <S.SecondaryText>
-        {leftText}
-        <S.SecondaryRightValue>{leftSecondaryText}</S.SecondaryRightValue>
-      </S.SecondaryText>
-
+      <S.Teste>
+        <S.SecondaryText>
+          {rightText}
+          <S.SecondaryLeftValue>{rightSecondaryText}</S.SecondaryLeftValue>
+        </S.SecondaryText>
+        <S.SecondaryText>
+          {leftText}
+          <S.SecondaryRightValue>{leftSecondaryText}</S.SecondaryRightValue>
+        </S.SecondaryText>
+      </S.Teste>
       <S.Graph data={data} />
     </S.Container>
   );
