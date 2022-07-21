@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import IntegrationsListPage from "./IntegrationsListSection";
+import IntegrationsListSection from "./IntegrationsListSection";
 import * as S from "./styles";
 
 function IntegrationsPage(): JSX.Element {
@@ -10,7 +10,7 @@ function IntegrationsPage(): JSX.Element {
   return (
     <S.Container>
       <S.Title>{t("title")}</S.Title>
-      <IntegrationsListPage />
+      <IntegrationsListSection />
     </S.Container>
   );
 }
