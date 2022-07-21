@@ -12,15 +12,26 @@ function RoutesComponent(): JSX.Element {
       <Route
         path="/"
         element={
-          <>
-            <Navigation />
             <LoginPage />
-          </>
         }
       />
 
       <Route
         path="/dashboard"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <DashboardPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/integrations"
         element={
           <PrivateRoute>
             <Suspense fallback={<div />}>
