@@ -36,13 +36,14 @@ function TreasureSection(): JSX.Element {
     currentNetwork.ribonContractAddress,
   );
 
-  const fecthAssignedBalance = useCallback(async () => {
+  const fetchAssignedBalance = useCallback(async () => {
     try {
       const allIntegrations = await getAllIntegrations();
       const assignedAmount = allIntegrations.integrations
         .map((item: any) => parseFloat(formatFromWei(item.balance)))
         .reduce((prev: any, curr: any) => prev + curr, 0);
       setAssignedValue(assignedAmount);
+      console.log(allIntegrations);
       if (contractBalance) {
         setUnassignedValue(parseFloat(contractBalance) - assignedValue);
       }
@@ -58,7 +59,7 @@ function TreasureSection(): JSX.Element {
   }, []);
 
   function renderGraph() {
-    fecthAssignedBalance();
+    fetchAssignedBalance();
     const data = {
       datasets: [
         {
