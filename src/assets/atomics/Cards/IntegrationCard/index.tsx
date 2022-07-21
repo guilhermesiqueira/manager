@@ -1,4 +1,5 @@
 import { GridItem, Text } from "@chakra-ui/react";
+import theme from "styles/theme";
 
 type Props = {
   title: string;
@@ -8,7 +9,7 @@ type Props = {
 
 function IntegrationCard({ title, subtitle, value }: Props) {
   return (
-    <GridItem height="97px" padding='16px' border='1px' borderColor='gray' borderRadius='16px'>
+    <GridItem height="97px" padding='16px' border='1px' borderColor={theme.colors.lightGray} borderRadius='16px'>
       <Text textColor='#185669' fontWeight={700} fontSize='12px'>{title}</Text>
       <Text textColor='#185669' fontWeight={300} fontSize='10px'>{subtitle}</Text>
       <Text textColor='#00CDB4' fontWeight={700} fontSize='16px'>{value}</Text>
