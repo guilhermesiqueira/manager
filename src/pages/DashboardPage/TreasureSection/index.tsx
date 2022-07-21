@@ -26,6 +26,7 @@ function TreasureSection(): JSX.Element {
     address: currentNetwork.donationTokenContractAddress,
     ABI: DonationTokenAbi.abi,
   });
+  
   const contract = useContract({
     address: currentNetwork.ribonContractAddress,
     ABI: RibonAbi.abi,
