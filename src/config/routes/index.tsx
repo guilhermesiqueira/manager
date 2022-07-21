@@ -19,7 +19,7 @@ function RoutesComponent(): JSX.Element {
       />
 
       <Route
-        path="test"
+        path="integrations"
         element={
           <>
             <Navigation />

@@ -15,13 +15,13 @@ function Navigation(): JSX.Element {
 
   const routes = [
     {
-      path: "/",
+      path: "/dashboard",
       iconOn: DashboardIconOn,
       iconOff: DashboardIconOff,
       title: "Dashboard",
     },
     {
-      path: "/test",
+      path: "/integrations",
       iconOn: IntegrationsIconOn,
       iconOff: IntegrationsIconOff,
       title: "Integrations",
