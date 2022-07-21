@@ -6,8 +6,8 @@ import useContractBalance from "hooks/apiHooks/useContractBalance";
 import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
 import { useContract } from "hooks/useContract";
 import { formatFromWei } from "lib/web3Helpers/etherFormatters";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import theme from "styles/theme";
+import CardTextGraph from "components/moleculars/cards/CardTextGraph";
 import * as S from "./styles";
 
 function TreasureSection(): JSX.Element {
@@ -51,8 +51,6 @@ function TreasureSection(): JSX.Element {
     });
   }, []);
 
-  ChartJS.register(ArcElement, Tooltip, Legend);
-
   function renderGraph() {
     fecthAssignedBalance();
     const data = {
@@ -64,27 +62,20 @@ function TreasureSection(): JSX.Element {
         },
       ],
     };
-    return <S.Graph data={data} />;
+    return data;
   }
 
   return (
     <S.Container>
-      <S.Card>
-        <S.MainContent>
-          Donation Treasure balance (USDC)
-          <S.MainValue> {contractBalance}</S.MainValue>
-        </S.MainContent>
-
-        <S.SecondaryContent>
-          Assigned (USDC) <S.SecondaryValue>{assignedValue}</S.SecondaryValue>
-        </S.SecondaryContent>
-        <S.SecondaryContent>
-          Unassigned (USDC){" "}
-          <S.SecondaryValue>{unassignedValue.toFixed(2)}</S.SecondaryValue>
-        </S.SecondaryContent>
-
-        {renderGraph()}
-      </S.Card>
+      <CardTextGraph
+        data={renderGraph()}
+        title="Donation Treasure Balance (USDC)"
+        mainText={contractBalance}
+        rightText="Assigned (USDC)"
+        leftText="Unassigned (USDC)"
+        rightSecondaryText={assignedValue}
+        leftSecondaryText={unassignedValue.toFixed(2)}
+      />
     </S.Container>
   );
 }

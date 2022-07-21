@@ -1,7 +1,8 @@
 import React, { Suspense } from "react";
-import TreasurePage from "pages/dashboard/TreasurePage";
-import LoginPage from "presentation/pages/Login";
+import DashboardPage from "pages/DashboardPage";
+import LoginPage from "pages/LoginPage";
 import { Routes, Route } from "react-router-dom";
+import MainLayout from "layouts/MainLayout";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
 
@@ -24,7 +25,9 @@ function RoutesComponent(): JSX.Element {
           <PrivateRoute>
             <Suspense fallback={<div />}>
               <Navigation />
-              <TreasurePage />
+              <MainLayout>
+                <DashboardPage />
+              </MainLayout>
             </Suspense>
           </PrivateRoute>
         }

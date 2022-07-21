@@ -2,12 +2,6 @@ import styled, { css } from "styled-components";
 import { Pie } from "react-chartjs-2";
 
 export const Container = styled.div`
-  ${() => css`
-    display: flex;
-  `}
-`;
-
-export const Card = styled.div`
   ${({ theme }) => css`
     display: flex;
     flex-flow: row wrap;
@@ -22,26 +16,40 @@ export const Card = styled.div`
   `}
 `;
 
-export const MainContent = styled.div`
-  ${() => css`
+export const MainText = styled.div`
+  ${({ theme }) => css`
     font-family: "Inter";
+    color: ${theme.colors.ribonBlack};
   `}
 `;
 
 export const MainValue = styled.p`
-  ${() => css``}
-`;
-
-export const SecondaryContent = styled.div`
-  ${() => css`
-    font-family: "Inter";
-    padding-right: 16px;
+  ${({ theme }) => css`
+    font-weight: 700;
+    color: ${theme.colors.ribonBlack};
   `}
 `;
 
-export const SecondaryValue = styled.div`
-  ${() => css`
+export const SecondaryText = styled.div`
+  ${({ theme }) => css`
     font-family: "Inter";
+    color: ${theme.colors.ribonBlack};
+  `}
+`;
+
+export const SecondaryLeftValue = styled.div`
+  ${({ theme }) => css`
+    font-family: "Inter";
+    color: ${theme.colors.ribonBlue};
+    font-weight: 700;
+  `}
+`;
+
+export const SecondaryRightValue = styled.div`
+  ${({ theme }) => css`
+    font-family: "Inter";
+    color: ${theme.colors.darkGray};
+    font-weight: bold;
   `}
 `;
 

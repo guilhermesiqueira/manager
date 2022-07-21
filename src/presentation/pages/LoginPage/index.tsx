@@ -1,9 +1,9 @@
 import { useAuthentication } from "contexts/authenticationContext";
-import ButtonSecondary from "presentation/components/atomics/Buttons/ButtonSecondary";
-import { GoogleIcon } from "presentation/components/icons/googleIcon";
+import ButtonSecondary from "components/atomics/Buttons/ButtonSecondary";
+import { GoogleIcon } from "components/icons/googleIcon";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import RibonIcon from "../../components/icons/ribon-icon.svg";
+import RibonIcon from "components/icons/ribon-icon.svg";
 import * as S from "./styles";
 
 function LoginPage(): JSX.Element {

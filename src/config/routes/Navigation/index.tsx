@@ -15,7 +15,7 @@ function Navigation(): JSX.Element {
 
   const routes = [
     {
-      path: "/",
+      path: "/dashboard",
       iconOn: DashboardIconOn,
       iconOff: DashboardIconOff,
       title: "Dashboard",
