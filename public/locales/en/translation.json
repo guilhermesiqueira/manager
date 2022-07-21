@@ -9,6 +9,11 @@
       }
     }
   },
+  "integrations": {
+    "integrationsList": {
+      "title": "Integrations List"
+    }
+  },
   "menu":{
     "integrationsLabel": "Integrations",
     "dashboardLabel": "Dashboard"
