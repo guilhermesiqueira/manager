@@ -10,6 +10,11 @@ function IntegrationsListSection(): JSX.Element {
   const [allIntegrations, setAllIntegrations] = useState<any>([]);
   const { getAllIntegrations } = useIntegrations();
 
+  const statusColors: { [key: string]: string; } = {
+    "active": "#00CDB4",
+    "inactive": "#f00"
+  }
+
   const fetchAllDonations = useCallback(async () => {
     try {
       const integrations = await getAllIntegrations();
@@ -32,9 +37,13 @@ function IntegrationsListSection(): JSX.Element {
           <CopyableTableCell text={item.walletAddress}/>
         </th>
         <th>
-          <CopyableTableCell text={`https://dapp.ribon.io/integration/${item.id}`}/>
+          <CopyableTableCell text={item.integrationAddress}/>
         </th>
-        <th>HARDCODED</th>
+        <th>
+          <S.StatusTableCell style={{color: statusColors[item.status]}}>
+            {item.status}
+          </S.StatusTableCell>
+        </th>
         <th>
           <S.ActionsTableCell>
             <img src={infoIcon} alt="view integration info" />

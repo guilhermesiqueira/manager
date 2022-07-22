@@ -49,3 +49,10 @@ export const ActionsTableCell = styled.div`
     }
   `}
 `;
+
+
+export const StatusTableCell = styled.span`
+  ${() => css`
+    text-transform: capitalize
+  `}
+`;

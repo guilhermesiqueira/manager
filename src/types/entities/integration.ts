@@ -4,6 +4,8 @@ export default interface Integration {
   walletAddress: string;
   url: string;
   logo: string;
+  integrationAddress: string,
+  status: string,
   created_at?: string;
   updated_at?: string;
 }
