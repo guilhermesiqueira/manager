@@ -10,7 +10,7 @@ describe("useIntegrations", () => {
     hook = result.current;
   });
 
-  describe("#findUser", () => {
+  describe("#getAllIntegrations", () => {
     beforeEach(() => {
       integrationsApi.getIntegrationsList = jest.fn(() => ({} as any));
     });
@@ -19,11 +19,6 @@ describe("useIntegrations", () => {
       hook.getAllIntegrations();
 
       expect(integrationsApi.getIntegrationsList).toHaveBeenCalled();
-    });
-
-    it("returns the data fetched from the api", async () => {
-      const findResultResult = await hook.getAllIntegrations();
-      expect(findResultResult).toEqual({});
     });
   });
 });
