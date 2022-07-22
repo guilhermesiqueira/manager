@@ -8,7 +8,7 @@ function useIntegrations() {
   }
 
   return {
-    getAllIntegrations
+    getAllIntegrations,
   };
 }
 

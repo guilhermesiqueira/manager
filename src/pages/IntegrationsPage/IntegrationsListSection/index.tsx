@@ -10,10 +10,10 @@ function IntegrationsListSection(): JSX.Element {
   const [allIntegrations, setAllIntegrations] = useState<any>([]);
   const { getAllIntegrations } = useIntegrations();
 
-  const statusColors: { [key: string]: string; } = {
-    "active": "#00CDB4",
-    "inactive": "#f00"
-  }
+  const statusColors: { [key: string]: string } = {
+    active: "#00CDB4",
+    inactive: "#f00",
+  };
 
   const fetchAllDonations = useCallback(async () => {
     try {
@@ -34,13 +34,13 @@ function IntegrationsListSection(): JSX.Element {
         <th>{item.id}</th>
         <th>{item.name}</th>
         <th>
-          <CopyableTableCell text={item.walletAddress}/>
+          <CopyableTableCell text={item.walletAddress} />
         </th>
         <th>
-          <CopyableTableCell text={item.integrationAddress}/>
+          <CopyableTableCell text={item.integrationAddress} />
         </th>
         <th>
-          <S.StatusTableCell style={{color: statusColors[item.status]}}>
+          <S.StatusTableCell style={{ color: statusColors[item.status] }}>
             {item.status}
           </S.StatusTableCell>
         </th>
@@ -66,9 +66,7 @@ function IntegrationsListSection(): JSX.Element {
             <th>Status</th>
           </tr>
         </thead>
-        <tbody>
-          { renderTableRowsForIntegrations() }
-        </tbody>
+        <tbody>{renderTableRowsForIntegrations()}</tbody>
       </S.Table>
     </S.Container>
   );

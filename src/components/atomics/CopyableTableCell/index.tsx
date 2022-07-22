@@ -5,10 +5,10 @@ export type Props = {
   text: string;
 };
 
-function CopyableTableCell({text}: Props): JSX.Element {
+function CopyableTableCell({ text }: Props): JSX.Element {
   return (
     <S.Container>
-      <img src={copyIcon} alt="copy to clipboard"/>
+      <img src={copyIcon} alt="copy to clipboard" />
       <span>{text}</span>
     </S.Container>
   );

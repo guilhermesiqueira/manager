@@ -7,7 +7,7 @@ export const Container = styled.div`
 `;
 
 export const Table = styled.table`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     border-collapse: collapse;
     margin: 25px 0;
     font-size: 0.9em;
@@ -24,17 +24,21 @@ export const Table = styled.table`
       color: ${theme.colors.darkGray};
       text-align: left;
     }
-  
-    td, th {
+
+    td,
+    th {
       padding: 10px 15px;
     }
-  
-    tbody td, tbody th {
+
+    tbody td,
+    tbody th {
       font-weight: 400;
       color: #222;
     }
 
-    thead tr, tbody, tr {
+    thead tr,
+    tbody,
+    tr {
       border-bottom: 1px solid #dddddd;
     }
   `}
@@ -45,14 +49,13 @@ export const ActionsTableCell = styled.div`
     display: flex;
 
     img {
-      margin-right: .5rem;
+      margin-right: 0.5rem;
     }
   `}
 `;
 
-
 export const StatusTableCell = styled.span`
   ${() => css`
-    text-transform: capitalize
+    text-transform: capitalize;
   `}
 `;

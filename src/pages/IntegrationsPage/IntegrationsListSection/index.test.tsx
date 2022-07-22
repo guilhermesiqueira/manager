@@ -8,12 +8,8 @@ describe("TreasureSection", () => {
   it("should render without error", () => {
     renderComponent(<IntegrationsListSection />);
 
-    expect(
-      screen.getByText("Wallet Address"),
-    ).toBeInTheDocument();
+    expect(screen.getByText("Wallet Address")).toBeInTheDocument();
 
-    expect(
-      screen.getByText("Integration Address"),
-    ).toBeInTheDocument();
+    expect(screen.getByText("Integration Address")).toBeInTheDocument();
   });
 });

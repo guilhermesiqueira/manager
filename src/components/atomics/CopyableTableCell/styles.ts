@@ -1,12 +1,12 @@
 import styled, { css } from "styled-components";
 
 export const Container = styled.div`
-  ${({theme}) => css`
+  ${({ theme }) => css`
     display: flex;
     cursor: pointer;
-    
+
     img {
-      margin-right: .4rem;
+      margin-right: 0.4rem;
       max-width: 17px;
     }
 
@@ -14,7 +14,7 @@ export const Container = styled.div`
       text-decoration: underline;
       color: ${theme.colors.darkGray};
       width: 200px;
-      white-space: nowrap; 
+      white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
