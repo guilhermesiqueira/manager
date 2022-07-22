@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import useIntegrations from "hooks/useIntegrations";
+import useIntegrations from "hooks/apiHooks/useIntegrations";
 import { logError } from "services/crashReport";
 import CopyableTableCell from "components/atomics/CopyableTableCell";
 import infoIcon from "assets/icons/info-icon.svg";
