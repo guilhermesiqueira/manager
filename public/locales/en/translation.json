@@ -8,16 +8,19 @@
         "unassignedText": "Unassigned (USDC)"
       },
       "integrationsSection": {
-        "subtitle":"Assigned (USDC)"
+        "subtitle": "Assigned (USDC)"
       }
     }
   },
   "integrations": {
     "integrationsList": {
       "title": "Integrations List"
+    },
+    "integrationDetailsPage": {
+      "title": "{{integrationName}} Details"
     }
   },
-  "menu":{
+  "menu": {
     "integrationsLabel": "Integrations",
     "dashboardLabel": "Dashboard"
   },

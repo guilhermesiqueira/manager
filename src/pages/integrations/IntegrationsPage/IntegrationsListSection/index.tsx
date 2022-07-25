@@ -4,6 +4,7 @@ import { logError } from "services/crashReport";
 import CopyableTableCell from "components/atomics/CopyableTableCell";
 import infoIcon from "assets/icons/info-icon.svg";
 import editIcon from "assets/icons/edit-icon.svg";
+import { Link } from "react-router-dom";
 import * as S from "./styles";
 
 function IntegrationsListSection(): JSX.Element {
@@ -46,7 +47,9 @@ function IntegrationsListSection(): JSX.Element {
         </th>
         <th>
           <S.ActionsTableCell>
+            <Link to={`/integrations/${item?.id}`} >
             <img src={infoIcon} alt="view integration info" />
+            </Link>
             <img src={editIcon} alt="edit integration info" />
           </S.ActionsTableCell>
         </th>
