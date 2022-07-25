@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import DashboardPage from "pages/DashboardPage";
 import LoginPage from "pages/LoginPage";
-import IntegrationsPage from "pages/IntegrationsPage";
+import IntegrationsPage from "pages/integrations/IntegrationsPage";
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "layouts/MainLayout";
 import Navigation from "./Navigation";
