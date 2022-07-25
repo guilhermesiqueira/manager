@@ -22,7 +22,7 @@ describe("TreasureSection", () => {
       mockGraphqlRequest(ALL_INTEGRATIONS_QUERY_NAME, {
         integrations: [
           integrationFactory({
-            amountDonated: fiftyCentInWei,
+            balance: fiftyCentInWei,
           }),
         ],
       });

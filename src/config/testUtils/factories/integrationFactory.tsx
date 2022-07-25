@@ -1,4 +1,4 @@
-import Integration from "types/apiResponses/integrations";
+import Integration from "types/apiResponses/integration";
 
 function integrationFactory(params: Partial<Integration> = {}): Integration {
   const defaultValues: Integration = {
