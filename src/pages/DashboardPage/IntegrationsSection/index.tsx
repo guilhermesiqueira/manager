@@ -18,7 +18,9 @@ function IntegrationsSection(): JSX.Element {
   const { getAllIntegrations } = useIntegrations();
   const { getAllApiIntegrations } = useApiIntegrations();
   const [apiIntegrations, setApiIntegrations] = useState<any>([]);
-  const [blockchainIntegrations, setBlockchainIntegrations] = useState<any[]>([]);
+  const [blockchainIntegrations, setBlockchainIntegrations] = useState<any[]>(
+    [],
+  );
 
   const contract = useContract({
     address: currentNetwork.ribonContractAddress,
@@ -56,7 +58,10 @@ function IntegrationsSection(): JSX.Element {
   }, []);
 
   function getIntegrationName(id: any): string {
-    const integration = apiIntegrations.find((item: any) => item?.walletAddress.toLowerCase() === id.toString().toLowerCase());
+    const integration = apiIntegrations.find(
+      (item: any) =>
+        item?.walletAddress.toLowerCase() === id.toString().toLowerCase(),
+    );
     return integration.name;
   }
 

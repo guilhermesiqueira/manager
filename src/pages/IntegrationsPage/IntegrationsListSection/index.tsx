@@ -27,7 +27,7 @@ function IntegrationsListSection(): JSX.Element {
   useEffect(() => {
     fetchAllDonations();
   }, []);
-  
+
   function renderTableRowsForIntegrations() {
     return allIntegrations?.map((item: any) => (
       <tr key={item.id}>
