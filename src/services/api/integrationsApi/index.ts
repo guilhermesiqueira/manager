@@ -5,6 +5,8 @@ import { apiGet } from "..";
 const integrationsApi = {
   getIntegrationsList: (): Promise<AxiosResponse<Integration>> =>
     apiGet("integrations"),
+  getIntegration: (id: any): Promise<AxiosResponse<Integration>> =>
+    apiGet(`integrations/${id}`)
 };
 
 export default integrationsApi;

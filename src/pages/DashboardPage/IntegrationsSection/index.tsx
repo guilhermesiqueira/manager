@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import { Grid } from "@chakra-ui/react";
-import IntegrationCard from "assets/atomics/Cards/IntegrationCard";
+import IntegrationCard from "components/moleculars/cards/IntegrationCard";
 import { useCallback, useEffect, useState } from "react";
 import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
 import useApiIntegrations from "hooks/apiHooks/useApiIntegrations";
