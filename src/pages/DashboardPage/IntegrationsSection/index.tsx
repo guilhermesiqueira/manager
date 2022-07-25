@@ -15,6 +15,7 @@ function IntegrationsSection(): JSX.Element {
   });
   const { currentNetwork } = useNetwork();
   const { getAllIntegrations } = useIntegrations();
+  const [integrationsFromApi, setIntegrationsFromApi] = useState<any[]>([]);
   const [allIntegrations, setAllIntegrations] = useState<any[]>([]);
 
   const contract = useContract({
@@ -22,11 +23,25 @@ function IntegrationsSection(): JSX.Element {
     ABI: RibonAbi.abi,
   });
 
+  const fetchIntegrations = useCallback(async () => {
+    try {
+      const integrations = await getAllIntegrations();
+      setIntegrationsFromApi(integrations);
+      console.log("entrou")
+    } catch (e) {
+      logError(e);
+    }
+  }, [integrationsFromApi]);
+
+  useEffect(() => {
+    fetchIntegrations();
+    console.log(integrationsFromApi)
+  }, []);
+
   const fetchIntegrationsAmounts = useCallback(async () => {
     try {
       const integrations = await getAllIntegrations();
       setAllIntegrations(integrations.integrations);
-      console.log(allIntegrations);
     } catch (e) {
       logError(e);
     }
@@ -38,14 +53,6 @@ function IntegrationsSection(): JSX.Element {
       fetchIntegrationsAmounts();
     });
   }, []);
-
-  // const integrationsArray = [{ id: 1, name: "Dobra", type: "Assigned (USDC)", value: "128.412,00" },
-  // { id: 2, name: "ME poupe", type: "Assigned (USDC)", value: "0989.999,00" },
-  // { id: 3, name: "Dobra", type: "Assigned (USDC)", value: "228.412,00" },
-  // { id: 4, name: "Dinheiro na nota", type: "Assigned (USDC)", value: "99.999,00" },
-  // { id: 5, name: "Dobra", type: "Assigned (USDC)", value: "128.412,00" },
-  // { id: 6, name: "ME poupe", type: "Assigned (USDC)", value: "999.999,00" },
-  // ]
 
   return (
     <Grid
