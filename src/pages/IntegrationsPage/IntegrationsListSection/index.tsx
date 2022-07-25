@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from "react";
-import useIntegrations from "hooks/apiHooks/useIntegrations";
+import useApiIntegrations from "hooks/apiHooks/useApiIntegrations";
 import { logError } from "services/crashReport";
 import CopyableTableCell from "components/atomics/CopyableTableCell";
 import infoIcon from "assets/icons/info-icon.svg";
@@ -8,7 +8,7 @@ import * as S from "./styles";
 
 function IntegrationsListSection(): JSX.Element {
   const [allIntegrations, setAllIntegrations] = useState<any>([]);
-  const { getAllIntegrations } = useIntegrations();
+  const { getAllApiIntegrations } = useApiIntegrations();
 
   const statusColors: { [key: string]: string } = {
     active: "#00CDB4",
@@ -17,7 +17,7 @@ function IntegrationsListSection(): JSX.Element {
 
   const fetchAllDonations = useCallback(async () => {
     try {
-      const integrations = await getAllIntegrations();
+      const integrations = await getAllApiIntegrations();
       setAllIntegrations(integrations);
     } catch (e) {
       logError(e);

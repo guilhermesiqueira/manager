@@ -6,6 +6,9 @@
         "mainText": "Donation Treasure Balance (USDC)",
         "assignedText": "Assigned (USDC)",
         "unassignedText": "Unassigned (USDC)"
+      },
+      "integrationsSection": {
+        "subtitle":"Assigned (USDC)"
       }
     }
   },
