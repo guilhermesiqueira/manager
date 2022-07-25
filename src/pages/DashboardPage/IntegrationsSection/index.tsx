@@ -3,6 +3,7 @@ import { Grid } from "@chakra-ui/react";
 import IntegrationCard from "assets/atomics/Cards/IntegrationCard";
 import { useCallback, useEffect, useState } from "react";
 import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
+import useApiIntegrations from "hooks/apiHooks/useApiIntegrations";
 import { formatFromWei } from "lib/web3Helpers/etherFormatters";
 import { logError } from "services/crashReport";
 import { useContract } from "hooks/useContract";
@@ -15,44 +16,49 @@ function IntegrationsSection(): JSX.Element {
   });
   const { currentNetwork } = useNetwork();
   const { getAllIntegrations } = useIntegrations();
-  const [integrationsFromApi, setIntegrationsFromApi] = useState<any[]>([]);
-  const [allIntegrations, setAllIntegrations] = useState<any[]>([]);
+  const { getAllApiIntegrations } = useApiIntegrations();
+  const [apiIntegrations, setApiIntegrations] = useState<any>([]);
+  const [blockchainIntegrations, setBlockchainIntegrations] = useState<any[]>([]);
 
   const contract = useContract({
     address: currentNetwork.ribonContractAddress,
     ABI: RibonAbi.abi,
   });
 
-  const fetchIntegrations = useCallback(async () => {
+  const fetchApiIntegrations = useCallback(async () => {
     try {
-      const integrations = await getAllIntegrations();
-      setIntegrationsFromApi(integrations);
-      console.log("entrou")
+      const integrations = await getAllApiIntegrations();
+      setApiIntegrations(integrations);
     } catch (e) {
       logError(e);
     }
-  }, [integrationsFromApi]);
+  }, [apiIntegrations]);
 
   useEffect(() => {
-    fetchIntegrations();
-    console.log(integrationsFromApi)
+    fetchApiIntegrations();
   }, []);
 
-  const fetchIntegrationsAmounts = useCallback(async () => {
+  const fetchBlockchainIntegrations = useCallback(async () => {
     try {
       const integrations = await getAllIntegrations();
-      setAllIntegrations(integrations.integrations);
+      setBlockchainIntegrations(integrations.integrations);
     } catch (e) {
       logError(e);
     }
   }, [getAllIntegrations]);
 
   useEffect(() => {
-    fetchIntegrationsAmounts();
+    fetchBlockchainIntegrations();
+
     contract?.on("PoolBalanceIncreased", () => {
-      fetchIntegrationsAmounts();
+      fetchBlockchainIntegrations();
     });
   }, []);
+
+  function getIntegrationName(id: any): string {
+    const integration = apiIntegrations.find((item: any) => item?.walletAddress.toLowerCase() === id.toString().toLowerCase());
+    return integration.name;
+  }
 
   return (
     <Grid
@@ -64,13 +70,13 @@ function IntegrationsSection(): JSX.Element {
       gridAutoRows="max-content"
       gap="8px"
     >
-      {allIntegrations
+      {blockchainIntegrations
         .sort((a, b) => b.balance - a.balance)
         .reverse()
         .map((integration) => (
           <IntegrationCard
             key={integration.id}
-            title={integration.name ? integration.name : "Nome da integração"}
+            title={getIntegrationName(integration.id)}
             subtitle={t("subtitle")}
             value={formatFromWei(integration.balance)}
           />
