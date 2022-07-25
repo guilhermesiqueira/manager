@@ -9,7 +9,7 @@ import {
 } from "firebase/auth";
 import firebaseApp from "services/firebase";
 import { useNavigate } from "react-router-dom";
-import useUsers from "hooks/useUsers";
+import useUsers from "hooks/apiHooks/useUsers";
 import { decodeJwt } from "utils/decodedToken";
 
 export interface IAuthenticationContext {
