@@ -3,14 +3,16 @@ import theme from "styles/theme";
 
 type Props = {
   title: string;
-  subtitle: string;
+  subtitle?: string;
   value: string;
+  warning?: boolean;
 };
 
-function IntegrationCard({ title, subtitle, value }: Props) {
+function IntegrationCard({ title, subtitle = "", value, warning=false }: Props) {
   return (
     <GridItem
       height="97px"
+      width="176px"
       padding="16px"
       border="1px"
       borderColor={theme.colors.lightGray}
@@ -25,8 +27,14 @@ function IntegrationCard({ title, subtitle, value }: Props) {
       <Text textColor="#00CDB4" fontWeight={700} fontSize="16px">
         {value}
       </Text>
+      {warning && "warning"}
     </GridItem>
   );
 }
+
+IntegrationCard.defaultProps = {
+  subtitle: "Assigned (USDC)",
+  warning: false,
+};
 
 export default IntegrationCard;
