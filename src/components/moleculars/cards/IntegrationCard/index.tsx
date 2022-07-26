@@ -1,4 +1,5 @@
 import { GridItem, Text } from "@chakra-ui/react";
+import warningRedIcon from "assets/icons/warning-red-icon.svg";
 import theme from "styles/theme";
 
 type Props = {
@@ -18,6 +19,7 @@ function IntegrationCard({ title, subtitle = "", value, warning=false }: Props) 
       borderColor={theme.colors.lightGray}
       borderRadius="16px"
     >
+      {warning && <img src={warningRedIcon} alt="warningIcon" style={{float: "right"}}/>}
       <Text textColor="#185669" fontWeight={700} fontSize="12px">
         {title}
       </Text>
@@ -27,7 +29,6 @@ function IntegrationCard({ title, subtitle = "", value, warning=false }: Props) 
       <Text textColor="#00CDB4" fontWeight={700} fontSize="16px">
         {value}
       </Text>
-      {warning && "warning"}
     </GridItem>
   );
 }
