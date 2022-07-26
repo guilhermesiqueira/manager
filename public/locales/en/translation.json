@@ -14,7 +14,18 @@
   },
   "integrations": {
     "integrationsList": {
-      "title": "Integrations List"
+      "title": "Integrations List",
+      "listColumns": {
+        "id": "Id",
+        "name": "Name",
+        "walletAddress": "Wallet Address",
+        "integrationAddress": "Integration Address",
+        "status": "Status"
+      }
+    },
+    "copyableAddress": {
+      "successTooltipText": "Address copied",
+      "alternativeText": "Copy to clipboard"
     }
   },
   "menu":{
