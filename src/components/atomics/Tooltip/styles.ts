@@ -23,7 +23,7 @@ export const TooltipTip = styled.div`
     z-index: 100;
     white-space: nowrap;
     font-weight: 600;
-    top: calc(30px * -1);
+    top: -30px;
     transition-timing-function: ease-in-out;
   `}
 `;
