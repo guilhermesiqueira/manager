@@ -1,15 +1,15 @@
 import integrationsApi from "services/api/integrationsApi";
 
-function useIntegrations() {
-  async function getAllIntegrations() {
+function useApiIntegrations() {
+  async function getAllApiIntegrations() {
     const { data: integrations } = await integrationsApi.getIntegrationsList();
 
     return integrations;
   }
 
   return {
-    getAllIntegrations,
+    getAllApiIntegrations,
   };
 }
 
-export default useIntegrations;
+export default useApiIntegrations;

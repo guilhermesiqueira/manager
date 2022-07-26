@@ -1,6 +1,6 @@
 import { useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import useIntegrations from "hooks/apiHooks/useIntegrations";
+import useApiIntegrations from "hooks/apiHooks/useApiIntegrations";
 import { logError } from "services/crashReport";
 import CopyableAddress from "components/atomics/CopyableAddress";
 import infoIcon from "assets/icons/info-icon.svg";
@@ -9,7 +9,7 @@ import * as S from "./styles";
 
 function IntegrationsListSection(): JSX.Element {
   const [allIntegrations, setAllIntegrations] = useState<any>([]);
-  const { getAllIntegrations } = useIntegrations();
+  const { getAllApiIntegrations } = useApiIntegrations();
 
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations.integrationsList.listColumns",
@@ -22,7 +22,7 @@ function IntegrationsListSection(): JSX.Element {
 
   const fetchAllDonations = useCallback(async () => {
     try {
-      const integrations = await getAllIntegrations();
+      const integrations = await getAllApiIntegrations();
       setAllIntegrations(integrations);
     } catch (e) {
       logError(e);
