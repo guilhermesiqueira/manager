@@ -18,7 +18,7 @@ function CopyableAddress({ text }: Props): JSX.Element {
 
   return (
     <S.Container onClick={copyText}>
-      <Tooltip text="address copied" triggerOnClick>
+      <Tooltip text={t("successTooltipText")} triggerOnClick>
         <img src={copyIcon} alt={t("alternativeText")} />
       </Tooltip>
       <span>{text}</span>
