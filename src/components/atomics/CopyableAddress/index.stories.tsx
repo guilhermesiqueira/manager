@@ -15,5 +15,5 @@ const Template: ComponentStory<typeof CopyableAddress> = function (
 export const Default = Template.bind({});
 
 Default.args = {
-  text: "ButtonSecondary",
+  text: "Copyable Address",
 };
