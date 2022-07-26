@@ -34,7 +34,7 @@ function CopyableAddress({ text }: Props): JSX.Element {
     <S.Container onClick={copyText}>
       <Tooltip
         label={t("successTooltipText")}
-        bg="#185669"
+        bg="ribonBlack"
         color="white"
         placement="top"
         isOpen={tooltipOpened}
