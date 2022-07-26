@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import DashboardPage from "pages/DashboardPage";
 import LoginPage from "pages/LoginPage";
 import IntegrationsPage from "pages/IntegrationsPage";
