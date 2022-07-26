@@ -21,18 +21,25 @@ function CopyableAddress({ text }: Props): JSX.Element {
     const interval = setInterval(() => {
       closeTooltip();
     }, 1500);
-  
+
     return () => clearInterval(interval);
   }, [tooltipOpened]);
 
   const copyText = () => {
     navigator.clipboard.writeText(text);
     setTooltipOpened(true);
-  }
+  };
 
   return (
     <S.Container onClick={copyText}>
-      <Tooltip label={t("successTooltipText")} bg="#185669" color="white" placement="top" isOpen={tooltipOpened} onClose={closeTooltip}>
+      <Tooltip
+        label={t("successTooltipText")}
+        bg="#185669"
+        color="white"
+        placement="top"
+        isOpen={tooltipOpened}
+        onClose={closeTooltip}
+      >
         <img src={copyIcon} alt={t("alternativeText")} />
       </Tooltip>
       <span>{text}</span>

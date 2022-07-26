@@ -1,5 +1,11 @@
 import React from "react";
-import { act, fireEvent, render, RenderResult, screen } from "@testing-library/react";
+import {
+  act,
+  fireEvent,
+  render,
+  RenderResult,
+  screen,
+} from "@testing-library/react";
 import { ThemeProvider } from "styled-components";
 import { createMemoryHistory, MemoryHistory } from "history";
 import { Router } from "react-router-dom";

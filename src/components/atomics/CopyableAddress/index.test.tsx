@@ -6,7 +6,7 @@ describe("CopyableAddress", () => {
   const URL = "https://ribon.io";
 
   it("should render without error", () => {
-    renderComponent(<CopyableAddress text={URL}/>);
+    renderComponent(<CopyableAddress text={URL} />);
 
     expect(screen.getByText(URL)).toBeInTheDocument();
   });
@@ -18,7 +18,7 @@ describe("CopyableAddress", () => {
       },
     });
 
-    renderComponent(<CopyableAddress text="click"/>);
+    renderComponent(<CopyableAddress text="click" />);
     clickOn("click");
 
     expect(navigator.clipboard.writeText).toHaveBeenCalledWith("click");
