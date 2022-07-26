@@ -16,7 +16,7 @@ describe("useIntegrations", () => {
     });
 
     it("calls the usersApi searchUser with correct params", () => {
-      hook.getAllIntegrations();
+      hook.getAllApiIntegrations();
 
       expect(integrationsApi.getIntegrationsList).toHaveBeenCalled();
     });
