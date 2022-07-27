@@ -54,8 +54,8 @@ function IntegrationsListSection(): JSX.Element {
         </th>
         <th>
           <S.ActionsTableCell>
-            <Link to={`/integrations/${item?.id}`} >
-            <img src={infoIcon} alt="view integration info" />
+            <Link to={`/integrations/${item?.id}`}>
+              <img src={infoIcon} alt="view integration info" />
             </Link>
             <img src={editIcon} alt="edit integration info" />
           </S.ActionsTableCell>
