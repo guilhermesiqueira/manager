@@ -55,18 +55,25 @@ function IntegrationDetailsPage(): JSX.Element {
         leftIcon={<EditIcon />}>
         {t("edit")}
       </Button>
+
       <S.InfoName>{t("status")}</S.InfoName>
       <S.InfoValue style={{ color: `${statusColors[status]}` }}>{status}</S.InfoValue>
+      
       <S.InfoName>{t("id")}</S.InfoName>
       <S.InfoValue>{id}</S.InfoValue>
+      
       <S.InfoName>{t("name")}</S.InfoName>
       <S.InfoValue>{name}</S.InfoValue>
+      
       <S.InfoName>{t("walletAddress")}</S.InfoName>
       <CopyableAddress text={walletAddress} />
+      
       <S.InfoName>{t("integrationAddress")}</S.InfoName>
       <CopyableAddress text={integrationAddress} />
+      
       <S.InfoName>{t("createdAt")}</S.InfoName>
       <S.InfoValue>{dateFormatter(createdAt)}</S.InfoValue>
+      
       <S.InfoName>{t("lastEditedAt")}</S.InfoName>
       <S.InfoValue>{dateFormatter(updatedAt)}</S.InfoValue>
     </S.Container>
