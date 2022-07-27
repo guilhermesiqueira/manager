@@ -5,8 +5,8 @@ import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
 import { logError } from "services/crashReport";
+import CopyableAddress from "components/atomics/CopyableAddress";
 import theme from "styles/theme";
-import copyIcon from "assets/icons/copy-icon.svg";
 import * as S from "./styles";
 
 function IntegrationDetailsPage(): JSX.Element {
@@ -35,6 +35,7 @@ function IntegrationDetailsPage(): JSX.Element {
 
   const integrationName = integration?.name;
   const { status, name, walletAddress, integrationAddress, createdAt, updatedAt } = integration;
+
   useEffect(() => {
     fetchIntegration();
   }, []);
@@ -50,11 +51,9 @@ function IntegrationDetailsPage(): JSX.Element {
       <S.InfoName>{t("name")}</S.InfoName>
       <S.InfoValue>{name}</S.InfoValue>
       <S.InfoName>{t("walletAddress")}</S.InfoName>
-      <img src={copyIcon} alt="copy" style={{ display: "inline" }} />
-      <S.InfoValue style={{ display: "inline", marginLeft: "4px" }} >{walletAddress}</S.InfoValue>
+      <CopyableAddress text={walletAddress} />
       <S.InfoName>{t("integrationAddress")}</S.InfoName>
-      <img src={copyIcon} alt="copy" style={{ display: "inline" }} />
-      <S.InfoValue style={{ display: "inline", marginLeft: "4px" }}>{integrationAddress}</S.InfoValue>
+      <CopyableAddress text={integrationAddress} />
       <S.InfoName>{t("createdAt")}</S.InfoName>
       <S.InfoValue>{dateFormatter(createdAt)}</S.InfoValue>
       <S.InfoName>{t("lastEditedAt")}</S.InfoName>

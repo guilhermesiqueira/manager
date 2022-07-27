@@ -20,6 +20,7 @@ export const Title = styled.h1`
 export const InfoName = styled.p`
   ${() => css`
     margin-top: 16px;
+    margin-bottom: 4px;
     font-weight: 600;
     font-size: 12px;
     font-family: "Inter";
@@ -28,7 +29,7 @@ export const InfoName = styled.p`
 
 export const InfoValue = styled.p`
   ${({ theme }) => css`
-    margin: 4px 0;
+    /* margin: 4px 0; */
     font-size: 12px;
     font-family: "Inter";
     color: ${theme.colors.darkGray};
