@@ -12,7 +12,6 @@ import theme from "styles/theme";
 import * as S from "./styles";
 
 function IntegrationDetailsPage(): JSX.Element {
-
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations.integrationDetailsPage",
   });
@@ -37,7 +36,14 @@ function IntegrationDetailsPage(): JSX.Element {
   }, []);
 
   const integrationName = integration?.name;
-  const { status, name, walletAddress, integrationAddress, createdAt, updatedAt } = integration;
+  const {
+    status,
+    name,
+    walletAddress,
+    integrationAddress,
+    createdAt,
+    updatedAt,
+  } = integration;
 
   useEffect(() => {
     fetchIntegration();
@@ -49,31 +55,34 @@ function IntegrationDetailsPage(): JSX.Element {
       <IntegrationCard title={integrationName} value="12" />
       <br />
       <Button
-        onClick={() => { }}
+        onClick={() => {}}
         color="white"
         backgroundColor={ribonBlack}
-        leftIcon={<EditIcon />}>
+        leftIcon={<EditIcon />}
+      >
         {t("edit")}
       </Button>
 
       <S.InfoName>{t("status")}</S.InfoName>
-      <S.InfoValue style={{ color: `${statusColors[status]}` }}>{status}</S.InfoValue>
-      
+      <S.InfoValue style={{ color: `${statusColors[status]}` }}>
+        {status}
+      </S.InfoValue>
+
       <S.InfoName>{t("id")}</S.InfoName>
       <S.InfoValue>{id}</S.InfoValue>
-      
+
       <S.InfoName>{t("name")}</S.InfoName>
       <S.InfoValue>{name}</S.InfoValue>
-      
+
       <S.InfoName>{t("walletAddress")}</S.InfoName>
       <CopyableAddress text={walletAddress} />
-      
+
       <S.InfoName>{t("integrationAddress")}</S.InfoName>
       <CopyableAddress text={integrationAddress} />
-      
+
       <S.InfoName>{t("createdAt")}</S.InfoName>
       <S.InfoValue>{dateFormatter(createdAt)}</S.InfoValue>
-      
+
       <S.InfoName>{t("lastEditedAt")}</S.InfoName>
       <S.InfoValue>{dateFormatter(updatedAt)}</S.InfoValue>
     </S.Container>

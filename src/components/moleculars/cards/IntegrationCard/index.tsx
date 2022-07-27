@@ -9,7 +9,12 @@ type Props = {
   warning?: boolean;
 };
 
-function IntegrationCard({ title, subtitle = "", value, warning = false }: Props) {
+function IntegrationCard({
+  title,
+  subtitle = "",
+  value,
+  warning = false,
+}: Props) {
   return (
     <GridItem
       height="97px"
@@ -19,7 +24,13 @@ function IntegrationCard({ title, subtitle = "", value, warning = false }: Props
       borderColor={theme.colors.lightGray}
       borderRadius="16px"
     >
-      {warning && <img src={warningRedIcon} alt="warningIcon" style={{ float: "right" }} />}
+      {warning && (
+        <img
+          src={warningRedIcon}
+          alt="warningIcon"
+          style={{ float: "right" }}
+        />
+      )}
       <Text textColor="#185669" fontWeight={700} fontSize="12px">
         {title}
       </Text>
