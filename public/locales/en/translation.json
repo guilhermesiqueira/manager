@@ -14,17 +14,28 @@
   },
   "integrations": {
     "integrationsList": {
-      "title": "Integrations List"
+      "title": "Integrations List",
+      "listColumns": {
+        "id": "Id",
+        "name": "Name",
+        "walletAddress": "Wallet Address",
+        "integrationAddress": "Integration Address",
+        "status": "Status"
+      }
     },
-    "integrationDetailsPage": {
-      "title": "{{integrationName}} Details",
-      "status": "Status",
-      "id": "ID",
-      "name": "Name",
-      "walletAddress": "Wallet Address",
-      "integrationAddress": "Integration Address",
-      "createdAt": "Created At",
-      "lastEditedAt": "Last Edited At"
+    "copyableAddress": {
+      "successTooltipText": "Address copied",
+      "alternativeText": "Copy to clipboard"
+    }, 
+      "integrationDetailsPage": {
+        "title": "{{integrationName}} Details",
+        "status": "Status",
+        "id": "ID",
+        "name": "Name",
+        "walletAddress": "Wallet Address",
+        "integrationAddress": "Integration Address",
+        "createdAt": "Created At",
+        "lastEditedAt": "Last Edited At"
     }
   },
   "menu": {

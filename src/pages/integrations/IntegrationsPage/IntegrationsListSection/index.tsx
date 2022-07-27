@@ -1,7 +1,8 @@
 import { useEffect, useState, useCallback } from "react";
+import { useTranslation } from "react-i18next";
 import useApiIntegrations from "hooks/apiHooks/useApiIntegrations";
 import { logError } from "services/crashReport";
-import CopyableTableCell from "components/atomics/CopyableTableCell";
+import CopyableAddress from "components/atomics/CopyableAddress";
 import infoIcon from "assets/icons/info-icon.svg";
 import editIcon from "assets/icons/edit-icon.svg";
 import { Link } from "react-router-dom";
@@ -12,6 +13,10 @@ function IntegrationsListSection(): JSX.Element {
   const [allIntegrations, setAllIntegrations] = useState<any>([]);
   const { getAllApiIntegrations } = useApiIntegrations();
   const { ribonBlue, lgRed } = theme.colors;
+
+  const { t } = useTranslation("translation", {
+    keyPrefix: "integrations.integrationsList.listColumns",
+  });
 
   const statusColors: { [key: string]: string } = {
     active: ribonBlue,
@@ -37,10 +42,10 @@ function IntegrationsListSection(): JSX.Element {
         <th>{item.id}</th>
         <th>{item.name}</th>
         <th>
-          <CopyableTableCell text={item.walletAddress} />
+          <CopyableAddress text={item.walletAddress} />
         </th>
         <th>
-          <CopyableTableCell text={item.integrationAddress} />
+          <CopyableAddress text={item.integrationAddress} />
         </th>
         <th>
           <S.StatusTableCell style={{ color: statusColors[item.status] }}>
@@ -64,11 +69,11 @@ function IntegrationsListSection(): JSX.Element {
       <S.Table>
         <thead>
           <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Wallet Address</th>
-            <th>Integration Address</th>
-            <th>Status</th>
+            <th>{t("id")}</th>
+            <th>{t("name")}</th>
+            <th>{t("walletAddress")}</th>
+            <th>{t("integrationAddress")}</th>
+            <th>{t("status")}</th>
           </tr>
         </thead>
         <tbody>{renderTableRowsForIntegrations()}</tbody>
