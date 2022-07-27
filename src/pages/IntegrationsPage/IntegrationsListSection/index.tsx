@@ -1,6 +1,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import useApiIntegrations from "hooks/apiHooks/useApiIntegrations";
+import { Link } from "react-router-dom";
 import { logError } from "services/crashReport";
 import CopyableAddress from "components/atomics/CopyableAddress";
 import infoIcon from "assets/icons/info-icon.svg";
@@ -52,7 +53,9 @@ function IntegrationsListSection(): JSX.Element {
         <th>
           <S.ActionsTableCell>
             <img src={infoIcon} alt="view integration info" />
-            <img src={editIcon} alt="edit integration info" />
+            <Link to={`/integrations/edit/${item.id}`}>
+              <img src={editIcon} alt="edit integration info" />
+            </Link>
           </S.ActionsTableCell>
         </th>
       </tr>
