@@ -35,7 +35,8 @@
         "walletAddress": "Wallet Address",
         "integrationAddress": "Integration Address",
         "createdAt": "Created At",
-        "lastEditedAt": "Last Edited At"
+        "lastEditedAt": "Last Edited At",
+        "edit": "Edit"
     }
   },
   "menu": {

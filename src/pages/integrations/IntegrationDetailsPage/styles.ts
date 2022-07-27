@@ -29,7 +29,6 @@ export const InfoName = styled.p`
 
 export const InfoValue = styled.p`
   ${({ theme }) => css`
-    /* margin: 4px 0; */
     font-size: 12px;
     font-family: "Inter";
     color: ${theme.colors.darkGray};

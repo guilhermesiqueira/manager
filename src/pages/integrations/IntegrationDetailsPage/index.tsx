@@ -6,14 +6,17 @@ import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
 import { logError } from "services/crashReport";
 import CopyableAddress from "components/atomics/CopyableAddress";
+import { Button } from "@chakra-ui/react";
+import EditIcon from "assets/icons/editIcon";
 import theme from "styles/theme";
 import * as S from "./styles";
 
 function IntegrationDetailsPage(): JSX.Element {
+
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations.integrationDetailsPage",
   });
-  const { ribonBlue, lgRed } = theme.colors;
+  const { ribonBlue, lgRed, ribonBlack } = theme.colors;
 
   const [integration, setIntegration] = useState<any>([]);
   const { getApiIntegration } = useApiIntegrations();
@@ -43,7 +46,15 @@ function IntegrationDetailsPage(): JSX.Element {
   return (
     <S.Container>
       <S.Title>{t("title", { integrationName })}</S.Title>
-      <IntegrationCard title={integrationName} value="12" warning />
+      <IntegrationCard title={integrationName} value="12" />
+      <br />
+      <Button
+        onClick={() => { }}
+        color="white"
+        backgroundColor={ribonBlack}
+        leftIcon={<EditIcon />}>
+        {t("edit")}
+      </Button>
       <S.InfoName>{t("status")}</S.InfoName>
       <S.InfoValue style={{ color: `${statusColors[status]}` }}>{status}</S.InfoValue>
       <S.InfoName>{t("id")}</S.InfoName>
