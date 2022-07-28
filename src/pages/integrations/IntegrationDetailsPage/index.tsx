@@ -15,7 +15,7 @@ function IntegrationDetailsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations.integrationDetailsPage",
   });
-  const { ribonBlue, lgRed, ribonBlack } = theme.colors;
+  const { ribonBlue, lgRed, ribonBlack, bgGray } = theme.colors;
 
   const [integration, setIntegration] = useState<any>([]);
   const { getApiIntegration } = useApiIntegrations();
@@ -56,7 +56,7 @@ function IntegrationDetailsPage(): JSX.Element {
       <br />
       <Button
         onClick={() => {}}
-        color="white"
+        color={bgGray}
         backgroundColor={ribonBlack}
         leftIcon={<EditIcon />}
       >

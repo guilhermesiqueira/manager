@@ -9,6 +9,8 @@ type Props = {
   warning?: boolean;
 };
 
+const { ribonBlack, ribonBlue, lightGray } = theme.colors;
+
 function IntegrationCard({
   title,
   subtitle = "",
@@ -21,7 +23,7 @@ function IntegrationCard({
       width="176px"
       padding="16px"
       border="1px"
-      borderColor={theme.colors.lightGray}
+      borderColor={lightGray}
       borderRadius="16px"
     >
       {warning && (
@@ -31,13 +33,13 @@ function IntegrationCard({
           style={{ float: "right" }}
         />
       )}
-      <Text textColor="#185669" fontWeight={700} fontSize="12px">
+      <Text textColor={ribonBlack} fontWeight={700} fontSize="12px">
         {title}
       </Text>
-      <Text textColor="#185669" fontWeight={300} fontSize="10px">
+      <Text textColor={ribonBlack} fontWeight={300} fontSize="10px">
         {subtitle}
       </Text>
-      <Text textColor="#00CDB4" fontWeight={700} fontSize="16px">
+      <Text textColor={ribonBlue} fontWeight={700} fontSize="16px">
         {value}
       </Text>
     </GridItem>
