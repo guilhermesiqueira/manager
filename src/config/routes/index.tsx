@@ -3,7 +3,7 @@ import DashboardPage from "pages/DashboardPage";
 import LoginPage from "pages/LoginPage";
 import IntegrationsPage from "pages/integrations/IntegrationsPage";
 import IntegrationDetailsPage from "pages/integrations/IntegrationDetailsPage";
-import EditIntegrationPage from "pages/EditIntegrationPage";
+import EditIntegrationPage from "pages/integrations/EditIntegrationPage";
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "layouts/MainLayout";
 import Navigation from "./Navigation";
@@ -57,7 +57,7 @@ function RoutesComponent(): JSX.Element {
       />
 
       <Route
-        path="/integrations/edit/:id"
+        path="/integrations/:id/edit"
         element={
           <PrivateRoute>
             <Suspense fallback={<div />}>

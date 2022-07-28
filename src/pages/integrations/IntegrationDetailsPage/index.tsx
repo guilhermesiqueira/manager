@@ -7,6 +7,7 @@ import { useParams } from "react-router";
 import { logError } from "services/crashReport";
 import CopyableAddress from "components/atomics/CopyableAddress";
 import { Button } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 import EditIcon from "assets/icons/editIcon";
 import theme from "styles/theme";
 import * as S from "./styles";
@@ -54,14 +55,16 @@ function IntegrationDetailsPage(): JSX.Element {
       <S.Title>{t("title", { integrationName })}</S.Title>
       <IntegrationCard title={integrationName} value="12" />
       <br />
-      <Button
-        onClick={() => {}}
-        color={bgGray}
-        backgroundColor={ribonBlack}
-        leftIcon={<EditIcon />}
-      >
-        {t("edit")}
-      </Button>
+
+      <Link to="edit/">
+        <Button
+          color={bgGray}
+          backgroundColor={ribonBlack}
+          leftIcon={<EditIcon />}
+        >
+          {t("edit")}
+        </Button>
+      </Link>
 
       <S.InfoName>{t("status")}</S.InfoName>
       <S.InfoValue style={{ color: `${statusColors[status]}` }}>

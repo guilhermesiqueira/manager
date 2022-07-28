@@ -58,7 +58,7 @@ function IntegrationsListSection(): JSX.Element {
               <img src={infoIcon} alt="view integration info" />
             </Link>
             
-            <Link to={`/integrations/edit/${item.id}`}>
+            <Link to={`/integrations/${item.id}/edit`}>
               <img src={editIcon} alt="edit integration info" />
             </Link>
 
