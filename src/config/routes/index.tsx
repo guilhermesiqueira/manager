@@ -1,7 +1,8 @@
 import { Suspense } from "react";
 import DashboardPage from "pages/DashboardPage";
 import LoginPage from "pages/LoginPage";
-import IntegrationsPage from "pages/IntegrationsPage";
+import IntegrationsPage from "pages/integrations/IntegrationsPage";
+import IntegrationDetailsPage from "pages/integrations/IntegrationDetailsPage";
 import EditIntegrationPage from "pages/EditIntegrationPage";
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "layouts/MainLayout";
@@ -42,6 +43,20 @@ function RoutesComponent(): JSX.Element {
       />
 
       <Route
+        path="/integrations/:id"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <IntegrationDetailsPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
         path="/integrations/edit/:id"
         element={
           <PrivateRoute>
@@ -54,6 +69,8 @@ function RoutesComponent(): JSX.Element {
           </PrivateRoute>
         }
       />
+
+
     </Routes>
   );
 }
