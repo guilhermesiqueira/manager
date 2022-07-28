@@ -5,19 +5,22 @@ import { logError } from "services/crashReport";
 import CopyableAddress from "components/atomics/CopyableAddress";
 import infoIcon from "assets/icons/info-icon.svg";
 import editIcon from "assets/icons/edit-icon.svg";
+import { Link } from "react-router-dom";
+import theme from "styles/theme";
 import * as S from "./styles";
 
 function IntegrationsListSection(): JSX.Element {
   const [allIntegrations, setAllIntegrations] = useState<any>([]);
   const { getAllApiIntegrations } = useApiIntegrations();
+  const { ribonBlue, lgRed } = theme.colors;
 
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations.integrationsList.listColumns",
   });
 
   const statusColors: { [key: string]: string } = {
-    active: "#00CDB4",
-    inactive: "#f00",
+    active: ribonBlue,
+    inactive: lgRed,
   };
 
   const fetchAllDonations = useCallback(async () => {
@@ -51,7 +54,9 @@ function IntegrationsListSection(): JSX.Element {
         </th>
         <th>
           <S.ActionsTableCell>
-            <img src={infoIcon} alt="view integration info" />
+            <Link to={`/integrations/${item?.id}`}>
+              <img src={infoIcon} alt="view integration info" />
+            </Link>
             <img src={editIcon} alt="edit integration info" />
           </S.ActionsTableCell>
         </th>

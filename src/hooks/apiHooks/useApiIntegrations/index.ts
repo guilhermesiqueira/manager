@@ -7,8 +7,15 @@ function useApiIntegrations() {
     return integrations;
   }
 
+  async function getApiIntegration(id: any) {
+    const { data: integration } = await integrationsApi.getIntegration(id);
+
+    return integration;
+  }
+
   return {
     getAllApiIntegrations,
+    getApiIntegration
   };
 }
 
