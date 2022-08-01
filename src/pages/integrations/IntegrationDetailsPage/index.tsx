@@ -56,7 +56,7 @@ function IntegrationDetailsPage(): JSX.Element {
       <IntegrationCard title={integrationName} value="12" />
       <br />
 
-      <Link to="edit/">
+      <Link to="edit">
         <Button
           color={bgGray}
           backgroundColor={ribonBlack}
