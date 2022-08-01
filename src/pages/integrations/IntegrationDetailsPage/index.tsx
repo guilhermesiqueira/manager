@@ -17,15 +17,14 @@ function IntegrationDetailsPage(): JSX.Element {
     keyPrefix: "integrations.integrationDetailsPage",
   });
   const { ribonBlue, lgRed, ribonBlack, bgGray } = theme.colors;
-
-  const [integration, setIntegration] = useState<any>([]);
-  const { getApiIntegration } = useApiIntegrations();
-  const { id } = useParams();
-
   const statusColors: { [key: string]: string } = {
     active: ribonBlue,
     inactive: lgRed,
   };
+
+  const [integration, setIntegration] = useState<any>([]);
+  const { getApiIntegration } = useApiIntegrations();
+  const { id } = useParams();
 
   const fetchIntegration = useCallback(async () => {
     try {
