@@ -67,26 +67,25 @@ function EditIntegrationPage() {
       <S.TextInput name="name" value={integration?.name} onChange={handleChange} />
       <S.Checkbox type="checkbox" checked={integration?.status === "active"} value={integration?.status} name="status" onChange={handleCheckboxChange} />
       <S.Span>{integration?.status} integration</S.Span> <br />
-      
+
       <S.ButtonContainer>
+        <Button
+          color={bgGray}
+          backgroundColor={ribonBlack}
+          onClick={handleSave}>
+          {t("save")}
+        </Button>
 
-      <Button
-        color={bgGray}
-        backgroundColor={ribonBlack}
-        onClick={handleSave}>
-        {t("save")}
-      </Button>
-
-      <Button
-        color={ribonBlack}
-        backgroundColor={bgGray}
-        outlineColor={ribonBlack}
-        marginLeft="8px"
-        onClick={handleCancel}
+        <Button
+          color={ribonBlack}
+          backgroundColor={bgGray}
+          outlineColor={ribonBlack}
+          marginLeft="8px"
+          onClick={handleCancel}
         >
-        {t("cancel")}
-      </Button>
-        </S.ButtonContainer>
+          {t("cancel")}
+        </Button>
+      </S.ButtonContainer>
     </>
   );
 }
