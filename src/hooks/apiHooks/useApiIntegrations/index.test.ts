@@ -15,10 +15,24 @@ describe("useIntegrations", () => {
       integrationsApi.getIntegrationsList = jest.fn(() => ({} as any));
     });
 
-    it("calls the usersApi searchUser with correct params", () => {
+    it("calls getIntegrationsList with correct params", () => {
       hook.getAllApiIntegrations();
 
       expect(integrationsApi.getIntegrationsList).toHaveBeenCalled();
+    });
+  });
+
+  describe("#getApiIntegration", () => {
+    const id = 1;
+    beforeEach(() => {
+      integrationsApi.getIntegration = jest.fn(() => ({} as any));
+    });
+
+    it("calls getApiIntegration with correct params", () => {
+      hook.getApiIntegration(id);
+
+      expect(integrationsApi.getIntegration).toHaveBeenCalled();
+      expect(integrationsApi.getIntegration).toHaveBeenCalledWith(id);
     });
   });
 });
