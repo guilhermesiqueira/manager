@@ -33,14 +33,17 @@ function EditIntegrationPage() {
     if (integration) {
       setIntegration({ ...integration, [name]: value });
     }
-  }
+  };
 
   const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { checked } = e.target;
     if (integration) {
-      setIntegration({ ...integration, status: checked ? "active" : "inactive" });
+      setIntegration({
+        ...integration,
+        status: checked ? "active" : "inactive",
+      });
     }
-  }
+  };
 
   const handleSave = async () => {
     if (integration) {
@@ -51,11 +54,11 @@ function EditIntegrationPage() {
         logError(e);
       }
     }
-  }
+  };
 
   const handleCancel = () => {
     navigate("/integrations");
-  }
+  };
 
   useEffect(() => {
     fetchAllDonations();
@@ -64,15 +67,25 @@ function EditIntegrationPage() {
   return (
     <>
       <S.Title>{t("title")}</S.Title>
-      <S.TextInput name="name" value={integration?.name} onChange={handleChange} />
-      <S.Checkbox type="checkbox" checked={integration?.status === "active"} value={integration?.status} name="status" onChange={handleCheckboxChange} />
+      <S.TextInput
+        name="name"
+        value={integration?.name}
+        onChange={handleChange}
+      />
+      <S.Checkbox
+        type="checkbox"
+        checked={integration?.status === "active"}
+        value={integration?.status}
+        name="status"
+        onChange={handleCheckboxChange}
+      />
       <S.Span>{integration?.status} integration</S.Span> <br />
-
       <S.ButtonContainer>
         <Button
           color={bgGray}
           backgroundColor={ribonBlack}
-          onClick={handleSave}>
+          onClick={handleSave}
+        >
           {t("save")}
         </Button>
 

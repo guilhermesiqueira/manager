@@ -69,8 +69,6 @@ function RoutesComponent(): JSX.Element {
           </PrivateRoute>
         }
       />
-
-
     </Routes>
   );
 }
