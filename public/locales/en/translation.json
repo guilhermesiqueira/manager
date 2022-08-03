@@ -8,7 +8,7 @@
         "unassignedText": "Unassigned (USDC)"
       },
       "integrationsSection": {
-        "subtitle":"Assigned (USDC)"
+        "subtitle": "Assigned (USDC)"
       }
     }
   },
@@ -26,9 +26,20 @@
     "copyableAddress": {
       "successTooltipText": "Address copied",
       "alternativeText": "Copy to clipboard"
+    }, 
+      "integrationDetailsPage": {
+        "title": "{{integrationName}} Details",
+        "status": "Status",
+        "id": "ID",
+        "name": "Name",
+        "walletAddress": "Wallet Address",
+        "integrationAddress": "Integration Address",
+        "createdAt": "Created At",
+        "lastEditedAt": "Last Edited At",
+        "edit": "Edit"
     }
   },
-  "menu":{
+  "menu": {
     "integrationsLabel": "Integrations",
     "dashboardLabel": "Dashboard"
   },

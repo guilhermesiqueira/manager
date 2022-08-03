@@ -1,9 +1,10 @@
 import { useTranslation } from "react-i18next";
 import { Grid } from "@chakra-ui/react";
-import IntegrationCard from "assets/atomics/Cards/IntegrationCard";
+import IntegrationCard from "components/moleculars/cards/IntegrationCard";
 import { useCallback, useEffect, useState } from "react";
 import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
 import useApiIntegrations from "hooks/apiHooks/useApiIntegrations";
+import { Link } from "react-router-dom";
 import { formatFromWei } from "lib/web3Helpers/etherFormatters";
 import { logError } from "services/crashReport";
 import { useContract } from "hooks/useContract";
@@ -65,6 +66,14 @@ function IntegrationsSection(): JSX.Element {
     return integration.name;
   }
 
+  function getIntegrationId(id: any): string {
+    const integration = apiIntegrations.find(
+      (item: any) =>
+        item?.walletAddress.toLowerCase() === id.toString().toLowerCase(),
+    );
+    return integration.id;
+  }
+
   return (
     <Grid
       maxH="600px"
@@ -79,12 +88,14 @@ function IntegrationsSection(): JSX.Element {
         .sort((a, b) => b.balance - a.balance)
         .reverse()
         .map((integration) => (
-          <IntegrationCard
-            key={integration.id}
-            title={getIntegrationName(integration.id)}
-            subtitle={t("subtitle")}
-            value={formatFromWei(integration.balance)}
-          />
+          <Link to={`/integrations/${getIntegrationId(integration.id)}`}>
+            <IntegrationCard
+              key={integration.id}
+              title={getIntegrationName(integration.id)}
+              subtitle={t("subtitle")}
+              value={formatFromWei(integration.balance)}
+            />
+          </Link>
         ))}
     </Grid>
   );
