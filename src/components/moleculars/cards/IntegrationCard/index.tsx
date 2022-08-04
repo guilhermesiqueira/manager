@@ -6,17 +6,26 @@ type Props = {
   title: string;
   subtitle?: string;
   value: string;
-  warning?: boolean;
 };
 
-const { ribonBlack, ribonBlue, lightGray } = theme.colors;
+const { ribonBlack, ribonBlue, lightGray, lgRed, phcYellow2 } = theme.colors;
 
 function IntegrationCard({
   title,
   subtitle = "",
   value,
-  warning = false,
 }: Props) {
+
+  const colorAccordingToValue = () => {
+    const amount = parseFloat(value);
+    if (amount === 0) {
+      return lgRed;
+    } else if (amount <1000) {
+      return phcYellow2;
+    }
+    return ribonBlue;
+  }
+
   return (
     <GridItem
       height="97px"
@@ -26,7 +35,7 @@ function IntegrationCard({
       borderColor={lightGray}
       borderRadius="16px"
     >
-      {warning && (
+      {value === "0" && (
         <img
           src={warningRedIcon}
           alt="warningIcon"
@@ -39,7 +48,7 @@ function IntegrationCard({
       <Text textColor={ribonBlack} fontWeight={300} fontSize="10px">
         {subtitle}
       </Text>
-      <Text textColor={ribonBlue} fontWeight={700} fontSize="16px">
+      <Text textColor={colorAccordingToValue()} fontWeight={700} fontSize="16px">
         {value}
       </Text>
     </GridItem>
@@ -48,7 +57,6 @@ function IntegrationCard({
 
 IntegrationCard.defaultProps = {
   subtitle: "Assigned (USDC)",
-  warning: false,
 };
 
 export default IntegrationCard;
