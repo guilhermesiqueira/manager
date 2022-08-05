@@ -46,6 +46,6 @@ describe("IntegrationCard", () => {
     const valueText = component.container.getElementsByTagName("p");
     const index = valueText.length - 1;
 
-    expect(valueText[index]).toHaveStyle(`color:  ${ribonBlue}`)   ;
+    expect(valueText[index]).toHaveStyle(`color:  ${ribonBlue}`);
   });
 });
