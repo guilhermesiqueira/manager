@@ -26,7 +26,7 @@ describe("IntegrationCard", () => {
     const valueText = component.container.getElementsByTagName("p");
     const index = valueText.length - 1;
 
-    expect(valueText[index]).toHaveStyle("color: " + lgRed);
+    expect(valueText[index]).toHaveStyle(`color: ${lgRed}`);
   });
 
   it("should render orange text if value is less than 1000", () => {
@@ -36,7 +36,7 @@ describe("IntegrationCard", () => {
     const valueText = component.container.getElementsByTagName("p");
     const index = valueText.length - 1;
 
-    expect(valueText[index]).toHaveStyle("color: " + phcYellow2);
+    expect(valueText[index]).toHaveStyle(`color:  ${phcYellow2}`);
   });
 
   it("should render blue text if value is greater than 1000", () => {
@@ -46,6 +46,6 @@ describe("IntegrationCard", () => {
     const valueText = component.container.getElementsByTagName("p");
     const index = valueText.length - 1;
 
-    expect(valueText[index]).toHaveStyle("color: " + ribonBlue)   ;
+    expect(valueText[index]).toHaveStyle(`color:  ${ribonBlue}`)   ;
   });
 });
