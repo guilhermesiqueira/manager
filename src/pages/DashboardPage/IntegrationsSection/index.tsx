@@ -88,7 +88,10 @@ function IntegrationsSection(): JSX.Element {
         .sort((a, b) => b.balance - a.balance)
         .reverse()
         .map((integration) => (
-          <Link to={`/integrations/${getIntegrationId(integration.id)}`} key={integration.id}>
+          <Link
+            to={`/integrations/${getIntegrationId(integration.id)}`}
+            key={integration.id}
+          >
             <IntegrationCard
               key={integration.id}
               title={getIntegrationName(integration.id)}
