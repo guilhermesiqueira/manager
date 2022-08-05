@@ -1,6 +1,9 @@
 import { screen } from "@testing-library/react";
 import { renderComponent } from "config/testUtils";
+import theme from "styles/theme";
 import IntegrationCard from ".";
+
+const { ribonBlue, lgRed, phcYellow2 } = theme.colors;
 
 describe("IntegrationCard", () => {
   it("should render without error", () => {
@@ -23,7 +26,7 @@ describe("IntegrationCard", () => {
     const valueText = component.container.getElementsByTagName("p");
     const index = valueText.length - 1;
 
-    expect(valueText[index]).toHaveStyle("color: #EF5350");
+    expect(valueText[index]).toHaveStyle("color: " + lgRed);
   });
 
   it("should render orange text if value is less than 1000", () => {
@@ -33,7 +36,7 @@ describe("IntegrationCard", () => {
     const valueText = component.container.getElementsByTagName("p");
     const index = valueText.length - 1;
 
-    expect(valueText[index]).toHaveStyle("color: #FF8F00");
+    expect(valueText[index]).toHaveStyle("color: " + phcYellow2);
   });
 
   it("should render blue text if value is greater than 1000", () => {
@@ -43,6 +46,6 @@ describe("IntegrationCard", () => {
     const valueText = component.container.getElementsByTagName("p");
     const index = valueText.length - 1;
 
-    expect(valueText[index]).toHaveStyle("color: #00CDB4");
+    expect(valueText[index]).toHaveStyle("color: " + ribonBlue)   ;
   });
 });
