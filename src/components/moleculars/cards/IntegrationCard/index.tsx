@@ -20,7 +20,7 @@ function IntegrationCard({
     const amount = parseFloat(value);
     if (amount === 0) {
       return lgRed;
-    } else if (amount <1000) {
+    } else if (amount < 1000) {
       return phcYellow2;
     }
     return ribonBlue;
