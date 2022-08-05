@@ -61,17 +61,17 @@ function IntegrationsSection(): JSX.Element {
   function getIntegrationName(id: any): string {
     const integration = apiIntegrations.find(
       (item: any) =>
-        item?.walletAddress.toLowerCase() === id.toString().toLowerCase(),
+        item?.walletAddress?.toLowerCase() === id.toString().toLowerCase(),
     );
-    return integration.name;
+    return integration?.name;
   }
 
   function getIntegrationId(id: any): string {
     const integration = apiIntegrations.find(
       (item: any) =>
-        item?.walletAddress.toLowerCase() === id.toString().toLowerCase(),
+        item?.walletAddress?.toLowerCase() === id.toString().toLowerCase(),
     );
-    return integration.id;
+    return integration?.id;
   }
 
   return (
@@ -88,7 +88,10 @@ function IntegrationsSection(): JSX.Element {
         .sort((a, b) => b.balance - a.balance)
         .reverse()
         .map((integration) => (
-          <Link to={`/integrations/${getIntegrationId(integration.id)}`}>
+          <Link
+            to={`/integrations/${getIntegrationId(integration.id)}`}
+            key={integration.id}
+          >
             <IntegrationCard
               key={integration.id}
               title={getIntegrationName(integration.id)}
