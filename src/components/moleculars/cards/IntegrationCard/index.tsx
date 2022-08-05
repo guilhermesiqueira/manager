@@ -10,12 +10,7 @@ type Props = {
 
 const { ribonBlack, ribonBlue, lightGray, lgRed, phcYellow2 } = theme.colors;
 
-function IntegrationCard({
-  title,
-  subtitle = "",
-  value,
-}: Props) {
-
+function IntegrationCard({ title, subtitle = "", value }: Props) {
   const colorAccordingToValue = () => {
     const amount = parseFloat(value);
     if (amount === 0) {
@@ -24,7 +19,7 @@ function IntegrationCard({
       return phcYellow2;
     }
     return ribonBlue;
-  }
+  };
 
   return (
     <GridItem
@@ -48,7 +43,11 @@ function IntegrationCard({
       <Text textColor={ribonBlack} fontWeight={300} fontSize="10px">
         {subtitle}
       </Text>
-      <Text textColor={colorAccordingToValue()} fontWeight={700} fontSize="16px">
+      <Text
+        textColor={colorAccordingToValue()}
+        fontWeight={700}
+        fontSize="16px"
+      >
         {value}
       </Text>
     </GridItem>
