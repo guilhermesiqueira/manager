@@ -3,7 +3,7 @@ import { renderComponent } from "config/testUtils";
 import theme from "styles/theme";
 import IntegrationCard from ".";
 
-const { ribonBlue, lgRed, phcYellow2 } = theme.colors;
+const { ribonBlue, lgRed, phcYellow } = theme.colors;
 
 describe("IntegrationCard", () => {
   it("should render without error", () => {
@@ -36,7 +36,7 @@ describe("IntegrationCard", () => {
     const valueText = component.container.getElementsByTagName("p");
     const index = valueText.length - 1;
 
-    expect(valueText[index]).toHaveStyle(`color:  ${phcYellow2}`);
+    expect(valueText[index]).toHaveStyle(`color:  ${phcYellow}`);
   });
 
   it("should render blue text if value is greater than 1000", () => {
