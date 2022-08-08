@@ -45,7 +45,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     if (integration) {
       setIntegration({
         ...integration,
-        status: checked ? 0 : 1,
+        status: checked ? "active" : "inactive",
       });
     }
   };
@@ -74,7 +74,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     if(isEdit) {
       fetchIntegration()
     } else {
-      setIntegration({
+      const newIntegration: Integration = {
         name: "New Integration",
         status: "active",
         integrationAddress: "",
@@ -83,8 +83,10 @@ function UpsertIntegrationPage({ isEdit }: Props) {
         },
         id: 0,
         uniqueAddress: "",
-      });
       }
+
+      setIntegration(newIntegration);
+    }
   }, []);
 
   return (
