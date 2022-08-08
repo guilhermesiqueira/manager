@@ -24,6 +24,10 @@
         "status": "Status"
       }
     },
+    "integrationCard": {
+      "amountEnding": "The amount assigned for donation is ending",
+      "amountEnded": "There is no amount assigned for donation"
+    },
     "copyableAddress": {
       "successTooltipText": "Address copied",
       "alternativeText": "Copy to clipboard"
