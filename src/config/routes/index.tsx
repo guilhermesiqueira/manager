@@ -42,7 +42,6 @@ function RoutesComponent(): JSX.Element {
         }
       />
 
-        
       <Route
         path="/integrations/new"
         element={
@@ -50,7 +49,7 @@ function RoutesComponent(): JSX.Element {
             <Suspense fallback={<div />}>
               <Navigation />
               <MainLayout>
-                <UpsertIntegrationPage/>
+                <UpsertIntegrationPage />
               </MainLayout>
             </Suspense>
           </PrivateRoute>
@@ -78,7 +77,7 @@ function RoutesComponent(): JSX.Element {
             <Suspense fallback={<div />}>
               <Navigation />
               <MainLayout>
-                <UpsertIntegrationPage isEdit/>
+                <UpsertIntegrationPage isEdit />
               </MainLayout>
             </Suspense>
           </PrivateRoute>

@@ -14,14 +14,17 @@ export type Props = {
 
 function UpsertIntegrationPage({ isEdit }: Props) {
   const { t } = useTranslation("translation", {
-    keyPrefix: `integrations.upsertIntegrationPage.${isEdit ? "edit" : "create"}`,
+    keyPrefix: `integrations.upsertIntegrationPage.${
+      isEdit ? "edit" : "create"
+    }`,
   });
 
   const { bgGray, ribonBlack } = theme.colors;
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const { createApiIntegration, getApiIntegration, updateApiIntegration } = useApiIntegrations();
+  const { createApiIntegration, getApiIntegration, updateApiIntegration } =
+    useApiIntegrations();
   const [integration, setIntegration] = useState<Integration>();
 
   const fetchIntegration = useCallback(async () => {
@@ -53,7 +56,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
   const handleSave = async () => {
     if (integration) {
       try {
-        if(isEdit) {
+        if (isEdit) {
           await updateApiIntegration(integration.id, integration);
         } else {
           await createApiIntegration(integration);
@@ -65,14 +68,13 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     }
   };
 
-  
   const handleCancel = () => {
     navigate("/integrations");
   };
 
   useEffect(() => {
-    if(isEdit) {
-      fetchIntegration()
+    if (isEdit) {
+      fetchIntegration();
     } else {
       const newIntegration: Integration = {
         name: "New Integration",
@@ -83,7 +85,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
         },
         id: 0,
         uniqueAddress: "",
-      }
+      };
 
       setIntegration(newIntegration);
     }

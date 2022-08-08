@@ -11,24 +11,24 @@ function IntegrationsPage(): JSX.Element {
   });
 
   const { bgGray, ribonBlack } = theme.colors;
-  
+
   const navigate = useNavigate();
 
   const handleAddNew = () => {
     navigate("/integrations/new");
-  }
+  };
 
   return (
     <S.Container>
       <S.Title>{t("title")}</S.Title>
-        <Button
-          color={bgGray}
-          backgroundColor={ribonBlack}
-          marginLeft="8px"
-          onClick={handleAddNew}
-        >
-          {t("createNew")}
-        </Button>
+      <Button
+        color={bgGray}
+        backgroundColor={ribonBlack}
+        marginLeft="8px"
+        onClick={handleAddNew}
+      >
+        {t("createNew")}
+      </Button>
       <IntegrationsListSection />
     </S.Container>
   );
