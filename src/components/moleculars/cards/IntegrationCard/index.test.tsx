@@ -14,7 +14,6 @@ describe("IntegrationCard", () => {
   });
 
   describe("when value is 0", () => {
-
     it("should render red icon", () => {
       renderComponent(<IntegrationCard title="title" value="0" />);
 
@@ -30,10 +29,9 @@ describe("IntegrationCard", () => {
 
       expect(valueText[index]).toHaveStyle(`color: ${lgRed}`);
     });
-  })
+  });
 
   describe("when value is less than 1000", () => {
-
     it("should render yellow text", () => {
       const { component } = renderComponent(
         <IntegrationCard title="title" value="999" />,
@@ -43,7 +41,7 @@ describe("IntegrationCard", () => {
 
       expect(valueText[index]).toHaveStyle(`color:  ${phcYellow}`);
     });
-  })
+  });
 
   describe("when value is greater than 1000", () => {
     it("should render blue text", () => {
