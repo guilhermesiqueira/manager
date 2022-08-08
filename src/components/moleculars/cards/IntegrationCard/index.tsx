@@ -1,5 +1,6 @@
 import { GridItem, Text } from "@chakra-ui/react";
 import warningRedIcon from "assets/icons/warning-red-icon.svg";
+import warningYellowIcon from "assets/icons/warning-yellow-icon.svg";
 import Tooltip from "components/atomics/Tooltip";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
@@ -19,6 +20,9 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations.integrationCard",
   });
+
+  const showWarning = parseFloat(value) < 1000;
+  const icon = value === "0" ? warningRedIcon : warningYellowIcon;
 
   const colorAccordingToValue = () => {
     const amount = parseFloat(value);
@@ -50,9 +54,9 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
       >
-        {value === "0" && (
+        {showWarning && (
           <img
-            src={warningRedIcon}
+            src={icon}
             alt="warningIcon"
             style={{ float: "right" }}
           />

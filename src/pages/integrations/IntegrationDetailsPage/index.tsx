@@ -52,7 +52,7 @@ function IntegrationDetailsPage(): JSX.Element {
   return (
     <S.Container>
       <S.Title>{t("title", { integrationName })}</S.Title>
-      <IntegrationCard title={integrationName} value="12" />
+      <IntegrationCard title={integrationName} value="0" />
       <br />
 
       <Link to="edit">
