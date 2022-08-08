@@ -40,7 +40,7 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
       return t("amountEnded");
     }
     return t("amountEnding");
-  }
+  };
 
   return (
     <>
@@ -55,11 +55,7 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
         onMouseLeave={() => setShowTooltip(false)}
       >
         {showWarning && (
-          <img
-            src={icon}
-            alt="warningIcon"
-            style={{ float: "right" }}
-          />
+          <img src={icon} alt="warningIcon" style={{ float: "right" }} />
         )}
         <Text textColor={ribonBlack} fontWeight={700} fontSize="12px">
           {title}
@@ -77,7 +73,9 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
       </GridItem>
       {showTooltip && (
         <Tooltip text="" color={colorAccordingToValue()}>
-          <S.Text color={colorAccordingToValue()} >{textAccordingToValue()}</S.Text>
+          <S.Text color={colorAccordingToValue()}>
+            {textAccordingToValue()}
+          </S.Text>
         </Tooltip>
       )}
     </>
