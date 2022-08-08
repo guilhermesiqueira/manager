@@ -13,39 +13,47 @@ describe("IntegrationCard", () => {
     expect(screen.getByText("value")).toBeInTheDocument();
   });
 
-  it("should render red icon if value is 0", () => {
-    renderComponent(<IntegrationCard title="title" value="0" />);
+  describe("when value is 0", () => {
 
-    expect(screen.getByAltText("warningIcon")).toBeInTheDocument();
-  });
+    it("should render red icon", () => {
+      renderComponent(<IntegrationCard title="title" value="0" />);
 
-  it("should render red text if value is 0", () => {
-    const { component } = renderComponent(
-      <IntegrationCard title="title" value="0" />,
-    );
-    const valueText = component.container.getElementsByTagName("p");
-    const index = valueText.length - 1;
+      expect(screen.getByAltText("warningIcon")).toBeInTheDocument();
+    });
 
-    expect(valueText[index]).toHaveStyle(`color: ${lgRed}`);
-  });
+    it("should render red text", () => {
+      const { component } = renderComponent(
+        <IntegrationCard title="title" value="0" />,
+      );
+      const valueText = component.container.getElementsByTagName("p");
+      const index = valueText.length - 1;
 
-  it("should render orange text if value is less than 1000", () => {
-    const { component } = renderComponent(
-      <IntegrationCard title="title" value="999" />,
-    );
-    const valueText = component.container.getElementsByTagName("p");
-    const index = valueText.length - 1;
+      expect(valueText[index]).toHaveStyle(`color: ${lgRed}`);
+    });
+  })
 
-    expect(valueText[index]).toHaveStyle(`color:  ${phcYellow}`);
-  });
+  describe("when value is less than 1000", () => {
 
-  it("should render blue text if value is greater than 1000", () => {
-    const { component } = renderComponent(
-      <IntegrationCard title="title" value="1001" />,
-    );
-    const valueText = component.container.getElementsByTagName("p");
-    const index = valueText.length - 1;
+    it("should render yellow text", () => {
+      const { component } = renderComponent(
+        <IntegrationCard title="title" value="999" />,
+      );
+      const valueText = component.container.getElementsByTagName("p");
+      const index = valueText.length - 1;
 
-    expect(valueText[index]).toHaveStyle(`color:  ${ribonBlue}`);
+      expect(valueText[index]).toHaveStyle(`color:  ${phcYellow}`);
+    });
+  })
+
+  describe("when value is greater than 1000", () => {
+    it("should render blue text", () => {
+      const { component } = renderComponent(
+        <IntegrationCard title="title" value="1001" />,
+      );
+      const valueText = component.container.getElementsByTagName("p");
+      const index = valueText.length - 1;
+
+      expect(valueText[index]).toHaveStyle(`color:  ${ribonBlue}`);
+    });
   });
 });
