@@ -7,7 +7,7 @@ const integrationsApi = {
     apiGet("integrations"),
   getIntegration: (id: any): Promise<AxiosResponse<Integration>> =>
     apiGet(`integrations/${id}`),
-  createIntegration: (data: Object): Promise<AxiosResponse<Integration>> =>
+  createIntegration: (data: any): Promise<AxiosResponse<Integration>> =>
     apiPost("integrations", data),
   updateIntegration: (id: any, data: Integration): Promise<AxiosResponse<Integration>> =>
     apiPut(`integrations/${id}`, data),

@@ -14,7 +14,7 @@ function useApiIntegrations() {
     return integration;
   }
 
-  async function createApiIntegration(data: Object) {
+  async function createApiIntegration(data: any) {
     const { data: integration } = await integrationsApi.createIntegration(data);
 
     return integration;
