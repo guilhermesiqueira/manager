@@ -56,9 +56,6 @@ function IntegrationsSection(): JSX.Element {
     contract?.on("PoolBalanceIncreased", () => {
       fetchBlockchainIntegrations();
     });
-
-    console.log("blockchainIntegrations", blockchainIntegrations);
-    console.log("apiIntegrations", apiIntegrations);
   }, []);
 
   function getIntegrationName(id: any): string {
