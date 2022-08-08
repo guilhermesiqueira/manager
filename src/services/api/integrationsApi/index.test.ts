@@ -18,13 +18,13 @@ describe("integrationsApi", () => {
     const data = {
       name: "Integration 1",
       status: "active",
-    }
+    };
 
     beforeEach(() => {
       api.post = jest.fn();
     });
 
-    it("expects to send a put request with the correct info: url and params", () => {
+    it("expects to send a post request with the correct info: url and params", () => {
       integrationsApi.createIntegration(data);
 
       expect(api.post).toHaveBeenCalledWith(`/api/v1/integrations`, data);
@@ -44,7 +44,7 @@ describe("integrationsApi", () => {
       status: "active",
       created_at: "2020-01-01T00:00:00.000Z",
       updated_at: "2020-01-01T00:00:00.000Z",
-    }
+    };
 
     beforeEach(() => {
       api.put = jest.fn();
@@ -53,7 +53,7 @@ describe("integrationsApi", () => {
     it("expects to send a put request with the correct info: url and params", () => {
       integrationsApi.updateIntegration(1, data);
 
-      expect(api.put).toHaveBeenCalledWith(`/api/v1/integrations/${id}`, data );
+      expect(api.put).toHaveBeenCalledWith(`/api/v1/integrations/${id}`, data);
     });
   });
 });
