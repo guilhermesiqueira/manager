@@ -36,6 +36,24 @@ describe("useIntegrations", () => {
     });
   });
 
+  describe("#createApiIntegration", () => {
+    const data = {
+      name: "Integration 1",
+      status: "active",
+    };
+
+    beforeEach(() => {
+      integrationsApi.createIntegration = jest.fn(() => ({} as any));
+    });
+
+    it("calls createApiIntegration with correct params", () => {
+      hook.createApiIntegration(data);
+
+      expect(integrationsApi.createIntegration).toHaveBeenCalled();
+      expect(integrationsApi.createIntegration).toHaveBeenCalledWith(data);
+    });
+  });
+
   describe("#updateApiIntegration", () => {
     const id = 1;
     const data = {
