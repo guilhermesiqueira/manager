@@ -36,15 +36,34 @@ describe("useIntegrations", () => {
     });
   });
 
+  describe("#createApiIntegration", () => {
+    const data = {
+      name: "Integration 1",
+      status: "active",
+    };
+
+    beforeEach(() => {
+      integrationsApi.createIntegration = jest.fn(() => ({} as any));
+    });
+
+    it("calls createApiIntegration with correct params", () => {
+      hook.createApiIntegration(data);
+
+      expect(integrationsApi.createIntegration).toHaveBeenCalled();
+      expect(integrationsApi.createIntegration).toHaveBeenCalledWith(data);
+    });
+  });
+
   describe("#updateApiIntegration", () => {
     const id = 1;
     const data = {
       id: 1,
       name: "Integration 1",
-      walletAddress: "0x1234567890123456789012345678901234567890",
-      url: "https://integration.com/1",
-      logo: "https://integration.com/1/logo.png",
-      integrationAddress: "0x1234567890123456789012345678901234567890",
+      integrationWallet: {
+        publicKey: "0x1234567890123456789012345678901234567890",
+      },
+      uniqueAddress: "1234567890123456789012345678901234567890",
+      integrationAddress: "https://dapp.ribon.io/integration/uuid",
       status: "active",
       created_at: "2020-01-01T00:00:00.000Z",
       updated_at: "2020-01-01T00:00:00.000Z",
