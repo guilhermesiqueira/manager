@@ -8,18 +8,23 @@ import Integration from "types/entities/Integration";
 import theme from "styles/theme";
 import * as S from "./styles";
 
-function EditIntegrationPage() {
+export type Props = {
+  isEdit?: boolean;
+};
+
+function UpsertIntegrationPage({ isEdit }: Props) {
   const { t } = useTranslation("translation", {
-    keyPrefix: "integrations.editIntegrationPage",
+    keyPrefix: `integrations.upsertIntegrationPage.${isEdit ? "edit" : "create"}`,
   });
+
   const { bgGray, ribonBlack } = theme.colors;
   const navigate = useNavigate();
-
   const { id } = useParams();
-  const { getApiIntegration, updateApiIntegration } = useApiIntegrations();
+
+  const { createApiIntegration, getApiIntegration, updateApiIntegration } = useApiIntegrations();
   const [integration, setIntegration] = useState<Integration>();
 
-  const fetchAllDonations = useCallback(async () => {
+  const fetchIntegration = useCallback(async () => {
     try {
       const apiIntegration = await getApiIntegration(id);
       setIntegration(apiIntegration);
@@ -40,7 +45,7 @@ function EditIntegrationPage() {
     if (integration) {
       setIntegration({
         ...integration,
-        status: checked ? "active" : "inactive",
+        status: checked ? 0 : 1,
       });
     }
   };
@@ -48,7 +53,11 @@ function EditIntegrationPage() {
   const handleSave = async () => {
     if (integration) {
       try {
-        await updateApiIntegration(integration.id, integration);
+        if(isEdit) {
+          await updateApiIntegration(integration.id, integration);
+        } else {
+          await createApiIntegration(integration);
+        }
         navigate("/integrations");
       } catch (e) {
         logError(e);
@@ -56,12 +65,26 @@ function EditIntegrationPage() {
     }
   };
 
+  
   const handleCancel = () => {
     navigate("/integrations");
   };
 
   useEffect(() => {
-    fetchAllDonations();
+    if(isEdit) {
+      fetchIntegration()
+    } else {
+      setIntegration({
+        name: "New Integration",
+        status: "active",
+        integrationAddress: "",
+        integrationWallet: {
+          publicKey: "",
+        },
+        id: 0,
+        uniqueAddress: "",
+      });
+      }
   }, []);
 
   return (
@@ -103,4 +126,8 @@ function EditIntegrationPage() {
   );
 }
 
-export default EditIntegrationPage;
+UpsertIntegrationPage.defaultProps = {
+  isEdit: false,
+};
+
+export default UpsertIntegrationPage;
