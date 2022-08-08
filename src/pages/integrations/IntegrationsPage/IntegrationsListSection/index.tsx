@@ -23,7 +23,7 @@ function IntegrationsListSection(): JSX.Element {
     inactive: lgRed,
   };
 
-  const fetchAllDonations = useCallback(async () => {
+  const fetchAllIntegrations = useCallback(async () => {
     try {
       const integrations = await getAllApiIntegrations();
       setAllIntegrations(integrations);
@@ -33,7 +33,7 @@ function IntegrationsListSection(): JSX.Element {
   }, []);
 
   useEffect(() => {
-    fetchAllDonations();
+    fetchAllIntegrations();
   }, []);
 
   function renderTableRowsForIntegrations() {
@@ -42,7 +42,7 @@ function IntegrationsListSection(): JSX.Element {
         <th>{item.id}</th>
         <th>{item.name}</th>
         <th>
-          <CopyableAddress text={item.walletAddress} />
+          <CopyableAddress text={item.integrationWallet?.publicKey} />
         </th>
         <th>
           <CopyableAddress text={item.integrationAddress} />

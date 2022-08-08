@@ -15,6 +15,7 @@
   "integrations": {
     "integrationsList": {
       "title": "Integrations List",
+      "createNew": "Add new",
       "listColumns": {
         "id": "Id",
         "name": "Name",
@@ -38,10 +39,17 @@
         "lastEditedAt": "Last Edited At",
         "edit": "Edit"
     }, 
-    "editIntegrationPage" :{
-      "title": "Edit Integration",
-      "save": "Save changes",
-      "cancel": "Cancel"
+    "upsertIntegrationPage" :{
+      "create": {
+        "title": "Add New Integration",
+        "save": "Save",
+        "cancel": "Cancel"
+      },
+      "edit": {
+        "title": "Edit Integration",
+        "save": "Save changes",
+        "cancel": "Cancel"
+      }
     }
   },
   "menu": {
