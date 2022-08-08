@@ -1,7 +1,9 @@
+import IntegrationWallet from "./IntegrationWallet";
+
 export default interface Integration {
   id: number;
   name: string;
-  integrationWallet?: Object;
+  integrationWallet?: IntegrationWallet;
   integrationAddress: string;
   uniqueAddress: string;
   status: string;
