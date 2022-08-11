@@ -1,11 +1,11 @@
 import IntegrationWallet from "./IntegrationWallet";
 
 export default interface Integration {
-  id: number;
+  id?: number;
   name: string;
   integrationWallet?: IntegrationWallet;
-  integrationAddress: string;
-  uniqueAddress: string;
+  integrationAddress?: string;
+  uniqueAddress?: string;
   status: string;
   created_at?: string;
   updated_at?: string;
