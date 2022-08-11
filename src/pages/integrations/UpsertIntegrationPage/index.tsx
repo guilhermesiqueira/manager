@@ -79,12 +79,6 @@ function UpsertIntegrationPage({ isEdit }: Props) {
       const newIntegration: Integration = {
         name: "New Integration",
         status: "active",
-        integrationAddress: "",
-        integrationWallet: {
-          publicKey: "",
-        },
-        id: 0,
-        uniqueAddress: "",
       };
 
       setIntegration(newIntegration);
