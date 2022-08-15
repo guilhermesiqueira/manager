@@ -64,7 +64,9 @@ function IntegrationDetailsPage(): JSX.Element {
         const chainIntegration = await getIntegration(
           integrationWallet.publicKey.toLowerCase(),
         );
-        setIntegrationBalance(formatFromWei(chainIntegration.integrations[0].balance));
+        setIntegrationBalance(
+          formatFromWei(chainIntegration.integrations[0].balance),
+        );
       } catch (e) {
         logError(e);
       }
@@ -83,10 +85,7 @@ function IntegrationDetailsPage(): JSX.Element {
   return (
     <S.Container>
       <S.Title>{t("title", { integrationName })}</S.Title>
-      <IntegrationCard
-        title={integrationName}
-        value={integrationBalance}
-      />
+      <IntegrationCard title={integrationName} value={integrationBalance} />
       <br />
 
       <Link to="edit">
