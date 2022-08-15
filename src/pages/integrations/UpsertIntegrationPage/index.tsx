@@ -19,7 +19,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     }`,
   });
 
-  const { bgGray, ribonBlack } = theme.colors;
+  const { bgGray, ribonBlack, darkGray } = theme.colors;
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -43,7 +43,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     }
   };
 
-  const handleCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleActivityCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { checked } = e.target;
     if (integration) {
       setIntegration({
@@ -51,6 +51,18 @@ function UpsertIntegrationPage({ isEdit }: Props) {
         status: checked ? "active" : "inactive",
       });
     }
+  };
+
+  const handleTicketAvailabilityCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { checked } = e.target;
+
+    if(integration) {
+      setIntegration({
+        ...integration,
+        ticketAvailabilityInMinutes: checked ? null : 0,
+      });
+    }
+    
   };
 
   const handleSave = async () => {
@@ -68,6 +80,13 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     }
   };
 
+  const getColorByCheboxStatus = () => {
+    if(integration) {
+      return integration?.ticketAvailabilityInMinutes === null ? darkGray : ribonBlack;
+    }
+    return ribonBlack;
+  }
+
   const handleCancel = () => {
     navigate("/integrations");
   };
@@ -79,12 +98,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
       const newIntegration: Integration = {
         name: "New Integration",
         status: "active",
-        integrationAddress: "",
-        integrationWallet: {
-          publicKey: "",
-        },
-        id: 0,
-        uniqueAddress: "",
+        ticketAvailabilityInMinutes: null,
       };
 
       setIntegration(newIntegration);
@@ -94,19 +108,43 @@ function UpsertIntegrationPage({ isEdit }: Props) {
   return (
     <>
       <S.Title>{t("title")}</S.Title>
-      <S.TextInput
-        name="name"
-        value={integration?.name}
-        onChange={handleChange}
-      />
+      <S.Subtitle>Activity Status</S.Subtitle>
       <S.Checkbox
         type="checkbox"
         checked={integration?.status === "active"}
         value={integration?.status}
         name="status"
-        onChange={handleCheckboxChange}
+        onChange={handleActivityCheckboxChange}
       />
       <S.Span>{integration?.status} integration</S.Span> <br />
+      <S.Subtitle>Details</S.Subtitle>
+      <S.TextInput
+        name="name"
+        value={integration?.name}
+        onChange={handleChange}
+      />
+      
+      <S.Subtitle>Ticket availability</S.Subtitle>
+      <S.TicketAvailabilityContainer color={getColorByCheboxStatus()}>
+        Every
+        <S.NumberInput
+          value={integration?.ticketAvailabilityInMinutes || ""}
+          placeholder="000"
+          type="number"
+          name="ticketAvailabilityInMinutes"
+          onChange={handleChange}
+          disabled={integration?.ticketAvailabilityInMinutes === null}
+        />
+        minutes after received
+      </S.TicketAvailabilityContainer>
+      <br />
+      <S.Checkbox
+        type="checkbox"
+        checked={integration?.ticketAvailabilityInMinutes === null}
+        name="ticketAvailability"
+        onChange={handleTicketAvailabilityCheckboxChange}
+      />
+      <S.Span>Everyday at midnight</S.Span> <br />
       <S.ButtonContainer>
         <Button
           color={bgGray}
