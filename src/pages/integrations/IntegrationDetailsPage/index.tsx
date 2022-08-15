@@ -27,7 +27,7 @@ function IntegrationDetailsPage(): JSX.Element {
     inactive: lgRed,
   };
   const { currentNetwork } = useNetwork();
-  const [integrationBalance, setIntegrationBalance] = useState<any>(0);
+  const [integrationBalance, setIntegrationBalance] = useState<any>("...");
   const { getIntegration } = useIntegrations();
 
   const contract = useContract({
@@ -64,7 +64,7 @@ function IntegrationDetailsPage(): JSX.Element {
         const chainIntegration = await getIntegration(
           integrationWallet.publicKey.toLowerCase(),
         );
-        setIntegrationBalance(chainIntegration.integrations[0].balance);
+        setIntegrationBalance(formatFromWei(chainIntegration.integrations[0].balance));
       } catch (e) {
         logError(e);
       }
@@ -85,7 +85,7 @@ function IntegrationDetailsPage(): JSX.Element {
       <S.Title>{t("title", { integrationName })}</S.Title>
       <IntegrationCard
         title={integrationName}
-        value={formatFromWei(integrationBalance)}
+        value={integrationBalance}
       />
       <br />
 
