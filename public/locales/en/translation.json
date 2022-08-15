@@ -53,7 +53,14 @@
         "title": "Edit Integration",
         "save": "Save changes",
         "cancel": "Cancel"
-      }
+      },
+      "activityStatus": "Activity status",
+      "details": "Details",
+      "ticketAvailability": "Ticket availability",
+      "everydayAtMidnight": "Everyday at midnight",
+      "integration": "integration",
+      "every": "Every",
+      "minutesAfterReceived": "minutes after received"
     }
   },
   "menu": {
