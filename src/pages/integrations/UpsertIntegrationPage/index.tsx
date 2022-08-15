@@ -14,10 +14,10 @@ export type Props = {
 
 function UpsertIntegrationPage({ isEdit }: Props) {
   const { t } = useTranslation("translation", {
-    keyPrefix: `integrations.upsertIntegrationPage.${
-      isEdit ? "edit" : "create"
-    }`,
+    keyPrefix: "integrations.upsertIntegrationPage",
   });
+
+  const mode = isEdit ? "edit" : "create";
 
   const { bgGray, ribonBlack, darkGray } = theme.colors;
   const navigate = useNavigate();
@@ -112,8 +112,9 @@ function UpsertIntegrationPage({ isEdit }: Props) {
 
   return (
     <>
-      <S.Title>{t("title")}</S.Title>
-      <S.Subtitle>Activity Status</S.Subtitle>
+      <S.Title>{t(`${mode}.title`)}</S.Title>
+
+      <S.Subtitle>{t("activityStatus")}</S.Subtitle>
       <S.Checkbox
         type="checkbox"
         checked={integration?.status === "active"}
@@ -121,16 +122,18 @@ function UpsertIntegrationPage({ isEdit }: Props) {
         name="status"
         onChange={handleActivityCheckboxChange}
       />
-      <S.Span>{integration?.status} integration</S.Span> <br />
-      <S.Subtitle>Details</S.Subtitle>
+      <S.Span>{integration?.status} {t("integration")}</S.Span> <br />
+  
+      <S.Subtitle>{t("details")}</S.Subtitle>
       <S.TextInput
         name="name"
         value={integration?.name}
         onChange={handleChange}
       />
-      <S.Subtitle>Ticket availability</S.Subtitle>
+
+      <S.Subtitle>{t("ticketAvailability")}</S.Subtitle>
       <S.TicketAvailabilityContainer color={getColorByCheboxStatus()}>
-        Every
+        {t("every")}
         <S.NumberInput
           value={integration?.ticketAvailabilityInMinutes || ""}
           placeholder="000"
@@ -139,7 +142,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
           onChange={handleChange}
           disabled={integration?.ticketAvailabilityInMinutes === null}
         />
-        minutes after received
+        {t("minutesAfterReceived")}
       </S.TicketAvailabilityContainer>
       <br />
       <S.Checkbox
@@ -148,14 +151,15 @@ function UpsertIntegrationPage({ isEdit }: Props) {
         name="ticketAvailability"
         onChange={handleTicketAvailabilityCheckboxChange}
       />
-      <S.Span>Everyday at midnight</S.Span> <br />
+      <S.Span>{t("everydayAtMidnight")}</S.Span> <br />
+
       <S.ButtonContainer>
         <Button
           color={bgGray}
           backgroundColor={ribonBlack}
           onClick={handleSave}
         >
-          {t("save")}
+          {t(`${mode}.save`)}
         </Button>
 
         <Button
@@ -165,7 +169,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
           marginLeft="8px"
           onClick={handleCancel}
         >
-          {t("cancel")}
+          {t(`${mode}.cancel`)}
         </Button>
       </S.ButtonContainer>
     </>
