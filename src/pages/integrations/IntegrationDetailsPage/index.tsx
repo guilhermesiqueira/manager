@@ -78,7 +78,6 @@ function IntegrationDetailsPage(): JSX.Element {
     contract?.on("PoolBalanceIncreased", () => {
       fetchBlockchainIntegration();
     });
-
   }, [getIntegration]);
 
   return (
