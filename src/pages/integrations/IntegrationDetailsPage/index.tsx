@@ -52,18 +52,20 @@ function IntegrationDetailsPage(): JSX.Element {
   const {
     status,
     name,
-    walletAddress,
+    integrationWallet,
     integrationAddress,
     createdAt,
     updatedAt,
   } = integration;
 
   const fetchBlockchainIntegration = useCallback(async () => {
-    try {
-      const chainIntegration = await getIntegration(walletAddress);
-      setIntegrationBalance(chainIntegration.integrations[0].balance);
-    } catch (e) {
-      logError(e);
+    if (integrationWallet?.publicKey) {
+      try {
+        const chainIntegration = await getIntegration(integrationWallet.publicKey);
+        setIntegrationBalance(chainIntegration.integrations[0].balance);
+      } catch (e) {
+        logError(e);
+      }
     }
   }, [getIntegration]);
 
@@ -105,7 +107,7 @@ function IntegrationDetailsPage(): JSX.Element {
       <S.InfoValue>{name}</S.InfoValue>
 
       <S.InfoName>{t("walletAddress")}</S.InfoName>
-      <CopyableAddress text={walletAddress} />
+      <CopyableAddress text={integrationWallet?.publicKey} />
 
       <S.InfoName>{t("integrationAddress")}</S.InfoName>
       <CopyableAddress text={integrationAddress} />
