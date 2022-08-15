@@ -43,7 +43,9 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     }
   };
 
-  const handleActivityCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleActivityCheckboxChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     const { checked } = e.target;
     if (integration) {
       setIntegration({
@@ -53,16 +55,17 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     }
   };
 
-  const handleTicketAvailabilityCheckboxChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTicketAvailabilityCheckboxChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     const { checked } = e.target;
 
-    if(integration) {
+    if (integration) {
       setIntegration({
         ...integration,
         ticketAvailabilityInMinutes: checked ? null : 0,
       });
     }
-    
   };
 
   const handleSave = async () => {
@@ -81,11 +84,13 @@ function UpsertIntegrationPage({ isEdit }: Props) {
   };
 
   const getColorByCheboxStatus = () => {
-    if(integration) {
-      return integration?.ticketAvailabilityInMinutes === null ? darkGray : ribonBlack;
+    if (integration) {
+      return integration?.ticketAvailabilityInMinutes === null
+        ? darkGray
+        : ribonBlack;
     }
     return ribonBlack;
-  }
+  };
 
   const handleCancel = () => {
     navigate("/integrations");
@@ -123,7 +128,6 @@ function UpsertIntegrationPage({ isEdit }: Props) {
         value={integration?.name}
         onChange={handleChange}
       />
-      
       <S.Subtitle>Ticket availability</S.Subtitle>
       <S.TicketAvailabilityContainer color={getColorByCheboxStatus()}>
         Every

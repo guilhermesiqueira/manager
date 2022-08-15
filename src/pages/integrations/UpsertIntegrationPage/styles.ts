@@ -49,7 +49,6 @@ export const NumberInput = styled.input`
   `}
 `;
 
-
 export const Checkbox = styled.input`
   ${({ theme }) => css`
     transform: scale(1.5);
@@ -61,13 +60,13 @@ export const Checkbox = styled.input`
 `;
 
 export const Span = styled.span`
-  ${({ color, theme  }) => css`
+  ${({ color, theme }) => css`
     color: ${color || theme.colors.ribonBlack};
     font-size: 12px;
     display: inline-block;
     vertical-align: middle;
     margin: 5px 7px 30px 4px;
-    text-transform:capitalize;
+    text-transform: capitalize;
   `}
 `;
 
