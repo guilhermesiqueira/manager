@@ -7,6 +7,7 @@ export default interface Integration {
   integrationAddress?: string;
   uniqueAddress?: string;
   status: string;
+  ticketAvailabilityInMinutes: number | null;
   created_at?: string;
   updated_at?: string;
 }
