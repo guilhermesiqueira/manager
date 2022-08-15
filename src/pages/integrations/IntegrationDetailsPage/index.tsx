@@ -60,7 +60,7 @@ function IntegrationDetailsPage(): JSX.Element {
 
   const fetchBlockchainIntegration = useCallback(async () => {
     try {
-      const chainIntegration = await getIntegration("0x6e060041d62fdd76cf27c582f62983b864878e8f");
+      const chainIntegration = await getIntegration(walletAddress);
       setIntegrationBalance(chainIntegration.integrations[0].balance);
     } catch (e) {
       logError(e);
