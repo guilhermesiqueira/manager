@@ -1,5 +1,6 @@
 import { renderHook } from "@testing-library/react-hooks";
 import integrationsApi from "services/api/integrationsApi";
+import IntegrationWallet from "types/entities/IntegrationWallet";
 import useIntegrations from ".";
 
 describe("useIntegrations", () => {
@@ -56,14 +57,16 @@ describe("useIntegrations", () => {
 
   describe("#updateApiIntegration", () => {
     const id = 1;
+    const wallet: IntegrationWallet = {
+      publicKey: "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+    }
     const data = {
       id: 1,
       name: "Integration 1",
-      integrationWallet: {
-        publicKey: "0x1234567890123456789012345678901234567890",
-      },
+      integrationWallet: wallet,
       uniqueAddress: "1234567890123456789012345678901234567890",
       integrationAddress: "https://dapp.ribon.io/integration/uuid",
+      ticketAvailabilityInMinutes: 60,
       status: "active",
       created_at: "2020-01-01T00:00:00.000Z",
       updated_at: "2020-01-01T00:00:00.000Z",
