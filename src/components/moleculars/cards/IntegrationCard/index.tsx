@@ -22,7 +22,7 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
   });
 
   const showWarning = parseFloat(value) < 1000;
-  const icon = value === "0" ? warningRedIcon : warningYellowIcon;
+  const icon = (parseInt(value, 10) === 0) ? warningRedIcon : warningYellowIcon;
 
   const colorAccordingToValue = () => {
     const amount = parseFloat(value);
