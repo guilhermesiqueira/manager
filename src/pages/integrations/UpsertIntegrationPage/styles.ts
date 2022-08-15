@@ -66,7 +66,9 @@ export const Span = styled.span`
     display: inline-block;
     vertical-align: middle;
     margin: 5px 7px 30px 4px;
-    text-transform: capitalize;
+    :first-letter {
+      text-transform: uppercase;
+    }
   `}
 `;
 
