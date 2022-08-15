@@ -9,6 +9,11 @@ import CopyableAddress from "components/atomics/CopyableAddress";
 import { Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import EditIcon from "assets/icons/editIcon";
+import { useContract } from "hooks/useContract";
+import { useNetwork } from "hooks/useNetwork";
+import RibonAbi from "utils/abis/RibonAbi.json";
+import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
+import { formatFromWei } from "lib/web3Helpers/etherFormatters";
 import theme from "styles/theme";
 import * as S from "./styles";
 
@@ -21,6 +26,14 @@ function IntegrationDetailsPage(): JSX.Element {
     active: ribonBlue,
     inactive: lgRed,
   };
+  const { currentNetwork } = useNetwork();
+  const [integrationBalance, setIntegrationBalance] = useState<any>(0);
+  const { getIntegration } = useIntegrations();
+
+  const contract = useContract({
+    address: currentNetwork.ribonContractAddress,
+    ABI: RibonAbi.abi,
+  });
 
   const [integration, setIntegration] = useState<any>([]);
   const { getApiIntegration } = useApiIntegrations();
@@ -45,14 +58,29 @@ function IntegrationDetailsPage(): JSX.Element {
     updatedAt,
   } = integration;
 
+  const fetchBlockchainIntegration = useCallback(async () => {
+    try {
+      const chainIntegration = await getIntegration("0x6e060041d62fdd76cf27c582f62983b864878e8f");
+      setIntegrationBalance(chainIntegration.integrations[0].balance);
+    } catch (e) {
+      logError(e);
+    }
+  }, [getIntegration]);
+
   useEffect(() => {
     fetchIntegration();
+    fetchBlockchainIntegration();
+
+    contract?.on("PoolBalanceIncreased", () => {
+      fetchBlockchainIntegration();
+    });
   }, []);
+
 
   return (
     <S.Container>
       <S.Title>{t("title", { integrationName })}</S.Title>
-      <IntegrationCard title={integrationName} value="0" />
+      <IntegrationCard title={integrationName} value={formatFromWei(integrationBalance)} />
       <br />
 
       <Link to="edit">
