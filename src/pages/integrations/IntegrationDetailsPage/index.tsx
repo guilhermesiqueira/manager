@@ -62,14 +62,14 @@ function IntegrationDetailsPage(): JSX.Element {
     if (integrationWallet?.publicKey) {
       try {
         const chainIntegration = await getIntegration(
-          integrationWallet.publicKey,
+          integrationWallet.publicKey.toLowerCase(),
         );
         setIntegrationBalance(chainIntegration.integrations[0].balance);
       } catch (e) {
         logError(e);
       }
     }
-  }, [getIntegration]);
+  }, [getIntegration, integrationBalance]);
 
   useEffect(() => {
     fetchIntegration();
@@ -78,7 +78,8 @@ function IntegrationDetailsPage(): JSX.Element {
     contract?.on("PoolBalanceIncreased", () => {
       fetchBlockchainIntegration();
     });
-  }, []);
+
+  }, [getIntegration]);
 
   return (
     <S.Container>
