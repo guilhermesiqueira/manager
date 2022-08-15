@@ -113,7 +113,6 @@ function UpsertIntegrationPage({ isEdit }: Props) {
   return (
     <>
       <S.Title>{t(`${mode}.title`)}</S.Title>
-
       <S.Subtitle>{t("activityStatus")}</S.Subtitle>
       <S.Checkbox
         type="checkbox"
@@ -122,15 +121,16 @@ function UpsertIntegrationPage({ isEdit }: Props) {
         name="status"
         onChange={handleActivityCheckboxChange}
       />
-      <S.Span>{integration?.status} {t("integration")}</S.Span> <br />
-  
+      <S.Span>
+        {integration?.status} {t("integration")}
+      </S.Span>{" "}
+      <br />
       <S.Subtitle>{t("details")}</S.Subtitle>
       <S.TextInput
         name="name"
         value={integration?.name}
         onChange={handleChange}
       />
-
       <S.Subtitle>{t("ticketAvailability")}</S.Subtitle>
       <S.TicketAvailabilityContainer color={getColorByCheboxStatus()}>
         {t("every")}
@@ -152,7 +152,6 @@ function UpsertIntegrationPage({ isEdit }: Props) {
         onChange={handleTicketAvailabilityCheckboxChange}
       />
       <S.Span>{t("everydayAtMidnight")}</S.Span> <br />
-
       <S.ButtonContainer>
         <Button
           color={bgGray}
