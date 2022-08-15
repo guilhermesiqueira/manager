@@ -61,7 +61,9 @@ function IntegrationDetailsPage(): JSX.Element {
   const fetchBlockchainIntegration = useCallback(async () => {
     if (integrationWallet?.publicKey) {
       try {
-        const chainIntegration = await getIntegration(integrationWallet.publicKey);
+        const chainIntegration = await getIntegration(
+          integrationWallet.publicKey,
+        );
         setIntegrationBalance(chainIntegration.integrations[0].balance);
       } catch (e) {
         logError(e);
@@ -78,11 +80,13 @@ function IntegrationDetailsPage(): JSX.Element {
     });
   }, []);
 
-
   return (
     <S.Container>
       <S.Title>{t("title", { integrationName })}</S.Title>
-      <IntegrationCard title={integrationName} value={formatFromWei(integrationBalance)} />
+      <IntegrationCard
+        title={integrationName}
+        value={formatFromWei(integrationBalance)}
+      />
       <br />
 
       <Link to="edit">
