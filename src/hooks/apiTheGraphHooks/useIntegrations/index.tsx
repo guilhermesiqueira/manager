@@ -5,7 +5,7 @@ function useIntegrations() {
     const { data: integrations } = await integrationsApi.fetchAllIntegrations();
     return integrations;
   }
-  async function getIntegration(id: any) {
+  async function getIntegration(id: string) {
     const { data: integration } = await integrationsApi.fetchIntegration(id);
     return integration;
   }
