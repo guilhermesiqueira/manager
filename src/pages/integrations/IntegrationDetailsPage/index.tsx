@@ -27,7 +27,7 @@ function IntegrationDetailsPage(): JSX.Element {
     inactive: lgRed,
   };
   const { currentNetwork } = useNetwork();
-  const [integrationBalance, setIntegrationBalance] = useState<any>("...");
+  const [integrationBalance, setIntegrationBalance] = useState<string>("...");
   const { getIntegration } = useIntegrations();
 
   const contract = useContract({
