@@ -29,7 +29,7 @@ const theme: ThemeType = {
     lightGray: "#FBFBFD",
     mediumRed: "#FF6B6F",
     mediumYellow: "#FFCE00",
-    offWhite: "#F2F2FO",
+    xLightWhite: "#F2F2FO",
   },
   spacings: {},
   breakpoints: {
