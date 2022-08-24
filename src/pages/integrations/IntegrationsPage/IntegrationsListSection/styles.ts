@@ -15,7 +15,7 @@ export const Table = styled.table`
     min-width: 500px;
 
     thead tr {
-      color: ${theme.colors.ribonBlack};
+      color: ${theme.colors.black};
       text-align: left;
       font-weight: 600;
     }

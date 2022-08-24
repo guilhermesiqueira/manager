@@ -13,8 +13,8 @@ export const Card = styled.div`
     width: 256px;
     box-sizing: border-box;
     position: absolute;
-    background: ${theme.colors.ribonWhite};
-    border: 1px solid ${theme.colors.lightGray};
+    background: ${theme.colors.offWhite};
+    border: 1px solid ${theme.colors.mediumGray};
     border-radius: 16px;
     text-align: left;
   `}

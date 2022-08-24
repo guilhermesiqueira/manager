@@ -10,7 +10,7 @@ function IntegrationsPage(): JSX.Element {
     keyPrefix: "integrations.integrationsList",
   });
 
-  const { bgGray, ribonBlack } = theme.colors;
+  const { lightGray, black } = theme.colors;
 
   const navigate = useNavigate();
 
@@ -22,8 +22,8 @@ function IntegrationsPage(): JSX.Element {
     <S.Container>
       <S.Title>{t("title")}</S.Title>
       <Button
-        color={bgGray}
-        backgroundColor={ribonBlack}
+        color={lightGray}
+        backgroundColor={black}
         marginLeft="8px"
         onClick={handleAddNew}
       >

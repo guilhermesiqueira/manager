@@ -30,7 +30,7 @@ function ButtonSecondary({
 }
 
 ButtonSecondary.defaultProps = {
-  color: "ribonBlack",
+  color: "black",
   borderColor: "darkGray",
   leftIcon: "",
 };

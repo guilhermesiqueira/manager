@@ -17,5 +17,5 @@ export const Default = Template.bind({});
 Default.args = {
   text: "ButtonSecondary",
   borderColor: "darkGray",
-  color: "ribonBlack",
+  color: "black",
 };
