@@ -13,7 +13,7 @@ type Props = {
   value: string;
 };
 
-const { black, mediumGreen, mediumGray, mediumRed, mediumYellow } =
+const { darkGray, mediumGreen, lightGray, mediumRed, mediumYellow } =
   theme.colors;
 
 function IntegrationCard({ title, subtitle = "", value }: Props) {
@@ -50,7 +50,7 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
         width="176px"
         padding="16px"
         border="1px"
-        borderColor={mediumGray}
+        borderColor={lightGray}
         borderRadius="16px"
         onMouseEnter={() => setShowTooltip(true)}
         onMouseLeave={() => setShowTooltip(false)}
@@ -58,10 +58,10 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
         {showWarning && (
           <img src={icon} alt="warningIcon" style={{ float: "right" }} />
         )}
-        <Text textColor={black} fontWeight={700} fontSize="12px">
+        <Text textColor={darkGray} fontWeight={700} fontSize="12px">
           {title}
         </Text>
-        <Text textColor={black} fontWeight={300} fontSize="10px">
+        <Text textColor={darkGray} fontWeight={300} fontSize="10px">
           {subtitle}
         </Text>
         <Text

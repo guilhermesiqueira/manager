@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  background: ${({ theme }) => theme.colors.lightGray};
+  background: ${({ theme }) => theme.colors.xLightGray};
   box-shadow: 0px 0px 20px rgba(24, 86, 105, 0.15);
   padding-left: 8%;
 `;

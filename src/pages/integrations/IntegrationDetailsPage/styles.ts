@@ -31,7 +31,7 @@ export const InfoValue = styled.p`
   ${({ theme }) => css`
     font-size: 12px;
     font-family: "Inter";
-    color: ${theme.colors.darkGray};
+    color: ${theme.colors.mediumGray};
     font-weight: 400;
   `}
 `;

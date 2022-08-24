@@ -35,7 +35,7 @@ export const Container = styled.div`
 
 export const Title = styled.p`
   ${({ theme, enabled }: Props) => css`
-    color: ${enabled ? theme.colors.black : theme.colors.darkGray};
+    color: ${enabled ? theme.colors.darkGray : theme.colors.mediumGray};
     text-decoration: none;
     font-size: 12px;
   `}

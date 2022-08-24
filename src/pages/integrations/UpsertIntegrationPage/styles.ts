@@ -25,11 +25,11 @@ export const TextInput = styled.input`
     margin: 4px 0;
     margin-bottom: 8px;
     margin-top: 8px;
-    border: 1px solid ${theme.colors.black};
+    border: 1px solid ${theme.colors.darkGray};
     border-radius: 10px;
     padding: 8px 16px;
     font-size: 14px;
-    color: ${theme.colors.black};
+    color: ${theme.colors.darkGray};
     min-width: 400px;
     margin-bottom: 30px;
   `}
@@ -39,10 +39,10 @@ export const NumberInput = styled.input`
   ${({ theme }) => css`
     display: block;
     margin-inline: 6px;
-    border: 1.5px solid ${theme.colors.black};
+    border: 1.5px solid ${theme.colors.darkGray};
     padding: 8px 5px;
     font-size: 14px;
-    color: ${theme.colors.black};
+    color: ${theme.colors.darkGray};
     width: 40px;
     text-align: center;
     border-radius: 10px;
@@ -55,13 +55,13 @@ export const Checkbox = styled.input`
     display: inline-block;
     vertical-align: middle;
     margin: 5px 7px 30px 4px;
-    accent-color: ${theme.colors.black};
+    accent-color: ${theme.colors.darkGray};
   `}
 `;
 
 export const Span = styled.span`
   ${({ color, theme }) => css`
-    color: ${color || theme.colors.black};
+    color: ${color || theme.colors.darkGray};
     font-size: 12px;
     display: inline-block;
     vertical-align: middle;
@@ -78,7 +78,7 @@ export const TicketAvailabilityContainer = styled.div`
     flex-direction: row;
     align-items: center;
     margin-bottom: 20px;
-    color: ${color || theme.colors.black};
+    color: ${color || theme.colors.darkGray};
   `}
 `;
 

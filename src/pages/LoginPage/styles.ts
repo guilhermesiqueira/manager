@@ -12,7 +12,7 @@ export const Container = styled.div`
 export const Title = styled.h6`
   ${({ theme }) => css`
     margin: 8px 0 24px 0;
-    color: ${theme.colors.black};
+    color: ${theme.colors.darkGray};
     font-size: 14px;
     font-weight: 400;
     line-height: 23.8px;

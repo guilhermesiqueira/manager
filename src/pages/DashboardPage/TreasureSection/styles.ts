@@ -14,7 +14,7 @@ export const Card = styled.div`
     box-sizing: border-box;
     position: absolute;
     background: ${theme.colors.xLightGray};
-    border: 1px solid ${theme.colors.mediumGray};
+    border: 1px solid ${theme.colors.lightGray};
     border-radius: 16px;
     text-align: left;
   `}
