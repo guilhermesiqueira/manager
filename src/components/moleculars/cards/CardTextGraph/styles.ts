@@ -8,7 +8,7 @@ export const Container = styled.div`
     width: 256px;
     box-sizing: border-box;
     position: absolute;
-    background: ${theme.colors.xLightGray};
+    background: ${theme.colors.white};
     border: 1px solid ${theme.colors.lightGray};
     border-radius: 16px;
     text-align: left;

@@ -28,6 +28,9 @@ const theme: ThemeType = {
     xLightGray: "#F2F2F0",
     mediumRed: "#FF6B6F",
     mediumYellow: "#FFCE00",
+    white: "#FFFFFF",
+    lightShadow: "rgba(24, 86, 105, 0.15)",
+    darkShadow: "rgba(40, 36, 28, 0.15)",
   },
   spacings: {},
   breakpoints: {

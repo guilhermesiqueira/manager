@@ -14,8 +14,8 @@ export const Container = styled.div`
     position: absolute;
     width: 100%;
     align-self: flex-end;
-    background-color: ${theme.colors.xLightGray};
-    box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
+    background-color: ${theme.colors.white};
+    box-shadow: 0px 4px 12px ${theme.colors.darkShadow};
 
     @media (min-width: ${theme.breakpoints.pad}) {
       display: flex;
@@ -23,12 +23,12 @@ export const Container = styled.div`
       align-items: center;
       padding: 50px 50px 0px 50px;
       width: 80px;
-      position: static;
+      height: 100%;
       align-self: flex-start;
       justify-content: flex-start;
       min-height: 100vh;
-      background: ${theme.colors.xLightGray};
-      box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
+      background: ${theme.colors.white};
+      box-shadow: 0px 4px 12px ${theme.colors.darkShadow};
     }
   `}
 `;

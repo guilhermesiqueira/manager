@@ -5,7 +5,7 @@ export const Text = styled.div`
     width: 100%;
     background-color: ${color};
     font-weight: ${theme.font.bold};
-    color: ${theme.colors.xLightGray};
+    color: ${theme.colors.white};
     padding: 12px 16px;
     border-radius: 8px;
     font-size: 10px;
