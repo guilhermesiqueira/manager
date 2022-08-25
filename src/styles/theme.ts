@@ -25,11 +25,9 @@ const theme: ThemeType = {
     darkGray: "#28241C",
     mediumGray: "#867F70",
     lightGray: "#D4CEC3",
-    gray: "#C4C4C4",
-    xLightGray: "#FBFBFD",
+    xLightGray: "#F2F2F0",
     mediumRed: "#FF6B6F",
     mediumYellow: "#FFCE00",
-    xLightWhite: "#F2F2FO",
   },
   spacings: {},
   breakpoints: {
