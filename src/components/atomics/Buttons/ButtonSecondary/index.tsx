@@ -30,8 +30,8 @@ function ButtonSecondary({
 }
 
 ButtonSecondary.defaultProps = {
-  color: "ribonBlack",
-  borderColor: "darkGray",
+  color: "darkGray",
+  borderColor: "mediumGray",
   leftIcon: "",
 };
 export default ButtonSecondary;

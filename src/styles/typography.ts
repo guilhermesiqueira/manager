@@ -16,7 +16,7 @@ const typography = css`
   h5,
   p,
   span {
-    color: #185669;
+    color: ${({ theme }) => theme.colors.darkGray};
   }
 
   h1 {

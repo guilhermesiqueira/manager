@@ -12,7 +12,7 @@ export const Container = styled.div`
 
     span {
       text-decoration: underline;
-      color: ${theme.colors.darkGray};
+      color: ${theme.colors.mediumGray};
       width: 200px;
       white-space: nowrap;
       overflow: hidden;

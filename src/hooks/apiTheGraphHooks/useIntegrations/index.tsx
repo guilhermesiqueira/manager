@@ -5,7 +5,12 @@ function useIntegrations() {
     const { data: integrations } = await integrationsApi.fetchAllIntegrations();
     return integrations;
   }
-  return { getAllIntegrations };
+  async function getIntegration(id: string) {
+    const { data: integration } = await integrationsApi.fetchIntegration(id);
+    return integration;
+  }
+
+  return { getAllIntegrations, getIntegration };
 }
 
 export default useIntegrations;

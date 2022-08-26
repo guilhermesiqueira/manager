@@ -61,7 +61,8 @@ function IntegrationsSection(): JSX.Element {
   function getIntegrationName(id: any): string {
     const integration = apiIntegrations.find(
       (item: any) =>
-        item?.walletAddress?.toLowerCase() === id.toString().toLowerCase(),
+        item?.integrationWallet?.publicKey.toLowerCase() ===
+        id.toString().toLowerCase(),
     );
     return integration?.name;
   }
@@ -69,7 +70,8 @@ function IntegrationsSection(): JSX.Element {
   function getIntegrationId(id: any): string {
     const integration = apiIntegrations.find(
       (item: any) =>
-        item?.walletAddress?.toLowerCase() === id.toString().toLowerCase(),
+        item?.integrationWallet?.publicKey.toLowerCase() ===
+        id.toString().toLowerCase(),
     );
     return integration?.id;
   }
