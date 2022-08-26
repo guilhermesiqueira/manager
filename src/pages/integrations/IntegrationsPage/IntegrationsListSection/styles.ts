@@ -15,13 +15,13 @@ export const Table = styled.table`
     min-width: 500px;
 
     thead tr {
-      color: ${theme.colors.ribonBlack};
+      color: ${theme.colors.darkGray};
       text-align: left;
       font-weight: 600;
     }
 
     tbody tr th {
-      color: ${theme.colors.darkGray};
+      color: ${theme.colors.mediumGray};
       text-align: left;
     }
 

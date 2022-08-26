@@ -8,7 +8,7 @@ export const Container = styled.div`
     width: 256px;
     box-sizing: border-box;
     position: absolute;
-    background: ${theme.colors.ribonWhite};
+    background: ${theme.colors.white};
     border: 1px solid ${theme.colors.lightGray};
     border-radius: 16px;
     text-align: left;
@@ -18,7 +18,7 @@ export const Container = styled.div`
 
 export const MainText = styled.div`
   ${({ theme }) => css`
-    color: ${theme.colors.ribonBlack};
+    color: ${theme.colors.darkGray};
     font-size: 12px;
     padding-bottom: 16px;
     line-height: 160%;
@@ -28,7 +28,7 @@ export const MainText = styled.div`
 export const MainValue = styled.p`
   ${({ theme }) => css`
     font-weight: 700;
-    color: ${theme.colors.ribonBlack};
+    color: ${theme.colors.darkGray};
     font-size: 16px;
   `}
 `;
@@ -43,14 +43,14 @@ export const Teste = styled.div`
 
 export const SecondaryText = styled.div`
   ${({ theme }) => css`
-    color: ${theme.colors.ribonBlack};
+    color: ${theme.colors.darkGray};
     font-size: 10px;
   `}
 `;
 
 export const SecondaryLeftValue = styled.div`
   ${({ theme }) => css`
-    color: ${theme.colors.ribonBlue};
+    color: ${theme.colors.mediumGreen};
     font-weight: 700;
     font-size: 12px;
   `}
@@ -58,7 +58,7 @@ export const SecondaryLeftValue = styled.div`
 
 export const SecondaryRightValue = styled.div`
   ${({ theme }) => css`
-    color: ${theme.colors.darkGray};
+    color: ${theme.colors.mediumGray};
     font-weight: bold;
     font-size: 12px;
   `}

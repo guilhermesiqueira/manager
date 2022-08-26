@@ -12,7 +12,7 @@ export const Container = styled.div`
 export const Title = styled.h6`
   ${({ theme }) => css`
     margin: 8px 0 24px 0;
-    color: ${theme.colors.ribonBlack};
+    color: ${theme.colors.darkGray};
     font-size: 14px;
     font-weight: 400;
     line-height: 23.8px;
@@ -22,7 +22,7 @@ export const Title = styled.h6`
 export const TitleError = styled.h6`
   ${({ theme }) => css`
     margin: 24px 0 8px 0;
-    color: ${theme.colors.lgRed};
+    color: ${theme.colors.mediumRed};
     font-size: 14px;
     font-weight: bold;
     line-height: 23.8px;
@@ -31,7 +31,7 @@ export const TitleError = styled.h6`
 
 export const SubTitleError = styled.h6`
   ${({ theme }) => css`
-    color: ${theme.colors.lgRed};
+    color: ${theme.colors.mediumRed};
     font-size: 14px;
     line-height: 23.8px;
   `}
