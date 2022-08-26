@@ -25,6 +25,7 @@ function IntegrationsPage(): JSX.Element {
       <Button
         color={xLightGray}
         backgroundColor={darkGray}
+        _hover={{ bg: darkGray }}
         marginLeft="8px"
         onClick={handleAddNew}
         leftIcon={AddIcon()}
