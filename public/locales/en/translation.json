@@ -31,19 +31,19 @@
     "copyableAddress": {
       "successTooltipText": "Address copied",
       "alternativeText": "Copy to clipboard"
-    }, 
-      "integrationDetailsPage": {
-        "title": "{{integrationName}} Details",
-        "status": "Status",
-        "id": "ID",
-        "name": "Name",
-        "walletAddress": "Wallet Address",
-        "integrationAddress": "Integration Address",
-        "createdAt": "Created At",
-        "lastEditedAt": "Last Edited At",
-        "edit": "Edit"
-    }, 
-    "upsertIntegrationPage" :{
+    },
+    "integrationDetailsPage": {
+      "title": "{{integrationName}} Details",
+      "status": "Status",
+      "id": "ID",
+      "name": "Name",
+      "walletAddress": "Wallet Address",
+      "integrationAddress": "Integration Address",
+      "createdAt": "Created At",
+      "lastEditedAt": "Last Edited At",
+      "edit": "Edit"
+    },
+    "upsertIntegrationPage": {
       "create": {
         "title": "Add New Integration",
         "save": "Save",
@@ -65,7 +65,7 @@
   },
   "menu": {
     "integrationsLabel": "Integrations",
-    "dashboardLabel": "Dashboard"
+    "dashboardLabel": "Treasure Dashboard"
   },
   "login": {
     "title": "Dapp Manager",

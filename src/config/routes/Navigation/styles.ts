@@ -14,6 +14,7 @@ export const Container = styled.div`
     position: absolute;
     width: 100%;
     align-self: flex-end;
+    text-align: center;
     background-color: ${theme.colors.ribonWhite};
     box-shadow: 0px 4px 12px rgba(24, 86, 105, 0.15);
 
