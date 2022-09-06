@@ -36,13 +36,23 @@ const GlobalStyle = createGlobalStyle`
   button {
     font-size: 16px;
     font-weight: 600;
-    line-height: 150%;
+    line-height: 1.5;
 
     :hover {
       cursor: pointer;
     }
+
+  }
+  
+  tbody td,
+  tbody th {
+    font-weight: 400;
   }
 
+    input {
+      font-size: 14px;
+    }
+  }
 
 `;
 

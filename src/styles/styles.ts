@@ -17,7 +17,7 @@ export const Container = styled.div`
 export const MainText = styled.div`
   color: ${({ theme }) => theme.colors.darkGray};
   padding-bottom: 16px;
-  line-height: 160%;
+  line-height: 1.6;
 `;
 
 export const MainValue = styled.p`
@@ -32,17 +32,14 @@ export const Teste = styled.div`
 
 export const SecondaryText = styled.div`
   color: ${({ theme }) => theme.colors.darkGray};
-  font-size: 10px;
 `;
 
 export const SecondaryLeftValue = styled.div`
   color: ${({ theme }) => theme.colors.green};
-  font-weight: 700;
 `;
 
 export const SecondaryRightValue = styled.div`
   color: ${({ theme }) => theme.colors.gray};
-  font-weight: bold;
 `;
 
 export const Graph = styled(Pie)`

@@ -4,17 +4,15 @@ export const Container = styled.div`
   display: flex;
 `;
 
+// create a component to table
 export const Table = styled.table`
   border-collapse: collapse;
   margin: 25px 0;
-  font-size: 0.9em;
-  font-family: "Inter";
   min-width: 500px;
 
   thead tr {
     color: ${({ theme }) => theme.colors.darkGray};
     text-align: left;
-    font-weight: 600;
   }
 
   tbody tr th {
@@ -25,12 +23,6 @@ export const Table = styled.table`
   td,
   th {
     padding: 10px 15px;
-  }
-
-  tbody td,
-  tbody th {
-    font-weight: 400;
-    color: #222;
   }
 
   thead tr,

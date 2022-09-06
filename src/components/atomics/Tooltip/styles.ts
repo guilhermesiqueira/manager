@@ -13,11 +13,11 @@ export const TooltipTip = styled.div`
   padding: 0.5rem 1rem;
   color: ${({ theme }) => theme.colors.white};
   background: ${({ color, theme }) => color || theme.colors.darkGray}};
-  font-size: 11px;
   line-height: 1;
   z-index: 100;
   white-space: nowrap;
-  font-weight: 600;
   top: -30px;
   transition-timing-function: ease-in-out;
 `;
+
+export const TooltipText = styled.h6``;

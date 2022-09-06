@@ -18,7 +18,6 @@ export const Container = styled.div`
 export const MainText = styled.div`
   color: ${({ theme }) => theme.colors.darkGray};
   padding-bottom: 16px;
-  line-height: 160%;
 `;
 
 export const MainValue = styled(Text)`

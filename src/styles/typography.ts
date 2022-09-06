@@ -35,43 +35,43 @@ const typography = css`
     h1 {
       font-size: 36px;
       font-weight: 700;
-      line-height: 160%;
+      line-height: 1.6;
     }
 
     h2 {
       font-size: 24px;
       font-weight: 700;
-      line-height: 170%;
+      line-height: 1.7;
     }
 
     h3 {
       font-size: 20px;
       font-weight: 700;
-      line-height: 170%;
+      line-height: 1.7;
     }
 
     h4 {
       font-size: 16px;
       font-weight: 700;
-      line-height: 170%;
+      line-height: 1.7;
     }
 
     h5 {
       font-size: 14px;
       font-weight: 600;
-      line-height: 170%;
+      line-height: 1.7;
     }
 
     h6 {
       font-size: 12px;
       font-weight: 600;
-      line-height: 170%;
+      line-height: 1.7;
     }
 
     p {
       font-size: 14px;
       font-weight: 400;
-      line-height: 170%;
+      line-height: 1.7;
     }
   }
 `;

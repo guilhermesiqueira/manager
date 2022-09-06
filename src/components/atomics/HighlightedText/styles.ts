@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HighlightedTextH1 = styled.h1`
-  font-family: "Gambarino-Regular";
+  font-family: "Gambarino";
   font-weight: 400;
 `;
 

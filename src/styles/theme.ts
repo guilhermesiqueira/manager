@@ -15,9 +15,6 @@ const theme: ThemeType = {
   border: {},
   font: {
     family: "Inter",
-    light: 300,
-    normal: 400,
-    bold: 600,
     sizes: {},
   },
   colors: {

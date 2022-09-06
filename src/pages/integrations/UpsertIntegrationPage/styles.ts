@@ -19,7 +19,6 @@ export const TextInput = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
   border-radius: 10px;
   padding: 8px 16px;
-  font-size: 14px;
   color: ${({ theme }) => theme.colors.darkGray};
   min-width: 400px;
   margin-bottom: 30px;
@@ -30,7 +29,6 @@ export const NumberInput = styled.input`
   margin-inline: 6px;
   border: 1.5px solid ${({ theme }) => theme.colors.darkGray};
   padding: 8px 5px;
-  font-size: 14px;
   color: ${({ theme }) => theme.colors.darkGray};
   width: 40px;
   text-align: center;
