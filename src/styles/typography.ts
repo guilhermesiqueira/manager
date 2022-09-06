@@ -1,4 +1,7 @@
 import { css } from "styled-components";
+import GambarinoRegularTtf from "../assets/fonts/Gambarino-Regular.ttf";
+import GambarinoRegularWoff from "../assets/fonts/Gambarino-Regular.woff";
+import GambarinoRegularWoff2 from "../assets/fonts/Gambarino-Regular.woff2";
 
 const typography = css`
   body {
@@ -7,6 +10,17 @@ const typography = css`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @font-face {
+      font-family: "Gambarino-Regular";
+      src: url(${GambarinoRegularTtf}) format("truetype"),
+        url(${GambarinoRegularWoff}) format("woff"),
+        url(${GambarinoRegularWoff2}) format("woff2");
+
+      font-weight: 400;
+      font-display: swap;
+      font-style: normal;
+    }
 
     h1,
     h2,
