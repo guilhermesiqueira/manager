@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { Pie } from "react-chartjs-2";
-import { Text } from "components/atomics/AuxiliarText/styles";
 
 export const Container = styled.div`
   display: flex;
@@ -18,11 +17,11 @@ export const Container = styled.div`
 export const MainText = styled.div`
   color: ${({ theme }) => theme.colors.darkGray};
   padding-bottom: 16px;
+  line-height: 1.6;
 `;
 
-export const MainValue = styled(Text)`
+export const MainValue = styled.p`
   color: ${({ theme }) => theme.colors.darkGray};
-  text-transform: uppercase;
 `;
 
 export const Teste = styled.div`
@@ -31,15 +30,15 @@ export const Teste = styled.div`
   justify-content: space-between;
 `;
 
-export const SecondaryText = styled(Text)`
+export const SecondaryText = styled.div`
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 
-export const SecondaryLeftValue = styled.h6`
+export const SecondaryLeftValue = styled.div`
   color: ${({ theme }) => theme.colors.green};
 `;
 
-export const SecondaryRightValue = styled.h6`
+export const SecondaryRightValue = styled.div`
   color: ${({ theme }) => theme.colors.gray};
 `;
 

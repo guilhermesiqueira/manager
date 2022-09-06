@@ -7,52 +7,46 @@ type Props = {
 };
 
 export const Container = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    position: absolute;
-    width: 100%;
-    align-self: flex-end;
-    background-color: ${theme.colors.white};
-    box-shadow: 0px 4px 12px ${theme.colors.darkShadow};
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: absolute;
+  width: 100%;
+  align-self: flex-end;
+  text-align: center;
+  background-color: ${({ theme }) => theme.colors.white};
+  box-shadow: 0px 4px 12px ${({ theme }) => theme.colors.darkShadow};
 
-    @media (min-width: ${theme.breakpoints.pad}) {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 50px 50px 0px 50px;
-      width: 80px;
-      height: 100%;
-      align-self: flex-start;
-      justify-content: flex-start;
-      min-height: 100vh;
-      background: ${theme.colors.white};
-      box-shadow: 0px 4px 12px ${theme.colors.darkShadow};
-    }
-  `}
+  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 50px 0px 50px;
+    width: 80px;
+    height: 100%;
+    align-self: flex-start;
+    justify-content: flex-start;
+    min-height: 100vh;
+    background: ${({ theme }) => theme.colors.white};
+    box-shadow: 0px 4px 12px ${({ theme }) => theme.colors.darkShadow};
+  }
 `;
 
 export const Title = styled.p`
   ${({ theme, enabled }: Props) => css`
-    color: ${enabled ? theme.colors.darkGray : theme.colors.mediumGray};
+    color: ${enabled ? theme.colors.darkGray : theme.colors.gray};
     text-decoration: none;
-    font-size: 12px;
   `}
 `;
 
 export const StyledLink = styled(Link)`
-  ${() => css`
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    padding: 10px;
-    margin-bottom: 12px;
-  `}
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  margin-bottom: 12px;
 `;
 
 export const Icon = styled.img`
-  ${() => css`
-    height: 24px;
-  `}
+  height: 24px;
 `;

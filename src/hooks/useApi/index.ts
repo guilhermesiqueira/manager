@@ -1,5 +1,3 @@
-
-
 import { useQuery, UseQueryOptions } from "react-query";
 import { logError } from "services/crashReport";
 import { AxiosResponse } from "axios";

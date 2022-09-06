@@ -1,43 +1,25 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
-  ${() => css`
-    display: flex;
-  `}
+  display: flex;
 `;
 
 export const Card = styled.div`
-  ${({ theme }) => css`
-    display: flex;
-    flex-flow: row wrap;
-    width: 256px;
-    box-sizing: border-box;
-    position: absolute;
-    background: ${theme.colors.white};
-    border: 1px solid ${theme.colors.lightGray};
-    border-radius: 16px;
-    text-align: left;
-  `}
+  display: flex;
+  flex-flow: row wrap;
+  width: 256px;
+  box-sizing: border-box;
+  position: absolute;
+  background: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${({ theme }) => theme.colors.mediumGray};
+  border-radius: 16px;
+  text-align: left;
 `;
 
-export const MainContent = styled.div`
-  ${() => css`
-    font-family: "Inter";
-  `}
-`;
+export const MainContent = styled.div``;
 
-export const MainValue = styled.p`
-  ${() => css``}
-`;
+export const MainValue = styled.p``;
 
-export const SecondaryContent = styled.div`
-  ${() => css`
-    font-family: "Inter";
-  `}
-`;
+export const SecondaryContent = styled.div``;
 
-export const SecondaryValue = styled.div`
-  ${() => css`
-    font-family: "Inter";
-  `}
-`;
+export const SecondaryValue = styled.div``;

@@ -13,8 +13,7 @@ type Props = {
   value: string;
 };
 
-const { darkGray, mediumGreen, lightGray, mediumRed, mediumYellow, white } =
-  theme.colors;
+const { darkGray, green, mediumGray, red, yellow, white } = theme.colors;
 
 function IntegrationCard({ title, subtitle = "", value }: Props) {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -28,11 +27,11 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
   const colorAccordingToValue = () => {
     const amount = parseFloat(value);
     if (amount === 0) {
-      return mediumRed;
+      return red;
     } else if (amount < 1000) {
-      return mediumYellow;
+      return yellow;
     }
-    return mediumGreen;
+    return green;
   };
 
   const textAccordingToValue = () => {
@@ -50,7 +49,7 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
         width="176px"
         padding="16px"
         border="1px"
-        borderColor={lightGray}
+        borderColor={mediumGray}
         backgroundColor={white}
         borderRadius="16px"
         onMouseEnter={() => setShowTooltip(true)}
@@ -59,10 +58,10 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
         {showWarning && (
           <img src={icon} alt="warningIcon" style={{ float: "right" }} />
         )}
-        <Text textColor={darkGray} fontWeight={700} fontSize="12px">
+        <Text textColor={darkGray} fontWeight={600} fontSize="12px">
           {title}
         </Text>
-        <Text textColor={darkGray} fontWeight={300} fontSize="10px">
+        <Text textColor={darkGray} fontWeight={400} fontSize="12px">
           {subtitle}
         </Text>
         <Text

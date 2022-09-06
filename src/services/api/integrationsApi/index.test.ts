@@ -36,8 +36,8 @@ describe("integrationsApi", () => {
     const id = 1;
     const wallet: IntegrationWallet = {
       publicKey: "0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
-    }
-  
+    };
+
     const data = {
       id: 1,
       name: "Integration 1",
