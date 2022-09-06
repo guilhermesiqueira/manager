@@ -39,7 +39,11 @@ function Tooltip({
       onMouseLeave={hideTip}
     >
       {children}
-      {active && <S.TooltipTip color={color}>{text}</S.TooltipTip>}
+      {active && (
+        <S.TooltipTip color={color}>
+          <S.TooltipText>{text}</S.TooltipText>
+        </S.TooltipTip>
+      )}
     </S.Container>
   );
 }

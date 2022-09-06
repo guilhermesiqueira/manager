@@ -21,7 +21,10 @@ function useApiIntegrations() {
   }
 
   async function updateApiIntegration(id: any, data: Integration) {
-    const { data: integration } = await integrationsApi.updateIntegration(id, data);
+    const { data: integration } = await integrationsApi.updateIntegration(
+      id,
+      data,
+    );
 
     return integration;
   }
@@ -30,7 +33,7 @@ function useApiIntegrations() {
     createApiIntegration,
     getAllApiIntegrations,
     getApiIntegration,
-    updateApiIntegration
+    updateApiIntegration,
   };
 }
 

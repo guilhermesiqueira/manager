@@ -21,10 +21,10 @@ function IntegrationDetailsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations.integrationDetailsPage",
   });
-  const { mediumGreen, mediumRed, darkGray, xLightGray } = theme.colors;
+  const { green, red, darkGray, lightGray } = theme.colors;
   const statusColors: { [key: string]: string } = {
-    active: mediumGreen,
-    inactive: mediumRed,
+    active: green,
+    inactive: red,
   };
   const { currentNetwork } = useNetwork();
   const [integrationBalance, setIntegrationBalance] = useState<string>("...");
@@ -90,7 +90,7 @@ function IntegrationDetailsPage(): JSX.Element {
 
       <Link to="edit">
         <Button
-          color={xLightGray}
+          color={lightGray}
           backgroundColor={darkGray}
           leftIcon={<EditIcon />}
         >

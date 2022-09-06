@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 export const Container = styled.div`
   align-items: center;
@@ -10,29 +10,15 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h6`
-  ${({ theme }) => css`
-    margin: 8px 0 24px 0;
-    color: ${theme.colors.darkGray};
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 23.8px;
-  `}
+  margin: 8px 0 24px 0;
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 export const TitleError = styled.h6`
-  ${({ theme }) => css`
-    margin: 24px 0 8px 0;
-    color: ${theme.colors.mediumRed};
-    font-size: 14px;
-    font-weight: bold;
-    line-height: 23.8px;
-  `}
+  margin: 24px 0 8px 0;
+  color: ${({ theme }) => theme.colors.red};
 `;
 
 export const SubTitleError = styled.h6`
-  ${({ theme }) => css`
-    color: ${theme.colors.mediumRed};
-    font-size: 14px;
-    line-height: 23.8px;
-  `}
+  color: ${({ theme }) => theme.colors.red};
 `;
