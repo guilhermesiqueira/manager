@@ -42,8 +42,8 @@ const theme: ThemeType = {
     gray: "#867F70",
     darkGray: "#28241C",
 
-    light_shadow: "rgba(24, 86, 105, 0.15)",
-    dark_shadow: "rgba(40, 36, 28, 0.15)",
+    lightShadow: "rgba(24, 86, 105, 0.15)",
+    darkShadow: "rgba(40, 36, 28, 0.15)",
   },
   spacings: {},
   breakpoints: {

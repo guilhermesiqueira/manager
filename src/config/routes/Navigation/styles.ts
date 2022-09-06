@@ -15,7 +15,7 @@ export const Container = styled.div`
   align-self: flex-end;
   text-align: center;
   background-color: ${({ theme }) => theme.colors.white};
-  box-shadow: 0px 4px 12px ${({ theme }) => theme.colors.dark_shadow};
+  box-shadow: 0px 4px 12px ${({ theme }) => theme.colors.darkShadow};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     display: flex;
@@ -28,7 +28,7 @@ export const Container = styled.div`
     justify-content: flex-start;
     min-height: 100vh;
     background: ${({ theme }) => theme.colors.white};
-    box-shadow: 0px 4px 12px ${({ theme }) => theme.colors.dark_shadow};
+    box-shadow: 0px 4px 12px ${({ theme }) => theme.colors.darkShadow};
   }
 `;
 
