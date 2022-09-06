@@ -1,90 +1,69 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
-export const Title = styled.h1`
-  ${() => css`
-    text-transform: uppercase;
-    margin: 4px 0;
-    font-weight: 800;
-    font-size: 28px;
-    margin-bottom: 32px;
-    margin-top: 84px;
-  `}
+export const Title = styled.h2`
+  text-transform: uppercase;
+  margin: 4px 0;
+  margin-bottom: 32px;
+  margin-top: 84px;
 `;
 
 export const Subtitle = styled.h3`
-  ${() => css`
-    font-weight: 700;
-    font-size: 18px;
-    margin-bottom: 12px;
-  `}
+  margin-bottom: 12px;
 `;
 
 export const TextInput = styled.input`
-  ${({ theme }) => css`
-    display: block;
-    margin: 4px 0;
-    margin-bottom: 8px;
-    margin-top: 8px;
-    border: 1px solid ${theme.colors.darkGray};
-    border-radius: 10px;
-    padding: 8px 16px;
-    font-size: 14px;
-    color: ${theme.colors.darkGray};
-    min-width: 400px;
-    margin-bottom: 30px;
-  `}
+  display: block;
+  margin: 4px 0;
+  margin-bottom: 8px;
+  margin-top: 8px;
+  border: 1px solid ${({ theme }) => theme.colors.darkGray};
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: ${({ theme }) => theme.colors.darkGray};
+  min-width: 400px;
+  margin-bottom: 30px;
 `;
 
 export const NumberInput = styled.input`
-  ${({ theme }) => css`
-    display: block;
-    margin-inline: 6px;
-    border: 1.5px solid ${theme.colors.darkGray};
-    padding: 8px 5px;
-    font-size: 14px;
-    color: ${theme.colors.darkGray};
-    width: 40px;
-    text-align: center;
-    border-radius: 10px;
-  `}
+  display: block;
+  margin-inline: 6px;
+  border: 1.5px solid ${({ theme }) => theme.colors.darkGray};
+  padding: 8px 5px;
+  font-size: 14px;
+  color: ${({ theme }) => theme.colors.darkGray};
+  width: 40px;
+  text-align: center;
+  border-radius: 10px;
 `;
 
 export const Checkbox = styled.input`
-  ${({ theme }) => css`
-    transform: scale(1.5);
-    display: inline-block;
-    vertical-align: middle;
-    margin: 5px 7px 30px 4px;
-    accent-color: ${theme.colors.darkGray};
-  `}
+  transform: scale(1.5);
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px 7px 30px 4px;
+  accent-color: ${({ theme }) => theme.colors.green};
 `;
 
 export const Span = styled.span`
-  ${({ color, theme }) => css`
-    color: ${color || theme.colors.darkGray};
-    font-size: 12px;
-    display: inline-block;
-    vertical-align: middle;
-    margin: 5px 7px 30px 4px;
-    :first-letter {
-      text-transform: uppercase;
-    }
-  `}
+  color: ${({ color }) => color} || ${({ theme }) => theme.colors.darkGray};
+  display: inline-block;
+  vertical-align: middle;
+  margin: 5px 7px 30px 4px;
+  :first-letter {
+    text-transform: uppercase;
+  }
 `;
 
 export const TicketAvailabilityContainer = styled.div`
-  ${({ color, theme }) => css`
-    display: inline-flex;
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: 20px;
-    color: ${color || theme.colors.darkGray};
-  `}
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  color: ${({ color }) => color} || ${({ theme }) => theme.colors.darkGray};
 `;
 
 export const ButtonContainer = styled.div`
-  ${() => css`
-    display: flex;
-    margin-top: 24px;
-  `}
+  display: flex;
+  margin-top: 24px;
 `;

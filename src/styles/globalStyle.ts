@@ -1,4 +1,4 @@
-import { createGlobalStyle, css } from "styled-components";
+import { createGlobalStyle } from "styled-components";
 import normalize from "./normalize";
 import typography from "./typography";
 
@@ -15,7 +15,6 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
-  ${({ theme }) => css`
     html,
     body,
     #root {
@@ -23,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     body {
-      font-family: ${theme.font};
+      font-family: ${({ theme }) => theme.font};
     }
 
     #root {
@@ -33,11 +32,18 @@ const GlobalStyle = createGlobalStyle`
     #launcher {
       display: none !important;
     }
-  `}
   
-  button:hover {
-    cursor: pointer;
+  button {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 150%;
+
+    :hover {
+      cursor: pointer;
+    }
   }
+
+
 `;
 
 export default GlobalStyle;

@@ -19,7 +19,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
 
   const mode = isEdit ? "edit" : "create";
 
-  const { xLightGray, darkGray, mediumGray } = theme.colors;
+  const { lightGray, darkGray, gray } = theme.colors;
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -86,7 +86,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
   const getColorByCheboxStatus = () => {
     if (integration) {
       return integration?.ticketAvailabilityInMinutes === null
-        ? mediumGray
+        ? gray
         : darkGray;
     }
     return darkGray;
@@ -154,7 +154,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
       <S.Span>{t("everydayAtMidnight")}</S.Span> <br />
       <S.ButtonContainer>
         <Button
-          color={xLightGray}
+          color={lightGray}
           backgroundColor={darkGray}
           onClick={handleSave}
         >
@@ -163,7 +163,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
 
         <Button
           color={darkGray}
-          backgroundColor={xLightGray}
+          backgroundColor={lightGray}
           outlineColor={darkGray}
           marginLeft="8px"
           onClick={handleCancel}
