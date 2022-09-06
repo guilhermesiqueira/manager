@@ -9,8 +9,10 @@ const integrationsApi = {
     apiGet(`integrations/${id}`),
   createIntegration: (data: any): Promise<AxiosResponse<Integration>> =>
     apiPost("integrations", data),
-  updateIntegration: (id: any, data: Integration): Promise<AxiosResponse<Integration>> =>
-    apiPut(`integrations/${id}`, data),
+  updateIntegration: (
+    id: any,
+    data: Integration,
+  ): Promise<AxiosResponse<Integration>> => apiPut(`integrations/${id}`, data),
 };
 
 export default integrationsApi;
