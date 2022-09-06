@@ -12,7 +12,7 @@ export const TooltipTip = styled.div`
   transform: translateX(-50%);
   padding: 0.5rem 1rem;
   color: ${({ theme }) => theme.colors.white};
-  background: ${({ color, theme }) => color || theme.colors.dark_gray}};
+  background: ${({ color, theme }) => color || theme.colors.darkGray}};
   font-size: 11px;
   line-height: 1;
   z-index: 100;

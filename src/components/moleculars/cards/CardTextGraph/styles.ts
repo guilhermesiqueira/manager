@@ -9,20 +9,20 @@ export const Container = styled.div`
   box-sizing: border-box;
   position: absolute;
   background: ${({ theme }) => theme.colors.white};
-  border: 1px solid ${({ theme }) => theme.colors.medium_gray};
+  border: 1px solid ${({ theme }) => theme.colors.mediumGray};
   border-radius: 16px;
   text-align: left;
   padding: 24px;
 `;
 
 export const MainText = styled.div`
-  color: ${({ theme }) => theme.colors.dark_gray};
+  color: ${({ theme }) => theme.colors.darkGray};
   padding-bottom: 16px;
   line-height: 160%;
 `;
 
 export const MainValue = styled(Text)`
-  color: ${({ theme }) => theme.colors.dark_gray};
+  color: ${({ theme }) => theme.colors.darkGray};
   text-transform: uppercase;
 `;
 
@@ -33,7 +33,7 @@ export const Teste = styled.div`
 `;
 
 export const SecondaryText = styled(Text)`
-  color: ${({ theme }) => theme.colors.dark_gray};
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 export const SecondaryLeftValue = styled.h6`

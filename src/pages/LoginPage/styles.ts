@@ -11,7 +11,7 @@ export const Container = styled.div`
 
 export const Title = styled.h6`
   margin: 8px 0 24px 0;
-  color: ${({ theme }) => theme.colors.dark_gray};
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 export const TitleError = styled.h6`

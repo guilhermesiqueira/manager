@@ -13,7 +13,7 @@ type Props = {
   value: string;
 };
 
-const { dark_gray, green, medium_gray, red, yellow, white } = theme.colors;
+const { darkGray, green, mediumGray, red, yellow, white } = theme.colors;
 
 function IntegrationCard({ title, subtitle = "", value }: Props) {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -49,7 +49,7 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
         width="176px"
         padding="16px"
         border="1px"
-        borderColor={medium_gray}
+        borderColor={mediumGray}
         backgroundColor={white}
         borderRadius="16px"
         onMouseEnter={() => setShowTooltip(true)}
@@ -58,10 +58,10 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
         {showWarning && (
           <img src={icon} alt="warningIcon" style={{ float: "right" }} />
         )}
-        <Text textColor={dark_gray} fontWeight={600} fontSize="12px">
+        <Text textColor={darkGray} fontWeight={600} fontSize="12px">
           {title}
         </Text>
-        <Text textColor={dark_gray} fontWeight={400} fontSize="12px">
+        <Text textColor={darkGray} fontWeight={400} fontSize="12px">
           {subtitle}
         </Text>
         <Text

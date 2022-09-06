@@ -47,7 +47,6 @@
     "semi": "off",
     "react/jsx-props-no-spreading": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
-    "@typescript-eslint/camelcase": "off",
     "react/jsx-wrap-multilines": "off",
     "@typescript-eslint/no-empty-function": "off",
     "no-else-return": "off",

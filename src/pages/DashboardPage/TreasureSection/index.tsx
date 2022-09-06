@@ -64,8 +64,8 @@ function TreasureSection(): JSX.Element {
       datasets: [
         {
           data: [assignedValue, unassignedValue],
-          backgroundColor: [theme.colors.green, theme.colors.medium_gray],
-          borderColor: [theme.colors.green, theme.colors.medium_gray],
+          backgroundColor: [theme.colors.green, theme.colors.mediumGray],
+          borderColor: [theme.colors.green, theme.colors.mediumGray],
         },
       ],
     };
