@@ -19,7 +19,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
 
   const mode = isEdit ? "edit" : "create";
 
-  const { lightGray, darkGray, gray } = theme.colors;
+  const { light_gray, dark_gray, gray } = theme.colors;
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -87,9 +87,9 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     if (integration) {
       return integration?.ticketAvailabilityInMinutes === null
         ? gray
-        : darkGray;
+        : dark_gray;
     }
-    return darkGray;
+    return dark_gray;
   };
 
   const handleCancel = () => {
@@ -154,17 +154,17 @@ function UpsertIntegrationPage({ isEdit }: Props) {
       <S.Span>{t("everydayAtMidnight")}</S.Span> <br />
       <S.ButtonContainer>
         <Button
-          color={lightGray}
-          backgroundColor={darkGray}
+          color={light_gray}
+          backgroundColor={dark_gray}
           onClick={handleSave}
         >
           {t(`${mode}.save`)}
         </Button>
 
         <Button
-          color={darkGray}
-          backgroundColor={lightGray}
-          outlineColor={darkGray}
+          color={dark_gray}
+          backgroundColor={light_gray}
+          outlineColor={dark_gray}
           marginLeft="8px"
           onClick={handleCancel}
         >

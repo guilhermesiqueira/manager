@@ -37,13 +37,13 @@ const theme: ThemeType = {
     medium_yellow: "#FFEB7A",
     dark_yellow: "#775B33",
     yellow: "#FFCE00",
-    mediumGray: "#D4CEC3",
+    light_gray: "#F2F2F0",
+    medium_gray: "#D4CEC3",
     gray: "#867F70",
-    lightGray: "#F2F2F0",
-    darkGray: "#28241C",
+    dark_gray: "#28241C",
 
-    lightShadow: "rgba(24, 86, 105, 0.15)",
-    darkShadow: "rgba(40, 36, 28, 0.15)",
+    light_shadow: "rgba(24, 86, 105, 0.15)",
+    dark_shadow: "rgba(40, 36, 28, 0.15)",
   },
   spacings: {},
   breakpoints: {

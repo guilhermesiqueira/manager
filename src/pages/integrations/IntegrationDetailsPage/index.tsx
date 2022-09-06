@@ -21,7 +21,7 @@ function IntegrationDetailsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations.integrationDetailsPage",
   });
-  const { green, red, darkGray, lightGray } = theme.colors;
+  const { green, red, dark_gray, light_gray } = theme.colors;
   const statusColors: { [key: string]: string } = {
     active: green,
     inactive: red,
@@ -90,8 +90,8 @@ function IntegrationDetailsPage(): JSX.Element {
 
       <Link to="edit">
         <Button
-          color={lightGray}
-          backgroundColor={darkGray}
+          color={light_gray}
+          backgroundColor={dark_gray}
           leftIcon={<EditIcon />}
         >
           {t("edit")}

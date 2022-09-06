@@ -12,7 +12,7 @@ export const Table = styled.table`
   min-width: 500px;
 
   thead tr {
-    color: ${({ theme }) => theme.colors.darkGray};
+    color: ${({ theme }) => theme.colors.dark_gray};
     text-align: left;
     font-weight: 600;
   }
