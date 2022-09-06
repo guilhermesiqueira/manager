@@ -49,10 +49,10 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 400;
   }
 
-    input {
-      font-size: 14px;
-    }
+  input {
+    font-size: 14px;
   }
+  
 
 `;
 
