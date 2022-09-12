@@ -1,10 +1,9 @@
 import Axios, { AxiosRequestConfig } from "axios";
 import camelCaseKeys from "camelcase-keys";
 import snakeCaseKeys from "snakecase-keys";
+import { RIBON_API } from "utils/constants";
 
-const RIBON_API = "http://ribon-core-api-dev.us-east-1.elasticbeanstalk.com/";
-
-export const baseURL = process.env.REACT_APP_RIBON_API || RIBON_API;
+export const baseURL = RIBON_API;
 export const API_SCOPE = "/api/v1";
 
 const api = Axios.create({
