@@ -14,13 +14,13 @@
   },
   "integrations": {
     "integrationsList": {
-      "title": "Integrations List",
+      "title": "Integrations list",
       "createNew": "Add new",
       "listColumns": {
         "id": "Id",
         "name": "Name",
-        "walletAddress": "Wallet Address",
-        "integrationAddress": "Integration Address",
+        "walletAddress": "Wallet address",
+        "integrationAddress": "Integration address",
         "status": "Status"
       }
     },
@@ -37,8 +37,11 @@
       "status": "Status",
       "id": "ID",
       "name": "Name",
-      "walletAddress": "Wallet Address",
-      "integrationAddress": "Integration Address",
+      "walletAddress": "Wallet address",
+      "integrationAddress": "Integration address",
+      "ticketAvailability": "Ticket availability",
+      "everydayAtMidnight": "Everyday at midnight",
+      "everyMinutes": "Every {{minutes}} minutes after received",
       "createdAt": "Created At",
       "lastEditedAt": "Last Edited At",
       "edit": "Edit"
