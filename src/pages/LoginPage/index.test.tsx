@@ -11,10 +11,10 @@ describe("Login", () => {
   });
 
   it("should show google provider when click on button", () => {
-    const mockFunction = jest.fn();
+    const mockFunction = jest.fn(() => ({ Response } as any));
     renderComponent(<LoginPage />, {
       authenticationProviderValue: {
-        signInWithGoogle: mockFunction,
+        signInManagerWithGoogle: mockFunction(),
       },
     });
 
