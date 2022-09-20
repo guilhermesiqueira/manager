@@ -4,16 +4,15 @@ import { getAuth, signOut, User } from "firebase/auth";
 import userManagerApi from "services/api/userManagerApi";
 import firebaseApp from "services/firebase";
 import { useNavigate } from "react-router-dom";
-import { decodeJwt } from "utils/decodedToken";
 
 export interface IAuthenticationContext {
   signInManagerWithGoogle: (response: any) => void;
+  accessToken: string | null;
   isAuthorized: (email: string) => boolean;
   user: User | undefined;
   setUser: (user: User) => void;
   allowed: boolean;
   logout: () => void;
-  accessToken: string | null;
 }
 
 export type Props = {
@@ -28,6 +27,7 @@ function AuthenticationProvider({ children }: Props) {
   const firebaseAuth = getAuth(firebaseApp);
   const navigate = useNavigate();
   const [user, setUser] = useState<User>();
+  const [accessToken, setAccessToken] = useState(localStorage.getItem("token"));
 
   function isAuthorized(email: string) {
     if (!email) return false;
@@ -53,6 +53,7 @@ function AuthenticationProvider({ children }: Props) {
         const token = await userManagerResponse.headers["access-token"];
 
         localStorage.setItem("token", token);
+        setAccessToken(token);
 
         navigate("dashboard");
       } else {
@@ -75,13 +76,11 @@ function AuthenticationProvider({ children }: Props) {
       });
   }
 
-  const accessToken = localStorage.getItem("token");
-
   useEffect(() => {
-    if (!accessToken || !isAuthorized(decodeJwt(accessToken)?.email ?? "")) {
+    if (!accessToken) {
       logout();
     }
-  }, [user]);
+  }, [accessToken]);
 
   const authenticationObject: IAuthenticationContext = useMemo(
     () => ({
@@ -93,7 +92,7 @@ function AuthenticationProvider({ children }: Props) {
       accessToken,
       signInManagerWithGoogle,
     }),
-    [user, allowed],
+    [user, allowed, accessToken],
   );
 
   return (
