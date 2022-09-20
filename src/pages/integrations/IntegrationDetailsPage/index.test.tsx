@@ -8,7 +8,8 @@ describe("TreasureSection", () => {
     renderComponent(<IntegrationDetailsPage />);
 
     expect(screen.getByText("Status")).toBeInTheDocument();
-    expect(screen.getByText("Wallet Address")).toBeInTheDocument();
-    expect(screen.getByText("Integration Address")).toBeInTheDocument();
+    expect(screen.getByText("Wallet address")).toBeInTheDocument();
+    expect(screen.getByText("Integration address")).toBeInTheDocument();
+    expect(screen.getByText("Ticket availability")).toBeInTheDocument();
   });
 });

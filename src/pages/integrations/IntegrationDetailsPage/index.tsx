@@ -54,6 +54,7 @@ function IntegrationDetailsPage(): JSX.Element {
     name,
     integrationWallet,
     integrationAddress,
+    ticketAvailabilityInMinutes,
     createdAt,
     updatedAt,
   } = integration;
@@ -114,6 +115,16 @@ function IntegrationDetailsPage(): JSX.Element {
 
       <S.InfoName>{t("integrationAddress")}</S.InfoName>
       <CopyableAddress text={integrationAddress} />
+
+      <S.InfoName>{t("ticketAvailability")}</S.InfoName>
+      <S.InfoValue>
+        {ticketAvailabilityInMinutes
+          ? t("everyMinutes").replace(
+              "{{minutes}}",
+              ticketAvailabilityInMinutes,
+            )
+          : t("everydayAtMidnight")}
+      </S.InfoValue>
 
       <S.InfoName>{t("createdAt")}</S.InfoName>
       <S.InfoValue>{dateFormatter(createdAt)}</S.InfoValue>
