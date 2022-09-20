@@ -1,21 +1,16 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  getAuth,
-  signOut,
-  User,
-} from "firebase/auth";
+import { getAuth, signOut, User } from "firebase/auth";
+import userManagerApi from "services/api/userManagerApi";
 import firebaseApp from "services/firebase";
 import { useNavigate } from "react-router-dom";
-import useUsers from "hooks/apiHooks/useUsers";
 import { decodeJwt } from "utils/decodedToken";
 
 export interface IAuthenticationContext {
-  signInWithGoogle: () => void;
+  signInManagerWithGoogle: (response: any) => void;
   isAuthorized: (email: string) => boolean;
   user: User | undefined;
+  setUser: (user: User) => void;
   allowed: boolean;
   logout: () => void;
   accessToken: string | null;
@@ -32,7 +27,6 @@ export const AuthenticationContext = createContext<IAuthenticationContext>(
 function AuthenticationProvider({ children }: Props) {
   const firebaseAuth = getAuth(firebaseApp);
   const navigate = useNavigate();
-  const { findOrCreateUser } = useUsers();
   const [user, setUser] = useState<User>();
 
   function isAuthorized(email: string) {
@@ -42,26 +36,31 @@ function AuthenticationProvider({ children }: Props) {
 
   const allowed = useMemo(() => isAuthorized(user?.email ?? ""), [user]);
 
-  function signInWithGoogle() {
-    const provider = new GoogleAuthProvider();
+  async function signInManagerWithGoogle(response: any) {
+    try {
+      if (isAuthorized(response.profileObj.email ?? "")) {
+        const userManagerResponse = await userManagerApi.postUserManager(
+          { idToken: response.tokenId },
+          {
+            headers: {
+              Authorization: `Bearer ${response.accessToken}`,
+              "Content-Type": "application/json",
+              access_token: `${response.accessToken}`,
+            },
+          },
+        );
 
-    signInWithPopup(firebaseAuth, provider)
-      .then(async (result) => {
-        if (isAuthorized(result.user.email ?? "")) {
-          const currentUser = await findOrCreateUser(result.user.email ?? "");
-          if (currentUser) {
-            setUser(result.user);
-          }
-          const token = await result.user.getIdToken();
-          localStorage.setItem("token", token);
-          navigate("dashboard");
-        } else {
-          navigate("/", { state: { incorrectDomain: true } });
-        }
-      })
-      .catch((error) => {
-        navigate("/", { state: { error } });
-      });
+        const token = await userManagerResponse.headers["access-token"];
+
+        localStorage.setItem("token", token);
+
+        navigate("dashboard");
+      } else {
+        navigate("/", { state: { incorrectDomain: true } });
+      }
+    } catch (error) {
+      navigate("/", { state: { error } });
+    }
   }
 
   function logout() {
@@ -86,12 +85,13 @@ function AuthenticationProvider({ children }: Props) {
 
   const authenticationObject: IAuthenticationContext = useMemo(
     () => ({
-      signInWithGoogle,
       user,
+      setUser,
       allowed,
       isAuthorized,
       logout,
       accessToken,
+      signInManagerWithGoogle,
     }),
     [user, allowed],
   );
