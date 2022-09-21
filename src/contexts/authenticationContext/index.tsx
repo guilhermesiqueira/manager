@@ -4,6 +4,7 @@ import { getAuth, signOut, User } from "firebase/auth";
 import userManagerApi from "services/api/userManagerApi";
 import firebaseApp from "services/firebase";
 import { useNavigate } from "react-router-dom";
+import { TOKEN_KEY } from "utils/constants";
 
 export interface IAuthenticationContext {
   signInManagerWithGoogle: (response: any) => void;
@@ -27,7 +28,9 @@ function AuthenticationProvider({ children }: Props) {
   const firebaseAuth = getAuth(firebaseApp);
   const navigate = useNavigate();
   const [user, setUser] = useState<User>();
-  const [accessToken, setAccessToken] = useState(localStorage.getItem("token"));
+  const [accessToken, setAccessToken] = useState(
+    localStorage.getItem(TOKEN_KEY),
+  );
 
   function isAuthorized(email: string) {
     if (!email) return false;
@@ -52,7 +55,7 @@ function AuthenticationProvider({ children }: Props) {
 
         const token = await userManagerResponse.headers["access-token"];
 
-        localStorage.setItem("token", token);
+        localStorage.setItem(TOKEN_KEY, token);
         setAccessToken(token);
 
         navigate("dashboard");
@@ -67,7 +70,7 @@ function AuthenticationProvider({ children }: Props) {
   function logout() {
     signOut(firebaseAuth)
       .then(() => {
-        localStorage.removeItem("token");
+        localStorage.removeItem(TOKEN_KEY);
         setUser(undefined);
       })
       .catch(() => {})

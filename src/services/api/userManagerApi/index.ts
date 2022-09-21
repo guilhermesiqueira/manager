@@ -1,8 +1,12 @@
 import { AxiosResponse } from "axios";
 import { apiPost } from "..";
 
+interface Data {
+  idToken: string;
+}
+
 const userManagerApi = {
-  postUserManager: (data: any, config: any): Promise<AxiosResponse<any>> =>
+  postUserManager: (data: Data, config: any): Promise<AxiosResponse<any>> =>
     apiPost("manager/auth/request", { data }, config),
 };
 
