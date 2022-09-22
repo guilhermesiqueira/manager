@@ -55,7 +55,7 @@ function ButtonSwitch({
 
 ButtonSwitch.defaultProps = {
   onSwitch: () => {},
-  initialCheckState: true,
+  initialCheckState: false,
 };
 
 export default ButtonSwitch;
