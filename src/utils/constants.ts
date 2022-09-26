@@ -1,4 +1,5 @@
 export const RIBON_API =
+  process.env.REACT_APP_RIBON_API ||
   "http://ribon-core-api-dev.us-east-1.elasticbeanstalk.com/";
 
 export const THE_GRAPH_API =
