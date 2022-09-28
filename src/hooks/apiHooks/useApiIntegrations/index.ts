@@ -1,5 +1,4 @@
 import integrationsApi from "services/api/integrationsApi";
-import Integration from "types/entities/Integration";
 import { useUploadFile } from "../useUploadFile";
 
 function useApiIntegrations() {
@@ -15,43 +14,52 @@ function useApiIntegrations() {
     return integration;
   }
 
-  async function createApiIntegration(data: any) {
+  async function createApiIntegration(data: any, file: any) {
     const upload = useUploadFile(data.logo);
 
-    upload.create((error: Error, blob: any) => {
-      if (error) {
-        throw error;
-      } else {
-        integrationsApi.createIntegration({
-          ...data.integration,
-          logo: blob.signed_id,
-        });
-      }
-    });
-  }
+    let integration;
 
-  async function updateApiIntegration(id: any, data: Integration) {
-    const { data: integration } = await integrationsApi.updateIntegration(
-      id,
-      data,
-    );
-
+    if (file) {
+      upload.create((error: Error, blob: any) => {
+        if (error) {
+          throw error;
+        } else {
+          integration = integrationsApi.createIntegration({
+            ...data,
+            logo: blob.signed_id,
+          });
+        }
+      });
+    } else {
+      integration = integrationsApi.createIntegration(data);
+    }
     return integration;
   }
 
-  function uploadFile(file: any, integration: Integration) {
-    const upload = useUploadFile(file);
+  async function updateApiIntegration(data: any, file: any) {
+    const upload = useUploadFile(data.logo);
+    let integration;
 
-    upload.create((error: Error, blob: any) => {
-      if (error) {
-        throw error;
-      } else {
-        integrationsApi.updateIntegration(integration.id, {
-          ...integration,
-          logo: blob.signed_id,
-        });
-      }
-    });
+    if (file) {
+      upload.create((error: Error, blob: any) => {
+        if (error) {
+          throw error;
+        } else {
+          integration = integrationsApi.updateIntegration(data.id, {
+            ...data,
+            logo: blob.signed_id,
+          });
+        }
+      });
+    } else {
+      const currentIntegration = data;
+      delete currentIntegration.logo;
+      integration = integrationsApi.updateIntegration(
+        data.id,
+        currentIntegration,
+      );
+    }
+    return integration;
   }
 
   return {
@@ -59,7 +67,6 @@ function useApiIntegrations() {
     getAllApiIntegrations,
     getApiIntegration,
     updateApiIntegration,
-    uploadFile,
   };
 }
 
