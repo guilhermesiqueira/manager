@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate, useParams } from "react-router";
 import { logError } from "services/crashReport";
 import Integration from "types/entities/Integration";
+import ChangeLanguageItem from "components/moleculars/ChangeLanguageItem";
 import theme from "styles/theme";
 import * as S from "./styles";
 
@@ -113,6 +114,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
   return (
     <>
       <S.Title>{t(`${mode}.title`)}</S.Title>
+      <ChangeLanguageItem />
       <S.Subtitle>{t("activityStatus")}</S.Subtitle>
       <S.Checkbox
         type="checkbox"
