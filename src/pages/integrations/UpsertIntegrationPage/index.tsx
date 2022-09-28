@@ -99,8 +99,8 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     navigate("/integrations");
   };
 
-  const handleLogoChange = (e: any) => {
-    const logo = e.target.files[0];
+  const handleLogoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const logo = e.target.files![0];
 
     setFile(URL.createObjectURL(logo));
     if (integration) {
