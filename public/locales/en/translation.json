@@ -59,6 +59,7 @@
       },
       "activityStatus": "Activity status",
       "details": "Details",
+      "integrationLogo": "Integration logo",
       "ticketAvailability": "Ticket availability",
       "everydayAtMidnight": "Everyday at midnight",
       "integration": "integration",

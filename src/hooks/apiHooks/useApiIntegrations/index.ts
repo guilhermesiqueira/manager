@@ -1,5 +1,6 @@
 import integrationsApi from "services/api/integrationsApi";
 import Integration from "types/entities/Integration";
+import { useUploadFile } from "../useUploadFile";
 
 function useApiIntegrations() {
   async function getAllApiIntegrations() {
@@ -15,9 +16,18 @@ function useApiIntegrations() {
   }
 
   async function createApiIntegration(data: any) {
-    const { data: integration } = await integrationsApi.createIntegration(data);
+    const upload = useUploadFile(data.logo);
 
-    return integration;
+    upload.create((error: Error, blob: any) => {
+      if (error) {
+        throw error;
+      } else {
+        integrationsApi.createIntegration({
+          ...data.integration,
+          logo: blob.signed_id,
+        });
+      }
+    });
   }
 
   async function updateApiIntegration(id: any, data: Integration) {
@@ -29,11 +39,27 @@ function useApiIntegrations() {
     return integration;
   }
 
+  function uploadFile(file: any, integration: Integration) {
+    const upload = useUploadFile(file);
+
+    upload.create((error: Error, blob: any) => {
+      if (error) {
+        throw error;
+      } else {
+        integrationsApi.updateIntegration(integration.id, {
+          ...integration,
+          logo: blob.signed_id,
+        });
+      }
+    });
+  }
+
   return {
     createApiIntegration,
     getAllApiIntegrations,
     getApiIntegration,
     updateApiIntegration,
+    uploadFile,
   };
 }
 
