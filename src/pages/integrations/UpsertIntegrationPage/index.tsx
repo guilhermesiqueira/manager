@@ -25,7 +25,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
   const navigate = useNavigate();
   const { id } = useParams();
 
-  const { createApiIntegration, getApiIntegration, uploadFile } =
+  const { createApiIntegration, getApiIntegration, updateApiIntegration } =
     useApiIntegrations();
   const [integration, setIntegration] = useState<Integration>();
   const [file, setFile] = useState<string>("");
@@ -75,9 +75,9 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     if (integration) {
       try {
         if (isEdit) {
-          await uploadFile(integration.logo, integration);
+          await updateApiIntegration(integration, file);
         } else {
-          await createApiIntegration(integration);
+          await createApiIntegration(integration, file);
         }
         navigate("/integrations");
       } catch (e) {
@@ -102,7 +102,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
   const handleLogoChange = (e: any) => {
     const logo = e.target.files[0];
 
-    setFile(logo);
+    setFile(URL.createObjectURL(logo));
     if (integration) {
       setIntegration({
         ...integration,
@@ -119,7 +119,6 @@ function UpsertIntegrationPage({ isEdit }: Props) {
         name: "New Integration",
         status: "active",
         ticketAvailabilityInMinutes: null,
-        logo: NgoLogo,
       };
 
       setIntegration(newIntegration);

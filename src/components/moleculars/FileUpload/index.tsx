@@ -4,7 +4,7 @@ import * as S from "./styles";
 
 type Props = {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  logo: any;
+  logo: string;
   value: string;
 };
 
@@ -26,7 +26,6 @@ export default function FileUpload({ onChange, logo, value }: Props) {
             left="0"
             opacity="0"
             accept="image/*"
-            value={value}
           />
 
           <S.UploadIcon src={uploadIcon} alt="file" />
