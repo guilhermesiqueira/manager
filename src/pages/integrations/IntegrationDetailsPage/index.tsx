@@ -15,6 +15,7 @@ import RibonAbi from "utils/abis/RibonAbi.json";
 import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
 import { formatFromWei } from "lib/web3Helpers/etherFormatters";
 import theme from "styles/theme";
+import LogoCard from "components/moleculars/LogoCard";
 import * as S from "./styles";
 
 function IntegrationDetailsPage(): JSX.Element {
@@ -52,6 +53,7 @@ function IntegrationDetailsPage(): JSX.Element {
   const {
     status,
     name,
+    logo,
     integrationWallet,
     integrationAddress,
     ticketAvailabilityInMinutes,
@@ -81,7 +83,7 @@ function IntegrationDetailsPage(): JSX.Element {
     contract?.on("PoolBalanceIncreased", () => {
       fetchBlockchainIntegration();
     });
-  }, [getIntegration]);
+  }, []);
 
   return (
     <S.Container>
@@ -109,6 +111,9 @@ function IntegrationDetailsPage(): JSX.Element {
 
       <S.InfoName>{t("name")}</S.InfoName>
       <S.InfoValue>{name}</S.InfoValue>
+
+      <S.InfoName>{t("logo")}</S.InfoName>
+      <LogoCard logo={logo} />
 
       <S.InfoName>{t("walletAddress")}</S.InfoName>
       <CopyableAddress text={integrationWallet?.publicKey} />

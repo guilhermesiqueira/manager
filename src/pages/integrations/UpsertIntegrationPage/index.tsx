@@ -8,7 +8,6 @@ import Integration from "types/entities/Integration";
 import theme from "styles/theme";
 import FileUpload from "components/moleculars/FileUpload";
 import * as S from "./styles";
-import NgoLogo from "./assets/ngo-logo.svg";
 
 export type Props = {
   isEdit?: boolean;
@@ -150,7 +149,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
       <S.Subtitle>{t("integrationLogo")}</S.Subtitle>
       <FileUpload
         onChange={handleLogoChange}
-        logo={integration?.logo ?? NgoLogo}
+        logo={integration?.logo}
         value={file}
       />
       <S.Subtitle>{t("ticketAvailability")}</S.Subtitle>

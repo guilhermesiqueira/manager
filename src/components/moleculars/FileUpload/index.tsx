@@ -1,5 +1,5 @@
-import { Input } from "@chakra-ui/react";
 import uploadIcon from "assets/icons/upload-icon.svg";
+import LogoCard from "../LogoCard";
 import * as S from "./styles";
 
 type Props = {
@@ -11,26 +11,35 @@ type Props = {
 export default function FileUpload({ onChange, logo, value }: Props) {
   return (
     <S.Container>
-      <S.FileUploadContainer>
-        <S.Logo src={value || logo} alt="logo" />
-
-        <S.FileIcon>
-          <Input
-            type="file"
-            height="100%"
-            width="100%"
-            position="absolute"
-            onChange={onChange}
-            data-testid="file-upload"
-            top="0"
-            left="0"
-            opacity="0"
-            accept="image/*"
-          />
-
-          <S.UploadIcon src={uploadIcon} alt="file" />
-        </S.FileIcon>
-      </S.FileUploadContainer>
+      <LogoCard logo={value || logo}>
+        {logo || value ? (
+          <S.Box>
+            <S.Layer>
+              <S.InputField
+                type="file"
+                onChange={onChange}
+                data-testid="file-upload"
+                accept="image/*"
+              />
+              <S.UploadIcon src={uploadIcon} alt="file" />
+            </S.Layer>
+          </S.Box>
+        ) : (
+          <S.Box>
+            <S.InputField
+              type="file"
+              onChange={onChange}
+              data-testid="file-upload"
+              accept="image/*"
+            />
+            <S.UploadIcon src={uploadIcon} alt="file" />
+            <S.Text>
+              Drop the logo image here or <span>browse</span>
+            </S.Text>
+            <S.span>Supports: JPG, PNG</S.span>
+          </S.Box>
+        )}
+      </LogoCard>
     </S.Container>
   );
 }

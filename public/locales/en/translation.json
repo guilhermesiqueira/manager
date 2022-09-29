@@ -37,6 +37,7 @@
       "status": "Status",
       "id": "ID",
       "name": "Name",
+      "logo": "Integration logo",
       "walletAddress": "Wallet address",
       "integrationAddress": "Integration address",
       "ticketAvailability": "Ticket availability",
