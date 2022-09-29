@@ -10,7 +10,7 @@ i18n
     debug: false,
     ns: "translation",
     defaultNS: "translation",
-    preload: ["en"],
+    preload: ["en", "pt"],
     cleanCode: true,
     interpolation: {
       escapeValue: false,

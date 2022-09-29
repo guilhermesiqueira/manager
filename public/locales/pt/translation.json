@@ -1,0 +1,79 @@
+{
+  "dashboard": {
+    "treasureDashboard": {
+      "title": "Dashboard - Tesouro",
+      "treasureSection": {
+        "mainText": "Balanço do Tesouro de Doação (USDC)",
+        "assignedText": "Atribuído (USDC)",
+        "unassignedText": "Não atribuído (USDC)"
+      },
+      "integrationsSection": {
+        "subtitle": "Atribuído (USDC)"
+      }
+    }
+  },
+  "integrations": {
+    "integrationsList": {
+      "title": "Lista de Integrações",
+      "createNew": "Adicionar novo",
+      "listColumns": {
+        "id": "Id",
+        "name": "Nome",
+        "walletAddress": "Endereço da Wallet",
+        "integrationAddress": "Endereço da Integração",
+        "status": "Status"
+      }
+    },
+    "integrationCard": {
+      "amountEnding": "A quantidade atribuída para doação está acabando",
+      "amountEnded": "Não há quantidade atribuída à doação"
+    },
+    "copyableAddress": {
+      "successTooltipText": "Endereço copiado",
+      "alternativeText": "Copiar para o clipboard"
+    },
+    "integrationDetailsPage": {
+      "title": "{{integrationName}} Detalhes",
+      "status": "Status",
+      "id": "ID",
+      "name": "Nome",
+      "walletAddress": "Endereço da carteira",
+      "integrationAddress": "Endereço da integração",
+      "ticketAvailability": "Disponibilidade de Ticket",
+      "everydayAtMidnight": "Todo dia à meia noite",
+      "everyMinutes": "A cada {{minutes}} minutos depois do recebimento",
+      "createdAt": "Criado em",
+      "lastEditedAt": "Última edição em",
+      "edit": "Editar"
+    },
+    "upsertIntegrationPage": {
+      "create": {
+        "title": "Adicionar nova Integração",
+        "save": "Salvar",
+        "cancel": "Cancelar"
+      },
+      "edit": {
+        "title": "Editar Integração",
+        "save": "Salvar mudanças",
+        "cancel": "Cancelar"
+      },
+      "activityStatus": "Status de atividade",
+      "details": "Detalhes",
+      "ticketAvailability": "Disponibilidade de Ticket",
+      "everydayAtMidnight": "Todo dia à meia noite",
+      "integration": "integração",
+      "every": "A cada",
+      "minutesAfterReceived": "minutos depois do recebimento"
+    }
+  },
+  "menu": {
+    "integrationsLabel": "Integrações",
+    "dashboardLabel": "Dashboard Tesouro"
+  },
+  "login": {
+    "title": "Dapp Manager",
+    "buttonText": "Login com o Google",
+    "errorText": "O login falhou",
+    "errorDescription": "Certifique-se de que seu email pertence ao domínio @ribon.io"
+  }
+}
