@@ -22,6 +22,7 @@ export default function FileUpload({ onChange, logo, value }: Props) {
             position="absolute"
             onChange={onChange}
             data-testid="file-upload"
+            cursor="pointer"
             top="0"
             left="0"
             opacity="0"

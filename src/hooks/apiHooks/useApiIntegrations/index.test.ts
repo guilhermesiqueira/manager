@@ -41,6 +41,7 @@ describe("useIntegrations", () => {
     const data = {
       name: "Integration 1",
       status: "active",
+      ticketAvailabilityInMinutes: null,
     };
     const file = "";
 
