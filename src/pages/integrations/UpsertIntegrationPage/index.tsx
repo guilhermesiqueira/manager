@@ -7,7 +7,9 @@ import { logError } from "services/crashReport";
 import Integration from "types/entities/Integration";
 import ChangeLanguageItem from "components/moleculars/ChangeLanguageItem";
 import theme from "styles/theme";
+import FileUpload from "components/moleculars/FileUpload";
 import * as S from "./styles";
+import NgoLogo from "./assets/ngo-logo.svg";
 
 export type Props = {
   isEdit?: boolean;
@@ -27,6 +29,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
   const { createApiIntegration, getApiIntegration, updateApiIntegration } =
     useApiIntegrations();
   const [integration, setIntegration] = useState<Integration>();
+  const [file, setFile] = useState<string>("");
 
   const fetchIntegration = useCallback(async () => {
     try {
@@ -73,9 +76,9 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     if (integration) {
       try {
         if (isEdit) {
-          await updateApiIntegration(integration.id, integration);
+          await updateApiIntegration(integration, file);
         } else {
-          await createApiIntegration(integration);
+          await createApiIntegration(integration, file);
         }
         navigate("/integrations");
       } catch (e) {
@@ -95,6 +98,18 @@ function UpsertIntegrationPage({ isEdit }: Props) {
 
   const handleCancel = () => {
     navigate("/integrations");
+  };
+
+  const handleLogoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const logo = e.target.files![0];
+
+    setFile(URL.createObjectURL(logo));
+    if (integration) {
+      setIntegration({
+        ...integration,
+        logo: logo as File,
+      });
+    }
   };
 
   useEffect(() => {
@@ -130,8 +145,15 @@ function UpsertIntegrationPage({ isEdit }: Props) {
       <S.Subtitle>{t("details")}</S.Subtitle>
       <S.TextInput
         name="name"
+        data-testid="name"
         value={integration?.name}
         onChange={handleChange}
+      />
+      <S.Subtitle>{t("integrationLogo")}</S.Subtitle>
+      <FileUpload
+        onChange={handleLogoChange}
+        logo={integration?.logo ?? NgoLogo}
+        value={file}
       />
       <S.Subtitle>{t("ticketAvailability")}</S.Subtitle>
       <S.TicketAvailabilityContainer color={getColorByCheboxStatus()}>
