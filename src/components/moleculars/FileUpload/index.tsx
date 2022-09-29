@@ -1,5 +1,6 @@
-import { Input } from "@chakra-ui/react";
 import uploadIcon from "assets/icons/upload-icon.svg";
+import { useTranslation } from "react-i18next";
+import LogoCard from "../LogoCard";
 import * as S from "./styles";
 
 type Props = {
@@ -9,29 +10,40 @@ type Props = {
 };
 
 export default function FileUpload({ onChange, logo, value }: Props) {
+  const { t } = useTranslation("translation", {
+    keyPrefix: "upload",
+  });
   return (
     <S.Container>
-      <S.FileUploadContainer>
-        <S.Logo src={value || logo} alt="logo" />
-
-        <S.FileIcon>
-          <Input
-            type="file"
-            height="100%"
-            width="100%"
-            position="absolute"
-            onChange={onChange}
-            data-testid="file-upload"
-            cursor="pointer"
-            top="0"
-            left="0"
-            opacity="0"
-            accept="image/*"
-          />
-
-          <S.UploadIcon src={uploadIcon} alt="file" />
-        </S.FileIcon>
-      </S.FileUploadContainer>
+      <LogoCard logo={value || logo}>
+        {logo || value ? (
+          <S.Box>
+            <S.Layer>
+              <S.InputField
+                type="file"
+                onChange={onChange}
+                data-testid="file-upload"
+                accept="image/*"
+              />
+              <S.UploadIcon src={uploadIcon} alt="file" />
+            </S.Layer>
+          </S.Box>
+        ) : (
+          <S.Box>
+            <S.InputField
+              type="file"
+              onChange={onChange}
+              data-testid="file-upload"
+              accept="image/*"
+            />
+            <S.UploadIcon src={uploadIcon} alt="file" />
+            <S.Text>
+              {t("helpText")} <span>{t("helpText2")}</span>
+            </S.Text>
+            <S.span>{t("supports")}</S.span>
+          </S.Box>
+        )}
+      </LogoCard>
     </S.Container>
   );
 }
