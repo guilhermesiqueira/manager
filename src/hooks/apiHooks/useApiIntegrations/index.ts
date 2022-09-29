@@ -1,4 +1,5 @@
 import integrationsApi from "services/api/integrationsApi";
+import Integration from "types/entities/Integration";
 import { useUploadFile } from "../useUploadFile";
 
 function useApiIntegrations() {
@@ -14,7 +15,7 @@ function useApiIntegrations() {
     return integration;
   }
 
-  async function createApiIntegration(data: any, file: any) {
+  async function createApiIntegration(data: Integration, file: string) {
     const upload = useUploadFile(data.logo);
 
     let integration;
@@ -36,7 +37,7 @@ function useApiIntegrations() {
     return integration;
   }
 
-  async function updateApiIntegration(data: any, file: any) {
+  async function updateApiIntegration(data: Integration, file: string) {
     const upload = useUploadFile(data.logo);
     let integration;
 

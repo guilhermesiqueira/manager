@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
 import { logError } from "services/crashReport";
+import ChangeLanguageItem from "components/moleculars/ChangeLanguageItem";
 import CopyableAddress from "components/atomics/CopyableAddress";
 import { Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
@@ -88,6 +89,9 @@ function IntegrationDetailsPage(): JSX.Element {
   return (
     <S.Container>
       <S.Title>{t("title", { integrationName })}</S.Title>
+
+      <ChangeLanguageItem />
+
       <IntegrationCard title={integrationName} value={integrationBalance} />
       <br />
 
@@ -113,7 +117,7 @@ function IntegrationDetailsPage(): JSX.Element {
       <S.InfoValue>{name}</S.InfoValue>
 
       <S.InfoName>{t("logo")}</S.InfoName>
-      <LogoCard logo={logo} />
+      <LogoCard logo={logo} empty={!logo} />
 
       <S.InfoName>{t("walletAddress")}</S.InfoName>
       <CopyableAddress text={integrationWallet?.publicKey} />

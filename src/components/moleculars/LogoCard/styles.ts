@@ -15,6 +15,7 @@ export const CenterBox = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   width: 100%;
   height: 100%;
 `;
@@ -23,4 +24,13 @@ export const Logo = styled(Image)`
   height: 100px;
   height: 100px;
   object-fit: cover;
+`;
+
+export const Box = styled.div``;
+export const Text = styled.h6`
+  line-height: 24px;
+  font-weight: 500;
+`;
+export const Icon = styled(Image)`
+  margin-bottom: 5px;
 `;

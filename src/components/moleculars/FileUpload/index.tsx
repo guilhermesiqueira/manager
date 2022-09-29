@@ -1,4 +1,5 @@
 import uploadIcon from "assets/icons/upload-icon.svg";
+import { useTranslation } from "react-i18next";
 import LogoCard from "../LogoCard";
 import * as S from "./styles";
 
@@ -9,6 +10,9 @@ type Props = {
 };
 
 export default function FileUpload({ onChange, logo, value }: Props) {
+  const { t } = useTranslation("translation", {
+    keyPrefix: "upload",
+  });
   return (
     <S.Container>
       <LogoCard logo={value || logo}>
@@ -34,9 +38,9 @@ export default function FileUpload({ onChange, logo, value }: Props) {
             />
             <S.UploadIcon src={uploadIcon} alt="file" />
             <S.Text>
-              Drop the logo image here or <span>browse</span>
+              {t("helpText")} <span>{t("helpText2")}</span>
             </S.Text>
-            <S.span>Supports: JPG, PNG</S.span>
+            <S.span>{t("supports")}</S.span>
           </S.Box>
         )}
       </LogoCard>

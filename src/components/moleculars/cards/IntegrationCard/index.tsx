@@ -45,8 +45,8 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
   return (
     <>
       <GridItem
-        height="97px"
-        width="176px"
+        height="110px"
+        width="200px"
         padding="16px"
         border="1px"
         borderColor={mediumGray}
