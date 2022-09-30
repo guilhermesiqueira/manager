@@ -13,6 +13,13 @@ function integrationApiFactory(params: Partial<Integration> = {}): Integration {
     ticketAvailabilityInMinutes: 30,
     created_at: "2020-01-01T00:00:00.000Z",
     updated_at: "2020-01-01T00:00:00.000Z",
+    integrationTasksAttributes: [
+      {
+        description: "Faça uma compra",
+        link: "Comprar",
+        linkAddress: "https://renner.com",
+      },
+    ],
   };
   return Object.assign(defaultValues, params) as Integration;
 }

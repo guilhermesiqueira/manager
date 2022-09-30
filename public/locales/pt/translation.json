@@ -59,11 +59,15 @@
       },
       "activityStatus": "Status de atividade",
       "details": "Detalhes",
+      "integrationName": "Nome da Integração",
       "ticketAvailability": "Disponibilidade de Ticket",
       "everydayAtMidnight": "Todo dia à meia noite",
       "integration": "integração",
       "every": "A cada",
-      "minutesAfterReceived": "minutos depois do recebimento"
+      "minutesAfterReceived": "minutos depois do recebimento",
+      "modalInfo": "Modal 'Sem tickets'",
+      "ctaDescription": "Modal 'Sem tickets'",
+      "ctaLink": "Link de conversão"
     }
   },
   "menu": {

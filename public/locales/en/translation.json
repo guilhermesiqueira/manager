@@ -59,11 +59,15 @@
       },
       "activityStatus": "Activity status",
       "details": "Details",
+      "integrationName": "Integration Name",
       "ticketAvailability": "Ticket availability",
       "everydayAtMidnight": "Everyday at midnight",
       "integration": "integration",
       "every": "Every",
-      "minutesAfterReceived": "minutes after received"
+      "minutesAfterReceived": "minutes after received",
+      "modalInfo": "'No tickets' modal",
+      "ctaDescription": "CTA Description",
+      "ctaLink": "Conversion link"
     }
   },
   "menu": {

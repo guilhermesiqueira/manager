@@ -1,5 +1,22 @@
 import styled from "styled-components";
 
+export const ContentSection = styled.div`
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+`;
+
+export const LeftSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+`;
+
+export const CheckboxContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+
 export const Title = styled.h2`
   text-transform: uppercase;
   margin: 4px 0;
@@ -11,6 +28,11 @@ export const Subtitle = styled.h3`
   margin-bottom: 12px;
 `;
 
+export const SubtitleDescription = styled.h4`
+  margin-bottom: 4px;
+  font-weight: 400;
+`;
+
 export const TextInput = styled.input`
   display: block;
   margin: 4px 0;
@@ -20,8 +42,12 @@ export const TextInput = styled.input`
   border-radius: 10px;
   padding: 8px 16px;
   color: ${({ theme }) => theme.colors.darkGray};
-  min-width: 400px;
-  margin-bottom: 30px;
+  max-width: 400px;
+
+  ::placeholder {
+    color: ${({ theme }) => theme.colors.gray};
+    opacity: 1;
+  }
 `;
 
 export const NumberInput = styled.input`
@@ -48,6 +74,7 @@ export const Span = styled.span`
   display: inline-block;
   vertical-align: middle;
   margin: 5px 7px 30px 4px;
+
   :first-letter {
     text-transform: uppercase;
   }
@@ -64,4 +91,10 @@ export const TicketAvailabilityContainer = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   margin-top: 24px;
+`;
+
+export const RightSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 50%;
 `;
