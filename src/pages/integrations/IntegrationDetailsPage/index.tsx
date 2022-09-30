@@ -58,6 +58,7 @@ function IntegrationDetailsPage(): JSX.Element {
     ticketAvailabilityInMinutes,
     createdAt,
     updatedAt,
+    integrationTask,
   } = integration;
 
   const fetchBlockchainIntegration = useCallback(async () => {
@@ -82,60 +83,78 @@ function IntegrationDetailsPage(): JSX.Element {
     contract?.on("PoolBalanceIncreased", () => {
       fetchBlockchainIntegration();
     });
-  }, [getIntegration]);
+  }, []);
 
   return (
-    <S.Container>
+    <S.Content>
       <S.Title>{t("title", { integrationName })}</S.Title>
 
       <ChangeLanguageItem />
+      <S.Container>
+        <S.LeftSection>
+          <S.IntegrationCardContainer>
+            <IntegrationCard
+              title={integrationName}
+              value={integrationBalance}
+            />
+          </S.IntegrationCardContainer>
+          <br />
 
-      <IntegrationCard title={integrationName} value={integrationBalance} />
-      <br />
+          <Link to="edit">
+            <Button
+              color={lightGray}
+              backgroundColor={darkGray}
+              leftIcon={<EditIcon />}
+            >
+              {t("edit")}
+            </Button>
+          </Link>
+          <S.InfoName>{t("status")}</S.InfoName>
+          <S.InfoValue style={{ color: `${statusColors[status]}` }}>
+            {status}
+          </S.InfoValue>
 
-      <Link to="edit">
-        <Button
-          color={lightGray}
-          backgroundColor={darkGray}
-          leftIcon={<EditIcon />}
-        >
-          {t("edit")}
-        </Button>
-      </Link>
+          <S.InfoName>{t("id")}</S.InfoName>
+          <S.InfoValue>{id}</S.InfoValue>
 
-      <S.InfoName>{t("status")}</S.InfoName>
-      <S.InfoValue style={{ color: `${statusColors[status]}` }}>
-        {status}
-      </S.InfoValue>
+          <S.InfoName>{t("name")}</S.InfoName>
+          <S.InfoValue>{name}</S.InfoValue>
+        </S.LeftSection>
 
-      <S.InfoName>{t("id")}</S.InfoName>
-      <S.InfoValue>{id}</S.InfoValue>
+        <S.RightSection>
+          <S.InfoName>{t("walletAddress")}</S.InfoName>
+          <CopyableAddress text={integrationWallet?.publicKey} />
 
-      <S.InfoName>{t("name")}</S.InfoName>
-      <S.InfoValue>{name}</S.InfoValue>
+          <S.InfoName>{t("integrationAddress")}</S.InfoName>
+          <CopyableAddress text={integrationAddress} />
 
-      <S.InfoName>{t("walletAddress")}</S.InfoName>
-      <CopyableAddress text={integrationWallet?.publicKey} />
+          <S.InfoName>{t("ticketAvailability")}</S.InfoName>
+          <S.InfoValue>
+            {ticketAvailabilityInMinutes
+              ? t("everyMinutes").replace(
+                  "{{minutes}}",
+                  ticketAvailabilityInMinutes,
+                )
+              : t("everydayAtMidnight")}
+          </S.InfoValue>
 
-      <S.InfoName>{t("integrationAddress")}</S.InfoName>
-      <CopyableAddress text={integrationAddress} />
+          <S.InfoName>{t("createdAt")}</S.InfoName>
+          <S.InfoValue>{dateFormatter(createdAt)}</S.InfoValue>
 
-      <S.InfoName>{t("ticketAvailability")}</S.InfoName>
-      <S.InfoValue>
-        {ticketAvailabilityInMinutes
-          ? t("everyMinutes").replace(
-              "{{minutes}}",
-              ticketAvailabilityInMinutes,
-            )
-          : t("everydayAtMidnight")}
-      </S.InfoValue>
+          <S.InfoName>{t("lastEditedAt")}</S.InfoName>
+          <S.InfoValue>{dateFormatter(updatedAt)}</S.InfoValue>
 
-      <S.InfoName>{t("createdAt")}</S.InfoName>
-      <S.InfoValue>{dateFormatter(createdAt)}</S.InfoValue>
+          <S.Subtitle>{t("modalInfo")}</S.Subtitle>
 
-      <S.InfoName>{t("lastEditedAt")}</S.InfoName>
-      <S.InfoValue>{dateFormatter(updatedAt)}</S.InfoValue>
-    </S.Container>
+          <S.InfoName>{t("ctaDescription")}</S.InfoName>
+          <S.InfoValue>{integrationTask?.description}</S.InfoValue>
+
+          <S.InfoName>{t("ctaLink")}</S.InfoName>
+          <S.InfoValue>{integrationTask?.link}</S.InfoValue>
+          <CopyableAddress text={integrationTask?.linkAddress} />
+        </S.RightSection>
+      </S.Container>
+    </S.Content>
   );
 }
 
