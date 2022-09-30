@@ -16,6 +16,7 @@ import RibonAbi from "utils/abis/RibonAbi.json";
 import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
 import { formatFromWei } from "lib/web3Helpers/etherFormatters";
 import theme from "styles/theme";
+import IntegrationTask from "types/entities/IntegrationTask";
 import * as S from "./styles";
 
 function IntegrationDetailsPage(): JSX.Element {
@@ -58,7 +59,7 @@ function IntegrationDetailsPage(): JSX.Element {
     ticketAvailabilityInMinutes,
     createdAt,
     updatedAt,
-    integrationTask,
+    integrationTasks,
   } = integration;
 
   const fetchBlockchainIntegration = useCallback(async () => {
@@ -144,14 +145,18 @@ function IntegrationDetailsPage(): JSX.Element {
           <S.InfoName>{t("lastEditedAt")}</S.InfoName>
           <S.InfoValue>{dateFormatter(updatedAt)}</S.InfoValue>
 
-          <S.Subtitle>{t("modalInfo")}</S.Subtitle>
+          {integrationTasks.map((integrationTask: IntegrationTask) => (
+            <div key={integrationTask.description}>
+              <S.Subtitle>{t("modalInfo")}</S.Subtitle>
 
-          <S.InfoName>{t("ctaDescription")}</S.InfoName>
-          <S.InfoValue>{integrationTask?.description}</S.InfoValue>
+              <S.InfoName>{t("ctaDescription")}</S.InfoName>
+              <S.InfoValue>{integrationTask?.description}</S.InfoValue>
 
-          <S.InfoName>{t("ctaLink")}</S.InfoName>
-          <S.InfoValue>{integrationTask?.link}</S.InfoValue>
-          <CopyableAddress text={integrationTask?.linkAddress} />
+              <S.InfoName>{t("ctaLink")}</S.InfoName>
+              <S.InfoValue>{integrationTask?.link}</S.InfoValue>
+              <CopyableAddress text={integrationTask?.linkAddress ?? ""} />
+            </div>
+          ))}
         </S.RightSection>
       </S.Container>
     </S.Content>
