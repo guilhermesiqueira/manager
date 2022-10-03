@@ -18,6 +18,7 @@ export type Props = {
 };
 
 type FormData = {
+  id?: string;
   description: string;
   link?: string;
   linkAddress?: string;
@@ -172,6 +173,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
   useEffect(() => {
     if (integration) {
       const tasksLength = Number(integration?.integrationTasks?.length) - 1;
+      setValue("id", integration?.integrationTasks[tasksLength]?.id);
       setValue(
         "description",
         integration?.integrationTasks[tasksLength]?.description,
