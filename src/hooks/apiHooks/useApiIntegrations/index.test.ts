@@ -25,15 +25,19 @@ describe("useIntegrations", () => {
 
   describe("#getApiIntegration", () => {
     const id = 1;
+    const currentLang = "en";
     beforeEach(() => {
       integrationsApi.getIntegration = jest.fn(() => ({} as any));
     });
 
     it("calls getApiIntegration with correct params", () => {
-      hook.getApiIntegration(id);
+      hook.getApiIntegration(id, currentLang);
 
       expect(integrationsApi.getIntegration).toHaveBeenCalled();
-      expect(integrationsApi.getIntegration).toHaveBeenCalledWith(id);
+      expect(integrationsApi.getIntegration).toHaveBeenCalledWith(
+        id,
+        currentLang,
+      );
     });
   });
 
