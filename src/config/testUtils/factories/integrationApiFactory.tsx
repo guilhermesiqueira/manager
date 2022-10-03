@@ -20,6 +20,13 @@ function integrationApiFactory(params: Partial<Integration> = {}): Integration {
         linkAddress: "https://renner.com",
       },
     ],
+    integrationTasks: [
+      {
+        description: "Faça uma compra",
+        link: "Comprar",
+        linkAddress: "https://renner.com",
+      },
+    ],
   };
   return Object.assign(defaultValues, params) as Integration;
 }

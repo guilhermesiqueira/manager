@@ -70,6 +70,13 @@ describe("useIntegrations", () => {
       status: "active",
       created_at: "2020-01-01T00:00:00.000Z",
       updated_at: "2020-01-01T00:00:00.000Z",
+      integrationTasks: [
+        {
+          description: "Faça uma compra",
+          link: "Comprar",
+          linkAddress: "https://renner.com",
+        },
+      ],
     };
     beforeEach(() => {
       integrationsApi.updateIntegration = jest.fn(() => ({} as any));

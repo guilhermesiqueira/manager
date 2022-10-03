@@ -11,5 +11,6 @@ export default interface Integration {
   ticketAvailabilityInMinutes: number | null;
   created_at?: string;
   updated_at?: string;
-  integrationTasksAttributes?: [IntegrationTask];
+  integrationTasksAttributes?: IntegrationTask[];
+  integrationTasks: IntegrationTask[];
 }
