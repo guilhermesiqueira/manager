@@ -44,7 +44,10 @@
       "everyMinutes": "A cada {{minutes}} minutos depois do recebimento",
       "createdAt": "Criado em",
       "lastEditedAt": "Última edição em",
-      "edit": "Editar"
+      "edit": "Editar",
+      "modalInfo": "Modal 'Sem tickets'",
+      "ctaDescription": "Modal 'Sem tickets'",
+      "ctaLink": "Link de conversão"
     },
     "upsertIntegrationPage": {
       "create": {
