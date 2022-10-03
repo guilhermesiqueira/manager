@@ -5,8 +5,11 @@ import { apiGet, apiPost, apiPut } from "..";
 const integrationsApi = {
   getIntegrationsList: (): Promise<AxiosResponse<Integration>> =>
     apiGet("integrations"),
-  getIntegration: (id: any): Promise<AxiosResponse<Integration>> =>
-    apiGet(`integrations/${id}`),
+  getIntegration: (
+    id: any,
+    language?: string,
+  ): Promise<AxiosResponse<Integration>> =>
+    apiGet(`integrations/${id}`, { headers: { Language: language ?? "en" } }),
   createIntegration: (data: any): Promise<AxiosResponse<Integration>> =>
     apiPost("integrations", data),
   updateIntegration: (

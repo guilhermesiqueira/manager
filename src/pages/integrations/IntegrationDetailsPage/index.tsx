@@ -19,6 +19,7 @@ import theme from "styles/theme";
 import IntegrationTask from "types/entities/IntegrationTask";
 import LogoCard from "components/moleculars/LogoCard";
 import InfoName from "components/moleculars/infoName";
+import { useLanguage } from "hooks/useLanguage";
 import * as S from "./styles";
 
 function IntegrationDetailsPage(): JSX.Element {
@@ -30,6 +31,8 @@ function IntegrationDetailsPage(): JSX.Element {
     active: green,
     inactive: red,
   };
+  const { currentLang } = useLanguage();
+
   const { currentNetwork } = useNetwork();
   const [integrationBalance, setIntegrationBalance] = useState<string>("...");
   const { getIntegration } = useIntegrations();
@@ -45,7 +48,7 @@ function IntegrationDetailsPage(): JSX.Element {
 
   const fetchIntegration = useCallback(async () => {
     try {
-      const integrationData = await getApiIntegration(id);
+      const integrationData = await getApiIntegration(id, currentLang);
       setIntegration(integrationData);
     } catch (e) {
       logError(e);

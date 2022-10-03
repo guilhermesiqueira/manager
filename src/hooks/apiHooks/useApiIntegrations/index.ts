@@ -9,8 +9,11 @@ function useApiIntegrations() {
     return integrations;
   }
 
-  async function getApiIntegration(id: any) {
-    const { data: integration } = await integrationsApi.getIntegration(id);
+  async function getApiIntegration(id: any, language?: string) {
+    const { data: integration } = await integrationsApi.getIntegration(
+      id,
+      language,
+    );
 
     return integration;
   }

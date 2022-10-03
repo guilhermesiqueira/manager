@@ -8,6 +8,7 @@ import Integration from "types/entities/Integration";
 import ChangeLanguageItem from "components/moleculars/ChangeLanguageItem";
 import theme from "styles/theme";
 import FileUpload from "components/moleculars/FileUpload";
+import { useLanguage } from "hooks/useLanguage";
 import IntegrationTaskForm from "./IntegrationTaskForm";
 import * as S from "./styles";
 
@@ -19,6 +20,8 @@ function UpsertIntegrationPage({ isEdit }: Props) {
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations.upsertIntegrationPage",
   });
+
+  const { currentLang } = useLanguage();
 
   const mode = isEdit ? "edit" : "create";
 
@@ -33,7 +36,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
 
   const fetchIntegration = useCallback(async () => {
     try {
-      const apiIntegration = await getApiIntegration(id);
+      const apiIntegration = await getApiIntegration(id, currentLang);
       setIntegration(apiIntegration);
     } catch (e) {
       logError(e);
