@@ -12,12 +12,14 @@ import { Link } from "react-router-dom";
 import EditIcon from "assets/icons/editIcon";
 import { useContract } from "hooks/useContract";
 import { useNetwork } from "hooks/useNetwork";
-import IntegrationTask from "types/entities/IntegrationTask";
 import RibonAbi from "utils/abis/RibonAbi.json";
 import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
 import { formatFromWei } from "lib/web3Helpers/etherFormatters";
 import theme from "styles/theme";
+import IntegrationTask from "types/entities/IntegrationTask";
 import LogoCard from "components/moleculars/LogoCard";
+import InfoName from "components/moleculars/infoName";
+import { useLanguage } from "hooks/useLanguage";
 import * as S from "./styles";
 
 function IntegrationDetailsPage(): JSX.Element {
@@ -29,8 +31,11 @@ function IntegrationDetailsPage(): JSX.Element {
     active: green,
     inactive: red,
   };
+  const { currentLang } = useLanguage();
+
   const { currentNetwork } = useNetwork();
   const [integrationBalance, setIntegrationBalance] = useState<string>("...");
+  const [mobilityAttributes, setMobilityAttributes] = useState<string[]>([]);
   const { getIntegration } = useIntegrations();
 
   const contract = useContract({
@@ -39,12 +44,14 @@ function IntegrationDetailsPage(): JSX.Element {
   });
 
   const [integration, setIntegration] = useState<any>([]);
-  const { getApiIntegration } = useApiIntegrations();
+  const { getApiIntegration, getMobilityAttributes } = useApiIntegrations();
   const { id } = useParams();
 
   const fetchIntegration = useCallback(async () => {
     try {
-      const integrationData = await getApiIntegration(id);
+      const integrationData = await getApiIntegration(id, currentLang);
+      const mobilityAttributesData = await getMobilityAttributes();
+      setMobilityAttributes(mobilityAttributesData);
       setIntegration(integrationData);
     } catch (e) {
       logError(e);
@@ -112,29 +119,27 @@ function IntegrationDetailsPage(): JSX.Element {
               {t("edit")}
             </Button>
           </Link>
-          <S.InfoName>{t("status")}</S.InfoName>
+          <InfoName>{t("status")}</InfoName>
           <S.InfoValue style={{ color: `${statusColors[status]}` }}>
             {status}
           </S.InfoValue>
 
-          <S.InfoName>{t("id")}</S.InfoName>
+          <InfoName>{t("id")}</InfoName>
           <S.InfoValue>{id}</S.InfoValue>
 
-          <S.InfoName>{t("name")}</S.InfoName>
+          <InfoName>{t("name")}</InfoName>
           <S.InfoValue>{name}</S.InfoValue>
 
-          <S.InfoName>{t("logo")}</S.InfoName>
+          <InfoName>{t("logo")}</InfoName>
           <LogoCard logo={logo} empty={!logo} />
-        </S.LeftSection>
 
-        <S.RightSection>
-          <S.InfoName>{t("walletAddress")}</S.InfoName>
+          <InfoName>{t("walletAddress")}</InfoName>
           <CopyableAddress text={integrationWallet?.publicKey} />
 
-          <S.InfoName>{t("integrationAddress")}</S.InfoName>
+          <InfoName>{t("integrationAddress")}</InfoName>
           <CopyableAddress text={integrationAddress} />
 
-          <S.InfoName>{t("ticketAvailability")}</S.InfoName>
+          <InfoName>{t("ticketAvailability")}</InfoName>
           <S.InfoValue>
             {ticketAvailabilityInMinutes
               ? t("everyMinutes").replace(
@@ -144,24 +149,33 @@ function IntegrationDetailsPage(): JSX.Element {
               : t("everydayAtMidnight")}
           </S.InfoValue>
 
-          <S.InfoName>{t("createdAt")}</S.InfoName>
+          <InfoName>{t("createdAt")}</InfoName>
           <S.InfoValue>{dateFormatter(createdAt)}</S.InfoValue>
 
-          <S.InfoName>{t("lastEditedAt")}</S.InfoName>
+          <InfoName>{t("lastEditedAt")}</InfoName>
           <S.InfoValue>{dateFormatter(updatedAt)}</S.InfoValue>
+        </S.LeftSection>
 
-          {integrationTasks.map((integrationTask: IntegrationTask) => (
-            <div key={integrationTask.description}>
-              <S.Subtitle>{t("modalInfo")}</S.Subtitle>
+        <S.RightSection>
+          {integrationTasks &&
+            integrationTasks.map((integrationTask: IntegrationTask) => (
+              <div key={integrationTask.description}>
+                <S.Subtitle>{t("modalInfo")}</S.Subtitle>
 
-              <S.InfoName>{t("ctaDescription")}</S.InfoName>
-              <S.InfoValue>{integrationTask?.description}</S.InfoValue>
+                <InfoName
+                  hasTranslation={mobilityAttributes?.includes("description")}
+                >
+                  {t("ctaDescription")}
+                </InfoName>
+                <S.InfoValue>{integrationTask?.description}</S.InfoValue>
 
-              <S.InfoName>{t("ctaLink")}</S.InfoName>
-              <S.InfoValue>{integrationTask?.link}</S.InfoValue>
-              <CopyableAddress text={integrationTask?.linkAddress ?? ""} />
-            </div>
-          ))}
+                <InfoName hasTranslation={mobilityAttributes?.includes("link")}>
+                  {t("ctaLink")}
+                </InfoName>
+                <S.InfoValue>{integrationTask?.link}</S.InfoValue>
+                <CopyableAddress text={integrationTask?.linkAddress ?? ""} />
+              </div>
+            ))}
         </S.RightSection>
       </S.Container>
     </S.Content>

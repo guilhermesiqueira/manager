@@ -2,8 +2,12 @@ import styled from "styled-components";
 
 export const ContentSection = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+    flex-direction: row;
+  }
 `;
 
 export const LeftSection = styled.div`

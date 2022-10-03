@@ -14,4 +14,5 @@ export default interface Integration {
   updated_at?: string;
   integrationTasksAttributes?: IntegrationTask[];
   integrationTasks: IntegrationTask[];
+  mobilityAttributes?: string[];
 }

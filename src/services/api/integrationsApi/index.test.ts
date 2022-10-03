@@ -28,7 +28,9 @@ describe("integrationsApi", () => {
     it("expects to send a post request with the correct info: url and params", () => {
       integrationsApi.createIntegration(data);
 
-      expect(api.post).toHaveBeenCalledWith(`/api/v1/integrations`, data);
+      expect(api.post).toHaveBeenCalledWith("/api/v1/integrations", data, {
+        headers: { Language: "en" },
+      });
     });
   });
 
@@ -64,7 +66,9 @@ describe("integrationsApi", () => {
     it("expects to send a put request with the correct info: url and params", () => {
       integrationsApi.updateIntegration(1, data);
 
-      expect(api.put).toHaveBeenCalledWith(`/api/v1/integrations/${id}`, data);
+      expect(api.put).toHaveBeenCalledWith(`/api/v1/integrations/${id}`, data, {
+        headers: { Language: "en" },
+      });
     });
   });
 });

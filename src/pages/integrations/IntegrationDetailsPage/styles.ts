@@ -2,9 +2,12 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   margin-top: 16px;
-  flex-direction: row;
+  flex-direction: column;
   display: flex;
   width: 100%;
+  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+    flex-direction: row;
+  }
 `;
 
 export const Content = styled.div`
@@ -21,11 +24,6 @@ export const Title = styled.h2`
 
 export const Subtitle = styled.h3`
   margin-top: 12px;
-`;
-
-export const InfoName = styled.h6`
-  margin-top: 16px;
-  margin-bottom: 4px;
 `;
 
 export const InfoValue = styled.p`

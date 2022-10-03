@@ -1,11 +1,13 @@
+import InfoName from "components/moleculars/infoName";
 import { useTranslation } from "react-i18next";
 import * as S from "./styles";
 
 export type Props = {
   register: any;
+  mobilityAttributes: string[];
 };
 
-function IntegrationTaskForm({ register }: Props) {
+function IntegrationTaskForm({ register, mobilityAttributes }: Props) {
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations.upsertIntegrationPage",
   });
@@ -14,14 +16,18 @@ function IntegrationTaskForm({ register }: Props) {
     <>
       <S.Subtitle>{t("modalInfo")}</S.Subtitle>
 
-      <S.SubtitleDescription>{t("ctaDescription")}</S.SubtitleDescription>
+      <InfoName hasTranslation={mobilityAttributes?.includes("description")}>
+        {t("ctaDescription")}
+      </InfoName>
 
       <S.TextInput
         {...register("description")}
         placeholder="Type description"
       />
 
-      <S.SubtitleDescription>{t("ctaLink")}</S.SubtitleDescription>
+      <InfoName hasTranslation={mobilityAttributes?.includes("link")}>
+        {t("ctaLink")}
+      </InfoName>
 
       <S.TextInput {...register("link")} placeholder="Link name" />
 

@@ -30,10 +30,10 @@ describe("useLanguage", () => {
 
   describe("when there is language defined", () => {
     it("gets the english language from localStorage", async () => {
-      setLocalStorageItem(LANGUAGE_KEY, "en-US");
+      setLocalStorageItem(LANGUAGE_KEY, "en");
       renderComponent(<TestPage />);
 
-      expect(screen.getByText("en-US")).toBeInTheDocument();
+      expect(screen.getByText("en")).toBeInTheDocument();
     });
     it("gets the portuguese language from localStorage", async () => {
       setLocalStorageItem(LANGUAGE_KEY, "pt-BR");
@@ -50,9 +50,9 @@ describe("useLanguage", () => {
           reload: jest.fn(),
         },
       });
-      setLocalStorageItem(LANGUAGE_KEY, "en-US");
+      setLocalStorageItem(LANGUAGE_KEY, "en");
       renderComponent(<TestPage />);
-      expect(screen.getByText("en-US")).toBeInTheDocument();
+      expect(screen.getByText("en")).toBeInTheDocument();
 
       fireEvent.click(screen.getByText("change language"));
       await waitForPromises();
