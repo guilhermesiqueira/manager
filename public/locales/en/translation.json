@@ -37,6 +37,7 @@
       "status": "Status",
       "id": "ID",
       "name": "Name",
+      "logo": "Integration logo",
       "walletAddress": "Wallet address",
       "integrationAddress": "Integration address",
       "ticketAvailability": "Ticket availability",
@@ -63,6 +64,7 @@
       "activityStatus": "Activity status",
       "details": "Details",
       "integrationName": "Integration Name",
+      "integrationLogo": "Integration logo",
       "ticketAvailability": "Ticket availability",
       "everydayAtMidnight": "Everyday at midnight",
       "integration": "integration",
@@ -82,5 +84,13 @@
     "buttonText": "Login com o Google",
     "errorText": "Login failed",
     "errorDescription": "Make sure your e-mail domain is @ribon.io"
+  },
+  "commom": {
+    "notRegistered": "Not Registered"
+  },
+  "upload": {
+    "helpText": "Drop the logo image here or ",
+    "helpText2": "browse", 
+    "supports": "Supports: JPG, PNG"
   }
 }

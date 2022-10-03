@@ -23,11 +23,6 @@ export const Subtitle = styled.h3`
   margin-top: 12px;
 `;
 
-export const InfoName = styled.h6`
-  margin-top: 16px;
-  margin-bottom: 4px;
-`;
-
 export const InfoValue = styled.p`
   color: ${({ theme }) => theme.colors.gray};
 `;

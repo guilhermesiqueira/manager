@@ -41,14 +41,16 @@ describe("useIntegrations", () => {
     const data = {
       name: "Integration 1",
       status: "active",
+      ticketAvailabilityInMinutes: null,
     };
+    const file = "";
 
     beforeEach(() => {
       integrationsApi.createIntegration = jest.fn(() => ({} as any));
     });
 
     it("calls createApiIntegration with correct params", () => {
-      hook.createApiIntegration(data);
+      hook.createApiIntegration(data, file);
 
       expect(integrationsApi.createIntegration).toHaveBeenCalled();
       expect(integrationsApi.createIntegration).toHaveBeenCalledWith(data);
@@ -71,12 +73,14 @@ describe("useIntegrations", () => {
       created_at: "2020-01-01T00:00:00.000Z",
       updated_at: "2020-01-01T00:00:00.000Z",
     };
+    const file = "";
+
     beforeEach(() => {
       integrationsApi.updateIntegration = jest.fn(() => ({} as any));
     });
 
     it("calls updateApiIntegration with correct params", () => {
-      hook.updateApiIntegration(id, data);
+      hook.updateApiIntegration(data, file);
 
       expect(integrationsApi.updateIntegration).toHaveBeenCalled();
       expect(integrationsApi.updateIntegration).toHaveBeenCalledWith(id, data);

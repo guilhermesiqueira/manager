@@ -1,3 +1,4 @@
+import InfoName from "components/moleculars/infoName";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import IntegrationTask from "types/entities/IntegrationTask";
@@ -26,7 +27,13 @@ function IntegrationTaskForm({ integrationId }: Props) {
     <>
       <S.Subtitle>{t("modalInfo")}</S.Subtitle>
 
-      <S.SubtitleDescription>{t("ctaDescription")}</S.SubtitleDescription>
+      <InfoName
+        hasTranslation={integrationTask?.mobilityAttributes?.includes(
+          "description",
+        )}
+      >
+        {t("ctaDescription")}
+      </InfoName>
 
       <S.TextInput
         name="description"
@@ -35,7 +42,11 @@ function IntegrationTaskForm({ integrationId }: Props) {
         placeholder="Type description"
       />
 
-      <S.SubtitleDescription>{t("ctaLink")}</S.SubtitleDescription>
+      <InfoName
+        hasTranslation={integrationTask?.mobilityAttributes?.includes("link")}
+      >
+        {t("ctaLink")}
+      </InfoName>
 
       <S.TextInput
         name="link"
