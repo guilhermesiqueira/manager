@@ -2,6 +2,7 @@ import { Button } from "@chakra-ui/react";
 import useApiIntegrations from "hooks/apiHooks/useApiIntegrations";
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router";
 import { logError } from "services/crashReport";
 import Integration from "types/entities/Integration";
@@ -14,6 +15,12 @@ export type Props = {
   isEdit?: boolean;
 };
 
+type FormData = {
+  description: string;
+  link?: string;
+  linkAddress?: string;
+};
+
 function UpsertIntegrationPage({ isEdit }: Props) {
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations.upsertIntegrationPage",
@@ -24,10 +31,10 @@ function UpsertIntegrationPage({ isEdit }: Props) {
   const { lightGray, darkGray, gray } = theme.colors;
   const navigate = useNavigate();
   const { id } = useParams();
-
   const { createApiIntegration, getApiIntegration, updateApiIntegration } =
     useApiIntegrations();
   const [integration, setIntegration] = useState<Integration>();
+  const { register, setValue, getValues } = useForm<FormData>();
 
   const fetchIntegration = useCallback(async () => {
     try {
@@ -72,11 +79,18 @@ function UpsertIntegrationPage({ isEdit }: Props) {
 
   const handleSave = async () => {
     if (integration) {
+      const integrationObject = {
+        ...integration,
+        integrationTasksAttributes: [getValues()],
+      };
+
+      await setIntegration(integrationObject);
+
       try {
         if (isEdit) {
-          await updateApiIntegration(integration.id, integration);
+          await updateApiIntegration(integration.id, integrationObject);
         } else {
-          await createApiIntegration(integration);
+          await createApiIntegration(integrationObject);
         }
         navigate("/integrations");
       } catch (e) {
@@ -85,7 +99,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     }
   };
 
-  const getColorByCheboxStatus = () => {
+  const getColorByCheckboxStatus = () => {
     if (integration) {
       return integration?.ticketAvailabilityInMinutes === null
         ? gray
@@ -106,11 +120,41 @@ function UpsertIntegrationPage({ isEdit }: Props) {
         name: "New Integration",
         status: "active",
         ticketAvailabilityInMinutes: null,
+        integrationTasksAttributes: [
+          {
+            description: "Description",
+            link: "link name",
+            linkAddress: "link address",
+          },
+        ],
+        integrationTasks: [
+          {
+            description: "Description",
+            link: "link name",
+            linkAddress: "link address",
+          },
+        ],
       };
 
       setIntegration(newIntegration);
     }
   }, []);
+
+  useEffect(() => {
+    if (integration) {
+      const tasksLength = Number(integration?.integrationTasks?.length) - 1;
+
+      setValue(
+        "description",
+        integration?.integrationTasks[tasksLength]?.description,
+      );
+      setValue("link", integration?.integrationTasks[tasksLength]?.link);
+      setValue(
+        "linkAddress",
+        integration?.integrationTasks[tasksLength]?.linkAddress,
+      );
+    }
+  }, [integration]);
 
   return (
     <>
@@ -140,7 +184,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
             onChange={handleChange}
           />
           <S.Subtitle>{t("ticketAvailability")}</S.Subtitle>
-          <S.TicketAvailabilityContainer color={getColorByCheboxStatus()}>
+          <S.TicketAvailabilityContainer color={getColorByCheckboxStatus()}>
             {t("every")}
             <S.NumberInput
               value={integration?.ticketAvailabilityInMinutes || ""}
@@ -183,7 +227,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
           </S.ButtonContainer>
         </S.LeftSection>
         <S.RightSection>
-          <IntegrationTaskForm integrationId={id} />
+          <IntegrationTaskForm register={register} />
         </S.RightSection>
       </S.ContentSection>
     </>
