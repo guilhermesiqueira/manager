@@ -53,6 +53,7 @@
     "testCoverage": "react-scripts test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.ts src/**/*.tsx && prettier --check src/**/*.ts src/**/*.tsx",
+    "lint:css": "stylelint src/**/styles.ts",
     "generate": "yarn plop --plopfile ./generators/plopfile.js",
     "storybook": "start-storybook -p 6006 -s public"
   },
@@ -107,7 +108,32 @@
     "jest-styled-components": "^7.0.8",
     "plop": "^3.1.1",
     "prettier": "^2.7.1",
-    "react-router-dom": "^6.3.0"
+    "react-router-dom": "^6.3.0",
+    "stylelint": "^14.10.0",
+    "stylelint-config-prettier": "^9.0.3",
+    "stylelint-config-recommended": "^9.0.0",
+    "stylelint-config-standard-scss": "^3.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-custom-processor-loader": "^0.6.0",
+    "stylelint-order": "^5.0.0",
+    "stylelint-processor-styled-components": "^1.10.0"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "eslint",
+      "prettier --check"
+    ],
+    "*.js": [
+      "eslint",
+      "prettier --check"
+    ],
+    "*.tsx": [
+      "eslint",
+      "prettier --check"
+    ],
+    "styles.ts": [
+      "stylelint"
+    ]
   },
   "jest": {
     "transformIgnorePatterns": [
