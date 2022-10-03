@@ -6,9 +6,10 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router";
 import { logError } from "services/crashReport";
 import Integration from "types/entities/Integration";
-import ChangeLanguageItem from "components/moleculars/ChangeLanguageItem";
 import theme from "styles/theme";
 import IntegrationTaskForm from "./IntegrationTaskForm";
+import ChangeLanguageItem from "components/moleculars/ChangeLanguageItem";
+import FileUpload from "components/moleculars/FileUpload";
 import * as S from "./styles";
 
 export type Props = {
@@ -35,6 +36,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     useApiIntegrations();
   const [integration, setIntegration] = useState<Integration>();
   const { register, setValue, getValues } = useForm<FormData>();
+  const [file, setFile] = useState<string>("");
 
   const fetchIntegration = useCallback(async () => {
     try {
@@ -88,9 +90,9 @@ function UpsertIntegrationPage({ isEdit }: Props) {
 
       try {
         if (isEdit) {
-          await updateApiIntegration(integration.id, integrationObject);
+          await updateApiIntegration(integrationObject, file);
         } else {
-          await createApiIntegration(integrationObject);
+          await createApiIntegration(integrationObject, file);
         }
         navigate("/integrations");
       } catch (e) {
@@ -110,6 +112,18 @@ function UpsertIntegrationPage({ isEdit }: Props) {
 
   const handleCancel = () => {
     navigate("/integrations");
+  };
+
+  const handleLogoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const logo = e.target.files![0];
+
+    setFile(URL.createObjectURL(logo));
+    if (integration) {
+      setIntegration({
+        ...integration,
+        logo: logo as File,
+      });
+    }
   };
 
   useEffect(() => {
@@ -182,6 +196,12 @@ function UpsertIntegrationPage({ isEdit }: Props) {
             name="name"
             value={integration?.name}
             onChange={handleChange}
+          />
+          <S.Subtitle>{t("integrationLogo")}</S.Subtitle>
+          <FileUpload
+            onChange={handleLogoChange}
+            logo={integration?.logo}
+            value={file}
           />
           <S.Subtitle>{t("ticketAvailability")}</S.Subtitle>
           <S.TicketAvailabilityContainer color={getColorByCheckboxStatus()}>

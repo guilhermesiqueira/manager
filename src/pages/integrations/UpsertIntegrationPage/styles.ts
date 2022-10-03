@@ -90,7 +90,7 @@ export const TicketAvailabilityContainer = styled.div`
 
 export const ButtonContainer = styled.div`
   display: flex;
-  margin-top: 24px;
+  margin: 24px 0;
 `;
 
 export const RightSection = styled.div`

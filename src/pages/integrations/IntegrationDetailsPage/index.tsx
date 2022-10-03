@@ -12,11 +12,12 @@ import { Link } from "react-router-dom";
 import EditIcon from "assets/icons/editIcon";
 import { useContract } from "hooks/useContract";
 import { useNetwork } from "hooks/useNetwork";
+import IntegrationTask from "types/entities/IntegrationTask";
 import RibonAbi from "utils/abis/RibonAbi.json";
 import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
 import { formatFromWei } from "lib/web3Helpers/etherFormatters";
 import theme from "styles/theme";
-import IntegrationTask from "types/entities/IntegrationTask";
+import LogoCard from "components/moleculars/LogoCard";
 import * as S from "./styles";
 
 function IntegrationDetailsPage(): JSX.Element {
@@ -54,6 +55,7 @@ function IntegrationDetailsPage(): JSX.Element {
   const {
     status,
     name,
+    logo,
     integrationWallet,
     integrationAddress,
     ticketAvailabilityInMinutes,
@@ -120,6 +122,9 @@ function IntegrationDetailsPage(): JSX.Element {
 
           <S.InfoName>{t("name")}</S.InfoName>
           <S.InfoValue>{name}</S.InfoValue>
+
+          <S.InfoName>{t("logo")}</S.InfoName>
+          <LogoCard logo={logo} empty={!logo} />
         </S.LeftSection>
 
         <S.RightSection>

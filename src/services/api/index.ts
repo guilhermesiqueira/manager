@@ -1,9 +1,9 @@
 import Axios, { AxiosRequestConfig } from "axios";
 import camelCaseKeys from "camelcase-keys";
 import snakeCaseKeys from "snakecase-keys";
-import { RIBON_API } from "utils/constants";
+// import { RIBON_API } from "utils/constants";
 
-export const baseURL = RIBON_API;
+export const baseURL = "http://localhost:3001";
 export const API_SCOPE = "/api/v1";
 
 const api = Axios.create({
