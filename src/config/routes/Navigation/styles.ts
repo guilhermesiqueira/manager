@@ -7,10 +7,12 @@ type Props = {
 };
 
 export const Container = styled.div`
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  position: absolute;
   width: 100%;
   align-self: flex-end;
   text-align: center;

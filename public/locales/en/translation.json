@@ -45,7 +45,10 @@
       "everyMinutes": "Every {{minutes}} minutes after received",
       "createdAt": "Created At",
       "lastEditedAt": "Last Edited At",
-      "edit": "Edit"
+      "edit": "Edit",
+      "modalInfo": "'No tickets' modal",
+      "ctaDescription": "CTA Description",
+      "ctaLink": "Conversion link"
     },
     "upsertIntegrationPage": {
       "create": {
@@ -60,12 +63,16 @@
       },
       "activityStatus": "Activity status",
       "details": "Details",
+      "integrationName": "Integration Name",
       "integrationLogo": "Integration logo",
       "ticketAvailability": "Ticket availability",
       "everydayAtMidnight": "Everyday at midnight",
       "integration": "integration",
       "every": "Every",
-      "minutesAfterReceived": "minutes after received"
+      "minutesAfterReceived": "minutes after received",
+      "modalInfo": "'No tickets' modal",
+      "ctaDescription": "CTA Description",
+      "ctaLink": "Conversion link"
     }
   },
   "menu": {
@@ -83,7 +90,7 @@
   },
   "upload": {
     "helpText": "Drop the logo image here or ",
-    "helpText2": "browse", 
+    "helpText2": "browse",
     "supports": "Supports: JPG, PNG"
   }
 }
