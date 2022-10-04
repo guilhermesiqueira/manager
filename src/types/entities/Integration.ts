@@ -1,3 +1,4 @@
+import IntegrationTask from "./IntegrationTask";
 import IntegrationWallet from "./IntegrationWallet";
 
 export default interface Integration {
@@ -11,4 +12,7 @@ export default interface Integration {
   ticketAvailabilityInMinutes: number | null;
   created_at?: string;
   updated_at?: string;
+  integrationTasksAttributes?: IntegrationTask[];
+  integrationTasks: IntegrationTask[];
+  mobilityAttributes?: string[];
 }
