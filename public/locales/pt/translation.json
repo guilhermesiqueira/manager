@@ -61,6 +61,8 @@
       "details": "Detalhes",
       "ticketAvailability": "Disponibilidade de Ticket",
       "everydayAtMidnight": "Todo dia à meia noite",
+      "integrationLogo": "Logo da Integração",
+      "integrationLink": "Link da Integração",
       "integration": "integração",
       "every": "A cada",
       "minutesAfterReceived": "minutos depois do recebimento"

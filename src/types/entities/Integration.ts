@@ -8,6 +8,7 @@ export default interface Integration {
   uniqueAddress?: string;
   status: string;
   logo?: any;
+  webhookLink?: string;
   ticketAvailabilityInMinutes: number | null;
   created_at?: string;
   updated_at?: string;

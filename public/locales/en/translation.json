@@ -61,6 +61,7 @@
       "activityStatus": "Activity status",
       "details": "Details",
       "integrationLogo": "Integration logo",
+      "integrationLink": "Integration link",
       "ticketAvailability": "Ticket availability",
       "everydayAtMidnight": "Everyday at midnight",
       "integration": "integration",

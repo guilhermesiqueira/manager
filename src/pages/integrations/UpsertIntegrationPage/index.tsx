@@ -86,7 +86,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     }
   };
 
-  const getColorByCheboxStatus = () => {
+  const getColorByCheckboxStatus = () => {
     if (integration) {
       return integration?.ticketAvailabilityInMinutes === null
         ? gray
@@ -154,8 +154,15 @@ function UpsertIntegrationPage({ isEdit }: Props) {
         logo={integration?.logo}
         value={file}
       />
+      <S.Subtitle>{t("integrationLink")}</S.Subtitle>
+      <S.TextInput
+        name="webhookLink"
+        placeholder="https://globo.com/callback/123"
+        value={integration?.webhookLink || ""}
+        onChange={handleChange}
+      />
       <S.Subtitle>{t("ticketAvailability")}</S.Subtitle>
-      <S.TicketAvailabilityContainer color={getColorByCheboxStatus()}>
+      <S.TicketAvailabilityContainer color={getColorByCheckboxStatus()}>
         {t("every")}
         <S.NumberInput
           value={integration?.ticketAvailabilityInMinutes || ""}
