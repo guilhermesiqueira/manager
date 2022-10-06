@@ -40,6 +40,7 @@
       "logo": "Integration logo",
       "walletAddress": "Wallet address",
       "integrationAddress": "Integration address",
+      "webhookLink": "Webhook link",
       "ticketAvailability": "Ticket availability",
       "everydayAtMidnight": "Everyday at midnight",
       "everyMinutes": "Every {{minutes}} minutes after received",
