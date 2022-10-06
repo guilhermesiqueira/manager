@@ -39,7 +39,7 @@
       "name": "Nome",
       "walletAddress": "Endereço da carteira",
       "integrationAddress": "Endereço da integração",
-      "webhookLink": "Link do Webhook",
+      "webhookUrl": "Link do Webhook",
       "ticketAvailability": "Disponibilidade de Ticket",
       "everydayAtMidnight": "Todo dia à meia noite",
       "everyMinutes": "A cada {{minutes}} minutos depois do recebimento",
@@ -63,7 +63,7 @@
       "ticketAvailability": "Disponibilidade de Ticket",
       "everydayAtMidnight": "Todo dia à meia noite",
       "integrationLogo": "Logo da Integração",
-      "integrationLink": "Link da Integração",
+      "webhookUrl": "Link do Webhook",
       "integration": "integração",
       "every": "A cada",
       "minutesAfterReceived": "minutos depois do recebimento"

@@ -157,7 +157,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
       <S.Subtitle>{t("integrationLink")}</S.Subtitle>
       <S.TextInput
         name="webhookUrl"
-        placeholder="https://globo.com/callback/123"
+        placeholder="https://webhook.com/123"
         value={integration?.webhookUrl || ""}
         onChange={handleChange}
       />
