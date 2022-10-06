@@ -2,22 +2,22 @@ import styled from "styled-components";
 import { Pie } from "react-chartjs-2";
 
 export const Container = styled.div`
-  display: flex;
-  flex-flow: row wrap;
   width: 256px;
-  box-sizing: border-box;
-  position: absolute;
-  background: ${({ theme }) => theme.colors.white};
+  padding: 24px;
   border: 1px solid ${({ theme }) => theme.colors.mediumGray};
   border-radius: 16px;
+  position: absolute;
+  display: flex;
+  flex-flow: row wrap;
+  box-sizing: border-box;
   text-align: left;
-  padding: 24px;
+  background: ${({ theme }) => theme.colors.white};
 `;
 
 export const MainText = styled.div`
-  color: ${({ theme }) => theme.colors.darkGray};
   padding-bottom: 16px;
   line-height: 1.6;
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 export const MainValue = styled.p`
@@ -25,8 +25,8 @@ export const MainValue = styled.p`
 `;
 
 export const Teste = styled.div`
-  display: flex;
   width: 100%;
+  display: flex;
   justify-content: space-between;
 `;
 
@@ -43,5 +43,5 @@ export const SecondaryRightValue = styled.div`
 `;
 
 export const Graph = styled(Pie)`
-  padding: 32px 16px 0px 16px;
+  padding: 32px 16px 0;
 `;

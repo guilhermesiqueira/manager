@@ -6,18 +6,14 @@ export const Container = styled.div`
 
 // create a component to table
 export const Table = styled.table`
-  border-collapse: collapse;
-  margin: 25px 0;
   min-width: 500px;
+  margin: 25px 0;
+  border-collapse: collapse;
 
-  thead tr {
-    color: ${({ theme }) => theme.colors.darkGray};
-    text-align: left;
-  }
-
-  tbody tr th {
-    color: ${({ theme }) => theme.colors.gray};
-    text-align: left;
+  tr,
+  thead tr,
+  tbody {
+    border-bottom: 1px solid #ddd;
   }
 
   td,
@@ -25,10 +21,14 @@ export const Table = styled.table`
     padding: 10px 15px;
   }
 
-  thead tr,
-  tbody,
-  tr {
-    border-bottom: 1px solid #dddddd;
+  tbody tr th {
+    text-align: left;
+    color: ${({ theme }) => theme.colors.gray};
+  }
+
+  thead tr {
+    text-align: left;
+    color: ${({ theme }) => theme.colors.darkGray};
   }
 `;
 

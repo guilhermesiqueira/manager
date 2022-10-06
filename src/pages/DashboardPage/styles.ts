@@ -6,7 +6,7 @@ export const Container = styled.div`
 
 export const Title = styled.h2`
   text-transform: uppercase;
-  margin: 4px 0;
+  margin: 84px 0 87;
   margin-bottom: 87px;
   margin-top: 84px;
 `;
