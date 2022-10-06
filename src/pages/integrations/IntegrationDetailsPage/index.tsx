@@ -133,9 +133,9 @@ function IntegrationDetailsPage(): JSX.Element {
       <S.InfoValue>
         {ticketAvailabilityInMinutes
           ? t("everyMinutes").replace(
-            "{{minutes}}",
-            ticketAvailabilityInMinutes,
-          )
+              "{{minutes}}",
+              ticketAvailabilityInMinutes,
+            )
           : t("everydayAtMidnight")}
       </S.InfoValue>
 
