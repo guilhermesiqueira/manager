@@ -45,7 +45,10 @@
       "everyMinutes": "A cada {{minutes}} minutos depois do recebimento",
       "createdAt": "Criado em",
       "lastEditedAt": "Última edição em",
-      "edit": "Editar"
+      "edit": "Editar",
+      "modalInfo": "Modal 'Sem tickets'",
+      "ctaDescription": "Modal 'Sem tickets'",
+      "ctaLink": "Link de conversão"
     },
     "upsertIntegrationPage": {
       "create": {
@@ -60,13 +63,17 @@
       },
       "activityStatus": "Status de atividade",
       "details": "Detalhes",
+      "integrationName": "Nome da Integração",
       "ticketAvailability": "Disponibilidade de Ticket",
       "everydayAtMidnight": "Todo dia à meia noite",
       "integrationLogo": "Logo da Integração",
       "webhookUrl": "Link do Webhook",
       "integration": "integração",
       "every": "A cada",
-      "minutesAfterReceived": "minutos depois do recebimento"
+      "minutesAfterReceived": "minutos depois do recebimento",
+      "modalInfo": "Modal 'Sem tickets'",
+      "ctaDescription": "Modal 'Sem tickets'",
+      "ctaLink": "Link de conversão"
     }
   },
   "menu": {

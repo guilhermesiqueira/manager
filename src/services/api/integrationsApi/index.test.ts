@@ -28,7 +28,9 @@ describe("integrationsApi", () => {
     it("expects to send a post request with the correct info: url and params", () => {
       integrationsApi.createIntegration(data);
 
-      expect(api.post).toHaveBeenCalledWith(`/api/v1/integrations`, data);
+      expect(api.post).toHaveBeenCalledWith("/api/v1/integrations", data, {
+        headers: { Language: "en" },
+      });
     });
   });
 
@@ -48,6 +50,13 @@ describe("integrationsApi", () => {
       ticketAvailabilityInMinutes: 60,
       created_at: "2020-01-01T00:00:00.000Z",
       updated_at: "2020-01-01T00:00:00.000Z",
+      integrationTasks: [
+        {
+          description: "Faça uma compra",
+          link: "Comprar",
+          linkAddress: "https://renner.com",
+        },
+      ],
     };
 
     beforeEach(() => {
@@ -57,7 +66,9 @@ describe("integrationsApi", () => {
     it("expects to send a put request with the correct info: url and params", () => {
       integrationsApi.updateIntegration(1, data);
 
-      expect(api.put).toHaveBeenCalledWith(`/api/v1/integrations/${id}`, data);
+      expect(api.put).toHaveBeenCalledWith(`/api/v1/integrations/${id}`, data, {
+        headers: { Language: "en" },
+      });
     });
   });
 });
