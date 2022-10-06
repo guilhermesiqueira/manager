@@ -104,7 +104,9 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     if (integration) {
       const integrationObject = {
         ...integration,
-        integrationTasksAttributes: [getValues()],
+        integrationTasksAttributes: getValues().description
+          ? [getValues()]
+          : [],
       };
 
       await setIntegration(integrationObject);
