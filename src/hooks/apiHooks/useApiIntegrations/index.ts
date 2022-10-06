@@ -1,5 +1,6 @@
 import integrationsApi from "services/api/integrationsApi";
 import Integration from "types/entities/Integration";
+import { useUploadFile } from "../useUploadFile";
 
 function useApiIntegrations() {
   async function getAllApiIntegrations() {
@@ -8,30 +9,89 @@ function useApiIntegrations() {
     return integrations;
   }
 
-  async function getApiIntegration(id: any) {
-    const { data: integration } = await integrationsApi.getIntegration(id);
+  async function getMobilityAttributes() {
+    const { data } = await integrationsApi.getMobilityAttributes();
 
-    return integration;
+    return data;
   }
 
-  async function createApiIntegration(data: any) {
-    const { data: integration } = await integrationsApi.createIntegration(data);
-
-    return integration;
-  }
-
-  async function updateApiIntegration(id: any, data: Integration) {
-    const { data: integration } = await integrationsApi.updateIntegration(
+  async function getApiIntegration(id: any, language?: string) {
+    const { data: integration } = await integrationsApi.getIntegration(
       id,
-      data,
+      language,
     );
 
+    return integration;
+  }
+
+  async function createApiIntegration(
+    data: Integration,
+    file: string,
+    language?: string,
+  ) {
+    const upload = useUploadFile(data.logo);
+
+    let integration;
+
+    if (file) {
+      upload.create((error: Error, blob: any) => {
+        if (error) {
+          throw error;
+        } else {
+          integration = integrationsApi.createIntegration(
+            {
+              ...data,
+              logo: blob.signed_id,
+            },
+            language,
+          );
+        }
+      });
+    } else {
+      integration = integrationsApi.createIntegration(data, language);
+    }
+    return integration;
+  }
+
+  async function updateApiIntegration(
+    data: Integration,
+    file: string,
+    language?: string,
+  ) {
+    const upload = useUploadFile(data.logo);
+    let integration;
+
+    if (file) {
+      upload.create((error: Error, blob: any) => {
+        if (error) {
+          throw error;
+        } else {
+          integration = integrationsApi.updateIntegration(
+            data.id,
+            {
+              ...data,
+              logo: blob.signed_id,
+            },
+            language,
+          );
+        }
+      });
+    } else {
+      const currentIntegration = data;
+      delete currentIntegration.logo;
+      integration = integrationsApi.updateIntegration(
+        data.id,
+        currentIntegration,
+        language,
+      );
+    }
     return integration;
   }
 
   return {
     createApiIntegration,
     getAllApiIntegrations,
+    getMobilityAttributes,
     getApiIntegration,
     updateApiIntegration,
   };

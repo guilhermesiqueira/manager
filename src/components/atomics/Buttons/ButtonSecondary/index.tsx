@@ -34,4 +34,5 @@ ButtonSecondary.defaultProps = {
   borderColor: "gray",
   leftIcon: "",
 };
+
 export default ButtonSecondary;

@@ -5,14 +5,26 @@ import { apiGet, apiPost, apiPut } from "..";
 const integrationsApi = {
   getIntegrationsList: (): Promise<AxiosResponse<Integration>> =>
     apiGet("integrations"),
-  getIntegration: (id: any): Promise<AxiosResponse<Integration>> =>
-    apiGet(`integrations/${id}`),
-  createIntegration: (data: any): Promise<AxiosResponse<Integration>> =>
-    apiPost("integrations", data),
+  getMobilityAttributes: (): Promise<AxiosResponse<string[]>> =>
+    apiGet("integrations_mobility_attributes"),
+  getIntegration: (
+    id: any,
+    language?: string,
+  ): Promise<AxiosResponse<Integration>> =>
+    apiGet(`integrations/${id}`, { headers: { Language: language ?? "en" } }),
+  createIntegration: (
+    data: any,
+    language?: string,
+  ): Promise<AxiosResponse<Integration>> =>
+    apiPost("integrations", data, { headers: { Language: language ?? "en" } }),
   updateIntegration: (
     id: any,
     data: Integration,
-  ): Promise<AxiosResponse<Integration>> => apiPut(`integrations/${id}`, data),
+    language?: string,
+  ): Promise<AxiosResponse<Integration>> =>
+    apiPut(`integrations/${id}`, data, {
+      headers: { Language: language ?? "en" },
+    }),
 };
 
 export default integrationsApi;

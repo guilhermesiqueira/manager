@@ -4,6 +4,7 @@ export const Container = styled.div`
   width: 100%;
   background: ${({ theme }) => theme.colors.lightGray};
   padding-left: 15%;
+  padding-bottom: 70px;
   box-shadow: 0px 0px 20px ${({ theme }) => theme.colors.lightShadow};
 `;
 

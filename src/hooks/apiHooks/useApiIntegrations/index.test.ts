@@ -25,15 +25,19 @@ describe("useIntegrations", () => {
 
   describe("#getApiIntegration", () => {
     const id = 1;
+    const currentLang = "en";
     beforeEach(() => {
       integrationsApi.getIntegration = jest.fn(() => ({} as any));
     });
 
     it("calls getApiIntegration with correct params", () => {
-      hook.getApiIntegration(id);
+      hook.getApiIntegration(id, currentLang);
 
       expect(integrationsApi.getIntegration).toHaveBeenCalled();
-      expect(integrationsApi.getIntegration).toHaveBeenCalledWith(id);
+      expect(integrationsApi.getIntegration).toHaveBeenCalledWith(
+        id,
+        currentLang,
+      );
     });
   });
 
@@ -41,17 +45,30 @@ describe("useIntegrations", () => {
     const data = {
       name: "Integration 1",
       status: "active",
+      ticketAvailabilityInMinutes: null,
+      integrationTasks: [
+        {
+          description: "Faça uma compra",
+          link: "Comprar",
+          linkAddress: "https://renner.com",
+        },
+      ],
     };
+    const file = "";
+    const currentLang = "en";
 
     beforeEach(() => {
       integrationsApi.createIntegration = jest.fn(() => ({} as any));
     });
 
     it("calls createApiIntegration with correct params", () => {
-      hook.createApiIntegration(data);
+      hook.createApiIntegration(data, file, currentLang);
 
       expect(integrationsApi.createIntegration).toHaveBeenCalled();
-      expect(integrationsApi.createIntegration).toHaveBeenCalledWith(data);
+      expect(integrationsApi.createIntegration).toHaveBeenCalledWith(
+        data,
+        currentLang,
+      );
     });
   });
 
@@ -70,16 +87,30 @@ describe("useIntegrations", () => {
       status: "active",
       created_at: "2020-01-01T00:00:00.000Z",
       updated_at: "2020-01-01T00:00:00.000Z",
+      integrationTasks: [
+        {
+          description: "Faça uma compra",
+          link: "Comprar",
+          linkAddress: "https://renner.com",
+        },
+      ],
     };
+    const file = "";
+    const currentLang = "en";
+
     beforeEach(() => {
       integrationsApi.updateIntegration = jest.fn(() => ({} as any));
     });
 
     it("calls updateApiIntegration with correct params", () => {
-      hook.updateApiIntegration(id, data);
+      hook.updateApiIntegration(data, file, currentLang);
 
       expect(integrationsApi.updateIntegration).toHaveBeenCalled();
-      expect(integrationsApi.updateIntegration).toHaveBeenCalledWith(id, data);
+      expect(integrationsApi.updateIntegration).toHaveBeenCalledWith(
+        id,
+        data,
+        currentLang,
+      );
     });
   });
 });
