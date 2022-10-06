@@ -7,7 +7,8 @@ import { logError } from "services/crashReport";
 import useContractBalance from "hooks/apiHooks/useContractBalance";
 import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
 import { useContract } from "hooks/useContract";
-import { formatFromWei } from "lib/web3Helpers/etherFormatters";
+import useTokenDecimals from "hooks/useTokenDecimals";
+import { formatFromDecimals } from "lib/web3Helpers/etherFormatters";
 import theme from "styles/theme";
 import CardTextGraph from "components/moleculars/cards/CardTextGraph";
 import * as S from "./styles";
@@ -17,7 +18,7 @@ function TreasureSection(): JSX.Element {
   const [unassignedValue, setUnassignedValue] = useState<number>(0);
   const { currentNetwork } = useNetwork();
   const { getAllIntegrations } = useIntegrations();
-
+  const { tokenDecimals } = useTokenDecimals();
   const { t } = useTranslation("translation", {
     keyPrefix: "dashboard.treasureDashboard.treasureSection",
   });
@@ -34,18 +35,20 @@ function TreasureSection(): JSX.Element {
 
   const { contractBalance, refetch: fetchContractBalance } = useContractBalance(
     donationTokenContract,
-    currentNetwork.ribonContractAddress,
+    currentNetwork.defaultPoolAddress
   );
+
+  
 
   const fetchAssignedBalance = useCallback(async () => {
     try {
       const allIntegrations = await getAllIntegrations();
       const assignedAmount = allIntegrations.integrations
-        .map((item: any) => parseFloat(formatFromWei(item.balance)))
+        .map((item: any) => formatFromDecimals(item.balance, tokenDecimals))
         .reduce((prev: any, curr: any) => prev + curr, 0);
       setAssignedValue(assignedAmount);
       if (contractBalance) {
-        setUnassignedValue(parseFloat(contractBalance) - assignedValue);
+        setUnassignedValue(contractBalance - assignedValue);
       }
     } catch (e) {
       logError(e);
@@ -77,10 +80,10 @@ function TreasureSection(): JSX.Element {
       <CardTextGraph
         data={renderGraph()}
         title={t("mainText")}
-        mainText={contractBalance}
+        mainText={contractBalance.toFixed(2)}
         rightText={t("assignedText")}
         leftText={t("unassignedText")}
-        rightSecondaryText={assignedValue}
+        rightSecondaryText={assignedValue.toFixed(2)}
         leftSecondaryText={unassignedValue.toFixed(2)}
       />
     </S.Container>
