@@ -6,6 +6,7 @@ import integrationFactory from "config/testUtils/factories/integrationFactory";
 import { mockGraphqlRequest } from "config/testUtils/test-helper";
 import { ALL_INTEGRATIONS_QUERY_NAME } from "services/apiTheGraph/querys/integration";
 import TreasureSection from ".";
+import { utils } from "ethers";
 
 describe("TreasureSection", () => {
   it("should render without error", () => {
@@ -18,11 +19,11 @@ describe("TreasureSection", () => {
 
   describe("when the integration has balance", () => {
     beforeEach(async () => {
-      const fiftyCentInWei = "500000000000000000";
+      const fiftyCent = "500000";
       mockGraphqlRequest(ALL_INTEGRATIONS_QUERY_NAME, {
         integrations: [
           integrationFactory({
-            balance: fiftyCentInWei,
+            balance: fiftyCent,
           }),
         ],
       });
@@ -33,7 +34,7 @@ describe("TreasureSection", () => {
     });
 
     it("shows the assigned value", async () => {
-      expectTextToBeInTheDocument("0.5");
+      expectTextToBeInTheDocument("0.50");
     });
   });
 });
