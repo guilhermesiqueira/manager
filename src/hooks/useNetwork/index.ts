@@ -49,10 +49,6 @@ export function useNetwork() {
     getCurrentNetwork();
   }, [getCurrentNetwork]);
 
-  useEffect(() => {
-    window.ethereum?.on("chainChanged", getCurrentNetwork);
-  }, []);
-
   return {
     currentNetwork,
     isValidNetwork,
