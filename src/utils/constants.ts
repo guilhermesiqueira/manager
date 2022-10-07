@@ -6,4 +6,4 @@ export const TOKEN_KEY = "token";
 
 export const THE_GRAPH_API =
   process.env.REACT_APP_THE_GRAPH_API ||
-  "https://api.thegraph.com/subgraphs/name/ribondao/ribonsubgraph";
+  "https://api.thegraph.com/subgraphs/name/ribondao/subgraphribon";
