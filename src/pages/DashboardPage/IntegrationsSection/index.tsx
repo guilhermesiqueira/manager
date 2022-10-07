@@ -78,13 +78,13 @@ function IntegrationsSection(): JSX.Element {
 
   return (
     <Grid
-      maxH="600px"
       marginLeft="264px"
       overflowY="auto"
       fontFamily="Inter"
       templateColumns="repeat(4, 176px)"
       gridAutoRows="max-content"
       gap="8px"
+      columnGap="30px"
     >
       {blockchainIntegrations
         .sort((a, b) => b.balance - a.balance)
