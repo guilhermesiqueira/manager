@@ -6,7 +6,6 @@ import integrationFactory from "config/testUtils/factories/integrationFactory";
 import { mockGraphqlRequest } from "config/testUtils/test-helper";
 import { ALL_INTEGRATIONS_QUERY_NAME } from "services/apiTheGraph/querys/integration";
 import TreasureSection from ".";
-import { utils } from "ethers";
 
 describe("TreasureSection", () => {
   it("should render without error", () => {

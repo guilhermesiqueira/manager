@@ -22,7 +22,6 @@ function useTokenDecimals() {
     async function fetchDecimals() {
       const decimals = await donationTokenContract?.decimals();
       setTokenDecimals(decimals);
-      console.log(decimals);
     }
     fetchDecimals();
   }, [contract]);

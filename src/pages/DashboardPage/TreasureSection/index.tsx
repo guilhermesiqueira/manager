@@ -38,8 +38,6 @@ function TreasureSection(): JSX.Element {
     currentNetwork.defaultPoolAddress
   );
 
-  
-
   const fetchAssignedBalance = useCallback(async () => {
     try {
       const allIntegrations = await getAllIntegrations();
