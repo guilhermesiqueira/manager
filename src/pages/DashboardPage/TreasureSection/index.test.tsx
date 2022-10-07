@@ -18,11 +18,11 @@ describe("TreasureSection", () => {
 
   describe("when the integration has balance", () => {
     beforeEach(async () => {
-      const fiftyCentInWei = "500000000000000000";
+      const fiftyCent = "500000";
       mockGraphqlRequest(ALL_INTEGRATIONS_QUERY_NAME, {
         integrations: [
           integrationFactory({
-            balance: fiftyCentInWei,
+            balance: fiftyCent,
           }),
         ],
       });
@@ -33,7 +33,7 @@ describe("TreasureSection", () => {
     });
 
     it("shows the assigned value", async () => {
-      expectTextToBeInTheDocument("0.5");
+      expectTextToBeInTheDocument("0.50");
     });
   });
 });
