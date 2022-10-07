@@ -35,7 +35,7 @@ function TreasureSection(): JSX.Element {
 
   const { contractBalance, refetch: fetchContractBalance } = useContractBalance(
     donationTokenContract,
-    currentNetwork.defaultPoolAddress
+    currentNetwork.defaultPoolAddress,
   );
 
   const fetchAssignedBalance = useCallback(async () => {

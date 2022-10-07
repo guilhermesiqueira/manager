@@ -25,7 +25,6 @@ function useTokenDecimals() {
     }
     fetchDecimals();
   }, [contract]);
-  
 
   return { tokenDecimals };
 }
