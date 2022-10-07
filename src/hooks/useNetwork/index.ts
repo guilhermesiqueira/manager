@@ -4,7 +4,7 @@ import { logError } from "services/crashReport";
 import { useProvider } from "../useProvider";
 
 export function useNetwork() {
-  const [currentNetwork, setCurrentNetwork] = useState(networks[1]);
+  const [currentNetwork, setCurrentNetwork] = useState(networks[0]);
   const [isValidNetwork, setIsValidNetwork] = useState(false);
   const provider = useProvider();
 

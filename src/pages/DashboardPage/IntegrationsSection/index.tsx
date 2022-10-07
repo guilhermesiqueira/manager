@@ -5,7 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
 import useApiIntegrations from "hooks/apiHooks/useApiIntegrations";
 import { Link } from "react-router-dom";
-import { formatFromDecimals } from "lib/web3Helpers/etherFormatters";
+import { formatFromDecimals, formatFromWei } from "lib/web3Helpers/etherFormatters";
 import { logError } from "services/crashReport";
 import { useContract } from "hooks/useContract";
 import { useNetwork } from "hooks/useNetwork";
@@ -100,7 +100,7 @@ function IntegrationsSection(): JSX.Element {
               key={integration.id}
               title={getIntegrationName(integration.id)}
               subtitle={t("subtitle")}
-              value={formatFromDecimals(integration.balance, tokenDecimals).toFixed(2)}
+              value={formatFromWei(integration.balance)}
             />
           </Link>
         ))}
