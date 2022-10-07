@@ -5,11 +5,10 @@ import { useCallback, useEffect, useState } from "react";
 import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
 import useApiIntegrations from "hooks/apiHooks/useApiIntegrations";
 import { Link } from "react-router-dom";
-import { formatFromDecimals, formatFromWei } from "lib/web3Helpers/etherFormatters";
+import { formatFromWei } from "lib/web3Helpers/etherFormatters";
 import { logError } from "services/crashReport";
 import { useContract } from "hooks/useContract";
 import { useNetwork } from "hooks/useNetwork";
-import useTokenDecimals from "hooks/useTokenDecimals";
 import RibonAbi from "utils/abis/RibonAbi.json";
 
 function IntegrationsSection(): JSX.Element {
@@ -17,7 +16,6 @@ function IntegrationsSection(): JSX.Element {
     keyPrefix: "dashboard.treasureDashboard.integrationsSection",
   });
   const { currentNetwork } = useNetwork();
-  const { tokenDecimals } = useTokenDecimals();
   const { getAllIntegrations } = useIntegrations();
   const { getAllApiIntegrations } = useApiIntegrations();
   const [apiIntegrations, setApiIntegrations] = useState<any>([]);
