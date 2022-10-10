@@ -1,21 +1,21 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  width: 328px;
+  display: flex;
+  flex: auto;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  display: flex;
-  flex-direction: column;
-  flex: auto;
-  width: 328px;
 `;
 
 export const Title = styled.h6`
-  margin: 8px 0 24px 0;
+  margin: 8px 0 24px;
   color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 export const TitleError = styled.h6`
-  margin: 24px 0 8px 0;
+  margin: 24px 0 8px;
   color: ${({ theme }) => theme.colors.red};
 `;
 

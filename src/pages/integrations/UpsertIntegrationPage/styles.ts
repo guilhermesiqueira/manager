@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const ContentSection = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     flex-direction: row;
@@ -11,9 +11,9 @@ export const ContentSection = styled.div`
 `;
 
 export const LeftSection = styled.div`
+  width: 50%;
   display: flex;
   flex-direction: column;
-  width: 50%;
 `;
 
 export const CheckboxContainer = styled.div`
@@ -22,10 +22,8 @@ export const CheckboxContainer = styled.div`
 `;
 
 export const Title = styled.h2`
+  margin: 84px 0 32px;
   text-transform: uppercase;
-  margin: 4px 0;
-  margin-bottom: 32px;
-  margin-top: 84px;
 `;
 
 export const Subtitle = styled.h3`
@@ -38,15 +36,14 @@ export const SubtitleDescription = styled.h4`
 `;
 
 export const TextInput = styled.input`
-  display: block;
-  margin: 4px 0;
-  margin-bottom: 8px;
-  margin-top: 8px;
+  min-width: 400px;
+  max-width: 400px;
+  margin: 8px 0 30px;
+  padding: 8px 16px;
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
   border-radius: 10px;
-  padding: 8px 16px;
+  display: block;
   color: ${({ theme }) => theme.colors.darkGray};
-  max-width: 400px;
 
   ::placeholder {
     color: ${({ theme }) => theme.colors.gray};
@@ -55,50 +52,50 @@ export const TextInput = styled.input`
 `;
 
 export const NumberInput = styled.input`
-  display: block;
   margin-inline: 6px;
-  border: 1.5px solid ${({ theme }) => theme.colors.darkGray};
-  padding: 8px 5px;
-  color: ${({ theme }) => theme.colors.darkGray};
   width: 40px;
-  text-align: center;
+  padding: 8px 5px;
+  border: 1.5px solid ${({ theme }) => theme.colors.darkGray};
   border-radius: 10px;
+  display: block;
+  text-align: center;
+  color: ${({ theme }) => theme.colors.darkGray};
 `;
 
 export const Checkbox = styled.input`
-  transform: scale(1.5);
+  accent-color: ${({ theme }) => theme.colors.green};
+  margin: 5px 7px 30px 4px;
   display: inline-block;
   vertical-align: middle;
-  margin: 5px 7px 30px 4px;
-  accent-color: ${({ theme }) => theme.colors.green};
+  transform: scale(1.5);
 `;
 
 export const Span = styled.span`
-  color: ${({ color }) => color} || ${({ theme }) => theme.colors.darkGray};
+  margin: 5px 7px 30px 4px;
   display: inline-block;
   vertical-align: middle;
-  margin: 5px 7px 30px 4px;
+  color: ${({ color, theme }) => color || theme.colors.darkGray};
 
-  :first-letter {
+  ::first-letter {
     text-transform: uppercase;
   }
 `;
 
 export const TicketAvailabilityContainer = styled.div`
+  margin-bottom: 20px;
   display: inline-flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 20px;
-  color: ${({ color }) => color} || ${({ theme }) => theme.colors.darkGray};
+  color: ${({ color, theme }) => color || theme.colors.darkGray};
 `;
 
 export const ButtonContainer = styled.div`
-  display: flex;
   margin: 24px 0;
+  display: flex;
 `;
 
 export const RightSection = styled.div`
+  width: 50%;
   display: flex;
   flex-direction: column;
-  width: 50%;
 `;

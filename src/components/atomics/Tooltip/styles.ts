@@ -1,23 +1,23 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: inline-block;
   position: relative;
+  display: inline-block;
 `;
 
 export const TooltipTip = styled.div`
-  position: absolute;
-  border-radius: 0.5rem;
-  left: 50%;
-  transform: translateX(-50%);
   padding: 0.5rem 1rem;
-  color: ${({ theme }) => theme.colors.white};
-  background: ${({ color, theme }) => color || theme.colors.darkGray}};
-  line-height: 1;
-  z-index: 100;
-  white-space: nowrap;
+  border-radius: 0.5rem;
+  position: absolute;
   top: -30px;
+  left: 50%;
+  z-index: 100;
+  line-height: 1;
+  white-space: nowrap;
+  background: ${({ color, theme }) => color || theme.colors.darkGray};
+  color: ${({ theme }) => theme.colors.white};
   transition-timing-function: ease-in-out;
+  transform: translateX(-50%);
 `;
 
 export const TooltipText = styled.h6``;

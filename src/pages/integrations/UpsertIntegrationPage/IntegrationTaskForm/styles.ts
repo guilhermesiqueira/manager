@@ -10,15 +10,13 @@ export const SubtitleDescription = styled.h4`
 `;
 
 export const TextInput = styled.input`
-  display: block;
-  margin: 4px 0;
-  margin-bottom: 8px;
-  margin-top: 8px;
+  max-width: 400px;
+  margin: 8px 0;
+  padding: 8px 16px;
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
   border-radius: 10px;
-  padding: 8px 16px;
+  display: block;
   color: ${({ theme }) => theme.colors.darkGray};
-  max-width: 400px;
 
   ::placeholder {
     color: ${({ theme }) => theme.colors.gray};
