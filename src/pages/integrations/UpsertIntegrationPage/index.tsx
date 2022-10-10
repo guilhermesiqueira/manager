@@ -157,6 +157,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
       const newIntegration: Integration = {
         name: "New Integration",
         status: "active",
+        webhookUrl: "",
         ticketAvailabilityInMinutes: null,
         integrationTasksAttributes: [
           {
@@ -220,6 +221,13 @@ function UpsertIntegrationPage({ isEdit }: Props) {
             onChange={handleLogoChange}
             logo={integration?.logo}
             value={file}
+          />
+          <S.Subtitle>{t("webhookUrl")}</S.Subtitle>
+          <S.TextInput
+            name="webhookUrl"
+            value={integration?.webhookUrl || ""}
+            placeholder="https://webhook.com"
+            onChange={handleChange}
           />
           <S.Subtitle>{t("ticketAvailability")}</S.Subtitle>
           <S.TicketAvailabilityContainer color={getColorByCheckboxStatus()}>
