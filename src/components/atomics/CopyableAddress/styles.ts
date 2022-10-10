@@ -5,16 +5,16 @@ export const Container = styled.div`
   cursor: pointer;
 
   img {
-    margin-right: 0.4rem;
     max-width: 17px;
+    margin-right: 0.4rem;
   }
 
   span {
-    text-decoration: underline;
-    color: ${({ theme }) => theme.colors.gray};
     width: 200px;
-    white-space: nowrap;
     overflow: hidden;
+    text-decoration: underline;
     text-overflow: ellipsis;
+    white-space: nowrap;
+    color: ${({ theme }) => theme.colors.gray};
   }
 `;

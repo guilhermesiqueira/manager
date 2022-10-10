@@ -18,6 +18,8 @@
     "color-hex-case": "lower",
     "color-no-invalid-hex": true,
     "color-function-notation": null,
+    "font-family-name-quotes": null,
+    "font-family-no-missing-generic-family-keyword": null,
     "font-weight-notation": "numeric",
     "shorthand-property-no-redundant-values": true,
     "value-keyword-case": ["lower", { "ignoreKeywords": ["dummyValue"] }],

@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const ContentSection = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     flex-direction: row;
@@ -11,9 +11,9 @@ export const ContentSection = styled.div`
 `;
 
 export const LeftSection = styled.div`
+  width: 50%;
   display: flex;
   flex-direction: column;
-  width: 50%;
 `;
 
 export const CheckboxContainer = styled.div`
@@ -36,8 +36,8 @@ export const SubtitleDescription = styled.h4`
 `;
 
 export const TextInput = styled.input`
-  max-width: 400px;
   min-width: 400px;
+  max-width: 400px;
   margin: 8px 0 30px;
   padding: 8px 16px;
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
@@ -95,7 +95,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const RightSection = styled.div`
+  width: 50%;
   display: flex;
   flex-direction: column;
-  width: 50%;
 `;
