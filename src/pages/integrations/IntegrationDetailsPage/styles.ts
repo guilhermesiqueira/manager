@@ -1,25 +1,24 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  margin-top: 16px;
-  flex-direction: column;
-  display: flex;
   width: 100%;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     flex-direction: row;
   }
 `;
 
 export const Content = styled.div`
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
 `;
 
 export const Title = styled.h2`
+  margin: 84px 0 32px;
   text-transform: uppercase;
-  margin: 4px 0;
-  margin-bottom: 32px;
-  margin-top: 84px;
 `;
 
 export const Subtitle = styled.h3`
@@ -31,15 +30,15 @@ export const InfoValue = styled.p`
 `;
 
 export const RightSection = styled.div`
+  width: 50%;
   display: flex;
   flex-direction: column;
-  width: 50%;
 `;
 
 export const LeftSection = styled.div`
+  width: 50%;
   display: flex;
   flex-direction: column;
-  width: 50%;
 `;
 
 export const IntegrationCardContainer = styled.div``;
