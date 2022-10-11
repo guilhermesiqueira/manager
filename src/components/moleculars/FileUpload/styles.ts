@@ -50,7 +50,7 @@ export const Text = styled.p`
   font-size: 11px;
   line-height: 1.6;
   text-align: center;
-  color: ${({ theme }) => theme.colors.darkGray};
+  color: ${({ theme }) => theme.colors.gray40};
 
   span {
     font-weight: 700;
@@ -60,5 +60,5 @@ export const Text = styled.p`
 
 export const span = styled.span`
   font-size: 10px;
-  color: ${({ theme }) => theme.colors.gray};
+  color: ${({ theme }) => theme.colors.gray30};
 `;

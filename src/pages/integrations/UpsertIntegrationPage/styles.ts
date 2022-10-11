@@ -63,7 +63,7 @@ export const NumberInput = styled.input`
 `;
 
 export const Checkbox = styled.input`
-  accent-color: ${({ theme }) => theme.colors.green};
+  accent-color: ${({ theme }) => theme.colors.green30};
   margin: 5px 7px 30px 4px;
   display: inline-block;
   vertical-align: middle;

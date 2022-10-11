@@ -16,8 +16,8 @@ export const Container = styled.div`
   align-self: flex-end;
   justify-content: space-around;
   text-align: center;
-  background-color: ${({ theme }) => theme.colors.white};
-  box-shadow: 0 4px 12px ${({ theme }) => theme.colors.darkShadow};
+  background-color: ${({ theme }) => theme.colors.neutral10};
+  box-shadow: 0 4px 12px ${({ theme }) => theme.colors.defaultShadow};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
     width: 80px;
@@ -29,15 +29,15 @@ export const Container = styled.div`
     align-items: center;
     align-self: flex-start;
     justify-content: flex-start;
-    background: ${({ theme }) => theme.colors.white};
-    box-shadow: 0 4px 12px ${({ theme }) => theme.colors.darkShadow};
+    background: ${({ theme }) => theme.colors.neutral10};
+    box-shadow: 0 4px 12px ${({ theme }) => theme.colors.defaultShadow};
   }
 `;
 
 export const Title = styled.p`
   text-decoration: none;
   color: ${({ theme, enabled }: Props) =>
-    enabled ? theme.colors.darkGray : theme.colors.gray};
+    enabled ? theme.colors.gray40 : theme.colors.gray30};
 `;
 
 export const StyledLink = styled(Link)`

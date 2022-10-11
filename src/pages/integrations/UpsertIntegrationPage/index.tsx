@@ -34,7 +34,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
 
   const mode = isEdit ? "edit" : "create";
 
-  const { lightGray, darkGray, gray } = theme.colors;
+  const { gray10, gray40, gray30 } = theme.colors;
   const navigate = useNavigate();
   const { id } = useParams();
   const {
@@ -127,10 +127,10 @@ function UpsertIntegrationPage({ isEdit }: Props) {
   const getColorByCheckboxStatus = () => {
     if (integration) {
       return integration?.ticketAvailabilityInMinutes === null
-        ? gray
-        : darkGray;
+        ? gray30
+        : gray40;
     }
-    return darkGray;
+    return gray40;
   };
 
   const handleCancel = () => {
@@ -263,17 +263,18 @@ function UpsertIntegrationPage({ isEdit }: Props) {
       <S.ContentSection>
         <S.ButtonContainer>
           <Button
-            color={lightGray}
-            backgroundColor={darkGray}
+            color={gray10}
+            backgroundColor={gray40}
+            _hover={{ bg: gray30 }}
             onClick={handleSave}
           >
             {t(`${mode}.save`)}
           </Button>
 
           <Button
-            color={darkGray}
-            backgroundColor={lightGray}
-            outlineColor={darkGray}
+            color={gray40}
+            backgroundColor={gray10}
+            outlineColor={gray40}
             marginLeft="8px"
             onClick={handleCancel}
           >

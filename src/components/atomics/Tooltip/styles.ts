@@ -14,8 +14,8 @@ export const TooltipTip = styled.div`
   z-index: 100;
   line-height: 1;
   white-space: nowrap;
-  background: ${({ color, theme }) => color || theme.colors.darkGray};
-  color: ${({ theme }) => theme.colors.white};
+  background: ${({ color, theme }) => color || theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral10};
   transition-timing-function: ease-in-out;
   transform: translateX(-50%);
 `;

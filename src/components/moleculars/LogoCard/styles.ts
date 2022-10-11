@@ -6,7 +6,7 @@ export const DotBox = styled.div`
   height: 150px;
   margin: 5px 0;
   padding: 15px;
-  border: 1px dashed ${({ theme }) => theme.colors.darkGray};
+  border: 1px dashed ${({ theme }) => theme.colors.gray40};
   border-radius: 8px;
   display: inline-block;
 `;

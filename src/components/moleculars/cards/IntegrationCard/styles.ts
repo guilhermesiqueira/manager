@@ -6,5 +6,5 @@ export const Text = styled.h6`
   padding: 12px 16px;
   border-radius: 8px;
   background-color: ${({ color }) => color};
-  color: ${({ theme }) => theme.colors.white};
+  color: ${({ theme }) => theme.colors.neutral10};
 `;

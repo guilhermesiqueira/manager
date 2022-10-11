@@ -23,12 +23,12 @@ export const Table = styled.table`
 
   tbody tr th {
     text-align: left;
-    color: ${({ theme }) => theme.colors.gray};
+    color: ${({ theme }) => theme.colors.gray30};
   }
 
   thead tr {
     text-align: left;
-    color: ${({ theme }) => theme.colors.darkGray};
+    color: ${({ theme }) => theme.colors.gray40};
   }
 `;
 

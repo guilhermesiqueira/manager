@@ -7,7 +7,6 @@ import { useParams } from "react-router";
 import { logError } from "services/crashReport";
 import ChangeLanguageItem from "components/moleculars/ChangeLanguageItem";
 import CopyableAddress from "components/atomics/CopyableAddress";
-import { Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import EditIcon from "assets/icons/editIcon";
 import { useContract } from "hooks/useContract";
@@ -20,16 +19,17 @@ import IntegrationTask from "types/entities/IntegrationTask";
 import LogoCard from "components/moleculars/LogoCard";
 import InfoName from "components/moleculars/infoName";
 import { useLanguage } from "hooks/useLanguage";
+import { Button } from "@chakra-ui/react";
 import * as S from "./styles";
 
 function IntegrationDetailsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations.integrationDetailsPage",
   });
-  const { green, red, darkGray, lightGray } = theme.colors;
+  const { green30, red30, gray40, gray10, gray30 } = theme.colors;
   const statusColors: { [key: string]: string } = {
-    active: green,
-    inactive: red,
+    active: green30,
+    inactive: red30,
   };
   const { currentLang } = useLanguage();
 
@@ -113,8 +113,9 @@ function IntegrationDetailsPage(): JSX.Element {
 
           <Link to="edit">
             <Button
-              color={lightGray}
-              backgroundColor={darkGray}
+              color={gray10}
+              background={gray40}
+              _hover={{ bg: gray30 }}
               leftIcon={<EditIcon />}
             >
               {t("edit")}
