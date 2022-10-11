@@ -10,7 +10,7 @@ export const Container = styled.div`
   width: 100%;
   position: fixed;
   bottom: 0;
-  z-index: 1;
+  z-index: ${({ theme }) => theme.zindex.navbar};
   display: flex;
   flex-direction: row;
   align-self: flex-end;
@@ -35,6 +35,7 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.p`
+  line-height: 20px;
   text-decoration: none;
   color: ${({ theme, enabled }: Props) =>
     enabled ? theme.colors.gray40 : theme.colors.gray30};
