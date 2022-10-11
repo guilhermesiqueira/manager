@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { defaultParagraphMedium } from "styles/typography/default";
 
 export const Container = styled.div`
   width: 100%;
@@ -19,7 +20,6 @@ export const ContainerSwitch = styled.div`
 `;
 
 export const Text = styled.p`
-  font-weight: 400;
-  font-size: 14px;
+  ${defaultParagraphMedium}
   color: ${({ color }) => color};
 `;
