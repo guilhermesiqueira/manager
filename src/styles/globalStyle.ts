@@ -50,10 +50,6 @@ const GlobalStyle = createGlobalStyle`
   input {
     font-size: 14px;
   }
-  
-  a {
-    position: relative;
-  }
 `;
 
 export default GlobalStyle;
