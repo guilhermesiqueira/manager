@@ -3,7 +3,7 @@ import { renderComponent } from "config/testUtils";
 import theme from "styles/theme";
 import IntegrationCard from ".";
 
-const { green, red, yellow } = theme.colors;
+const { green30, red30, yellow30 } = theme.colors;
 
 describe("IntegrationCard", () => {
   it("should render without error", () => {
@@ -14,32 +14,32 @@ describe("IntegrationCard", () => {
   });
 
   describe("when value is 0", () => {
-    it("should render red icon", () => {
+    it("should render red30 icon", () => {
       renderComponent(<IntegrationCard title="title" value="0" />);
 
       expect(screen.getByAltText("warningIcon")).toBeInTheDocument();
     });
 
-    it("should render red text", () => {
+    it("should render red30 text", () => {
       const { component } = renderComponent(
         <IntegrationCard title="title" value="0" />,
       );
       const valueText = component.container.getElementsByTagName("p");
       const index = valueText.length - 1;
 
-      expect(valueText[index]).toHaveStyle(`color: ${red}`);
+      expect(valueText[index]).toHaveStyle(`color: ${red30}`);
     });
   });
 
   describe("when value is less than 1000", () => {
-    it("should render yellow text", () => {
+    it("should render yellow30 text", () => {
       const { component } = renderComponent(
         <IntegrationCard title="title" value="999" />,
       );
       const valueText = component.container.getElementsByTagName("p");
       const index = valueText.length - 1;
 
-      expect(valueText[index]).toHaveStyle(`color:  ${yellow}`);
+      expect(valueText[index]).toHaveStyle(`color:  ${yellow30}`);
     });
   });
 
@@ -51,7 +51,7 @@ describe("IntegrationCard", () => {
       const valueText = component.container.getElementsByTagName("p");
       const index = valueText.length - 1;
 
-      expect(valueText[index]).toHaveStyle(`color:  ${green}`);
+      expect(valueText[index]).toHaveStyle(`color:  ${green30}`);
     });
   });
 });

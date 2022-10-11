@@ -11,14 +11,14 @@ export const Container = styled.div`
 
 export const Title = styled.h6`
   margin: 8px 0 24px;
-  color: ${({ theme }) => theme.colors.darkGray};
+  color: ${({ theme }) => theme.colors.gray40};
 `;
 
 export const TitleError = styled.h6`
   margin: 24px 0 8px;
-  color: ${({ theme }) => theme.colors.red};
+  color: ${({ theme }) => theme.colors.red30};
 `;
 
 export const SubTitleError = styled.h6`
-  color: ${({ theme }) => theme.colors.red};
+  color: ${({ theme }) => theme.colors.red30};
 `;
