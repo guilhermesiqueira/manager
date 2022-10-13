@@ -1,5 +1,6 @@
 import { AspectRatio, Image } from "@chakra-ui/react";
 import styled from "styled-components";
+import { defaultParagraphSmall } from "styles/typography/default";
 
 export const Container = styled(AspectRatio)`
   width: 154px;
@@ -15,20 +16,19 @@ export const Box = styled.div`
 `;
 
 export const Layer = styled(Box)`
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   position: absolute;
-  &:hover {
-    background: rgba(218, 218, 218, 0.7);
-  }
+  top: 0;
+  left: 0;
 
   img {
     display: none;
   }
 
   &:hover {
+    background: rgba(218, 218, 218, 70%);
+
     img {
       display: inline;
     }
@@ -36,29 +36,29 @@ export const Layer = styled(Box)`
 `;
 
 export const InputField = styled.input`
-  height: 100%;
   width: 100%;
+  height: 100%;
+  position: absolute;
   top: 0;
   left: 0;
-  position: absolute;
-  cursor: pointer;
   opacity: 0;
+  cursor: pointer;
 `;
 export const UploadIcon = styled(Image)``;
 
 export const Text = styled.p`
+  ${defaultParagraphSmall}
   margin: 5px 0;
-  font-size: 11px;
-  line-height: 1.6;
   text-align: center;
-  color: ${({ theme }) => theme.colors.darkGray};
+  color: ${({ theme }) => theme.colors.gray40};
+
   span {
-    font-weight: bold;
+    font-weight: 700;
     text-decoration: underline;
   }
 `;
 
 export const span = styled.span`
-  font-size: 10px;
-  color: ${({ theme }) => theme.colors.gray};
+  ${defaultParagraphSmall}
+  color: ${({ theme }) => theme.colors.gray30};
 `;

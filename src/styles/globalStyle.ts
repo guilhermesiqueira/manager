@@ -1,6 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 import normalize from "./normalize";
-import typography from "./typography";
+import {
+  defaultButtonTextLarge,
+  defaultParagraphMedium,
+} from "./typography/default";
+import { typography } from "./typography/typography";
 
 const GlobalStyle = createGlobalStyle`
   ${normalize}
@@ -21,10 +25,6 @@ const GlobalStyle = createGlobalStyle`
       min-height: 100vh;
     }
 
-    body {
-      font-family: ${({ theme }) => theme.font};
-    }
-
     #root {
       display: flex;
     }
@@ -34,10 +34,7 @@ const GlobalStyle = createGlobalStyle`
     }
   
   button {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 1.5;
-
+    ${defaultButtonTextLarge}
     :hover {
       cursor: pointer;
     }
@@ -46,14 +43,13 @@ const GlobalStyle = createGlobalStyle`
   
   tbody td,
   tbody th {
-    font-weight: 400;
+    ${defaultParagraphMedium}
+    line-height: 20px;
   }
 
   input {
     font-size: 14px;
   }
-  
-
 `;
 
 export default GlobalStyle;

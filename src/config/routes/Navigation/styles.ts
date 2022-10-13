@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 type Props = {
@@ -7,44 +7,46 @@ type Props = {
 };
 
 export const Container = styled.div`
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: ${({ theme }) => theme.zindex.navbar};
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
-  position: absolute;
-  width: 100%;
   align-self: flex-end;
+  justify-content: space-around;
   text-align: center;
-  background-color: ${({ theme }) => theme.colors.white};
-  box-shadow: 0px 4px 12px ${({ theme }) => theme.colors.darkShadow};
+  background-color: ${({ theme }) => theme.colors.neutral10};
+  box-shadow: 0 4px 12px ${({ theme }) => theme.colors.defaultShadow};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+    width: 80px;
+    height: 100%;
+    min-height: 100vh;
+    padding: 50px 50px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px 50px 0px 50px;
-    width: 80px;
-    height: 100%;
     align-self: flex-start;
     justify-content: flex-start;
-    min-height: 100vh;
-    background: ${({ theme }) => theme.colors.white};
-    box-shadow: 0px 4px 12px ${({ theme }) => theme.colors.darkShadow};
+    background: ${({ theme }) => theme.colors.neutral10};
+    box-shadow: 0 4px 12px ${({ theme }) => theme.colors.defaultShadow};
   }
 `;
 
 export const Title = styled.p`
-  ${({ theme, enabled }: Props) => css`
-    color: ${enabled ? theme.colors.darkGray : theme.colors.gray};
-    text-decoration: none;
-  `}
+  line-height: 20px;
+  text-decoration: none;
+  color: ${({ theme, enabled }: Props) =>
+    enabled ? theme.colors.gray40 : theme.colors.gray30};
 `;
 
 export const StyledLink = styled(Link)`
-  text-decoration: none;
+  margin-bottom: 12px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  margin-bottom: 12px;
+  text-decoration: none;
 `;
 
 export const Icon = styled.img`

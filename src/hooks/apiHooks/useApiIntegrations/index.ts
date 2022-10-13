@@ -9,13 +9,26 @@ function useApiIntegrations() {
     return integrations;
   }
 
-  async function getApiIntegration(id: any) {
-    const { data: integration } = await integrationsApi.getIntegration(id);
+  async function getMobilityAttributes() {
+    const { data } = await integrationsApi.getMobilityAttributes();
+
+    return data;
+  }
+
+  async function getApiIntegration(id: any, language?: string) {
+    const { data: integration } = await integrationsApi.getIntegration(
+      id,
+      language,
+    );
 
     return integration;
   }
 
-  async function createApiIntegration(data: Integration, file: string) {
+  async function createApiIntegration(
+    data: Integration,
+    file: string,
+    language?: string,
+  ) {
     const upload = useUploadFile(data.logo);
 
     let integration;
@@ -25,19 +38,26 @@ function useApiIntegrations() {
         if (error) {
           throw error;
         } else {
-          integration = integrationsApi.createIntegration({
-            ...data,
-            logo: blob.signed_id,
-          });
+          integration = integrationsApi.createIntegration(
+            {
+              ...data,
+              logo: blob.signed_id,
+            },
+            language,
+          );
         }
       });
     } else {
-      integration = integrationsApi.createIntegration(data);
+      integration = integrationsApi.createIntegration(data, language);
     }
     return integration;
   }
 
-  async function updateApiIntegration(data: Integration, file: string) {
+  async function updateApiIntegration(
+    data: Integration,
+    file: string,
+    language?: string,
+  ) {
     const upload = useUploadFile(data.logo);
     let integration;
 
@@ -46,10 +66,14 @@ function useApiIntegrations() {
         if (error) {
           throw error;
         } else {
-          integration = integrationsApi.updateIntegration(data.id, {
-            ...data,
-            logo: blob.signed_id,
-          });
+          integration = integrationsApi.updateIntegration(
+            data.id,
+            {
+              ...data,
+              logo: blob.signed_id,
+            },
+            language,
+          );
         }
       });
     } else {
@@ -58,6 +82,7 @@ function useApiIntegrations() {
       integration = integrationsApi.updateIntegration(
         data.id,
         currentIntegration,
+        language,
       );
     }
     return integration;
@@ -66,6 +91,7 @@ function useApiIntegrations() {
   return {
     createApiIntegration,
     getAllApiIntegrations,
+    getMobilityAttributes,
     getApiIntegration,
     updateApiIntegration,
   };

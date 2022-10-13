@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  background: ${({ theme }) => theme.colors.lightGray};
+  padding-bottom: 70px;
   padding-left: 15%;
-  box-shadow: 0px 0px 20px ${({ theme }) => theme.colors.lightShadow};
+  background: ${({ theme }) => theme.colors.gray10};
+  box-shadow: 0 0 20px ${({ theme }) => theme.colors.defaultShadow};
 `;
 
 export const BodyContainer = styled.div``;
