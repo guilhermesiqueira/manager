@@ -29,8 +29,8 @@
       "amountEnded": "Não há quantidade atribuída à doação"
     },
     "copyableAddress": {
-      "successTooltipText": "Endereço copiado",
-      "alternativeText": "Copiar para o clipboard"
+      "copiedText": "Endereço copiado",
+      "copyText": "Copiar para o clipboard"
     },
     "integrationDetailsPage": {
       "title": "{{integrationName}} Detalhes",

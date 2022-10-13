@@ -29,8 +29,8 @@
       "amountEnded": "There is no amount assigned for donation"
     },
     "copyableAddress": {
-      "successTooltipText": "Address copied",
-      "alternativeText": "Copy to clipboard"
+      "copiedText": "Address copied",
+      "copyText": "Copy to clipboard"
     },
     "integrationDetailsPage": {
       "title": "{{integrationName}} Details",
