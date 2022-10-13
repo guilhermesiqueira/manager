@@ -1,5 +1,4 @@
 import { useTranslation } from "react-i18next";
-import { Grid } from "@chakra-ui/react";
 import IntegrationCard from "components/moleculars/cards/IntegrationCard";
 import { useCallback, useEffect, useState } from "react";
 import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
@@ -10,6 +9,7 @@ import { logError } from "services/crashReport";
 import { useContract } from "hooks/useContract";
 import { useNetwork } from "hooks/useNetwork";
 import RibonAbi from "utils/abis/RibonAbi.json";
+import * as S from "./styles";
 
 function IntegrationsSection(): JSX.Element {
   const { t } = useTranslation("translation", {
@@ -77,15 +77,7 @@ function IntegrationsSection(): JSX.Element {
   }
 
   return (
-    <Grid
-      maxH="600px"
-      marginLeft="264px"
-      overflowY="auto"
-      fontFamily="Inter"
-      templateColumns="repeat(4, 176px)"
-      gridAutoRows="max-content"
-      gap="8px"
-    >
+    <S.Container>
       {blockchainIntegrations
         .sort((a, b) => b.balance - a.balance)
         .reverse()
@@ -102,7 +94,7 @@ function IntegrationsSection(): JSX.Element {
             />
           </Link>
         ))}
-    </Grid>
+    </S.Container>
   );
 }
 export default IntegrationsSection;
