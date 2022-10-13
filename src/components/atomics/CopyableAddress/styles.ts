@@ -4,6 +4,9 @@ export const Container = styled.div`
   display: flex;
   cursor: pointer;
 
+  div {
+    display: flex;
+  }
   img {
     margin-right: 0.4rem;
     max-width: 17px;
