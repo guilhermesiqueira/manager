@@ -1,56 +1,43 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import * as S from "./styles";
 
 export type Props = {
   children: JSX.Element;
   color?: string;
   text: string;
-  triggerOnClick?: boolean;
 };
 
-function Tooltip({
-  children,
-  color,
-  text,
-  triggerOnClick,
-}: Props): JSX.Element {
-  const [active, setActive] = useState<boolean>(false);
+function Tooltip({ children, color, text }: Props): JSX.Element {
+  const [visible, setVisible] = useState<boolean>(false);
+  const tooltipRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
-  const showTip = () => {
-    setActive(true);
-  };
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (tooltipRef.current && wrapperRef.current) {
+      const { x, y } = wrapperRef.current.getBoundingClientRect();
 
-  const hideTip = () => {
-    setActive(false);
-  };
-
-  const clickHandler = () => {
-    if (triggerOnClick) showTip();
-  };
-
-  const mouseEnterHandler = () => {
-    if (!triggerOnClick) showTip();
+      tooltipRef.current.style.left = `${e.clientX - x + 10}px`;
+      tooltipRef.current.style.top = `${e.clientY - y + 10}px`;
+    }
   };
 
   return (
     <S.Container
-      onClick={clickHandler}
-      onMouseEnter={mouseEnterHandler}
-      onMouseLeave={hideTip}
+      onMouseEnter={() => setVisible(true)}
+      onMouseLeave={() => setVisible(false)}
+      onMouseMove={handleMouseMove}
+      ref={wrapperRef}
     >
       {children}
-      {active && (
-        <S.TooltipTip color={color}>
-          <S.TooltipText>{text}</S.TooltipText>
-        </S.TooltipTip>
-      )}
+      <S.TooltipTip color={color} visible={visible} ref={tooltipRef}>
+        <S.TooltipText>{text}</S.TooltipText>
+      </S.TooltipTip>
     </S.Container>
   );
 }
 
 Tooltip.defaultProps = {
   color: null,
-  triggerOnClick: false,
 };
 
 export default Tooltip;

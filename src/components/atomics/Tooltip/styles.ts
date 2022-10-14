@@ -5,19 +5,22 @@ export const Container = styled.div`
   display: inline-block;
 `;
 
-export const TooltipTip = styled.div`
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+type TooltipProps = {
+  visible: boolean;
+};
+
+export const TooltipTip = styled.div<TooltipProps>`
   position: absolute;
-  top: -30px;
-  left: 50%;
-  z-index: 100;
-  line-height: 1;
+  border-radius: 0.5rem;
+  top: 0;
+  left: 0;
+  padding: 0.5rem 1rem;
   white-space: nowrap;
-  background: ${({ color, theme }) => color || theme.colors.gray40};
+  z-index: ${({ theme }) => theme.zindex.tooltip};
   color: ${({ theme }) => theme.colors.neutral10};
-  transition-timing-function: ease-in-out;
-  transform: translateX(-50%);
+  background: ${({ color, theme }) => color || theme.colors.gray40};
+  visibility: ${({ visible }: TooltipProps) =>
+    visible ? "visible" : "hidden"};
 `;
 
 export const TooltipText = styled.h6``;

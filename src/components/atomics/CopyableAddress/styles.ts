@@ -5,6 +5,9 @@ export const Container = styled.div`
   align-items: center;
   cursor: pointer;
 
+  div {
+    display: flex;
+  }
   img {
     max-width: 17px;
     margin-right: 0.4rem;
