@@ -8,7 +8,6 @@ export const Card = styled.div`
   width: 256px;
   box-sizing: border-box;
   background: ${({ theme }) => theme.colors.white};
-  border: 1px solid ${({ theme }) => theme.colors.mediumGray};
   border-radius: 16px;
   text-align: left;
   background: ${({ theme }) => theme.colors.neutral10};
