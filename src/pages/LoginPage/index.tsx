@@ -43,7 +43,7 @@ function LoginPage(): JSX.Element {
       <img src={RibonIcon} alt="Ribon" />
       <S.Title>{t("title")}</S.Title>
 
-      {process.env.NODE_ENV === "production" && (
+      {process.env.REACT_APP_NODE_ENV === "production" && (
         <GoogleLogin
           clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID!}
           buttonText={t("buttonText")}
@@ -53,7 +53,7 @@ function LoginPage(): JSX.Element {
         />
       )}
 
-      {process.env.NODE_ENV !== "production" && (
+      {process.env.REACT_APP_NODE_ENV !== "production" && (
         <Button onClick={signInWithFirebase}>{t("buttonText")}</Button>
       )}
 
