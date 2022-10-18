@@ -6,6 +6,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import RibonIcon from "assets/icons/ribon-icon.svg";
 import { GoogleLogin } from "react-google-login";
 import { Button } from "@chakra-ui/react";
+import { GoogleIcon } from "assets/icons/googleIcon";
 import * as S from "./styles";
 
 function LoginPage(): JSX.Element {
@@ -38,12 +39,9 @@ function LoginPage(): JSX.Element {
     signInManagerWithGoogle(response);
   };
 
-  return (
-    <S.Container>
-      <img src={RibonIcon} alt="Ribon" />
-      <S.Title>{t("title")}</S.Title>
-
-      {process.env.REACT_APP_NODE_ENV === "production" && (
+  const loginButton = () => {
+    if (process.env.REACT_APP_NODE_ENV === "production") {
+      return (
         <GoogleLogin
           clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID!}
           buttonText={t("buttonText")}
@@ -51,11 +49,22 @@ function LoginPage(): JSX.Element {
           cookiePolicy="single_host_origin"
           isSignedIn
         />
-      )}
+      );
+    } else {
+      return (
+        <Button leftIcon={<GoogleIcon />} onClick={signInWithFirebase}>
+          {t("buttonText")}
+        </Button>
+      );
+    }
+  };
 
-      {process.env.REACT_APP_NODE_ENV !== "production" && (
-        <Button onClick={signInWithFirebase}>{t("buttonText")}</Button>
-      )}
+  return (
+    <S.Container>
+      <img src={RibonIcon} alt="Ribon" />
+      <S.Title>{t("title")}</S.Title>
+
+      {loginButton()}
 
       {!allowed && !!state && (
         <>
