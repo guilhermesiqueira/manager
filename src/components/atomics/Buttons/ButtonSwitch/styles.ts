@@ -2,8 +2,6 @@ import styled from "styled-components";
 import { defaultParagraphMedium } from "styles/typography/default";
 
 export const Container = styled.div`
-  width: 100%;
-  margin-bottom: 12px;
   display: flex;
   flex-direction: row;
   align-items: center;

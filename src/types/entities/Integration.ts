@@ -13,7 +13,7 @@ export default interface Integration {
   ticketAvailabilityInMinutes: number | null;
   created_at?: string;
   updated_at?: string;
-  integrationTasksAttributes?: IntegrationTask[];
-  integrationTasks: IntegrationTask[];
+  integrationTaskAttributes?: IntegrationTask | null;
+  integrationTask: IntegrationTask | null;
   mobilityAttributes?: string[];
 }

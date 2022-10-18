@@ -5,7 +5,6 @@ import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
 import { logError } from "services/crashReport";
-import ChangeLanguageItem from "components/moleculars/ChangeLanguageItem";
 import CopyableAddress from "components/atomics/CopyableAddress";
 import { Link } from "react-router-dom";
 import EditIcon from "assets/icons/editIcon";
@@ -15,7 +14,6 @@ import RibonAbi from "utils/abis/RibonAbi.json";
 import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
 import { formatFromWei } from "lib/web3Helpers/etherFormatters";
 import theme from "styles/theme";
-import IntegrationTask from "types/entities/IntegrationTask";
 import LogoCard from "components/moleculars/LogoCard";
 import InfoName from "components/moleculars/infoName";
 import { useLanguage } from "hooks/useLanguage";
@@ -69,7 +67,7 @@ function IntegrationDetailsPage(): JSX.Element {
     webhookUrl,
     createdAt,
     updatedAt,
-    integrationTasks,
+    integrationTask,
   } = integration;
 
   const fetchBlockchainIntegration = useCallback(async () => {
@@ -100,7 +98,6 @@ function IntegrationDetailsPage(): JSX.Element {
     <S.Content>
       <S.Title>{t("title", { integrationName })}</S.Title>
 
-      <ChangeLanguageItem />
       <S.Container>
         <S.LeftSection>
           <S.IntegrationCardContainer>
@@ -162,25 +159,24 @@ function IntegrationDetailsPage(): JSX.Element {
         </S.LeftSection>
 
         <S.RightSection>
-          {integrationTasks &&
-            integrationTasks.map((integrationTask: IntegrationTask) => (
-              <div key={integrationTask.description}>
-                <S.Subtitle>{t("modalInfo")}</S.Subtitle>
+          {integrationTask && (
+            <div>
+              <S.Subtitle>{t("modalInfo")}</S.Subtitle>
 
-                <InfoName
-                  hasTranslation={mobilityAttributes?.includes("description")}
-                >
-                  {t("ctaDescription")}
-                </InfoName>
-                <S.InfoValue>{integrationTask?.description}</S.InfoValue>
+              <InfoName
+                hasTranslation={mobilityAttributes?.includes("description")}
+              >
+                {t("ctaDescription")}
+              </InfoName>
+              <S.InfoValue>{integrationTask.description}</S.InfoValue>
 
-                <InfoName hasTranslation={mobilityAttributes?.includes("link")}>
-                  {t("ctaLink")}
-                </InfoName>
-                <S.InfoValue>{integrationTask?.link}</S.InfoValue>
-                <CopyableAddress text={integrationTask?.linkAddress ?? ""} />
-              </div>
-            ))}
+              <InfoName hasTranslation={mobilityAttributes?.includes("link")}>
+                {t("ctaLink")}
+              </InfoName>
+              <S.InfoValue>{integrationTask.link}</S.InfoValue>
+              <CopyableAddress text={integrationTask.linkAddress ?? ""} />
+            </div>
+          )}
         </S.RightSection>
       </S.Container>
     </S.Content>

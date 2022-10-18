@@ -46,13 +46,11 @@ describe("useIntegrations", () => {
       name: "Integration 1",
       status: "active",
       ticketAvailabilityInMinutes: null,
-      integrationTasks: [
-        {
-          description: "Faça uma compra",
-          link: "Comprar",
-          linkAddress: "https://renner.com",
-        },
-      ],
+      integrationTask: {
+        description: "Faça uma compra",
+        link: "Comprar",
+        linkAddress: "https://renner.com",
+      },
     };
     const file = "";
     const currentLang = "en";
@@ -87,13 +85,11 @@ describe("useIntegrations", () => {
       status: "active",
       created_at: "2020-01-01T00:00:00.000Z",
       updated_at: "2020-01-01T00:00:00.000Z",
-      integrationTasks: [
-        {
-          description: "Faça uma compra",
-          link: "Comprar",
-          linkAddress: "https://renner.com",
-        },
-      ],
+      integrationTask: {
+        description: "Faça uma compra",
+        link: "Comprar",
+        linkAddress: "https://renner.com",
+      },
     };
     const file = "";
     const currentLang = "en";
