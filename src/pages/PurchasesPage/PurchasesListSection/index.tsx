@@ -2,6 +2,8 @@ import usePersonPayments from "hooks/apiHooks/usePersonPayments";
 import { useCallback, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { logError } from "services/crashReport";
+import dateFormatter from "lib/dateFormatter";
+import numberFormatter from "lib/moneyFormatter";
 import PersonPayment from "types/entities/PersonPayment";
 import theme from "styles/theme";
 import * as S from "./styles";
@@ -9,7 +11,7 @@ import * as S from "./styles";
 function PurchasesListSection(): JSX.Element {
   const [purchases, setPurchases] = useState<PersonPayment[]>([]);
   const { getPersonPayments } = usePersonPayments();
-  const { green30, red30 } = theme.colors;
+  const { green30, red30, gray30 } = theme.colors;
   const { t } = useTranslation("translation", {
     keyPrefix: "purchasesPage.purchasesListSection.listColumns",
   });
@@ -28,19 +30,20 @@ function PurchasesListSection(): JSX.Element {
   }, []);
 
   const statusColors: { [key: string]: string } = {
-    active: green30,
-    inactive: red30,
+    processing: gray30,
+    paid: green30,
+    failed: red30,
   };
 
   function renderTableRowsForPurchases() {
     return purchases?.map((purchase: any) => (
       <tr key={purchase.id}>
-        <th>{purchase.paidDate}</th>
-        {/* Mudar quando for adicionado o stripe ID */}
+        <th>{dateFormatter(purchase.paidDate)}</th>
+        {/* Todo: Mudar quando for adicionado o stripe ID */}
         <th>{purchase.id}</th>
         <th>{purchase.paymentMethod}</th>
         <th>{purchase.person.customer.email}</th>
-        <th>{purchase.offer.priceValue}</th>
+        <th>{numberFormatter(purchase.offer.priceValue)}</th>
         <th>
           <S.StatusTableCell style={{ color: statusColors[purchase.status] }}>
             {purchase.status}
