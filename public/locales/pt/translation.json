@@ -81,7 +81,7 @@
     "purchasesListSection": {
       "listColumns": {
         "date": "Data",
-        "stripeId": "Stripe Purchase ID",
+        "stripeId": "Stripe ID",
         "type": "Tipo",
         "email": "E-mail do Usuário",
         "value": "Valor (USDC)",
