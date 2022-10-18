@@ -76,8 +76,22 @@
       "ctaLink": "Link de conversão"
     }
   },
+  "purchasesPage": {
+    "title": "Lista de Pagamentos",
+    "purchasesListSection": {
+      "listColumns": {
+        "date": "Data",
+        "stripeId": "Stripe ID",
+        "type": "Tipo",
+        "email": "E-mail do Usuário",
+        "value": "Valor (USDC)",
+        "status": "Status da compra"
+      }
+    }
+  },
   "menu": {
     "integrationsLabel": "Integrações",
+    "purchasesLabel": "Pagamentos",
     "dashboardLabel": "Dashboard Tesouro"
   },
   "login": {
