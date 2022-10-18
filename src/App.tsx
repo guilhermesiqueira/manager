@@ -10,6 +10,9 @@ import theme from "./styles/theme";
 function App() {
   const queryClient = new QueryClient();
 
+  // eslint-disable-next-line no-console
+  console.log(process.env.NODE_ENV);
+
   return (
     <ChakraProvider theme={extendTheme(theme)}>
       <QueryClientProvider client={queryClient}>
