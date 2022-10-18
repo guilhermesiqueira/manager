@@ -4,6 +4,8 @@ import DashboardIconOn from "./assets/dashboardIconOn.svg";
 import DashboardIconOff from "./assets/dashboardIconOff.svg";
 import IntegrationsIconOff from "./assets/integrationsIconOff.svg";
 import IntegrationsIconOn from "./assets/integrationsIconOn.svg";
+import PurchasesIconOff from "./assets/purchasesIconOff.svg";
+import PurchasesIconOn from "./assets/purchasesIconOn.svg";
 import * as S from "./styles";
 import NavigationLink from "./NavigationLink";
 
@@ -29,6 +31,12 @@ function Navigation(): JSX.Element {
       iconOn: IntegrationsIconOn,
       iconOff: IntegrationsIconOff,
       title: t("integrationsLabel"),
+    },
+    {
+      path: "/purchases",
+      iconOn: PurchasesIconOn,
+      iconOff: PurchasesIconOff,
+      title: t("purchasesLabel"),
     },
   ];
 
