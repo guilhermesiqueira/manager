@@ -1,6 +1,12 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 
-import { getAuth, signOut, User } from "firebase/auth";
+import {
+  getAuth,
+  GoogleAuthProvider,
+  signInWithPopup,
+  signOut,
+  User,
+} from "firebase/auth";
 import userManagerApi from "services/api/userManagerApi";
 import firebaseApp from "services/firebase";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +14,7 @@ import { TOKEN_KEY } from "utils/constants";
 
 export interface IAuthenticationContext {
   signInManagerWithGoogle: (response: any) => void;
+  signInWithFirebase: () => void;
   accessToken: string | null;
   isAuthorized: (email: string) => boolean;
   user: User | undefined;
@@ -27,6 +34,7 @@ export const AuthenticationContext = createContext<IAuthenticationContext>(
 function AuthenticationProvider({ children }: Props) {
   const firebaseAuth = getAuth(firebaseApp);
   const navigate = useNavigate();
+
   const [user, setUser] = useState<User>();
   const [accessToken, setAccessToken] = useState(
     localStorage.getItem(TOKEN_KEY),
@@ -67,6 +75,25 @@ function AuthenticationProvider({ children }: Props) {
     }
   }
 
+  const signInWithFirebase = () => {
+    const provider = new GoogleAuthProvider();
+
+    signInWithPopup(firebaseAuth, provider)
+      .then(async (result) => {
+        if (isAuthorized(result.user.email ?? "")) {
+          const token = await result.user.getIdToken();
+          localStorage.setItem(TOKEN_KEY, token);
+          setAccessToken(token);
+          navigate("dashboard");
+        } else {
+          navigate("/", { state: { incorrectDomain: true } });
+        }
+      })
+      .catch((error) => {
+        navigate("/", { state: { error } });
+      });
+  };
+
   function logout() {
     signOut(firebaseAuth)
       .then(() => {
@@ -94,6 +121,7 @@ function AuthenticationProvider({ children }: Props) {
       logout,
       accessToken,
       signInManagerWithGoogle,
+      signInWithFirebase,
     }),
     [user, allowed, accessToken],
   );
