@@ -41,12 +41,16 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     getValues: integration,
     reset,
     handleSubmit,
-  } = useForm<Integration>();
+    formState,
+  } = useForm<Integration>({ mode: "onChange", reValidateMode: "onChange" });
   const {
     register: registerTask,
-    setValue: setValueTask,
     getValues: getValuesTask,
-  } = useForm<IntegrationTask>();
+    formState: formStateTask,
+    reset: resetTask,
+    setError: setErrorTask,
+    clearErrors: clearErrorsTask,
+  } = useForm<IntegrationTask>({ criteriaMode: "all" });
   const [statusCheckbox, setStatusCheckbox] = useState(true);
   const [ticketAvailabilityCheckbox, setTicketAvailabilityCheckbox] =
     useState(true);
@@ -63,6 +67,9 @@ function UpsertIntegrationPage({ isEdit }: Props) {
         apiIntegration.ticketAvailabilityInMinutes === null,
       );
       reset(apiIntegration);
+      if (apiIntegration && apiIntegration.integrationTask) {
+        resetTask(apiIntegration.integrationTask);
+      }
     } catch (e) {
       logError(e);
     }
@@ -153,15 +160,6 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     }
   }, []);
 
-  useEffect(() => {
-    if (integration()) {
-      setValueTask("id", integration().integrationTask?.id);
-      setValueTask("description", integration().integrationTask?.description);
-      setValueTask("link", integration().integrationTask?.link);
-      setValueTask("linkAddress", integration().integrationTask?.linkAddress);
-    }
-  }, [integration()]);
-
   return (
     <>
       <S.Title>{t(`${mode}.title`)}</S.Title>
@@ -185,7 +183,10 @@ function UpsertIntegrationPage({ isEdit }: Props) {
             <S.SubtitleDescription>
               {t("integrationName")}
             </S.SubtitleDescription>
-            <S.TextInput {...register("name")} />
+            <S.TextInput {...register("name", { required: t("required") })} />
+            {formState?.errors.name && formState?.errors.name.type && (
+              <S.Error>{formState?.errors.name.message}</S.Error>
+            )}
             <S.Subtitle>{t("integrationLogo")}</S.Subtitle>
             <FileUpload
               onChange={handleLogoChange}
@@ -221,6 +222,10 @@ function UpsertIntegrationPage({ isEdit }: Props) {
           <S.RightSection>
             <IntegrationTaskForm
               register={registerTask}
+              getValues={getValuesTask}
+              formState={formStateTask}
+              setError={setErrorTask}
+              clearErrors={clearErrorsTask}
               mobilityAttributes={mobilityAttributes}
             />
           </S.RightSection>
@@ -232,6 +237,9 @@ function UpsertIntegrationPage({ isEdit }: Props) {
               color={gray10}
               backgroundColor={gray40}
               _hover={{ bg: gray30 }}
+              disabled={
+                !formState?.isValid || !!formStateTask?.errors?.description
+              }
             >
               {t(`${mode}.save`)}
             </Button>

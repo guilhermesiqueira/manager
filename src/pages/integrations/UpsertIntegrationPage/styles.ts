@@ -80,6 +80,14 @@ export const Span = styled.span`
     text-transform: uppercase;
   }
 `;
+export const Error = styled.span`
+  margin-top: -20px;
+  color: ${({ color, theme }) => color || theme.colors.red30};
+
+  ::first-letter {
+    text-transform: uppercase;
+  }
+`;
 
 export const TicketAvailabilityContainer = styled.div`
   margin-bottom: 20px;
