@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 import Tooltip from "components/atomics/Tooltip";
 import copyIcon from "./assets/copy-icon.svg";
 import * as S from "./styles";
@@ -12,16 +13,25 @@ function CopyableAddress({ text }: Props): JSX.Element {
     keyPrefix: "integrations.copyableAddress",
   });
 
+  const [currentText, setCurrentText] = useState<string>(t("copyText"));
+
   const copyText = () => {
     navigator.clipboard.writeText(text);
+    setCurrentText(t("copiedText"));
+
+    setTimeout(() => {
+      setCurrentText(t("copyText"));
+    }, 2000);
   };
 
   return (
     <S.Container onClick={copyText}>
-      <Tooltip text={t("successTooltipText")} triggerOnClick>
-        <img src={copyIcon} alt={t("alternativeText")} />
+      <Tooltip text={currentText}>
+        <>
+          <img src={copyIcon} alt={t("copyText")} />
+          <span>{text}</span>
+        </>
       </Tooltip>
-      <span>{text}</span>
     </S.Container>
   );
 }

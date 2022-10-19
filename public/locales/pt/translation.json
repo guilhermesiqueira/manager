@@ -29,8 +29,8 @@
       "amountEnded": "Não há quantidade atribuída à doação"
     },
     "copyableAddress": {
-      "successTooltipText": "Endereço copiado",
-      "alternativeText": "Copiar para o clipboard"
+      "copiedText": "Endereço copiado",
+      "copyText": "Copiar para o clipboard"
     },
     "integrationDetailsPage": {
       "title": "{{integrationName}} Detalhes",
@@ -76,8 +76,22 @@
       "ctaLink": "Link de conversão"
     }
   },
+  "purchasesPage": {
+    "title": "Lista de Pagamentos",
+    "purchasesListSection": {
+      "listColumns": {
+        "date": "Data",
+        "stripeId": "Stripe ID",
+        "type": "Tipo",
+        "email": "E-mail do Usuário",
+        "value": "Valor (USDC)",
+        "status": "Status da compra"
+      }
+    }
+  },
   "menu": {
     "integrationsLabel": "Integrações",
+    "purchasesLabel": "Pagamentos",
     "dashboardLabel": "Dashboard Tesouro"
   },
   "login": {

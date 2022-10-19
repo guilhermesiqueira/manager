@@ -2,12 +2,10 @@ import { GridItem, Text } from "@chakra-ui/react";
 import warningRedIcon from "assets/icons/warning-red-icon.svg";
 import warningYellowIcon from "assets/icons/warning-yellow-icon.svg";
 import Tooltip from "components/atomics/Tooltip";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import theme from "styles/theme";
-import * as S from "./styles";
 
-type Props = {
+export type Props = {
   title: string;
   subtitle?: string;
   value: string;
@@ -16,7 +14,6 @@ type Props = {
 const { gray40, green30, gray20, red30, yellow30, neutral10 } = theme.colors;
 
 function IntegrationCard({ title, subtitle = "", value }: Props) {
-  const [showTooltip, setShowTooltip] = useState(false);
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations.integrationCard",
   });
@@ -43,7 +40,7 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
   };
 
   return (
-    <>
+    <Tooltip text={textAccordingToValue()} color={colorAccordingToValue()}>
       <GridItem
         height="110px"
         width="200px"
@@ -52,8 +49,6 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
         borderColor={gray20}
         backgroundColor={neutral10}
         borderRadius="16px"
-        onMouseEnter={() => setShowTooltip(true)}
-        onMouseLeave={() => setShowTooltip(false)}
       >
         {showWarning && (
           <img src={icon} alt="warningIcon" style={{ float: "right" }} />
@@ -72,14 +67,7 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
           {value}
         </Text>
       </GridItem>
-      {showTooltip && (
-        <Tooltip text="" color={colorAccordingToValue()}>
-          <S.Text color={colorAccordingToValue()}>
-            {textAccordingToValue()}
-          </S.Text>
-        </Tooltip>
-      )}
-    </>
+    </Tooltip>
   );
 }
 

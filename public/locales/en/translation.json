@@ -29,8 +29,8 @@
       "amountEnded": "There is no amount assigned for donation"
     },
     "copyableAddress": {
-      "successTooltipText": "Address copied",
-      "alternativeText": "Copy to clipboard"
+      "copiedText": "Address copied",
+      "copyText": "Copy to clipboard"
     },
     "integrationDetailsPage": {
       "title": "{{integrationName}} Details",
@@ -77,8 +77,22 @@
       "ctaLink": "Conversion link"
     }
   },
+  "purchasesPage": {
+    "title": "Purchases List",
+    "purchasesListSection": {
+      "listColumns": {
+        "date": "Date",
+        "stripeId": "Stripe Purchase ID",
+        "type": "Type",
+        "email": "User e-mail",
+        "value": "Value (USDC)",
+        "status": "Purchase status"
+      }
+    }
+  },
   "menu": {
     "integrationsLabel": "Integrations",
+    "purchasesLabel": "Purchases",
     "dashboardLabel": "Treasure Dashboard"
   },
   "login": {

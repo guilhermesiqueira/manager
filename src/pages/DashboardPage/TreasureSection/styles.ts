@@ -1,17 +1,14 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
+  display: block;
 `;
 
 export const Card = styled.div`
   width: 256px;
-  border: 1px solid ${({ theme }) => theme.colors.gray20};
-  border-radius: 16px;
-  position: absolute;
-  display: flex;
-  flex-flow: row wrap;
   box-sizing: border-box;
+  background: ${({ theme }) => theme.colors.white};
+  border-radius: 16px;
   text-align: left;
   background: ${({ theme }) => theme.colors.neutral10};
 `;

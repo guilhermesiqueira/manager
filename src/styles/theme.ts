@@ -50,7 +50,8 @@ const theme: ThemeType = {
     navbar: 3,
     modal: 4,
     toast: 5,
-    loading: 6,
+    tooltip: 6,
+    loading: 7,
   },
   spacings: {},
   breakpoints: {
