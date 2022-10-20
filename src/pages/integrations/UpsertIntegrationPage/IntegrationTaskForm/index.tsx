@@ -4,13 +4,39 @@ import * as S from "./styles";
 
 export type Props = {
   register: any;
+  getValues: any;
+  formState: any;
+  setError: any;
+  clearErrors: any;
   mobilityAttributes: string[];
 };
 
-function IntegrationTaskForm({ register, mobilityAttributes }: Props) {
+function IntegrationTaskForm({
+  register,
+  getValues,
+  formState,
+  setError,
+  clearErrors,
+  mobilityAttributes,
+}: Props) {
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations.upsertIntegrationPage",
   });
+
+  const validateForm = () => {
+    if (
+      (!!getValues("link") || !!getValues("linkAddress")) &&
+      !getValues("description")
+    )
+      setError("description", {
+        types: {
+          required: t("required"),
+        },
+      });
+    else {
+      clearErrors("description");
+    }
+  };
 
   return (
     <>
@@ -21,17 +47,37 @@ function IntegrationTaskForm({ register, mobilityAttributes }: Props) {
       </InfoName>
 
       <S.TextInput
-        {...register("description")}
-        placeholder="Type description"
+        {...register("description", {
+          onChange: () => {
+            validateForm();
+          },
+        })}
+        placeholder={t("typeDescription")}
       />
-
+      {formState.errors.description && formState.errors.description.types && (
+        <S.Error>{formState.errors.description.types.required}</S.Error>
+      )}
       <InfoName hasTranslation={mobilityAttributes?.includes("link")}>
         {t("ctaLink")}
       </InfoName>
 
-      <S.TextInput {...register("link")} placeholder="Link name" />
+      <S.TextInput
+        {...register("link", {
+          onChange: () => {
+            validateForm();
+          },
+        })}
+        placeholder={t("linkName")}
+      />
 
-      <S.TextInput {...register("linkAddress")} placeholder="Link address" />
+      <S.TextInput
+        {...register("linkAddress", {
+          onChange: () => {
+            validateForm();
+          },
+        })}
+        placeholder={t("linkAddress")}
+      />
     </>
   );
 }
