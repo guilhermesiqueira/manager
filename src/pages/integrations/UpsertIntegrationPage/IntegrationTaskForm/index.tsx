@@ -25,11 +25,8 @@ function IntegrationTaskForm({
 
   const validateForm = () => {
     if (
-      (!(getValues("link") == null || getValues("link") === "") ||
-        !(
-          getValues("linkAddress") == null || getValues("linkAddress") === ""
-        )) &&
-      (getValues("description") == null || getValues("description") === "")
+      (!!getValues("link") || !!getValues("linkAddress")) &&
+      !getValues("description")
     )
       setError("description", {
         types: {
