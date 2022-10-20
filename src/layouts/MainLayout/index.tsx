@@ -1,3 +1,4 @@
+import ChangeLanguageItem from "components/moleculars/ChangeLanguageItem";
 import React from "react";
 import * as S from "./styles";
 
@@ -7,7 +8,10 @@ export type Props = {
 function MainLayout({ children }: Props): JSX.Element {
   return (
     <S.Container>
-      <S.BodyContainer>{children}</S.BodyContainer>
+      <S.BodyContainer>
+        <ChangeLanguageItem />
+        {children}
+      </S.BodyContainer>
     </S.Container>
   );
 }

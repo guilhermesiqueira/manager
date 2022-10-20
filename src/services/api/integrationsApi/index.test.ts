@@ -50,13 +50,11 @@ describe("integrationsApi", () => {
       ticketAvailabilityInMinutes: 60,
       created_at: "2020-01-01T00:00:00.000Z",
       updated_at: "2020-01-01T00:00:00.000Z",
-      integrationTasks: [
-        {
-          description: "Faça uma compra",
-          link: "Comprar",
-          linkAddress: "https://renner.com",
-        },
-      ],
+      integrationTask: {
+        description: "Faça uma compra",
+        link: "Comprar",
+        linkAddress: "https://renner.com",
+      },
     };
 
     beforeEach(() => {

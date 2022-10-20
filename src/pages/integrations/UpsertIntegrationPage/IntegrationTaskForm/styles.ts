@@ -23,3 +23,11 @@ export const TextInput = styled.input`
     opacity: 1;
   }
 `;
+
+export const Error = styled.span`
+  color: ${({ color, theme }) => color || theme.colors.red30};
+
+  ::first-letter {
+    text-transform: uppercase;
+  }
+`;

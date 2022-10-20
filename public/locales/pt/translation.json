@@ -61,6 +61,7 @@
         "save": "Salvar mudanças",
         "cancel": "Cancelar"
       },
+      "required": "Campo obrigatório",
       "activityStatus": "Status de atividade",
       "details": "Detalhes",
       "integrationName": "Nome da Integração",
@@ -73,7 +74,10 @@
       "minutesAfterReceived": "minutos depois do recebimento",
       "modalInfo": "Modal 'Sem tickets'",
       "ctaDescription": "Modal 'Sem tickets'",
-      "ctaLink": "Link de conversão"
+      "ctaLink": "Link de conversão",
+      "typeDescription": "Digite a descrição",
+      "linkName": "Nome do link",
+      "linkAddress": "URL do link"
     }
   },
   "purchasesPage": {

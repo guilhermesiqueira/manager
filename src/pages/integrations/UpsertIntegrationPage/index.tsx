@@ -6,23 +6,15 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router";
 import { logError } from "services/crashReport";
 import Integration from "types/entities/Integration";
+import IntegrationTask from "types/entities/IntegrationTask";
 import theme from "styles/theme";
-import ChangeLanguageItem from "components/moleculars/ChangeLanguageItem";
 import FileUpload from "components/moleculars/FileUpload";
 import { useLanguage } from "hooks/useLanguage";
-import IntegrationTaskForm from "./IntegrationTaskForm";
 import * as S from "./styles";
+import IntegrationTaskForm from "./IntegrationTaskForm";
 
 export type Props = {
   isEdit?: boolean;
-};
-
-type FormData = {
-  id?: string;
-  description: string;
-  link?: string;
-  linkAddress?: string;
-  mobilityAttributes?: string[];
 };
 
 function UpsertIntegrationPage({ isEdit }: Props) {
@@ -43,8 +35,25 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     updateApiIntegration,
     getMobilityAttributes,
   } = useApiIntegrations();
-  const [integration, setIntegration] = useState<Integration>();
-  const { register, setValue, getValues } = useForm<FormData>();
+  const {
+    register,
+    setValue,
+    getValues: integration,
+    reset,
+    handleSubmit,
+    formState,
+  } = useForm<Integration>({ mode: "onChange", reValidateMode: "onChange" });
+  const {
+    register: registerTask,
+    getValues: getValuesTask,
+    formState: formStateTask,
+    reset: resetTask,
+    setError: setErrorTask,
+    clearErrors: clearErrorsTask,
+  } = useForm<IntegrationTask>({ criteriaMode: "all" });
+  const [statusCheckbox, setStatusCheckbox] = useState(true);
+  const [ticketAvailabilityCheckbox, setTicketAvailabilityCheckbox] =
+    useState(true);
   const [file, setFile] = useState<string>("");
   const [mobilityAttributes, setMobilityAttributes] = useState<string[]>([]);
 
@@ -53,7 +62,14 @@ function UpsertIntegrationPage({ isEdit }: Props) {
       const apiIntegration = await getApiIntegration(id, currentLang);
       const mobilityAttributesData = await getMobilityAttributes();
       setMobilityAttributes(mobilityAttributesData);
-      setIntegration(apiIntegration);
+      setStatusCheckbox(apiIntegration.status === "active");
+      setTicketAvailabilityCheckbox(
+        apiIntegration.ticketAvailabilityInMinutes === null,
+      );
+      reset(apiIntegration);
+      if (apiIntegration && apiIntegration.integrationTask) {
+        resetTask(apiIntegration.integrationTask);
+      }
     } catch (e) {
       logError(e);
     }
@@ -68,48 +84,30 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     }
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    if (integration) {
-      setIntegration({ ...integration, [name]: value });
-    }
-  };
-
   const handleActivityCheckboxChange = (
     e: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const { checked } = e.target;
-    if (integration) {
-      setIntegration({
-        ...integration,
-        status: checked ? "active" : "inactive",
-      });
-    }
+    setValue("status", checked ? "active" : "inactive");
+    setStatusCheckbox(!statusCheckbox);
   };
 
   const handleTicketAvailabilityCheckboxChange = (
     e: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const { checked } = e.target;
-
-    if (integration) {
-      setIntegration({
-        ...integration,
-        ticketAvailabilityInMinutes: checked ? null : 0,
-      });
-    }
+    setValue("ticketAvailabilityInMinutes", checked ? null : 0);
+    setTicketAvailabilityCheckbox(!ticketAvailabilityCheckbox);
   };
 
   const handleSave = async () => {
-    if (integration) {
+    if (integration()) {
       const integrationObject = {
-        ...integration,
-        integrationTasksAttributes: getValues().description
-          ? [getValues()]
-          : [],
+        ...integration(),
+        integrationTaskAttributes: getValuesTask().description
+          ? getValuesTask()
+          : null,
       };
-
-      await setIntegration(integrationObject);
 
       try {
         if (isEdit) {
@@ -125,8 +123,8 @@ function UpsertIntegrationPage({ isEdit }: Props) {
   };
 
   const getColorByCheckboxStatus = () => {
-    if (integration) {
-      return integration?.ticketAvailabilityInMinutes === null
+    if (integration()) {
+      return integration().ticketAvailabilityInMinutes === null
         ? gray30
         : gray40;
     }
@@ -141,147 +139,123 @@ function UpsertIntegrationPage({ isEdit }: Props) {
     const logo = e.target.files![0];
 
     setFile(URL.createObjectURL(logo));
-    if (integration) {
-      setIntegration({
-        ...integration,
-        logo: logo as File,
-      });
+    if (integration()) {
+      setValue("logo", logo as File);
     }
   };
 
   useEffect(() => {
+    fetchMobilityAttributes();
     if (isEdit) {
       fetchIntegration();
     } else {
-      fetchMobilityAttributes();
       const newIntegration: Integration = {
         name: "New Integration",
         status: "active",
         webhookUrl: "",
         ticketAvailabilityInMinutes: null,
-        integrationTasksAttributes: [
-          {
-            description: "Description",
-            link: "link name",
-            linkAddress: "link address",
-          },
-        ],
-        integrationTasks: [],
+        integrationTask: null,
       };
-
-      setIntegration(newIntegration);
+      reset(newIntegration);
     }
   }, []);
-
-  useEffect(() => {
-    if (integration) {
-      const tasksLength = Number(integration?.integrationTasks?.length) - 1;
-      setValue("id", integration?.integrationTasks[tasksLength]?.id);
-      setValue(
-        "description",
-        integration?.integrationTasks[tasksLength]?.description,
-      );
-      setValue("link", integration?.integrationTasks[tasksLength]?.link);
-      setValue(
-        "linkAddress",
-        integration?.integrationTasks[tasksLength]?.linkAddress,
-      );
-    }
-  }, [integration]);
 
   return (
     <>
       <S.Title>{t(`${mode}.title`)}</S.Title>
-      <ChangeLanguageItem />
-      <S.ContentSection>
-        <S.LeftSection>
-          <S.Subtitle>{t("activityStatus")}</S.Subtitle>
-          <S.CheckboxContainer>
-            <S.Checkbox
-              type="checkbox"
-              checked={integration?.status === "active"}
-              value={integration?.status}
-              name="status"
-              onChange={handleActivityCheckboxChange}
+      <form onSubmit={handleSubmit(handleSave)}>
+        <S.ContentSection>
+          <S.LeftSection>
+            <S.Subtitle>{t("activityStatus")}</S.Subtitle>
+            <S.CheckboxContainer>
+              <S.Checkbox
+                name="status"
+                type="checkbox"
+                onChange={handleActivityCheckboxChange}
+                checked={statusCheckbox}
+              />
+              <S.Span>
+                {integration().status} {t("integration")}
+              </S.Span>{" "}
+            </S.CheckboxContainer>
+            <br />
+            <S.Subtitle>{t("details")}</S.Subtitle>
+            <S.SubtitleDescription>
+              {t("integrationName")}
+            </S.SubtitleDescription>
+            <S.TextInput {...register("name", { required: t("required") })} />
+            {formState?.errors.name && formState?.errors.name.type && (
+              <S.Error>{formState?.errors.name.message}</S.Error>
+            )}
+            <S.Subtitle>{t("integrationLogo")}</S.Subtitle>
+            <FileUpload
+              onChange={handleLogoChange}
+              logo={integration().logo}
+              value={file}
             />
-            <S.Span>
-              {integration?.status} {t("integration")}
-            </S.Span>{" "}
-          </S.CheckboxContainer>
-          <br />
-          <S.Subtitle>{t("details")}</S.Subtitle>
-          <S.SubtitleDescription>{t("integrationName")}</S.SubtitleDescription>
-          <S.TextInput
-            name="name"
-            value={integration?.name}
-            onChange={handleChange}
-          />
-          <S.Subtitle>{t("integrationLogo")}</S.Subtitle>
-          <FileUpload
-            onChange={handleLogoChange}
-            logo={integration?.logo}
-            value={file}
-          />
-          <S.Subtitle>{t("webhookUrl")}</S.Subtitle>
-          <S.TextInput
-            name="webhookUrl"
-            value={integration?.webhookUrl || ""}
-            placeholder="https://webhook.com"
-            onChange={handleChange}
-          />
-          <S.Subtitle>{t("ticketAvailability")}</S.Subtitle>
-          <S.TicketAvailabilityContainer color={getColorByCheckboxStatus()}>
-            {t("every")}
-            <S.NumberInput
-              value={integration?.ticketAvailabilityInMinutes || ""}
-              placeholder="000"
-              type="number"
-              name="ticketAvailabilityInMinutes"
-              onChange={handleChange}
-              disabled={integration?.ticketAvailabilityInMinutes === null}
+            <S.Subtitle>{t("webhookUrl")}</S.Subtitle>
+            <S.TextInput
+              placeholder="https://webhook.com"
+              {...register("webhookUrl")}
             />
-            {t("minutesAfterReceived")}
-          </S.TicketAvailabilityContainer>
-          <br />
-          <S.CheckboxContainer>
-            <S.Checkbox
-              type="checkbox"
-              checked={integration?.ticketAvailabilityInMinutes === null}
-              name="ticketAvailability"
-              onChange={handleTicketAvailabilityCheckboxChange}
+            <S.Subtitle>{t("ticketAvailability")}</S.Subtitle>
+            <S.TicketAvailabilityContainer color={getColorByCheckboxStatus()}>
+              {t("every")}
+              <S.NumberInput
+                placeholder="000"
+                type="number"
+                disabled={ticketAvailabilityCheckbox}
+                {...register("ticketAvailabilityInMinutes")}
+              />
+              {t("minutesAfterReceived")}
+            </S.TicketAvailabilityContainer>
+            <br />
+            <S.CheckboxContainer>
+              <S.Checkbox
+                type="checkbox"
+                onChange={handleTicketAvailabilityCheckboxChange}
+                checked={ticketAvailabilityCheckbox}
+              />
+              <S.Span>{t("everydayAtMidnight")}</S.Span> <br />
+            </S.CheckboxContainer>
+          </S.LeftSection>
+          <S.RightSection>
+            <IntegrationTaskForm
+              register={registerTask}
+              getValues={getValuesTask}
+              formState={formStateTask}
+              setError={setErrorTask}
+              clearErrors={clearErrorsTask}
+              mobilityAttributes={mobilityAttributes}
             />
-            <S.Span>{t("everydayAtMidnight")}</S.Span> <br />
-          </S.CheckboxContainer>
-        </S.LeftSection>
-        <S.RightSection>
-          <IntegrationTaskForm
-            register={register}
-            mobilityAttributes={mobilityAttributes}
-          />
-        </S.RightSection>
-      </S.ContentSection>
-      <S.ContentSection>
-        <S.ButtonContainer>
-          <Button
-            color={gray10}
-            backgroundColor={gray40}
-            _hover={{ bg: gray30 }}
-            onClick={handleSave}
-          >
-            {t(`${mode}.save`)}
-          </Button>
+          </S.RightSection>
+        </S.ContentSection>
+        <S.ContentSection>
+          <S.ButtonContainer>
+            <Button
+              type="submit"
+              color={gray10}
+              backgroundColor={gray40}
+              _hover={{ bg: gray30 }}
+              disabled={
+                !formState?.isValid || !!formStateTask?.errors?.description
+              }
+            >
+              {t(`${mode}.save`)}
+            </Button>
 
-          <Button
-            color={gray40}
-            backgroundColor={gray10}
-            outlineColor={gray40}
-            marginLeft="8px"
-            onClick={handleCancel}
-          >
-            {t(`${mode}.cancel`)}
-          </Button>
-        </S.ButtonContainer>
-      </S.ContentSection>
+            <Button
+              color={gray40}
+              backgroundColor={gray10}
+              outlineColor={gray40}
+              marginLeft="8px"
+              onClick={handleCancel}
+            >
+              {t(`${mode}.cancel`)}
+            </Button>
+          </S.ButtonContainer>
+        </S.ContentSection>
+      </form>
     </>
   );
 }
