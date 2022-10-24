@@ -41,6 +41,18 @@ export function apiGet(url: string, config?: AxiosRequestConfig) {
   return api.get(`${API_SCOPE}/${url}`);
 }
 
+export function apiGetWithParams(
+  url: string,
+  params: any,
+  config?: AxiosRequestConfig,
+) {
+  if (config) return api.get(`${API_SCOPE}/${url}`, config);
+
+  return api.get(`${API_SCOPE}/${url}`, {
+    params,
+  });
+}
+
 export function apiPost(url: string, data: any, config?: AxiosRequestConfig) {
   if (config) return api.post(`${API_SCOPE}/${url}`, data, config);
 
