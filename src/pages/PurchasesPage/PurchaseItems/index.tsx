@@ -30,7 +30,7 @@ function PurchaseItems({ purchases }: Props) {
             {purchase?.person?.customer?.email &&
               purchase?.person?.customer?.email}
           </th>
-          <th>{numberFormatter(purchase?.offer?.priceValue)}</th>
+          <th>{numberFormatter(purchase.offer?.priceValue || 0)}</th>
           <th>
             <S.StatusTableCell
               style={{ color: statusColors[purchase?.status] }}
