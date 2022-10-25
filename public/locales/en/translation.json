@@ -91,7 +91,10 @@
         "email": "User e-mail",
         "value": "Value (USDC)",
         "status": "Purchase status"
-      }
+      },
+      "search": "Search by email...",
+      "next": "next >",
+      "previous": "< previous"
     }
   },
   "menu": {

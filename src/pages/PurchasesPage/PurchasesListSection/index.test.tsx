@@ -3,7 +3,7 @@ import { renderComponent } from "config/testUtils";
 
 import PurchasesListSection from ".";
 
-describe("TreasureSection", () => {
+describe("PurchasesListSection", () => {
   it("should render without error", () => {
     renderComponent(<PurchasesListSection />);
 
