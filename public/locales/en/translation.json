@@ -93,8 +93,8 @@
         "status": "Purchase status"
       },
       "search": "Search by email...",
-      "next": "próximo >",
-      "previous": "< anterior"
+      "next": "next >",
+      "previous": "< previous"
     }
   },
   "menu": {

@@ -92,8 +92,8 @@
         "status": "Status da compra"
       },
       "search": "Procurar por email...",
-      "next": "next >",
-      "previous": "< previous"
+      "next": "próximo >",
+      "previous": "< anterior"
     }
   },
   "menu": {
