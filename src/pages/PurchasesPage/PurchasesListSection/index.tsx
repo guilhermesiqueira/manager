@@ -2,19 +2,21 @@ import usePersonPayments from "hooks/apiHooks/usePersonPayments";
 import { useCallback, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { logError } from "services/crashReport";
-import dateFormatter from "lib/dateFormatter";
-import numberFormatter from "lib/moneyFormatter";
 import PersonPayment from "types/entities/PersonPayment";
-import theme from "styles/theme";
+import PurchaseItems from "../PurchaseItems";
 import * as S from "./styles";
 
 function PurchasesListSection(): JSX.Element {
   const [purchases, setPurchases] = useState<PersonPayment[]>([]);
   const { getPersonPayments } = usePersonPayments();
-  const { green30, red30, gray30 } = theme.colors;
   const { t } = useTranslation("translation", {
-    keyPrefix: "purchasesPage.purchasesListSection.listColumns",
+    keyPrefix: "purchasesPage.purchasesListSection",
   });
+  const [currentPurchases, setCurrentPurchases] = useState<PersonPayment[]>([]);
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 10;
+  const [searchTerm, setSearchTerm] = useState("");
 
   const fetchPurchases = useCallback(async () => {
     try {
@@ -23,51 +25,58 @@ function PurchasesListSection(): JSX.Element {
     } catch (e) {
       logError(e);
     }
-  }, []);
+  }, [setPurchases]);
 
   useEffect(() => {
     fetchPurchases();
-  }, []);
+  }, [fetchPurchases]);
 
-  const statusColors: { [key: string]: string } = {
-    processing: gray30,
-    paid: green30,
-    failed: red30,
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    const allItems = purchases.slice(itemOffset, endOffset);
+
+    setCurrentPurchases(allItems);
+
+    setPageCount(Math.ceil(purchases.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, purchases]);
+
+  const handlePageClick = (event: any) => {
+    const newOffset = (event.selected * itemsPerPage) % purchases.length;
+
+    setItemOffset(newOffset);
   };
-
-  function renderTableRowsForPurchases() {
-    return purchases?.map((purchase: any) => (
-      <tr key={purchase.id}>
-        <th>{dateFormatter(purchase.paidDate)}</th>
-        {/* Todo: Mudar quando for adicionado o stripe ID */}
-        <th>{purchase.id}</th>
-        <th>{purchase.paymentMethod}</th>
-        <th>{purchase.person.customer.email}</th>
-        <th>{numberFormatter(purchase.offer.priceValue)}</th>
-        <th>
-          <S.StatusTableCell style={{ color: statusColors[purchase.status] }}>
-            {purchase.status}
-          </S.StatusTableCell>
-        </th>
-      </tr>
-    ));
-  }
 
   return (
     <S.Container>
+      <S.SearchBar
+        placeholder={t("search")}
+        onChange={(event) => {
+          setSearchTerm(event.target.value);
+        }}
+      />
+
       <S.Table>
         <thead>
           <tr>
-            <th>{t("date")}</th>
-            <th>{t("stripeId")}</th>
-            <th>{t("type")}</th>
-            <th>{t("email")}</th>
-            <th>{t("value")}</th>
-            <th>{t("status")}</th>
+            <th>{t("listColumns.date")}</th>
+            <th>{t("listColumns.stripeId")}</th>
+            <th>{t("listColumns.type")}</th>
+            <th>{t("listColumns.email")}</th>
+            <th>{t("listColumns.value")}</th>
+            <th>{t("listColumns.status")}</th>
           </tr>
         </thead>
-        <tbody>{renderTableRowsForPurchases()}</tbody>
+        <PurchaseItems purchases={currentPurchases} searchTerm={searchTerm} />
       </S.Table>
+
+      <S.Pagination
+        breakLabel="..."
+        previousLabel={t("previous")}
+        nextLabel={t("next")}
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={10}
+        pageCount={pageCount}
+      />
     </S.Container>
   );
 }

@@ -1,10 +1,23 @@
 import { AxiosResponse } from "axios";
 import PersonPayment from "types/entities/PersonPayment";
-import { apiGet } from "..";
+import { apiGetWithParams } from "..";
+
+type PersonPaymentsParams = {
+  perPage?: number;
+  page?: number;
+};
 
 const personPaymentsApi = {
-  getPersonPaymentsList: (): Promise<AxiosResponse<PersonPayment[]>> =>
-    apiGet("person_payments"),
+  getPersonPaymentsList: ({
+    perPage = 10,
+    page = 3,
+  }: PersonPaymentsParams): Promise<AxiosResponse<PersonPayment[]>> =>
+    apiGetWithParams("person_payments", {
+      params: {
+        per_page: perPage,
+        page,
+      },
+    }),
 };
 
 export default personPaymentsApi;
