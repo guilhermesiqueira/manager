@@ -1,14 +1,14 @@
 import PersonPayment from "types/entities/PersonPayment";
 import dateFormatter from "lib/dateFormatter";
-import numberFormatter from "lib/moneyFormatter";
 import theme from "styles/theme";
 import * as S from "./styles";
 
 type Props = {
   purchases: PersonPayment[];
+  searchTerm: string;
 };
 
-function PurchaseItems({ purchases }: Props) {
+function PurchaseItems({ purchases, searchTerm }: Props) {
   const { green30, red30, gray30 } = theme.colors;
 
   const statusColors: { [key: string]: string } = {
@@ -17,20 +17,32 @@ function PurchaseItems({ purchases }: Props) {
     failed: red30,
   };
 
+  function filterPurchases(nonFilteredPurchases: any) {
+    return nonFilteredPurchases.filter((purchaseData: any) => {
+      if (searchTerm === "") {
+        return purchaseData;
+      } else if (
+        purchaseData?.person?.customer?.email
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
+      ) {
+        return purchaseData;
+      } else {
+        return null;
+      }
+    });
+  }
+
   function renderPurchases() {
     return (
       purchases &&
-      purchases.map((purchase: any) => (
+      filterPurchases(purchases).map((purchase: any) => (
         <tr key={purchase.id}>
           <th>{dateFormatter(purchase?.paidDate)}</th>
-          {/* TODO: Mudar quando for adicionado o stripe ID */}
-          <th>{purchase.id}</th>
+          <th>{purchase?.externalId || "-"}</th>
           <th>{purchase?.paymentMethod}</th>
-          <th>
-            {purchase?.person?.customer?.email &&
-              purchase?.person?.customer?.email}
-          </th>
-          <th>{numberFormatter(purchase.offer?.priceValue || 0)}</th>
+          <th>{purchase?.person?.customer?.email || "guest"}</th>
+          <th>{purchase?.offer?.price || "0"}</th>
           <th>
             <S.StatusTableCell
               style={{ color: statusColors[purchase?.status] }}

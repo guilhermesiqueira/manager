@@ -12,10 +12,11 @@ function PurchasesListSection(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "purchasesPage.purchasesListSection.listColumns",
   });
-  const [currentItems, setCurrentItems] = useState<PersonPayment[]>([]);
+  const [currentPurchases, setCurrentPurchases] = useState<PersonPayment[]>([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 10;
+  const [searchTerm, setSearchTerm] = useState("");
 
   const fetchPurchases = useCallback(async () => {
     try {
@@ -28,13 +29,13 @@ function PurchasesListSection(): JSX.Element {
 
   useEffect(() => {
     fetchPurchases();
-  }, []);
+  }, [fetchPurchases]);
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     const allItems = purchases.slice(itemOffset, endOffset);
 
-    setCurrentItems(allItems);
+    setCurrentPurchases(allItems);
 
     setPageCount(Math.ceil(purchases.length / itemsPerPage));
   }, [itemOffset, itemsPerPage, purchases]);
@@ -47,6 +48,13 @@ function PurchasesListSection(): JSX.Element {
 
   return (
     <S.Container>
+      <S.SearchBar
+        placeholder="Search..."
+        onChange={(event) => {
+          setSearchTerm(event.target.value);
+        }}
+      />
+
       <S.Table>
         <thead>
           <tr>
@@ -58,7 +66,7 @@ function PurchasesListSection(): JSX.Element {
             <th>{t("status")}</th>
           </tr>
         </thead>
-        <PurchaseItems purchases={currentItems} />
+        <PurchaseItems purchases={currentPurchases} searchTerm={searchTerm} />
       </S.Table>
 
       <S.Pagination

@@ -11,6 +11,7 @@ export const Table = styled.table`
   min-width: 500px;
   margin: 25px 0;
   border-collapse: collapse;
+  max-width: 90%;
 
   tr,
   thead tr,
@@ -79,4 +80,13 @@ export const Pagination = styled(ReactPaginate).attrs({
   li.disabled a {
     cursor: default;
   }
+`;
+
+export const SearchBar = styled.input`
+  width: 90%;
+  height: 44px;
+  padding-left: 14px;
+  border-radius: 8px;
+  border: 2px solid ${({ theme }) => theme.colors.gray30};
+  background-color: ${({ theme }) => theme.colors.gray10};
 `;
