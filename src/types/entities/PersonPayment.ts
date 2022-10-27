@@ -10,4 +10,5 @@ export default interface PersonPayment {
   externalId: string;
   offer: Offer;
   person: Person;
+  external_id: string;
 }

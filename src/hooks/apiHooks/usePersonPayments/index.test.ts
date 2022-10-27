@@ -1,6 +1,5 @@
 import { renderHook } from "@testing-library/react-hooks";
 import personPaymentsApi from "services/api/personPaymentsApi";
-import IntegrationWallet from "types/entities/IntegrationWallet";
 import useIntegrations from ".";
 
 describe("useIntegrations", () => {

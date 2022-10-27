@@ -66,7 +66,11 @@ function PurchasesListSection(): JSX.Element {
             <th>{t("listColumns.status")}</th>
           </tr>
         </thead>
-        <PurchaseItems purchases={currentPurchases} searchTerm={searchTerm} />
+        <PurchaseItems
+          purchases={currentPurchases}
+          fetchPurchases={fetchPurchases}
+          searchTerm={searchTerm}
+        />
       </S.Table>
 
       <S.Pagination
