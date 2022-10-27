@@ -2,19 +2,45 @@ import PersonPayment from "types/entities/PersonPayment";
 import dateFormatter from "lib/dateFormatter";
 import numberFormatter from "lib/moneyFormatter";
 import theme from "styles/theme";
+import refundIcon from "assets/icons/refund-icon.svg";
+import usePayments from "hooks/apiHooks/usePayments";
+import { useTranslation } from "react-i18next";
+import { useState } from "react";
+import Tooltip from "components/atomics/Tooltip";
+import ModalImage from "components/moleculars/modals/ModalImage";
 import * as S from "./styles";
 
 type Props = {
   purchases: PersonPayment[];
+  fetchPurchases: () => void;
 };
 
-function PurchaseItems({ purchases }: Props) {
-  const { green30, red30, gray30 } = theme.colors;
+function PurchaseItems({ purchases, fetchPurchases }: Props) {
+  const { green30, red30, gray30, gray40, orange40 } = theme.colors;
+  const { creditCardRefund } = usePayments();
+  const [visible, setVisible] = useState(false);
+  const [externalId, setExternalId] = useState<string>("teste");
+  const { t } = useTranslation("translation", {
+    keyPrefix: "purchasesPage.purchasesListSection.refundModal",
+  });
+
+  const handleRefund = () => {
+    creditCardRefund(externalId).then(() => {
+      fetchPurchases();
+    });
+    setVisible(false);
+  };
 
   const statusColors: { [key: string]: string } = {
     processing: gray30,
     paid: green30,
     failed: red30,
+    refunded: orange40,
+  };
+
+  const handleOpenModal = (id: string) => {
+    setExternalId(id);
+    setVisible(true);
   };
 
   function renderPurchases() {
@@ -23,8 +49,7 @@ function PurchaseItems({ purchases }: Props) {
       purchases.map((purchase: any) => (
         <tr key={purchase.id}>
           <th>{dateFormatter(purchase?.paidDate)}</th>
-          {/* TODO: Mudar quando for adicionado o stripe ID */}
-          <th>{purchase.id}</th>
+          <th>{purchase.externalId}</th>
           <th>{purchase?.paymentMethod}</th>
           <th>
             {purchase?.person?.customer?.email &&
@@ -38,6 +63,31 @@ function PurchaseItems({ purchases }: Props) {
               {purchase?.status}
             </S.StatusTableCell>
           </th>
+
+          {purchase.status === "paid" &&
+            purchase.paymentMethod === "credit_card" && (
+              <th>
+                <S.RefundButton
+                  onClick={() => handleOpenModal(purchase.externalId)}
+                >
+                  <Tooltip text={t("tooltipText")} color={gray40}>
+                    <S.RefundIcon src={refundIcon} />
+                  </Tooltip>
+                </S.RefundButton>
+
+                <ModalImage
+                  title={t("title")}
+                  body={t("body")}
+                  visible={visible}
+                  image={refundIcon}
+                  primaryButtonText={t("confirmButton")}
+                  primaryButtonColor={red30}
+                  primaryButtonCallback={handleRefund}
+                  secondaryButtonText={t("cancelButton")}
+                  secondaryButtonBorderColor={gray30}
+                />
+              </th>
+            )}
         </tr>
       ))
     );

@@ -91,6 +91,13 @@
         "email": "User e-mail",
         "value": "Value (USDC)",
         "status": "Purchase status"
+      },
+      "refundModal": {
+        "title": "Confirm refund request?",
+        "body": "After confirmed, this action may be impossible to undo.",
+        "confirmButton": "Confirm",
+        "cancelButton": "Cancel",
+        "tooltipText": "Refund purchase"
       }
     }
   },

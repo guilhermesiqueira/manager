@@ -90,6 +90,13 @@
         "email": "E-mail do Usuário",
         "value": "Valor (USDC)",
         "status": "Status da compra"
+      },
+      "refundModal": {
+        "title": "Confirmar pedido de reembolso?",
+        "body": "Após confirmada, essa ação não poderá ser desfeita.",
+        "confirmButton": "Confirmar",
+        "cancelButton": "Cancelar",
+        "tooltipText": "Reembolso"
       }
     }
   },
