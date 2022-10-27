@@ -98,7 +98,10 @@
         "confirmButton": "Confirm",
         "cancelButton": "Cancel",
         "tooltipText": "Refund purchase"
-      }
+      },
+      "search": "Search by email...",
+      "next": "next >",
+      "previous": "< previous"
     }
   },
   "menu": {

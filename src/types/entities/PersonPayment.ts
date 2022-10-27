@@ -7,6 +7,7 @@ export default interface PersonPayment {
   paidDate: string;
   paymentMethod: string;
   status: string;
+  externalId: string;
   offer: Offer;
   person: Person;
   external_id: string;

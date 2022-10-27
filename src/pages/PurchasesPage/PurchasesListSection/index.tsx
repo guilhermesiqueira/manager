@@ -10,12 +10,13 @@ function PurchasesListSection(): JSX.Element {
   const [purchases, setPurchases] = useState<PersonPayment[]>([]);
   const { getPersonPayments } = usePersonPayments();
   const { t } = useTranslation("translation", {
-    keyPrefix: "purchasesPage.purchasesListSection.listColumns",
+    keyPrefix: "purchasesPage.purchasesListSection",
   });
-  const [currentItems, setCurrentItems] = useState<PersonPayment[]>([]);
+  const [currentPurchases, setCurrentPurchases] = useState<PersonPayment[]>([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 10;
+  const [searchTerm, setSearchTerm] = useState("");
 
   const fetchPurchases = useCallback(async () => {
     try {
@@ -28,13 +29,13 @@ function PurchasesListSection(): JSX.Element {
 
   useEffect(() => {
     fetchPurchases();
-  }, []);
+  }, [fetchPurchases]);
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
     const allItems = purchases.slice(itemOffset, endOffset);
 
-    setCurrentItems(allItems);
+    setCurrentPurchases(allItems);
 
     setPageCount(Math.ceil(purchases.length / itemsPerPage));
   }, [itemOffset, itemsPerPage, purchases]);
@@ -47,27 +48,35 @@ function PurchasesListSection(): JSX.Element {
 
   return (
     <S.Container>
+      <S.SearchBar
+        placeholder={t("search")}
+        onChange={(event) => {
+          setSearchTerm(event.target.value);
+        }}
+      />
+
       <S.Table>
         <thead>
           <tr>
-            <th>{t("date")}</th>
-            <th>{t("stripeId")}</th>
-            <th>{t("type")}</th>
-            <th>{t("email")}</th>
-            <th>{t("value")}</th>
-            <th>{t("status")}</th>
+            <th>{t("listColumns.date")}</th>
+            <th>{t("listColumns.stripeId")}</th>
+            <th>{t("listColumns.type")}</th>
+            <th>{t("listColumns.email")}</th>
+            <th>{t("listColumns.value")}</th>
+            <th>{t("listColumns.status")}</th>
           </tr>
         </thead>
         <PurchaseItems
-          purchases={currentItems}
+          purchases={currentPurchases}
           fetchPurchases={fetchPurchases}
+          searchTerm={searchTerm}
         />
       </S.Table>
 
       <S.Pagination
         breakLabel="..."
-        previousLabel="< previous"
-        nextLabel="next >"
+        previousLabel={t("previous")}
+        nextLabel={t("next")}
         onPageChange={handlePageClick}
         pageRangeDisplayed={10}
         pageCount={pageCount}

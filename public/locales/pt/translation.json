@@ -97,7 +97,10 @@
         "confirmButton": "Confirmar",
         "cancelButton": "Cancelar",
         "tooltipText": "Reembolso"
-      }
+      },
+      "search": "Procurar por email...",
+      "next": "próximo >",
+      "previous": "< anterior"
     }
   },
   "menu": {
