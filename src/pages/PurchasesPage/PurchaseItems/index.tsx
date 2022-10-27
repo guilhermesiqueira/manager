@@ -7,6 +7,7 @@ import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import Tooltip from "components/atomics/Tooltip";
 import ModalImage from "components/moleculars/modals/ModalImage";
+import { logError } from "services/crashReport";
 import * as S from "./styles";
 
 type Props = {
@@ -24,11 +25,14 @@ function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
     keyPrefix: "purchasesPage.purchasesListSection.refundModal",
   });
 
-  const handleRefund = () => {
-    creditCardRefund(externalId).then(() => {
+  const handleRefund = async () => {
+    try {
+      await creditCardRefund(externalId);
       fetchPurchases();
-    });
-    setVisible(false);
+      setVisible(false);
+    } catch (e: any) {
+      logError(e);
+    }
   };
 
   const statusColors: { [key: string]: string } = {
