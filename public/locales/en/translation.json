@@ -104,10 +104,26 @@
       "previous": "< previous"
     }
   },
+  "causesPage": {
+    "title": "Causes List",
+    "causesListSection": {
+      "listColumns": {
+        "name": "Name",
+        "token": "Token",
+        "poolAddress": "Pool address",
+        "availableToDonation": "Available to donation (USDC)"
+      },
+      "createNew": "Add new",
+      "search": "Search by name...",
+      "next": "next >",
+      "previous": "< previous"
+    }
+  },
   "menu": {
     "integrationsLabel": "Integrations",
     "purchasesLabel": "Purchases",
-    "dashboardLabel": "Treasure Dashboard"
+    "dashboardLabel": "Treasure Dashboard",
+    "causesLabel": "Causes"
   },
   "login": {
     "title": "Dapp Manager",
