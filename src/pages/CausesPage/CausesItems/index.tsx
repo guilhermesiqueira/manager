@@ -32,21 +32,21 @@ function CauseItems({ causes, searchTerm }: Props) {
       causes &&
       filterCauses(causes).map((cause: any) => (
         <tr key={cause.id}>
-          <th>{cause?.paymentMethod}</th>
-          <th>{cause?.person?.customer?.email || "guest"}</th>
+          <th>{cause?.name}</th>
+          <th>{cause?. || "guest"}</th>
           <th>{cause?.offer?.price || "0"}</th>
           <th>
             <th>
-              <CopyableAddress text="wallet" />
+              <CopyableAddress text={cause.walletAddress} />
             </th>
           </th>
           <th>
             <S.ActionsTableCell>
-              <Link to="/integrations/">
+              <Link to={`/causes/${cause.id}`}>
                 <img src={infoIcon} alt="view integration info" />
               </Link>
 
-              <Link to="/integrations//edit">
+              <Link to={`/causes/${cause.id}/edit`}>
                 <img src={editIcon} alt="edit integration info" />
               </Link>
             </S.ActionsTableCell>
