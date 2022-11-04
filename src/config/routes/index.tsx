@@ -7,6 +7,9 @@ import UpsertIntegrationPage from "pages/integrations/UpsertIntegrationPage";
 import PurchasesPage from "pages/PurchasesPage";
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "layouts/MainLayout";
+import CausesPage from "pages/causes/CausesPage";
+import CausesDetailsPage from "pages/causes/CausesPage/CausesDetailsPage";
+import UpsertCausePage from "pages/causes/UpsertCausePage";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
 
@@ -93,6 +96,59 @@ function RoutesComponent(): JSX.Element {
               <Navigation />
               <MainLayout>
                 <PurchasesPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/causes"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <CausesPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/causes/new"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <UpsertCausePage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/causes/id"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <CausesDetailsPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/causes/:id/edit"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <UpsertCausePage isEdit />
               </MainLayout>
             </Suspense>
           </PrivateRoute>

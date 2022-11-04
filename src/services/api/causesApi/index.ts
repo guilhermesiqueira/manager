@@ -1,9 +1,29 @@
 import { AxiosResponse } from "axios";
 import Cause from "types/entities/Cause";
-import { apiGet, apiPost, apiPut } from "..";
+import { apiPost, apiPut, apiGetWithParams, apiGet } from "..";
+
+type CausesParams = {
+  perPage?: number;
+  page?: number;
+  language?: string;
+};
 
 const causesApi = {
-  getCausesList: (): Promise<AxiosResponse<Cause>> => apiGet("causes"),
+  getCausesList: ({
+    perPage = 10,
+    page = 3,
+    language,
+  }: CausesParams): Promise<AxiosResponse<Cause[]>> =>
+    apiGetWithParams(
+      "causes",
+      {
+        params: {
+          per_page: perPage,
+          page,
+        },
+      },
+      { headers: { Language: language ?? "en" } },
+    ),
   getCause: (id: any, language?: string): Promise<AxiosResponse<Cause>> =>
     apiGet(`causes/${id}`, { headers: { Language: language ?? "en" } }),
   createCause: (data: any, language?: string): Promise<AxiosResponse<Cause>> =>

@@ -8,6 +8,7 @@ import { logError } from "services/crashReport";
 import Cause from "types/entities/Cause";
 import theme from "styles/theme";
 import { useLanguage } from "hooks/useLanguage";
+import InfoName from "components/moleculars/infoName";
 import * as S from "./styles";
 
 export type Props = {
@@ -16,7 +17,7 @@ export type Props = {
 
 function UpsertCausePage({ isEdit }: Props) {
   const { t } = useTranslation("translation", {
-    keyPrefix: "Causes.upsertCausePage",
+    keyPrefix: "causes.upsertCausePage",
   });
 
   const { currentLang } = useLanguage();
@@ -47,9 +48,9 @@ function UpsertCausePage({ isEdit }: Props) {
   const handleSave = async () => {
     try {
       if (isEdit) {
-        await updateApiCause(CauseObject, currentLang);
+        await updateApiCause(CauseObject(), currentLang);
       } else {
-        await createApiCause(CauseObject, currentLang);
+        await createApiCause(CauseObject(), currentLang);
       }
       navigate("/Causes");
     } catch (e) {
@@ -67,7 +68,6 @@ function UpsertCausePage({ isEdit }: Props) {
     } else {
       const newCause: Cause = {
         name: "New Cause",
-        address: "",
       };
       reset(newCause);
     }
@@ -80,16 +80,11 @@ function UpsertCausePage({ isEdit }: Props) {
         <S.ContentSection>
           <S.LeftSection>
             <S.Subtitle>{t("details")}</S.Subtitle>
-            <S.SubtitleDescription>{t("CauseName")}</S.SubtitleDescription>
+            <InfoName hasTranslation>{t("causeName")}</InfoName>
             <S.TextInput {...register("name", { required: t("required") })} />
             {formState?.errors.name && formState?.errors.name.type && (
               <S.Error>{formState?.errors.name.message}</S.Error>
             )}
-            <S.Subtitle>{t("address")}</S.Subtitle>
-            <S.TextInput
-              placeholder="https://webhook.com"
-              {...register("address")}
-            />
           </S.LeftSection>
         </S.ContentSection>
         <S.ContentSection>

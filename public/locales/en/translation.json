@@ -104,10 +104,50 @@
       "previous": "< previous"
     }
   },
+  "causes": {
+    "title": "Causes List",
+    "createNew": "Add new",
+    "causesListSection": {
+      "search": "Search by name...",
+      "next": "next >",
+      "previous": "< previous",
+      "listColumns": {
+        "name": "Name",
+        "token": "Token",
+        "poolAddress": "Pool address",
+        "availableToDonation": "Available to donation (USDC)"
+      }
+    },
+    "causeDetailsPage": {
+      "title": "{{integrationName}} Details",
+      "name": "Name",
+      "walletAddress": "Wallet address",
+      "integrationAddress": "Integration address",
+      "edit": "Edit"
+    },
+    "upsertCausePage": {
+      "create": {
+        "title": "Add New Cause",
+        "save": "Save",
+        "cancel": "Cancel"
+      },
+      "edit": {
+        "title": "Edit Causes",
+        "save": "Save changes",
+        "cancel": "Cancel"
+      },
+      "required": "this is required",
+      "details": "Details",
+      "causeName": "Cause Name",
+      "causeAddress": "Pool address",
+      "cause": "Cause"
+    }
+  },
   "menu": {
     "integrationsLabel": "Integrations",
     "purchasesLabel": "Purchases",
-    "dashboardLabel": "Treasure Dashboard"
+    "dashboardLabel": "Treasure Dashboard",
+    "causesLabel": "Causes"
   },
   "login": {
     "title": "Dapp Manager",

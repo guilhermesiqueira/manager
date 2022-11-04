@@ -8,7 +8,7 @@ describe("causesApi", () => {
     });
 
     it("expects to send a get request with the correct info: url, params and headers", () => {
-      causesApi.getCausesList();
+      causesApi.getCausesList({});
 
       expect(api.get).toHaveBeenCalledWith("/api/v1/Causes");
     });

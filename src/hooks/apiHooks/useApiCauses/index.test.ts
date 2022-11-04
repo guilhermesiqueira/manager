@@ -10,18 +10,6 @@ describe("useCauses", () => {
     hook = result.current;
   });
 
-  describe("#getAllCauses", () => {
-    beforeEach(() => {
-      causesApi.getCausesList = jest.fn(() => ({} as any));
-    });
-
-    it("calls getCausesList with correct params", () => {
-      hook.getAllApiCauses();
-
-      expect(causesApi.getCausesList).toHaveBeenCalled();
-    });
-  });
-
   describe("#getApiCause", () => {
     const id = 1;
     const currentLang = "en";
