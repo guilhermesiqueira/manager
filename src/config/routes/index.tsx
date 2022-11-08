@@ -115,7 +115,7 @@ function RoutesComponent(): JSX.Element {
         }
       />
       <Route
-        path="/causes/id"
+        path="/causes/:id"
         element={
           <PrivateRoute>
             <Suspense fallback={<div />}>

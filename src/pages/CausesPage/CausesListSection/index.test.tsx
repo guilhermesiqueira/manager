@@ -7,8 +7,12 @@ describe("CausessListSection", () => {
   it("should render without error", () => {
     renderComponent(<CausesListSection />);
 
-    expect(screen.getByText("Date")).toBeInTheDocument();
+    expect(screen.getByText("Name")).toBeInTheDocument();
 
-    expect(screen.getByText("Type")).toBeInTheDocument();
+    expect(screen.getByText("Token")).toBeInTheDocument();
+    expect(
+      screen.getByText("Available to donation (USDC)"),
+    ).toBeInTheDocument();
+    expect(screen.getByText("Pool address")).toBeInTheDocument();
   });
 });

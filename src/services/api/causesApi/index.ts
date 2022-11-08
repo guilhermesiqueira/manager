@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import Cause from "types/entities/Cause";
-import { apiGetWithParams } from "..";
+import { apiGet, apiGetWithParams } from "..";
 
 type CausesParams = {
   perPage?: number;
@@ -18,6 +18,8 @@ const causesApi = {
         page,
       },
     }),
+
+  getCause: (id: any): Promise<AxiosResponse<Cause>> => apiGet(`causes/${id}`),
 };
 
 export default causesApi;

@@ -1,15 +1,19 @@
 import { screen } from "@testing-library/react";
 import { renderComponent } from "config/testUtils";
 
-import IntegrationDetailsPage from ".";
+import CauseDetailsPage from ".";
 
-describe("TreasureSection", () => {
+describe("CauseDetailsPage", () => {
   it("should render without error", () => {
-    renderComponent(<IntegrationDetailsPage />);
+    renderComponent(<CauseDetailsPage />);
 
-    expect(screen.getByText("Status")).toBeInTheDocument();
-    expect(screen.getByText("Wallet address")).toBeInTheDocument();
-    expect(screen.getByText("Integration address")).toBeInTheDocument();
-    expect(screen.getByText("Ticket availability")).toBeInTheDocument();
+    expect(screen.getByText("Cause details")).toBeInTheDocument();
+    expect(
+      screen.getByText("Available to donation (USDC)"),
+    ).toBeInTheDocument();
+    expect(screen.getByText("Cause name")).toBeInTheDocument();
+    expect(screen.getByText("Pool address")).toBeInTheDocument();
+
+    expect(screen.getByText("Linked projects")).toBeInTheDocument();
   });
 });

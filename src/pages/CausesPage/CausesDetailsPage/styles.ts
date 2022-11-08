@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { defaultSubtitleSmall } from "styles/typography/default";
 
 export const Container = styled.div`
   width: 100%;
@@ -21,10 +22,6 @@ export const Title = styled.h2`
   text-transform: uppercase;
 `;
 
-export const Subtitle = styled.h3`
-  margin-top: 12px;
-`;
-
 export const InfoValue = styled.p`
   color: ${({ theme }) => theme.colors.gray30};
 `;
@@ -42,3 +39,30 @@ export const LeftSection = styled.div`
 `;
 
 export const CausesCardContainer = styled.div``;
+
+export const Subtitle = styled.h4``;
+
+export const SubtitleInfo = styled.h2`
+  color: ${({ theme }) => theme.colors.green30};
+  margin-bottom: 16px;
+`;
+
+export const CardProject = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 8px 16px;
+  width: 200px;
+  min-height: 40px;
+  justify-content: space-between;
+  margin-top: 8px;
+  background-color: ${({ theme }) => theme.colors.neutral10};
+  box-shadow: 0 4px 12px ${({ theme }) => theme.colors.defaultShadow};
+`;
+
+export const ArrowOutward = styled.img``;
+
+export const CardProjectInfo = styled.h4`
+  ${defaultSubtitleSmall}
+  color: ${({ theme }) => theme.colors.gray30};
+`;

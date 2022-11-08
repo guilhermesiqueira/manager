@@ -113,17 +113,19 @@
         "poolAddress": "Pool address",
         "availableToDonation": "Available to donation (USDC)"
       },
-      "causeDetailsPage": {
-        "title": "{{integrationName}} Details",
-        "name": "Name",
-        "walletAddress": "Wallet address",
-        "integrationAddress": "Integration address",
-        "edit": "Edit"
-      },
+
       "createNew": "Add new",
       "search": "Search by name...",
       "next": "next >",
       "previous": "< previous"
+    },
+    "causeDetailsPage": {
+      "title": "Cause details",
+      "availableToDonation": "Available to donation (USDC)",
+      "name": "Cause name",
+      "poolAddress": "Pool address",
+      "edit": "Edit",
+      "linkedProjects": "Linked projects"
     }
   },
   "menu": {

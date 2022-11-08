@@ -21,10 +21,17 @@ function useCauses() {
     setPage((oldPage) => oldPage + 1);
   }
 
+  async function getCause(id: any) {
+    const { data: integration } = await causesApi.getCause(id);
+
+    return integration;
+  }
+
   return {
     causes,
     getCauses,
     incrementPage,
+    getCause,
   };
 }
 

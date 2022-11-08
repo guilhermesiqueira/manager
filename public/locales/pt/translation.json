@@ -139,14 +139,12 @@
       "copyText": "Copiar para o clipboard"
     },
     "causeDetailsPage": {
-      "title": "{{causeName}} Detalhes",
-      "status": "Status",
-      "id": "ID",
-      "name": "Nome",
-      "walletAddress": "Endereço da carteira",
-      "createdAt": "Criado em",
-      "lastEditedAt": "Última edição em",
-      "edit": "Editar"
+      "title": "Detalhes da causa",
+      "availableToDonation": "Disponível para doação (USDC)",
+      "name": "Nome da causa",
+      "poolAddress": "Endereço da pool",
+      "edit": "Editar",
+      "linkedProjects": "Projetos vinculados"
     }
   },
 
