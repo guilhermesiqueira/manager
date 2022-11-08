@@ -1,45 +1,90 @@
-import React from "react";
-import { Chart as ChartJS, ArcElement } from "chart.js";
+import {
+  Chart as ChartJS,
+  ArcElement,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+} from "chart.js";
+import moneyFormatter from "lib/moneyFormatter";
 import * as S from "./styles";
 
 export type Props = {
   data: any;
   title: string;
   mainText: string | null;
-  rightText: string;
   leftText: string;
   rightSecondaryText: any;
-  leftSecondaryText: any;
 };
 
 function CardTextGraph({
   data,
   title,
   mainText = "mainText",
-  rightText,
   leftText,
   rightSecondaryText,
-  leftSecondaryText,
 }: Props): JSX.Element {
-  ChartJS.register(ArcElement);
+  ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+    ArcElement,
+  );
+
+  const options = {
+    responsive: true,
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        },
+      },
+      y: {
+        grid: {
+          display: false,
+        },
+      },
+    },
+    plugins: {
+      legend: {
+        display: false,
+      },
+    },
+  };
 
   return (
     <S.Container>
-      <S.MainText>
-        {title}
-        <S.MainValue>{mainText}</S.MainValue>
-      </S.MainText>
-      <S.Teste>
-        <S.SecondaryText>
-          {rightText}
-          <S.SecondaryLeftValue>{rightSecondaryText}</S.SecondaryLeftValue>
-        </S.SecondaryText>
-        <S.SecondaryText>
-          {leftText}
-          <S.SecondaryRightValue>{leftSecondaryText}</S.SecondaryRightValue>
-        </S.SecondaryText>
-      </S.Teste>
-      <S.Graph data={data} />
+      <S.MainText>{title}</S.MainText>
+      <S.MainValue>{rightSecondaryText}</S.MainValue>
+      <S.TreasureTitle>{leftText}</S.TreasureTitle>
+      <S.Graph data={data} options={options} />
+      <S.CausesSection>
+        <S.CauseCard>
+          <S.CauseTitle>Sustentabilidade (USDC)</S.CauseTitle>
+          <S.CauseValue>{moneyFormatter(62662486)}</S.CauseValue>
+        </S.CauseCard>
+        <S.CauseCard>
+          <S.CauseTitle>Educação (USDC)</S.CauseTitle>
+          <S.CauseValue>{moneyFormatter(62662486)}</S.CauseValue>
+        </S.CauseCard>
+        <S.CauseCard>
+          <S.CauseTitle>Animais (USDC)</S.CauseTitle>
+          <S.CauseValue>{moneyFormatter(62662486)}</S.CauseValue>
+        </S.CauseCard>
+        <S.CauseCard>
+          <S.CauseTitle>Animais (USDC)</S.CauseTitle>
+          <S.CauseValue>{moneyFormatter(62662486)}</S.CauseValue>
+        </S.CauseCard>
+        <S.CauseCard>
+          <S.CauseTitle>Animais (USDC)</S.CauseTitle>
+          <S.CauseValue>{moneyFormatter(62662486)}</S.CauseValue>
+        </S.CauseCard>
+      </S.CausesSection>
     </S.Container>
   );
 }

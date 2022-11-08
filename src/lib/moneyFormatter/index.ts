@@ -1,5 +1,8 @@
-function numberFormatter(money: number): string {
-  return money.toFixed(2);
+function moneyFormatter(money: number): string {
+  return money.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  });
 }
 
-export default numberFormatter;
+export default moneyFormatter;

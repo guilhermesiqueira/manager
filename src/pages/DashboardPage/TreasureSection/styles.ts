@@ -5,7 +5,7 @@ export const Container = styled.div`
 `;
 
 export const Card = styled.div`
-  width: 256px;
+  width: 728px;
   box-sizing: border-box;
   background: ${({ theme }) => theme.colors.white};
   border-radius: 16px;

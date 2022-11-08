@@ -3,7 +3,8 @@
     "treasureDashboard": {
       "title": "Treasure Dashboard",
       "treasureSection": {
-        "mainText": "Donation Treasure Balance (USDC)",
+        "mainText": "Treasure Balance (USDC)",
+        "causesTitle": "Treasure Distribution",
         "assignedText": "Assigned (USDC)",
         "unassignedText": "Unassigned (USDC)"
       },

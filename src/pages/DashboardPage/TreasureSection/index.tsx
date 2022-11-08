@@ -15,7 +15,6 @@ import * as S from "./styles";
 
 function TreasureSection(): JSX.Element {
   const [assignedValue, setAssignedValue] = useState<number>(0);
-  const [unassignedValue, setUnassignedValue] = useState<number>(0);
   const { currentNetwork } = useNetwork();
   const { getAllIntegrations } = useIntegrations();
   const { tokenDecimals } = useTokenDecimals();
@@ -45,9 +44,6 @@ function TreasureSection(): JSX.Element {
         .map((item: any) => formatFromDecimals(item.balance, tokenDecimals))
         .reduce((prev: any, curr: any) => prev + curr, 0);
       setAssignedValue(assignedAmount);
-      if (contractBalance) {
-        setUnassignedValue(contractBalance - assignedValue);
-      }
     } catch (e) {
       logError(e);
     }
@@ -61,12 +57,24 @@ function TreasureSection(): JSX.Element {
 
   function renderGraph() {
     fetchAssignedBalance();
+
+    const labels = [
+      "Enterpreneurship",
+      "Sustentability",
+      "Education",
+      "Health Care",
+      "Animals",
+    ];
+
     const data = {
+      labels,
       datasets: [
         {
-          data: [assignedValue, unassignedValue],
-          backgroundColor: [theme.colors.green30, theme.colors.gray20],
-          borderColor: [theme.colors.green30, theme.colors.gray20],
+          data: labels.map(() => Math.random() * 100),
+          backgroundColor: theme.colors.green30,
+          borderColor: theme.colors.green30,
+          label: "Causes",
+          borderRadius: 4,
         },
       ],
     };
@@ -79,10 +87,8 @@ function TreasureSection(): JSX.Element {
         data={renderGraph()}
         title={t("mainText")}
         mainText={contractBalance.toFixed(2)}
-        rightText={t("assignedText")}
-        leftText={t("unassignedText")}
+        leftText={t("causesTitle")}
         rightSecondaryText={assignedValue.toFixed(2)}
-        leftSecondaryText={unassignedValue.toFixed(2)}
       />
     </S.Container>
   );
