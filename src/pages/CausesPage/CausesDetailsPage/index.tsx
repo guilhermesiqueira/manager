@@ -74,7 +74,9 @@ function CausesDetailsPage(): JSX.Element {
           <S.InfoValue>{cause?.name}</S.InfoValue>
 
           <InfoName>{t("poolAddress")}</InfoName>
-          <CopyableAddress text={cause?.pools ? cause.pools[0].address : "-"} />
+          <CopyableAddress
+            text={cause?.pools.length ? cause?.pools[0].address : "-"}
+          />
         </S.LeftSection>
 
         <S.RightSection>

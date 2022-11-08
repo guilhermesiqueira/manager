@@ -61,11 +61,13 @@ function CauseItems({ causes, searchTerm }: Props) {
       filterCauses(causes).map((cause: any) => (
         <tr key={cause.id}>
           <th>{cause?.name}</th>
-          <th>{cause?.pools ? cause?.pools[0].token.name : "-"}</th>
-          <th>{handleBalance(cause.pools ? cause?.pools[0].address : "-")}</th>
+          <th>{cause?.pools.length ? cause?.pools[0].token.name : "-"}</th>
+          <th>
+            {handleBalance(cause?.pools.length ? cause?.pools[0].address : "-")}
+          </th>
           <th>
             <CopyableAddress
-              text={cause.pools ? cause?.pools[0].address : "-"}
+              text={cause?.pools.length ? cause?.pools[0].address : "-"}
             />
           </th>
           <th>
