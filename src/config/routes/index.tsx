@@ -7,6 +7,8 @@ import UpsertIntegrationPage from "pages/integrations/UpsertIntegrationPage";
 import PurchasesPage from "pages/PurchasesPage";
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "layouts/MainLayout";
+import CausesPage from "pages/CausesPage";
+import CausesDetailsPage from "pages/CausesPage/CausesDetailsPage";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
 
@@ -93,6 +95,33 @@ function RoutesComponent(): JSX.Element {
               <Navigation />
               <MainLayout>
                 <PurchasesPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/causes"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <CausesPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/causes/:id"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <CausesDetailsPage />
               </MainLayout>
             </Suspense>
           </PrivateRoute>
