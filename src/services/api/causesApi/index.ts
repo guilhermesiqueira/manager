@@ -19,7 +19,8 @@ const causesApi = {
       },
     }),
 
-  getCause: (id: any): Promise<AxiosResponse<Cause>> => apiGet(`causes/${id}`),
+  getCause: (id: string): Promise<AxiosResponse<Cause>> =>
+    apiGet(`causes/${id}`),
 };
 
 export default causesApi;
