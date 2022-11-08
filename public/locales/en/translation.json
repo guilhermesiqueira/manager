@@ -119,11 +119,12 @@
       }
     },
     "causeDetailsPage": {
-      "title": "{{integrationName}} Details",
-      "name": "Name",
-      "walletAddress": "Wallet address",
-      "integrationAddress": "Integration address",
-      "edit": "Edit"
+      "title": "Cause details",
+      "availableToDonation": "Available to donation (USDC)",
+      "name": "Cause name",
+      "poolAddress": "Pool address",
+      "edit": "Edit",
+      "linkedProjects": "Linked projects"
     },
     "upsertCausePage": {
       "create": {

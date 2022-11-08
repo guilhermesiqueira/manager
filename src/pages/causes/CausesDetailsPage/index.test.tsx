@@ -1,18 +1,19 @@
 import { screen } from "@testing-library/react";
 import { renderComponent } from "config/testUtils";
 
-import CausesListSection from ".";
+import CauseDetailsPage from ".";
 
-describe("CausessListSection", () => {
+describe("CauseDetailsPage", () => {
   it("should render without error", () => {
-    renderComponent(<CausesListSection />);
+    renderComponent(<CauseDetailsPage />);
 
-    expect(screen.getByText("Name")).toBeInTheDocument();
-
-    expect(screen.getByText("Token")).toBeInTheDocument();
+    expect(screen.getByText("Cause details")).toBeInTheDocument();
     expect(
       screen.getByText("Available to donation (USDC)"),
     ).toBeInTheDocument();
+    expect(screen.getByText("Cause name")).toBeInTheDocument();
     expect(screen.getByText("Pool address")).toBeInTheDocument();
+
+    expect(screen.getByText("Linked projects")).toBeInTheDocument();
   });
 });

@@ -1,7 +1,7 @@
 import { useLanguage } from "hooks/useLanguage";
 import { useCallback, useState } from "react";
 import causesApi from "services/api/causesApi";
-import Cause from "types/entities/Cause";
+import { Cause } from "types/entities/Cause";
 
 function useCauses() {
   const [causes, setCauses] = useState<Cause[]>([]);
@@ -24,10 +24,17 @@ function useCauses() {
     setPage((oldPage) => oldPage + 1);
   }
 
+  async function getCause(id: any) {
+    const { data: integration } = await causesApi.getCause(id);
+
+    return integration;
+  }
+
   return {
     causes,
     getCauses,
     incrementPage,
+    getCause,
   };
 }
 

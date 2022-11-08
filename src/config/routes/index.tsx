@@ -8,7 +8,7 @@ import PurchasesPage from "pages/PurchasesPage";
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "layouts/MainLayout";
 import CausesPage from "pages/causes/CausesPage";
-import CausesDetailsPage from "pages/causes/CausesPage/CausesDetailsPage";
+import CausesDetailsPage from "pages/causes/CausesDetailsPage";
 import UpsertCausePage from "pages/causes/UpsertCausePage";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
@@ -129,7 +129,7 @@ function RoutesComponent(): JSX.Element {
         }
       />
       <Route
-        path="/causes/id"
+        path="/causes/:id"
         element={
           <PrivateRoute>
             <Suspense fallback={<div />}>

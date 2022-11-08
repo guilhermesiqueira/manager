@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import Cause from "types/entities/Cause";
+import { Cause, EditCause } from "types/entities/Cause";
 import { apiPost, apiPut, apiGetWithParams, apiGet } from "..";
 
 type CausesParams = {
@@ -28,7 +28,7 @@ const causesApi = {
     apiPost("causes", data, { headers: { Language: language ?? "en" } }),
   updateCause: (
     id: any,
-    data: Cause,
+    data: EditCause,
     language?: string,
   ): Promise<AxiosResponse<Cause>> =>
     apiPut(`causes/${id}`, data, {

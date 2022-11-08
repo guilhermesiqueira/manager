@@ -1,5 +1,5 @@
 import causesApi from "services/api/causesApi";
-import Cause from "types/entities/Cause";
+import { CreateCause, EditCause } from "types/entities/Cause";
 
 function useApiCauses() {
   async function getApiCause(id: any, language?: string) {
@@ -8,12 +8,12 @@ function useApiCauses() {
     return cause;
   }
 
-  async function createApiCause(data: Cause, language?: string) {
+  async function createApiCause(data: CreateCause, language?: string) {
     const cause = causesApi.createCause(data, language);
     return cause;
   }
 
-  async function updateApiCause(data: Cause, language?: string) {
+  async function updateApiCause(data: EditCause, language?: string) {
     const cause = causesApi.updateCause(data.id, data, language);
     return cause;
   }

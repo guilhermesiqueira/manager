@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router";
 import { logError } from "services/crashReport";
-import Cause from "types/entities/Cause";
+import { Cause, CreateCause } from "types/entities/Cause";
 import theme from "styles/theme";
 import { useLanguage } from "hooks/useLanguage";
 import InfoName from "components/moleculars/infoName";
@@ -94,7 +94,7 @@ function UpsertCausePage({ isEdit }: Props) {
     if (isEdit) {
       fetchCause();
     } else {
-      const newCause: Cause = {
+      const newCause: CreateCause = {
         name: "New Cause",
       };
       reset(newCause);

@@ -1,5 +1,16 @@
-export default interface Cause {
-  id?: number;
+import Pool from "./Pool";
+
+export interface Cause {
+  id: number;
   name: string;
-  address?: string;
+  pools: Pool[];
+}
+
+export interface CreateCause {
+  name: string;
+}
+
+export interface EditCause {
+  id: number;
+  name: string;
 }
