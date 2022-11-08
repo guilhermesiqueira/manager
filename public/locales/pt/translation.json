@@ -104,10 +104,56 @@
       "previous": "< anterior"
     }
   },
+  "causesPage": {
+    "title": "Lista de Causas",
+    "createNew": "Adicionar nova",
+    "listColumns": {
+      "name": "Nome",
+      "token": "Token",
+      "poolAddress": "Endereço da pool",
+      "availableToDonation": "Disponível para doação (USDC)"
+    },
+    "upsertCausePage": {
+      "create": {
+        "title": "Adicionar nova Causa",
+        "save": "Salvar",
+        "cancel": "Cancelar"
+      },
+      "edit": {
+        "title": "Editar Causa",
+        "save": "Salvar mudanças",
+        "cancel": "Cancelar"
+      },
+      "required": "Campo obrigatório",
+      "activityStatus": "Status de atividade",
+      "details": "Detalhes",
+      "causeName": "Nome da Causa",
+      "causeLogo": "Logo da Causa",
+      "cause": "causa"
+    },
+    "causeCard": {
+      "amountEnding": "A quantidade atribuída para doação está acabando",
+      "amountEnded": "Não há quantidade atribuída à doação"
+    },
+    "copyableAddress": {
+      "copiedText": "Endereço copiado",
+      "copyText": "Copiar para o clipboard"
+    },
+    "causeDetailsPage": {
+      "title": "Detalhes da causa",
+      "availableToDonation": "Disponível para doação (USDC)",
+      "name": "Nome da causa",
+      "poolAddress": "Endereço da pool",
+      "edit": "Editar",
+      "linkedProjects": "Projetos vinculados"
+    }
+  },
+
   "menu": {
     "integrationsLabel": "Integrações",
     "purchasesLabel": "Pagamentos",
-    "dashboardLabel": "Dashboard Tesouro"
+    "dashboardLabel": "Dashboard Tesouro",
+    "causesLabel": "Causas"
   },
   "login": {
     "title": "Dapp Manager",
