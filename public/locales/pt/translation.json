@@ -121,7 +121,13 @@
       "create": {
         "title": "Adicionar nova Causa",
         "save": "Salvar",
-        "cancel": "Cancelar"
+        "cancel": "Cancelar",
+        "modal": {
+          "title": "Tem certeza?",
+          "body": "Após confirmação, uma pool será criada",
+          "confirmButton": "Confirmar",
+          "cancelButton": "Cancelar"
+        }
       },
       "edit": {
         "title": "Editar Causa",

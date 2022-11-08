@@ -129,7 +129,13 @@
       "create": {
         "title": "Add New Cause",
         "save": "Save",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "modal": {
+          "title": "are you sure?",
+          "body": "After confirmed, this action will create a pool.",
+          "confirmButton": "Confirm",
+          "cancelButton": "Cancel"
+        }
       },
       "edit": {
         "title": "Edit Causes",

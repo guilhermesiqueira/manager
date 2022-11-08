@@ -33,6 +33,7 @@ function CauseItems({ causes, searchTerm }: Props) {
       filterCauses(causes).map((cause: any) => (
         <tr key={cause.id}>
           <th>{cause?.name}</th>
+          <th>{cause?.token}</th>
           <th>{cause?.offer?.price || "0"}</th>
           <th>
             <th>

@@ -17,10 +17,8 @@ const causesApi = {
     apiGetWithParams(
       "causes",
       {
-        params: {
-          per_page: perPage,
-          page,
-        },
+        per_page: perPage,
+        page,
       },
       { headers: { Language: language ?? "en" } },
     ),
