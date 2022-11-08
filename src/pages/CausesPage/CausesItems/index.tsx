@@ -61,10 +61,10 @@ function CauseItems({ causes, searchTerm }: Props) {
       filterCauses(causes).map((cause: any) => (
         <tr key={cause.id}>
           <th>{cause?.name}</th>
-          <th>{cause?.pools[0].token.name || "-"}</th>
+          <th>{cause?.pools[0].token.name ?? "-"}</th>
           <th>{handleBalance(cause.pools[0].address)}</th>
           <th>
-            <CopyableAddress text={cause.pools[0].address || "-"} />
+            <CopyableAddress text={cause.pools[0].address ?? "-"} />
           </th>
           <th>
             <S.ActionsTableCell>
