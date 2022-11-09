@@ -88,7 +88,7 @@
         "date": "Date",
         "stripeId": "Stripe Purchase ID",
         "type": "Type",
-        "email": "User e-mail",
+        "userIdentification": "User identification",
         "value": "Value (USDC)",
         "status": "Purchase status"
       },
