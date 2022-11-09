@@ -145,6 +145,29 @@
       "poolAddress": "Endereço da pool",
       "edit": "Editar",
       "linkedProjects": "Projetos vinculados"
+    },
+    "search": "Procurar por nome...",
+    "next": "próximo >",
+    "previous": "< anterior"
+  },
+  "offersPage": {
+    "title": "Ofertas",
+    "offersListSection": {
+      "listColumns": {
+        "id": "ID",
+        "currency": "Moeda",
+        "price": "Preço",
+        "gateway": "Gateway",
+        "externalId": "ID Externo",
+        "status": "Status"
+      },
+      "offersItems": {
+        "active": "Ativo",
+        "inactive": "Inativo"
+      },
+      "search": "Procurar por ID...",
+      "next": "próximo >",
+      "previous": "< anterior"
     }
   },
 
@@ -152,7 +175,8 @@
     "integrationsLabel": "Integrações",
     "purchasesLabel": "Pagamentos",
     "dashboardLabel": "Dashboard Tesouro",
-    "causesLabel": "Causas"
+    "causesLabel": "Causas",
+    "offersLabel": "Ofertas"
   },
   "login": {
     "title": "Dapp Manager",

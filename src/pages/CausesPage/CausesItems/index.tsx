@@ -73,11 +73,11 @@ function CauseItems({ causes, searchTerm }: Props) {
           <th>
             <S.ActionsTableCell>
               <Link to={`/causes/${cause.id}`}>
-                <img src={infoIcon} alt="view integration info" />
+                <img src={infoIcon} alt="view cause info" />
               </Link>
 
               <Link to={`/causes/${cause.id}/edit`}>
-                <img src={editIcon} alt="edit integration info" />
+                <img src={editIcon} alt="edit cause info" />
               </Link>
             </S.ActionsTableCell>
           </th>
