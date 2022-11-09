@@ -61,7 +61,7 @@ function PurchasesListSection(): JSX.Element {
             <th>{t("listColumns.date")}</th>
             <th>{t("listColumns.stripeId")}</th>
             <th>{t("listColumns.type")}</th>
-            <th>{t("listColumns.email")}</th>
+            <th>{t("listColumns.userIdentification")}</th>
             <th>{t("listColumns.value")}</th>
             <th>{t("listColumns.status")}</th>
           </tr>

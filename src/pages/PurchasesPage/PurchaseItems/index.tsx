@@ -71,7 +71,11 @@ function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
           <th>{dateFormatter(purchase?.paidDate)}</th>
           <th>{purchase?.externalId || "-"}</th>
           <th>{purchase?.paymentMethod}</th>
-          <th>{purchase?.person?.customer?.email || "guest"}</th>
+          <th>
+            {purchase.paymentMethod === "crypto"
+              ? purchase?.person?.guest?.walletAddress
+              : purchase?.person?.customer?.email}
+          </th>
           <th>{purchase?.offer?.price || "0"}</th>
           <th>
             <S.StatusTableCell
