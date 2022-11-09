@@ -33,7 +33,7 @@ function OffersItems({ offers, searchTerm }: Props) {
     });
   }
 
-  function renderCauses() {
+  function renderOffers() {
     return (
       offers &&
       filterOffers(offers).map((offer: any) => (
@@ -69,7 +69,7 @@ function OffersItems({ offers, searchTerm }: Props) {
     );
   }
 
-  return <tbody>{renderCauses()}</tbody>;
+  return <tbody>{renderOffers()}</tbody>;
 }
 
 export default OffersItems;
