@@ -9,22 +9,25 @@ import {
   Legend,
 } from "chart.js";
 import moneyFormatter from "lib/moneyFormatter";
+import Cause from "types/entities/Cause";
 import * as S from "./styles";
 
 export type Props = {
   data: any;
+  causes: Cause[];
+  pools: any[];
   title: string;
-  mainText: string | null;
   leftText: string;
-  rightSecondaryText: any;
+  treasureBalance: any;
 };
 
 function CardTextGraph({
   data,
+  causes,
+  pools,
   title,
-  mainText = "mainText",
   leftText,
-  rightSecondaryText,
+  treasureBalance,
 }: Props): JSX.Element {
   ChartJS.register(
     CategoryScale,
@@ -57,33 +60,29 @@ function CardTextGraph({
     },
   };
 
+  const handleBalance = (address: string) => {
+    const pool: any = pools?.find((p) => p.id === address);
+    if (pool) {
+      return moneyFormatter(Number(pool.balance));
+    }
+    return 0;
+  };
+
   return (
     <S.Container>
       <S.MainText>{title}</S.MainText>
-      <S.MainValue>{rightSecondaryText}</S.MainValue>
+      <S.MainValue>{treasureBalance}</S.MainValue>
       <S.TreasureTitle>{leftText}</S.TreasureTitle>
       <S.Graph data={data} options={options} />
       <S.CausesSection>
-        <S.CauseCard>
-          <S.CauseTitle>Sustentabilidade (USDC)</S.CauseTitle>
-          <S.CauseValue>{moneyFormatter(62662486)}</S.CauseValue>
-        </S.CauseCard>
-        <S.CauseCard>
-          <S.CauseTitle>Educação (USDC)</S.CauseTitle>
-          <S.CauseValue>{moneyFormatter(62662486)}</S.CauseValue>
-        </S.CauseCard>
-        <S.CauseCard>
-          <S.CauseTitle>Animais (USDC)</S.CauseTitle>
-          <S.CauseValue>{moneyFormatter(62662486)}</S.CauseValue>
-        </S.CauseCard>
-        <S.CauseCard>
-          <S.CauseTitle>Animais (USDC)</S.CauseTitle>
-          <S.CauseValue>{moneyFormatter(62662486)}</S.CauseValue>
-        </S.CauseCard>
-        <S.CauseCard>
-          <S.CauseTitle>Animais (USDC)</S.CauseTitle>
-          <S.CauseValue>{moneyFormatter(62662486)}</S.CauseValue>
-        </S.CauseCard>
+        {causes.map((cause: any) => (
+          <S.CauseCard key={cause.id}>
+            <S.CauseTitle>{cause.name} (USDC)</S.CauseTitle>
+            <S.CauseValue>
+              {handleBalance(cause?.pools[0].address)}
+            </S.CauseValue>
+          </S.CauseCard>
+        ))}
       </S.CausesSection>
     </S.Container>
   );

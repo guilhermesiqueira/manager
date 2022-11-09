@@ -1,7 +1,6 @@
 function moneyFormatter(money: number): string {
-  return money.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL",
+  return money.toLocaleString("en-US", {
+    minimumFractionDigits: 2,
   });
 }
 

@@ -1,13 +1,18 @@
-import React, { useEffect, useCallback, useState } from "react";
+import { useEffect, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNetwork } from "hooks/useNetwork";
 import DonationTokenAbi from "utils/abis/DonationToken.json";
 import RibonAbi from "utils/abis/RibonAbi.json";
+import moneyFormatter from "lib/moneyFormatter";
 import { logError } from "services/crashReport";
+import useCauses from "hooks/apiHooks/useCauses";
+import usePools from "hooks/apiTheGraphHooks/usePools";
 import useContractBalance from "hooks/apiHooks/useContractBalance";
 import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
 import { useContract } from "hooks/useContract";
 import useTokenDecimals from "hooks/useTokenDecimals";
+import Pool from "types/entities/Pool";
+import Cause from "types/entities/Cause";
 import { formatFromDecimals } from "lib/web3Helpers/etherFormatters";
 import theme from "styles/theme";
 import CardTextGraph from "components/moleculars/cards/CardTextGraph";
@@ -15,6 +20,10 @@ import * as S from "./styles";
 
 function TreasureSection(): JSX.Element {
   const [assignedValue, setAssignedValue] = useState<number>(0);
+  const [causes, setCauses] = useState<Cause[]>([]);
+  const { getAllPools } = usePools();
+  const [pools, setPools] = useState<Pool[]>([]);
+  const { getCauses } = useCauses();
   const { currentNetwork } = useNetwork();
   const { getAllIntegrations } = useIntegrations();
   const { tokenDecimals } = useTokenDecimals();
@@ -49,6 +58,30 @@ function TreasureSection(): JSX.Element {
     }
   }, [contractBalance, getAllIntegrations]);
 
+  const fetchCauses = useCallback(async () => {
+    try {
+      const allCauses = await getCauses();
+      setCauses(allCauses);
+    } catch (e) {
+      logError(e);
+    }
+  }, [setCauses]);
+
+  const fetchPools = useCallback(async () => {
+    try {
+      const poolsData = await getAllPools();
+
+      setPools(poolsData.pools);
+    } catch (e) {
+      logError(e);
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchCauses();
+    fetchPools();
+  }, [fetchCauses, fetchPools]);
+
   useEffect(() => {
     contract?.on("PoolBalanceIncreased", () => {
       fetchContractBalance();
@@ -57,20 +90,13 @@ function TreasureSection(): JSX.Element {
 
   function renderGraph() {
     fetchAssignedBalance();
-
-    const labels = [
-      "Enterpreneurship",
-      "Sustentability",
-      "Education",
-      "Health Care",
-      "Animals",
-    ];
+    const labels = causes.map((item) => item.name);
 
     const data = {
       labels,
       datasets: [
         {
-          data: labels.map(() => Math.random() * 100),
+          data: pools.map((pool: any) => pool.balance),
           backgroundColor: theme.colors.green30,
           borderColor: theme.colors.green30,
           label: "Causes",
@@ -85,10 +111,11 @@ function TreasureSection(): JSX.Element {
     <S.Container>
       <CardTextGraph
         data={renderGraph()}
+        causes={causes}
+        pools={pools}
         title={t("mainText")}
-        mainText={contractBalance.toFixed(2)}
         leftText={t("causesTitle")}
-        rightSecondaryText={assignedValue.toFixed(2)}
+        treasureBalance={moneyFormatter(assignedValue)}
       />
     </S.Container>
   );

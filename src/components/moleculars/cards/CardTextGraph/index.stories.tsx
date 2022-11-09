@@ -15,7 +15,6 @@ export const Default = Template.bind({});
 Default.args = {
   data: { datasets: [{ data: [10, 20] }] },
   title: "CardTextGraph",
-  mainText: "mainText",
   leftText: "leftText",
-  rightSecondaryText: 10,
+  treasureBalance: 10,
 };
