@@ -1,7 +1,7 @@
 import { useLanguage } from "hooks/useLanguage";
 import { useCallback, useState } from "react";
 import causesApi from "services/api/causesApi";
-import { Cause } from "types/entities/Cause";
+import { Cause, CreateCause, EditCause } from "types/entities/Cause";
 
 function useCauses() {
   const [causes, setCauses] = useState<Cause[]>([]);
@@ -25,9 +25,19 @@ function useCauses() {
   }
 
   async function getCause(id: any) {
-    const { data: integration } = await causesApi.getCause(id);
+    const { data: cause } = await causesApi.getCause(id, currentLang);
 
-    return integration;
+    return cause;
+  }
+
+  async function createCause(data: CreateCause) {
+    const cause = causesApi.createCause(data, currentLang);
+    return cause;
+  }
+
+  async function updateCause(data: EditCause) {
+    const cause = causesApi.updateCause(data.id, data, currentLang);
+    return cause;
   }
 
   return {
@@ -35,6 +45,8 @@ function useCauses() {
     getCauses,
     incrementPage,
     getCause,
+    createCause,
+    updateCause,
   };
 }
 

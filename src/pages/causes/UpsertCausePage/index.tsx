@@ -1,5 +1,4 @@
 import { Button, useToast } from "@chakra-ui/react";
-import useApiCauses from "hooks/apiHooks/useApiCauses";
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
@@ -7,11 +6,11 @@ import { useNavigate, useParams } from "react-router";
 import { logError } from "services/crashReport";
 import { Cause, CreateCause } from "types/entities/Cause";
 import theme from "styles/theme";
-import { useLanguage } from "hooks/useLanguage";
 import InfoName from "components/moleculars/infoName";
 import ModalImage from "components/moleculars/modals/ModalImage";
 import WarningRedIcon from "assets/icons/warning-red-icon.svg";
 import Loading from "components/moleculars/Loading";
+import useCauses from "hooks/apiHooks/useCauses";
 import * as S from "./styles";
 
 export type Props = {
@@ -23,15 +22,13 @@ function UpsertCausePage({ isEdit }: Props) {
     keyPrefix: "causes.upsertCausePage",
   });
 
-  const { currentLang } = useLanguage();
-
   const mode = isEdit ? "edit" : "create";
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const { gray10, gray40, gray30, red30 } = theme.colors;
   const navigate = useNavigate();
   const { id } = useParams();
-  const { createApiCause, getApiCause, updateApiCause } = useApiCauses();
+  const { createCause, getCause, updateCause } = useCauses();
   const {
     register,
     getValues: CauseObject,
@@ -44,8 +41,8 @@ function UpsertCausePage({ isEdit }: Props) {
 
   const fetchCause = useCallback(async () => {
     try {
-      const apiCause = await getApiCause(id, currentLang);
-      reset(apiCause);
+      const cause = await getCause(id);
+      reset(cause);
     } catch (e) {
       logError(e);
     }
@@ -54,11 +51,11 @@ function UpsertCausePage({ isEdit }: Props) {
   const handleSave = async () => {
     try {
       if (isEdit) {
-        await updateApiCause(CauseObject(), currentLang);
+        await updateCause(CauseObject());
       } else {
         setModalOpen(false);
         setLoading(true);
-        await createApiCause(CauseObject(), currentLang)
+        await createCause(CauseObject())
           .then((response) => {
             reset(response.data);
             setLoading(false);
@@ -72,7 +69,7 @@ function UpsertCausePage({ isEdit }: Props) {
             throw Error(error.response.data.formatted_message);
           });
       }
-      navigate("/Causes");
+      navigate(`/causes/${CauseObject().id.toString()}}`);
     } catch (e) {
       logError(e);
     }
