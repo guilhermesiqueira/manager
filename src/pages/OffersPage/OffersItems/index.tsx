@@ -6,6 +6,7 @@ import CopyableAddress from "components/atomics/CopyableAddress";
 import Offer from "types/entities/Offer";
 import theme from "styles/theme";
 import { useTranslation } from "react-i18next";
+import { capitalize } from "lib/capitalize";
 import * as S from "./styles";
 
 type Props = {
@@ -39,8 +40,8 @@ function OffersItems({ offers, searchTerm }: Props) {
       filterOffers(offers).map((offer: any) => (
         <tr key={offer.id}>
           <th>{offer?.id}</th>
-          <th>{offer?.currency}</th>
-          <th>{offer?.gateway}</th>
+          <th>{offer?.currency.toUpperCase()}</th>
+          <th>{capitalize(offer?.gateway)}</th>
           <th>
             <CopyableAddress text={offer?.price} />
           </th>
