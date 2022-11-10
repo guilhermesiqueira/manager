@@ -9,6 +9,7 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from "layouts/MainLayout";
 import CausesPage from "pages/CausesPage";
 import CausesDetailsPage from "pages/CausesPage/CausesDetailsPage";
+import OffersPage from "pages/OffersPage";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
 
@@ -122,6 +123,20 @@ function RoutesComponent(): JSX.Element {
               <Navigation />
               <MainLayout>
                 <CausesDetailsPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/offers"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <OffersPage />
               </MainLayout>
             </Suspense>
           </PrivateRoute>
