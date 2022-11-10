@@ -148,7 +148,26 @@
       "linkedProjects": "Projetos vinculados"
     }
   },
-
+  "nonProfitsPage": {
+    "title": "Lista de Ngos",
+    "createNew": "Adicionar nova",
+    "nonProfitsListSection": {
+      "listColumns": {
+        "name": "Nome",
+        "token": "Token",
+        "poolAddress": "Endereço da pool",
+        "availableToDonation": "Disponível para doação (USDC)"
+      },
+      "copyableAddress": {
+        "copiedText": "Endereço copiado",
+        "copyText": "Copiar para o clipboard"
+      },
+      "createNew": "Adicionar novo",
+      "search": "Procurar pelo nome...",
+      "next": "próximo >",
+      "previous": "< anterior"
+    }
+  },
   "menu": {
     "integrationsLabel": "Integrações",
     "purchasesLabel": "Pagamentos",

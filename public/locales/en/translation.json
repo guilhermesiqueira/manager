@@ -129,11 +129,32 @@
       "linkedProjects": "Linked projects"
     }
   },
+  "nonProfitsPage": {
+    "title": "Ngos List",
+    "createNew": "Add new",
+    "nonProfitsListSection": {
+      "listColumns": {
+        "id": "Id",
+        "name": "Name",
+        "walletAddress": "Wallet address",
+        "status": "Status"
+      },
+      "copyableAddress": {
+        "copiedText": "Address copied",
+        "copyText": "Copy to clipboard"
+      },
+      "createNew": "Add new",
+      "search": "Search by name...",
+      "next": "next >",
+      "previous": "< previous"
+    }
+  },
   "menu": {
     "integrationsLabel": "Integrations",
     "purchasesLabel": "Purchases",
     "dashboardLabel": "Treasure Dashboard",
-    "causesLabel": "Causes"
+    "causesLabel": "Causes",
+    "ngosLabel": "Ngos"
   },
   "login": {
     "title": "Dapp Manager",
