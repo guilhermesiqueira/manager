@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useState } from "react";
+import React, { useEffect, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNetwork } from "hooks/useNetwork";
 import DonationTokenAbi from "utils/abis/DonationToken.json";
