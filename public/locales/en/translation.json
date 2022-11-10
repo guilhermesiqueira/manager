@@ -151,11 +151,53 @@
       "cause": "Cause"
     }
   },
+  "offersPage": {
+    "title": "Offers",
+    "offersListSection": {
+      "listColumns": {
+        "id": "ID",
+        "currency": "Currency",
+        "price": "Price",
+        "gateway": "Gateway",
+        "externalId": "External ID",
+        "status": "Status"
+      },
+      "offersItems": {
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "search": "Search by ID...",
+      "next": "next >",
+      "previous": "< previous"
+    }
+  },
+  "nonProfitsPage": {
+    "title": "Ngos List",
+    "createNew": "Add new",
+    "nonProfitsListSection": {
+      "listColumns": {
+        "id": "Id",
+        "name": "Name",
+        "walletAddress": "Wallet address",
+        "status": "Status"
+      },
+      "copyableAddress": {
+        "copiedText": "Address copied",
+        "copyText": "Copy to clipboard"
+      },
+      "createNew": "Add new",
+      "search": "Search by name...",
+      "next": "next >",
+      "previous": "< previous"
+    }
+  },
   "menu": {
     "integrationsLabel": "Integrations",
     "purchasesLabel": "Purchases",
     "dashboardLabel": "Treasure Dashboard",
-    "causesLabel": "Causes"
+    "causesLabel": "Causes",
+    "ngosLabel": "Ngos",
+    "offersLabel": "Offers"
   },
   "login": {
     "title": "Dapp Manager",

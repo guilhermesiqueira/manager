@@ -10,6 +10,8 @@ import MainLayout from "layouts/MainLayout";
 import CausesPage from "pages/causes/CausesPage";
 import CausesDetailsPage from "pages/causes/CausesDetailsPage";
 import UpsertCausePage from "pages/causes/UpsertCausePage";
+import NonProfitsPage from "pages/NonProfitsPage";
+import OffersPage from "pages/OffersPage";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
 
@@ -115,6 +117,7 @@ function RoutesComponent(): JSX.Element {
           </PrivateRoute>
         }
       />
+
       <Route
         path="/causes/new"
         element={
@@ -128,6 +131,7 @@ function RoutesComponent(): JSX.Element {
           </PrivateRoute>
         }
       />
+
       <Route
         path="/causes/:id"
         element={
@@ -141,6 +145,7 @@ function RoutesComponent(): JSX.Element {
           </PrivateRoute>
         }
       />
+
       <Route
         path="/causes/:id/edit"
         element={
@@ -149,6 +154,34 @@ function RoutesComponent(): JSX.Element {
               <Navigation />
               <MainLayout>
                 <UpsertCausePage isEdit />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/ngos"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <NonProfitsPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/offers"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <OffersPage />
               </MainLayout>
             </Suspense>
           </PrivateRoute>
