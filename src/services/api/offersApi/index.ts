@@ -12,7 +12,7 @@ const offersApi = {
     perPage = 10,
     page = 3,
   }: OffersParams): Promise<AxiosResponse<Offer[]>> =>
-    apiGetWithParams("givings/offers", {
+    apiGetWithParams("givings/offers_manager", {
       params: {
         per_page: perPage,
         page,
