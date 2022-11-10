@@ -1,4 +1,3 @@
-import React from "react";
 import { screen } from "@testing-library/react";
 import { expectTextToBeInTheDocument } from "config/testUtils/expects";
 import { renderComponent, waitForPromises } from "config/testUtils";
@@ -11,9 +10,7 @@ describe("TreasureSection", () => {
   it("should render without error", () => {
     renderComponent(<TreasureSection />);
 
-    expect(
-      screen.getByText("Donation Treasure Balance (USDC)"),
-    ).toBeInTheDocument();
+    expect(screen.getByText("Treasure Balance (USDC)")).toBeInTheDocument();
   });
 
   describe("when the integration has balance", () => {
