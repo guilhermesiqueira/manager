@@ -17,6 +17,7 @@ import { formatFromDecimals } from "lib/web3Helpers/etherFormatters";
 import theme from "styles/theme";
 import CardTextGraph from "./CardTextGraph";
 import * as S from "./styles";
+import WalletCard from "./WalletCard";
 
 function TreasureSection(): JSX.Element {
   const [assignedValue, setAssignedValue] = useState<number>(0);
@@ -117,6 +118,7 @@ function TreasureSection(): JSX.Element {
         leftText={t("causesTitle")}
         treasureBalance={moneyFormatter(assignedValue)}
       />
+      <WalletCard />
     </S.Container>
   );
 }

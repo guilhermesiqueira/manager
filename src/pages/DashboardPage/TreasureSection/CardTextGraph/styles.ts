@@ -4,13 +4,13 @@ import { defaultParagraphSmall } from "styles/typography/default";
 
 export const Container = styled.div`
   width: 700px;
-  height: 600px;
+  height: 100%;
   padding: 24px;
   border: 1px solid ${({ theme }) => theme.colors.gray20};
   border-radius: 16px;
   box-sizing: border-box;
-  background: ${({ theme }) => theme.colors.white};
   border-radius: 16px;
+  background: ${({ theme }) => theme.colors.white};
   text-align: left;
   background: ${({ theme }) => theme.colors.neutral10};
 `;
