@@ -22,9 +22,9 @@ function useCauses() {
   }
 
   async function getCause(id: any) {
-    const { data: integration } = await causesApi.getCause(id);
+    const { data: cause } = await causesApi.getCause(id);
 
-    return integration;
+    return cause;
   }
 
   return {

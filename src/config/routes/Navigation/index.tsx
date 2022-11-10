@@ -10,6 +10,8 @@ import CausesIconOff from "./assets/causesIconOff.svg";
 import CausesIconOn from "./assets/causesIconOn.svg";
 import NgosIconOn from "./assets/ngosIconOn.svg";
 import NgosIconOff from "./assets/ngosIconOff.svg";
+import OffersIconOn from "./assets/offersIconOn.svg";
+import OffersIconOff from "./assets/offersIconOff.svg";
 
 import * as S from "./styles";
 import NavigationLink from "./NavigationLink";
@@ -54,6 +56,12 @@ function Navigation(): JSX.Element {
       iconOn: NgosIconOn,
       iconOff: NgosIconOff,
       title: t("ngosLabel"),
+    },
+    {
+      path: "/offers",
+      iconOn: OffersIconOn,
+      iconOff: OffersIconOff,
+      title: t("offersLabel"),
     },
   ];
 

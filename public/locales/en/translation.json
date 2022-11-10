@@ -127,6 +127,29 @@
       "poolAddress": "Pool address",
       "edit": "Edit",
       "linkedProjects": "Linked projects"
+    },
+    "search": "Search by name...",
+    "next": "next >",
+    "previous": "< previous"
+  },
+  "offersPage": {
+    "title": "Offers",
+    "offersListSection": {
+      "listColumns": {
+        "id": "ID",
+        "currency": "Currency",
+        "price": "Price",
+        "gateway": "Gateway",
+        "externalId": "External ID",
+        "status": "Status"
+      },
+      "offersItems": {
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "search": "Search by ID...",
+      "next": "next >",
+      "previous": "< previous"
     }
   },
   "nonProfitsPage": {
@@ -154,7 +177,8 @@
     "purchasesLabel": "Purchases",
     "dashboardLabel": "Treasure Dashboard",
     "causesLabel": "Causes",
-    "ngosLabel": "Ngos"
+    "ngosLabel": "Ngos",
+    "offersLabel": "Offers"
   },
   "login": {
     "title": "Dapp Manager",

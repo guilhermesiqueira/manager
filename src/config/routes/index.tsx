@@ -10,6 +10,7 @@ import MainLayout from "layouts/MainLayout";
 import CausesPage from "pages/CausesPage";
 import CausesDetailsPage from "pages/CausesPage/CausesDetailsPage";
 import NonProfitsPage from "pages/NonProfitsPage";
+import OffersPage from "pages/OffersPage";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
 
@@ -138,6 +139,20 @@ function RoutesComponent(): JSX.Element {
               <Navigation />
               <MainLayout>
                 <NonProfitsPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/offers"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <OffersPage />
               </MainLayout>
             </Suspense>
           </PrivateRoute>
