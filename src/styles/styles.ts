@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Pie } from "react-chartjs-2";
 
 export const Container = styled.div`
   width: 256px;
@@ -40,8 +39,4 @@ export const SecondaryLeftValue = styled.div`
 
 export const SecondaryRightValue = styled.div`
   color: ${({ theme }) => theme.colors.gray30};
-`;
-
-export const Graph = styled(Pie)`
-  padding: 32px 16px 0;
 `;
