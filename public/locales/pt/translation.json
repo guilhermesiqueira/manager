@@ -3,7 +3,8 @@
     "treasureDashboard": {
       "title": "Dashboard - Tesouro",
       "treasureSection": {
-        "mainText": "Balanço do Tesouro de Doação (USDC)",
+        "mainText": "Tesouro de Doação (USDC)",
+        "causesTitle": "Distribuição do Tesouro",
         "assignedText": "Atribuído (USDC)",
         "unassignedText": "Não atribuído (USDC)"
       },
@@ -87,7 +88,7 @@
         "date": "Data",
         "stripeId": "Stripe ID",
         "type": "Tipo",
-        "email": "E-mail do Usuário",
+        "userIdentification": "Identificação do usuário",
         "value": "Valor (USDC)",
         "status": "Status da compra"
       },

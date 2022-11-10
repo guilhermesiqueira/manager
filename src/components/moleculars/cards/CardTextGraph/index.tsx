@@ -1,4 +1,3 @@
-import React from "react";
 import { Chart as ChartJS, ArcElement } from "chart.js";
 import * as S from "./styles";
 
