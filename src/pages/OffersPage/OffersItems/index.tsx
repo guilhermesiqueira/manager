@@ -20,13 +20,11 @@ function OffersItems({ offers, searchTerm }: Props) {
     keyPrefix: "offersPage.offersListSection.offersItems",
   });
 
-  function filterOffers(nonFilteredCauses: any) {
-    return nonFilteredCauses.filter((offerData: any) => {
+  function filterOffers(nonFilteredCauses: Offer[]) {
+    return nonFilteredCauses.filter((offerData: Offer) => {
       if (searchTerm === "") {
         return offerData;
-      } else if (
-        offerData?.name.toLowerCase().includes(searchTerm.toLowerCase())
-      ) {
+      } else if (offerData?.id.toString().includes(searchTerm)) {
         return offerData;
       } else {
         return null;
@@ -37,7 +35,7 @@ function OffersItems({ offers, searchTerm }: Props) {
   function renderOffers() {
     return (
       offers &&
-      filterOffers(offers).map((offer: any) => (
+      filterOffers(offers).map((offer: Offer) => (
         <tr key={offer.id}>
           <th>{offer?.id}</th>
           <th>{offer?.currency.toUpperCase()}</th>

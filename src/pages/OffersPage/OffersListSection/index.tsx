@@ -18,7 +18,7 @@ function OffersListSection(): JSX.Element {
   const itemsPerPage = 10;
   const [searchTerm, setSearchTerm] = useState("");
 
-  const fetchCauses = useCallback(async () => {
+  const fetchOffers = useCallback(async () => {
     try {
       const allOffers = await getOffers();
       setOffers(allOffers);
@@ -28,8 +28,8 @@ function OffersListSection(): JSX.Element {
   }, [setOffers]);
 
   useEffect(() => {
-    fetchCauses();
-  }, [fetchCauses]);
+    fetchOffers();
+  }, [fetchOffers]);
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;

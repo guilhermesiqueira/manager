@@ -20,8 +20,8 @@ function CauseItems({ causes, searchTerm }: Props) {
 
   const [pools, setPools] = useState<Pool[]>();
 
-  function filterCauses(nonFilteredCauses: any) {
-    return nonFilteredCauses.filter((causeData: any) => {
+  function filterCauses(nonFilteredCauses: Cause[]) {
+    return nonFilteredCauses.filter((causeData: Cause) => {
       if (searchTerm === "") {
         return causeData;
       } else if (
@@ -58,7 +58,7 @@ function CauseItems({ causes, searchTerm }: Props) {
   function renderCauses() {
     return (
       causes &&
-      filterCauses(causes).map((cause: any) => (
+      filterCauses(causes).map((cause: Cause) => (
         <tr key={cause.id}>
           <th>{cause?.name}</th>
           <th>{cause?.pools.length ? cause?.pools[0].token.name : "-"}</th>
