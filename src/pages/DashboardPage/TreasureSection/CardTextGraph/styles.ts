@@ -1,14 +1,13 @@
 import styled from "styled-components";
-import { Pie } from "react-chartjs-2";
+import { Bar } from "react-chartjs-2";
 import { defaultParagraphSmall } from "styles/typography/default";
 
 export const Container = styled.div`
-  width: 256px;
+  width: 700px;
+  height: 600px;
   padding: 24px;
   border: 1px solid ${({ theme }) => theme.colors.gray20};
   border-radius: 16px;
-  display: flex;
-  flex-flow: row wrap;
   box-sizing: border-box;
   background: ${({ theme }) => theme.colors.white};
   border-radius: 16px;
@@ -16,15 +15,19 @@ export const Container = styled.div`
   background: ${({ theme }) => theme.colors.neutral10};
 `;
 
-export const MainText = styled.div`
-  padding-bottom: 16px;
+export const MainText = styled.h1`
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 20px;
+  padding-bottom: 4px;
   color: ${({ theme }) => theme.colors.gray40};
 `;
 
-export const MainValue = styled.span`
-  ${defaultParagraphSmall}
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.gray40};
+export const MainValue = styled.h2`
+  font-size: 22px;
+  font-weight: bold;
+  color: ${({ theme }) => theme.colors.green40};
+  margin-bottom: 12px;
 `;
 
 export const TreasureTitle = styled.h3`
@@ -53,8 +56,8 @@ export const SecondaryRightValue = styled.h6`
   color: ${({ theme }) => theme.colors.gray30};
 `;
 
-export const Graph = styled(Pie)`
-  padding: 32px 16px 0;
+export const Graph = styled(Bar)`
+  padding: 16px;
 `;
 
 export const CausesSection = styled.div`

@@ -3,7 +3,8 @@
     "treasureDashboard": {
       "title": "Treasure Dashboard",
       "treasureSection": {
-        "mainText": "Donation Treasure Balance (USDC)",
+        "mainText": "Treasure Balance (USDC)",
+        "causesTitle": "Treasure Distribution",
         "assignedText": "Assigned (USDC)",
         "unassignedText": "Unassigned (USDC)"
       },
@@ -88,7 +89,7 @@
         "date": "Date",
         "stripeId": "Stripe Purchase ID",
         "type": "Type",
-        "email": "User e-mail",
+        "userIdentification": "User identification",
         "value": "Value (USDC)",
         "status": "Purchase status"
       },

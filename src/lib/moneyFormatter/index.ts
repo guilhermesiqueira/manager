@@ -1,5 +1,7 @@
-function numberFormatter(money: number): string {
-  return money.toFixed(2);
+function moneyFormatter(money: number): string {
+  return money.toLocaleString("en-US", {
+    minimumFractionDigits: 2,
+  });
 }
 
-export default numberFormatter;
+export default moneyFormatter;
