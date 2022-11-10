@@ -48,7 +48,7 @@ export function apiGetWithParams(
 ) {
   if (config)
     return api.get(`${API_SCOPE}/${url}`, {
-      headers: config.headers,
+      ...config,
       params,
     });
 

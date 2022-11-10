@@ -1,5 +1,6 @@
 import { AxiosResponse } from "axios";
-import { Cause, EditCause } from "types/entities/Cause";
+import { EditCause } from "types/apiResponses/cause";
+import Cause from "types/entities/Cause";
 import { apiPost, apiPut, apiGetWithParams, apiGet } from "..";
 
 type CausesParams = {

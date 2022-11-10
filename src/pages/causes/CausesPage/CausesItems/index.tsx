@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Cause } from "types/entities/Cause";
+import Cause from "types/entities/Cause";
 import infoIcon from "assets/icons/info-icon.svg";
 import editIcon from "assets/icons/edit-icon.svg";
 import CopyableAddress from "components/atomics/CopyableAddress";
@@ -25,7 +25,7 @@ function CauseItems({ causes, searchTerm }: Props) {
       if (searchTerm === "") {
         return causeData;
       } else if (
-        causeData?.name.toLowerCase().includes(searchTerm.toLowerCase())
+        causeData?.name?.toLowerCase().includes(searchTerm.toLowerCase())
       ) {
         return causeData;
       } else {

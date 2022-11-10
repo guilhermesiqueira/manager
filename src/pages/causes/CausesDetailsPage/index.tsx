@@ -9,7 +9,7 @@ import theme from "styles/theme";
 import { useCallback, useEffect, useState } from "react";
 import { logError } from "services/crashReport";
 import useCauses from "hooks/apiHooks/useCauses";
-import { Cause } from "types/entities/Cause";
+import Cause from "types/entities/Cause";
 import ArrowOutward from "assets/icons/arrow-outward.svg";
 import usePools from "hooks/apiTheGraphHooks/usePools";
 import Pool from "types/apiResponses/pool";

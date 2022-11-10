@@ -1,7 +1,8 @@
 import { useLanguage } from "hooks/useLanguage";
 import { useCallback, useState } from "react";
 import causesApi from "services/api/causesApi";
-import { Cause, CreateCause, EditCause } from "types/entities/Cause";
+import { CreateCause, EditCause } from "types/apiResponses/cause";
+import Cause from "types/entities/Cause";
 
 function useCauses() {
   const [causes, setCauses] = useState<Cause[]>([]);

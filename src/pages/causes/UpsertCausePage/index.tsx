@@ -4,13 +4,14 @@ import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router";
 import { logError } from "services/crashReport";
-import { Cause, CreateCause } from "types/entities/Cause";
+import Cause from "types/entities/Cause";
 import theme from "styles/theme";
 import InfoName from "components/moleculars/infoName";
 import ModalImage from "components/moleculars/modals/ModalImage";
 import WarningRedIcon from "assets/icons/warning-red-icon.svg";
 import Loading from "components/moleculars/Loading";
 import useCauses from "hooks/apiHooks/useCauses";
+import { CreateCause } from "types/apiResponses/cause";
 import * as S from "./styles";
 
 export type Props = {
