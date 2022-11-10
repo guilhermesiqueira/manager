@@ -8,6 +8,8 @@ import PurchasesIconOff from "./assets/purchasesIconOff.svg";
 import PurchasesIconOn from "./assets/purchasesIconOn.svg";
 import CausesIconOff from "./assets/causesIconOff.svg";
 import CausesIconOn from "./assets/causesIconOn.svg";
+import NgosIconOn from "./assets/ngosIconOn.svg";
+import NgosIconOff from "./assets/ngosIconOff.svg";
 import OffersIconOn from "./assets/offersIconOn.svg";
 import OffersIconOff from "./assets/offersIconOff.svg";
 
@@ -48,6 +50,12 @@ function Navigation(): JSX.Element {
       iconOn: CausesIconOn,
       iconOff: CausesIconOff,
       title: t("causesLabel"),
+    },
+    {
+      path: "/ngos",
+      iconOn: NgosIconOn,
+      iconOff: NgosIconOff,
+      title: t("ngosLabel"),
     },
     {
       path: "/offers",
