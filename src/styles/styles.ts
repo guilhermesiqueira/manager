@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Pie } from "react-chartjs-2";
 
 export const Container = styled.div`
   width: 256px;
