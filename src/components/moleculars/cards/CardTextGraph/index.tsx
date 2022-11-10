@@ -1,89 +1,44 @@
-import {
-  Chart as ChartJS,
-  ArcElement,
-  CategoryScale,
-  LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend,
-} from "chart.js";
-import moneyFormatter from "lib/moneyFormatter";
-import Cause from "types/entities/Cause";
+import { Chart as ChartJS, ArcElement } from "chart.js";
 import * as S from "./styles";
 
 export type Props = {
   data: any;
-  causes: Cause[];
-  pools: any[];
   title: string;
+  mainText: string | null;
+  rightText: string;
   leftText: string;
-  treasureBalance: any;
+  rightSecondaryText: any;
+  leftSecondaryText: any;
 };
 
 function CardTextGraph({
   data,
-  causes,
-  pools,
   title,
+  mainText = "mainText",
+  rightText,
   leftText,
-  treasureBalance,
+  rightSecondaryText,
+  leftSecondaryText,
 }: Props): JSX.Element {
-  ChartJS.register(
-    CategoryScale,
-    LinearScale,
-    BarElement,
-    Title,
-    Tooltip,
-    Legend,
-    ArcElement,
-  );
-
-  const options = {
-    responsive: true,
-    scales: {
-      x: {
-        grid: {
-          display: false,
-        },
-      },
-      y: {
-        grid: {
-          display: false,
-        },
-      },
-    },
-    plugins: {
-      legend: {
-        display: false,
-      },
-    },
-  };
-
-  const handleBalance = (address: string) => {
-    const pool: any = pools?.find((p) => p.id === address);
-    if (pool) {
-      return moneyFormatter(Number(pool.balance));
-    }
-    return 0;
-  };
+  ChartJS.register(ArcElement);
 
   return (
     <S.Container>
-      <S.MainText>{title}</S.MainText>
-      <S.MainValue>{treasureBalance}</S.MainValue>
-      <S.TreasureTitle>{leftText}</S.TreasureTitle>
-      <S.Graph data={data} options={options} />
-      <S.CausesSection>
-        {causes.map((cause: any) => (
-          <S.CauseCard key={cause.id}>
-            <S.CauseTitle>{cause.name} (USDC)</S.CauseTitle>
-            <S.CauseValue>
-              {handleBalance(cause?.pools[0].address)}
-            </S.CauseValue>
-          </S.CauseCard>
-        ))}
-      </S.CausesSection>
+      <S.MainText>
+        {title}
+        <S.MainValue>{mainText}</S.MainValue>
+      </S.MainText>
+      <S.Teste>
+        <S.SecondaryText>
+          {rightText}
+          <S.SecondaryLeftValue>{rightSecondaryText}</S.SecondaryLeftValue>
+        </S.SecondaryText>
+        <S.SecondaryText>
+          {leftText}
+          <S.SecondaryRightValue>{leftSecondaryText}</S.SecondaryRightValue>
+        </S.SecondaryText>
+      </S.Teste>
+      <S.Graph data={data} />
     </S.Container>
   );
 }

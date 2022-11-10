@@ -15,7 +15,7 @@ import Pool from "types/entities/Pool";
 import Cause from "types/entities/Cause";
 import { formatFromDecimals } from "lib/web3Helpers/etherFormatters";
 import theme from "styles/theme";
-import CardTextGraph from "components/moleculars/cards/CardTextGraph";
+import CardTextGraph from "./CardTextGraph";
 import * as S from "./styles";
 
 function TreasureSection(): JSX.Element {
