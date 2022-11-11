@@ -104,20 +104,31 @@
       "previous": "< anterior"
     }
   },
-  "causesPage": {
+  "causes": {
     "title": "Lista de Causas",
     "createNew": "Adicionar nova",
-    "listColumns": {
-      "name": "Nome",
-      "token": "Token",
-      "poolAddress": "Endereço da pool",
-      "availableToDonation": "Disponível para doação (USDC)"
+    "causesListSection": {
+      "search": "Procurar por nome...",
+      "next": "próximo >",
+      "previous": "< anterior",
+      "listColumns": {
+        "name": "Nome",
+        "token": "Token",
+        "poolAddress": "Endereço da pool",
+        "availableToDonation": "Disponível para doação (USDC)"
+      }
     },
     "upsertCausePage": {
       "create": {
         "title": "Adicionar nova Causa",
         "save": "Salvar",
-        "cancel": "Cancelar"
+        "cancel": "Cancelar",
+        "modal": {
+          "title": "Tem certeza?",
+          "body": "Após confirmação, uma pool será criada",
+          "confirmButton": "Confirmar",
+          "cancelButton": "Cancelar"
+        }
       },
       "edit": {
         "title": "Editar Causa",
@@ -128,7 +139,7 @@
       "activityStatus": "Status de atividade",
       "details": "Detalhes",
       "causeName": "Nome da Causa",
-      "causeLogo": "Logo da Causa",
+      "causeAddress": "Endereço da pool",
       "cause": "causa"
     },
     "causeCard": {

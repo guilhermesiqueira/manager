@@ -10,7 +10,7 @@ function CausesListSection(): JSX.Element {
   const [causes, setCauses] = useState<Cause[]>([]);
   const { getCauses } = useCauses();
   const { t } = useTranslation("translation", {
-    keyPrefix: "causesPage.causesListSection",
+    keyPrefix: "causes.causesListSection",
   });
   const [currentCauses, setCurrentCauses] = useState<Cause[]>([]);
   const [pageCount, setPageCount] = useState(0);

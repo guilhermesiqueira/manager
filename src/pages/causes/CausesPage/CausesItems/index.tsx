@@ -25,7 +25,7 @@ function CauseItems({ causes, searchTerm }: Props) {
       if (searchTerm === "") {
         return causeData;
       } else if (
-        causeData?.name.toLowerCase().includes(searchTerm.toLowerCase())
+        causeData?.name?.toLowerCase().includes(searchTerm.toLowerCase())
       ) {
         return causeData;
       } else {

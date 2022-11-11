@@ -43,19 +43,19 @@ export const CausesCardContainer = styled.div``;
 export const Subtitle = styled.h4``;
 
 export const SubtitleInfo = styled.h2`
-  color: ${({ theme }) => theme.colors.green30};
   margin-bottom: 16px;
+  color: ${({ theme }) => theme.colors.green30};
 `;
 
 export const CardProject = styled.div`
+  width: 200px;
+  min-height: 40px;
+  margin-top: 8px;
+  padding: 8px 16px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 8px 16px;
-  width: 200px;
-  min-height: 40px;
   justify-content: space-between;
-  margin-top: 8px;
   background-color: ${({ theme }) => theme.colors.neutral10};
   box-shadow: 0 4px 12px ${({ theme }) => theme.colors.defaultShadow};
 `;

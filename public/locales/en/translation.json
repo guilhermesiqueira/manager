@@ -105,20 +105,19 @@
       "previous": "< previous"
     }
   },
-  "causesPage": {
+  "causes": {
     "title": "Causes List",
+    "createNew": "Add new",
     "causesListSection": {
+      "search": "Search by name...",
+      "next": "next >",
+      "previous": "< previous",
       "listColumns": {
         "name": "Name",
         "token": "Token",
         "poolAddress": "Pool address",
         "availableToDonation": "Available to donation (USDC)"
-      },
-
-      "createNew": "Add new",
-      "search": "Search by name...",
-      "next": "next >",
-      "previous": "< previous"
+      }
     },
     "causeDetailsPage": {
       "title": "Cause details",
@@ -128,9 +127,29 @@
       "edit": "Edit",
       "linkedProjects": "Linked projects"
     },
-    "search": "Search by name...",
-    "next": "next >",
-    "previous": "< previous"
+    "upsertCausePage": {
+      "create": {
+        "title": "Add New Cause",
+        "save": "Save",
+        "cancel": "Cancel",
+        "modal": {
+          "title": "are you sure?",
+          "body": "After confirmed, this action will create a pool.",
+          "confirmButton": "Confirm",
+          "cancelButton": "Cancel"
+        }
+      },
+      "edit": {
+        "title": "Edit Cause",
+        "save": "Save changes",
+        "cancel": "Cancel"
+      },
+      "required": "this is required",
+      "details": "Details",
+      "causeName": "Cause Name",
+      "causeAddress": "Pool address",
+      "cause": "Cause"
+    }
   },
   "offersPage": {
     "title": "Offers",
