@@ -166,6 +166,7 @@
         "active": "Ativo",
         "inactive": "Inativo"
       },
+      "createNew": "Adicionar novo",
       "search": "Procurar por ID...",
       "next": "próximo >",
       "previous": "< anterior"

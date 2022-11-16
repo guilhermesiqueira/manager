@@ -18,6 +18,24 @@ function useOffers() {
     return allOffers;
   }, [page]);
 
+  async function getOffer(id: any) {
+    const { data: integration } = await offersApi.getOffer(id);
+
+    return integration;
+  }
+
+  async function createOffer(id: any) {
+    const { data: integration } = await offersApi.getOffer(id);
+
+    return integration;
+  }
+
+  async function updateOffer(id: any) {
+    const { data: integration } = await offersApi.getOffer(id);
+
+    return integration;
+  }
+
   function incrementPage() {
     setPage((oldPage) => oldPage + 1);
   }
@@ -25,6 +43,9 @@ function useOffers() {
   return {
     offers,
     getOffers,
+    getOffer,
+    createOffer,
+    updateOffer,
     incrementPage,
   };
 }
