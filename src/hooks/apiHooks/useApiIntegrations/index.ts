@@ -15,7 +15,10 @@ function useApiIntegrations() {
     return data;
   }
 
-  async function getApiIntegration(id: any, language?: string) {
+  async function getApiIntegration(
+    id: any,
+    language?: string,
+  ): Promise<Integration> {
     const { data: integration } = await integrationsApi.getIntegration(
       id,
       language,
