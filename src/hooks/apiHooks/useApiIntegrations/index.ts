@@ -15,10 +15,7 @@ function useApiIntegrations() {
     return data;
   }
 
-  async function getApiIntegration(
-    id: any,
-    language?: string,
-  ): Promise<Integration> {
+  async function getApiIntegration(id: any, language?: string) {
     const { data: integration } = await integrationsApi.getIntegration(
       id,
       language,
@@ -92,8 +89,8 @@ function useApiIntegrations() {
   }
 
   async function fetchWalletFromIntegration(id: number) {
-    const { integrationWallet } = await getApiIntegration(id);
-    return integrationWallet?.publicKey.toLowerCase();
+    const integration = await getApiIntegration(id);
+    return integration?.integrationWallet?.publicKey.toLowerCase();
   }
 
   return {
