@@ -87,13 +87,8 @@ export const Pagination = styled(ReactPaginate).attrs({
   }
 `;
 
-export const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-`;
-
 export const SearchBar = styled.input`
-  width: 80%;
+  width: 90%;
   height: 44px;
   padding-left: 14px;
   border: 2px solid ${({ theme }) => theme.colors.gray30};

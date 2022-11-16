@@ -1,18 +1,18 @@
 import { useTranslation } from "react-i18next";
-import CausesListSection from "./CausesListSection";
+import NonProfitsListSection from "./NonProfitsListSection";
 import * as S from "./styles";
 
-function CausesPage(): JSX.Element {
+function NonProfitsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
-    keyPrefix: "causesPage",
+    keyPrefix: "nonProfitsPage",
   });
 
   return (
     <S.Container>
       <S.Title>{t("title")}</S.Title>
-      <CausesListSection />
+      <NonProfitsListSection />
     </S.Container>
   );
 }
 
-export default CausesPage;
+export default NonProfitsPage;

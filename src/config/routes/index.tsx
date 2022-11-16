@@ -7,8 +7,10 @@ import UpsertIntegrationPage from "pages/integrations/UpsertIntegrationPage";
 import PurchasesPage from "pages/PurchasesPage";
 import { Routes, Route } from "react-router-dom";
 import MainLayout from "layouts/MainLayout";
-import CausesPage from "pages/CausesPage";
-import CausesDetailsPage from "pages/CausesPage/CausesDetailsPage";
+import CausesPage from "pages/causes/CausesPage";
+import CausesDetailsPage from "pages/causes/CausesDetailsPage";
+import UpsertCausePage from "pages/causes/UpsertCausePage";
+import NonProfitsPage from "pages/NonProfitsPage";
 import OffersPage from "pages/OffersPage";
 import UpsertOfferPage from "pages/OffersPage/UpsertOffersPage";
 import Navigation from "./Navigation";
@@ -116,6 +118,21 @@ function RoutesComponent(): JSX.Element {
           </PrivateRoute>
         }
       />
+
+      <Route
+        path="/causes/new"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <UpsertCausePage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
       <Route
         path="/causes/:id"
         element={
@@ -124,6 +141,34 @@ function RoutesComponent(): JSX.Element {
               <Navigation />
               <MainLayout>
                 <CausesDetailsPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/causes/:id/edit"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <UpsertCausePage isEdit />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/ngos"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <NonProfitsPage />
               </MainLayout>
             </Suspense>
           </PrivateRoute>
