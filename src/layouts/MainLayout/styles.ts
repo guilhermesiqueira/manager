@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
+  min-width: 100%;
   padding-bottom: 70px;
   padding-left: 15%;
   background: ${({ theme }) => theme.colors.gray10};
