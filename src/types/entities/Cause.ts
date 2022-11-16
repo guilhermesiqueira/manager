@@ -1,7 +1,7 @@
 import Pool from "./Pool";
 
 export default interface Cause {
-  id: string;
+  id: number;
   name: string;
   pools: Pool[];
 }

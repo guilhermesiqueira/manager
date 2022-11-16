@@ -88,12 +88,18 @@ function useApiIntegrations() {
     return integration;
   }
 
+  async function fetchWalletFromIntegration(id: number) {
+    const integration = await getApiIntegration(id);
+    return integration?.integrationWallet?.publicKey.toLowerCase();
+  }
+
   return {
     createApiIntegration,
     getAllApiIntegrations,
     getMobilityAttributes,
     getApiIntegration,
     updateApiIntegration,
+    fetchWalletFromIntegration,
   };
 }
 

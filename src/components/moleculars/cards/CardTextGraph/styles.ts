@@ -10,7 +10,6 @@ export const Container = styled.div`
   display: flex;
   flex-flow: row wrap;
   box-sizing: border-box;
-  background: ${({ theme }) => theme.colors.white};
   border-radius: 16px;
   text-align: left;
   background: ${({ theme }) => theme.colors.neutral10};

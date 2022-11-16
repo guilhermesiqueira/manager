@@ -46,7 +46,11 @@ export function apiGetWithParams(
   params: any,
   config?: AxiosRequestConfig,
 ) {
-  if (config) return api.get(`${API_SCOPE}/${url}`, config);
+  if (config)
+    return api.get(`${API_SCOPE}/${url}`, {
+      ...config,
+      params,
+    });
 
   return api.get(`${API_SCOPE}/${url}`, {
     params,

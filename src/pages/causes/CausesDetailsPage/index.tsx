@@ -18,7 +18,7 @@ import * as S from "./styles";
 
 function CausesDetailsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
-    keyPrefix: "causesPage.causeDetailsPage",
+    keyPrefix: "causes.causeDetailsPage",
   });
   const { gray40, gray10, gray30 } = theme.colors;
 
@@ -59,7 +59,7 @@ function CausesDetailsPage(): JSX.Element {
             {formatFromDecimals(pool?.balance ?? 0).toFixed(2)}
           </S.SubtitleInfo>
 
-          <Link to="causes/edit/:id">
+          <Link to="edit">
             <Button
               color={gray10}
               background={gray40}
