@@ -1,13 +1,13 @@
 import { renderHook } from "@testing-library/react-hooks";
 import integrationsApi from "services/api/integrationsApi";
 import IntegrationWallet from "types/entities/IntegrationWallet";
-import useIntegrations from ".";
+import useApiIntegrations from ".";
 
 describe("useIntegrations", () => {
-  let hook: ReturnType<typeof useIntegrations>;
+  let hook: ReturnType<typeof useApiIntegrations>;
 
   beforeEach(() => {
-    const { result } = renderHook(() => useIntegrations());
+    const { result } = renderHook(() => useApiIntegrations());
     hook = result.current;
   });
 
@@ -106,6 +106,23 @@ describe("useIntegrations", () => {
         id,
         data,
         currentLang,
+      );
+    });
+  });
+
+  describe("#fetchWalletFromIntegration", () => {
+    const id = 1;
+    beforeEach(() => {
+      integrationsApi.getIntegration = jest.fn(() => ({} as any));
+    });
+
+    it("calls fetchWalletFromIntegration with correct params", () => {
+      hook.fetchWalletFromIntegration(id);
+
+      expect(integrationsApi.getIntegration).toHaveBeenCalled();
+      expect(integrationsApi.getIntegration).toHaveBeenCalledWith(
+        id,
+        undefined,
       );
     });
   });

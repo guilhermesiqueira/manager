@@ -8,6 +8,7 @@ import useApiIntegrations from "hooks/apiHooks/useApiIntegrations";
 import { logError } from "services/crashReport";
 import { useProvider } from "hooks/useProvider";
 import { ethers } from "ethers";
+import { RIBON_INTEGRATION_ID } from "utils/constants";
 import * as S from "./styles";
 
 function WalletCard(): JSX.Element {
@@ -19,12 +20,13 @@ function WalletCard(): JSX.Element {
   const { fetchWalletFromIntegration } = useApiIntegrations();
   const [integrationBalance, setIntegrationBalance] = useState<string>("...");
   const [integrationMatic, setIntegrationMatic] = useState<string>("...");
-  const id = 1;
   const provider = useProvider();
 
   const fetchBalance = useCallback(async () => {
     try {
-      const walletAddress = await fetchWalletFromIntegration(id);
+      const walletAddress = await fetchWalletFromIntegration(
+        RIBON_INTEGRATION_ID,
+      );
       if (walletAddress) {
         const chainIntegration = await getIntegration(walletAddress);
         setIntegrationBalance(
