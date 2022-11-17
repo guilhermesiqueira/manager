@@ -38,11 +38,11 @@ function NonProfitItems({ nonProfits, searchTerm }: Props) {
           <th>{nonProfit?.status}</th>
           <th>
             <S.ActionsTableCell>
-              <Link to={`/nonProfits/${nonProfit.id}`}>
+              <Link to={`/ngos/${nonProfit.id}`}>
                 <img src={infoIcon} alt="view Non Profit info" />
               </Link>
 
-              <Link to={`/nonProfits/${nonProfit.id}/edit`}>
+              <Link to={`/ngos/${nonProfit.id}/edit`}>
                 <img src={editIcon} alt="edit Non Profit info" />
               </Link>
             </S.ActionsTableCell>
