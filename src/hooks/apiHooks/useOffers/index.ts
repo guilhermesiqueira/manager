@@ -22,10 +22,17 @@ function useOffers() {
     setPage((oldPage) => oldPage + 1);
   }
 
+  async function getOffer(id: any) {
+    const { data: integration } = await offersApi.getOffer(id);
+
+    return integration;
+  }
+
   return {
     offers,
     getOffers,
     incrementPage,
+    getOffer,
   };
 }
 

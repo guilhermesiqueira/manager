@@ -11,7 +11,8 @@ import CausesPage from "pages/causes/CausesPage";
 import CausesDetailsPage from "pages/causes/CausesDetailsPage";
 import UpsertCausePage from "pages/causes/UpsertCausePage";
 import NonProfitsPage from "pages/NonProfitsPage";
-import OffersPage from "pages/OffersPage";
+import OffersPage from "pages/offers/OffersPage";
+import OfferDetailsPage from "pages/offers/offerDetailsPage";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
 
@@ -182,6 +183,20 @@ function RoutesComponent(): JSX.Element {
               <Navigation />
               <MainLayout>
                 <OffersPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/offers/:id"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <OfferDetailsPage />
               </MainLayout>
             </Suspense>
           </PrivateRoute>
