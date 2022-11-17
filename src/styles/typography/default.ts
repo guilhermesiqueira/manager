@@ -132,3 +132,26 @@ export const defaultButtonTextSmall = css`
   font-size: 12px;
   line-height: 16px;
 `;
+
+const defaultComponentText = css`
+  font-weight: 600;
+  ${inter}
+`;
+
+export const defaultComponentTextLarge = css`
+  ${defaultComponentText}
+  font-size: 16px;
+  line-height: 24px;
+`;
+
+export const defaultComponentTextMedium = css`
+  ${defaultComponentText}
+  font-size: 14px;
+  line-height: 24px;
+`;
+
+export const defaultComponentTextSmall = css`
+  ${defaultComponentText}
+  font-size: 12px;
+  line-height: 16px;
+`;

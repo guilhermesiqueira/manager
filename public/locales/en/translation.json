@@ -189,6 +189,34 @@
       "search": "Search by name...",
       "next": "next >",
       "previous": "< previous"
+    },
+    "upsertNonProfitPage": {
+      "activityStatus": "Activity status",
+      "details": "Details",
+      "imagesSection": "Images",
+      "nonProfitName": "Name",
+      "nonProfitAddress": "Wallet Address",
+      "nonProfitLogo": "Logo",
+      "nonProfitImpactDescription": "Impact Description",
+      "nonProfitCause": "Cause",
+      "nonProfitCauseCardImage": "Cause Card",
+      "imageRecommendation": "Recommended size:\n{{ size }}",
+      "create": {
+        "title": "Add New NonProfit",
+        "save": "Save",
+        "cancel": "Cancel",
+        "modal": {
+          "title": "Are you sure?",
+          "body": "After confirmed, this action will create a NonProfit.",
+          "confirmButton": "Confirm",
+          "cancelButton": "Cancel"
+        }
+      },
+      "edit": {
+        "title": "Edit NonProfit",
+        "save": "Save changes",
+        "cancel": "Cancel"
+      }
     }
   },
   "menu": {
