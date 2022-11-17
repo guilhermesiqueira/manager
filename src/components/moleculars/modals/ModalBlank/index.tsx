@@ -33,4 +33,13 @@ function ModalBlank({
   );
 }
 
+ModalBlank.defaultProps = {
+  visible: true,
+  contentLabel: "Label",
+  children: null,
+  onClose: () => {},
+  customStyles: "",
+  parentSelector: () => document.body,
+};
+
 export default ModalBlank;
