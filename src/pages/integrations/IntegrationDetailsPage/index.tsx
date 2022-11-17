@@ -16,7 +16,6 @@ import { formatFromWei } from "lib/web3Helpers/etherFormatters";
 import theme from "styles/theme";
 import LogoCard from "components/moleculars/LogoCard";
 import InfoName from "components/moleculars/infoName";
-import { useLanguage } from "hooks/useLanguage";
 import { Button } from "@chakra-ui/react";
 import * as S from "./styles";
 
@@ -29,7 +28,6 @@ function IntegrationDetailsPage(): JSX.Element {
     active: green30,
     inactive: red30,
   };
-  const { currentLang } = useLanguage();
 
   const { currentNetwork } = useNetwork();
   const [integrationBalance, setIntegrationBalance] = useState<string>("...");
@@ -47,7 +45,7 @@ function IntegrationDetailsPage(): JSX.Element {
 
   const fetchIntegration = useCallback(async () => {
     try {
-      const integrationData = await getApiIntegration(id, currentLang);
+      const integrationData = await getApiIntegration(id);
       const mobilityAttributesData = await getMobilityAttributes();
       setMobilityAttributes(mobilityAttributesData);
       setIntegration(integrationData);

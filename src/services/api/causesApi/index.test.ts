@@ -2,10 +2,7 @@ import causesApi from ".";
 import api from "..";
 
 describe("causesApi", () => {
-  const config = { headers: { Language: "en" } };
-
   describe("#getCausesList", () => {
-    const headers = { Language: "en" };
     const params = { page: 3, per_page: 10 };
 
     beforeEach(() => {
@@ -16,7 +13,6 @@ describe("causesApi", () => {
       causesApi.getCausesList({});
 
       expect(api.get).toHaveBeenCalledWith("/api/v1/causes", {
-        headers,
         params,
       });
     });
@@ -34,7 +30,7 @@ describe("causesApi", () => {
     it("expects to send a post request with the correct info: url and params", () => {
       causesApi.createCause(data);
 
-      expect(api.post).toHaveBeenCalledWith("/api/v1/causes", data, config);
+      expect(api.post).toHaveBeenCalledWith("/api/v1/causes", data);
     });
   });
 
@@ -53,11 +49,7 @@ describe("causesApi", () => {
     it("expects to send a put request with the correct info: url and params", () => {
       causesApi.updateCause(1, data);
 
-      expect(api.put).toHaveBeenCalledWith(
-        `/api/v1/causes/${id}`,
-        data,
-        config,
-      );
+      expect(api.put).toHaveBeenCalledWith(`/api/v1/causes/${id}`, data);
     });
   });
 });
