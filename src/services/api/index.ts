@@ -1,5 +1,6 @@
 import Axios, { AxiosRequestConfig } from "axios";
 import camelCaseKeys from "camelcase-keys";
+import { normalizedLanguage } from "lib/currentLanguage";
 import snakeCaseKeys from "snakecase-keys";
 import { RIBON_API } from "utils/constants";
 
@@ -29,8 +30,10 @@ api.interceptors.response.use(
 );
 
 api.interceptors.request.use((config) => {
+  const lang = normalizedLanguage();
+  const authHeaders = { Language: lang };
   // eslint-disable-next-line no-param-reassign
-  config.headers = { ...config.headers };
+  config.headers = { ...authHeaders, ...config.headers };
 
   return config;
 });

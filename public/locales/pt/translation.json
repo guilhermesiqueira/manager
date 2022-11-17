@@ -11,7 +11,12 @@
       "integrationsSection": {
         "subtitle": "Atribuído (USDC)"
       }
-    }
+    },
+    "walletDashboard": {
+      "title": "Carteira das integrações",
+      "donationLimit": "Limite de doação (USDC)",
+      "matic": "Fundo para GAS (MATIC)"
+    } 
   },
   "integrations": {
     "integrationsList": {

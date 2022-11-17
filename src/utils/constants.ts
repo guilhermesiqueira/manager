@@ -5,6 +5,8 @@ export const RIBON_API =
 
 export const TOKEN_KEY = "token";
 
+export const RIBON_INTEGRATION_ID = 1;
+
 export const THE_GRAPH_API =
   process.env.REACT_APP_THE_GRAPH_API ||
   "https://api.thegraph.com/subgraphs/name/ribondao/subgraphribon";

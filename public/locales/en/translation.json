@@ -11,6 +11,11 @@
       "integrationsSection": {
         "subtitle": "Assigned (USDC)"
       }
+    },
+    "walletDashboard": {
+      "title": "Integrations Wallet",
+      "donationLimit": "Donation limit (USDC)",
+      "matic": "Gas fund (MATIC)"
     }
   },
   "integrations": {
