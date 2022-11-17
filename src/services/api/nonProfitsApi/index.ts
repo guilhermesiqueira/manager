@@ -1,6 +1,7 @@
 import { AxiosResponse } from "axios";
 import NonProfit from "types/entities/NonProfit";
-import { apiGet, apiGetWithParams } from "..";
+import { EditNonProfit, CreateNonProfit } from "types/apiResponses/nonProfit";
+import { apiGet, apiGetWithParams, apiPost, apiPut } from "..";
 
 type NonProfitsParams = {
   perPage?: number;
@@ -21,6 +22,14 @@ const nonProfitsApi = {
 
   getNonProfit: (id: string): Promise<AxiosResponse<NonProfit>> =>
     apiGet(`non_profits/${id}`),
+
+  createNonProfit: (data: CreateNonProfit): Promise<AxiosResponse<NonProfit>> =>
+    apiPost("non_profits", data),
+
+  updateNonProfit: (
+    id: any,
+    data: EditNonProfit,
+  ): Promise<AxiosResponse<NonProfit>> => apiPut(`non_profits/${id}`, data),
 };
 
 export default nonProfitsApi;

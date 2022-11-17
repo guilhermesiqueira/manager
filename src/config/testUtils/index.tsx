@@ -145,3 +145,7 @@ export function clickOn(textOrComponent: string | any) {
 
   return fireEvent.click(textOrComponent);
 }
+
+export function expectInputToHaveValue(label: string, value: any) {
+  return expect(screen.getByLabelText(label)).toHaveValue(value);
+}
