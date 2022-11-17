@@ -10,28 +10,76 @@ describe("useNonProfits", () => {
     hook = result.current;
   });
 
-  describe("#getNonProfit", () => {
-    beforeEach(() => {
-      nonProfitsApi.getNonProfit = jest.fn(() => ({} as any));
-    });
-
-    it("calls getNonProfit with correct params", () => {
-      const id = "1";
-      hook.getNonProfit(id);
-
-      expect(nonProfitsApi.getNonProfit).toHaveBeenCalledWith(id);
-    });
-  });
-
-  describe("#getAllNonProfits", () => {
+  describe("#getNonProfitsList", () => {
     beforeEach(() => {
       nonProfitsApi.getNonProfitsList = jest.fn(() => ({} as any));
     });
 
-    it("calls getNonProfit with correct params", () => {
+    it("calls getNonProfitsList with correct params", () => {
       hook.getNonProfits();
 
       expect(nonProfitsApi.getNonProfitsList).toHaveBeenCalled();
+    });
+  });
+
+  describe("#getApiNonProfit", () => {
+    const id = 1;
+
+    beforeEach(() => {
+      nonProfitsApi.getNonProfit = jest.fn(() => ({} as any));
+    });
+
+    it("calls getApiNonProfit with correct params", () => {
+      hook.getNonProfit(id);
+
+      expect(nonProfitsApi.getNonProfit).toHaveBeenCalled();
+      expect(nonProfitsApi.getNonProfit).toHaveBeenCalledWith(id);
+    });
+  });
+
+  describe("#createApiNonProfit", () => {
+    const data = {
+      name: "New NonProfit",
+      walletAddress: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      status: "active",
+      impactDescription: "Impact Description",
+      causeId: 1,
+    };
+    const file = "";
+
+    beforeEach(() => {
+      nonProfitsApi.createNonProfit = jest.fn(() => ({} as any));
+    });
+
+    it("calls createApiNonProfit with correct params", () => {
+      hook.createNonProfit(data, file);
+
+      expect(nonProfitsApi.createNonProfit).toHaveBeenCalled();
+      expect(nonProfitsApi.createNonProfit).toHaveBeenCalledWith(data);
+    });
+  });
+
+  describe("#updateApiNonProfit", () => {
+    const id = "1";
+    const data = {
+      id,
+      name: "New NonProfit",
+      walletAddress: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+      status: "active",
+      impactDescription: "Impact Description",
+      causeId: 1,
+    };
+    const file = "";
+
+    beforeEach(() => {
+      nonProfitsApi.updateNonProfit = jest.fn(() => ({} as any));
+    });
+
+    it("calls updateApiNonProfit with correct params", () => {
+      hook.updateNonProfit(data, file);
+
+      expect(nonProfitsApi.updateNonProfit).toHaveBeenCalled();
+      expect(nonProfitsApi.updateNonProfit).toHaveBeenCalledWith(id, data);
     });
   });
 });
