@@ -79,10 +79,10 @@ function Dropdown({
           document.querySelector(`#${containerId}`) || document.body
         }
       >
-        {values.map((value, index) => (
+        {values.map((value) => (
           <S.OptionContainer
             onClick={() => handleOptionClick(value)}
-            key={index.toString(10)}
+            key={value}
           >
             <S.OptionText>{valueToText(value)}</S.OptionText>
           </S.OptionContainer>
@@ -103,5 +103,14 @@ function Dropdown({
     </S.Container>
   );
 }
+
+Dropdown.defaultProps = {
+  valueText: (value: any) => value,
+  label: "Option 1",
+  onOptionChanged: (id: number) => id,
+  defaultValue: 1,
+  containerId: "currencies-dropdown",
+  customInputStyles: {},
+};
 
 export default Dropdown;
