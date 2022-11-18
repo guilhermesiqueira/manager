@@ -1,13 +1,13 @@
 import { renderHook } from "@testing-library/react-hooks";
 import integrationsApi from "services/api/integrationsApi";
 import IntegrationWallet from "types/entities/IntegrationWallet";
-import useIntegrations from ".";
+import useApiIntegrations from ".";
 
 describe("useIntegrations", () => {
-  let hook: ReturnType<typeof useIntegrations>;
+  let hook: ReturnType<typeof useApiIntegrations>;
 
   beforeEach(() => {
-    const { result } = renderHook(() => useIntegrations());
+    const { result } = renderHook(() => useApiIntegrations());
     hook = result.current;
   });
 
@@ -25,19 +25,15 @@ describe("useIntegrations", () => {
 
   describe("#getApiIntegration", () => {
     const id = 1;
-    const currentLang = "en";
     beforeEach(() => {
       integrationsApi.getIntegration = jest.fn(() => ({} as any));
     });
 
     it("calls getApiIntegration with correct params", () => {
-      hook.getApiIntegration(id, currentLang);
+      hook.getApiIntegration(id);
 
       expect(integrationsApi.getIntegration).toHaveBeenCalled();
-      expect(integrationsApi.getIntegration).toHaveBeenCalledWith(
-        id,
-        currentLang,
-      );
+      expect(integrationsApi.getIntegration).toHaveBeenCalledWith(id);
     });
   });
 
@@ -53,20 +49,16 @@ describe("useIntegrations", () => {
       },
     };
     const file = "";
-    const currentLang = "en";
 
     beforeEach(() => {
       integrationsApi.createIntegration = jest.fn(() => ({} as any));
     });
 
     it("calls createApiIntegration with correct params", () => {
-      hook.createApiIntegration(data, file, currentLang);
+      hook.createApiIntegration(data, file);
 
       expect(integrationsApi.createIntegration).toHaveBeenCalled();
-      expect(integrationsApi.createIntegration).toHaveBeenCalledWith(
-        data,
-        currentLang,
-      );
+      expect(integrationsApi.createIntegration).toHaveBeenCalledWith(data);
     });
   });
 
@@ -92,21 +84,30 @@ describe("useIntegrations", () => {
       },
     };
     const file = "";
-    const currentLang = "en";
 
     beforeEach(() => {
       integrationsApi.updateIntegration = jest.fn(() => ({} as any));
     });
 
     it("calls updateApiIntegration with correct params", () => {
-      hook.updateApiIntegration(data, file, currentLang);
+      hook.updateApiIntegration(data, file);
 
       expect(integrationsApi.updateIntegration).toHaveBeenCalled();
-      expect(integrationsApi.updateIntegration).toHaveBeenCalledWith(
-        id,
-        data,
-        currentLang,
-      );
+      expect(integrationsApi.updateIntegration).toHaveBeenCalledWith(id, data);
+    });
+  });
+
+  describe("#fetchWalletFromIntegration", () => {
+    const id = 1;
+    beforeEach(() => {
+      integrationsApi.getIntegration = jest.fn(() => ({} as any));
+    });
+
+    it("calls fetchWalletFromIntegration with correct params", () => {
+      hook.fetchWalletFromIntegration(id);
+
+      expect(integrationsApi.getIntegration).toHaveBeenCalled();
+      expect(integrationsApi.getIntegration).toHaveBeenCalledWith(id);
     });
   });
 });

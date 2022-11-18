@@ -11,6 +11,7 @@ import CausesPage from "pages/causes/CausesPage";
 import CausesDetailsPage from "pages/causes/CausesDetailsPage";
 import UpsertCausePage from "pages/causes/UpsertCausePage";
 import NonProfitsPage from "pages/NonProfitsPage";
+import UpsertNonProfitPage from "pages/NonProfitsPage/UpsertNonProfitPage";
 import OffersPage from "pages/OffersPage";
 import UpsertOfferPage from "pages/OffersPage/UpsertOfferPage";
 import Navigation from "./Navigation";
@@ -169,6 +170,48 @@ function RoutesComponent(): JSX.Element {
               <Navigation />
               <MainLayout>
                 <NonProfitsPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/ngos/new"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <UpsertNonProfitPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/ngos/:id"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <NonProfitsPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/ngos/:id/edit"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <UpsertNonProfitPage isEdit />
               </MainLayout>
             </Suspense>
           </PrivateRoute>

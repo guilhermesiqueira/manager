@@ -15,20 +15,13 @@ function useApiIntegrations() {
     return data;
   }
 
-  async function getApiIntegration(id: any, language?: string) {
-    const { data: integration } = await integrationsApi.getIntegration(
-      id,
-      language,
-    );
+  async function getApiIntegration(id: any) {
+    const { data: integration } = await integrationsApi.getIntegration(id);
 
     return integration;
   }
 
-  async function createApiIntegration(
-    data: Integration,
-    file: string,
-    language?: string,
-  ) {
+  async function createApiIntegration(data: Integration, file: string) {
     const upload = useUploadFile(data.logo);
 
     let integration;
@@ -38,26 +31,19 @@ function useApiIntegrations() {
         if (error) {
           throw error;
         } else {
-          integration = integrationsApi.createIntegration(
-            {
-              ...data,
-              logo: blob.signed_id,
-            },
-            language,
-          );
+          integration = integrationsApi.createIntegration({
+            ...data,
+            logo: blob.signed_id,
+          });
         }
       });
     } else {
-      integration = integrationsApi.createIntegration(data, language);
+      integration = integrationsApi.createIntegration(data);
     }
     return integration;
   }
 
-  async function updateApiIntegration(
-    data: Integration,
-    file: string,
-    language?: string,
-  ) {
+  async function updateApiIntegration(data: Integration, file: string) {
     const upload = useUploadFile(data.logo);
     let integration;
 
@@ -66,14 +52,10 @@ function useApiIntegrations() {
         if (error) {
           throw error;
         } else {
-          integration = integrationsApi.updateIntegration(
-            data.id,
-            {
-              ...data,
-              logo: blob.signed_id,
-            },
-            language,
-          );
+          integration = integrationsApi.updateIntegration(data.id, {
+            ...data,
+            logo: blob.signed_id,
+          });
         }
       });
     } else {
@@ -82,10 +64,14 @@ function useApiIntegrations() {
       integration = integrationsApi.updateIntegration(
         data.id,
         currentIntegration,
-        language,
       );
     }
     return integration;
+  }
+
+  async function fetchWalletFromIntegration(id: number) {
+    const integration = await getApiIntegration(id);
+    return integration?.integrationWallet?.publicKey.toLowerCase();
   }
 
   return {
@@ -94,6 +80,7 @@ function useApiIntegrations() {
     getMobilityAttributes,
     getApiIntegration,
     updateApiIntegration,
+    fetchWalletFromIntegration,
   };
 }
 

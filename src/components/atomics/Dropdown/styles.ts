@@ -23,6 +23,7 @@ export const Input = styled.div`
     border-radius: 4px;
     box-sizing: border-box;
     background: transparent;
+    line-height: 20px;
     color: ${({ theme }) => theme.colors.gray40};
 
     &:hover {

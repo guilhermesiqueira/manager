@@ -11,7 +11,12 @@
       "integrationsSection": {
         "subtitle": "Atribuído (USDC)"
       }
-    }
+    },
+    "walletDashboard": {
+      "title": "Carteira das integrações",
+      "donationLimit": "Limite de doação (USDC)",
+      "matic": "Fundo para GAS (MATIC)"
+    } 
   },
   "integrations": {
     "integrationsList": {
@@ -224,6 +229,34 @@
       "search": "Procurar pelo nome...",
       "next": "próximo >",
       "previous": "< anterior"
+    },
+    "upsertNonProfitPage": {
+      "activityStatus": "Status",
+      "details": "Detalhes",
+      "imagesSection": "Imagens",
+      "nonProfitName": "Nome",
+      "nonProfitAddress": "Endereço da carteira",
+      "nonProfitLogo": "Logo",
+      "nonProfitImpactDescription": "Descrição do Impacto",
+      "nonProfitCause": "Causa",
+      "nonProfitCauseCardImage": "Cause Card",
+      "imageRecommendation": "Tamanho recomendado:`\n`{{ size }}",
+      "create": {
+        "title": "Adicionar Nova NonProfit",
+        "save": "Salvar",
+        "cancel": "Cancelar",
+        "modal": {
+          "title": "Você tem certeza?",
+          "body": "Depois de confirmada, essa ação irá criar uma Ong.",
+          "confirmButton": "Confirmar",
+          "cancelButton": "Cancelar"
+        }
+      },
+      "edit": {
+        "title": "Editar Ong",
+        "save": "Salvar mudanças",
+        "cancel": "Cancelar"
+      }
     }
   },
   "menu": {
