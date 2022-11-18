@@ -183,6 +183,8 @@
         "cancel": "Cancel"
       },
       "required": "this is required",
+      "activeOffer": "Active Offer",
+      "inactiveOffer": "Inactive Offer",
       "activityStatus": "Activity status",
       "details": "Details",
       "price": "Price",

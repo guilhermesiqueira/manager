@@ -1,3 +1,4 @@
+import Dropdown from "components/atomics/Dropdown";
 import styled from "styled-components";
 
 export const ContentSection = styled.div`
@@ -57,22 +58,7 @@ export const TextInput = styled.input`
   }
 `;
 
-export const SelectInput = styled.select`
-  min-width: 400px;
-  max-width: 400px;
-  height: 46px;
-  margin: 8px 0 30px;
-  padding: 8px 16px;
-  border: 1px solid ${({ theme }) => theme.colors.darkGray};
-  border-radius: 10px;
-  display: block;
-  color: ${({ theme }) => theme.colors.darkGray};
-
-  ::placeholder {
-    color: ${({ theme }) => theme.colors.gray};
-    opacity: 1;
-  }
-`;
+export const SelectInput = styled(Dropdown)``;
 
 export const NumberInput = styled.input`
   margin-inline: 6px;

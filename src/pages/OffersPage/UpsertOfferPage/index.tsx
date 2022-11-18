@@ -8,6 +8,7 @@ import theme from "styles/theme";
 
 import Offer from "types/entities/Offer";
 import useOffers from "hooks/apiHooks/useOffers";
+import { Currencies } from "types/enums/Currencies";
 import * as S from "./styles";
 
 export type Props = {
@@ -39,7 +40,7 @@ function UpsertOfferPage({ isEdit }: Props) {
   const fetchOffer = useCallback(async () => {
     try {
       const apiOffer = await getOffer(id);
-      setStatusCheckbox(apiOffer.active === "true");
+      setStatusCheckbox(apiOffer.active === true);
 
       reset(apiOffer);
     } catch (e) {
@@ -51,22 +52,21 @@ function UpsertOfferPage({ isEdit }: Props) {
     e: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const { checked } = e.target;
-    setValue("active", checked ? "active" : "inactive");
+    setValue("active", !!checked);
     setStatusCheckbox(!statusCheckbox);
   };
 
   const handleSave = async () => {
-    console.log(offer());
     if (offer()) {
-      const integrationObject = {
+      const offerObject = {
         ...offer(),
       };
 
       try {
         if (isEdit) {
-          await updateOffer(integrationObject);
+          await updateOffer(offerObject);
         } else {
-          await createOffer(integrationObject);
+          await createOffer(offerObject);
         }
         navigate("/offers");
       } catch (e) {
@@ -84,18 +84,11 @@ function UpsertOfferPage({ isEdit }: Props) {
       fetchOffer();
     } else {
       const newOffer: Offer = {
-        price: "string",
-        currency: "BRL",
-        gateway: "Stripe",
+        priceCents: 123,
+        currency: "brl",
+        gateway: "stripe",
         externalId: "34324",
-        active: "true",
-        id: 0,
-        positionOrder: "",
-        priceCents: "",
-        priceValue: "",
-        subscription: false,
-        title: "",
-        updated_at: "",
+        active: true,
       };
       reset(newOffer);
     }
@@ -115,8 +108,8 @@ function UpsertOfferPage({ isEdit }: Props) {
               checked={statusCheckbox}
             />
             <S.Span>
-              {offer().active} {t("offer")}
-            </S.Span>{" "}
+              {offer().active ? t("activeOffer") : t("inactiveOffer")}
+            </S.Span>
           </S.CheckboxContainer>
           <br />
           <S.Subtitle>{t("details")}</S.Subtitle>
@@ -124,19 +117,24 @@ function UpsertOfferPage({ isEdit }: Props) {
             <S.LeftSection>
               <S.SubtitleDescription>{t("price")}</S.SubtitleDescription>
               <S.TextInput
-                {...register("price", { required: t("required") })}
+                type="number"
+                {...register("priceCents", { required: t("required") })}
               />
-              {formState?.errors.price && formState?.errors.price.type && (
-                <S.Error>{formState?.errors.price.message}</S.Error>
-              )}
+              {formState?.errors.priceCents &&
+                formState?.errors.priceCents.type && (
+                  <S.Error>{formState?.errors.priceCents.message}</S.Error>
+                )}
             </S.LeftSection>
             <S.RightSection>
               <S.SubtitleDescription>{t("currency")}</S.SubtitleDescription>
               <S.SelectInput
-                {...register("currency", { required: t("required") })}
-              >
-                <option value="BRL">BRL</option>
-              </S.SelectInput>
+                values={[Currencies.BRL, Currencies.USD]}
+                name="currency"
+                onOptionChanged={(value) => setValue("currency", value)}
+                defaultValue={Currencies.BRL}
+                containerId="currencies-dropdown"
+              />
+
               {formState?.errors.currency &&
                 formState?.errors.currency.type && (
                   <S.Error>{formState?.errors.currency.message}</S.Error>
@@ -148,10 +146,12 @@ function UpsertOfferPage({ isEdit }: Props) {
             <S.LeftSection>
               <S.SubtitleDescription>{t("gateway")}</S.SubtitleDescription>
               <S.SelectInput
-                {...register("gateway", { required: t("required") })}
-              >
-                <option value="Stripe">Stripe</option>
-              </S.SelectInput>
+                values={["stripe"]}
+                name="currency"
+                onOptionChanged={(value) => setValue("gateway", value)}
+                defaultValue="stripe"
+                containerId="gateway-dropdown"
+              />
               {formState?.errors.gateway && formState?.errors.gateway.type && (
                 <S.Error>{formState?.errors.gateway.message}</S.Error>
               )}

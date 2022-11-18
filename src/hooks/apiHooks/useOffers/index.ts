@@ -19,21 +19,21 @@ function useOffers() {
   }, [page]);
 
   async function getOffer(id: any) {
-    const { data: integration } = await offersApi.getOffer(id);
+    const { data: offer } = await offersApi.getOffer(id);
 
-    return integration;
+    return offer;
   }
 
-  async function createOffer(id: any) {
-    const { data: integration } = await offersApi.getOffer(id);
+  async function createOffer(create: any) {
+    const { data: offer } = await offersApi.createOffer(create);
 
-    return integration;
+    return offer;
   }
 
-  async function updateOffer(id: any) {
-    const { data: integration } = await offersApi.getOffer(id);
+  async function updateOffer(data: any) {
+    const { data: offer } = await offersApi.updateOffer(data.id, data);
 
-    return integration;
+    return offer;
   }
 
   function incrementPage() {

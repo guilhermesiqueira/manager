@@ -1,14 +1,8 @@
 export default interface Offer {
-  id: number;
-  active: string;
+  id?: number;
+  active: boolean;
   currency: string;
-  positionOrder: string;
   gateway: string;
   externalId: string;
-  price: string;
-  priceCents: string;
-  priceValue: string;
-  subscription: boolean;
-  title: string;
-  updated_at: string;
+  priceCents: number;
 }
