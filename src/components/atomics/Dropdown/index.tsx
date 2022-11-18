@@ -8,6 +8,7 @@ export type Props = {
   name: string;
   values: any[];
   defaultValue: any;
+  label?: string;
   onOptionChanged: (value: any) => void;
   valueText?: (value: any) => string;
   containerId: string;
@@ -19,6 +20,7 @@ function Dropdown({
   onOptionChanged,
   defaultValue,
   valueText,
+  label,
   containerId = "dropdown-container",
 }: Props): JSX.Element {
   const valueToText = (value: any) => {
@@ -88,6 +90,7 @@ function Dropdown({
         ))}
       </ModalBlank>
       <S.Input onClick={handleInputClick}>
+        {label && <label htmlFor={name}>{label}</label>}
         <input
           type="text"
           name={name}
