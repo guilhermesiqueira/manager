@@ -9,6 +9,7 @@ import theme from "styles/theme";
 import Offer from "types/entities/Offer";
 import useOffers from "hooks/apiHooks/useOffers";
 import { Currencies } from "types/enums/Currencies";
+import { Gateways } from "types/enums/Gateways";
 import * as S from "./styles";
 
 export type Props = {
@@ -130,7 +131,9 @@ function UpsertOfferPage({ isEdit }: Props) {
               <S.SelectInput
                 values={[Currencies.BRL, Currencies.USD]}
                 name="currency"
-                onOptionChanged={(value) => setValue("currency", value)}
+                onOptionChanged={(value) =>
+                  setValue("currency", value.toLowerCase())
+                }
                 defaultValue={Currencies.BRL}
                 containerId="currencies-dropdown"
               />
@@ -146,10 +149,12 @@ function UpsertOfferPage({ isEdit }: Props) {
             <S.LeftSection>
               <S.SubtitleDescription>{t("gateway")}</S.SubtitleDescription>
               <S.SelectInput
-                values={["stripe"]}
+                values={[Gateways.stripe]}
                 name="currency"
-                onOptionChanged={(value) => setValue("gateway", value)}
-                defaultValue="stripe"
+                onOptionChanged={(value) =>
+                  setValue("gateway", value.toLowerCase())
+                }
+                defaultValue={Gateways.stripe}
                 containerId="gateway-dropdown"
               />
               {formState?.errors.gateway && formState?.errors.gateway.type && (

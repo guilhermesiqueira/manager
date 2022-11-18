@@ -9,7 +9,6 @@ export type Props = {
   values: any[];
   defaultValue: any;
   onOptionChanged: (value: any) => void;
-  // eslint-disable-next-line react/require-default-props
   valueText?: (value: any) => string;
   containerId: string;
 };
@@ -30,6 +29,7 @@ function Dropdown({
 
   const [dropdownValue, setDropdownValue] = useState(values[0]);
   const [optionsVisible, setOptionsVisible] = useState(false);
+
   const { defaultShadow } = theme.colors;
 
   const handleInputClick = () => {
@@ -79,7 +79,10 @@ function Dropdown({
         }
       >
         {values.map((value) => (
-          <S.OptionContainer onClick={() => handleOptionClick(value)}>
+          <S.OptionContainer
+            onClick={() => handleOptionClick(value)}
+            key={value}
+          >
             <S.OptionText>{valueToText(value)}</S.OptionText>
           </S.OptionContainer>
         ))}
