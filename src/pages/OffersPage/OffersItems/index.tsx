@@ -20,8 +20,8 @@ function OffersItems({ offers, searchTerm }: Props) {
     keyPrefix: "offersPage.offersListSection.offersItems",
   });
 
-  function filterOffers(nonFilteredCauses: Offer[]) {
-    return nonFilteredCauses.filter((offerData: Offer) => {
+  function filterOffers(nonFilteredOffers: Offer[]) {
+    return nonFilteredOffers.filter((offerData: Offer) => {
       if (searchTerm === "") {
         return offerData;
       } else if (offerData?.id?.toString().includes(searchTerm)) {
