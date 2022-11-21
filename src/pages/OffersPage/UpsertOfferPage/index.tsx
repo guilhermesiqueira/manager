@@ -60,7 +60,14 @@ function UpsertOfferPage({ isEdit }: Props) {
   const handleSave = async () => {
     if (offer()) {
       const offerObject = {
-        ...offer(),
+        id: offer().id,
+        currency: offer().currency,
+        priceCents: offer().priceCents,
+        active: offer().active,
+        offerGatewayAttributes: {
+          gateway: offer().gateway,
+          externalId: offer().externalId,
+        },
       };
 
       try {
