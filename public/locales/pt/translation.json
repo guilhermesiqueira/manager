@@ -156,13 +156,29 @@
       "search": "Procurar por ID...",
       "next": "próximo >",
       "previous": "< anterior",
-      "title": "Ofertas"
+      "title": "Ofertas",
+      "createNew": "Adicionar nova",
     },
     "details": {
       "title": "Detalhes da oferta",
       "details": "Detalhes",
       "edit": "Editar",
       "gatewayInfo": "Informação do meio de pagamento"
+    },
+    "upsert": {
+      "create": {
+        "title": "Adicionar Nova Oferta",
+        "save": "Salvar",
+        "cancel": "Cancelar"
+      },
+      "edit": {
+        "title": "Editar Oferta",
+        "save": "Salvar mudanças",
+        "cancel": "Cancelar"
+      },
+      "required": "Campo obrigatório",
+      "activeOffer": "Oferta Ativa",
+      "inactiveOffer": "Oferta Inativa"
     }
   },
   "nonProfits": {

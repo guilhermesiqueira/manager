@@ -154,6 +154,7 @@
     },
     "list": {
       "title": "Offers",
+      "createNew": "Add new",
       "search": "Search by ID...",
       "next": "next >",
       "previous": "< previous"
@@ -163,6 +164,21 @@
       "details": "Details",
       "edit": "Edit",
       "gatewayInfo": "Gateway information"
+    },
+    "upsert": {
+      "create": {
+        "title": "Add New Offer",
+        "save": "Save",
+        "cancel": "Cancel"
+      },
+      "edit": {
+        "title": "Edit Offer",
+        "save": "Save changes",
+        "cancel": "Cancel"
+      },
+      "required": "this is required",
+      "activeOffer": "Active Offer",
+      "inactiveOffer": "Inactive Offer"
     }
   },
   "nonProfits": {

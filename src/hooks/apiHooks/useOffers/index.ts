@@ -18,21 +18,35 @@ function useOffers() {
     return allOffers;
   }, [page]);
 
-  function incrementPage() {
-    setPage((oldPage) => oldPage + 1);
+  async function getOffer(id: any) {
+    const { data: offer } = await offersApi.getOffer(id);
+
+    return offer;
   }
 
-  async function getOffer(id: any) {
-    const { data: integration } = await offersApi.getOffer(id);
+  async function createOffer(create: any) {
+    const { data: offer } = await offersApi.createOffer(create);
 
-    return integration;
+    return offer;
+  }
+
+  async function updateOffer(data: any) {
+    const { data: offer } = await offersApi.updateOffer(data.id, data);
+
+    return offer;
+  }
+
+  function incrementPage() {
+    setPage((oldPage) => oldPage + 1);
   }
 
   return {
     offers,
     getOffers,
-    incrementPage,
     getOffer,
+    createOffer,
+    updateOffer,
+    incrementPage,
   };
 }
 

@@ -71,10 +71,10 @@ function OfferDetailsPage(): JSX.Element {
           <S.InfoValue>{id}</S.InfoValue>
 
           <InfoName>{t("attributes.currency")}</InfoName>
-          <CopyableAddress text={offer.currency || "-"} />
+          <S.InfoValue>{offer.currency?.toUpperCase() || "-"}</S.InfoValue>
 
           <InfoName>{t("attributes.price")}</InfoName>
-          <CopyableAddress text={offer.price} />
+          <S.InfoValue>{offer.price}</S.InfoValue>
 
           <InfoName>{t("attributes.createdAt")}</InfoName>
           <S.InfoValue>{dateFormatter(offer.createdAt)}</S.InfoValue>
@@ -90,7 +90,7 @@ function OfferDetailsPage(): JSX.Element {
           <S.InfoValue>{offer.gateway}</S.InfoValue>
 
           <InfoName>{t("attributes.externalId")}</InfoName>
-          <S.InfoValue>{offer.externalId}</S.InfoValue>
+          <CopyableAddress text={offer.externalId} />
         </S.RightSection>
       </S.Container>
     </S.Content>
