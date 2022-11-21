@@ -19,44 +19,41 @@
     } 
   },
   "integrations": {
-    "integrationsList": {
-      "title": "Lista de Integrações",
-      "createNew": "Adicionar novo",
-      "listColumns": {
-        "id": "Id",
-        "name": "Nome",
-        "walletAddress": "Endereço da Wallet",
-        "integrationAddress": "Endereço da Integração",
-        "status": "Status"
-      }
-    },
-    "integrationCard": {
-      "amountEnding": "A quantidade atribuída para doação está acabando",
-      "amountEnded": "Não há quantidade atribuída à doação"
-    },
-    "copyableAddress": {
-      "copiedText": "Endereço copiado",
-      "copyText": "Copiar para o clipboard"
-    },
-    "integrationDetailsPage": {
-      "title": "{{integrationName}} Detalhes",
-      "status": "Status",
+    "integration": "integração",
+    "attributes": {
       "id": "ID",
       "name": "Nome",
+      "status": "Status",
+      "activityStatus": "Status de atividade",
+      "active": "Ativa",
+      "inactive": "Inativa",
       "walletAddress": "Endereço da carteira",
       "integrationAddress": "Endereço da integração",
       "webhookUrl": "Link do Webhook",
       "ticketAvailability": "Disponibilidade de Ticket",
       "everydayAtMidnight": "Todo dia à meia noite",
       "everyMinutes": "A cada {{minutes}} minutos depois do recebimento",
+      "every": "A cada",
+      "minutesAfterReceived": "minutos depois do recebimento",
       "createdAt": "Criado em",
       "lastEditedAt": "Última edição em",
-      "edit": "Editar",
       "modalInfo": "Modal 'Sem tickets'",
       "ctaDescription": "Modal 'Sem tickets'",
       "ctaLink": "Link de conversão"
     },
-    "upsertIntegrationPage": {
+    "list": {
+      "title": "Lista de Integrações",
+      "createNew": "Adicionar novo"
+    },
+    "integrationCard": {
+      "amountEnding": "A quantidade atribuída para doação está acabando",
+      "amountEnded": "Não há quantidade atribuída à doação"
+    },
+    "details": {
+      "title": "{{integrationName}} Detalhes",
+      "edit": "Editar"
+    },
+    "upsert": {
       "create": {
         "title": "Adicionar nova Integração",
         "save": "Salvar",
@@ -68,62 +65,49 @@
         "cancel": "Cancelar"
       },
       "required": "Campo obrigatório",
-      "activityStatus": "Status de atividade",
-      "details": "Detalhes",
-      "integrationName": "Nome da Integração",
-      "ticketAvailability": "Disponibilidade de Ticket",
-      "everydayAtMidnight": "Todo dia à meia noite",
-      "integrationLogo": "Logo da Integração",
-      "webhookUrl": "Link do Webhook",
-      "integration": "integração",
-      "every": "A cada",
-      "minutesAfterReceived": "minutos depois do recebimento",
-      "modalInfo": "Modal 'Sem tickets'",
-      "ctaDescription": "Modal 'Sem tickets'",
-      "ctaLink": "Link de conversão",
-      "typeDescription": "Digite a descrição",
-      "linkName": "Nome do link",
-      "linkAddress": "URL do link"
+      "details": "Detalhes"
+
     }
   },
-  "purchasesPage": {
+  "purchases": {
     "title": "Lista de Pagamentos",
-    "purchasesListSection": {
-      "listColumns": {
-        "date": "Data",
-        "stripeId": "Stripe ID",
-        "type": "Tipo",
-        "userIdentification": "Identificação do usuário",
-        "value": "Valor (USDC)",
-        "status": "Status da compra"
-      },
+    "attributes": {
+      "date": "Data",
+      "stripeId": "Stripe ID",
+      "type": "Tipo",
+      "userIdentification": "Identificação do usuário",
+      "value": "Valor (USDC)",
+      "status": "Status da compra"
+    },
+    "list": {
+      "search": "Procurar por email...",
+      "next": "próximo >",
+      "previous": "< anterior",
       "refundModal": {
         "title": "Confirmar pedido de reembolso?",
         "body": "Após confirmada, essa ação não poderá ser desfeita.",
         "confirmButton": "Confirmar",
         "cancelButton": "Cancelar",
         "tooltipText": "Reembolso"
-      },
-      "search": "Procurar por email...",
-      "next": "próximo >",
-      "previous": "< anterior"
+      }
     }
   },
   "causes": {
-    "title": "Lista de Causas",
-    "createNew": "Adicionar nova",
-    "causesListSection": {
+    "cause": "Causa",
+    "attributes": {
+      "name": "Nome",
+      "token": "Token",
+      "poolAddress": "Endereço da pool",
+      "availableToDonation": "Disponível para doação (USDC)",
+      "title": "Lista de Causas"
+    },
+    "list": {
+      "createNew": "Adicionar nova",
       "search": "Procurar por nome...",
       "next": "próximo >",
-      "previous": "< anterior",
-      "listColumns": {
-        "name": "Nome",
-        "token": "Token",
-        "poolAddress": "Endereço da pool",
-        "availableToDonation": "Disponível para doação (USDC)"
-      }
+      "previous": "< anterior"
     },
-    "upsertCausePage": {
+    "upsert": {
       "create": {
         "title": "Adicionar nova Causa",
         "save": "Salvar",
@@ -141,53 +125,47 @@
         "cancel": "Cancelar"
       },
       "required": "Campo obrigatório",
-      "activityStatus": "Status de atividade",
-      "details": "Detalhes",
-      "causeName": "Nome da Causa",
-      "causeAddress": "Endereço da pool",
-      "cause": "causa"
+      "details": "Detalhes"
     },
     "causeCard": {
       "amountEnding": "A quantidade atribuída para doação está acabando",
       "amountEnded": "Não há quantidade atribuída à doação"
     },
-    "copyableAddress": {
-      "copiedText": "Endereço copiado",
-      "copyText": "Copiar para o clipboard"
-    },
-    "causeDetailsPage": {
+    "details": {
       "title": "Detalhes da causa",
       "availableToDonation": "Disponível para doação (USDC)",
-      "name": "Nome da causa",
-      "poolAddress": "Endereço da pool",
       "edit": "Editar",
       "linkedProjects": "Projetos vinculados"
-    },
-    "search": "Procurar por nome...",
-    "next": "próximo >",
-    "previous": "< anterior"
+    }
   },
-  "offersPage": {
-    "title": "Ofertas",
-    "offersListSection": {
-      "listColumns": {
-        "id": "ID",
-        "currency": "Moeda",
-        "price": "Preço",
-        "gateway": "Gateway",
-        "externalId": "ID Externo",
-        "status": "Status"
-      },
-      "offersItems": {
-        "active": "Ativo",
-        "inactive": "Inativo"
-      },
-      "createNew": "Adicionar novo",
+  "offers": {
+    "attributes": {      
+      "id": "ID",
+      "currency": "Moeda",
+      "price": "Preço",
+      "gateway": "Meio de pagmento",
+      "externalId": "ID Externo",
+      "status": "Status",
+      "activityStatus": "Status de atividade",
+      "active": "Ativo",
+      "inactive": "Inativo",
+      "createdAt": "Criado em",
+      "lastEditedAt": "Última edição em"
+    },
+    "list": {
       "search": "Procurar por ID...",
       "next": "próximo >",
-      "previous": "< anterior"
+      "previous": "< anterior",
+      "title": "Ofertas",
+      "createNew": "Adicionar nova"
     },
-    "upsertOfferPage": {
+    "details": {
+      "title": "Detalhes da oferta",
+      "details": "Detalhes",
+      "edit": "Editar",
+      "gatewayInfo": "Informação do meio de pagamento"
+    },
+    "upsert": {
       "create": {
         "title": "Adicionar Nova Oferta",
         "save": "Salvar",
@@ -199,48 +177,34 @@
         "cancel": "Cancelar"
       },
       "required": "Campo obrigatório",
-      "activeOffer": "Oferta ativa",
-      "inactiveOffer": "Oferta inativa",
-      "activityStatus": "Status de atividade",
-      "details": "Detlhes",
-      "price": "Preço",
-      "gateway": "Gateway",
-      "gatewayInformations": "Informações do Gateway",
-      "externalId": "ID Externo",
-      "currency": "Moeda",
-      "offer": "oferta"
+      "activeOffer": "Oferta Ativa",
+      "inactiveOffer": "Oferta Inativa"
     }
   },
-  "nonProfitsPage": {
-    "title": "Lista de Ngos",
-    "createNew": "Adicionar nova",
-    "nonProfitsListSection": {
-      "listColumns": {
-        "name": "Nome",
-        "token": "Token",
-        "poolAddress": "Endereço da pool",
-        "availableToDonation": "Disponível para doação (USDC)"
-      },
-      "copyableAddress": {
-        "copiedText": "Endereço copiado",
-        "copyText": "Copiar para o clipboard"
-      },
-      "createNew": "Adicionar novo",
+  "nonProfits": {
+    "nonProfit": "Ong",
+    "attributes": {
+      "name": "Nome",
+      "token": "Token",
+      "address": "Endereço da carteira",
+      "logo": "Logo",
+      "impactDescription": "Descrição do Impacto",
+      "cause": "Causa",
+      "causeCardImage": "Cause Card",
+      "imageRecommendation": "Tamanho recomendado:`\n`{{ size }}",
+      "imagesSection": "Imagens",
+      "availableToDonation": "Disponível para doação (USDC)"
+    },
+    "list": {
+      "title": "Lista de Ongs",
+      "createNew": "Adicionar nova",
       "search": "Procurar pelo nome...",
       "next": "próximo >",
       "previous": "< anterior"
     },
-    "upsertNonProfitPage": {
+    "upsert": {
       "activityStatus": "Status",
       "details": "Detalhes",
-      "imagesSection": "Imagens",
-      "nonProfitName": "Nome",
-      "nonProfitAddress": "Endereço da carteira",
-      "nonProfitLogo": "Logo",
-      "nonProfitImpactDescription": "Descrição do Impacto",
-      "nonProfitCause": "Causa",
-      "nonProfitCauseCardImage": "Cause Card",
-      "imageRecommendation": "Tamanho recomendado:`\n`{{ size }}",
       "create": {
         "title": "Adicionar Nova NonProfit",
         "save": "Salvar",
@@ -258,6 +222,10 @@
         "cancel": "Cancelar"
       }
     }
+  },
+  "copyableAddress": {
+    "copiedText": "Endereço copiado",
+    "copyText": "Copiar para o clipboard"
   },
   "menu": {
     "integrationsLabel": "Integrações",

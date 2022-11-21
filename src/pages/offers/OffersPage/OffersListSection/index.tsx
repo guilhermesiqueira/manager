@@ -14,7 +14,7 @@ function OffersListSection(): JSX.Element {
   const [offers, setOffers] = useState<Offer[]>([]);
   const { getOffers } = useOffers();
   const { t } = useTranslation("translation", {
-    keyPrefix: "offersPage.offersListSection",
+    keyPrefix: "offers",
   });
   const [currentOffers, setCurrentOffers] = useState<Offer[]>([]);
   const [pageCount, setPageCount] = useState(0);
@@ -70,10 +70,10 @@ function OffersListSection(): JSX.Element {
           onClick={handleAddNew}
           leftIcon={AddIcon()}
         >
-          {t("createNew")}
+          {t("list.createNew")}
         </Button>
         <S.SearchBar
-          placeholder={t("search")}
+          placeholder={t("list.search")}
           onChange={(event) => {
             setSearchTerm(event.target.value);
           }}
@@ -83,12 +83,12 @@ function OffersListSection(): JSX.Element {
       <S.Table>
         <thead>
           <tr>
-            <th>{t("listColumns.id")}</th>
-            <th>{t("listColumns.currency")}</th>
-            <th>{t("listColumns.price")}</th>
-            <th>{t("listColumns.gateway")}</th>
-            <th>{t("listColumns.externalId")}</th>
-            <th>{t("listColumns.status")}</th>
+            <th>{t("attributes.id")}</th>
+            <th>{t("attributes.currency")}</th>
+            <th>{t("attributes.price")}</th>
+            <th>{t("attributes.gateway")}</th>
+            <th>{t("attributes.externalId")}</th>
+            <th>{t("attributes.status")}</th>
           </tr>
         </thead>
         <OffersItems searchTerm={searchTerm} offers={currentOffers} />
@@ -96,8 +96,8 @@ function OffersListSection(): JSX.Element {
 
       <S.Pagination
         breakLabel="..."
-        previousLabel={t("previous")}
-        nextLabel={t("next")}
+        previousLabel={t("list.previous")}
+        nextLabel={t("list.next")}
         onPageChange={handlePageClick}
         pageRangeDisplayed={10}
         pageCount={pageCount}

@@ -18,7 +18,7 @@ export type Props = {
 
 function UpsertOfferPage({ isEdit }: Props) {
   const { t } = useTranslation("translation", {
-    keyPrefix: "offersPage.upsertOfferPage",
+    keyPrefix: "offers",
   });
 
   const mode = isEdit ? "edit" : "create";
@@ -105,10 +105,10 @@ function UpsertOfferPage({ isEdit }: Props) {
 
   return (
     <>
-      <S.Title>{t(`${mode}.title`)}</S.Title>
+      <S.Title>{t(`upsert.${mode}.title`)}</S.Title>
       <form onSubmit={handleSubmit(handleSave)}>
         <S.Container>
-          <S.Subtitle>{t("activityStatus")}</S.Subtitle>
+          <S.Subtitle>{t("attributes.activityStatus")}</S.Subtitle>
           <S.CheckboxContainer>
             <S.Checkbox
               name="status"
@@ -117,17 +117,21 @@ function UpsertOfferPage({ isEdit }: Props) {
               checked={statusCheckbox}
             />
             <S.Span>
-              {offer().active ? t("activeOffer") : t("inactiveOffer")}
+              {offer().active
+                ? t("upsert.activeOffer")
+                : t("upsert.inactiveOffer")}
             </S.Span>
           </S.CheckboxContainer>
           <br />
-          <S.Subtitle>{t("details")}</S.Subtitle>
+          <S.Subtitle>{t("details.details")}</S.Subtitle>
           <S.ContentSection>
             <S.LeftSection>
-              <S.SubtitleDescription>{t("price")}</S.SubtitleDescription>
+              <S.SubtitleDescription>
+                {t("attributes.price")}
+              </S.SubtitleDescription>
               <S.TextInput
                 type="number"
-                {...register("priceCents", { required: t("required") })}
+                {...register("priceCents", { required: t("upsert.required") })}
               />
               {formState?.errors.priceCents &&
                 formState?.errors.priceCents.type && (
@@ -135,7 +139,9 @@ function UpsertOfferPage({ isEdit }: Props) {
                 )}
             </S.LeftSection>
             <S.RightSection>
-              <S.SubtitleDescription>{t("currency")}</S.SubtitleDescription>
+              <S.SubtitleDescription>
+                {t("attributes.currency")}
+              </S.SubtitleDescription>
               <S.SelectInput
                 values={[Currencies.BRL, Currencies.USD]}
                 name="currency"
@@ -152,10 +158,12 @@ function UpsertOfferPage({ isEdit }: Props) {
                 )}
             </S.RightSection>
           </S.ContentSection>
-          <S.Subtitle>{t("gatewayInformations")}</S.Subtitle>
+          <S.Subtitle>{t("details.gatewayInfo")}</S.Subtitle>
           <S.ContentSection>
             <S.LeftSection>
-              <S.SubtitleDescription>{t("gateway")}</S.SubtitleDescription>
+              <S.SubtitleDescription>
+                {t("attributes.gateway")}
+              </S.SubtitleDescription>
               <S.SelectInput
                 values={[Gateways.stripe]}
                 name="currency"
@@ -170,9 +178,11 @@ function UpsertOfferPage({ isEdit }: Props) {
               )}
             </S.LeftSection>
             <S.RightSection>
-              <S.SubtitleDescription>{t("externalId")}</S.SubtitleDescription>
+              <S.SubtitleDescription>
+                {t("attributes.externalId")}
+              </S.SubtitleDescription>
               <S.TextInput
-                {...register("externalId", { required: t("required") })}
+                {...register("externalId", { required: t("upsert.required") })}
               />
               {formState?.errors.externalId &&
                 formState?.errors.externalId.type && (
@@ -190,7 +200,7 @@ function UpsertOfferPage({ isEdit }: Props) {
               _hover={{ bg: gray30 }}
               disabled={!formState?.isValid}
             >
-              {t(`${mode}.save`)}
+              {t(`upsert.${mode}.save`)}
             </Button>
 
             <Button
@@ -200,7 +210,7 @@ function UpsertOfferPage({ isEdit }: Props) {
               marginLeft="8px"
               onClick={handleCancel}
             >
-              {t(`${mode}.cancel`)}
+              {t(`upsert.${mode}.cancel`)}
             </Button>
           </S.ButtonContainer>
         </S.ContentSection>

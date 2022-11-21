@@ -96,14 +96,14 @@ export const DoubleItemSection = styled.div`
 `;
 
 export const ItemBox = styled.div`
+  margin-right: 16px;
   display: flex;
   flex-direction: column;
-  margin-right: 16px;
 `;
 
 export const ImageRecommendation = styled.h6`
-  font-size: 12px;
   font-weight: 400;
-  color: ${({ theme }) => theme.colors.gray30};
+  font-size: 12px;
   white-space: pre-line;
+  color: ${({ theme }) => theme.colors.gray30};
 `;

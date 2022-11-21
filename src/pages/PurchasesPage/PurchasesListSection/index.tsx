@@ -10,7 +10,7 @@ function PurchasesListSection(): JSX.Element {
   const [purchases, setPurchases] = useState<PersonPayment[]>([]);
   const { getPersonPayments } = usePersonPayments();
   const { t } = useTranslation("translation", {
-    keyPrefix: "purchasesPage.purchasesListSection",
+    keyPrefix: "purchases",
   });
   const [currentPurchases, setCurrentPurchases] = useState<PersonPayment[]>([]);
   const [pageCount, setPageCount] = useState(0);
@@ -49,7 +49,7 @@ function PurchasesListSection(): JSX.Element {
   return (
     <S.Container>
       <S.SearchBar
-        placeholder={t("search")}
+        placeholder={t("list.search")}
         onChange={(event) => {
           setSearchTerm(event.target.value);
         }}
@@ -58,12 +58,12 @@ function PurchasesListSection(): JSX.Element {
       <S.Table>
         <thead>
           <tr>
-            <th>{t("listColumns.date")}</th>
-            <th>{t("listColumns.stripeId")}</th>
-            <th>{t("listColumns.type")}</th>
-            <th>{t("listColumns.userIdentification")}</th>
-            <th>{t("listColumns.value")}</th>
-            <th>{t("listColumns.status")}</th>
+            <th>{t("attributes.date")}</th>
+            <th>{t("attributes.stripeId")}</th>
+            <th>{t("attributes.type")}</th>
+            <th>{t("attributes.userIdentification")}</th>
+            <th>{t("attributes.value")}</th>
+            <th>{t("attributes.status")}</th>
           </tr>
         </thead>
         <PurchaseItems
@@ -75,8 +75,8 @@ function PurchasesListSection(): JSX.Element {
 
       <S.Pagination
         breakLabel="..."
-        previousLabel={t("previous")}
-        nextLabel={t("next")}
+        previousLabel={t("list.previous")}
+        nextLabel={t("list.next")}
         onPageChange={handlePageClick}
         pageRangeDisplayed={10}
         pageCount={pageCount}

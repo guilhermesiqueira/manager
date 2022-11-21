@@ -20,7 +20,7 @@ export type Props = {
 
 function UpsertCausePage({ isEdit }: Props) {
   const { t } = useTranslation("translation", {
-    keyPrefix: "causes.upsertCausePage",
+    keyPrefix: "causes",
   });
 
   const mode = isEdit ? "edit" : "create";
@@ -101,13 +101,15 @@ function UpsertCausePage({ isEdit }: Props) {
 
   return (
     <>
-      <S.Title>{t(`${mode}.title`)}</S.Title>
+      <S.Title>{t(`upsert.${mode}.title`)}</S.Title>
       <form onSubmit={handleSubmit(isEdit ? handleSave : handleOpenModal)}>
         <S.ContentSection>
           <S.LeftSection>
-            <S.Subtitle>{t("details")}</S.Subtitle>
-            <InfoName hasTranslation>{t("causeName")}</InfoName>
-            <S.TextInput {...register("name", { required: t("required") })} />
+            <S.Subtitle>{t("upsert.details")}</S.Subtitle>
+            <InfoName hasTranslation>{t("attributes.name")}</InfoName>
+            <S.TextInput
+              {...register("name", { required: t("upsert.required") })}
+            />
             {formState?.errors.name && formState?.errors.name.type && (
               <S.Error>{formState?.errors.name.message}</S.Error>
             )}
@@ -122,7 +124,7 @@ function UpsertCausePage({ isEdit }: Props) {
               _hover={{ bg: gray30 }}
               disabled={!formState?.isValid}
             >
-              {t(`${mode}.save`)}
+              {t(`upsert.${mode}.save`)}
             </Button>
 
             <Button
@@ -132,19 +134,19 @@ function UpsertCausePage({ isEdit }: Props) {
               marginLeft="8px"
               onClick={handleCancel}
             >
-              {t(`${mode}.cancel`)}
+              {t(`upsert.${mode}.cancel`)}
             </Button>
           </S.ButtonContainer>
           {!isEdit && (
             <ModalImage
-              title={t("create.modal.title")}
-              body={t("create.modal.body")}
+              title={t("upsert.create.modal.title")}
+              body={t("upsert.create.modal.body")}
               visible={modalOpen}
               image={WarningRedIcon}
-              primaryButtonText={t("create.modal.confirmButton")}
+              primaryButtonText={t("upsert.create.modal.confirmButton")}
               primaryButtonColor={red30}
               primaryButtonCallback={handleSave}
-              secondaryButtonText={t("create.modal.cancelButton")}
+              secondaryButtonText={t("upsert.create.modal.cancelButton")}
               secondaryButtonBorderColor={gray30}
               secondaryButtonCallback={handleCloseModal}
             />

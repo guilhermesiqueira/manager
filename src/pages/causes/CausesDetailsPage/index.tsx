@@ -18,7 +18,7 @@ import * as S from "./styles";
 
 function CausesDetailsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
-    keyPrefix: "causes.causeDetailsPage",
+    keyPrefix: "causes",
   });
   const { gray40, gray10, gray30 } = theme.colors;
 
@@ -50,11 +50,11 @@ function CausesDetailsPage(): JSX.Element {
 
   return (
     <S.Content>
-      <S.Title>{t("title")}</S.Title>
+      <S.Title>{t("details.title")}</S.Title>
 
       <S.Container>
         <S.LeftSection>
-          <S.Subtitle>{t("availableToDonation")}</S.Subtitle>
+          <S.Subtitle>{t("attributes.availableToDonation")}</S.Subtitle>
           <S.SubtitleInfo>
             {formatFromDecimals(pool?.balance ?? 0).toFixed(2)}
           </S.SubtitleInfo>
@@ -66,21 +66,21 @@ function CausesDetailsPage(): JSX.Element {
               _hover={{ bg: gray30 }}
               leftIcon={<EditIcon />}
             >
-              {t("edit")}
+              {t("details.edit")}
             </Button>
           </Link>
 
-          <InfoName>{t("name")}</InfoName>
+          <InfoName>{t("attributes.name")}</InfoName>
           <S.InfoValue>{cause?.name}</S.InfoValue>
 
-          <InfoName>{t("poolAddress")}</InfoName>
+          <InfoName>{t("attributes.poolAddress")}</InfoName>
           <CopyableAddress
             text={cause?.pools.length ? cause?.pools[0].address : "-"}
           />
         </S.LeftSection>
 
         <S.RightSection>
-          <S.Subtitle>{t("linkedProjects")}</S.Subtitle>
+          <S.Subtitle>{t("details.linkedProjects")}</S.Subtitle>
           <S.CardProject>
             <S.CardProjectInfo>Link</S.CardProjectInfo>{" "}
             <S.ArrowOutward src={ArrowOutward} alt="project link" />

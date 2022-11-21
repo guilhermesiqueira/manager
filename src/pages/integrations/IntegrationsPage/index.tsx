@@ -8,7 +8,7 @@ import * as S from "./styles";
 
 function IntegrationsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
-    keyPrefix: "integrations.integrationsList",
+    keyPrefix: "integrations.list",
   });
 
   const { gray10, gray30, gray40 } = theme.colors;
