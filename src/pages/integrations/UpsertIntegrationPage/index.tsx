@@ -18,7 +18,7 @@ export type Props = {
 
 function UpsertIntegrationPage({ isEdit }: Props) {
   const { t } = useTranslation("translation", {
-    keyPrefix: "integrations.upsertIntegrationPage",
+    keyPrefix: "integrations",
   });
 
   const mode = isEdit ? "edit" : "create";
@@ -159,11 +159,11 @@ function UpsertIntegrationPage({ isEdit }: Props) {
 
   return (
     <>
-      <S.Title>{t(`${mode}.title`)}</S.Title>
+      <S.Title>{t(`upsert.${mode}.title`)}</S.Title>
       <form onSubmit={handleSubmit(handleSave)}>
         <S.ContentSection>
           <S.LeftSection>
-            <S.Subtitle>{t("activityStatus")}</S.Subtitle>
+            <S.Subtitle>{t("attributes.activityStatus")}</S.Subtitle>
             <S.CheckboxContainer>
               <S.Checkbox
                 name="status"
@@ -171,40 +171,40 @@ function UpsertIntegrationPage({ isEdit }: Props) {
                 onChange={handleActivityCheckboxChange}
                 checked={statusCheckbox}
               />
-              <S.Span>
-                {integration().status} {t("integration")}
-              </S.Span>{" "}
+              <S.Span>{t(`attributes.${integration().status}`)}</S.Span>{" "}
             </S.CheckboxContainer>
             <br />
-            <S.Subtitle>{t("details")}</S.Subtitle>
+            <S.Subtitle>{t("attributes.upsert.details")}</S.Subtitle>
             <S.SubtitleDescription>
-              {t("integrationName")}
+              {t("attributes.name")}
             </S.SubtitleDescription>
-            <S.TextInput {...register("name", { required: t("required") })} />
+            <S.TextInput
+              {...register("name", { required: t("upsert.required") })}
+            />
             {formState?.errors.name && formState?.errors.name.type && (
               <S.Error>{formState?.errors.name.message}</S.Error>
             )}
-            <S.Subtitle>{t("integrationLogo")}</S.Subtitle>
+            <S.Subtitle>{t("attributes.logo")}</S.Subtitle>
             <FileUpload
               onChange={handleLogoChange}
               logo={integration().logo}
               value={file}
             />
-            <S.Subtitle>{t("webhookUrl")}</S.Subtitle>
+            <S.Subtitle>{t("attributes.webhookUrl")}</S.Subtitle>
             <S.TextInput
               placeholder="https://webhook.com"
               {...register("webhookUrl")}
             />
-            <S.Subtitle>{t("ticketAvailability")}</S.Subtitle>
+            <S.Subtitle>{t("attributes.ticketAvailability")}</S.Subtitle>
             <S.TicketAvailabilityContainer color={getColorByCheckboxStatus()}>
-              {t("every")}
+              {t("attributes.every")}
               <S.NumberInput
                 placeholder="000"
                 type="number"
                 disabled={ticketAvailabilityCheckbox}
                 {...register("ticketAvailabilityInMinutes")}
               />
-              {t("minutesAfterReceived")}
+              {t("attributes.minutesAfterReceived")}
             </S.TicketAvailabilityContainer>
             <br />
             <S.CheckboxContainer>
@@ -213,7 +213,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
                 onChange={handleTicketAvailabilityCheckboxChange}
                 checked={ticketAvailabilityCheckbox}
               />
-              <S.Span>{t("everydayAtMidnight")}</S.Span> <br />
+              <S.Span>{t("attributes.everydayAtMidnight")}</S.Span> <br />
             </S.CheckboxContainer>
           </S.LeftSection>
           <S.RightSection>
@@ -238,7 +238,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
                 !formState?.isValid || !!formStateTask?.errors?.description
               }
             >
-              {t(`${mode}.save`)}
+              {t(`upsert.${mode}.save`)}
             </Button>
 
             <Button
@@ -248,7 +248,7 @@ function UpsertIntegrationPage({ isEdit }: Props) {
               marginLeft="8px"
               onClick={handleCancel}
             >
-              {t(`${mode}.cancel`)}
+              {t(`upsert.${mode}.cancel`)}
             </Button>
           </S.ButtonContainer>
         </S.ContentSection>

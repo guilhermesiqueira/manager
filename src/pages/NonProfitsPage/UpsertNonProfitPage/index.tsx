@@ -24,7 +24,7 @@ export type Props = {
 
 function UpsertNonProfitPage({ isEdit }: Props) {
   const { t } = useTranslation("translation", {
-    keyPrefix: "nonProfitsPage.upsertNonProfitPage",
+    keyPrefix: "nonProfits",
   });
 
   const mode = isEdit ? "edit" : "create";
@@ -151,11 +151,11 @@ function UpsertNonProfitPage({ isEdit }: Props) {
 
   return (
     <>
-      <S.Title>{t(`${mode}.title`)}</S.Title>
+      <S.Title>{t(`upsert.${mode}.title`)}</S.Title>
       <form onSubmit={handleSubmit(isEdit ? handleSave : handleOpenModal)}>
         <S.ContentSection>
           <S.LeftSection>
-            <S.Subtitle>{t("activityStatus")}</S.Subtitle>
+            <S.Subtitle>{t("upsert.activityStatus")}</S.Subtitle>
             <S.CheckboxContainer>
               <S.Checkbox
                 name="status"
@@ -166,13 +166,15 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               <S.Span>{NonProfitObject().status}</S.Span>{" "}
             </S.CheckboxContainer>
 
-            <S.Subtitle>{t("details")}</S.Subtitle>
+            <S.Subtitle>{t("upsert.details")}</S.Subtitle>
 
             <S.DoubleItemSection>
               <S.ItemBox>
-                <InfoName hasTranslation>{t("nonProfitName")}</InfoName>
+                <InfoName hasTranslation>{t("attributes.name")}</InfoName>
                 <S.TextInput
-                  {...register("name", { required: t("required") })}
+                  {...register("name", {
+                    required: t("upsert.required"),
+                  })}
                 />
                 {formState?.errors.name && formState?.errors.name.type && (
                   <S.Error>{formState?.errors.name.message}</S.Error>
@@ -180,7 +182,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               </S.ItemBox>
 
               <S.ItemBox>
-                <InfoName>{t("nonProfitCause")}</InfoName>
+                <InfoName>{t("attributes.cause")}</InfoName>
                 <Dropdown
                   values={causes.map((cause) => cause?.id)}
                   onOptionChanged={onCauseIdChanged}
@@ -188,12 +190,12 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                   defaultValue={currentCauseId}
                   containerId="currencies-dropdown"
                   {...register("causeId", {
-                    required: t("required"),
+                    required: t("upsert.required"),
                   })}
                 />
                 {/* <S.TextInput
                   {...register("causeId", {
-                    required: t("required"),
+                    required: t("upsert.required"),
                   })}
                 />
                 {formState?.errors.name && formState?.errors.name.type && (
@@ -205,11 +207,11 @@ function UpsertNonProfitPage({ isEdit }: Props) {
             <S.DoubleItemSection>
               <S.ItemBox>
                 <InfoName hasTranslation>
-                  {t("nonProfitImpactDescription")}
+                  {t("attributes.impactDescription")}
                 </InfoName>
                 <S.TextInput
                   {...register("impactDescription", {
-                    required: t("required"),
+                    required: t("upsert.required"),
                   })}
                 />
                 {formState?.errors.name && formState?.errors.name.type && (
@@ -217,9 +219,11 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                 )}
               </S.ItemBox>
               <S.ItemBox>
-                <InfoName>{t("nonProfitAddress")}</InfoName>
+                <InfoName>{t("attributes.address")}</InfoName>
                 <S.TextInput
-                  {...register("walletAddress", { required: t("required") })}
+                  {...register("walletAddress", {
+                    required: t("upsert.required"),
+                  })}
                 />
                 {formState?.errors.name && formState?.errors.name.type && (
                   <S.Error>{formState?.errors.name.message}</S.Error>
@@ -229,30 +233,30 @@ function UpsertNonProfitPage({ isEdit }: Props) {
           </S.LeftSection>
 
           <S.RightSection>
-            <S.Subtitle>{t("imagesSection")}</S.Subtitle>
+            <S.Subtitle>{t("attributes.imagesSection")}</S.Subtitle>
 
             <S.DoubleItemSection>
               <S.ItemBox>
-                <InfoName>{t("nonProfitLogo")}</InfoName>
+                <InfoName>{t("attributes.logo")}</InfoName>
                 <FileUpload
                   onChange={handleLogoChange}
                   logo={NonProfitObject().logo}
                   value={file}
                 />
                 <S.ImageRecommendation>
-                  {t("imageRecommendation", { size: "300x300" })}
+                  {t("attributes.imageRecommendation", { size: "300x300" })}
                 </S.ImageRecommendation>
               </S.ItemBox>
 
               <S.ItemBox>
-                <InfoName>{t("nonProfitCauseCardImage")}</InfoName>
+                <InfoName>{t("attributes.causeCardImage")}</InfoName>
                 <FileUpload
                   onChange={handleLogoChange}
                   logo={NonProfitObject().logo}
                   value={file}
                 />
                 <S.ImageRecommendation>
-                  {t("imageRecommendation", { size: "600x560" })}
+                  {t("attributes.imageRecommendation", { size: "600x560" })}
                 </S.ImageRecommendation>
               </S.ItemBox>
             </S.DoubleItemSection>
@@ -267,7 +271,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               _hover={{ bg: gray30 }}
               disabled={!formState?.isValid}
             >
-              {t(`${mode}.save`)}
+              {t(`upsert.${mode}.save`)}
             </Button>
 
             <Button
@@ -277,19 +281,19 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               marginLeft="8px"
               onClick={handleCancel}
             >
-              {t(`${mode}.cancel`)}
+              {t(`upsert.${mode}.cancel`)}
             </Button>
           </S.ButtonContainer>
           {!isEdit && (
             <ModalImage
-              title={t("create.modal.title")}
-              body={t("create.modal.body")}
+              title={t("upsert.create.modal.title")}
+              body={t("upsert.create.modal.body")}
               visible={modalOpen}
               image={WarningRedIcon}
-              primaryButtonText={t("create.modal.confirmButton")}
+              primaryButtonText={t("upsert.create.modal.confirmButton")}
               primaryButtonColor={red30}
               primaryButtonCallback={handleSave}
-              secondaryButtonText={t("create.modal.cancelButton")}
+              secondaryButtonText={t("upsert.create.modal.cancelButton")}
               secondaryButtonBorderColor={gray30}
               secondaryButtonCallback={handleCloseModal}
             />

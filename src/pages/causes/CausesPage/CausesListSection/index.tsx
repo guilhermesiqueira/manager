@@ -10,7 +10,7 @@ function CausesListSection(): JSX.Element {
   const [causes, setCauses] = useState<Cause[]>([]);
   const { getCauses } = useCauses();
   const { t } = useTranslation("translation", {
-    keyPrefix: "causes.causesListSection",
+    keyPrefix: "causes",
   });
   const [currentCauses, setCurrentCauses] = useState<Cause[]>([]);
   const [pageCount, setPageCount] = useState(0);
@@ -49,7 +49,7 @@ function CausesListSection(): JSX.Element {
   return (
     <S.Container>
       <S.SearchBar
-        placeholder={t("search")}
+        placeholder={t("list.search")}
         onChange={(event) => {
           setSearchTerm(event.target.value);
         }}
@@ -58,10 +58,10 @@ function CausesListSection(): JSX.Element {
       <S.Table>
         <thead>
           <tr>
-            <th>{t("listColumns.name")}</th>
-            <th>{t("listColumns.token")}</th>
-            <th>{t("listColumns.availableToDonation")}</th>
-            <th>{t("listColumns.poolAddress")}</th>
+            <th>{t("attributes.name")}</th>
+            <th>{t("attributes.token")}</th>
+            <th>{t("attributes.availableToDonation")}</th>
+            <th>{t("attributes.poolAddress")}</th>
           </tr>
         </thead>
         <CauseItems searchTerm={searchTerm} causes={currentCauses} />
@@ -69,8 +69,8 @@ function CausesListSection(): JSX.Element {
 
       <S.Pagination
         breakLabel="..."
-        previousLabel={t("previous")}
-        nextLabel={t("next")}
+        previousLabel={t("list.previous")}
+        nextLabel={t("list.next")}
         onPageChange={handlePageClick}
         pageRangeDisplayed={10}
         pageCount={pageCount}

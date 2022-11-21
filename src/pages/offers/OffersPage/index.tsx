@@ -5,7 +5,7 @@ import * as S from "./styles";
 
 function OffersPage(): JSX.Element {
   const { t } = useTranslation("translation", {
-    keyPrefix: "offersPage",
+    keyPrefix: "offers.list",
   });
 
   return (

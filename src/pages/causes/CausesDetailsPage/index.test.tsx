@@ -11,7 +11,7 @@ describe("CauseDetailsPage", () => {
     expect(
       screen.getByText("Available to donation (USDC)"),
     ).toBeInTheDocument();
-    expect(screen.getByText("Cause name")).toBeInTheDocument();
+    expect(screen.getByText("Name")).toBeInTheDocument();
     expect(screen.getByText("Pool address")).toBeInTheDocument();
 
     expect(screen.getByText("Linked projects")).toBeInTheDocument();

@@ -15,7 +15,7 @@ function IntegrationsListSection(): JSX.Element {
   const { green30, red30 } = theme.colors;
 
   const { t } = useTranslation("translation", {
-    keyPrefix: "integrations.integrationsList.listColumns",
+    keyPrefix: "integrations.attributes",
   });
 
   const statusColors: { [key: string]: string } = {

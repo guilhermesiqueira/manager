@@ -7,7 +7,7 @@ import * as S from "./styles";
 
 function CausesPage(): JSX.Element {
   const { t } = useTranslation("translation", {
-    keyPrefix: "causes",
+    keyPrefix: "causes.list",
   });
 
   const { gray10, gray30, gray40 } = theme.colors;

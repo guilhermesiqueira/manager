@@ -1,16 +1,16 @@
 import styled from "styled-components";
 
 export const Input = styled.div`
-  height: 46px;
-  background-color: ${({ theme }) => theme.colors.neutral10};
-  display: flex;
   min-width: 400px;
   max-width: 400px;
+  height: 46px;
   margin: 8px 0;
   padding: 8px 16px;
-  border: 1px solid ${({ theme }) => theme.colors.darkGray};
+  border: 1px solid ${({ theme }) => theme.colors.gray40};
   border-radius: 10px;
-  color: ${({ theme }) => theme.colors.darkGray};
+  display: flex;
+  background-color: ${({ theme }) => theme.colors.neutral10};
+  color: ${({ theme }) => theme.colors.gray40};
 
   :placeholder {
     color: ${({ theme }) => theme.colors.gray};
@@ -22,8 +22,8 @@ export const Input = styled.div`
     border: none;
     border-radius: 4px;
     box-sizing: border-box;
-    background: transparent;
     line-height: 20px;
+    background: transparent;
     color: ${({ theme }) => theme.colors.gray40};
 
     &:hover {
