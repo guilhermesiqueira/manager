@@ -66,6 +66,7 @@ function UpsertOfferPage({ isEdit }: Props) {
         active: offer().active,
         offerGatewayAttributes: {
           gateway: offer().gateway,
+          id: offer().id,
           externalId: offer().externalId,
         },
       };
