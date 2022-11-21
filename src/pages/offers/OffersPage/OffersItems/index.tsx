@@ -17,7 +17,7 @@ type Props = {
 function OffersItems({ offers, searchTerm }: Props) {
   const { green30, red30 } = theme.colors;
   const { t } = useTranslation("translation", {
-    keyPrefix: "offersPage.offersListSection.offersItems",
+    keyPrefix: "offers",
   });
 
   function filterOffers(nonFilteredCauses: Offer[]) {
@@ -49,7 +49,9 @@ function OffersItems({ offers, searchTerm }: Props) {
             <S.StatusTableCell
               style={{ color: offer?.active ? green30 : red30 }}
             >
-              {offer?.active ? t("active") : t("inactive")}
+              {offer?.active
+                ? t("attributes.active")
+                : t("attributes.inactive")}
             </S.StatusTableCell>
           </th>
           <th>

@@ -14,7 +14,7 @@ import * as S from "./styles";
 
 function OfferDetailsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
-    keyPrefix: "Offer.offerDetailsPage",
+    keyPrefix: "offers",
   });
   const { green30, red30, gray40, gray10, gray30 } = theme.colors;
   const statusColors: { [key: string]: string } = {
@@ -42,7 +42,7 @@ function OfferDetailsPage(): JSX.Element {
 
   return (
     <S.Content>
-      <S.Title>{t("title")}</S.Title>
+      <S.Title>{t("details.title")}</S.Title>
 
       <S.Container>
         <S.LeftSection>
@@ -53,31 +53,43 @@ function OfferDetailsPage(): JSX.Element {
               _hover={{ bg: gray30 }}
               leftIcon={<EditIcon />}
             >
-              {t("edit")}
+              {t("details.edit")}
             </Button>
           </Link>
-          <InfoName>{t("status")}</InfoName>
-          <S.InfoValue style={{ color: `${statusColors[offer.status]}` }}>
-            {offer.status}
+          <InfoName>{t("attributes.status")}</InfoName>
+          <S.InfoValue
+            style={{
+              color: `${statusColors[offer.status ? "active" : "inactive"]}`,
+            }}
+          >
+            {offer.status ? "active" : "inactive"}
           </S.InfoValue>
 
-          <InfoName>{t("id")}</InfoName>
+          <InfoName>{t("attributes.id")}</InfoName>
           <S.InfoValue>{id}</S.InfoValue>
 
-          <InfoName>{t("OfferAddress")}</InfoName>
-          <CopyableAddress text={offer.price} />
-
-          <InfoName>{t("webhookUrl")}</InfoName>
+          <InfoName>{t("attributes.currency")}</InfoName>
           <CopyableAddress text={offer.currency || "-"} />
 
-          <InfoName>{t("createdAt")}</InfoName>
+          <InfoName>{t("attributes.price")}</InfoName>
+          <CopyableAddress text={offer.price} />
+
+          <InfoName>{t("attributes.createdAt")}</InfoName>
           <S.InfoValue>{dateFormatter(offer.createdAt)}</S.InfoValue>
 
-          <InfoName>{t("lastEditedAt")}</InfoName>
+          <InfoName>{t("attributes.lastEditedAt")}</InfoName>
           <S.InfoValue>{dateFormatter(offer.updatedAt)}</S.InfoValue>
         </S.LeftSection>
 
-        <S.RightSection />
+        <S.RightSection>
+          <S.Subtitle>{t("details.gatewayInfo")}</S.Subtitle>
+
+          <InfoName>{t("attributes.gateway")}</InfoName>
+          <S.InfoValue>{offer.gateway}</S.InfoValue>
+
+          <InfoName>{t("attributes.externalId")}</InfoName>
+          <S.InfoValue>{offer.externalId}</S.InfoValue>
+        </S.RightSection>
       </S.Container>
     </S.Content>
   );

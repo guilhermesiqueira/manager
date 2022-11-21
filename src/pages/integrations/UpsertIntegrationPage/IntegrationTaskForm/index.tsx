@@ -20,7 +20,7 @@ function IntegrationTaskForm({
   mobilityAttributes,
 }: Props) {
   const { t } = useTranslation("translation", {
-    keyPrefix: "integrations.upsertIntegrationPage",
+    keyPrefix: "integrations",
   });
 
   const validateForm = () => {
@@ -30,7 +30,7 @@ function IntegrationTaskForm({
     )
       setError("description", {
         types: {
-          required: t("required"),
+          required: t("upsert.required"),
         },
       });
     else {
@@ -40,10 +40,10 @@ function IntegrationTaskForm({
 
   return (
     <>
-      <S.Subtitle>{t("modalInfo")}</S.Subtitle>
+      <S.Subtitle>{t("attributes.modalInfo")}</S.Subtitle>
 
       <InfoName hasTranslation={mobilityAttributes?.includes("description")}>
-        {t("ctaDescription")}
+        {t("attributes.ctaDescription")}
       </InfoName>
 
       <S.TextInput
@@ -52,13 +52,13 @@ function IntegrationTaskForm({
             validateForm();
           },
         })}
-        placeholder={t("typeDescription")}
+        placeholder={t("attributes.typeDescription")}
       />
       {formState.errors.description && formState.errors.description.types && (
         <S.Error>{formState.errors.description.types.required}</S.Error>
       )}
       <InfoName hasTranslation={mobilityAttributes?.includes("link")}>
-        {t("ctaLink")}
+        {t("attributes.ctaLink")}
       </InfoName>
 
       <S.TextInput
@@ -67,7 +67,7 @@ function IntegrationTaskForm({
             validateForm();
           },
         })}
-        placeholder={t("linkName")}
+        placeholder={t("attributes.linkName")}
       />
 
       <S.TextInput
@@ -76,7 +76,7 @@ function IntegrationTaskForm({
             validateForm();
           },
         })}
-        placeholder={t("linkAddress")}
+        placeholder={t("attributes.linkAddress")}
       />
     </>
   );

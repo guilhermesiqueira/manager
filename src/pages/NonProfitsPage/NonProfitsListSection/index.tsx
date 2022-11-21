@@ -10,7 +10,7 @@ function NonProfitsListSection(): JSX.Element {
   const [nonProfits, setNonProfits] = useState<NonProfit[]>([]);
   const { getNonProfits } = useNonProfits();
   const { t } = useTranslation("translation", {
-    keyPrefix: "nonProfitsPage.nonProfitsListSection",
+    keyPrefix: "nonProfits",
   });
   const [currentNonProfits, setCurrentNonProfits] = useState<NonProfit[]>([]);
   const [pageCount, setPageCount] = useState(0);
@@ -49,7 +49,7 @@ function NonProfitsListSection(): JSX.Element {
   return (
     <S.Container>
       <S.SearchBar
-        placeholder={t("search")}
+        placeholder={t("list.search")}
         onChange={(event) => {
           setSearchTerm(event.target.value);
         }}
@@ -58,10 +58,10 @@ function NonProfitsListSection(): JSX.Element {
       <S.Table>
         <thead>
           <tr>
-            <th>{t("listColumns.id")}</th>
-            <th>{t("listColumns.name")}</th>
-            <th>{t("listColumns.walletAddress")}</th>
-            <th>{t("listColumns.status")}</th>
+            <th>{t("attributes.id")}</th>
+            <th>{t("attributes.name")}</th>
+            <th>{t("attributes.walletAddress")}</th>
+            <th>{t("attributes.status")}</th>
           </tr>
         </thead>
         <NonProfitItems
@@ -72,8 +72,8 @@ function NonProfitsListSection(): JSX.Element {
 
       <S.Pagination
         breakLabel="..."
-        previousLabel={t("previous")}
-        nextLabel={t("next")}
+        previousLabel={t("list.previous")}
+        nextLabel={t("list.next")}
         onPageChange={handlePageClick}
         pageRangeDisplayed={10}
         pageCount={pageCount}

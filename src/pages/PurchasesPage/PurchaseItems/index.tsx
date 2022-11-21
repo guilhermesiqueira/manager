@@ -22,7 +22,7 @@ function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
   const [visible, setVisible] = useState(false);
   const [externalId, setExternalId] = useState<string>("teste");
   const { t } = useTranslation("translation", {
-    keyPrefix: "purchasesPage.purchasesListSection.refundModal",
+    keyPrefix: "purchases.list.refundModal",
   });
 
   const handleRefund = async () => {

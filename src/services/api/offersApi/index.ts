@@ -19,7 +19,7 @@ const offersApi = {
       },
     }),
   getOffer: (id: string): Promise<AxiosResponse<Offer>> =>
-    apiGet(`offers/${id}`),
+    apiGet(`givings/offers/${id}`),
 };
 
 export default offersApi;

@@ -19,16 +19,35 @@
     }
   },
   "integrations": {
-    "integrationsList": {
+    "integration": "Integration",
+    "attributes": {
+      "id": "ID",
+      "name": "Name",
+      "status": "Status",
+      "activityStatus": "Activity status",
+      "logo": "Integration logo",
+      "walletAddress": "Wallet address",
+      "integrationAddress": "Integration address",
+      "webhookUrl": "Webhook Url",
+      "active": "Active",
+      "inactive": "Inactive",
+      "ticketAvailability": "Ticket availability",
+      "everydayAtMidnight": "Everyday at midnight",
+      "everyMinutes": "Every {{minutes}} minutes after received",
+      "every": "Every ",
+      "minutesAfterReceived": " minutes after received",
+      "createdAt": "Created At",
+      "lastEditedAt": "Last Edited At",
+      "modalInfo": "'No tickets' modal",
+      "ctaDescription": "CTA Description",
+      "ctaLink": "Conversion link",
+      "typeDescription": "Type description",
+      "linkName": "Link name",
+      "linkAddress": "Link address"
+    },
+    "list": {
       "title": "Integrations list",
-      "createNew": "Add new",
-      "listColumns": {
-        "id": "Id",
-        "name": "Name",
-        "walletAddress": "Wallet address",
-        "integrationAddress": "Integration address",
-        "status": "Status"
-      }
+      "createNew": "Add new"
     },
     "integrationCard": {
       "amountEnding": "The amount assigned for donation is ending",
@@ -38,26 +57,11 @@
       "copiedText": "Address copied",
       "copyText": "Copy to clipboard"
     },
-    "integrationDetailsPage": {
+    "details": {
       "title": "{{integrationName}} Details",
-      "status": "Status",
-      "id": "ID",
-      "name": "Name",
-      "logo": "Integration logo",
-      "walletAddress": "Wallet address",
-      "integrationAddress": "Integration address",
-      "webhookUrl": "Webhook Url",
-      "ticketAvailability": "Ticket availability",
-      "everydayAtMidnight": "Everyday at midnight",
-      "everyMinutes": "Every {{minutes}} minutes after received",
-      "createdAt": "Created At",
-      "lastEditedAt": "Last Edited At",
-      "edit": "Edit",
-      "modalInfo": "'No tickets' modal",
-      "ctaDescription": "CTA Description",
-      "ctaLink": "Conversion link"
+      "edit": "Edit"
     },
-    "upsertIntegrationPage": {
+    "upsert": {
       "create": {
         "title": "Add New Integration",
         "save": "Save",
@@ -69,70 +73,53 @@
         "cancel": "Cancel"
       },
       "required": "this is required",
-      "activityStatus": "Activity status",
-      "details": "Details",
-      "integrationName": "Integration Name",
-      "integrationLogo": "Integration logo",
-      "webhookUrl": "Webhook Url",
-      "ticketAvailability": "Ticket availability",
-      "everydayAtMidnight": "Everyday at midnight",
-      "integration": "integration",
-      "every": "Every",
-      "minutesAfterReceived": "minutes after received",
-      "modalInfo": "'No tickets' modal",
-      "ctaDescription": "CTA Description",
-      "ctaLink": "Conversion link",
-      "typeDescription": "Type description",
-      "linkName": "Link name",
-      "linkAddress": "Link address"
+      "details": "Details"
     }
   },
-  "purchasesPage": {
-    "title": "Purchases List",
-    "purchasesListSection": {
-      "listColumns": {
-        "date": "Date",
-        "stripeId": "Stripe Purchase ID",
-        "type": "Type",
-        "userIdentification": "User identification",
-        "value": "Value (USDC)",
-        "status": "Purchase status"
-      },
+  "purchases": {
+    "purchase": "pagamento",
+    "attributes": {
+      "date": "Date",
+      "stripeId": "Stripe Purchase ID",
+      "type": "Type",
+      "userIdentification": "User identification",
+      "value": "Value (USDC)",
+      "status": "Purchase status"
+    },
+    "list": {
+      "title": "Purchases List",
+      "search": "Search by email...",
+      "next": "next >",
+      "previous": "< previous",
       "refundModal": {
         "title": "Confirm refund request?",
         "body": "After confirmed, this action may be impossible to undo.",
         "confirmButton": "Confirm",
         "cancelButton": "Cancel",
         "tooltipText": "Refund purchase"
-      },
-      "search": "Search by email...",
-      "next": "next >",
-      "previous": "< previous"
+      }
     }
   },
   "causes": {
-    "title": "Causes List",
-    "createNew": "Add new",
-    "causesListSection": {
+    "attributes": {
+      "name": "Cause name",
+      "availableToDonation": "Available to donation (USDC)",
+      "poolAddress": "Pool address",
+      "token": "Token"
+    },
+    "list": {
+      "title": "Causes List",
+      "createNew": "Add new",
       "search": "Search by name...",
       "next": "next >",
-      "previous": "< previous",
-      "listColumns": {
-        "name": "Name",
-        "token": "Token",
-        "poolAddress": "Pool address",
-        "availableToDonation": "Available to donation (USDC)"
-      }
+      "previous": "< previous"
     },
-    "causeDetailsPage": {
+    "details": {
       "title": "Cause details",
-      "availableToDonation": "Available to donation (USDC)",
-      "name": "Cause name",
-      "poolAddress": "Pool address",
       "edit": "Edit",
       "linkedProjects": "Linked projects"
     },
-    "upsertCausePage": {
+    "upsert": {
       "create": {
         "title": "Add New Cause",
         "save": "Save",
@@ -151,49 +138,79 @@
       },
       "required": "this is required",
       "details": "Details",
-      "causeName": "Cause Name",
-      "causeAddress": "Pool address",
       "cause": "Cause"
     }
   },
-  "offersPage": {
-    "title": "Offers",
-    "offersListSection": {
-      "listColumns": {
-        "id": "ID",
-        "currency": "Currency",
-        "price": "Price",
-        "gateway": "Gateway",
-        "externalId": "External ID",
-        "status": "Status"
-      },
-      "offersItems": {
-        "active": "Active",
-        "inactive": "Inactive"
-      },
+  "offers": { 
+    "offer": "Offer",
+    "attributes": {
+      "id": "ID",
+      "currency": "Currency",
+      "price": "Price",
+      "gateway": "Gateway",
+      "externalId": "External ID",
+      "status": "Status",
+      "active": "Active",
+      "inactive": "Inactive",
+      "createdAt": "Created At",
+      "lastEditedAt": "Last Edited At"
+    },
+    "list": {
+      "title": "Offers",
       "search": "Search by ID...",
       "next": "next >",
       "previous": "< previous"
+    },
+    "details": {
+      "title": "Offer details",
+      "edit": "Edit",
+      "gatewayInfo": "Gateway information"
     }
   },
-  "nonProfitsPage": {
-    "title": "Ngos List",
-    "createNew": "Add new",
-    "nonProfitsListSection": {
-      "listColumns": {
-        "id": "Id",
-        "name": "Name",
-        "walletAddress": "Wallet address",
-        "status": "Status"
-      },
-      "copyableAddress": {
-        "copiedText": "Address copied",
-        "copyText": "Copy to clipboard"
-      },
+  "nonProfits": {
+    "attributes": {
+      "id": "Id",
+      "name": "Name",
+      "walletAddress": "Wallet address",
+      "status": "Status",
+      "address": "Wallet address",
+      "logo": "Logo",
+      "impactDescription": "Impact Description",
+      "imagesSection": "Images",
+      "imageRecommendation": "Recommended size:\n{{ size }}",
+      "cause": "Cause",
+      "causeCardImage": "Cause Card"
+    },
+    "list": {
+      "title": "Ngos List",
       "createNew": "Add new",
       "search": "Search by name...",
       "next": "next >",
-      "previous": "< previous"
+      "previous": "< previous",
+      "copyableAddress": {
+        "copiedText": "Address copied",
+        "copyText": "Copy to clipboard"
+      }
+    },
+    "upsert": {
+      "activityStatus": "Activity status",
+      "details": "Details",
+      "create": {
+        "title": "Add New NonProfit",
+        "save": "Save",
+        "cancel": "Cancel",
+        "modal": {
+          "title": "Are you sure?",
+          "body": "After confirmed, this action will create a NonProfit.",
+          "confirmButton": "Confirm",
+          "cancelButton": "Cancel"
+        }
+      },
+      "edit": {
+        "title": "Edit NonProfit",
+        "save": "Save changes",
+        "cancel": "Cancel"
+      }
     }
   },
   "menu": {
