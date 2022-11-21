@@ -56,6 +56,7 @@ function OfferDetailsPage(): JSX.Element {
               {t("details.edit")}
             </Button>
           </Link>
+          <S.Subtitle>{t("attributes.activityStatus")}</S.Subtitle>
           <InfoName>{t("attributes.status")}</InfoName>
           <S.InfoValue
             style={{
@@ -65,6 +66,7 @@ function OfferDetailsPage(): JSX.Element {
             {offer.status ? "active" : "inactive"}
           </S.InfoValue>
 
+          <S.Subtitle>{t("details.details")}</S.Subtitle>
           <InfoName>{t("attributes.id")}</InfoName>
           <S.InfoValue>{id}</S.InfoValue>
 

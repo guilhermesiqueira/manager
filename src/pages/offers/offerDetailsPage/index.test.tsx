@@ -7,6 +7,6 @@ describe("OfferDetailsPage", () => {
   it("should render without error", () => {
     renderComponent(<OfferDetailsPage />);
 
-    expect(screen.getByText("Offer")).toBeInTheDocument();
+    expect(screen.getByText("Offer details")).toBeInTheDocument();
   });
 });

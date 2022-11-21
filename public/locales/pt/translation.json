@@ -49,10 +49,6 @@
       "amountEnding": "A quantidade atribuída para doação está acabando",
       "amountEnded": "Não há quantidade atribuída à doação"
     },
-    "copyableAddress": {
-      "copiedText": "Endereço copiado",
-      "copyText": "Copiar para o clipboard"
-    },
     "details": {
       "title": "{{integrationName}} Detalhes",
       "edit": "Editar"
@@ -135,10 +131,6 @@
       "amountEnding": "A quantidade atribuída para doação está acabando",
       "amountEnded": "Não há quantidade atribuída à doação"
     },
-    "copyableAddress": {
-      "copiedText": "Endereço copiado",
-      "copyText": "Copiar para o clipboard"
-    },
     "details": {
       "title": "Detalhes da causa",
       "availableToDonation": "Disponível para doação (USDC)",
@@ -154,6 +146,7 @@
       "gateway": "Meio de pagmento",
       "externalId": "ID Externo",
       "status": "Status",
+      "activityStatus": "Status de atividade",
       "active": "Ativo",
       "inactive": "Inativo",
       "createdAt": "Criado em",
@@ -167,6 +160,7 @@
     },
     "details": {
       "title": "Detalhes da oferta",
+      "details": "Detalhes",
       "edit": "Editar",
       "gatewayInfo": "Informação do meio de pagamento"
     }
@@ -190,11 +184,7 @@
       "createNew": "Adicionar nova",
       "search": "Procurar pelo nome...",
       "next": "próximo >",
-      "previous": "< anterior",
-      "copyableAddress": {
-        "copiedText": "Endereço copiado",
-        "copyText": "Copiar para o clipboard"
-      }
+      "previous": "< anterior"
     },
     "upsert": {
       "activityStatus": "Status",
@@ -216,6 +206,10 @@
         "cancel": "Cancelar"
       }
     }
+  },
+  "copyableAddress": {
+    "copiedText": "Endereço copiado",
+    "copyText": "Copiar para o clipboard"
   },
   "menu": {
     "integrationsLabel": "Integrações",

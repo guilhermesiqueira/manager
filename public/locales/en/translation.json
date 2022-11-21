@@ -53,10 +53,6 @@
       "amountEnding": "The amount assigned for donation is ending",
       "amountEnded": "There is no amount assigned for donation"
     },
-    "copyableAddress": {
-      "copiedText": "Address copied",
-      "copyText": "Copy to clipboard"
-    },
     "details": {
       "title": "{{integrationName}} Details",
       "edit": "Edit"
@@ -102,7 +98,7 @@
   },
   "causes": {
     "attributes": {
-      "name": "Cause name",
+      "name": "Name",
       "availableToDonation": "Available to donation (USDC)",
       "poolAddress": "Pool address",
       "token": "Token"
@@ -150,6 +146,7 @@
       "gateway": "Gateway",
       "externalId": "External ID",
       "status": "Status",
+      "activityStatus": "Activity status",
       "active": "Active",
       "inactive": "Inactive",
       "createdAt": "Created At",
@@ -163,6 +160,7 @@
     },
     "details": {
       "title": "Offer details",
+      "details": "Details",
       "edit": "Edit",
       "gatewayInfo": "Gateway information"
     }
@@ -186,11 +184,7 @@
       "createNew": "Add new",
       "search": "Search by name...",
       "next": "next >",
-      "previous": "< previous",
-      "copyableAddress": {
-        "copiedText": "Address copied",
-        "copyText": "Copy to clipboard"
-      }
+      "previous": "< previous"
     },
     "upsert": {
       "activityStatus": "Activity status",
@@ -212,6 +206,10 @@
         "cancel": "Cancel"
       }
     }
+  },
+  "copyableAddress": {
+    "copiedText": "Address copied",
+    "copyText": "Copy to clipboard"
   },
   "menu": {
     "integrationsLabel": "Integrations",
