@@ -10,6 +10,7 @@ import theme from "styles/theme";
 import InfoName from "components/moleculars/infoName";
 import { Button } from "@chakra-ui/react";
 import useOffers from "hooks/apiHooks/useOffers";
+import { capitalize } from "lib/capitalize";
 import * as S from "./styles";
 
 function OfferDetailsPage(): JSX.Element {
@@ -60,10 +61,10 @@ function OfferDetailsPage(): JSX.Element {
           <InfoName>{t("attributes.status")}</InfoName>
           <S.InfoValue
             style={{
-              color: `${statusColors[offer.status ? "active" : "inactive"]}`,
+              color: `${statusColors[offer.active ? "active" : "inactive"]}`,
             }}
           >
-            {offer.status ? "active" : "inactive"}
+            {t(`attributes.${offer.active ? "active" : "inactive"}`)}
           </S.InfoValue>
 
           <S.Subtitle>{t("details.details")}</S.Subtitle>
@@ -87,7 +88,9 @@ function OfferDetailsPage(): JSX.Element {
           <S.Subtitle>{t("details.gatewayInfo")}</S.Subtitle>
 
           <InfoName>{t("attributes.gateway")}</InfoName>
-          <S.InfoValue>{offer.gateway}</S.InfoValue>
+          <S.InfoValue>
+            {offer.gateway && capitalize(offer.gateway)}
+          </S.InfoValue>
 
           <InfoName>{t("attributes.externalId")}</InfoName>
           <CopyableAddress text={offer.externalId} />
