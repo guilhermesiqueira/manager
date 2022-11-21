@@ -1,37 +1,28 @@
 import styled from "styled-components";
-import { defaultComponentTextMedium } from "styles/typography/default";
 
 export const Input = styled.div`
+  height: 46px;
+  background-color: ${({ theme }) => theme.colors.neutral10};
+  display: flex;
   min-width: 400px;
   max-width: 400px;
-  margin: 8px 0 30px;
+  margin: 8px 0;
   padding: 8px 16px;
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
-  border-radius: 4px;
+  border-radius: 10px;
   color: ${({ theme }) => theme.colors.darkGray};
-  height: 46px;
-  display: flex;
-  justify-content: space-between;
-  box-sizing: border-box;
-  color: ${({ theme }) => theme.colors.gray40};
-  background: ${({ theme }) => theme.colors.neutral10};
 
-  label {
-    padding: 0 2px;
-    position: absolute;
-    top: -15px;
-    left: 10px;
-    display: inline;
-    text-align: center;
-    color: ${({ theme }) => theme.colors.green30};
+  :placeholder {
+    color: ${({ theme }) => theme.colors.gray};
+    opacity: 1;
   }
 
   input {
-    ${defaultComponentTextMedium};
     width: 100%;
     border: none;
     border-radius: 4px;
     box-sizing: border-box;
+    background: transparent;
     line-height: 20px;
     color: ${({ theme }) => theme.colors.gray40};
 

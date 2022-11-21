@@ -171,9 +171,33 @@
         "active": "Active",
         "inactive": "Inactive"
       },
+      "createNew": "Add new",
       "search": "Search by ID...",
       "next": "next >",
       "previous": "< previous"
+    },
+    "upsertOfferPage": {
+      "create": {
+        "title": "Add New Offer",
+        "save": "Save",
+        "cancel": "Cancel"
+      },
+      "edit": {
+        "title": "Edit Offer",
+        "save": "Save changes",
+        "cancel": "Cancel"
+      },
+      "required": "this is required",
+      "activeOffer": "Active Offer",
+      "inactiveOffer": "Inactive Offer",
+      "activityStatus": "Activity status",
+      "details": "Details",
+      "price": "Price",
+      "gateway": "Gateway",
+      "gatewayInformations": "Gateway Informations",
+      "externalId": "External ID",
+      "currency": "Currency",
+      "offer": "offer"
     }
   },
   "nonProfitsPage": {

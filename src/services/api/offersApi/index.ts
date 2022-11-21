@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import Offer from "types/entities/Offer";
-import { apiGetWithParams } from "..";
+import { apiGet, apiGetWithParams, apiPost, apiPut } from "..";
 
 type OffersParams = {
   perPage?: number;
@@ -18,6 +18,14 @@ const offersApi = {
         page,
       },
     }),
+
+  getOffer: (id: any): Promise<AxiosResponse<Offer>> =>
+    apiGet(`givings/offers/${id}`),
+
+  createOffer: (data: any): Promise<AxiosResponse<Offer>> =>
+    apiPost("givings/offers", data),
+  updateOffer: (id: any, data: Offer): Promise<AxiosResponse<Offer>> =>
+    apiPut(`givings/offers/${id}`, data),
 };
 
 export default offersApi;

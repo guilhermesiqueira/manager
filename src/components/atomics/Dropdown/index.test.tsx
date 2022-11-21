@@ -12,6 +12,8 @@ describe("Dropdown", () => {
         values={["test1", "test2"]}
         label="dropdown"
         onOptionChanged={mockFn}
+        defaultValue="test1"
+        containerId="dropdown"
       />,
     );
   });

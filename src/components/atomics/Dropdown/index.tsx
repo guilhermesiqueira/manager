@@ -1,28 +1,27 @@
-import { CSSProperties, useCallback, useEffect, useState } from "react";
-import ArrowDownIcon from "assets/icons/arrow-down-icon.svg";
-import ModalBlank from "components/moleculars/modals/ModalBlank";
+import React, { useCallback, useEffect, useState } from "react";
+import ArrowDownIcon from "assets/icons/arrow-down.svg";
+import theme from "styles/theme";
+import ModalBlank from "../ModalBlank";
 import * as S from "./styles";
 
 export type Props = {
   name: string;
-  label?: string;
   values: any[];
-  defaultValue?: any;
-  onOptionChanged?: (value: any) => void;
+  defaultValue: any;
+  label?: string;
+  onOptionChanged: (value: any) => void;
   valueText?: (value: any) => string;
-  customInputStyles?: CSSProperties;
-  containerId?: string;
+  containerId: string;
 };
 
 function Dropdown({
   name,
-  label,
   values,
   onOptionChanged,
   defaultValue,
   valueText,
+  label,
   containerId = "dropdown-container",
-  customInputStyles = {},
 }: Props): JSX.Element {
   const valueToText = (value: any) => {
     if (valueText && value) return valueText(value);
@@ -32,6 +31,8 @@ function Dropdown({
 
   const [dropdownValue, setDropdownValue] = useState(values[0]);
   const [optionsVisible, setOptionsVisible] = useState(false);
+
+  const { defaultShadow } = theme.colors;
 
   const handleInputClick = () => {
     setOptionsVisible(!optionsVisible);
@@ -68,7 +69,7 @@ function Dropdown({
             paddingTop: 8,
             paddingBottom: 8,
             position: "absolute",
-            boxShadow: "0px 4px 12px 0px rgba(24, 86, 105, 0.15)",
+            boxShadow: defaultShadow,
             zIndex: 1,
             margin: 0,
             width: "100%",
@@ -88,7 +89,7 @@ function Dropdown({
           </S.OptionContainer>
         ))}
       </ModalBlank>
-      <S.Input onClick={handleInputClick} style={customInputStyles}>
+      <S.Input onClick={handleInputClick}>
         {label && <label htmlFor={name}>{label}</label>}
         <input
           type="text"
@@ -96,21 +97,12 @@ function Dropdown({
           aria-label={name}
           value={valueToText(dropdownValue)}
           readOnly
-          style={{ color: customInputStyles.color }}
         />
+
         <img src={ArrowDownIcon} alt="arrow-down" />
       </S.Input>
     </S.Container>
   );
 }
-
-Dropdown.defaultProps = {
-  valueText: (value: any) => value,
-  label: "Option 1",
-  onOptionChanged: (id: number) => id,
-  defaultValue: 1,
-  containerId: "currencies-dropdown",
-  customInputStyles: {},
-};
 
 export default Dropdown;
