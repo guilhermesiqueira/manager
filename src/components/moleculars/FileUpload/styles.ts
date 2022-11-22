@@ -48,6 +48,7 @@ export const UploadIcon = styled(Image)``;
 
 export const Text = styled.p`
   ${defaultParagraphSmall}
+
   margin: 5px 0;
   text-align: center;
   color: ${({ theme }) => theme.colors.gray40};
@@ -60,5 +61,6 @@ export const Text = styled.p`
 
 export const span = styled.span`
   ${defaultParagraphSmall}
+
   color: ${({ theme }) => theme.colors.gray30};
 `;

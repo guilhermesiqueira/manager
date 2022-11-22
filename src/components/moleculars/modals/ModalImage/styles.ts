@@ -2,13 +2,13 @@ import styled from "styled-components";
 import ReactModal from "react-modal";
 
 export const ModalWithImage = styled(ReactModal)`
-  overflow: hidden;
   width: 100%;
   max-width: 464px;
   margin: 16px;
-  border-radius: 16px;
-  background-color: #fff;
   padding: 16px;
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #fff;
 
   button,
   a {

@@ -3,16 +3,16 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   flex-direction: row;
-  align-items: flex-start;
   gap: 16px;
+  align-items: flex-start;
 `;
 
 export const Card = styled.div`
   width: 728px;
-  box-sizing: border-box;
-  background: ${({ theme }) => theme.colors.white};
   border-radius: 16px;
+  box-sizing: border-box;
   text-align: left;
+  background: ${({ theme }) => theme.colors.white};
   background: ${({ theme }) => theme.colors.neutral10};
 `;
 

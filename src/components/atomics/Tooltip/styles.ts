@@ -10,15 +10,15 @@ type TooltipProps = {
 };
 
 export const TooltipTip = styled.div<TooltipProps>`
-  position: absolute;
+  padding: 0.5rem 1rem;
   border-radius: 0.5rem;
+  position: absolute;
   top: 0;
   left: 0;
-  padding: 0.5rem 1rem;
-  white-space: nowrap;
   z-index: ${({ theme }) => theme.zindex.tooltip};
-  color: ${({ theme }) => theme.colors.neutral10};
+  white-space: nowrap;
   background: ${({ color, theme }) => color || theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral10};
   visibility: ${({ visible }: TooltipProps) =>
     visible ? "visible" : "hidden"};
 `;
