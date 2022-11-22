@@ -1,3 +1,5 @@
+import { NonProfitImpact } from "./NonProfitImpact";
+
 export default interface NonProfit {
   id: string;
   name: string;
@@ -7,4 +9,5 @@ export default interface NonProfit {
   logo?: any;
   causeCardImage?: any;
   causeId: number;
+  nonProfitImpacts?: NonProfitImpact[];
 }

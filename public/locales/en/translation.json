@@ -248,6 +248,20 @@
       }
     }
   },
+  "impactsPage": {
+    "title": "Impacts History",
+    "impactsListSection": {
+      "search": "Search by id..",
+      "next": "next >",
+      "previous": "< previous",
+      "listColumns": {
+        "id": "Id",
+        "impactCost": "Impact cost",
+        "startDate": "Start date",
+        "endDate": "End date"
+      }
+    }
+  },
   "menu": {
     "integrationsLabel": "Integrations",
     "purchasesLabel": "Purchases",
