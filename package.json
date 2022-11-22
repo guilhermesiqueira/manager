@@ -142,6 +142,8 @@
       "prettier --check"
     ],
     "styles.ts": [
+      "stylelint --fix",
+      "git add",
       "stylelint"
     ]
   },
