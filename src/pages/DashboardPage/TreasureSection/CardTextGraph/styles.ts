@@ -9,31 +9,30 @@ export const Container = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.gray20};
   border-radius: 16px;
   box-sizing: border-box;
-  border-radius: 16px;
-  background: ${({ theme }) => theme.colors.white};
   text-align: left;
+  background: ${({ theme }) => theme.colors.white};
   background: ${({ theme }) => theme.colors.neutral10};
 `;
 
 export const MainText = styled.h1`
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 20px;
   padding-bottom: 4px;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 20px;
   color: ${({ theme }) => theme.colors.gray40};
 `;
 
 export const MainValue = styled.h2`
-  font-size: 22px;
-  font-weight: bold;
-  color: ${({ theme }) => theme.colors.green40};
   margin-bottom: 12px;
+  font-weight: 700;
+  font-size: 22px;
+  color: ${({ theme }) => theme.colors.green40};
 `;
 
 export const TreasureTitle = styled.h3`
-  font-size: 14px;
-  font-weight: bold;
+  font-weight: 700;
   font-weight: 600;
+  font-size: 14px;
 `;
 
 export const Teste = styled.div`
@@ -45,6 +44,7 @@ export const Teste = styled.div`
 
 export const SecondaryText = styled.span`
   ${defaultParagraphSmall}
+
   color: ${({ theme }) => theme.colors.gray40};
 `;
 
@@ -61,23 +61,23 @@ export const Graph = styled(Bar)`
 `;
 
 export const CausesSection = styled.div`
+  padding: 12px 16px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  padding: 12px 16px;
 `;
 
 export const CauseCard = styled.div`
-  display: flex;
-  flex-direction: column;
   width: 25%;
   margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const CauseTitle = styled.h6`
-  color: ${({ theme }) => theme.colors.gray30};
   font-weight: 400;
+  color: ${({ theme }) => theme.colors.gray30};
 `;
 
 export const CauseValue = styled.h5`

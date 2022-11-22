@@ -9,9 +9,9 @@ export const Container = styled.div`
 // create a component to table
 export const Table = styled.table`
   min-width: 500px;
+  max-width: 90%;
   margin: 25px 0;
   border-collapse: collapse;
-  max-width: 90%;
 
   tr,
   thead tr,
@@ -55,27 +55,32 @@ export const Pagination = styled(ReactPaginate).attrs({
   flex-direction: row;
   justify-content: center;
   list-style-type: none;
+
   li a {
-    border-radius: 16px;
-    padding: 8px 16px;
     margin-left: 4px;
+    padding: 8px 16px;
     border: 1px solid ${({ theme }) => theme.colors.gray30};
+    border-radius: 16px;
     cursor: pointer;
   }
+
   li.previous a,
   li.next a,
   li.break a {
     border-color: transparent;
   }
+
   li.active a {
-    background-color: ${({ theme }) => theme.colors.green30};
-    border-color: transparent;
-    color: ${({ theme }) => theme.colors.neutral10};
     min-width: 32px;
+    border-color: transparent;
+    background-color: ${({ theme }) => theme.colors.green30};
+    color: ${({ theme }) => theme.colors.neutral10};
   }
+
   li.disabled a {
     color: ${({ theme }) => theme.colors.gray30};
   }
+
   li.disable,
   li.disabled a {
     cursor: default;
@@ -86,7 +91,7 @@ export const SearchBar = styled.input`
   width: 90%;
   height: 44px;
   padding-left: 14px;
-  border-radius: 8px;
   border: 2px solid ${({ theme }) => theme.colors.gray30};
+  border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.gray10};
 `;
