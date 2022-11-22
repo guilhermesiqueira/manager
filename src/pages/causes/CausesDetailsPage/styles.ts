@@ -64,5 +64,6 @@ export const ArrowOutward = styled.img``;
 
 export const CardProjectInfo = styled.h4`
   ${defaultSubtitleSmall}
+
   color: ${({ theme }) => theme.colors.gray30};
 `;

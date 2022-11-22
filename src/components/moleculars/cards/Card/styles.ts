@@ -3,6 +3,7 @@ import { defaultTitleMedium } from "styles/typography/default";
 
 export const Text = styled.h3`
   ${defaultTitleMedium}
+
   color: ${({ theme }) => theme.colors.gray40};
 `;
 

@@ -19,5 +19,6 @@ export const ContainerSwitch = styled.div`
 
 export const Text = styled.p`
   ${defaultParagraphMedium}
+
   color: ${({ color }) => color};
 `;
