@@ -2,8 +2,8 @@ import styled from "styled-components";
 import { defaultComponentTextMedium } from "styles/typography/default";
 
 export const Input = styled.div`
-  min-width: 400px;
-  max-width: 400px;
+  min-width: 274px;
+  max-width: 274px;
   margin: 8px 0 30px;
   padding: 8px 16px;
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
@@ -17,13 +17,7 @@ export const Input = styled.div`
   background: ${({ theme }) => theme.colors.neutral10};
 
   label {
-    padding: 0 2px;
-    position: absolute;
-    top: -15px;
-    left: 10px;
-    display: inline;
-    text-align: center;
-    color: ${({ theme }) => theme.colors.green30};
+    display: none;
   }
 
   input {
