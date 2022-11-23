@@ -43,7 +43,3 @@ export const ActionsTableCell = styled.div`
 export const StatusTableCell = styled.span`
   text-transform: capitalize;
 `;
-
-export const RefundButton = styled.button``;
-
-export const RefundIcon = styled.img``;
