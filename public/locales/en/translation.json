@@ -137,7 +137,7 @@
       "cause": "Cause"
     }
   },
-  "offers": { 
+  "offers": {
     "offer": "Offer",
     "attributes": {
       "id": "ID",
@@ -223,6 +223,21 @@
       }
     }
   },
+  "settings": {
+    "title": "Settings",
+    "details": "Details",
+    "editButton": "Edit",
+    "attributes": {
+      "defaultTicketValue": "Default ticket value (USDC)",
+      "lastUpdated": "Last updated"
+    },
+    "edit": {
+      "title": "Edit Settings",
+      "details": "Details",
+      "save": "Save changes",
+      "cancel": "Cancel"
+    }
+  },
   "copyableAddress": {
     "copiedText": "Address copied",
     "copyText": "Copy to clipboard"
@@ -233,7 +248,8 @@
     "dashboardLabel": "Treasure Dashboard",
     "causesLabel": "Causes",
     "ngosLabel": "Ngos",
-    "offersLabel": "Offers"
+    "offersLabel": "Offers",
+    "settingsLabel": "Settings"
   },
   "login": {
     "title": "Dapp Manager",

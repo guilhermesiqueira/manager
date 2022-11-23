@@ -16,7 +16,7 @@
       "title": "Carteira das integrações",
       "donationLimit": "Limite de doação (USDC)",
       "matic": "Fundo para GAS (MATIC)"
-    } 
+    }
   },
   "integrations": {
     "integration": "integração",
@@ -66,7 +66,6 @@
       },
       "required": "Campo obrigatório",
       "details": "Detalhes"
-
     }
   },
   "purchases": {
@@ -139,7 +138,7 @@
     }
   },
   "offers": {
-    "attributes": {      
+    "attributes": {
       "id": "ID",
       "currency": "Moeda",
       "price": "Preço",
@@ -227,12 +226,29 @@
     "copiedText": "Endereço copiado",
     "copyText": "Copiar para o clipboard"
   },
+  "settings": {
+    "title": "Configurações",
+    "details": "Detalhes",
+    "editButton": "Editar",
+    "attributes": {
+      "defaultTicketValue": "Valor do ticket (USDC)",
+      "lastUpdated": "Última modificação"
+    },
+    "edit": {
+      "title": "Editar Configurações",
+      "defaultTicketValue": "Valor do ticket (USDC)",
+      "details": "Detalhes",
+      "save": "Salvar",
+      "cancel": "Cancelar"
+    }
+  },
   "menu": {
     "integrationsLabel": "Integrações",
     "purchasesLabel": "Pagamentos",
     "dashboardLabel": "Dashboard Tesouro",
     "causesLabel": "Causas",
-    "offersLabel": "Ofertas"
+    "offersLabel": "Ofertas",
+    "settingsLabel": "Configurações"
   },
   "login": {
     "title": "Dapp Manager",
