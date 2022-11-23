@@ -46,4 +46,7 @@ export const StatusTableCell = styled.span`
 
 export const RefundButton = styled.button``;
 
-export const RefundIcon = styled.img``;
+export const RefundIcon = styled.img`
+  max-width: unset;
+  height: 20px;
+`;
