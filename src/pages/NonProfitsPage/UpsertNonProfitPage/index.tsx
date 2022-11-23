@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router";
 import { logError } from "services/crashReport";
 import useCauses from "hooks/apiHooks/useCauses";
+import useStories from "hooks/apiHooks/useStories";
 import NonProfit from "types/entities/NonProfit";
 import Cause from "types/entities/Cause";
 import theme from "styles/theme";
@@ -15,8 +16,11 @@ import WarningRedIcon from "assets/icons/warning-red-icon.svg";
 import Loading from "components/moleculars/Loading";
 import Dropdown from "components/atomics/Dropdown";
 import useNonProfits from "hooks/apiHooks/useNonProfits";
+import Story from "types/entities/Story";
 import { CreateNonProfit } from "types/apiResponses/nonProfit";
+import StoriesForm from "./StoriesForm";
 import * as S from "./styles";
+import StoriesCard from "./StoriesCard";
 
 export type Props = {
   isEdit?: boolean;
@@ -26,7 +30,6 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const { t } = useTranslation("translation", {
     keyPrefix: "nonProfitsPage.upsertNonProfitPage",
   });
-
   const mode = isEdit ? "edit" : "create";
   const [modalOpen, setModalOpen] = useState(false);
   const [causes, setCauses] = useState<Cause[]>([]);
@@ -39,6 +42,8 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const navigate = useNavigate();
   const { id } = useParams();
   const { createNonProfit, getNonProfit, updateNonProfit } = useNonProfits();
+  const { getStories } = useStories();
+  const [stories, setStories] = useState<Story[]>([]);
   const {
     register,
     getValues: NonProfitObject,
@@ -47,6 +52,10 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     handleSubmit,
     formState,
   } = useForm<NonProfit>({ mode: "onChange", reValidateMode: "onChange" });
+  const { reset: resetStories } = useForm<Story[]>({
+    mode: "onChange",
+    reValidateMode: "onChange",
+  });
 
   const toast = useToast();
 
@@ -54,6 +63,17 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     try {
       const nonProfit = await getNonProfit(id);
       reset(nonProfit);
+    } catch (e) {
+      logError(e);
+    }
+  }, []);
+
+  const fetchNonProfitStories = useCallback(async () => {
+    try {
+      const allStories = await getStories(String(id));
+      setStories(allStories);
+
+      resetStories(allStories);
     } catch (e) {
       logError(e);
     }
@@ -111,6 +131,10 @@ function UpsertNonProfitPage({ isEdit }: Props) {
       };
       reset(newNonProfit);
     }
+  }, []);
+
+  useEffect(() => {
+    fetchNonProfitStories();
   }, []);
 
   const handleActivityCheckboxChange = (
@@ -191,14 +215,6 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                     required: t("required"),
                   })}
                 />
-                {/* <S.TextInput
-                  {...register("causeId", {
-                    required: t("required"),
-                  })}
-                />
-                {formState?.errors.name && formState?.errors.name.type && (
-                  <S.Error>{formState?.errors.name.message}</S.Error>
-                )} */}
               </S.ItemBox>
             </S.DoubleItemSection>
 
@@ -273,7 +289,8 @@ function UpsertNonProfitPage({ isEdit }: Props) {
             <Button
               color={gray40}
               backgroundColor={gray10}
-              outlineColor={gray40}
+              borderColor={gray40}
+              border="2px"
               marginLeft="8px"
               onClick={handleCancel}
             >
@@ -296,6 +313,14 @@ function UpsertNonProfitPage({ isEdit }: Props) {
           )}
         </S.ContentSection>
       </form>
+      {stories.map((story) => (
+        <StoriesCard
+          title={story.title}
+          description={story.description}
+          image={story?.image}
+        />
+      ))}
+      <StoriesForm nonProfitId={id} isEdit={isEdit} />
       {loading && <Loading />}
     </>
   );
