@@ -21,7 +21,7 @@ import * as S from "./styles";
 
 function IntegrationDetailsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
-    keyPrefix: "integrations.integrationDetailsPage",
+    keyPrefix: "integrations",
   });
   const { green30, red30, gray40, gray10, gray30 } = theme.colors;
   const statusColors: { [key: string]: string } = {
@@ -94,7 +94,7 @@ function IntegrationDetailsPage(): JSX.Element {
 
   return (
     <S.Content>
-      <S.Title>{t("title", { integrationName })}</S.Title>
+      <S.Title>{t("details.title", { integrationName })}</S.Title>
 
       <S.Container>
         <S.LeftSection>
@@ -113,63 +113,63 @@ function IntegrationDetailsPage(): JSX.Element {
               _hover={{ bg: gray30 }}
               leftIcon={<EditIcon />}
             >
-              {t("edit")}
+              {t("details.edit")}
             </Button>
           </Link>
-          <InfoName>{t("status")}</InfoName>
+          <InfoName>{t("attributes.status")}</InfoName>
           <S.InfoValue style={{ color: `${statusColors[status]}` }}>
             {status}
           </S.InfoValue>
 
-          <InfoName>{t("id")}</InfoName>
+          <InfoName>{t("attributes.id")}</InfoName>
           <S.InfoValue>{id}</S.InfoValue>
 
-          <InfoName>{t("name")}</InfoName>
+          <InfoName>{t("attributes.name")}</InfoName>
           <S.InfoValue>{name}</S.InfoValue>
 
-          <InfoName>{t("logo")}</InfoName>
+          <InfoName>{t("attributes.logo")}</InfoName>
           <LogoCard logo={logo} empty={!logo} />
 
-          <InfoName>{t("walletAddress")}</InfoName>
+          <InfoName>{t("attributes.walletAddress")}</InfoName>
           <CopyableAddress text={integrationWallet?.publicKey} />
 
-          <InfoName>{t("integrationAddress")}</InfoName>
+          <InfoName>{t("attributes.integrationAddress")}</InfoName>
           <CopyableAddress text={integrationAddress} />
 
-          <InfoName>{t("webhookUrl")}</InfoName>
+          <InfoName>{t("attributes.webhookUrl")}</InfoName>
           <CopyableAddress text={webhookUrl || "-"} />
 
-          <InfoName>{t("ticketAvailability")}</InfoName>
+          <InfoName>{t("attributes.ticketAvailability")}</InfoName>
           <S.InfoValue>
             {ticketAvailabilityInMinutes
-              ? t("everyMinutes").replace(
+              ? t("attributes.everyMinutes").replace(
                   "{{minutes}}",
                   ticketAvailabilityInMinutes,
                 )
-              : t("everydayAtMidnight")}
+              : t("attributes.everydayAtMidnight")}
           </S.InfoValue>
 
-          <InfoName>{t("createdAt")}</InfoName>
+          <InfoName>{t("attributes.createdAt")}</InfoName>
           <S.InfoValue>{dateFormatter(createdAt)}</S.InfoValue>
 
-          <InfoName>{t("lastEditedAt")}</InfoName>
+          <InfoName>{t("attributes.lastEditedAt")}</InfoName>
           <S.InfoValue>{dateFormatter(updatedAt)}</S.InfoValue>
         </S.LeftSection>
 
         <S.RightSection>
           {integrationTask && (
             <div>
-              <S.Subtitle>{t("modalInfo")}</S.Subtitle>
+              <S.Subtitle>{t("attributes.modalInfo")}</S.Subtitle>
 
               <InfoName
                 hasTranslation={mobilityAttributes?.includes("description")}
               >
-                {t("ctaDescription")}
+                {t("attributes.ctaDescription")}
               </InfoName>
               <S.InfoValue>{integrationTask.description}</S.InfoValue>
 
               <InfoName hasTranslation={mobilityAttributes?.includes("link")}>
-                {t("ctaLink")}
+                {t("attributes.ctaLink")}
               </InfoName>
               <S.InfoValue>{integrationTask.link}</S.InfoValue>
               <CopyableAddress text={integrationTask.linkAddress ?? ""} />

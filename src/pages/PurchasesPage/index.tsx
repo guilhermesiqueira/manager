@@ -4,7 +4,7 @@ import * as S from "./styles";
 
 function PurchasesPage(): JSX.Element {
   const { t } = useTranslation("translation", {
-    keyPrefix: "purchasesPage",
+    keyPrefix: "purchases.list",
   });
 
   return (

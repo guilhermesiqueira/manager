@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { defaultComponentTextMedium } from "styles/typography/default";
 
 export const Input = styled.div`
   min-width: 274px;
@@ -10,23 +9,25 @@ export const Input = styled.div`
   border-radius: 4px;
   color: ${({ theme }) => theme.colors.darkGray};
   height: 46px;
+  margin: 8px 0;
+  padding: 8px 16px;
+  border: 1px solid ${({ theme }) => theme.colors.gray40};
+  border-radius: 10px;
   display: flex;
-  justify-content: space-between;
-  box-sizing: border-box;
+  background-color: ${({ theme }) => theme.colors.neutral10};
   color: ${({ theme }) => theme.colors.gray40};
-  background: ${({ theme }) => theme.colors.neutral10};
 
   label {
     display: none;
   }
 
   input {
-    ${defaultComponentTextMedium};
     width: 100%;
     border: none;
     border-radius: 4px;
     box-sizing: border-box;
     line-height: 20px;
+    background: transparent;
     color: ${({ theme }) => theme.colors.gray40};
 
     &:hover {

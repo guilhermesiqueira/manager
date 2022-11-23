@@ -22,7 +22,7 @@ function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
   const [visible, setVisible] = useState(false);
   const [externalId, setExternalId] = useState<string>("teste");
   const { t } = useTranslation("translation", {
-    keyPrefix: "purchasesPage.purchasesListSection.refundModal",
+    keyPrefix: "purchases.list.refundModal",
   });
 
   const handleRefund = async () => {
@@ -76,7 +76,7 @@ function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
               ? purchase?.person?.guest?.walletAddress
               : purchase?.person?.customer?.email}
           </th>
-          <th>{purchase?.offer?.price || "0"}</th>
+          <th>{purchase?.offer?.priceCents || "0"}</th>
           <th>
             <S.StatusTableCell
               style={{ color: statusColors[purchase?.status] }}

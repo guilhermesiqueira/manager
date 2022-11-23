@@ -12,7 +12,11 @@ import CausesDetailsPage from "pages/causes/CausesDetailsPage";
 import UpsertCausePage from "pages/causes/UpsertCausePage";
 import NonProfitsPage from "pages/NonProfitsPage";
 import UpsertNonProfitPage from "pages/NonProfitsPage/UpsertNonProfitPage";
-import OffersPage from "pages/OffersPage";
+import OfferDetailsPage from "pages/offers/offerDetailsPage";
+import OffersPage from "pages/offers/OffersPage";
+import UpsertOfferPage from "pages/offers/UpsertOfferPage";
+import SettingsPage from "pages/SettingsPage";
+import EditSettingsPage from "pages/SettingsPage/EditSettingsPage";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
 
@@ -225,6 +229,76 @@ function RoutesComponent(): JSX.Element {
               <Navigation />
               <MainLayout>
                 <OffersPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/offers/:id"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <OfferDetailsPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/offers/new"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <UpsertOfferPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/offers/:id/edit"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <UpsertOfferPage isEdit />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/settings"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <SettingsPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/settings/edit"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <EditSettingsPage />
               </MainLayout>
             </Suspense>
           </PrivateRoute>

@@ -10,7 +10,7 @@ export type Props = {
 
 function CopyableAddress({ text }: Props): JSX.Element {
   const { t } = useTranslation("translation", {
-    keyPrefix: "integrations.copyableAddress",
+    keyPrefix: "copyableAddress",
   });
 
   const [currentText, setCurrentText] = useState<string>(t("copyText"));

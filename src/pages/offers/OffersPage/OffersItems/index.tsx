@@ -17,14 +17,14 @@ type Props = {
 function OffersItems({ offers, searchTerm }: Props) {
   const { green30, red30 } = theme.colors;
   const { t } = useTranslation("translation", {
-    keyPrefix: "offersPage.offersListSection.offersItems",
+    keyPrefix: "offers",
   });
 
-  function filterOffers(nonFilteredCauses: Offer[]) {
-    return nonFilteredCauses.filter((offerData: Offer) => {
+  function filterOffers(nonFilteredOffers: Offer[]) {
+    return nonFilteredOffers.filter((offerData: Offer) => {
       if (searchTerm === "") {
         return offerData;
-      } else if (offerData?.id.toString().includes(searchTerm)) {
+      } else if (offerData?.id?.toString().includes(searchTerm)) {
         return offerData;
       } else {
         return null;
@@ -36,20 +36,22 @@ function OffersItems({ offers, searchTerm }: Props) {
     return (
       offers &&
       filterOffers(offers).map((offer: Offer) => (
-        <tr key={offer.id}>
+        <tr key={offer?.id}>
           <th>{offer?.id}</th>
           <th>{offer?.currency.toUpperCase()}</th>
+          <th>{offer.priceCents}</th>
           <th>{capitalize(offer?.gateway)}</th>
           <th>
-            <CopyableAddress text={offer?.price} />
+            <CopyableAddress text={offer?.externalId} />
           </th>
-          <th>{offer?.externalId}</th>
           <th>
             {" "}
             <S.StatusTableCell
               style={{ color: offer?.active ? green30 : red30 }}
             >
-              {offer?.active ? t("active") : t("inactive")}
+              {offer?.active
+                ? t("attributes.active")
+                : t("attributes.inactive")}
             </S.StatusTableCell>
           </th>
           <th>
