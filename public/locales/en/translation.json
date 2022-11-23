@@ -221,6 +221,21 @@
         "title": "Edit NonProfit",
         "save": "Save changes",
         "cancel": "Cancel"
+      },
+      "storiesForm": {
+        "title": "Title",
+        "description": "Description",
+        "position": "Position",
+        "status": "Status",
+        "save": "Save",
+        "cancel": "Cancel",
+        "required": "* Required",
+        "modal": {
+          "title": "Are you sure?",
+          "body": "After confirmed, this action will create a Story.",
+          "confirmButton": "Confirm",
+          "cancelButton": "Cancel"
+        }
       }
     }
   },

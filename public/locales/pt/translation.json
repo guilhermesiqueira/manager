@@ -16,7 +16,7 @@
       "title": "Carteira das integrações",
       "donationLimit": "Limite de doação (USDC)",
       "matic": "Fundo para GAS (MATIC)"
-    } 
+    }
   },
   "integrations": {
     "integrationsList": {
@@ -232,6 +232,15 @@
         "title": "Editar Ong",
         "save": "Salvar mudanças",
         "cancel": "Cancelar"
+      },
+      "storiesForm": {
+        "title": "Título",
+        "description": "Descrição",
+        "position": "Posição",
+        "status": "Status",
+        "save": "Salvar",
+        "cancel": "Cancelar",
+        "required": "* Obrigatório"
       }
     }
   },
