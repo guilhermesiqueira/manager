@@ -25,8 +25,6 @@ export const InfoValue = styled.p`
   color: ${({ theme }) => theme.colors.gray30};
 `;
 
-export const CausesCardContainer = styled.div``;
-
 export const Subtitle = styled.h4`
   margin-top: 32px;
 `;
