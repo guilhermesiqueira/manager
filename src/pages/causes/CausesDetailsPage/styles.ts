@@ -58,6 +58,7 @@ export const CardProject = styled.div`
   justify-content: space-between;
   background-color: ${({ theme }) => theme.colors.neutral10};
   box-shadow: 0 4px 12px ${({ theme }) => theme.colors.defaultShadow};
+  cursor: pointer;
 `;
 
 export const ArrowOutward = styled.img``;
