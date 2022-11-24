@@ -217,17 +217,6 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                     required: t("upsert.required"),
                   })}
                 />
-<<<<<<< HEAD
-=======
-                {/* <S.TextInput
-                  {...register("causeId", {
-                    required: t("upsert.required"),
-                  })}
-                />
-                {formState?.errors.name && formState?.errors.name.type && (
-                  <S.Error>{formState?.errors.name.message}</S.Error>
-                )} */}
->>>>>>> bd36352ddd3383f1bc4e85df918cf7ace55c244f
               </S.ItemBox>
             </S.DoubleItemSection>
 
@@ -328,6 +317,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
           )}
         </S.ContentSection>
       </form>
+
       {stories.map((story) => (
         <StoriesCard
           title={story.title}
@@ -335,6 +325,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
           image={story?.image}
         />
       ))}
+
       <StoriesForm nonProfitId={id} isEdit={isEdit} />
       {loading && <Loading />}
     </>
