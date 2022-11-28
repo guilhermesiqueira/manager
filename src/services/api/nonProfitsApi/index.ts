@@ -23,12 +23,8 @@ const nonProfitsApi = {
   getNonProfit: (id: string): Promise<AxiosResponse<NonProfit>> =>
     apiGet(`non_profits/${id}`),
 
-  createNonProfit: (
-    data: CreateNonProfit,
-  ): Promise<AxiosResponse<NonProfit>> => {
-    console.log(data);
-    return apiPost("non_profits", data);
-  },
+  createNonProfit: (data: CreateNonProfit): Promise<AxiosResponse<NonProfit>> =>
+    apiPost("non_profits", data),
 
   updateNonProfit: (
     id: any,
