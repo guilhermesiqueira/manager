@@ -1,7 +1,9 @@
 import { useCallback, useState } from "react";
 import nonProfitsApi from "services/api/nonProfitsApi";
 import { CreateNonProfit, EditNonProfit } from "types/apiResponses/nonProfit";
+import { CreateStory } from "types/apiResponses/story";
 import NonProfit from "types/entities/NonProfit";
+import Story from "types/entities/Story";
 import { useUploadFile } from "../useUploadFile";
 
 function useNonProfits() {
@@ -30,6 +32,27 @@ function useNonProfits() {
   }
 
   async function createNonProfit(data: CreateNonProfit, file: string) {
+    let stories: CreateStory[] = [];
+
+    data?.storiesAttributes &&
+      data?.storiesAttributes.map((story: CreateStory) => {
+        const upload = useUploadFile(story.image);
+
+        let storyImage;
+
+        if (file) {
+          upload.create((error: Error, blob: any) => {
+            if (error) {
+              throw error;
+            } else {
+              storyImage = blob.signed_idl;
+            }
+          });
+        }
+
+        stories.push({ ...story, image: storyImage });
+      });
+
     const upload = useUploadFile(data.logo);
 
     let nonProfit;
@@ -42,12 +65,17 @@ function useNonProfits() {
           nonProfit = nonProfitsApi.createNonProfit({
             ...data,
             logo: blob.signed_id,
+            storiesAttributes: stories as CreateStory[],
           });
         }
       });
     } else {
-      nonProfit = nonProfitsApi.createNonProfit(data);
+      nonProfit = nonProfitsApi.createNonProfit({
+        ...data,
+        storiesAttributes: stories as CreateStory[],
+      });
     }
+
     return nonProfit;
   }
 

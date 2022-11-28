@@ -1,3 +1,5 @@
+import { CreateStory } from "./story";
+
 export interface CreateNonProfit {
   name: string;
   walletAddress: string;
@@ -6,6 +8,7 @@ export interface CreateNonProfit {
   logo?: any;
   causeCardImage?: any;
   causeId: number;
+  storiesAttributes?: CreateStory[];
 }
 
 export interface EditNonProfit {

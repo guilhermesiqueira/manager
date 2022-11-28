@@ -5,5 +5,4 @@ export default interface Story {
   position?: string;
   description: string;
   image?: any;
-  nonProfitId: number;
 }

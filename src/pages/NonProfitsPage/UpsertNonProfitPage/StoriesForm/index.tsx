@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { useForm } from "react-hook-form";
+import { useFieldArray, useForm } from "react-hook-form";
 import { logError } from "services/crashReport";
 import ModalImage from "components/moleculars/modals/ModalImage";
 import useStories from "hooks/apiHooks/useStories";
@@ -13,13 +13,30 @@ import { useTranslation } from "react-i18next";
 import theme from "styles/theme";
 import Story from "types/entities/Story";
 import * as S from "./styles";
+import { CreateStory } from "types/apiResponses/story";
 
 export type Props = {
-  nonProfitId: string | undefined;
-  isEdit?: boolean;
+  registerStory: any;
+  StoryObject: any;
+  setValueStory: any;
+  resetStory: any;
+  handleSubmitStory: any;
+  formStateStory: any;
+  controlStory: CreateStory[];
 };
 
-function StoriesForm({ nonProfitId, isEdit }: Props) {
+export type FormValues = {
+  stories: Story[];
+};
+
+function StoriesForm({
+  registerStory,
+  StoryObject,
+  setValueStory,
+  resetStory,
+  formStateStory,
+  controlStory,
+}: Props) {
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -28,170 +45,123 @@ function StoriesForm({ nonProfitId, isEdit }: Props) {
   const [file, setFile] = useState<string>("");
   const { gray10, gray40, gray30, red30 } = theme.colors;
   const { t } = useTranslation("translation", {
-    keyPrefix: "nonProfitsPage.upsertNonProfitPage.storiesForm",
+    keyPrefix: "nonProfits.upsert.storiesForm",
   });
-  const {
-    register,
-    getValues: StoryObject,
-    setValue,
-    reset,
-    handleSubmit,
-    setError,
-    clearErrors,
-    formState,
-  } = useForm<Story>({ mode: "onChange", reValidateMode: "onChange" });
+  const { fields, append } = useFieldArray({
+    name: "stories",
+    controlStory,
+  });
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleImageChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number,
+  ) => {
     const image = e.target.files![0];
 
-    setFile(URL.createObjectURL(image));
-
     if (StoryObject()) {
-      setValue("image", image as File);
+      setValueStory(`stories.${index}.image`, image as File);
     }
   };
 
-  const validateForm = () => {
-    if (
-      (!!StoryObject("title") || !!StoryObject("description")) &&
-      !StoryObject("description")
-    )
-      setError("description", {
-        types: {
-          required: t("required"),
+  useEffect(() => {
+    resetStory({
+      stories: [
+        {
+          title: "Story",
+          description: "Story description",
+          image: "...",
+          active: true,
+          position: "1",
         },
-      });
-    else {
-      clearErrors("description");
-    }
-  };
-
-  const handleSave = async () => {
-    try {
-      setModalOpen(false);
-      setLoading(true);
-      await createStory(StoryObject(), file)
-        .then((response) => {
-          reset(response?.data);
-          setLoading(false);
-        })
-        .catch((error) => {
-          setLoading(false);
-          toast({
-            description: error.response.data.formatted_message,
-            status: "error",
-          });
-          throw Error(error.response.data.formatted_message);
-        });
-      navigate("/ngos");
-    } catch (e) {
-      logError(e);
-    }
-  };
+      ],
+    });
+  }, []);
 
   const handleCancel = () => {
     navigate("/ngos");
   };
 
-  const handleOpenModal = () => {
-    setModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-  };
-
-  useEffect(() => {
-    setValue("nonProfitId", Number(nonProfitId));
-    setValue("active", true);
-    setValue("position", String(1));
-  }, [nonProfitId]);
-
   return (
     <S.Container>
-      <S.FormContainer
-        onSubmit={handleSubmit(isEdit ? handleSave : handleOpenModal)}
-      >
-        <S.LeftSection>
-          <S.ItemBox>
-            <FileUpload onChange={handleImageChange} logo={file} value={file} />
-          </S.ItemBox>
-        </S.LeftSection>
+      <S.FormContainer>
+        {fields.map((field, index) => (
+          <div key={field.id}>
+            <S.LeftSection>
+              <S.ItemBox>
+                <FileUpload
+                  onChange={(e) => handleImageChange(e, index)}
+                  logo={file}
+                  value={file}
+                />
+              </S.ItemBox>
+            </S.LeftSection>
 
-        <S.RightSection>
-          <InfoName hasTranslation>{t("title")}</InfoName>
-          <S.TextInput
-            {...register("title", {
-              onChange: () => {
-                validateForm();
-              },
-            })}
-            placeholder={t("title")}
-          />
+            <S.RightSection>
+              <InfoName hasTranslation>{t("title")}</InfoName>
+              <S.TextInput
+                {...registerStory(`stories.${index}.title`)}
+                placeholder={t("title")}
+              />
 
-          <InfoName hasTranslation>{t("description")}</InfoName>
+              <div
+                {...registerStory(`stories.${index}.active`)}
+                placeholder={t("title")}
+              />
 
-          <S.TextInput
-            {...register("description", {
-              onChange: () => {
-                validateForm();
-              },
-            })}
-            placeholder={t("description")}
-          />
-          {formState.errors.description &&
-            formState.errors.description.types && (
-              <S.Error>{formState.errors.description.types.required}</S.Error>
-            )}
+              <InfoName hasTranslation>{t("description")}</InfoName>
 
-          <S.ButtonContainer>
-            <Button
-              type="submit"
-              color={gray10}
-              backgroundColor={gray40}
-              borderColor={gray40}
-              _hover={{ bg: gray30 }}
-              disabled={!formState?.isValid}
-            >
-              {t("save")}
-            </Button>
+              <S.TextInput
+                {...registerStory(`stories.${index}.description`)}
+                placeholder={t("description")}
+              />
 
-            <Button
-              color={gray40}
-              backgroundColor={gray10}
-              borderColor={gray40}
-              border="2px"
-              marginLeft="8px"
-              onClick={handleCancel}
-            >
-              {t("cancel")}
-            </Button>
-          </S.ButtonContainer>
-        </S.RightSection>
+              <S.ButtonContainer>
+                <Button
+                  type="submit"
+                  color={gray10}
+                  backgroundColor={gray40}
+                  borderColor={gray40}
+                  _hover={{ bg: gray30 }}
+                  disabled={!formStateStory?.isValid}
+                >
+                  {t("save")}
+                </Button>
+
+                <Button
+                  color={gray40}
+                  backgroundColor={gray10}
+                  borderColor={gray40}
+                  border="2px"
+                  marginLeft="8px"
+                  onClick={handleCancel}
+                >
+                  {t("cancel")}
+                </Button>
+              </S.ButtonContainer>
+            </S.RightSection>
+          </div>
+        ))}
+
+        <button
+          type="button"
+          onClick={() =>
+            append({
+              id: 1,
+              title: "Story",
+              description: "Story description",
+              image: "...",
+              active: true,
+              position: "1",
+            })
+          }
+        >
+          Add Story
+        </button>
       </S.FormContainer>
-
-      {!isEdit && (
-        <ModalImage
-          title={t("modal.title")}
-          body={t("modal.body")}
-          visible={modalOpen}
-          image={WarningRedIcon}
-          primaryButtonText={t("modal.confirmButton")}
-          primaryButtonColor={red30}
-          primaryButtonCallback={handleSave}
-          secondaryButtonText={t("modal.cancelButton")}
-          secondaryButtonBorderColor={gray30}
-          secondaryButtonCallback={handleCloseModal}
-        />
-      )}
 
       {loading && <Loading />}
     </S.Container>
   );
 }
-
-StoriesForm.defaultProps = {
-  isEdit: false,
-};
 
 export default StoriesForm;

@@ -1,10 +1,9 @@
 export interface CreateStory {
   title: string;
-  description: string;
   active?: boolean;
   position?: string;
+  description: string;
   image?: any;
-  nonProfitId: number;
 }
 
 export interface EditStory {

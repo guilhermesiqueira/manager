@@ -18,6 +18,7 @@ import Dropdown from "components/atomics/Dropdown";
 import useNonProfits from "hooks/apiHooks/useNonProfits";
 import Story from "types/entities/Story";
 import { CreateNonProfit } from "types/apiResponses/nonProfit";
+import { CreateStory } from "types/apiResponses/story";
 import StoriesForm from "./StoriesForm";
 import * as S from "./styles";
 import StoriesCard from "./StoriesCard";
@@ -52,6 +53,15 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     handleSubmit,
     formState,
   } = useForm<NonProfit>({ mode: "onChange", reValidateMode: "onChange" });
+  const {
+    register: registerStory,
+    getValues: StoryObject,
+    setValue: setValueStory,
+    reset: resetStory,
+    formState: formStateStory,
+    control: controlStory,
+  } = useForm<CreateStory[]>({ mode: "onChange", reValidateMode: "onChange" });
+
   const { reset: resetStories } = useForm<Story[]>({
     mode: "onChange",
     reValidateMode: "onChange",
@@ -326,7 +336,15 @@ function UpsertNonProfitPage({ isEdit }: Props) {
         />
       ))}
 
-      <StoriesForm nonProfitId={id} isEdit={isEdit} />
+      <StoriesForm
+        registerStory={formStateStory}
+        StoryObject={formStateStory}
+        setValueStory={formStateStory}
+        resetStory={formStateStory}
+        handleSubmitStory={formStateStory}
+        formStateStory={formStateStory}
+        controlStory={formStateStory}
+      />
       {loading && <Loading />}
     </>
   );

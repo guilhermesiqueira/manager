@@ -227,7 +227,13 @@
         "status": "Status",
         "save": "Salvar",
         "cancel": "Cancelar",
-        "required": "* Obrigatório"
+        "required": "* Obrigatório",
+        "modal": {
+          "title": "Are you sure?",
+          "body": "After confirmed, this action will create a Story.",
+          "confirmButton": "Confirm",
+          "cancelButton": "Cancel"
+        }
       }
     }
   },

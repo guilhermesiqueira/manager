@@ -1,4 +1,5 @@
 import uploadIcon from "assets/icons/upload-icon.svg";
+import { UseFormRegister } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import LogoCard from "../LogoCard";
 import * as S from "./styles";
@@ -9,7 +10,7 @@ type Props = {
   value: string;
 };
 
-export default function FileUpload({ onChange, logo, value }: Props) {
+export default function FileUpload({ onChange, logo, value, ref }: Props) {
   const { t } = useTranslation("translation", {
     keyPrefix: "upload",
   });
