@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import Story from "types/entities/Story";
-import { EditStory, CreateStory } from "types/apiResponses/story";
+import { CreateStory } from "types/apiResponses/story";
 import { apiGet, apiPost, apiPut } from "..";
 
 const storiesApi = {
@@ -13,7 +13,7 @@ const storiesApi = {
   createStory: (data: CreateStory): Promise<AxiosResponse<Story>> =>
     apiPost("stories", data),
 
-  updateStory: (id: any, data: EditStory): Promise<AxiosResponse<Story>> =>
+  updateStory: (id: any, data: CreateStory): Promise<AxiosResponse<Story>> =>
     apiPut(`stories/${id}`, data),
 };
 

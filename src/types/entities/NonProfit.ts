@@ -1,4 +1,6 @@
-import { EditStory } from "types/apiResponses/story";
+import { CreateStory } from "types/apiResponses/story";
+import Cause from "./Cause";
+import Story from "./Story";
 
 export default interface NonProfit {
   id: string;
@@ -8,6 +10,7 @@ export default interface NonProfit {
   status: string;
   logo?: any;
   causeCardImage?: any;
-  causeId: number;
-  stories: EditStory[];
+  cause: Cause;
+  stories: Story[];
+  storiesAttributes: CreateStory[];
 }

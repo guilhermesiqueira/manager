@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router";
 import { logError } from "services/crashReport";
 import useCauses from "hooks/apiHooks/useCauses";
-import NonProfit from "types/entities/NonProfit";
 import Cause from "types/entities/Cause";
 import theme from "styles/theme";
 import FileUpload from "components/moleculars/FileUpload";
@@ -16,7 +15,7 @@ import Loading from "components/moleculars/Loading";
 import Dropdown from "components/atomics/Dropdown";
 import useNonProfits from "hooks/apiHooks/useNonProfits";
 import { CreateNonProfit } from "types/apiResponses/nonProfit";
-import { CreateStory, EditStory } from "types/apiResponses/story";
+import { CreateStory } from "types/apiResponses/story";
 import StoriesForm from "./StoriesForm";
 import * as S from "./styles";
 
@@ -36,7 +35,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const [loading, setLoading] = useState(false);
   const { gray10, gray40, gray30, red30 } = theme.colors;
   const [statusCheckbox, setStatusCheckbox] = useState(true);
-  const [stories, setStories] = useState<EditStory[]>([]);
+  const [stories, setStories] = useState<CreateStory[]>([]);
   const [file, setFile] = useState<string>("");
   const navigate = useNavigate();
   const { id } = useParams();
@@ -48,7 +47,10 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     reset,
     handleSubmit,
     formState,
-  } = useForm<NonProfit>({ mode: "onChange", reValidateMode: "onChange" });
+  } = useForm<CreateNonProfit>({
+    mode: "onChange",
+    reValidateMode: "onChange",
+  });
   const {
     register: registerStory,
     getValues: StoryObject,
@@ -64,6 +66,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
       const nonProfit = await getNonProfit(id);
       reset(nonProfit);
       setStories(nonProfit.stories);
+      setCurrentCauseId(nonProfit.cause?.id);
     } catch (e) {
       logError(e);
     }
@@ -75,14 +78,13 @@ function UpsertNonProfitPage({ isEdit }: Props) {
         ...NonProfitObject(),
         ...StoryObject(),
       };
-
       try {
         if (isEdit) {
-          await updateNonProfit(nonProfitObject, file);
+          await updateNonProfit(nonProfitObject);
         } else {
           setModalOpen(false);
           setLoading(true);
-          await createNonProfit(nonProfitObject, file)
+          await createNonProfit(nonProfitObject)
             .then((response) => {
               reset(response?.data);
               setLoading(false);
@@ -163,14 +165,16 @@ function UpsertNonProfitPage({ isEdit }: Props) {
 
   const onCauseIdChanged = (causeId: number) => {
     setCurrentCauseId(causeId);
+    setValue("causeId", causeId);
   };
 
-  const currencyText = (value: any) => value;
+  const causeText = (value: any) =>
+    causes.find((cause) => cause.id === value)?.name ?? "";
 
   return (
     <>
       <S.Title>{t(`upsert.${mode}.title`)}</S.Title>
-      <form onSubmit={handleSubmit(isEdit ? handleSave : handleOpenModal)}>
+      <form onSubmit={handleSubmit(handleOpenModal)}>
         <S.ContentSection>
           <S.LeftSection>
             <S.Subtitle>{t("upsert.activityStatus")}</S.Subtitle>
@@ -204,12 +208,10 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                 <Dropdown
                   values={causes.map((cause) => cause?.id)}
                   onOptionChanged={onCauseIdChanged}
-                  valueText={currencyText}
+                  valueText={causeText}
                   defaultValue={currentCauseId}
-                  containerId="currencies-dropdown"
-                  {...register("causeId", {
-                    required: t("upsert.required"),
-                  })}
+                  containerId="cause-dropdown"
+                  name="causeId"
                 />
               </S.ItemBox>
             </S.DoubleItemSection>

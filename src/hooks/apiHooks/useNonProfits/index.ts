@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import nonProfitsApi from "services/api/nonProfitsApi";
-import { CreateNonProfit, EditNonProfit } from "types/apiResponses/nonProfit";
+import { CreateNonProfit } from "types/apiResponses/nonProfit";
 import { CreateStory } from "types/apiResponses/story";
 import NonProfit from "types/entities/NonProfit";
 import { useUploadFile } from "../useUploadFile";
@@ -49,7 +49,7 @@ function useNonProfits() {
     return newStories;
   }
 
-  async function createNonProfit(data: CreateNonProfit, file: string) {
+  async function createNonProfit(data: CreateNonProfit) {
     let stories: CreateStory[] | undefined = data.storiesAttributes;
 
     if (stories) {
@@ -64,8 +64,6 @@ function useNonProfits() {
         if (error) {
           throw error;
         } else {
-          console.log(data.storiesAttributes);
-          console.log(stories);
           nonProfit = nonProfitsApi.createNonProfit({
             ...data,
             logo: blob.signed_id,
@@ -74,7 +72,6 @@ function useNonProfits() {
         }
       });
     } else {
-      console.log(data.storiesAttributes);
       console.log(stories);
       nonProfit = nonProfitsApi.createNonProfit({
         ...data,
@@ -84,25 +81,35 @@ function useNonProfits() {
     return nonProfit;
   }
 
-  async function updateNonProfit(data: EditNonProfit, file: string) {
-    const upload = useUploadFile(data.logo);
+  async function updateNonProfit(data: CreateNonProfit) {
+    console.log("update");
+    let stories: CreateStory[] | undefined = data.storiesAttributes;
+
+    if (stories) {
+      stories = await uploadStories(stories);
+    }
+
     let nonProfit;
 
-    if (file) {
-      upload.create((error: Error, blob: any) => {
+    if (data.logo) {
+      const upload = useUploadFile(data.logo);
+      await upload.create((error: Error, blob: any) => {
         if (error) {
           throw error;
         } else {
           nonProfit = nonProfitsApi.updateNonProfit(data.id, {
             ...data,
             logo: blob.signed_id,
+            storiesAttributes: stories,
           });
         }
       });
     } else {
-      const currentNonProfit = data;
-      delete currentNonProfit.logo;
-      nonProfit = nonProfitsApi.updateNonProfit(data.id, currentNonProfit);
+      console.log(stories);
+      nonProfit = nonProfitsApi.updateNonProfit(data.id, {
+        ...data,
+        storiesAttributes: stories,
+      });
     }
     return nonProfit;
   }

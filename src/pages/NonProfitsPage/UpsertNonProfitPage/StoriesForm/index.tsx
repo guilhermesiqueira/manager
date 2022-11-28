@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useFieldArray } from "react-hook-form";
-import { EditStory } from "types/apiResponses/story";
 import FileUpload from "components/moleculars/FileUpload";
 import InfoName from "components/moleculars/infoName";
 import { useTranslation } from "react-i18next";
+import { CreateStory } from "types/apiResponses/story";
 import * as S from "./styles";
 
 export type Props = {
@@ -13,7 +13,7 @@ export type Props = {
   handleSubmitStory: any;
   formStateStory: any;
   controlStory: any;
-  stories: EditStory[];
+  stories: CreateStory[];
 };
 
 function StoriesForm({

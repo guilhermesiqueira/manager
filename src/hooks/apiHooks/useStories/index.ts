@@ -1,5 +1,5 @@
 import storiesApi from "services/api/storiesApi";
-import { CreateStory, EditStory } from "types/apiResponses/story";
+import { CreateStory } from "types/apiResponses/story";
 import { useUploadFile } from "../useUploadFile";
 
 function useStories() {
@@ -37,7 +37,7 @@ function useStories() {
     return story;
   }
 
-  async function updateStory(data: EditStory, file: string) {
+  async function updateStory(data: CreateStory, file: string) {
     const upload = useUploadFile(data.image);
     let story;
 
