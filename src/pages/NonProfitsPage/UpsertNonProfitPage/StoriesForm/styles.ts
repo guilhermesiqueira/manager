@@ -1,17 +1,16 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 564px;
+  padding: 12px 24px 24px;
   border: 2px solid ${({ theme }) => theme.colors.gray20};
   border-radius: 8px;
-  padding: 12px 24px 24px 24px;
+  display: flex;
+  flex-direction: column;
 `;
 
-export const FormContainer = styled.form`
+export const FormContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 `;
 
 export const CheckboxContainer = styled.div`
@@ -39,14 +38,14 @@ export const Span = styled.span`
 `;
 
 export const LeftSection = styled.div`
-  display: flex;
   margin-top: 12px;
+  display: flex;
 `;
 
 export const RightSection = styled.div`
+  margin-left: 8px;
   display: flex;
   flex-direction: column;
-  margin-left: 8px;
 `;
 
 export const Subtitle = styled.h3`
@@ -82,14 +81,14 @@ export const Error = styled.span`
 `;
 
 export const ItemBox = styled.div`
+  margin-right: 16px;
   display: flex;
   flex-direction: column;
-  margin-right: 16px;
 `;
 
 export const ButtonContainer = styled.div`
+  width: 100%;
   margin-top: 12px;
   display: flex;
-  width: 100%;
   justify-content: flex-end;
 `;

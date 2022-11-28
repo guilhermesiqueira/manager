@@ -1,46 +1,33 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
 import { useFieldArray } from "react-hook-form";
-
+import { EditStory } from "types/apiResponses/story";
 import FileUpload from "components/moleculars/FileUpload";
-import { Button } from "@chakra-ui/react";
-
 import InfoName from "components/moleculars/infoName";
 import { useTranslation } from "react-i18next";
-import theme from "styles/theme";
-import Story from "types/entities/Story";
 import * as S from "./styles";
 
 export type Props = {
   registerStory: any;
   StoryObject: any;
   setValueStory: any;
-  resetStory: any;
   handleSubmitStory: any;
   formStateStory: any;
   controlStory: any;
-};
-
-export type FormValues = {
-  stories: Story[];
+  stories: EditStory[];
 };
 
 function StoriesForm({
   registerStory,
   StoryObject,
   setValueStory,
-  resetStory,
-  formStateStory,
   controlStory,
+  stories,
 }: Props) {
-  const navigate = useNavigate();
-
   const [file, setFile] = useState<string>("");
-  const { gray10, gray40, gray30 } = theme.colors;
   const { t } = useTranslation("translation", {
     keyPrefix: "nonProfits.upsert.storiesForm",
   });
-  const { fields, append } = useFieldArray({
+  const { fields, append, remove } = useFieldArray({
     name: "storiesAttributes",
     control: controlStory,
   });
@@ -59,84 +46,17 @@ function StoriesForm({
   };
 
   useEffect(() => {
-    resetStory({
-      stories: [
-        {
-          title: "Story",
-          description: "Story description",
-          image: "...",
-          active: true,
-          position: "1",
-        },
-      ],
-    });
-  }, []);
-
-  const handleCancel = () => {
-    navigate("/ngos");
-  };
+    if (fields.length === 0) {
+      // eslint-disable-next-line array-callback-return
+      stories.map((story) => {
+        append(story);
+      });
+    }
+  }, [stories]);
 
   return (
     <S.Container>
       <S.FormContainer>
-        {fields.map((field, index) => (
-          <div key={field.id}>
-            <S.LeftSection>
-              <S.ItemBox>
-                <FileUpload
-                  onChange={(e) => handleImageChange(e, index)}
-                  logo={file}
-                  value={file}
-                />
-              </S.ItemBox>
-            </S.LeftSection>
-
-            <S.RightSection>
-              <InfoName hasTranslation>{t("title")}</InfoName>
-              <S.TextInput
-                {...registerStory(`stories.${index}.title`)}
-                placeholder={t("title")}
-              />
-
-              <div
-                {...registerStory(`stories.${index}.active`)}
-                placeholder={t("title")}
-              />
-
-              <InfoName hasTranslation>{t("description")}</InfoName>
-
-              <S.TextInput
-                {...registerStory(`stories.${index}.description`)}
-                placeholder={t("description")}
-              />
-
-              <S.ButtonContainer>
-                <Button
-                  type="submit"
-                  color={gray10}
-                  backgroundColor={gray40}
-                  borderColor={gray40}
-                  _hover={{ bg: gray30 }}
-                  disabled={!formStateStory?.isValid}
-                >
-                  {t("save")}
-                </Button>
-
-                <Button
-                  color={gray40}
-                  backgroundColor={gray10}
-                  borderColor={gray40}
-                  border="2px"
-                  marginLeft="8px"
-                  onClick={handleCancel}
-                >
-                  {t("cancel")}
-                </Button>
-              </S.ButtonContainer>
-            </S.RightSection>
-          </div>
-        ))}
-
         <button
           type="button"
           onClick={() =>
@@ -145,12 +65,48 @@ function StoriesForm({
               description: "Story description",
               image: "...",
               active: true,
-              position: "1",
+              position: fields.length + 1,
             })
           }
         >
           Add Story
         </button>
+        {fields.map((field, index) => (
+          <div key={field.id}>
+            <S.LeftSection>
+              <S.ItemBox>
+                <FileUpload
+                  onChange={(e) => handleImageChange(e, index)}
+                  logo={StoryObject(`storiesAttributes.${index}.image`)}
+                  value={file}
+                />
+              </S.ItemBox>
+            </S.LeftSection>
+
+            <S.RightSection>
+              <InfoName hasTranslation>{t("title")}</InfoName>
+              <S.TextInput
+                {...registerStory(`storiesAttributes.${index}.title`)}
+                placeholder={t("title")}
+              />
+
+              <InfoName hasTranslation>{t("description")}</InfoName>
+              <S.TextInput
+                {...registerStory(`storiesAttributes.${index}.description`)}
+                placeholder={t("description")}
+              />
+
+              <InfoName hasTranslation>{t("position")}</InfoName>
+              <S.TextInput
+                {...registerStory(`storiesAttributes.${index}.position`)}
+                placeholder={t("position")}
+              />
+              <button type="button" onClick={() => remove(index)}>
+                Delete
+              </button>
+            </S.RightSection>
+          </div>
+        ))}
       </S.FormContainer>
     </S.Container>
   );

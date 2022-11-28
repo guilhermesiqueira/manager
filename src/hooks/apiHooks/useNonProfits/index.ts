@@ -30,56 +30,57 @@ function useNonProfits() {
     return nonProfit;
   }
 
-  async function uploadStories(data: any) {
-    const stories: CreateStory[] = [];
-    await data?.storiesAttributes?.map(async (story: CreateStory) => {
-      console.log(story);
+  async function uploadStories(stories: CreateStory[]) {
+    const newStories: CreateStory[] = [];
+    stories.map(async (story: CreateStory) => {
       const upload = useUploadFile(story.image);
 
       let storyImage;
 
-      await upload.create((error: Error, blob: any) => {
+      upload.create((error: Error, blob: any) => {
         if (error) {
           throw error;
         } else {
           storyImage = blob.signed_id;
-          console.log("story", storyImage);
+          newStories.push({ ...story, image: storyImage });
         }
       });
-
-      stories.push({ ...story, image: storyImage });
-      console.log(stories);
-      return stories;
     });
-    return stories;
+    return newStories;
   }
 
   async function createNonProfit(data: CreateNonProfit, file: string) {
-    const stories = await uploadStories(data);
-    const upload = useUploadFile(data.logo);
+    let stories: CreateStory[] | undefined = data.storiesAttributes;
+
+    if (stories) {
+      stories = await uploadStories(stories);
+    }
 
     let nonProfit;
 
     if (data.logo) {
+      const upload = useUploadFile(data.logo);
       await upload.create((error: Error, blob: any) => {
         if (error) {
           throw error;
         } else {
-          console.log("aaa", stories);
+          console.log(data.storiesAttributes);
+          console.log(stories);
           nonProfit = nonProfitsApi.createNonProfit({
             ...data,
             logo: blob.signed_id,
-            storiesAttributes: stories as unknown as CreateStory[],
+            storiesAttributes: stories,
           });
         }
       });
     } else {
+      console.log(data.storiesAttributes);
+      console.log(stories);
       nonProfit = nonProfitsApi.createNonProfit({
         ...data,
-        storiesAttributes: stories as unknown as CreateStory[],
+        storiesAttributes: stories,
       });
     }
-    console.log(nonProfit);
     return nonProfit;
   }
 

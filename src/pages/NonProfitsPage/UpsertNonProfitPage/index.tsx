@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router";
 import { logError } from "services/crashReport";
 import useCauses from "hooks/apiHooks/useCauses";
-import useStories from "hooks/apiHooks/useStories";
 import NonProfit from "types/entities/NonProfit";
 import Cause from "types/entities/Cause";
 import theme from "styles/theme";
@@ -16,12 +15,10 @@ import WarningRedIcon from "assets/icons/warning-red-icon.svg";
 import Loading from "components/moleculars/Loading";
 import Dropdown from "components/atomics/Dropdown";
 import useNonProfits from "hooks/apiHooks/useNonProfits";
-import Story from "types/entities/Story";
 import { CreateNonProfit } from "types/apiResponses/nonProfit";
-import { CreateStory } from "types/apiResponses/story";
+import { CreateStory, EditStory } from "types/apiResponses/story";
 import StoriesForm from "./StoriesForm";
 import * as S from "./styles";
-import StoriesCard from "./StoriesCard";
 
 export type Props = {
   isEdit?: boolean;
@@ -39,12 +36,11 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const [loading, setLoading] = useState(false);
   const { gray10, gray40, gray30, red30 } = theme.colors;
   const [statusCheckbox, setStatusCheckbox] = useState(true);
+  const [stories, setStories] = useState<EditStory[]>([]);
   const [file, setFile] = useState<string>("");
   const navigate = useNavigate();
   const { id } = useParams();
   const { createNonProfit, getNonProfit, updateNonProfit } = useNonProfits();
-  const { getStories } = useStories();
-  const [stories, setStories] = useState<Story[]>([]);
   const {
     register,
     getValues: NonProfitObject,
@@ -57,15 +53,9 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     register: registerStory,
     getValues: StoryObject,
     setValue: setValueStory,
-    reset: resetStory,
     formState: formStateStory,
     control: controlStory,
   } = useForm<CreateStory[]>({ mode: "onChange", reValidateMode: "onChange" });
-
-  const { reset: resetStories } = useForm<Story[]>({
-    mode: "onChange",
-    reValidateMode: "onChange",
-  });
 
   const toast = useToast();
 
@@ -73,17 +63,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     try {
       const nonProfit = await getNonProfit(id);
       reset(nonProfit);
-    } catch (e) {
-      logError(e);
-    }
-  }, []);
-
-  const fetchNonProfitStories = useCallback(async () => {
-    try {
-      const allStories = await getStories(String(id));
-      setStories(allStories);
-
-      resetStories(allStories);
+      setStories(nonProfit.stories);
     } catch (e) {
       logError(e);
     }
@@ -149,10 +129,6 @@ function UpsertNonProfitPage({ isEdit }: Props) {
       };
       reset(newNonProfit);
     }
-  }, []);
-
-  useEffect(() => {
-    fetchNonProfitStories();
   }, []);
 
   const handleActivityCheckboxChange = (
@@ -264,6 +240,15 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                 )}
               </S.ItemBox>
             </S.DoubleItemSection>
+            <StoriesForm
+              registerStory={registerStory}
+              StoryObject={StoryObject}
+              setValueStory={setValueStory}
+              stories={stories}
+              handleSubmitStory={handleSubmit}
+              formStateStory={formStateStory}
+              controlStory={controlStory}
+            />
           </S.LeftSection>
 
           <S.RightSection>
@@ -303,7 +288,6 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               color={gray10}
               backgroundColor={gray40}
               _hover={{ bg: gray30 }}
-              disabled={!formState?.isValid}
             >
               {t(`upsert.${mode}.save`)}
             </Button>
@@ -335,24 +319,6 @@ function UpsertNonProfitPage({ isEdit }: Props) {
           )}
         </S.ContentSection>
       </form>
-
-      {stories.map((story) => (
-        <StoriesCard
-          title={story.title}
-          description={story.description}
-          image={story?.image}
-        />
-      ))}
-
-      <StoriesForm
-        registerStory={registerStory}
-        StoryObject={StoryObject}
-        setValueStory={setValueStory}
-        resetStory={resetStory}
-        handleSubmitStory={handleSubmit}
-        formStateStory={formStateStory}
-        controlStory={controlStory}
-      />
       {loading && <Loading />}
     </>
   );
