@@ -90,29 +90,37 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   }, []);
 
   const handleSave = async () => {
-    try {
-      if (isEdit) {
-        await updateNonProfit(NonProfitObject(), file);
-      } else {
-        setModalOpen(false);
-        setLoading(true);
-        await createNonProfit(NonProfitObject(), file)
-          .then((response) => {
-            reset(response?.data);
-            setLoading(false);
-          })
-          .catch((error) => {
-            setLoading(false);
-            toast({
-              description: error.response.data.formatted_message,
-              status: "error",
+    if (NonProfitObject()) {
+      const nonProfitObject = {
+        ...NonProfitObject(),
+        ...StoryObject(),
+      };
+
+      try {
+        if (isEdit) {
+          await updateNonProfit(nonProfitObject, file);
+        } else {
+          setModalOpen(false);
+          setLoading(true);
+          await createNonProfit(nonProfitObject, file)
+            .then((response) => {
+              reset(response?.data);
+              setLoading(false);
+            })
+            .catch((error) => {
+              setLoading(false);
+              toast({
+                description: error.response.data.formatted_message,
+                status: "error",
+              });
+              throw Error(error.response.data.formatted_message);
             });
-            throw Error(error.response.data.formatted_message);
-          });
+        }
+
+        navigate("/ngos");
+      } catch (e) {
+        logError(e);
       }
-      navigate("/ngos");
-    } catch (e) {
-      logError(e);
     }
   };
 
@@ -337,21 +345,17 @@ function UpsertNonProfitPage({ isEdit }: Props) {
       ))}
 
       <StoriesForm
-        registerStory={formStateStory}
-        StoryObject={formStateStory}
-        setValueStory={formStateStory}
-        resetStory={formStateStory}
-        handleSubmitStory={formStateStory}
+        registerStory={registerStory}
+        StoryObject={StoryObject}
+        setValueStory={setValueStory}
+        resetStory={resetStory}
+        handleSubmitStory={handleSubmit}
         formStateStory={formStateStory}
-        controlStory={formStateStory}
+        controlStory={controlStory}
       />
       {loading && <Loading />}
     </>
   );
 }
-
-UpsertNonProfitPage.defaultProps = {
-  isEdit: false,
-};
 
 export default UpsertNonProfitPage;

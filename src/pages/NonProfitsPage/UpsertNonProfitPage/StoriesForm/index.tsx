@@ -1,19 +1,15 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { useFieldArray, useForm } from "react-hook-form";
-import { logError } from "services/crashReport";
-import ModalImage from "components/moleculars/modals/ModalImage";
-import useStories from "hooks/apiHooks/useStories";
+import { useFieldArray } from "react-hook-form";
+
 import FileUpload from "components/moleculars/FileUpload";
-import { Button, useToast } from "@chakra-ui/react";
-import WarningRedIcon from "assets/icons/warning-red-icon.svg";
+import { Button } from "@chakra-ui/react";
+
 import InfoName from "components/moleculars/infoName";
-import Loading from "components/moleculars/Loading";
 import { useTranslation } from "react-i18next";
 import theme from "styles/theme";
 import Story from "types/entities/Story";
 import * as S from "./styles";
-import { CreateStory } from "types/apiResponses/story";
 
 export type Props = {
   registerStory: any;
@@ -22,7 +18,7 @@ export type Props = {
   resetStory: any;
   handleSubmitStory: any;
   formStateStory: any;
-  controlStory: CreateStory[];
+  controlStory: any;
 };
 
 export type FormValues = {
@@ -38,18 +34,15 @@ function StoriesForm({
   controlStory,
 }: Props) {
   const navigate = useNavigate();
-  const [modalOpen, setModalOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const { createStory } = useStories();
-  const toast = useToast();
+
   const [file, setFile] = useState<string>("");
-  const { gray10, gray40, gray30, red30 } = theme.colors;
+  const { gray10, gray40, gray30 } = theme.colors;
   const { t } = useTranslation("translation", {
     keyPrefix: "nonProfits.upsert.storiesForm",
   });
   const { fields, append } = useFieldArray({
-    name: "stories",
-    controlStory,
+    name: "storiesAttributes",
+    control: controlStory,
   });
 
   const handleImageChange = (
@@ -58,8 +51,10 @@ function StoriesForm({
   ) => {
     const image = e.target.files![0];
 
+    setFile(URL.createObjectURL(image));
+
     if (StoryObject()) {
-      setValueStory(`stories.${index}.image`, image as File);
+      setValueStory(`storiesAttributes.${index}.image`, image as File);
     }
   };
 
@@ -146,7 +141,6 @@ function StoriesForm({
           type="button"
           onClick={() =>
             append({
-              id: 1,
               title: "Story",
               description: "Story description",
               image: "...",
@@ -158,8 +152,6 @@ function StoriesForm({
           Add Story
         </button>
       </S.FormContainer>
-
-      {loading && <Loading />}
     </S.Container>
   );
 }

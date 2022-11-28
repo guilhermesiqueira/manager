@@ -3,7 +3,6 @@ import nonProfitsApi from "services/api/nonProfitsApi";
 import { CreateNonProfit, EditNonProfit } from "types/apiResponses/nonProfit";
 import { CreateStory } from "types/apiResponses/story";
 import NonProfit from "types/entities/NonProfit";
-import Story from "types/entities/Story";
 import { useUploadFile } from "../useUploadFile";
 
 function useNonProfits() {
@@ -31,51 +30,56 @@ function useNonProfits() {
     return nonProfit;
   }
 
-  async function createNonProfit(data: CreateNonProfit, file: string) {
-    let stories: CreateStory[] = [];
+  async function uploadStories(data: any) {
+    const stories: CreateStory[] = [];
+    await data?.storiesAttributes?.map(async (story: CreateStory) => {
+      console.log(story);
+      const upload = useUploadFile(story.image);
 
-    data?.storiesAttributes &&
-      data?.storiesAttributes.map((story: CreateStory) => {
-        const upload = useUploadFile(story.image);
+      let storyImage;
 
-        let storyImage;
-
-        if (file) {
-          upload.create((error: Error, blob: any) => {
-            if (error) {
-              throw error;
-            } else {
-              storyImage = blob.signed_idl;
-            }
-          });
+      await upload.create((error: Error, blob: any) => {
+        if (error) {
+          throw error;
+        } else {
+          storyImage = blob.signed_id;
+          console.log("story", storyImage);
         }
-
-        stories.push({ ...story, image: storyImage });
       });
 
+      stories.push({ ...story, image: storyImage });
+      console.log(stories);
+      return stories;
+    });
+    return stories;
+  }
+
+  async function createNonProfit(data: CreateNonProfit, file: string) {
+    const stories = await uploadStories(data);
     const upload = useUploadFile(data.logo);
 
     let nonProfit;
 
-    if (file) {
-      upload.create((error: Error, blob: any) => {
+    if (data.logo) {
+      await upload.create((error: Error, blob: any) => {
         if (error) {
           throw error;
         } else {
+          console.log("aaa", stories);
           nonProfit = nonProfitsApi.createNonProfit({
             ...data,
             logo: blob.signed_id,
-            storiesAttributes: stories as CreateStory[],
+            storiesAttributes: stories as unknown as CreateStory[],
           });
         }
       });
     } else {
       nonProfit = nonProfitsApi.createNonProfit({
         ...data,
-        storiesAttributes: stories as CreateStory[],
+        storiesAttributes: stories as unknown as CreateStory[],
       });
     }
-
+    console.log(nonProfit);
     return nonProfit;
   }
 
