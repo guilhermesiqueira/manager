@@ -4,6 +4,8 @@ import FileUpload from "components/moleculars/FileUpload";
 import InfoName from "components/moleculars/infoName";
 import { useTranslation } from "react-i18next";
 import { CreateStory } from "types/apiResponses/story";
+// import useNonProfits from "hooks/apiHooks/useNonProfits";
+import { useUploadFile } from "hooks/apiHooks/useUploadFile";
 import * as S from "./styles";
 
 export type Props = {
@@ -32,6 +34,22 @@ function StoriesForm({
     control: controlStory,
   });
 
+  const handleUploadStoryImage = (image: File, index: number) => {
+    try {
+      const upload = useUploadFile(image);
+
+      upload.create((error: Error, blob: any) => {
+        if (error) {
+          console.log(error);
+        } else {
+          setValueStory(`storiesAttributes.${index}.image`, blob.signed_id);
+        }
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const handleImageChange = (
     e: React.ChangeEvent<HTMLInputElement>,
     index: number,
@@ -39,10 +57,7 @@ function StoriesForm({
     const image = e.target.files![0];
 
     setFile(URL.createObjectURL(image));
-
-    if (StoryObject()) {
-      setValueStory(`storiesAttributes.${index}.image`, image as File);
-    }
+    handleUploadStoryImage(image, index);
   };
 
   useEffect(() => {
@@ -53,6 +68,10 @@ function StoriesForm({
       });
     }
   }, [stories]);
+
+  useEffect(() => {
+    console.log(StoryObject());
+  }, [StoryObject()]);
 
   return (
     <S.Container>

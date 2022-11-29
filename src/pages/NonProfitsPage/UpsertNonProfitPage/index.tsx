@@ -84,6 +84,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
         } else {
           setModalOpen(false);
           setLoading(true);
+          console.log(nonProfitObject);
           await createNonProfit(nonProfitObject)
             .then((response) => {
               reset(response?.data);
