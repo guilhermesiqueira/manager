@@ -31,12 +31,12 @@ function StoriesForm({
   const { t } = useTranslation("translation", {
     keyPrefix: "nonProfits.upsert.storiesForm",
   });
+  const { gray10, gray40, gray30 } = theme.colors;
   const { fields, append, remove } = useFieldArray({
     name: "storiesAttributes",
     control: controlStory,
   });
   const { deleteStory } = useStories();
-  const { gray10, gray40, gray30 } = theme.colors;
 
   const handleUploadStoryImage = (image: File, index: number) => {
     try {
