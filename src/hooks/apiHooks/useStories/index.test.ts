@@ -38,48 +38,4 @@ describe("useStories", () => {
       expect(storiesApi.getStory).toHaveBeenCalledWith(id);
     });
   });
-
-  describe("#createApiStory", () => {
-    const data = {
-      title: "New Story",
-      description: "Story description",
-      image: "https://example.com/image.jpg",
-      nonProfitId: 1,
-    };
-    const file = "";
-
-    beforeEach(() => {
-      storiesApi.createStory = jest.fn(() => ({} as any));
-    });
-
-    it("calls createApiStory with correct params", () => {
-      hook.createStory(data, file);
-
-      expect(storiesApi.createStory).toHaveBeenCalled();
-      expect(storiesApi.createStory).toHaveBeenCalledWith(data);
-    });
-  });
-
-  describe("#updateApiStory", () => {
-    const id = "1";
-    const data = {
-      id,
-      title: "New Story",
-      description: "Story description",
-      image: "https://example.com/image.jpg",
-      nonProfitId: 1,
-    };
-    const file = "";
-
-    beforeEach(() => {
-      storiesApi.updateStory = jest.fn(() => ({} as any));
-    });
-
-    it("calls updateApiStory with correct params", () => {
-      hook.updateStory(data, file);
-
-      expect(storiesApi.updateStory).toHaveBeenCalled();
-      expect(storiesApi.updateStory).toHaveBeenCalledWith(id, data);
-    });
-  });
 });

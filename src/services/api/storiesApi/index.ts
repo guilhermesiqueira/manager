@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
 import Story from "types/entities/Story";
 import { CreateStory } from "types/apiResponses/story";
-import { apiGet, apiPost, apiPut } from "..";
+import { apiDelete, apiGet, apiPost, apiPut } from "..";
 
 const storiesApi = {
   getNonProfitStories: (id: number | string): Promise<AxiosResponse<Story[]>> =>
@@ -15,6 +15,9 @@ const storiesApi = {
 
   updateStory: (id: any, data: CreateStory): Promise<AxiosResponse<Story>> =>
     apiPut(`stories/${id}`, data),
+
+  deleteStory: (id: any): Promise<AxiosResponse<Story>> =>
+    apiDelete(`stories/${id}`),
 };
 
 export default storiesApi;

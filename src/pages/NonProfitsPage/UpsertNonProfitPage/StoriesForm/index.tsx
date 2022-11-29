@@ -4,7 +4,7 @@ import FileUpload from "components/moleculars/FileUpload";
 import InfoName from "components/moleculars/infoName";
 import { useTranslation } from "react-i18next";
 import { CreateStory } from "types/apiResponses/story";
-// import useNonProfits from "hooks/apiHooks/useNonProfits";
+import useStories from "hooks/apiHooks/useStories";
 import { useUploadFile } from "hooks/apiHooks/useUploadFile";
 import * as S from "./styles";
 
@@ -33,6 +33,11 @@ function StoriesForm({
     name: "storiesAttributes",
     control: controlStory,
   });
+  const { deleteStory } = useStories();
+
+  useEffect(() => {
+    console.log(files);
+  }, [files]);
 
   const handleUploadStoryImage = (image: File, index: number) => {
     try {
@@ -69,6 +74,14 @@ function StoriesForm({
     }
   }, [stories]);
 
+  function handleDeleteStory(index: number) {
+    remove(index);
+
+    if (StoryObject(`storiesAttributes.${index}.id`)) {
+      deleteStory(StoryObject(`storiesAttributes.${index}.id`));
+    }
+  }
+
   return (
     <S.Container>
       <S.FormContainer>
@@ -88,6 +101,9 @@ function StoriesForm({
         </button>
         {fields.map((field, index) => (
           <div key={field.id}>
+            <button type="button" onClick={() => handleDeleteStory(index)}>
+              Delete
+            </button>
             <S.LeftSection>
               <S.ItemBox>
                 <FileUpload
@@ -116,9 +132,6 @@ function StoriesForm({
                 {...registerStory(`storiesAttributes.${index}.position`)}
                 placeholder={t("position")}
               />
-              <button type="button" onClick={() => remove(index)}>
-                Delete
-              </button>
             </S.RightSection>
           </div>
         ))}
