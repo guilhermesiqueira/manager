@@ -274,6 +274,20 @@
       "cancel": "Cancelar"
     }
   },
+  "impactsPage": {
+    "title": "Impactos",
+    "impactsListSection": {
+      "search": "Procurar por ID...",
+      "next": "próximo >",
+      "previous": "< anterior",
+      "listColumns": {
+        "id": "Id",
+        "impactCost": "Custo do impacto",
+        "startDate": "Data de início",
+        "endDate": "Data de fim"
+      }
+    }
+  },
   "menu": {
     "integrationsLabel": "Integrações",
     "purchasesLabel": "Pagamentos",

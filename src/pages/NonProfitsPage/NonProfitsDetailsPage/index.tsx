@@ -94,7 +94,7 @@ function NonProfitsDetailsPage(): JSX.Element {
           <InfoName>{t("details.attributes.costForOneImpact")}</InfoName>
           <S.InfoValue>{nonProfit?.impactByTicket}</S.InfoValue>
 
-          <LinkPage page={`/nonprofits/${id}/impacts`} text="See all impacts" />
+          <LinkPage page={`/ngos/${id}/impacts`} text="See all impacts" />
 
           <S.Container>
             <S.LeftSection>

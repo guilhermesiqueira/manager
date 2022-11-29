@@ -5,10 +5,11 @@ import * as S from "./styles";
 
 export type Props = {
   text: string;
-  page: string;
+  page: any;
+  icon?: string;
 };
 
-function LinkPage({ page, text }: Props): JSX.Element {
+function LinkPage({ page, text, icon }: Props): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "link",
   });
@@ -17,7 +18,7 @@ function LinkPage({ page, text }: Props): JSX.Element {
   return (
     <S.Container onClick={() => navigate(page)}>
       <>
-        <img src={linkIcon} alt={t("copyText")} />
+        <img src={icon || linkIcon} alt={t("copyText")} />
         <span>{text}</span>
       </>
     </S.Container>
