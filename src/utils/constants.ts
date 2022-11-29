@@ -1,5 +1,6 @@
 export const RIBON_API =
-  process.env.REACT_APP_RIBON_API || "http://localhost:3001/";
+  process.env.REACT_APP_RIBON_API ||
+  "http://ribon-core-api-dev.us-east-1.elasticbeanstalk.com/";
 
 export const TOKEN_KEY = "token";
 
