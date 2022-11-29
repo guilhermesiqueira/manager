@@ -63,7 +63,7 @@ function StoriesForm({
             append({
               title: "Story",
               description: "Story description",
-              image: "...",
+              image: null,
               active: true,
               position: fields.length + 1,
             })

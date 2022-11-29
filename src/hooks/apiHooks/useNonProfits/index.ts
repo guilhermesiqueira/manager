@@ -30,35 +30,36 @@ function useNonProfits() {
     return nonProfit;
   }
 
-  async function uploadStories(stories: CreateStory[]) {
+  async function uploadStories(stories: CreateStory[] | undefined) {
     const newStories: CreateStory[] = [];
-    stories.map(async (story: CreateStory) => {
-      const upload = useUploadFile(story.image);
+    await stories?.map(async (story: CreateStory) => {
+      if (story.image) {
+        const upload = useUploadFile(story.image);
 
-      let storyImage;
-
-      upload.create((error: Error, blob: any) => {
-        if (error) {
-          throw error;
-        } else {
-          storyImage = blob.signed_id;
-          newStories.push({ ...story, image: storyImage });
-        }
-      });
+        await upload.create((error: Error, blob: any) => {
+          if (error) {
+            throw error;
+          } else {
+            newStories.push({ ...story, image: blob.signed_id });
+            console.log(newStories);
+          }
+        });
+      } else {
+        newStories.push(story);
+        console.log(newStories);
+      }
     });
+
     return newStories;
   }
 
   async function createNonProfit(data: CreateNonProfit) {
-    let stories: CreateStory[] | undefined = data.storiesAttributes;
-
-    if (stories) {
-      stories = await uploadStories(stories);
-    }
-
     let nonProfit;
+    let newStories: CreateStory[] = [];
 
     if (data.logo) {
+      newStories = await uploadStories(data.storiesAttributes);
+      console.log("aqui", newStories);
       const upload = useUploadFile(data.logo);
       await upload.create((error: Error, blob: any) => {
         if (error) {
@@ -67,15 +68,16 @@ function useNonProfits() {
           nonProfit = nonProfitsApi.createNonProfit({
             ...data,
             logo: blob.signed_id,
-            storiesAttributes: stories,
+            storiesAttributes: newStories,
           });
         }
       });
     } else {
-      console.log(stories);
+      newStories = await uploadStories(data.storiesAttributes);
+      console.log("aqui", newStories);
       nonProfit = nonProfitsApi.createNonProfit({
         ...data,
-        storiesAttributes: stories,
+        storiesAttributes: newStories,
       });
     }
     return nonProfit;
