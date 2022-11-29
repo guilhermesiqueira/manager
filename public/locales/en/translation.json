@@ -236,6 +236,22 @@
           "cancelButton": "Cancel"
         }
       }
+    },
+    "details": {
+      "edit": "Edit",
+      "details": "Details",
+      "impact": "Impact",
+      "attributes": {
+        "name": "Name",
+        "walletAddress": "Wallet address",
+        "cause": "Cause",
+        "created": "Created at",
+        "updated": "Updated at",
+        "impactDescription": "Impact description",
+        "costForOneImpact": "Cost for 1 unit impact",
+        "logo": "Logo",
+        "cardCause": "Card Cause"
+      }
     }
   },
   "settings": {

@@ -17,6 +17,7 @@ import OffersPage from "pages/offers/OffersPage";
 import UpsertOfferPage from "pages/offers/UpsertOfferPage";
 import SettingsPage from "pages/SettingsPage";
 import EditSettingsPage from "pages/SettingsPage/EditSettingsPage";
+import NonProfitsDetailsPage from "pages/NonProfitsPage/NonProfitsDetailsPage";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
 
@@ -200,7 +201,7 @@ function RoutesComponent(): JSX.Element {
             <Suspense fallback={<div />}>
               <Navigation />
               <MainLayout>
-                <NonProfitsPage />
+                <NonProfitsDetailsPage />
               </MainLayout>
             </Suspense>
           </PrivateRoute>

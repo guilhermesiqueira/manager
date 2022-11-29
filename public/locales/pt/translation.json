@@ -235,6 +235,23 @@
           "cancelButton": "Cancel"
         }
       }
+    },
+    "details": {
+      "title": "Detalhes da Ong",
+      "edit": "Editar",
+      "details": "Detalhes",
+      "impact": "Impacto",
+      "attributes": {
+        "name": "Nome",
+        "walletAddress": "Endereço da carteira",
+        "cause": "Causa",
+        "createdAt": "Criado em",
+        "updatedAt": "Atualizado em",
+        "impactDescription": "Descrição do impacto",
+        "costForOneImpact": "Custo por 1 unidade de impacto",
+        "logo": "Logo",
+        "cardCause": "Card da Causa"
+      }
     }
   },
   "copyableAddress": {

@@ -13,4 +13,7 @@ export default interface NonProfit {
   cause: Cause;
   stories: Story[];
   storiesAttributes: CreateStory[];
+  createdAt: string;
+  updatedAt: string;
+  impactByTicket: number;
 }
