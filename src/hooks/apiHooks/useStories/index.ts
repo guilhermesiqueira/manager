@@ -13,8 +13,8 @@ function useStories() {
     return story;
   }
 
-  function deleteStory(id: number) {
-    return storiesApi.deleteStory(id);
+  async function deleteStory(id: number) {
+    await storiesApi.deleteStory(id);
   }
 
   return {

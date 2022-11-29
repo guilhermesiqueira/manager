@@ -87,8 +87,8 @@ export const ItemBox = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
-  width: 100%;
+  width: 50%;
   margin-top: 12px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
 `;

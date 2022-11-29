@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useFieldArray } from "react-hook-form";
+import { Button } from "@chakra-ui/react";
 import FileUpload from "components/moleculars/FileUpload";
 import InfoName from "components/moleculars/infoName";
 import { useTranslation } from "react-i18next";
 import { CreateStory } from "types/apiResponses/story";
 import useStories from "hooks/apiHooks/useStories";
 import { useUploadFile } from "hooks/apiHooks/useUploadFile";
+import theme from "styles/theme";
 import * as S from "./styles";
 
 export type Props = {
@@ -34,10 +36,7 @@ function StoriesForm({
     control: controlStory,
   });
   const { deleteStory } = useStories();
-
-  useEffect(() => {
-    console.log(files);
-  }, [files]);
+  const { gray10, gray40, gray30 } = theme.colors;
 
   const handleUploadStoryImage = (image: File, index: number) => {
     try {
@@ -84,25 +83,30 @@ function StoriesForm({
   return (
     <S.Container>
       <S.FormContainer>
-        <button
-          type="button"
-          onClick={() =>
-            append({
-              title: "Story",
-              description: "Story description",
-              image: null,
-              active: true,
-              position: fields.length + 1,
-            })
-          }
-        >
-          Add Story
-        </button>
+        <S.ButtonContainer>
+          <Button
+            type="button"
+            color={gray40}
+            backgroundColor={gray10}
+            borderColor={gray40}
+            border="2px"
+            _hover={{ bg: gray30 }}
+            onClick={() =>
+              append({
+                title: "Story",
+                description: "Story description",
+                image: null,
+                active: true,
+                position: fields.length + 1,
+              })
+            }
+          >
+            + Add Story
+          </Button>
+        </S.ButtonContainer>
+
         {fields.map((field, index) => (
           <div key={field.id}>
-            <button type="button" onClick={() => handleDeleteStory(index)}>
-              Delete
-            </button>
             <S.LeftSection>
               <S.ItemBox>
                 {files && (
@@ -133,6 +137,18 @@ function StoriesForm({
                 {...registerStory(`storiesAttributes.${index}.position`)}
                 placeholder={t("position")}
               />
+
+              <S.ButtonContainer>
+                <Button
+                  type="button"
+                  color={gray10}
+                  backgroundColor={gray40}
+                  _hover={{ bg: gray30 }}
+                  onClick={() => handleDeleteStory(index)}
+                >
+                  Delete Story
+                </Button>
+              </S.ButtonContainer>
             </S.RightSection>
           </div>
         ))}

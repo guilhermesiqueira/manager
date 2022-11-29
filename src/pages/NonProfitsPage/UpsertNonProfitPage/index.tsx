@@ -76,10 +76,8 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     function storyObject() {
       const allStories: any = StoryObject();
 
-      console.log(allStories);
-
       const newStories = allStories.storiesAttributes.map((story: any) =>
-        story.image.includes("http")
+        story?.image?.includes("http")
           ? {
               id: story.id,
               title: story.title,
@@ -88,8 +86,6 @@ function UpsertNonProfitPage({ isEdit }: Props) {
             }
           : story,
       );
-
-      console.log(newStories);
 
       return newStories;
     }
@@ -100,11 +96,8 @@ function UpsertNonProfitPage({ isEdit }: Props) {
         storiesAttributes: storyObject(),
       };
 
-      console.log(nonProfitObject, "opa");
-
       try {
         if (isEdit) {
-          console.log(nonProfitObject);
           await updateNonProfit(nonProfitObject);
         } else {
           setModalOpen(false);
