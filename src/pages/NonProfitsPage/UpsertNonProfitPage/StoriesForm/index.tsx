@@ -25,7 +25,7 @@ function StoriesForm({
   controlStory,
   stories,
 }: Props) {
-  const [files, setFiles] = useState<string[]>([]);
+  const [files, setFiles] = useState<any>({});
   const { t } = useTranslation("translation", {
     keyPrefix: "nonProfits.upsert.storiesForm",
   });
@@ -60,8 +60,7 @@ function StoriesForm({
     index: number,
   ) => {
     const image = e.target.files![0];
-    files[index] = URL.createObjectURL(image);
-    setFiles(files);
+    setFiles({ ...files, [index]: URL.createObjectURL(image) });
     handleUploadStoryImage(image, index);
   };
 
@@ -106,11 +105,13 @@ function StoriesForm({
             </button>
             <S.LeftSection>
               <S.ItemBox>
-                <FileUpload
-                  onChange={(e) => handleImageChange(e, index)}
-                  logo={StoryObject(`storiesAttributes.${index}.image`)}
-                  value={files[index]}
-                />
+                {files && (
+                  <FileUpload
+                    onChange={(e) => handleImageChange(e, index)}
+                    logo={StoryObject(`storiesAttributes.${index}.image`)}
+                    value={files[index]}
+                  />
+                )}
               </S.ItemBox>
             </S.LeftSection>
 
