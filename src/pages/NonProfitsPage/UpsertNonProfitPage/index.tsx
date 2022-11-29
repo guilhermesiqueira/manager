@@ -73,18 +73,31 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   }, []);
 
   const handleSave = async () => {
+    console.log("aqui");
+    function storyObject() {
+      const newStories = StoryObject();
+      return newStories.map((story) =>
+        story.image.includes("http")
+          ? {
+              title: story.title,
+              description: story.description,
+              position: story.position,
+            }
+          : story,
+      );
+    }
     if (NonProfitObject()) {
       const nonProfitObject = {
         ...NonProfitObject(),
-        ...StoryObject(),
+        ...storyObject(),
       };
       try {
         if (isEdit) {
+          console.log(nonProfitObject);
           await updateNonProfit(nonProfitObject);
         } else {
           setModalOpen(false);
           setLoading(true);
-          console.log(nonProfitObject);
           await createNonProfit(nonProfitObject)
             .then((response) => {
               reset(response?.data);
@@ -175,7 +188,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   return (
     <>
       <S.Title>{t(`upsert.${mode}.title`)}</S.Title>
-      <form onSubmit={handleSubmit(handleOpenModal)}>
+      <form onSubmit={handleSubmit(isEdit ? handleSave : handleOpenModal)}>
         <S.ContentSection>
           <S.LeftSection>
             <S.Subtitle>{t("upsert.activityStatus")}</S.Subtitle>
