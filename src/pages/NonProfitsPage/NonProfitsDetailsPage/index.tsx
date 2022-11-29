@@ -75,13 +75,19 @@ function NonProfitsDetailsPage(): JSX.Element {
           <S.InfoValue>{dateFormatter(nonProfit?.updatedAt ?? "")}</S.InfoValue>
 
           <S.ContainerStories>
-            {nonProfit?.stories.map((story: Story) => (
-              <StoriesCard
-                title={story.title}
-                description={story.description}
-                image={story.image}
-              />
-            ))}
+            {nonProfit?.stories
+              .sort(
+                (story1, story2) =>
+                  Number(story1.position) - Number(story2.position),
+              )
+              .map((story: Story) => (
+                <StoriesCard
+                  key={story.id}
+                  title={story.title}
+                  description={story.description}
+                  image={story.image}
+                />
+              ))}
           </S.ContainerStories>
         </S.LeftSection>
 
