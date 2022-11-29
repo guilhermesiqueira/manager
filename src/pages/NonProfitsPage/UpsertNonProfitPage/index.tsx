@@ -73,24 +73,35 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   }, []);
 
   const handleSave = async () => {
-    console.log("aqui");
     function storyObject() {
-      const newStories = StoryObject();
-      return newStories.map((story) =>
+      const allStories: any = StoryObject();
+
+      console.log(allStories);
+
+      const newStories = allStories.storiesAttributes.map((story: any) =>
         story.image.includes("http")
           ? {
+              id: story.id,
               title: story.title,
               description: story.description,
               position: story.position,
             }
           : story,
       );
+
+      console.log(newStories);
+
+      return newStories;
     }
+
     if (NonProfitObject()) {
       const nonProfitObject = {
         ...NonProfitObject(),
-        ...storyObject(),
+        storiesAttributes: storyObject(),
       };
+
+      console.log(nonProfitObject, "opa");
+
       try {
         if (isEdit) {
           console.log(nonProfitObject);
