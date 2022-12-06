@@ -220,6 +220,37 @@
         "title": "Edit NonProfit",
         "save": "Save changes",
         "cancel": "Cancel"
+      },
+      "storiesForm": {
+        "title": "Title",
+        "description": "Description",
+        "position": "Position",
+        "status": "Status",
+        "save": "Save",
+        "cancel": "Cancel",
+        "required": "* Required",
+        "modal": {
+          "title": "Are you sure?",
+          "body": "After confirmed, this action will create a Story.",
+          "confirmButton": "Confirm",
+          "cancelButton": "Cancel"
+        }
+      }
+    },
+    "details": {
+      "edit": "Edit",
+      "details": "Details",
+      "impact": "Impact",
+      "attributes": {
+        "name": "Name",
+        "walletAddress": "Wallet address",
+        "cause": "Cause",
+        "createdAt": "Created at",
+        "updatedAt": "Updated at",
+        "impactDescription": "Impact description",
+        "costForOneImpact": "Cost for 1 unit impact",
+        "logo": "Logo",
+        "cardCause": "Card Cause"
       }
     }
   },
@@ -241,6 +272,20 @@
   "copyableAddress": {
     "copiedText": "Address copied",
     "copyText": "Copy to clipboard"
+  },
+  "impactsPage": {
+    "title": "Impacts History",
+    "impactsListSection": {
+      "search": "Search by id..",
+      "next": "next >",
+      "previous": "< previous",
+      "listColumns": {
+        "id": "Id",
+        "impactCost": "Impact cost",
+        "startDate": "Start date",
+        "endDate": "End date"
+      }
+    }
   },
   "menu": {
     "integrationsLabel": "Integrations",

@@ -1,15 +1,7 @@
-export interface CreateNonProfit {
-  name: string;
-  walletAddress: string;
-  status: string;
-  impactDescription: string;
-  logo?: any;
-  causeCardImage?: any;
-  causeId: number;
-}
+import { CreateStory } from "./story";
 
-export interface EditNonProfit {
-  id: string;
+export interface CreateNonProfit {
+  id?: string;
   name: string;
   walletAddress: string;
   status: string;
@@ -17,4 +9,5 @@ export interface EditNonProfit {
   logo?: any;
   causeCardImage?: any;
   causeId: number;
+  storiesAttributes?: CreateStory[];
 }

@@ -4,7 +4,6 @@ import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router";
 import { logError } from "services/crashReport";
-import Cause from "types/entities/Cause";
 import theme from "styles/theme";
 import InfoName from "components/moleculars/infoName";
 import ModalImage from "components/moleculars/modals/ModalImage";
@@ -36,7 +35,7 @@ function UpsertCausePage({ isEdit }: Props) {
     reset,
     handleSubmit,
     formState,
-  } = useForm<Cause>({ mode: "onChange", reValidateMode: "onChange" });
+  } = useForm<CreateCause>({ mode: "onChange", reValidateMode: "onChange" });
 
   const toast = useToast();
 
@@ -70,7 +69,8 @@ function UpsertCausePage({ isEdit }: Props) {
             throw Error(error.response.data.formatted_message);
           });
       }
-      navigate(`/causes/${CauseObject().id.toString()}}`);
+
+      navigate("/causes");
     } catch (e) {
       logError(e);
     }

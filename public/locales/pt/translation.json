@@ -219,6 +219,38 @@
         "title": "Editar Ong",
         "save": "Salvar mudanças",
         "cancel": "Cancelar"
+      },
+      "storiesForm": {
+        "title": "Título",
+        "description": "Descrição",
+        "position": "Posição",
+        "status": "Status",
+        "save": "Salvar",
+        "cancel": "Cancelar",
+        "required": "* Obrigatório",
+        "modal": {
+          "title": "Are you sure?",
+          "body": "After confirmed, this action will create a Story.",
+          "confirmButton": "Confirm",
+          "cancelButton": "Cancel"
+        }
+      }
+    },
+    "details": {
+      "title": "Detalhes da Ong",
+      "edit": "Editar",
+      "details": "Detalhes",
+      "impact": "Impacto",
+      "attributes": {
+        "name": "Nome",
+        "walletAddress": "Endereço da carteira",
+        "cause": "Causa",
+        "createdAt": "Criado em",
+        "updatedAt": "Atualizado em",
+        "impactDescription": "Descrição do impacto",
+        "costForOneImpact": "Custo por 1 unidade de impacto",
+        "logo": "Logo",
+        "cardCause": "Card da Causa"
       }
     }
   },
@@ -240,6 +272,20 @@
       "details": "Detalhes",
       "save": "Salvar",
       "cancel": "Cancelar"
+    }
+  },
+  "impactsPage": {
+    "title": "Impactos",
+    "impactsListSection": {
+      "search": "Procurar por ID...",
+      "next": "próximo >",
+      "previous": "< anterior",
+      "listColumns": {
+        "id": "Id",
+        "impactCost": "Custo do impacto",
+        "startDate": "Data de início",
+        "endDate": "Data de fim"
+      }
     }
   },
   "menu": {

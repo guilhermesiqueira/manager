@@ -1,4 +1,5 @@
 import uploadIcon from "assets/icons/upload-icon.svg";
+
 import { useTranslation } from "react-i18next";
 import LogoCard from "../LogoCard";
 import * as S from "./styles";

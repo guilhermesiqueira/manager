@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import ArrowDownIcon from "assets/icons/arrow-down.svg";
 import theme from "styles/theme";
 import ModalBlank from "../ModalBlank";
