@@ -1,4 +1,3 @@
-import IntegrationCard from "components/moleculars/cards/IntegrationCard";
 import useApiIntegrations from "hooks/apiHooks/useApiIntegrations";
 import dateFormatter from "lib/dateFormatter";
 import { useCallback, useEffect, useState } from "react";
@@ -98,14 +97,6 @@ function IntegrationDetailsPage(): JSX.Element {
 
       <S.Container>
         <S.LeftSection>
-          <S.IntegrationCardContainer>
-            <IntegrationCard
-              title={integrationName}
-              value={integrationBalance}
-            />
-          </S.IntegrationCardContainer>
-          <br />
-
           <Link to="edit">
             <Button
               color={gray10}
