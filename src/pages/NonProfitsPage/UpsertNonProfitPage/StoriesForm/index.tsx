@@ -65,10 +65,13 @@ function StoriesForm({
 
   useEffect(() => {
     if (fields.length === 0) {
-      // eslint-disable-next-line array-callback-return
-      stories.map((story) => {
-        append(story);
-      });
+      stories
+        .sort(
+          (story1, story2) => Number(story1.position) - Number(story2.position),
+        )
+        .forEach((story) => {
+          append(story);
+        });
     }
   }, [stories]);
 
