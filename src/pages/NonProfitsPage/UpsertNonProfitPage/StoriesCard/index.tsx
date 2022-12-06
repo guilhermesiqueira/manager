@@ -4,12 +4,11 @@ export type Props = {
   title: string;
   description: string;
   image: string;
-  key: number | string;
 };
 
-function StoriesCard({ title, description, image, key }: Props) {
+function StoriesCard({ title, description, image }: Props) {
   return (
-    <S.Container key={key}>
+    <S.Container>
       <S.CardContainer>
         <S.LeftSection>
           <S.ItemBox>
