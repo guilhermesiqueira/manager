@@ -76,7 +76,8 @@ function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
               ? purchase?.person?.guest?.walletAddress
               : purchase?.person?.customer?.email}
           </th>
-          <th>{purchase?.offer?.priceCents || "0"}</th>
+          <th>{purchase?.offer?.price || "0"}</th>
+          <th>{purchase?.cryptoAmount || "0"}</th>
           <th>
             <S.StatusTableCell
               style={{ color: statusColors[purchase?.status] }}
