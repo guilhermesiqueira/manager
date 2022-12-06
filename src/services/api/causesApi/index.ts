@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import { EditCause } from "types/apiResponses/cause";
+import { CreateCause } from "types/apiResponses/cause";
 import Cause from "types/entities/Cause";
 import { apiPost, apiPut, apiGetWithParams, apiGet } from "..";
 
@@ -18,9 +18,9 @@ const causesApi = {
       page,
     }),
   getCause: (id: any): Promise<AxiosResponse<Cause>> => apiGet(`causes/${id}`),
-  createCause: (data: any): Promise<AxiosResponse<Cause>> =>
+  createCause: (data: any): Promise<AxiosResponse<CreateCause>> =>
     apiPost("causes", data),
-  updateCause: (id: any, data: EditCause): Promise<AxiosResponse<Cause>> =>
+  updateCause: (id: any, data: CreateCause): Promise<AxiosResponse<Cause>> =>
     apiPut(`causes/${id}`, data),
 };
 

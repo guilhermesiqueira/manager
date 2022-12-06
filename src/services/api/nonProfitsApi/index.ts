@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import NonProfit from "types/entities/NonProfit";
-import { EditNonProfit, CreateNonProfit } from "types/apiResponses/nonProfit";
+import { CreateNonProfit } from "types/apiResponses/nonProfit";
 import { apiGet, apiGetWithParams, apiPost, apiPut } from "..";
 
 type NonProfitsParams = {
@@ -28,7 +28,7 @@ const nonProfitsApi = {
 
   updateNonProfit: (
     id: any,
-    data: EditNonProfit,
+    data: CreateNonProfit,
   ): Promise<AxiosResponse<NonProfit>> => apiPut(`non_profits/${id}`, data),
 };
 

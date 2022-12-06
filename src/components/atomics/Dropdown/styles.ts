@@ -1,8 +1,13 @@
 import styled from "styled-components";
 
 export const Input = styled.div`
-  min-width: 400px;
-  max-width: 400px;
+  min-width: 274px;
+  max-width: 274px;
+  margin: 8px 0 30px;
+  padding: 8px 16px;
+  border: 1px solid ${({ theme }) => theme.colors.darkGray};
+  border-radius: 4px;
+  color: ${({ theme }) => theme.colors.darkGray};
   height: 46px;
   margin: 8px 0;
   padding: 8px 16px;
@@ -12,9 +17,8 @@ export const Input = styled.div`
   background-color: ${({ theme }) => theme.colors.neutral10};
   color: ${({ theme }) => theme.colors.gray40};
 
-  :placeholder {
-    color: ${({ theme }) => theme.colors.gray};
-    opacity: 1;
+  label {
+    display: none;
   }
 
   input {

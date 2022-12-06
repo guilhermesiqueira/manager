@@ -45,14 +45,13 @@ describe("useNonProfits", () => {
       impactDescription: "Impact Description",
       causeId: 1,
     };
-    const file = "";
 
     beforeEach(() => {
       nonProfitsApi.createNonProfit = jest.fn(() => ({} as any));
     });
 
     it("calls createApiNonProfit with correct params", () => {
-      hook.createNonProfit(data, file);
+      hook.createNonProfit(data);
 
       expect(nonProfitsApi.createNonProfit).toHaveBeenCalled();
       expect(nonProfitsApi.createNonProfit).toHaveBeenCalledWith(data);
@@ -69,14 +68,13 @@ describe("useNonProfits", () => {
       impactDescription: "Impact Description",
       causeId: 1,
     };
-    const file = "";
 
     beforeEach(() => {
       nonProfitsApi.updateNonProfit = jest.fn(() => ({} as any));
     });
 
     it("calls updateApiNonProfit with correct params", () => {
-      hook.updateNonProfit(data, file);
+      hook.updateNonProfit(data);
 
       expect(nonProfitsApi.updateNonProfit).toHaveBeenCalled();
       expect(nonProfitsApi.updateNonProfit).toHaveBeenCalledWith(id, data);

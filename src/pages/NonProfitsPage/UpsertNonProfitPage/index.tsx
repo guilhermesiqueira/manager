@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router";
 import { logError } from "services/crashReport";
 import useCauses from "hooks/apiHooks/useCauses";
-import NonProfit from "types/entities/NonProfit";
 import Cause from "types/entities/Cause";
 import theme from "styles/theme";
 import FileUpload from "components/moleculars/FileUpload";
@@ -16,6 +15,8 @@ import Loading from "components/moleculars/Loading";
 import Dropdown from "components/atomics/Dropdown";
 import useNonProfits from "hooks/apiHooks/useNonProfits";
 import { CreateNonProfit } from "types/apiResponses/nonProfit";
+import { CreateStory } from "types/apiResponses/story";
+import StoriesForm from "./StoriesForm";
 import * as S from "./styles";
 
 export type Props = {
@@ -26,7 +27,6 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const { t } = useTranslation("translation", {
     keyPrefix: "nonProfits",
   });
-
   const mode = isEdit ? "edit" : "create";
   const [modalOpen, setModalOpen] = useState(false);
   const [causes, setCauses] = useState<Cause[]>([]);
@@ -35,6 +35,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const [loading, setLoading] = useState(false);
   const { gray10, gray40, gray30, red30 } = theme.colors;
   const [statusCheckbox, setStatusCheckbox] = useState(true);
+  const [stories, setStories] = useState<CreateStory[]>([]);
   const [file, setFile] = useState<string>("");
   const navigate = useNavigate();
   const { id } = useParams();
@@ -46,7 +47,17 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     reset,
     handleSubmit,
     formState,
-  } = useForm<NonProfit>({ mode: "onChange", reValidateMode: "onChange" });
+  } = useForm<CreateNonProfit>({
+    mode: "onChange",
+    reValidateMode: "onChange",
+  });
+  const {
+    register: registerStory,
+    getValues: StoryObject,
+    setValue: setValueStory,
+    formState: formStateStory,
+    control: controlStory,
+  } = useForm<CreateStory[]>({ mode: "onChange", reValidateMode: "onChange" });
 
   const toast = useToast();
 
@@ -54,35 +65,62 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     try {
       const nonProfit = await getNonProfit(id);
       reset(nonProfit);
+      setStories(nonProfit.stories);
+      setCurrentCauseId(nonProfit.cause?.id);
     } catch (e) {
       logError(e);
     }
   }, []);
 
   const handleSave = async () => {
-    try {
-      if (isEdit) {
-        await updateNonProfit(NonProfitObject(), file);
-      } else {
-        setModalOpen(false);
-        setLoading(true);
-        await createNonProfit(NonProfitObject(), file)
-          .then((response) => {
-            reset(response?.data);
-            setLoading(false);
-          })
-          .catch((error) => {
-            setLoading(false);
-            toast({
-              description: error.response.data.formatted_message,
-              status: "error",
+    function storyObject() {
+      const allStories: any = StoryObject();
+
+      const newStories = allStories.storiesAttributes.map((story: any) =>
+        story?.image?.includes("http")
+          ? {
+              id: story.id,
+              title: story.title,
+              description: story.description,
+              position: story.position,
+            }
+          : story,
+      );
+
+      return newStories;
+    }
+
+    if (NonProfitObject()) {
+      const nonProfitObject = {
+        ...NonProfitObject(),
+        storiesAttributes: storyObject(),
+      };
+
+      try {
+        if (isEdit) {
+          await updateNonProfit(nonProfitObject);
+        } else {
+          setModalOpen(false);
+          setLoading(true);
+          await createNonProfit(nonProfitObject)
+            .then((response) => {
+              reset(response?.data);
+              setLoading(false);
+            })
+            .catch((error) => {
+              setLoading(false);
+              toast({
+                description: error.response.data.formatted_message,
+                status: "error",
+              });
+              throw Error(error.response.data.formatted_message);
             });
-            throw Error(error.response.data.formatted_message);
-          });
+        }
+
+        navigate("/ngos");
+      } catch (e) {
+        logError(e);
       }
-      navigate("/ngos");
-    } catch (e) {
-      logError(e);
     }
   };
 
@@ -145,9 +183,11 @@ function UpsertNonProfitPage({ isEdit }: Props) {
 
   const onCauseIdChanged = (causeId: number) => {
     setCurrentCauseId(causeId);
+    setValue("causeId", causeId);
   };
 
-  const currencyText = (value: any) => value;
+  const causeText = (value: any) =>
+    causes.find((cause) => cause.id === value)?.name ?? "";
 
   return (
     <>
@@ -186,21 +226,11 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                 <Dropdown
                   values={causes.map((cause) => cause?.id)}
                   onOptionChanged={onCauseIdChanged}
-                  valueText={currencyText}
+                  valueText={causeText}
                   defaultValue={currentCauseId}
-                  containerId="currencies-dropdown"
-                  {...register("causeId", {
-                    required: t("upsert.required"),
-                  })}
+                  containerId="cause-dropdown"
+                  name="causeId"
                 />
-                {/* <S.TextInput
-                  {...register("causeId", {
-                    required: t("upsert.required"),
-                  })}
-                />
-                {formState?.errors.name && formState?.errors.name.type && (
-                  <S.Error>{formState?.errors.name.message}</S.Error>
-                )} */}
               </S.ItemBox>
             </S.DoubleItemSection>
 
@@ -230,6 +260,15 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                 )}
               </S.ItemBox>
             </S.DoubleItemSection>
+            <StoriesForm
+              registerStory={registerStory}
+              StoryObject={StoryObject}
+              setValueStory={setValueStory}
+              stories={stories}
+              handleSubmitStory={handleSubmit}
+              formStateStory={formStateStory}
+              controlStory={controlStory}
+            />
           </S.LeftSection>
 
           <S.RightSection>
@@ -269,7 +308,6 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               color={gray10}
               backgroundColor={gray40}
               _hover={{ bg: gray30 }}
-              disabled={!formState?.isValid}
             >
               {t(`upsert.${mode}.save`)}
             </Button>
@@ -277,7 +315,8 @@ function UpsertNonProfitPage({ isEdit }: Props) {
             <Button
               color={gray40}
               backgroundColor={gray10}
-              outlineColor={gray40}
+              borderColor={gray40}
+              border="2px"
               marginLeft="8px"
               onClick={handleCancel}
             >
@@ -304,9 +343,5 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     </>
   );
 }
-
-UpsertNonProfitPage.defaultProps = {
-  isEdit: false,
-};
 
 export default UpsertNonProfitPage;
