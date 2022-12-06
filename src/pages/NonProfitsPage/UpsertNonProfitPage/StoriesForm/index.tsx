@@ -78,11 +78,11 @@ function StoriesForm({
   }, [stories]);
 
   function handleDeleteStory(index: number) {
-    remove(index);
-
     if (StoryObject(`storiesAttributes.${index}.id`)) {
       deleteStory(StoryObject(`storiesAttributes.${index}.id`));
     }
+
+    remove(index);
   }
 
   return (
