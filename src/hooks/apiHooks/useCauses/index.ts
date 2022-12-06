@@ -1,6 +1,6 @@
 import { useCallback, useState } from "react";
 import causesApi from "services/api/causesApi";
-import { CreateCause, EditCause } from "types/apiResponses/cause";
+import { CreateCause } from "types/apiResponses/cause";
 import Cause from "types/entities/Cause";
 
 function useCauses() {
@@ -33,7 +33,7 @@ function useCauses() {
     return cause;
   }
 
-  async function updateCause(data: EditCause) {
+  async function updateCause(data: CreateCause) {
     const cause = causesApi.updateCause(data.id, data);
     return cause;
   }
