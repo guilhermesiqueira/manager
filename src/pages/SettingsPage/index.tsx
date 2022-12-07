@@ -55,7 +55,7 @@ function SettingsPage(): JSX.Element {
         <S.Subtitle>{t("details")}</S.Subtitle>
 
         <InfoName>{t("attributes.defaultTicketValue")}</InfoName>
-        <S.InfoValue>{config?.defaultTicketValue}</S.InfoValue>
+        <S.InfoValue>{config?.ticketValue}</S.InfoValue>
 
         <InfoName>{t("attributes.lastUpdated")}</InfoName>
         <S.InfoValue>

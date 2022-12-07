@@ -47,13 +47,18 @@ function CauseItems({ causes, searchTerm }: Props) {
     fetchApiPools();
   }, []);
 
-  const handleBalance = (address: string) => {
-    const pool = pools?.find((p) => p.id === address);
-    if (pool) {
-      return formatFromDecimals(pool.balance).toFixed(2);
-    }
-    return 0;
-  };
+  const handleBalance = useCallback(
+    (address: string) => {
+      const pool = pools?.find((p) => p.id === address);
+      console.log(address, pools);
+      console.log(pool);
+      if (pool) {
+        return formatFromDecimals(pool.balance).toFixed(2);
+      }
+      return 0;
+    },
+    [pools],
+  );
 
   function renderCauses() {
     return (
