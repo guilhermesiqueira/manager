@@ -31,10 +31,7 @@ function EditSettingsPage() {
   const fetchConfig = useCallback(async () => {
     try {
       const config = await getConfig();
-      reset({
-        ...config[0],
-        defaultTicketValue: config[0].ticketValue,
-      });
+      reset(config[0]);
     } catch (e) {
       logError(e);
     }
