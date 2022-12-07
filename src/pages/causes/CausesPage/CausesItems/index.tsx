@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Link } from "react-router-dom";
 import Cause from "types/entities/Cause";
 import infoIcon from "assets/icons/info-icon.svg";
@@ -48,18 +47,13 @@ function CauseItems({ causes, searchTerm }: Props) {
     fetchApiPools();
   }, []);
 
-  const handleBalance = useCallback(
-    (address: string) => {
-      const pool = pools?.find((p) => p.id === address);
-      console.log(address, pools);
-      console.log(pool);
-      if (pool) {
-        return formatFromDecimals(pool.balance).toFixed(2);
-      }
-      return 0;
-    },
-    [pools],
-  );
+  const handleBalance = (address: string) => {
+    const pool = pools?.find((p) => p.id === address);
+    if (pool) {
+      return formatFromDecimals(pool.balance).toFixed(2);
+    }
+    return 0;
+  };
 
   function renderCauses() {
     return (
