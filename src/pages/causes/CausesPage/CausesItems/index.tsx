@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { Link } from "react-router-dom";
 import Cause from "types/entities/Cause";
 import infoIcon from "assets/icons/info-icon.svg";
