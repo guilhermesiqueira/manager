@@ -6,8 +6,8 @@ import CopyableAddress from "components/atomics/CopyableAddress";
 import { useCallback, useEffect, useState } from "react";
 import usePools from "hooks/apiTheGraphHooks/usePools";
 import { logError } from "services/crashReport";
-import { formatFromDecimals } from "lib/web3Helpers/etherFormatters";
 import Pool from "types/apiResponses/pool";
+import moneyFormatter from "lib/moneyFormatter";
 import * as S from "./styles";
 
 type Props = {
@@ -50,7 +50,7 @@ function CauseItems({ causes, searchTerm }: Props) {
   const handleBalance = (address: string) => {
     const pool = pools?.find((p) => p.id === address.toLowerCase());
     if (pool) {
-      return formatFromDecimals(pool.balance).toFixed(2);
+      return moneyFormatter(Number(pool.balance));
     }
     return 0;
   };
