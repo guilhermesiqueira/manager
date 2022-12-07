@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import PersonPayment from "types/entities/PersonPayment";
 import dateFormatter from "lib/dateFormatter";
 import theme from "styles/theme";
@@ -77,7 +78,13 @@ function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
               : purchase?.person?.customer?.email}
           </th>
           <th>{purchase?.offer?.price || "-"}</th>
-          <th>{purchase?.cryptoAmount || "-"}</th>
+          <th>
+            {purchase.paymentMethod === "crypto"
+              ? purchase.amountCents
+                ? purchase.amountCents / 100
+                : "-"
+              : purchase?.cryptoAmount || "-"}
+          </th>
           <th>
             <S.StatusTableCell
               style={{ color: statusColors[purchase?.status] }}
