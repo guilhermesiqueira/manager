@@ -63,6 +63,7 @@ function PurchasesListSection(): JSX.Element {
             <th>{t("attributes.type")}</th>
             <th>{t("attributes.userIdentification")}</th>
             <th>{t("attributes.value")}</th>
+            <th>{t("attributes.usdc")}</th>
             <th>{t("attributes.status")}</th>
           </tr>
         </thead>
