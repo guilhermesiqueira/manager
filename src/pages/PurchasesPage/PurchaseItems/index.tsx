@@ -63,6 +63,13 @@ function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
     });
   }
 
+  function amountUsdc(purchase: PersonPayment) {
+    if (purchase.paymentMethod === "crypto") {
+      return purchase.amountCents ? purchase.amountCents / 100 : "-";
+    }
+    return purchase?.cryptoAmount || "-";
+  }
+
   function renderPurchases() {
     return (
       purchases &&
@@ -76,7 +83,8 @@ function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
               ? purchase?.person?.guest?.walletAddress
               : purchase?.person?.customer?.email}
           </th>
-          <th>{purchase?.offer?.priceCents || "0"}</th>
+          <th>{purchase?.offer?.price || "-"}</th>
+          <th>{amountUsdc(purchase)}</th>
           <th>
             <S.StatusTableCell
               style={{ color: statusColors[purchase?.status] }}

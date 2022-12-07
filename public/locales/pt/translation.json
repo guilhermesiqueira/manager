@@ -75,7 +75,8 @@
       "stripeId": "Stripe ID",
       "type": "Tipo",
       "userIdentification": "Identificação do usuário",
-      "value": "Valor (USDC)",
+      "value": "Valor",
+      "usdc": "USDC",
       "status": "Status da compra"
     },
     "list": {
