@@ -48,7 +48,7 @@ function CauseItems({ causes, searchTerm }: Props) {
   }, []);
 
   const handleBalance = (address: string) => {
-    const pool = pools?.find((p) => p.id === address);
+    const pool = pools?.find((p) => p.id === address.toLowerCase());
     if (pool) {
       return formatFromDecimals(pool.balance).toFixed(2);
     }
