@@ -20,7 +20,6 @@ describe("ribonConfigApi", () => {
     const data = {
       id: "1",
       defaultTicketValue: "100.4",
-      ticketValue: "",
       updatedAt: "",
     };
 
