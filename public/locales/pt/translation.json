@@ -262,9 +262,11 @@
     "title": "Configurações",
     "details": "Detalhes",
     "editButton": "Editar",
+    "inCents": " (em centavos)",
     "attributes": {
       "defaultTicketValue": "Valor do ticket (USDC)",
-      "lastUpdated": "Última modificação"
+      "lastUpdated": "Última modificação",
+      "helperText": "Insira o valor em USDC sem casas decimais (em centavos)"
     },
     "edit": {
       "title": "Editar Configurações",

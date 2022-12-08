@@ -12,6 +12,7 @@ import useRibonConfig from "hooks/apiHooks/useRibonConfig";
 import { RibonConfig } from "types/entities/RibonConfig";
 
 import dateFormatterWithMinutes from "lib/dateFormatterWithMinutes";
+import moneyFormatter from "lib/moneyFormatter";
 import * as S from "./styles";
 
 function SettingsPage(): JSX.Element {
@@ -55,7 +56,13 @@ function SettingsPage(): JSX.Element {
         <S.Subtitle>{t("details")}</S.Subtitle>
 
         <InfoName>{t("attributes.defaultTicketValue")}</InfoName>
-        <S.InfoValue>{config?.ticketValue}</S.InfoValue>
+        <S.InfoValue>
+          {moneyFormatter(Number(config?.defaultTicketValue))}
+        </S.InfoValue>
+        <S.InfoValue>
+          {Number(config?.defaultTicketValue).toFixed(0)}
+          {t("inCents")}
+        </S.InfoValue>
 
         <InfoName>{t("attributes.lastUpdated")}</InfoName>
         <S.InfoValue>

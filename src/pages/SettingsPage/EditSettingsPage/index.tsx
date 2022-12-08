@@ -31,7 +31,10 @@ function EditSettingsPage() {
   const fetchConfig = useCallback(async () => {
     try {
       const config = await getConfig();
-      reset(config[0]);
+      reset({
+        ...config[0],
+        defaultTicketValue: Number(config[0].defaultTicketValue).toFixed(0),
+      });
     } catch (e) {
       logError(e);
     }
@@ -70,6 +73,7 @@ function EditSettingsPage() {
                 required: t("upsert.required"),
               })}
             />
+            <S.HelperText>{t("attributes.helperText")}</S.HelperText>
             {formState?.errors.defaultTicketValue &&
               formState?.errors.defaultTicketValue.type && (
                 <S.Error>
