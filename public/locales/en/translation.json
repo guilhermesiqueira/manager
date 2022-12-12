@@ -249,7 +249,7 @@
         "createdAt": "Created at",
         "updatedAt": "Updated at",
         "impactDescription": "Impact description",
-        "costForOneImpact": "Cost for 1 unit impact",
+        "costForOneImpact": "Cost for 1 unit impact (USDC)",
         "logo": "Logo",
         "cardCause": "Card Cause"
       }
