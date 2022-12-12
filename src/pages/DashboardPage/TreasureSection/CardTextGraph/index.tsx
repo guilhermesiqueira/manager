@@ -61,7 +61,7 @@ function CardTextGraph({
   };
 
   const handleBalance = (address: string) => {
-    const pool: any = pools?.find((p) => p.id === address);
+    const pool: any = pools?.find((p) => p.id === address.toLowerCase());
     if (pool) {
       return moneyFormatter(Number(pool.balance));
     }
