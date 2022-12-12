@@ -12,6 +12,7 @@ import useRibonConfig from "hooks/apiHooks/useRibonConfig";
 import { RibonConfig } from "types/entities/RibonConfig";
 
 import dateFormatterWithMinutes from "lib/dateFormatterWithMinutes";
+import centsFormatter from "lib/centsFormatter";
 import * as S from "./styles";
 
 function SettingsPage(): JSX.Element {
@@ -23,6 +24,8 @@ function SettingsPage(): JSX.Element {
   const [config, setConfig] = useState<RibonConfig>();
 
   const { getConfig } = useRibonConfig();
+
+  const ticketValueInCents = Number(config?.defaultTicketValue).toFixed(0);
 
   const fetchConfig = useCallback(async () => {
     try {
@@ -53,10 +56,12 @@ function SettingsPage(): JSX.Element {
           </Button>
         </Link>
         <S.Subtitle>{t("details")}</S.Subtitle>
-
         <InfoName>{t("attributes.defaultTicketValue")}</InfoName>
-        <S.InfoValue>{config?.defaultTicketValue}</S.InfoValue>
-
+        <S.InfoValue>{centsFormatter(Number(ticketValueInCents))}</S.InfoValue>
+        <S.InfoValue>
+          {ticketValueInCents}
+          {t("inCents")}
+        </S.InfoValue>
         <InfoName>{t("attributes.lastUpdated")}</InfoName>
         <S.InfoValue>
           {dateFormatterWithMinutes(config?.updatedAt ?? "")}

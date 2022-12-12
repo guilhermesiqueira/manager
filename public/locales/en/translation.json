@@ -249,7 +249,7 @@
         "createdAt": "Created at",
         "updatedAt": "Updated at",
         "impactDescription": "Impact description",
-        "costForOneImpact": "Cost for 1 unit impact",
+        "costForOneImpact": "Cost for 1 unit impact (USDC)",
         "logo": "Logo",
         "cardCause": "Card Cause"
       }
@@ -259,9 +259,11 @@
     "title": "Settings",
     "details": "Details",
     "editButton": "Edit",
+    "inCents": " (in cents)",
     "attributes": {
       "defaultTicketValue": "Default ticket value (USDC)",
-      "lastUpdated": "Last updated"
+      "lastUpdated": "Last updated",
+      "helperText": "Insert the value in USDC without decimals (cents)"
     },
     "edit": {
       "title": "Edit Settings",

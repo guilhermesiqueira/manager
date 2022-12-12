@@ -65,6 +65,12 @@ export const Error = styled.span`
   }
 `;
 
+export const HelperText = styled.span`
+  font-size: 12px;
+  margin-top: -24px;
+  color: ${({ theme }) => theme.colors.gray30};
+`;
+
 export const ButtonContainer = styled.div`
   margin: 24px 0;
   display: flex;
