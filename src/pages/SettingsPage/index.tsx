@@ -55,7 +55,7 @@ function SettingsPage(): JSX.Element {
             {t("editButton")}
           </Button>
         </Link>
-        <S.Subtitle>{t("details")}</S.Subtitle>\
+        <S.Subtitle>{t("details")}</S.Subtitle>
         <InfoName>{t("attributes.defaultTicketValue")}</InfoName>
         <S.InfoValue>{centsFormatter(Number(ticketValueInCents))}</S.InfoValue>
         <S.InfoValue>
