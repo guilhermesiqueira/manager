@@ -9,6 +9,7 @@ import {
   Legend,
 } from "chart.js";
 import moneyFormatter from "lib/moneyFormatter";
+import { formatFromDecimals } from "lib/web3Helpers/etherFormatters";
 import Cause from "types/entities/Cause";
 import * as S from "./styles";
 
@@ -63,7 +64,7 @@ function CardTextGraph({
   const handleBalance = (address: string) => {
     const pool: any = pools?.find((p) => p.id === address.toLowerCase());
     if (pool) {
-      return moneyFormatter(Number(pool.balance));
+      return moneyFormatter(formatFromDecimals(Number(pool.balance)));
     }
     return 0;
   };
