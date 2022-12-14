@@ -7,6 +7,8 @@ import { useCallback, useEffect, useState } from "react";
 import usePools from "hooks/apiTheGraphHooks/usePools";
 import { logError } from "services/crashReport";
 import Pool from "types/apiResponses/pool";
+
+import { formatFromDecimals } from "lib/web3Helpers/etherFormatters";
 import moneyFormatter from "lib/moneyFormatter";
 import * as S from "./styles";
 
@@ -50,7 +52,7 @@ function CauseItems({ causes, searchTerm }: Props) {
   const handleBalance = (address: string) => {
     const pool = pools?.find((p) => p.id === address.toLowerCase());
     if (pool) {
-      return moneyFormatter(Number(pool.balance));
+      return moneyFormatter(formatFromDecimals(Number(pool.balance)));
     }
     return 0;
   };
