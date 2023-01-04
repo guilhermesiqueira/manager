@@ -13,7 +13,6 @@ const Template: ComponentStory<typeof CardTextGraph> = function (args: Props) {
 export const Default = Template.bind({});
 
 Default.args = {
-  data: { datasets: [{ data: [10, 20] }] },
   title: "CardTextGraph",
   leftText: "leftText",
   treasureBalance: 10,
