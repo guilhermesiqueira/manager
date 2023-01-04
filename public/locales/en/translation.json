@@ -28,6 +28,7 @@
       "logo": "Integration logo",
       "walletAddress": "Wallet address",
       "integrationAddress": "Integration address",
+      "integrationDashboardAddress": "Integration dashboard address",
       "webhookUrl": "Webhook Url",
       "active": "Active",
       "inactive": "Inactive",
