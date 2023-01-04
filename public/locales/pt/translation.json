@@ -29,6 +29,7 @@
       "inactive": "Inativa",
       "walletAddress": "Endereço da carteira",
       "integrationAddress": "Endereço da integração",
+      "integrationDashboardAddress": "Endereço do dashboard da integração",
       "webhookUrl": "Link do Webhook",
       "ticketAvailability": "Disponibilidade de Ticket",
       "everydayAtMidnight": "Todo dia à meia noite",
