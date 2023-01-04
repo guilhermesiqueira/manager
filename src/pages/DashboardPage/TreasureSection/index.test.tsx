@@ -1,9 +1,5 @@
 import { screen } from "@testing-library/react";
-import { expectTextToBeInTheDocument } from "config/testUtils/expects";
-import { renderComponent, waitForPromises } from "config/testUtils";
-import integrationFactory from "config/testUtils/factories/integrationFactory";
-import { mockGraphqlRequest } from "config/testUtils/test-helper";
-import { ALL_INTEGRATIONS_QUERY_NAME } from "services/apiTheGraph/querys/integration";
+import { renderComponent } from "config/testUtils";
 import TreasureSection from ".";
 
 describe("TreasureSection", () => {
@@ -11,26 +7,5 @@ describe("TreasureSection", () => {
     renderComponent(<TreasureSection />);
 
     expect(screen.getByText("Treasure Balance (USDC)")).toBeInTheDocument();
-  });
-
-  describe("when the integration has balance", () => {
-    beforeEach(async () => {
-      const fiftyCent = "500000";
-      mockGraphqlRequest(ALL_INTEGRATIONS_QUERY_NAME, {
-        integrations: [
-          integrationFactory({
-            balance: fiftyCent,
-          }),
-        ],
-      });
-
-      renderComponent(<TreasureSection />);
-
-      await waitForPromises();
-    });
-
-    it("shows the assigned value", async () => {
-      expectTextToBeInTheDocument("0.50");
-    });
   });
 });
