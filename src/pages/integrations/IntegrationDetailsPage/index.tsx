@@ -59,6 +59,7 @@ function IntegrationDetailsPage(): JSX.Element {
     name,
     logo,
     integrationWallet,
+    integrationDashboardAddress,
     integrationAddress,
     ticketAvailabilityInMinutes,
     webhookUrl,
@@ -126,6 +127,9 @@ function IntegrationDetailsPage(): JSX.Element {
 
           <InfoName>{t("attributes.integrationAddress")}</InfoName>
           <CopyableAddress text={integrationAddress} />
+
+          <InfoName>{t("attributes.integrationDashboardAddress")}</InfoName>
+          <CopyableAddress text={integrationDashboardAddress} />
 
           <InfoName>{t("attributes.webhookUrl")}</InfoName>
           <CopyableAddress text={webhookUrl || "-"} />

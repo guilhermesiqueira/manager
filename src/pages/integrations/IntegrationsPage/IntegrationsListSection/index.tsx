@@ -48,6 +48,9 @@ function IntegrationsListSection(): JSX.Element {
           <CopyableAddress text={item.integrationAddress} />
         </th>
         <th>
+          <CopyableAddress text={item.integrationDashboardAddress} />
+        </th>
+        <th>
           <S.StatusTableCell style={{ color: statusColors[item.status] }}>
             {item.status}
           </S.StatusTableCell>
@@ -76,6 +79,7 @@ function IntegrationsListSection(): JSX.Element {
             <th>{t("name")}</th>
             <th>{t("walletAddress")}</th>
             <th>{t("integrationAddress")}</th>
+            <th>{t("integrationDashboardAddress")}</th>
             <th>{t("status")}</th>
           </tr>
         </thead>
