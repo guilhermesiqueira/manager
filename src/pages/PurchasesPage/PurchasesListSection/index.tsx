@@ -34,11 +34,11 @@ function PurchasesListSection(): JSX.Element {
     setSelectedStatus({ ...selectedStatus, [value]: !selectedStatus[value] });
   };
 
-  const filterPurchasesByStatus = (nonFilteredPurchases: PersonPayment[]) => 
-    (nonFilteredPurchases.filter((purchaseData: PersonPayment) => {
-        if (selectedStatus[purchaseData.status]) return purchaseData; 
-        return null;
-      })
+  const filterPurchasesByStatus = (nonFilteredPurchases: PersonPayment[]) =>
+  (nonFilteredPurchases.filter((purchaseData: PersonPayment) => {
+    if (selectedStatus[purchaseData.status]) return purchaseData;
+    return null;
+  })
   );
 
   const fetchPurchases = useCallback(async () => {
@@ -74,17 +74,17 @@ function PurchasesListSection(): JSX.Element {
       <S.CheckboxContainer>
         {Object.keys(defaultStatusSelection).map((status: any) => (
           <>
-            <S.Checkbox 
-                key={status}
-                name="status"
-                type="checkbox"
-                value={status}
-                onChange={handleStatusChange}
-                checked={selectedStatus[status]}
-                />
-                <S.Span>{t(`attributes.${status}`)}</S.Span>
-            </>
-          )
+            <S.Checkbox
+              key={status}
+              name="status"
+              type="checkbox"
+              value={status}
+              onChange={handleStatusChange}
+              checked={selectedStatus[status]}
+            />
+            <S.Span>{t(`attributes.${status}`)}</S.Span>
+          </>
+        )
         )}
       </S.CheckboxContainer>
       <S.SearchBar
