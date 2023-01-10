@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import theme from "styles/theme";
 import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
 import { useCallback, useEffect, useState } from "react";
-import { formatFromWei } from "lib/web3Helpers/etherFormatters";
+import { formatFromDecimals } from "lib/web3Helpers/etherFormatters";
 import useApiIntegrations from "hooks/apiHooks/useApiIntegrations";
 import { logError } from "services/crashReport";
 import { useProvider } from "hooks/useProvider";
@@ -30,7 +30,9 @@ function WalletCard(): JSX.Element {
       if (walletAddress) {
         const chainIntegration = await getIntegration(walletAddress);
         setIntegrationBalance(
-          formatFromWei(chainIntegration?.integrations[0].balance),
+          formatFromDecimals(
+            chainIntegration?.integrations[0].balance,
+          ).toString(),
         );
         const matic = await provider?.getBalance(walletAddress);
         if (matic) {
