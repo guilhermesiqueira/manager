@@ -6,8 +6,19 @@ import PersonPayment from "types/entities/PersonPayment";
 import PurchaseItems from "../PurchaseItems";
 import * as S from "./styles";
 
+interface StatusObject {
+  [key: string]: boolean;
+}
+
 function PurchasesListSection(): JSX.Element {
   const [purchases, setPurchases] = useState<PersonPayment[]>([]);
+  const defaultStatusSelection = {
+    "processing": true,
+    "refunded": true,
+    "paid": true,
+    "failed": true
+  }
+  const [selectedStatus, setSelectedStatus] = useState<StatusObject>(defaultStatusSelection);
   const { getPersonPayments } = usePersonPayments();
   const { t } = useTranslation("translation", {
     keyPrefix: "purchases",
@@ -17,6 +28,19 @@ function PurchasesListSection(): JSX.Element {
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 10;
   const [searchTerm, setSearchTerm] = useState("");
+
+  const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setSelectedStatus({ ...selectedStatus, [value]: !selectedStatus[value] });
+  };
+
+  const filterPurchasesByStatus = (nonFilteredPurchases: PersonPayment[]) => 
+    (nonFilteredPurchases.filter((purchaseData: PersonPayment) => {
+      console.log(purchaseData.status)
+        if (selectedStatus[purchaseData.status]) return purchaseData; 
+        return null;
+      })
+  );
 
   const fetchPurchases = useCallback(async () => {
     try {
@@ -38,7 +62,7 @@ function PurchasesListSection(): JSX.Element {
     setCurrentPurchases(allItems);
 
     setPageCount(Math.ceil(purchases.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage, purchases]);
+  }, [itemOffset, itemsPerPage, purchases, selectedStatus]);
 
   const handlePageClick = (event: any) => {
     const newOffset = (event.selected * itemsPerPage) % purchases.length;
@@ -48,6 +72,22 @@ function PurchasesListSection(): JSX.Element {
 
   return (
     <S.Container>
+      <S.CheckboxContainer>
+        {Object.keys(defaultStatusSelection).map((status: any) => (
+          <>
+            <S.Checkbox 
+                key={status}
+                name="status"
+                type="checkbox"
+                value={status}
+                onChange={handleStatusChange}
+                checked={selectedStatus[status]}
+                />
+                <S.Span>{status}</S.Span>
+            </>
+          )
+        )}
+      </S.CheckboxContainer>
       <S.SearchBar
         placeholder={t("list.search")}
         onChange={(event) => {
@@ -68,7 +108,7 @@ function PurchasesListSection(): JSX.Element {
           </tr>
         </thead>
         <PurchaseItems
-          purchases={currentPurchases}
+          purchases={filterPurchasesByStatus(currentPurchases)}
           fetchPurchases={fetchPurchases}
           searchTerm={searchTerm}
         />
