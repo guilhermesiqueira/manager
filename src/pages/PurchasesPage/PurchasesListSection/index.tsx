@@ -36,7 +36,6 @@ function PurchasesListSection(): JSX.Element {
 
   const filterPurchasesByStatus = (nonFilteredPurchases: PersonPayment[]) => 
     (nonFilteredPurchases.filter((purchaseData: PersonPayment) => {
-      console.log(purchaseData.status)
         if (selectedStatus[purchaseData.status]) return purchaseData; 
         return null;
       })
@@ -83,7 +82,7 @@ function PurchasesListSection(): JSX.Element {
                 onChange={handleStatusChange}
                 checked={selectedStatus[status]}
                 />
-                <S.Span>{status}</S.Span>
+                <S.Span>{t(`attributes.${status}`)}</S.Span>
             </>
           )
         )}
