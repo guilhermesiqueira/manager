@@ -13,12 +13,14 @@ interface StatusObject {
 function PurchasesListSection(): JSX.Element {
   const [purchases, setPurchases] = useState<PersonPayment[]>([]);
   const defaultStatusSelection = {
-    "processing": true,
-    "refunded": true,
-    "paid": true,
-    "failed": true
-  }
-  const [selectedStatus, setSelectedStatus] = useState<StatusObject>(defaultStatusSelection);
+    processing: true,
+    refunded: true,
+    paid: true,
+    failed: true,
+  };
+  const [selectedStatus, setSelectedStatus] = useState<StatusObject>(
+    defaultStatusSelection,
+  );
   const { getPersonPayments } = usePersonPayments();
   const { t } = useTranslation("translation", {
     keyPrefix: "purchases",
@@ -35,11 +37,10 @@ function PurchasesListSection(): JSX.Element {
   };
 
   const filterPurchasesByStatus = (nonFilteredPurchases: PersonPayment[]) =>
-  (nonFilteredPurchases.filter((purchaseData: PersonPayment) => {
-    if (selectedStatus[purchaseData.status]) return purchaseData;
-    return null;
-  })
-  );
+    nonFilteredPurchases.filter((purchaseData: PersonPayment) => {
+      if (selectedStatus[purchaseData.status]) return purchaseData;
+      return null;
+    });
 
   const fetchPurchases = useCallback(async () => {
     try {
@@ -84,8 +85,7 @@ function PurchasesListSection(): JSX.Element {
             />
             <S.Span>{t(`attributes.${status}`)}</S.Span>
           </>
-        )
-        )}
+        ))}
       </S.CheckboxContainer>
       <S.SearchBar
         placeholder={t("list.search")}
