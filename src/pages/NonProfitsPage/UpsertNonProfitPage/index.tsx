@@ -168,6 +168,15 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     }
   };
 
+  const handleCauseCoverImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const coverImage = e.target.files![0];
+
+    setFile(URL.createObjectURL(coverImage));
+    if (NonProfitObject()) {
+      setValue("cause.coverImage", coverImage as File);
+    }
+  };
+
   const fetchCauses = useCallback(async () => {
     try {
       const allCauses = await getCauses();
@@ -290,8 +299,8 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               <S.ItemBox>
                 <InfoName>{t("attributes.causeCardImage")}</InfoName>
                 <FileUpload
-                  onChange={handleLogoChange}
-                  logo={NonProfitObject().logo}
+                  onChange={handleCauseCoverImageChange}
+                  logo={NonProfitObject().cause?.coverImage}
                   value={file}
                 />
                 <S.ImageRecommendation>
