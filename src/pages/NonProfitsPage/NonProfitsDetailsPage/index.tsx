@@ -112,7 +112,7 @@ function NonProfitsDetailsPage(): JSX.Element {
             <S.RightSection>
               <S.ItemBox>
                 <InfoName>{t("details.attributes.cardCause")}</InfoName>
-                <S.CardImage src={nonProfit?.causeCardImage} />
+                <S.CardImage src={nonProfit?.cause.coverImage} />
               </S.ItemBox>
             </S.RightSection>
           </S.Container>
