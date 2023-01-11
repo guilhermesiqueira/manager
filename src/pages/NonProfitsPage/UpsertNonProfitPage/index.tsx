@@ -168,7 +168,9 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     }
   };
 
-  const handleCauseCoverImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleCauseCoverImageChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     const coverImage = e.target.files![0];
 
     setFile(URL.createObjectURL(coverImage));
