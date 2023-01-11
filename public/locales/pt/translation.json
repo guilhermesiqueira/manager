@@ -78,7 +78,11 @@
       "userIdentification": "Identificação do usuário",
       "value": "Valor",
       "usdc": "USDC",
-      "status": "Status da compra"
+      "status": "Status da compra",
+      "paid": "Pago",
+      "failed": "Falhou",
+      "processing": "Processando",
+      "refunded": "Reembolsado"
     },
     "list": {
       "search": "Procurar por email...",

@@ -82,7 +82,11 @@
       "userIdentification": "User identification",
       "value": "Value",
       "usdc": "USDC",
-      "status": "Purchase status"
+      "status": "Purchase status",
+      "paid": "Paid",
+      "failed": "Failed",
+      "processing": "Processing",
+      "refunded": "Refunded"
     },
     "list": {
       "title": "Purchases List",

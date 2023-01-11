@@ -95,3 +95,28 @@ export const SearchBar = styled.input`
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.gray10};
 `;
+
+export const CheckboxContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const Checkbox = styled.input`
+  accent-color: ${({ theme }) => theme.colors.green30};
+  margin: 5px 7px 30px 4px;
+  display: inline-block;
+  vertical-align: middle;
+  transform: scale(1.5);
+`;
+
+export const Span = styled.span`
+  margin: 5px 18px 30px 4px;
+  display: inline-block;
+  vertical-align: middle;
+  color: ${({ color, theme }) => color || theme.colors.darkGray};
+
+  ::first-letter {
+    text-transform: uppercase;
+  }
+`;
