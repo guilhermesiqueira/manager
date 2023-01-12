@@ -1,3 +1,4 @@
+import { CreateCause } from "./cause";
 import { CreateStory } from "./story";
 
 export interface CreateNonProfit {
@@ -10,4 +11,5 @@ export interface CreateNonProfit {
   causeCardImage?: any;
   causeId: number;
   storiesAttributes?: CreateStory[];
+  cause?: CreateCause;
 }

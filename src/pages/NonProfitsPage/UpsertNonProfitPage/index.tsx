@@ -36,7 +36,8 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const { gray10, gray40, gray30, red30 } = theme.colors;
   const [statusCheckbox, setStatusCheckbox] = useState(true);
   const [stories, setStories] = useState<CreateStory[]>([]);
-  const [file, setFile] = useState<string>("");
+  const [logoFile, setLogoFile] = useState<string>("");
+  const [coverImageFile, setCoverImageFile] = useState<string>("");
   const navigate = useNavigate();
   const { id } = useParams();
   const { createNonProfit, getNonProfit, updateNonProfit } = useNonProfits();
@@ -162,9 +163,20 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const handleLogoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const logo = e.target.files![0];
 
-    setFile(URL.createObjectURL(logo));
+    setLogoFile(URL.createObjectURL(logo));
     if (NonProfitObject()) {
       setValue("logo", logo as File);
+    }
+  };
+
+  const handleCauseCoverImageChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const coverImage = e.target.files![0];
+
+    setCoverImageFile(URL.createObjectURL(coverImage));
+    if (NonProfitObject()) {
+      setValue("cause.coverImage", coverImage as File);
     }
   };
 
@@ -280,7 +292,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                 <FileUpload
                   onChange={handleLogoChange}
                   logo={NonProfitObject().logo}
-                  value={file}
+                  value={logoFile}
                 />
                 <S.ImageRecommendation>
                   {t("attributes.imageRecommendation", { size: "300x300" })}
@@ -290,9 +302,9 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               <S.ItemBox>
                 <InfoName>{t("attributes.causeCardImage")}</InfoName>
                 <FileUpload
-                  onChange={handleLogoChange}
-                  logo={NonProfitObject().logo}
-                  value={file}
+                  onChange={handleCauseCoverImageChange}
+                  logo={NonProfitObject().cause?.coverImage}
+                  value={coverImageFile}
                 />
                 <S.ImageRecommendation>
                   {t("attributes.imageRecommendation", { size: "600x560" })}

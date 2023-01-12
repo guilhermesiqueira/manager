@@ -6,4 +6,5 @@ export default interface Cause {
   name: string;
   pools: Pool[];
   nonProfits: NonProfit[];
+  coverImage?: string;
 }
