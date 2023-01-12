@@ -129,7 +129,9 @@ function CardTextGraph({
       <S.MainText>{title}</S.MainText>
       <S.MainValue>{treasureBalance}</S.MainValue>
       <S.TreasureTitle>{leftText}</S.TreasureTitle>
-      <S.Graph data={renderGraph()} options={options} />
+      {poolsBalance.length > 0 && (
+        <S.Graph data={renderGraph()} options={options} />
+      )}
       <S.CausesSection>
         {causes.map((cause: any) => (
           <S.CauseCard key={cause.id}>
