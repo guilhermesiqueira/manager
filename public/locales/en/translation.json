@@ -256,6 +256,7 @@
         "impactDescription": "Impact description",
         "costForOneImpact": "Cost for 1 unit impact (USDC)",
         "logo": "Logo",
+        "backgroundImage": "Support Image",
         "cardCause": "Card Cause"
       }
     }
