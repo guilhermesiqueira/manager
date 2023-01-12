@@ -324,7 +324,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               </S.ItemBox>
 
               <S.ItemBox>
-              <InfoName>{t("attributes.backgroundImage")}</InfoName>
+                <InfoName>{t("attributes.backgroundImage")}</InfoName>
                 <FileUpload
                   onChange={handleBackgroundImageChange}
                   logo={NonProfitObject().backgroundImage}
