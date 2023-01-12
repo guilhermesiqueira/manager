@@ -193,6 +193,7 @@
       "token": "Token",
       "address": "Endereço da carteira",
       "logo": "Logo",
+      "backgroundImage": "Support Image",
       "impactDescription": "Descrição do Impacto",
       "cause": "Causa",
       "causeCardImage": "Cause Card",

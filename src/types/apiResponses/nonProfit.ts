@@ -8,6 +8,7 @@ export interface CreateNonProfit {
   status: string;
   impactDescription: string;
   logo?: any;
+  backgroundImage?: any;
   causeCardImage?: any;
   causeId: number;
   storiesAttributes?: CreateStory[];
