@@ -11,6 +11,7 @@ export default interface NonProfit {
   status: string;
   logo?: any;
   causeCardImage?: any;
+  backgroundImage?: any;
   cause: Cause;
   stories: Story[];
   storiesAttributes: CreateStory[];

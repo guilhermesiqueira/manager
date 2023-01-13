@@ -193,6 +193,7 @@
       "token": "Token",
       "address": "Endereço da carteira",
       "logo": "Logo",
+      "backgroundImage": "Support Image",
       "impactDescription": "Descrição do Impacto",
       "cause": "Causa",
       "causeCardImage": "Cause Card",
@@ -256,6 +257,7 @@
         "impactDescription": "Descrição do impacto",
         "costForOneImpact": "Custo por 1 unidade de impacto (USDC)",
         "logo": "Logo",
+        "backgroundImage": "Support Image",
         "cardCause": "Card da Causa"
       }
     }
