@@ -96,13 +96,13 @@ function CausesDetailsPage(): JSX.Element {
           ))}
 
           <S.ItemBox>
-            <InfoName>{t("details.coverImage")}</InfoName>
-            <S.CardImage src={cause?.coverImage} />
+            <InfoName>{t("details.mainImage")}</InfoName>
+            <S.CardImage src={cause?.mainImage} />
           </S.ItemBox>
 
           <S.ItemBox>
-            <InfoName>{t("details.mainImage")}</InfoName>
-            <S.CardImage src={cause?.mainImage} />
+            <InfoName>{t("details.coverImage")}</InfoName>
+            <S.CardImage src={cause?.coverImage} />
           </S.ItemBox>
         </S.RightSection>
       </S.Container>
