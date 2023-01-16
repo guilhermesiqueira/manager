@@ -38,6 +38,18 @@ export const LeftSection = styled.div`
   flex-direction: column;
 `;
 
+export const ItemBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const CardImage = styled.img`
+  width: 156px;
+  height: 148px;
+  border-radius: 8px;
+  object-fit: cover;
+`;
+
 export const CausesCardContainer = styled.div``;
 
 export const Subtitle = styled.h4``;

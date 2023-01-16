@@ -94,6 +94,16 @@ function CausesDetailsPage(): JSX.Element {
               <S.ArrowOutward src={ArrowOutward} alt="project link" />
             </S.CardProject>
           ))}
+
+          <S.ItemBox>
+            <InfoName>{t("details.coverImage")}</InfoName>
+            <S.CardImage src={cause?.coverImage} />
+          </S.ItemBox>
+
+          <S.ItemBox>
+            <InfoName>{t("details.mainImage")}</InfoName>
+            <S.CardImage src={cause?.mainImage} />
+          </S.ItemBox>
         </S.RightSection>
       </S.Container>
     </S.Content>

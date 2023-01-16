@@ -119,7 +119,9 @@
     "details": {
       "title": "Cause details",
       "edit": "Edit",
-      "linkedProjects": "Linked projects"
+      "linkedProjects": "Linked projects",
+      "coverImage": "Cover image",
+      "mainImage": "Main image"
     },
     "upsert": {
       "create": {
