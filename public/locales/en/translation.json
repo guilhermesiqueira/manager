@@ -195,6 +195,7 @@
       "status": "Status",
       "address": "Wallet address",
       "logo": "Logo",
+      "backgroundImage": "Support Image",
       "impactDescription": "Impact Description",
       "imagesSection": "Images",
       "imageRecommendation": "Recommended size:\n{{ size }}",
@@ -256,6 +257,7 @@
         "impactDescription": "Impact description",
         "costForOneImpact": "Cost for 1 unit impact (USDC)",
         "logo": "Logo",
+        "backgroundImage": "Support Image",
         "cardCause": "Card Cause"
       }
     }

@@ -38,6 +38,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const [stories, setStories] = useState<CreateStory[]>([]);
   const [logoFile, setLogoFile] = useState<string>("");
   const [coverImageFile, setCoverImageFile] = useState<string>("");
+  const [backgroundImageFile, setBackgroundImageFile] = useState<string>("");
   const navigate = useNavigate();
   const { id } = useParams();
   const { createNonProfit, getNonProfit, updateNonProfit } = useNonProfits();
@@ -180,6 +181,17 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     }
   };
 
+  const handleBackgroundImageChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const backgroundImage = e.target.files![0];
+
+    setBackgroundImageFile(URL.createObjectURL(backgroundImage));
+    if (NonProfitObject()) {
+      setValue("backgroundImage", backgroundImage as File);
+    }
+  };
+
   const fetchCauses = useCallback(async () => {
     try {
       const allCauses = await getCauses();
@@ -308,6 +320,18 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                 />
                 <S.ImageRecommendation>
                   {t("attributes.imageRecommendation", { size: "600x560" })}
+                </S.ImageRecommendation>
+              </S.ItemBox>
+
+              <S.ItemBox>
+                <InfoName>{t("attributes.backgroundImage")}</InfoName>
+                <FileUpload
+                  onChange={handleBackgroundImageChange}
+                  logo={NonProfitObject().backgroundImage}
+                  value={backgroundImageFile}
+                />
+                <S.ImageRecommendation>
+                  {t("attributes.imageRecommendation", { size: "300x300" })}
                 </S.ImageRecommendation>
               </S.ItemBox>
             </S.DoubleItemSection>
