@@ -11,6 +11,7 @@ export const networks = [
     currencyName: "Matic",
     blockExplorerUrls: "https://polygonscan.com/",
     defaultPoolAddress: "0x1E7aF4A35E33E8CfA97e12237509623a8037632C",
+    defaultIntegrationHolding: "0x9033d2afa81498762b57c6220208c4d7e40274b6",
   },
   {
     chainName: "Mumbai Testnet",
@@ -24,6 +25,7 @@ export const networks = [
     currencyName: "Matic",
     blockExplorerUrls: "https://mumbai.polygonscan.com/",
     defaultPoolAddress: "0xDE5dD6864A8aE4e5D93E24e24Fee9D42320753B6",
+    defaultIntegrationHolding: "0x6e060041d62fdd76cf27c582f62983b864878e8f",
   },
   {
     chainName: "Localhost 8545",
@@ -36,5 +38,6 @@ export const networks = [
     currencyName: "Ether",
     blockExplorerUrls: "http://localhost:8545",
     defaultPoolAddress: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    defaultIntegrationHolding: "",
   },
 ];
