@@ -185,8 +185,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
 
       upload.create((error: Error, blob: any) => {
         if (error) {
-          // eslint-disable-next-line
-          console.log(error);
+          logError(error);
           setLoading(false);
         } else {
           setValue(attribute, blob.signed_id);
@@ -194,8 +193,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
         }
       });
     } catch (e) {
-      // eslint-disable-next-line
-      console.log(e);
+      logError(e);
       setLoading(false);
     }
   };
