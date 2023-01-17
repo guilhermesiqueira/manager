@@ -16,6 +16,7 @@ import Dropdown from "components/atomics/Dropdown";
 import useNonProfits from "hooks/apiHooks/useNonProfits";
 import { CreateNonProfit } from "types/apiResponses/nonProfit";
 import { CreateStory } from "types/apiResponses/story";
+import { useUploadFile } from "hooks/apiHooks/useUploadFile";
 import StoriesForm from "./StoriesForm";
 import * as S from "./styles";
 
@@ -37,7 +38,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const [statusCheckbox, setStatusCheckbox] = useState(true);
   const [stories, setStories] = useState<CreateStory[]>([]);
   const [logoFile, setLogoFile] = useState<string>("");
-  const [coverImageFile, setCoverImageFile] = useState<string>("");
+  const [mainImageFile, setMainImageFile] = useState<string>("");
   const [backgroundImageFile, setBackgroundImageFile] = useState<string>("");
   const navigate = useNavigate();
   const { id } = useParams();
@@ -91,10 +92,23 @@ function UpsertNonProfitPage({ isEdit }: Props) {
 
       return newStories;
     }
+    function nonProfitUpdate() {
+      const nonProfit = NonProfitObject();
+      if (NonProfitObject().logo?.includes("http")) {
+        delete nonProfit.logo;
+      }
+      if (NonProfitObject().backgroundImage?.includes("http")) {
+        delete nonProfit.backgroundImage;
+      }
+      if (NonProfitObject().mainImage?.includes("http")) {
+        delete nonProfit.mainImage;
+      }
+      return nonProfit;
+    }
 
     if (NonProfitObject()) {
       const nonProfitObject = {
-        ...NonProfitObject(),
+        ...nonProfitUpdate(),
         storiesAttributes: storyObject(),
       };
 
@@ -161,24 +175,43 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     setStatusCheckbox(!statusCheckbox);
   };
 
+  const handleUploadImage = (
+    image: File,
+    attribute: "logo" | "backgroundImage" | "mainImage",
+  ) => {
+    try {
+      setLoading(true);
+      const upload = useUploadFile(image);
+
+      upload.create((error: Error, blob: any) => {
+        if (error) {
+          // eslint-disable-next-line
+          console.log(error);
+          setLoading(false);
+        } else {
+          setValue(attribute, blob.signed_id);
+          setLoading(false);
+        }
+      });
+    } catch (e) {
+      // eslint-disable-next-line
+      console.log(e);
+      setLoading(false);
+    }
+  };
+
   const handleLogoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const logo = e.target.files![0];
 
     setLogoFile(URL.createObjectURL(logo));
-    if (NonProfitObject()) {
-      setValue("logo", logo as File);
-    }
+    handleUploadImage(logo, "logo");
   };
 
-  const handleCauseCoverImageChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const coverImage = e.target.files![0];
+  const handleMainImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const mainImage = e.target.files![0];
 
-    setCoverImageFile(URL.createObjectURL(coverImage));
-    if (NonProfitObject()) {
-      setValue("cause.coverImage", coverImage as File);
-    }
+    setMainImageFile(URL.createObjectURL(mainImage));
+    handleUploadImage(mainImage, "mainImage");
   };
 
   const handleBackgroundImageChange = (
@@ -187,9 +220,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     const backgroundImage = e.target.files![0];
 
     setBackgroundImageFile(URL.createObjectURL(backgroundImage));
-    if (NonProfitObject()) {
-      setValue("backgroundImage", backgroundImage as File);
-    }
+    handleUploadImage(backgroundImage, "backgroundImage");
   };
 
   const fetchCauses = useCallback(async () => {
@@ -314,9 +345,9 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               <S.ItemBox>
                 <InfoName>{t("attributes.causeCardImage")}</InfoName>
                 <FileUpload
-                  onChange={handleCauseCoverImageChange}
-                  logo={NonProfitObject().cause?.coverImage}
-                  value={coverImageFile}
+                  onChange={handleMainImageChange}
+                  logo={NonProfitObject().mainImage}
+                  value={mainImageFile}
                 />
                 <S.ImageRecommendation>
                   {t("attributes.imageRecommendation", { size: "600x560" })}
