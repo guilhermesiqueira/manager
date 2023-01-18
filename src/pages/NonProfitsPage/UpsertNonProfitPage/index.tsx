@@ -132,10 +132,8 @@ function UpsertNonProfitPage({ isEdit }: Props) {
       const nonProfitObject = {
         ...nonProfitUpdate(),
         storiesAttributes: storyObject(),
-        nonProfitImpactsAttributes: ImpactObject(),
+        nonProfitImpactsAttributes: [ImpactObject()],
       };
-
-      console.log(ImpactObject());
 
       try {
         if (isEdit) {
