@@ -16,8 +16,10 @@ import Dropdown from "components/atomics/Dropdown";
 import useNonProfits from "hooks/apiHooks/useNonProfits";
 import { CreateNonProfit } from "types/apiResponses/nonProfit";
 import { CreateStory } from "types/apiResponses/story";
+import { NonProfitImpact } from "types/entities/NonProfitImpact";
 import StoriesForm from "./StoriesForm";
 import * as S from "./styles";
+import ImpactsForm from "./ImpactForm";
 
 export type Props = {
   isEdit?: boolean;
@@ -31,6 +33,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const [modalOpen, setModalOpen] = useState(false);
   const [causes, setCauses] = useState<Cause[]>([]);
   const [currentCauseId, setCurrentCauseId] = useState<number>(1);
+  const [currentUnit, setCurrentUnit] = useState<string>("");
   const { getCauses } = useCauses();
   const [loading, setLoading] = useState(false);
   const { gray10, gray40, gray30, red30 } = theme.colors;
@@ -61,14 +64,33 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     control: controlStory,
   } = useForm<CreateStory[]>({ mode: "onChange", reValidateMode: "onChange" });
 
+  const {
+    register: registerImpact,
+    reset: resetImpact,
+    setValue: setValueImpact,
+    formState: formStateImpact,
+    getValues: ImpactObject,
+  } = useForm<NonProfitImpact>({
+    mode: "onChange",
+    reValidateMode: "onChange",
+  });
+
   const toast = useToast();
 
   const fetchNonProfit = useCallback(async () => {
     try {
       const nonProfit = await getNonProfit(id);
       reset(nonProfit);
+      resetImpact(
+        nonProfit.nonProfitImpacts![nonProfit.nonProfitImpacts!.length - 1],
+      );
+
       setStories(nonProfit.stories);
       setCurrentCauseId(nonProfit.cause?.id);
+      setCurrentUnit(
+        nonProfit.nonProfitImpacts![nonProfit.nonProfitImpacts!.length - 1]
+          .measurementUnit,
+      );
     } catch (e) {
       logError(e);
     }
@@ -91,12 +113,14 @@ function UpsertNonProfitPage({ isEdit }: Props) {
 
       return newStories;
     }
-
     if (NonProfitObject()) {
       const nonProfitObject = {
         ...NonProfitObject(),
         storiesAttributes: storyObject(),
+        nonProfitImpactsAttributes: ImpactObject(),
       };
+
+      console.log(ImpactObject());
 
       try {
         if (isEdit) {
@@ -146,7 +170,6 @@ function UpsertNonProfitPage({ isEdit }: Props) {
         name: "New NonProfit",
         walletAddress: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
         status: "active",
-        impactDescription: "Impact Description",
         causeId: 1,
       };
       reset(newNonProfit);
@@ -257,33 +280,15 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                 />
               </S.ItemBox>
             </S.DoubleItemSection>
+            <S.Subtitle>{t("upsert.impacts")}</S.Subtitle>
+            <ImpactsForm
+              registerImpact={registerImpact}
+              setCurrentUnit={setCurrentUnit}
+              currentUnit={currentUnit}
+              formStateImpact={formStateImpact}
+              setValueImpact={setValueImpact}
+            />
 
-            <S.DoubleItemSection>
-              <S.ItemBox>
-                <InfoName hasTranslation>
-                  {t("attributes.impactDescription")}
-                </InfoName>
-                <S.TextInput
-                  {...register("impactDescription", {
-                    required: t("upsert.required"),
-                  })}
-                />
-                {formState?.errors.name && formState?.errors.name.type && (
-                  <S.Error>{formState?.errors.name.message}</S.Error>
-                )}
-              </S.ItemBox>
-              <S.ItemBox>
-                <InfoName>{t("attributes.address")}</InfoName>
-                <S.TextInput
-                  {...register("walletAddress", {
-                    required: t("upsert.required"),
-                  })}
-                />
-                {formState?.errors.name && formState?.errors.name.type && (
-                  <S.Error>{formState?.errors.name.message}</S.Error>
-                )}
-              </S.ItemBox>
-            </S.DoubleItemSection>
             <StoriesForm
               registerStory={registerStory}
               StoryObject={StoryObject}

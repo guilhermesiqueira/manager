@@ -195,6 +195,9 @@
       "logo": "Logo",
       "backgroundImage": "Support Image",
       "impactDescription": "Descrição do Impacto",
+      "donorRecipients": "Beneficiários",
+      "costForOneImpact": "Cost to 1 impact unit (USDC)",
+      "unit": "Unit",
       "cause": "Causa",
       "causeCardImage": "Cause Card",
       "imageRecommendation": "Tamanho recomendado:`\n`{{ size }}",
@@ -240,6 +243,17 @@
           "body": "After confirmed, this action will create a Story.",
           "confirmButton": "Confirm",
           "cancelButton": "Cancel"
+        }
+      },
+      "impactsForm": {
+        "attributes": {
+          "impactDescription": "Impact Description",
+          "donorRecipients": "Donor Recipients",
+          "costForOneImpact": "Cost to 1 impact unit (USDC)",
+          "unit": "Unit",
+          "quantityWithoutDecimals": "Quantidade sem decimais",
+          "daysMonthsAndYears": "Dias, meses e anos",
+          "impactInfo": "Enter singular then the plural separated by comma for impact description and donor recipients. When the unit is years, months and days, repeat the impact description without typing the unit."
         }
       }
     },

@@ -6,7 +6,6 @@ export interface CreateNonProfit {
   name: string;
   walletAddress: string;
   status: string;
-  impactDescription: string;
   logo?: any;
   backgroundImage?: any;
   causeCardImage?: any;

@@ -197,6 +197,9 @@
       "logo": "Logo",
       "backgroundImage": "Support Image",
       "impactDescription": "Impact Description",
+      "donorRecipients": "Donor Recipients",
+      "costForOneImpact": "Cost to 1 impact unit (USDC)",
+      "unit": "Unit",
       "imagesSection": "Images",
       "imageRecommendation": "Recommended size:\n{{ size }}",
       "cause": "Cause",
@@ -212,6 +215,7 @@
     "upsert": {
       "activityStatus": "Activity status",
       "details": "Details",
+      "impacts": "Impacts",
       "create": {
         "title": "Add New NonProfit",
         "save": "Save",
@@ -242,6 +246,17 @@
           "confirmButton": "Confirm",
           "cancelButton": "Cancel"
         }
+      },
+      "impactsForm": {
+        "attributes": {
+          "impactDescription": "Impact Description",
+          "donorRecipients": "Donor Recipients",
+          "costForOneImpact": "Cost to 1 impact unit (USDC)",
+          "unit": "Unit",
+          "quantityWithoutDecimals": "Quantity without decimals",
+          "daysMonthsAndYears": "Days, months and years",
+          "impactInfo": "Enter singular then the plural separated by comma for impact description and donor recipients. When the unit is years, months and days, repeat the impact description without typing the unit."
+        }
       }
     },
     "details": {
@@ -255,6 +270,7 @@
         "createdAt": "Created at",
         "updatedAt": "Updated at",
         "impactDescription": "Impact description",
+        "donorRecipients": "Donor recipients",
         "costForOneImpact": "Cost for 1 unit impact (USDC)",
         "logo": "Logo",
         "backgroundImage": "Support Image",
