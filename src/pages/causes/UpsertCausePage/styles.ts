@@ -75,3 +75,16 @@ export const RightSection = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+export const ImageRecommendation = styled.h6`
+  font-weight: 400;
+  font-size: 12px;
+  white-space: pre-line;
+  color: ${({ theme }) => theme.colors.gray30};
+`;
+
+export const ItemBox = styled.div`
+  margin-right: 16px;
+  display: flex;
+  flex-direction: column;
+`;
