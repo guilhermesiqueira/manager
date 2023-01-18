@@ -2,7 +2,6 @@ import { useCallback, useState } from "react";
 import nonProfitsApi from "services/api/nonProfitsApi";
 import { CreateNonProfit } from "types/apiResponses/nonProfit";
 import NonProfit from "types/entities/NonProfit";
-import { useUploadFile } from "../useUploadFile";
 
 function useNonProfits() {
   const [nonProfits, setNonProfits] = useState<NonProfit[]>([]);
@@ -30,48 +29,17 @@ function useNonProfits() {
   }
 
   async function createNonProfit(data: CreateNonProfit) {
-    let nonProfit;
-
-    if (data.logo) {
-      const upload = useUploadFile(data.logo);
-      await upload.create((error: Error, blob: any) => {
-        if (error) {
-          throw error;
-        } else {
-          nonProfit = nonProfitsApi.createNonProfit({
-            ...data,
-            logo: blob.signed_id,
-          });
-        }
-      });
-    } else {
-      nonProfit = nonProfitsApi.createNonProfit({
-        ...data,
-      });
-    }
+    const nonProfit = nonProfitsApi.createNonProfit({
+      ...data,
+    });
     return nonProfit;
   }
 
   async function updateNonProfit(data: CreateNonProfit) {
-    let nonProfit;
+    const nonProfit = nonProfitsApi.updateNonProfit(data.id, {
+      ...data,
+    });
 
-    if (data.logo) {
-      const upload = useUploadFile(data.logo);
-      await upload.create((error: Error, blob: any) => {
-        if (error) {
-          throw error;
-        } else {
-          nonProfit = nonProfitsApi.updateNonProfit(data.id, {
-            ...data,
-            logo: blob.signed_id,
-          });
-        }
-      });
-    } else {
-      nonProfit = nonProfitsApi.updateNonProfit(data.id, {
-        ...data,
-      });
-    }
     return nonProfit;
   }
 

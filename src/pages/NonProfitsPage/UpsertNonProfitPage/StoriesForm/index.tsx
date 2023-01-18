@@ -8,6 +8,7 @@ import { CreateStory } from "types/apiResponses/story";
 import useStories from "hooks/apiHooks/useStories";
 import { useUploadFile } from "hooks/apiHooks/useUploadFile";
 import theme from "styles/theme";
+import { logError } from "services/crashReport";
 import * as S from "./styles";
 
 export type Props = {
@@ -44,15 +45,13 @@ function StoriesForm({
 
       upload.create((error: Error, blob: any) => {
         if (error) {
-          // eslint-disable-next-line
-          console.log(error);
+          logError(error);
         } else {
           setValueStory(`storiesAttributes.${index}.image`, blob.signed_id);
         }
       });
     } catch (e) {
-      // eslint-disable-next-line
-      console.log(e);
+      logError(e);
     }
   };
 
