@@ -10,7 +10,7 @@ export default interface NonProfit {
   impactDescription: string;
   status: string;
   logo?: any;
-  causeCardImage?: any;
+  mainImage?: any;
   backgroundImage?: any;
   cause: Cause;
   stories: Story[];
