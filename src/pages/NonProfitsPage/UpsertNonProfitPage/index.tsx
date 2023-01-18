@@ -308,6 +308,17 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                 />
               </S.ItemBox>
             </S.DoubleItemSection>
+            <S.ItemBox>
+              <InfoName>{t("attributes.address")}</InfoName>
+              <S.TextInput
+                {...register("walletAddress", {
+                  required: t("upsert.required"),
+                })}
+              />
+              {formState?.errors.name && formState?.errors.name.type && (
+                <S.Error>{formState?.errors.name.message}</S.Error>
+              )}
+            </S.ItemBox>
             <S.Subtitle>{t("upsert.impacts")}</S.Subtitle>
             <ImpactsForm
               registerImpact={registerImpact}

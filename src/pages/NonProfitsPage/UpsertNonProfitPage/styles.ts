@@ -45,7 +45,6 @@ export const SubtitleDescription = styled.h4`
 
 export const TextInput = styled.input`
   min-width: 274px;
-  max-width: 274px;
   margin: 8px 0 30px;
   padding: 8px 16px;
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
