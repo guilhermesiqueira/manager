@@ -49,7 +49,7 @@ export const SubtitleDescription = styled.h4`
 `;
 
 export const TextInput = styled.input`
-  min-width: 274px;
+  width: 100%;
   margin: 8px 0 30px;
   padding: 8px 16px;
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
