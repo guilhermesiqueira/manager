@@ -281,6 +281,8 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               <S.Span>{NonProfitObject().status}</S.Span>{" "}
             </S.CheckboxContainer>
 
+            <S.Divider />
+
             <S.Subtitle>{t("upsert.details")}</S.Subtitle>
 
             <S.DoubleItemSection>
@@ -319,6 +321,9 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                 <S.Error>{formState?.errors.name.message}</S.Error>
               )}
             </S.ItemBox>
+
+            <S.Divider />
+
             <S.Subtitle>{t("upsert.impacts")}</S.Subtitle>
             <ImpactsForm
               registerImpact={registerImpact}
@@ -327,6 +332,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               formStateImpact={formStateImpact}
               setValueImpact={setValueImpact}
             />
+            <S.Divider />
 
             <StoriesForm
               registerStory={registerStory}
@@ -337,12 +343,13 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               formStateStory={formStateStory}
               controlStory={controlStory}
             />
+            <S.Divider />
           </S.LeftSection>
 
           <S.RightSection>
             <S.Subtitle>{t("attributes.imagesSection")}</S.Subtitle>
 
-            <S.DoubleItemSection>
+            <S.FlexRow>
               <S.ItemBox>
                 <InfoName>{t("attributes.logo")}</InfoName>
                 <FileUpload
@@ -378,7 +385,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                   {t("attributes.imageRecommendation", { size: "300x300" })}
                 </S.ImageRecommendation>
               </S.ItemBox>
-            </S.DoubleItemSection>
+            </S.FlexRow>
           </S.RightSection>
         </S.ContentSection>
         <S.ContentSection>

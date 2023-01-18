@@ -7,8 +7,7 @@ export const Title = styled.h2`
 `;
 
 export const TextInput = styled.input`
-  min-width: 274px;
-  max-width: 274px;
+  width: 100%;
   margin: 8px 0 30px;
   padding: 8px 16px;
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
@@ -23,8 +22,7 @@ export const TextInput = styled.input`
 `;
 
 export const AreaInput = styled.textarea`
-  min-width: 274px;
-  max-width: 274px;
+  width: 100%;
   margin: 8px 0 30px;
   padding: 8px 16px;
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
@@ -59,8 +57,8 @@ export const Error = styled.span`
 `;
 
 export const DoubleItemSection = styled.div`
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 `;
 
 export const Info = styled.p`

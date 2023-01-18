@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
 export const ContentSection = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    flex-direction: row;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
   }
 `;
 
 export const LeftSection = styled.div`
-  width: 50%;
   display: flex;
   flex-direction: column;
 `;
@@ -32,6 +32,11 @@ export const Checkbox = styled.input`
 export const Title = styled.h2`
   margin: 84px 0 32px;
   text-transform: uppercase;
+`;
+
+export const Divider = styled.hr`
+  margin: 8px 0;
+  border: none;
 `;
 
 export const Subtitle = styled.h3`
@@ -100,14 +105,23 @@ export const ButtonContainer = styled.div`
 `;
 
 export const RightSection = styled.div`
-  width: 50%;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+`;
+
+export const FlexRow = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 `;
 
 export const DoubleItemSection = styled.div`
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 `;
 
 export const ItemBox = styled.div`

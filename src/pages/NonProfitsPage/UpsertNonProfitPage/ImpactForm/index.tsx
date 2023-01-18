@@ -34,7 +34,7 @@ function ImpactsForm({
     <>
       <S.DoubleItemSection>
         <S.ItemBox>
-          <InfoName hasTranslation>{t("attributes.costForOneImpact")}</InfoName>
+          <InfoName>{t("attributes.costForOneImpact")}</InfoName>
           <S.TextInput
             {...registerImpact("usdCentsToOneImpactUnit", {
               required: t("upsert.required"),
@@ -70,7 +70,7 @@ function ImpactsForm({
           <InfoName hasTranslation>
             {t("attributes.impactDescription")}
           </InfoName>
-          <S.TextInput
+          <S.AreaInput
             {...registerImpact("impactDescription", {
               required: t("upsert.required"),
             })}
