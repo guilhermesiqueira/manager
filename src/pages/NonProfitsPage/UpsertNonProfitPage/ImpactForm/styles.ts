@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { defaultParagraphSmall } from "styles/typography/default";
 
 export const Title = styled.h2`
   margin: 84px 0 32px;
@@ -63,7 +64,9 @@ export const DoubleItemSection = styled.div`
 `;
 
 export const Info = styled.p`
+  ${defaultParagraphSmall}
   color: ${({ theme }) => theme.colors.gray30};
+  margin-bottom: 12px;
 `;
 
 export const ItemBox = styled.div`
