@@ -111,12 +111,9 @@ export const RightSection = styled.div`
 `;
 
 export const FlexRow = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 `;
 
 export const DoubleItemSection = styled.div`
