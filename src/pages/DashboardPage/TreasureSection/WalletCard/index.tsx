@@ -4,11 +4,10 @@ import theme from "styles/theme";
 import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
 import { useCallback, useEffect, useState } from "react";
 import { formatFromDecimals } from "lib/web3Helpers/etherFormatters";
-import useApiIntegrations from "hooks/apiHooks/useApiIntegrations";
 import { logError } from "services/crashReport";
 import { useProvider } from "hooks/useProvider";
 import { ethers } from "ethers";
-import { RIBON_INTEGRATION_ID } from "utils/constants";
+import { useNetwork } from "hooks/useNetwork";
 import * as S from "./styles";
 
 function WalletCard(): JSX.Element {
@@ -17,16 +16,14 @@ function WalletCard(): JSX.Element {
   });
   const { green20 } = theme.colors;
   const { getIntegration } = useIntegrations();
-  const { fetchWalletFromIntegration } = useApiIntegrations();
   const [integrationBalance, setIntegrationBalance] = useState<string>("...");
   const [integrationMatic, setIntegrationMatic] = useState<string>("...");
   const provider = useProvider();
+  const { currentNetwork } = useNetwork();
 
   const fetchBalance = useCallback(async () => {
     try {
-      const walletAddress = await fetchWalletFromIntegration(
-        RIBON_INTEGRATION_ID,
-      );
+      const walletAddress = currentNetwork.defaultIntegrationHolding;
       if (walletAddress) {
         const chainIntegration = await getIntegration(walletAddress);
         setIntegrationBalance(
