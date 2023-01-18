@@ -159,27 +159,21 @@ function UpsertCausePage({ isEdit }: Props) {
 
           <S.RightSection>
             <S.ItemBox>
-              <InfoName>{t("attributes.causeCardImage")}</InfoName>
+              <InfoName>{t("attributes.mainImage")}</InfoName>
               <FileUpload
                 onChange={handleMainImageChange}
                 logo={CauseObject()?.mainImage}
                 value={mainImageFile}
               />
-              <S.ImageRecommendation>
-                {t("attributes.imageRecommendation", { size: "600x560" })}
-              </S.ImageRecommendation>
             </S.ItemBox>
 
             <S.ItemBox>
-              <InfoName>{t("attributes.causeCardImage")}</InfoName>
+              <InfoName>{t("attributes.coverImage")}</InfoName>
               <FileUpload
                 onChange={handleCoverImageChange}
                 logo={CauseObject()?.coverImage}
                 value={coverImageFile}
               />
-              <S.ImageRecommendation>
-                {t("attributes.imageRecommendation", { size: "600x560" })}
-              </S.ImageRecommendation>
             </S.ItemBox>
           </S.RightSection>
           

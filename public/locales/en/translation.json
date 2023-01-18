@@ -107,7 +107,9 @@
       "name": "Name",
       "availableToDonation": "Available to donation (USDC)",
       "poolAddress": "Pool address",
-      "token": "Token"
+      "token": "Token",
+      "mainImage": "Main image",
+      "coverImage": "Cover image"
     },
     "list": {
       "title": "Causes List",
