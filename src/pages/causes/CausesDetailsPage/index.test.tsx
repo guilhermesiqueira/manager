@@ -15,5 +15,7 @@ describe("CauseDetailsPage", () => {
     expect(screen.getByText("Pool address")).toBeInTheDocument();
 
     expect(screen.getByText("Linked projects")).toBeInTheDocument();
+    expect(screen.getByText("Main image")).toBeInTheDocument();
+    expect(screen.getByText("Cover image")).toBeInTheDocument();
   });
 });

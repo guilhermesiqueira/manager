@@ -107,7 +107,9 @@
       "name": "Name",
       "availableToDonation": "Available to donation (USDC)",
       "poolAddress": "Pool address",
-      "token": "Token"
+      "token": "Token",
+      "mainImage": "Main image",
+      "coverImage": "Cover image"
     },
     "list": {
       "title": "Causes List",
@@ -119,7 +121,9 @@
     "details": {
       "title": "Cause details",
       "edit": "Edit",
-      "linkedProjects": "Linked projects"
+      "linkedProjects": "Linked projects",
+      "coverImage": "Cover image",
+      "mainImage": "Main image"
     },
     "upsert": {
       "create": {
