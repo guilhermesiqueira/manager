@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
 export const Input = styled.div`
-  min-width: 274px;
-  max-width: 274px;
-  margin: 8px 0 30px;
+  margin: 8px 0 12px;
   padding: 8px 16px;
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
   border-radius: 4px;
@@ -12,7 +10,6 @@ export const Input = styled.div`
   margin: 8px 0;
   padding: 8px 16px;
   border: 1px solid ${({ theme }) => theme.colors.gray40};
-  border-radius: 10px;
   display: flex;
   background-color: ${({ theme }) => theme.colors.neutral10};
   color: ${({ theme }) => theme.colors.gray40};

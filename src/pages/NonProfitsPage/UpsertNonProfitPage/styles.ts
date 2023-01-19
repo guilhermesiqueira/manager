@@ -1,17 +1,17 @@
 import styled from "styled-components";
 
 export const ContentSection = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    flex-direction: row;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
   }
 `;
 
 export const LeftSection = styled.div`
-  width: 50%;
   display: flex;
   flex-direction: column;
 `;
@@ -34,6 +34,11 @@ export const Title = styled.h2`
   text-transform: uppercase;
 `;
 
+export const Divider = styled.hr`
+  margin: 8px 0;
+  border: none;
+`;
+
 export const Subtitle = styled.h3`
   margin-bottom: 12px;
 `;
@@ -44,9 +49,24 @@ export const SubtitleDescription = styled.h4`
 `;
 
 export const TextInput = styled.input`
+  width: 100%;
+  margin: 8px 0 12px;
+  padding: 8px 16px;
+  border: 1px solid ${({ theme }) => theme.colors.darkGray};
+  border-radius: 4px;
+  display: block;
+  color: ${({ theme }) => theme.colors.darkGray};
+
+  ::placeholder {
+    color: ${({ theme }) => theme.colors.gray};
+    opacity: 1;
+  }
+`;
+
+export const AreaInput = styled.textarea`
   min-width: 274px;
   max-width: 274px;
-  margin: 8px 0 30px;
+  margin: 8px 0 12px;
   padding: 8px 16px;
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
   border-radius: 4px;
@@ -85,14 +105,20 @@ export const ButtonContainer = styled.div`
 `;
 
 export const RightSection = styled.div`
-  width: 50%;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+`;
+
+export const FlexRow = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 `;
 
 export const DoubleItemSection = styled.div`
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 `;
 
 export const ItemBox = styled.div`
