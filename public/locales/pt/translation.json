@@ -104,7 +104,9 @@
       "token": "Token",
       "poolAddress": "Endereço da pool",
       "availableToDonation": "Disponível para doação (USDC)",
-      "title": "Lista de Causas"
+      "title": "Lista de Causas",
+      "mainImage": "Imagem principal",
+      "coverImage": "Imagem de capa"
     },
     "list": {
       "createNew": "Adicionar nova",
@@ -140,7 +142,9 @@
       "title": "Detalhes da causa",
       "availableToDonation": "Disponível para doação (USDC)",
       "edit": "Editar",
-      "linkedProjects": "Projetos vinculados"
+      "linkedProjects": "Projetos vinculados",
+      "coverImage": "Imagem de capa",
+      "mainImage": "Imagem principal"
     }
   },
   "offers": {

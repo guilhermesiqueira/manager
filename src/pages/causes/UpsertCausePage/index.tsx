@@ -1,5 +1,5 @@
 import { Button, useToast } from "@chakra-ui/react";
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router";
@@ -11,6 +11,8 @@ import WarningRedIcon from "assets/icons/warning-red-icon.svg";
 import Loading from "components/moleculars/Loading";
 import useCauses from "hooks/apiHooks/useCauses";
 import { CreateCause } from "types/apiResponses/cause";
+import FileUpload from "components/moleculars/FileUpload";
+import { useUploadFile } from "hooks/apiHooks/useUploadFile";
 import * as S from "./styles";
 
 export type Props = {
@@ -22,6 +24,8 @@ function UpsertCausePage({ isEdit }: Props) {
     keyPrefix: "causes",
   });
 
+  const [coverImageFile, setCoverImageFile] = useState<string>("");
+  const [mainImageFile, setMainImageFile] = useState<string>("");
   const mode = isEdit ? "edit" : "create";
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -32,6 +36,7 @@ function UpsertCausePage({ isEdit }: Props) {
   const {
     register,
     getValues: CauseObject,
+    setValue,
     reset,
     handleSubmit,
     formState,
@@ -48,16 +53,28 @@ function UpsertCausePage({ isEdit }: Props) {
     }
   }, []);
 
+  function causeUpdate() {
+    const cause = CauseObject();
+    if (CauseObject().mainImage?.includes("http")) {
+      delete cause.mainImage;
+    }
+
+    if (CauseObject().coverImage?.includes("http")) {
+      delete cause.coverImage;
+    }
+    return cause;
+  }
+
   const handleSave = async () => {
     try {
       if (isEdit) {
-        await updateCause(CauseObject());
+        await updateCause(causeUpdate());
       } else {
         setModalOpen(false);
         setLoading(true);
         await createCause(CauseObject())
           .then((response) => {
-            reset(response.data);
+            reset(response?.data);
             setLoading(false);
           })
           .catch((error) => {
@@ -99,6 +116,43 @@ function UpsertCausePage({ isEdit }: Props) {
     }
   }, []);
 
+  const handleUploadImage = (
+    image: File,
+    attribute: "mainImage" | "coverImage",
+  ) => {
+    try {
+      setLoading(true);
+      const upload = useUploadFile(image);
+
+      upload.create((error: Error, blob: any) => {
+        if (error) {
+          logError(error);
+          setLoading(false);
+        } else {
+          setValue(attribute, blob.signed_id);
+          setLoading(false);
+        }
+      });
+    } catch (e) {
+      logError(e);
+      setLoading(false);
+    }
+  };
+
+  const handleMainImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const mainImage = e.target.files![0];
+
+    setMainImageFile(URL.createObjectURL(mainImage));
+    handleUploadImage(mainImage, "mainImage");
+  };
+
+  const handleCoverImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const coverImage = e.target.files![0];
+
+    setCoverImageFile(URL.createObjectURL(coverImage));
+    handleUploadImage(coverImage, "coverImage");
+  };
+
   return (
     <>
       <S.Title>{t(`upsert.${mode}.title`)}</S.Title>
@@ -114,6 +168,26 @@ function UpsertCausePage({ isEdit }: Props) {
               <S.Error>{formState?.errors.name.message}</S.Error>
             )}
           </S.LeftSection>
+
+          <S.RightSection>
+            <S.ItemBox>
+              <InfoName>{t("attributes.mainImage")}</InfoName>
+              <FileUpload
+                onChange={handleMainImageChange}
+                logo={CauseObject().mainImage}
+                value={mainImageFile}
+              />
+            </S.ItemBox>
+
+            <S.ItemBox>
+              <InfoName>{t("attributes.coverImage")}</InfoName>
+              <FileUpload
+                onChange={handleCoverImageChange}
+                logo={CauseObject().coverImage}
+                value={coverImageFile}
+              />
+            </S.ItemBox>
+          </S.RightSection>
         </S.ContentSection>
         <S.ContentSection>
           <S.ButtonContainer>
