@@ -53,16 +53,28 @@ function UpsertCausePage({ isEdit }: Props) {
     }
   }, []);
 
+  function causeUpdate() {
+    const cause = CauseObject();
+    if (CauseObject().mainImage?.includes("http")) {
+      delete cause.mainImage;
+    }
+
+    if (CauseObject().coverImage?.includes("http")) {
+      delete cause.coverImage;
+    }
+    return cause;
+  }
+
   const handleSave = async () => {
     try {
       if (isEdit) {
-        await updateCause(CauseObject());
-      } else {
-        setModalOpen(false);
-        setLoading(true);
-        await createCause(CauseObject())
+          await updateCause(causeUpdate());
+        } else {
+          setModalOpen(false);
+          setLoading(true);
+          await createCause(CauseObject())
           .then((response) => {
-            reset(response.data);
+            reset(response?.data);
             setLoading(false);
           })
           .catch((error) => {
@@ -73,13 +85,13 @@ function UpsertCausePage({ isEdit }: Props) {
             });
             throw Error(error.response.data.formatted_message);
           });
+        }
+        
+        navigate("/causes");
+      } catch (e) {
+        logError(e);
       }
-
-      navigate("/causes");
-    } catch (e) {
-      logError(e);
     }
-  };
 
   const handleCancel = () => {
     navigate("/Causes");
@@ -114,10 +126,11 @@ function UpsertCausePage({ isEdit }: Props) {
 
       upload.create((error: Error, blob: any) => {
         if (error) {
+          console.log(error)
           logError(error);
           setLoading(false);
         } else {
-          setValue(attribute, blob.url);
+          setValue(attribute, blob.signed_id);
           setLoading(false);
         }
       });
@@ -162,7 +175,7 @@ function UpsertCausePage({ isEdit }: Props) {
               <InfoName>{t("attributes.mainImage")}</InfoName>
               <FileUpload
                 onChange={handleMainImageChange}
-                logo={CauseObject()?.mainImage}
+                logo={CauseObject().mainImage}
                 value={mainImageFile}
               />
             </S.ItemBox>
@@ -171,7 +184,7 @@ function UpsertCausePage({ isEdit }: Props) {
               <InfoName>{t("attributes.coverImage")}</InfoName>
               <FileUpload
                 onChange={handleCoverImageChange}
-                logo={CauseObject()?.coverImage}
+                logo={CauseObject().coverImage}
                 value={coverImageFile}
               />
             </S.ItemBox>
