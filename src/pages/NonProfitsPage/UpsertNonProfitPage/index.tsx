@@ -16,9 +16,12 @@ import Dropdown from "components/atomics/Dropdown";
 import useNonProfits from "hooks/apiHooks/useNonProfits";
 import { CreateNonProfit } from "types/apiResponses/nonProfit";
 import { CreateStory } from "types/apiResponses/story";
+import { NonProfitImpact } from "types/entities/NonProfitImpact";
 import { useUploadFile } from "hooks/apiHooks/useUploadFile";
+import { CreateNonProfitImpacts } from "types/apiResponses/nonProfitImpacts";
 import StoriesForm from "./StoriesForm";
 import * as S from "./styles";
+import ImpactsForm from "./ImpactForm";
 
 export type Props = {
   isEdit?: boolean;
@@ -32,6 +35,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const [modalOpen, setModalOpen] = useState(false);
   const [causes, setCauses] = useState<Cause[]>([]);
   const [currentCauseId, setCurrentCauseId] = useState<number>(1);
+  const [currentUnit, setCurrentUnit] = useState<string>("");
   const { getCauses } = useCauses();
   const [loading, setLoading] = useState(false);
   const { gray10, gray40, gray30, red30 } = theme.colors;
@@ -62,14 +66,33 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     control: controlStory,
   } = useForm<CreateStory[]>({ mode: "onChange", reValidateMode: "onChange" });
 
+  const {
+    register: registerImpact,
+    reset: resetImpact,
+    setValue: setValueImpact,
+    formState: formStateImpact,
+    getValues: ImpactObject,
+  } = useForm<NonProfitImpact>({
+    mode: "onChange",
+    reValidateMode: "onChange",
+  });
+
   const toast = useToast();
 
   const fetchNonProfit = useCallback(async () => {
     try {
       const nonProfit = await getNonProfit(id);
       reset(nonProfit);
+      resetImpact(
+        nonProfit.nonProfitImpacts![nonProfit.nonProfitImpacts!.length - 1],
+      );
+
       setStories(nonProfit.stories);
       setCurrentCauseId(nonProfit.cause?.id);
+      setCurrentUnit(
+        nonProfit.nonProfitImpacts![nonProfit.nonProfitImpacts!.length - 1]
+          .measurementUnit,
+      );
     } catch (e) {
       logError(e);
     }
@@ -110,6 +133,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
       const nonProfitObject = {
         ...nonProfitUpdate(),
         storiesAttributes: storyObject(),
+        nonProfitImpactsAttributes: [ImpactObject()],
       };
 
       try {
@@ -160,10 +184,16 @@ function UpsertNonProfitPage({ isEdit }: Props) {
         name: "New NonProfit",
         walletAddress: "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
         status: "active",
-        impactDescription: "Impact Description",
         causeId: 1,
       };
+      const newNonProfitImpacts: CreateNonProfitImpacts = {
+        usdCentsToOneImpactUnit: "1.0",
+        measurementUnit: "quantity_without_decimals",
+        impactDescription: "impact,impacts",
+        donorRecipient: "donor,donors",
+      };
       reset(newNonProfit);
+      resetImpact(newNonProfitImpacts);
     }
   }, []);
 
@@ -259,6 +289,8 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               <S.Span>{NonProfitObject().status}</S.Span>{" "}
             </S.CheckboxContainer>
 
+            <S.Divider />
+
             <S.Subtitle>{t("upsert.details")}</S.Subtitle>
 
             <S.DoubleItemSection>
@@ -286,33 +318,30 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                 />
               </S.ItemBox>
             </S.DoubleItemSection>
+            <S.ItemBox>
+              <InfoName>{t("attributes.address")}</InfoName>
+              <S.TextInput
+                {...register("walletAddress", {
+                  required: t("upsert.required"),
+                })}
+              />
+              {formState?.errors.name && formState?.errors.name.type && (
+                <S.Error>{formState?.errors.name.message}</S.Error>
+              )}
+            </S.ItemBox>
 
-            <S.DoubleItemSection>
-              <S.ItemBox>
-                <InfoName hasTranslation>
-                  {t("attributes.impactDescription")}
-                </InfoName>
-                <S.TextInput
-                  {...register("impactDescription", {
-                    required: t("upsert.required"),
-                  })}
-                />
-                {formState?.errors.name && formState?.errors.name.type && (
-                  <S.Error>{formState?.errors.name.message}</S.Error>
-                )}
-              </S.ItemBox>
-              <S.ItemBox>
-                <InfoName>{t("attributes.address")}</InfoName>
-                <S.TextInput
-                  {...register("walletAddress", {
-                    required: t("upsert.required"),
-                  })}
-                />
-                {formState?.errors.name && formState?.errors.name.type && (
-                  <S.Error>{formState?.errors.name.message}</S.Error>
-                )}
-              </S.ItemBox>
-            </S.DoubleItemSection>
+            <S.Divider />
+
+            <S.Subtitle>{t("upsert.impacts")}</S.Subtitle>
+            <ImpactsForm
+              registerImpact={registerImpact}
+              setCurrentUnit={setCurrentUnit}
+              currentUnit={currentUnit}
+              formStateImpact={formStateImpact}
+              setValueImpact={setValueImpact}
+            />
+            <S.Divider />
+
             <StoriesForm
               registerStory={registerStory}
               StoryObject={StoryObject}
@@ -322,12 +351,13 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               formStateStory={formStateStory}
               controlStory={controlStory}
             />
+            <S.Divider />
           </S.LeftSection>
 
           <S.RightSection>
             <S.Subtitle>{t("attributes.imagesSection")}</S.Subtitle>
 
-            <S.DoubleItemSection>
+            <S.FlexRow>
               <S.ItemBox>
                 <InfoName>{t("attributes.logo")}</InfoName>
                 <FileUpload
@@ -363,7 +393,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                   {t("attributes.imageRecommendation", { size: "300x300" })}
                 </S.ImageRecommendation>
               </S.ItemBox>
-            </S.DoubleItemSection>
+            </S.FlexRow>
           </S.RightSection>
         </S.ContentSection>
         <S.ContentSection>

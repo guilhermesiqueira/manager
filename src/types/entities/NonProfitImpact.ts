@@ -3,4 +3,7 @@ export interface NonProfitImpact {
   endDate: string;
   startDate: string;
   usdCentsToOneImpactUnit: string;
+  measurementUnit: string;
+  impactDescription: string;
+  donorRecipient: string;
 }

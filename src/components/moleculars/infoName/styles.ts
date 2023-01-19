@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const InfoName = styled.h6``;
 
 export const Box = styled.div`
-  margin-top: 16px;
+  margin-top: 4px;
   margin-bottom: 4px;
   display: flex;
   gap: 10px;

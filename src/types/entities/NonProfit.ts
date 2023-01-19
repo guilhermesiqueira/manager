@@ -1,4 +1,5 @@
 import { CreateStory } from "types/apiResponses/story";
+import { CreateNonProfitImpacts } from "types/apiResponses/nonProfitImpacts";
 import Cause from "./Cause";
 import Story from "./Story";
 import { NonProfitImpact } from "./NonProfitImpact";
@@ -7,7 +8,7 @@ export default interface NonProfit {
   id: string;
   name: string;
   walletAddress: string;
-  impactDescription: string;
+  impactDescription?: string;
   status: string;
   logo?: any;
   mainImage?: any;
@@ -20,4 +21,5 @@ export default interface NonProfit {
   impactByTicket: number;
   causeId: number;
   nonProfitImpacts?: NonProfitImpact[];
+  nonProfitImpactsAttributes?: CreateNonProfitImpacts[];
 }
