@@ -50,7 +50,7 @@ export const SubtitleDescription = styled.h4`
 
 export const TextInput = styled.input`
   width: 100%;
-  margin: 8px 0 30px;
+  margin: 8px 0 12px;
   padding: 8px 16px;
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
   border-radius: 4px;
@@ -66,7 +66,7 @@ export const TextInput = styled.input`
 export const AreaInput = styled.textarea`
   min-width: 274px;
   max-width: 274px;
-  margin: 8px 0 30px;
+  margin: 8px 0 12px;
   padding: 8px 16px;
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
   border-radius: 4px;

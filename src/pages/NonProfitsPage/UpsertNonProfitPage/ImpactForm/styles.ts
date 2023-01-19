@@ -1,14 +1,9 @@
 import styled from "styled-components";
 import { defaultParagraphSmall } from "styles/typography/default";
 
-export const Title = styled.h2`
-  margin: 84px 0 32px;
-  text-transform: uppercase;
-`;
-
 export const TextInput = styled.input`
   width: 100%;
-  margin: 8px 0 30px;
+  margin: 8px 0 12px;
   padding: 8px 16px;
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
   border-radius: 4px;
@@ -23,7 +18,7 @@ export const TextInput = styled.input`
 
 export const AreaInput = styled.textarea`
   width: 100%;
-  margin: 8px 0 30px;
+  margin: 8px 0 12px;
   padding: 8px 16px;
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
   border-radius: 4px;
@@ -64,7 +59,6 @@ export const DoubleItemSection = styled.div`
 export const Info = styled.p`
   ${defaultParagraphSmall}
   color: ${({ theme }) => theme.colors.gray30};
-  margin-bottom: 12px;
 `;
 
 export const ItemBox = styled.div`

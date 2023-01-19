@@ -21,6 +21,7 @@ export const LeftSection = styled.div`
   width: 50%;
   display: flex;
   flex-direction: column;
+  margin-right: 16px;
 `;
 
 export const CheckboxContainer = styled.div`
@@ -45,7 +46,7 @@ export const SubtitleDescription = styled.h4`
 export const TextInput = styled.input`
   min-width: 400px;
   max-width: 400px;
-  margin: 8px 0 30px;
+  margin: 8px 0 12px;
   padding: 8px 16px;
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
   border-radius: 10px;

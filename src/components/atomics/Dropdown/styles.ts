@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const Input = styled.div`
-  width: 100%;
-  margin: 8px 0 30px;
+  margin: 8px 0 12px;
   padding: 8px 16px;
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
   border-radius: 4px;

@@ -18,6 +18,7 @@ import { CreateNonProfit } from "types/apiResponses/nonProfit";
 import { CreateStory } from "types/apiResponses/story";
 import { NonProfitImpact } from "types/entities/NonProfitImpact";
 import { useUploadFile } from "hooks/apiHooks/useUploadFile";
+import { CreateNonProfitImpacts } from "types/apiResponses/nonProfitImpacts";
 import StoriesForm from "./StoriesForm";
 import * as S from "./styles";
 import ImpactsForm from "./ImpactForm";
@@ -185,7 +186,14 @@ function UpsertNonProfitPage({ isEdit }: Props) {
         status: "active",
         causeId: 1,
       };
+      const newNonProfitImpacts: CreateNonProfitImpacts = {
+        usdCentsToOneImpactUnit: "1.0",
+        measurementUnit: "quantity_without_decimals",
+        impactDescription: "impact,impacts",
+        donorRecipient: "donor,donors",
+      };
       reset(newNonProfit);
+      resetImpact(newNonProfitImpacts);
     }
   }, []);
 
