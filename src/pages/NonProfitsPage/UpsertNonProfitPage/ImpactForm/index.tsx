@@ -67,6 +67,34 @@ function ImpactsForm({
       </S.DoubleItemSection>
       <S.DoubleItemSection>
         <S.ItemBox>
+          <InfoName>{t("attributes.startDate")}</InfoName>
+          <S.TextInput
+            type="date"
+            {...registerImpact("startDate", {
+              required: t("upsert.required"),
+            })}
+          />
+          {formStateImpact?.errors.startDate &&
+            formStateImpact?.errors.startDate.type && (
+              <S.Error>{formStateImpact?.errors.startDate.message}</S.Error>
+            )}
+        </S.ItemBox>
+        <S.ItemBox>
+          <InfoName>{t("attributes.endDate")}</InfoName>
+          <S.TextInput
+            type="date"
+            {...registerImpact("endDate", {
+              required: t("upsert.required"),
+            })}
+          />
+          {formStateImpact?.errors.endDate &&
+            formStateImpact?.errors.endDate.type && (
+              <S.Error>{formStateImpact?.errors.endDate.message}</S.Error>
+            )}
+        </S.ItemBox>
+      </S.DoubleItemSection>
+      <S.DoubleItemSection>
+        <S.ItemBox>
           <InfoName hasTranslation>
             {t("attributes.impactDescription")}
           </InfoName>
@@ -97,6 +125,7 @@ function ImpactsForm({
             )}
         </S.ItemBox>
       </S.DoubleItemSection>
+
       <S.Info>{t("attributes.impactInfo")}</S.Info>
     </>
   );

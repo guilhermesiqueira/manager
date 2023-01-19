@@ -255,6 +255,8 @@
           "unit": "Unit",
           "quantityWithoutDecimals": "Quantity without decimals",
           "daysMonthsAndYears": "Days, months and years",
+          "startDate": "Start Date",
+          "endDate": "End Date",
           "impactInfo": "Enter singular then the plural separated by comma for impact description and donor recipients. When the unit is years, months and days, repeat the impact description without typing the unit."
         }
       }

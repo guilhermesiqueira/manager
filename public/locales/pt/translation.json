@@ -253,6 +253,8 @@
           "unit": "Unidade",
           "quantityWithoutDecimals": "Quantidade sem decimais",
           "daysMonthsAndYears": "Dias, meses e anos",
+          "startDate": "Data de início",
+          "endDate": "Data de término",
           "impactInfo": "Digite o singular e o plural separados por uma vírgula para a descrição de impacto e beneficiários. Quando a unidade for de anos, meses e dias, repetir a descrição de impacto sem digitar a unidade."
         }
       }
