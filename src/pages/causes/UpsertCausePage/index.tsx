@@ -68,11 +68,11 @@ function UpsertCausePage({ isEdit }: Props) {
   const handleSave = async () => {
     try {
       if (isEdit) {
-          await updateCause(causeUpdate());
-        } else {
-          setModalOpen(false);
-          setLoading(true);
-          await createCause(CauseObject())
+        await updateCause(causeUpdate());
+      } else {
+        setModalOpen(false);
+        setLoading(true);
+        await createCause(CauseObject())
           .then((response) => {
             reset(response?.data);
             setLoading(false);
@@ -85,13 +85,13 @@ function UpsertCausePage({ isEdit }: Props) {
             });
             throw Error(error.response.data.formatted_message);
           });
-        }
-        
-        navigate("/causes");
-      } catch (e) {
-        logError(e);
       }
+
+      navigate("/causes");
+    } catch (e) {
+      logError(e);
     }
+  };
 
   const handleCancel = () => {
     navigate("/Causes");
@@ -118,7 +118,7 @@ function UpsertCausePage({ isEdit }: Props) {
 
   const handleUploadImage = (
     image: File,
-    attribute: "mainImage" | "coverImage"
+    attribute: "mainImage" | "coverImage",
   ) => {
     try {
       setLoading(true);
@@ -136,12 +136,12 @@ function UpsertCausePage({ isEdit }: Props) {
     } catch (e) {
       logError(e);
       setLoading(false);
-    } 
+    }
   };
 
   const handleMainImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const mainImage = e.target.files![0];
-    
+
     setMainImageFile(URL.createObjectURL(mainImage));
     handleUploadImage(mainImage, "mainImage");
   };
@@ -188,7 +188,6 @@ function UpsertCausePage({ isEdit }: Props) {
               />
             </S.ItemBox>
           </S.RightSection>
-          
         </S.ContentSection>
         <S.ContentSection>
           <S.ButtonContainer>
