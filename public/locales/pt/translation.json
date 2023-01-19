@@ -247,13 +247,13 @@
       },
       "impactsForm": {
         "attributes": {
-          "impactDescription": "Impact Description",
-          "donorRecipients": "Donor Recipients",
-          "costForOneImpact": "Cost to 1 impact unit (USDC)",
-          "unit": "Unit",
+          "impactDescription": "Descrição do Impacto",
+          "donorRecipients": "Beneficiários",
+          "costForOneImpact": "Custo por 1 unidade de impacto (USDC)",
+          "unit": "Unidade",
           "quantityWithoutDecimals": "Quantidade sem decimais",
           "daysMonthsAndYears": "Dias, meses e anos",
-          "impactInfo": "Enter singular then the plural separated by comma for impact description and donor recipients. When the unit is years, months and days, repeat the impact description without typing the unit."
+          "impactInfo": "Digite o singular e o plural separados por uma vírgula para a descrição de impacto e beneficiários. Quando a unidade for de anos, meses e dias, repetir a descrição de impacto sem digitar a unidade."
         }
       }
     },

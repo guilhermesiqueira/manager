@@ -48,7 +48,7 @@ function ImpactsForm({
             )}
         </S.ItemBox>
         <S.ItemBox>
-          <InfoName hasTranslation>{t("attributes.unit")}</InfoName>
+          <InfoName>{t("attributes.unit")}</InfoName>
           <Dropdown
             values={["quantity_without_decimals", "days_months_and_years"]}
             onOptionChanged={onUnitChanged}
@@ -97,11 +97,7 @@ function ImpactsForm({
             )}
         </S.ItemBox>
       </S.DoubleItemSection>
-      <S.Info>
-        Enter singular then the plural separated by comma for impact description
-        and donor recipients. When the unit is years, months and days, repeat
-        the impact description without typing the unit.
-      </S.Info>
+      <S.Info>{t("attributes.impactInfo")}</S.Info>
     </>
   );
 }
