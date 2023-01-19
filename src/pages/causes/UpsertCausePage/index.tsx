@@ -126,7 +126,6 @@ function UpsertCausePage({ isEdit }: Props) {
 
       upload.create((error: Error, blob: any) => {
         if (error) {
-          console.log(error)
           logError(error);
           setLoading(false);
         } else {
