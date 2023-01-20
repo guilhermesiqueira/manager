@@ -13,6 +13,7 @@ import useNonProfits from "hooks/apiHooks/useNonProfits";
 import dateFormatter from "lib/dateFormatter";
 import LinkPage from "components/atomics/LinkPage";
 import Story from "types/entities/Story";
+import snakeToCamelCase from "lib/snakeToCamelCase";
 import * as S from "./styles";
 import StoriesCard from "../UpsertNonProfitPage/StoriesCard";
 
@@ -94,14 +95,65 @@ function NonProfitsDetailsPage(): JSX.Element {
         <S.RightSection>
           <S.Subtitle>{t("details.impact")}</S.Subtitle>
 
-          <InfoName>{t("details.attributes.impactDescription")}</InfoName>
-          <S.InfoValue>{nonProfit?.impactDescription}</S.InfoValue>
-
           <InfoName>{t("details.attributes.costForOneImpact")}</InfoName>
           <S.InfoValue>{nonProfit?.impactByTicket}</S.InfoValue>
 
-          <LinkPage page={`/ngos/${id}/impacts`} text="See all impacts" />
+          <InfoName>{t("upsert.impactsForm.attributes.unit")}</InfoName>
+          <S.InfoValue>
+            {t(
+              `upsert.impactsForm.attributes.${snakeToCamelCase(
+                nonProfit?.nonProfitImpacts![
+                  nonProfit.nonProfitImpacts!.length - 1
+                ].measurementUnit ?? "",
+              )}`,
+            )}
+          </S.InfoValue>
 
+          <InfoName>{t("upsert.impactsForm.attributes.startDate")}</InfoName>
+          <S.InfoValue>
+            {
+              nonProfit?.nonProfitImpacts![
+                nonProfit.nonProfitImpacts!.length - 1
+              ].startDate
+            }
+          </S.InfoValue>
+
+          <InfoName>{t("upsert.impactsForm.attributes.endDate")}</InfoName>
+          <S.InfoValue>
+            {
+              nonProfit?.nonProfitImpacts![
+                nonProfit.nonProfitImpacts!.length - 1
+              ].endDate
+            }
+          </S.InfoValue>
+
+          <InfoName>
+            {t("upsert.impactsForm.attributes.impactDescription")}
+          </InfoName>
+          <S.InfoValue>
+            {
+              nonProfit?.nonProfitImpacts![
+                nonProfit.nonProfitImpacts!.length - 1
+              ].impactDescription
+            }
+          </S.InfoValue>
+
+          <InfoName>
+            {t("upsert.impactsForm.attributes.donorRecipients")}
+          </InfoName>
+          <S.InfoValue>
+            {
+              nonProfit?.nonProfitImpacts![
+                nonProfit.nonProfitImpacts!.length - 1
+              ].donorRecipient
+            }
+          </S.InfoValue>
+
+          <S.Container>
+            <LinkPage page={`/ngos/${id}/impacts`} text={t("viewHistory")} />
+          </S.Container>
+
+          <S.Subtitle>{t("details.images")}</S.Subtitle>
           <S.Container>
             <S.LeftSection>
               <S.ItemBox>
