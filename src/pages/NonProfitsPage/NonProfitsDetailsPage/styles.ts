@@ -3,7 +3,7 @@ import { defaultSubtitleSmall } from "styles/typography/default";
 
 export const Container = styled.div`
   width: 100%;
-  margin-top: 16px;
+  margin-top: 12px;
   display: flex;
   flex-direction: column;
 
@@ -90,5 +90,5 @@ export const CardImage = styled.img`
 `;
 
 export const ContainerStories = styled.div`
-  margin-top: 16px;
+  margin-top: 12px;
 `;

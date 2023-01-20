@@ -269,6 +269,8 @@
       "edit": "Edit",
       "details": "Details",
       "impact": "Impact",
+      "images": "Images",
+      "viewHistory": "View History",
       "attributes": {
         "name": "Name",
         "walletAddress": "Wallet address",
