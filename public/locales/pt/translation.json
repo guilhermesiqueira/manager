@@ -264,6 +264,8 @@
       "edit": "Editar",
       "details": "Detalhes",
       "impact": "Impacto",
+      "images": "Imagens",
+      "viewHistory": "Ver histórico",
       "attributes": {
         "name": "Nome",
         "walletAddress": "Endereço da carteira",

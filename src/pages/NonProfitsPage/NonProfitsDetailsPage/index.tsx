@@ -150,11 +150,15 @@ function NonProfitsDetailsPage(): JSX.Element {
           </S.InfoValue>
 
           <S.Container>
-            <LinkPage page={`/ngos/${id}/impacts`} text="See all impacts" />
+            <LinkPage
+              page={`/ngos/${id}/impacts`}
+              text={t("details.viewHistory")}
+            />
           </S.Container>
 
           <S.Container>
             <S.LeftSection>
+              <S.Subtitle>{t("details.images")}</S.Subtitle>
               <S.ItemBox>
                 <InfoName>{t("details.attributes.logo")}</InfoName>
                 <S.CardImage src={nonProfit?.logo} />
