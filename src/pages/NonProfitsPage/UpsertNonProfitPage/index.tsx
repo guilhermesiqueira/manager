@@ -19,9 +19,10 @@ import { CreateStory } from "types/apiResponses/story";
 import { NonProfitImpact } from "types/entities/NonProfitImpact";
 import { useUploadFile } from "hooks/apiHooks/useUploadFile";
 import { CreateNonProfitImpacts } from "types/apiResponses/nonProfitImpacts";
+import ImpactsForm from "./ImpactForm";
+import ImpactPreviewer from "./ImpactPreviewer";
 import StoriesForm from "./StoriesForm";
 import * as S from "./styles";
-import ImpactsForm from "./ImpactForm";
 
 export type Props = {
   isEdit?: boolean;
@@ -72,6 +73,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     setValue: setValueImpact,
     formState: formStateImpact,
     getValues: ImpactObject,
+    watch,
   } = useForm<NonProfitImpact>({
     mode: "onChange",
     reValidateMode: "onChange",
@@ -272,6 +274,8 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const causeText = (value: any) =>
     causes.find((cause) => cause.id === value)?.name ?? "";
 
+  const watchImpactFields = watch();
+
   return (
     <>
       <S.Title>{t(`upsert.${mode}.title`)}</S.Title>
@@ -340,6 +344,14 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               formStateImpact={formStateImpact}
               setValueImpact={setValueImpact}
             />
+            {watchImpactFields && (
+              <ImpactPreviewer
+                nonProfit={{
+                  ...NonProfitObject(),
+                  nonProfitImpacts: [watchImpactFields],
+                }}
+              />
+            )}
             <S.Divider />
 
             <StoriesForm
@@ -402,6 +414,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               type="submit"
               color={gray10}
               backgroundColor={gray40}
+              value={t(`upsert.${mode}.save`)}
               _hover={{ bg: gray30 }}
             >
               {t(`upsert.${mode}.save`)}
