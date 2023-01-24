@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { impactNormalizer } from "@ribon.io/shared/lib";
 import * as S from "./styles";
@@ -9,7 +9,7 @@ export type Props = {
 };
 
 function ImpactPreviewer({ nonProfit, defaultAmountInUsd = 100 }: Props) {
-  const [roundedImpact, setRoundedImpact] = React.useState(0);
+  const [roundedImpact, setRoundedImpact] = useState(0);
   const { t } = useTranslation("translation", {
     keyPrefix: "nonProfits.upsert.impactPreviewer",
   });
@@ -18,7 +18,7 @@ function ImpactPreviewer({ nonProfit, defaultAmountInUsd = 100 }: Props) {
     keyPrefix: "impactNormalizer",
   });
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (nonProfit?.nonProfitImpacts) {
       setRoundedImpact(
         defaultAmountInUsd /
