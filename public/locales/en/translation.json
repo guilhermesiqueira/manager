@@ -266,6 +266,9 @@
         "upsert": {
           "required": "This field is required"
         }
+      },
+      "impactPreviewer": {
+        "fund": "fund"
       }
     },
     "details": {

@@ -264,6 +264,9 @@
         "upsert": {
           "required": "Este campo é obrigatório"
         }
+      },
+      "impactPreviewer": {
+        "fund": "geram"
       }
     },
     "details": {

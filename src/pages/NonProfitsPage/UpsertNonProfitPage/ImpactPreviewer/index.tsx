@@ -11,6 +11,10 @@ export type Props = {
 function ImpactPreviewer({ nonProfit, defaultAmountInUsd = 100 }: Props) {
   const [roundedImpact, setRoundedImpact] = React.useState(0);
   const { t } = useTranslation("translation", {
+    keyPrefix: "nonProfits.upsert.impactPreviewer",
+  });
+
+  const { t: normalizerTranslations } = useTranslation("translation", {
     keyPrefix: "impactNormalizer",
   });
 
@@ -28,8 +32,8 @@ function ImpactPreviewer({ nonProfit, defaultAmountInUsd = 100 }: Props) {
     nonProfit?.nonProfitImpacts &&
     roundedImpact && (
       <S.Info>
-        Com ${defaultAmountInUsd} você doa{" "}
-        {impactNormalizer(nonProfit, roundedImpact, t)}
+        ${defaultAmountInUsd} {t("fund")}{" "}
+        {impactNormalizer(nonProfit, roundedImpact, normalizerTranslations)}
       </S.Info>
     )
   );
