@@ -28,7 +28,6 @@ function ImpactPreviewer({ nonProfit, defaultAmountInUsd = 100 }: Props) {
   }, [nonProfit?.nonProfitImpacts]);
 
   return (
-    nonProfit &&
     nonProfit?.nonProfitImpacts &&
     roundedImpact && (
       <S.Info>
