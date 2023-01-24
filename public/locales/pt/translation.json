@@ -260,6 +260,9 @@
           "startDate": "Data de início",
           "endDate": "Data de término",
           "impactInfo": "Digite o singular e o plural separados por uma vírgula para a descrição de impacto e beneficiários. Quando a unidade for de anos, meses e dias, repetir a descrição de impacto sem digitar a unidade."
+        },
+        "upsert": {
+          "required": "Este campo é obrigatório"
         }
       }
     },
@@ -333,5 +336,16 @@
     "buttonText": "Login com o Google",
     "errorText": "O login falhou",
     "errorDescription": "Certifique-se de que seu email pertence ao domínio @ribon.io"
+  },
+  "impactNormalizer": {
+    "year": "ano",
+    "years": "anos",
+    "month": "mês",
+    "months": "meses",
+    "day": "dia",
+    "days": "dias",
+    "for": "para",
+    "and": "e",
+    "of": "de"
   }
 }

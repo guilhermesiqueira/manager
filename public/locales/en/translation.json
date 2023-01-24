@@ -262,6 +262,9 @@
           "startDate": "Start Date",
           "endDate": "End Date",
           "impactInfo": "Enter singular then the plural separated by comma for impact description and donor recipients. When the unit is years, months and days, repeat the impact description without typing the unit."
+        },
+        "upsert": {
+          "required": "This field is required"
         }
       }
     },
@@ -343,5 +346,16 @@
     "helpText": "Drop the logo image here or ",
     "helpText2": "browse",
     "supports": "Supports: JPG, PNG"
+  },
+  "impactNormalizer": {
+    "year": "year",
+    "years": "years",
+    "month": "month",
+    "months": "months",
+    "day": "day",
+    "days": "days",
+    "for": "for",
+    "and": "and",
+    "of": "of"
   }
 }
