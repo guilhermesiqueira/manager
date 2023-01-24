@@ -95,7 +95,7 @@ function Dropdown({
           type="text"
           name={name}
           aria-label={name}
-          value={valueToText(dropdownValue)}
+          value={valueToText(dropdownValue) || ""}
           readOnly
         />
 
