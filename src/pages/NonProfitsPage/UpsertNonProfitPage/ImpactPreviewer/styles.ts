@@ -1,8 +1,9 @@
 import styled from "styled-components";
-import { defaultParagraphSmall } from "styles/typography/default";
+import { defaultBodyXsRegular } from "styles/typography/default";
 
 export const Info = styled.p`
-  ${defaultParagraphSmall}
-  color: ${({ theme }) => theme.colors.gray30};
+  ${defaultBodyXsRegular}
+
   margin-block: 12px;
+  color: ${({ theme }) => theme.colors.gray30};
 `;

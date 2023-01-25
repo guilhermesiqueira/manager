@@ -1,6 +1,6 @@
 import { AspectRatio, Image } from "@chakra-ui/react";
 import styled from "styled-components";
-import { defaultParagraphSmall } from "styles/typography/default";
+import { defaultBodyXsRegular } from "styles/typography/default";
 
 export const Container = styled(AspectRatio)`
   width: 154px;
@@ -47,7 +47,7 @@ export const InputField = styled.input`
 export const UploadIcon = styled(Image)``;
 
 export const Text = styled.p`
-  ${defaultParagraphSmall}
+  ${defaultBodyXsRegular}
 
   margin: 5px 0;
   text-align: center;
@@ -60,7 +60,7 @@ export const Text = styled.p`
 `;
 
 export const span = styled.span`
-  ${defaultParagraphSmall}
+  ${defaultBodyXsRegular}
 
   color: ${({ theme }) => theme.colors.gray30};
 `;

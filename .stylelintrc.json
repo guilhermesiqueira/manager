@@ -60,6 +60,7 @@
         "margin-right",
         "margin-bottom",
         "margin-left",
+        "margin-block",
         "padding",
         "padding-top",
         "padding-right",
