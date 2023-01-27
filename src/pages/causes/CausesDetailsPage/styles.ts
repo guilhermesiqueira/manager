@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { defaultSubtitleSmall } from "styles/typography/default";
+import { defaultBodyXsMedium } from "styles/typography/default";
 
 export const Container = styled.div`
   width: 100%;
@@ -76,7 +76,7 @@ export const CardProject = styled.div`
 export const ArrowOutward = styled.img``;
 
 export const CardProjectInfo = styled.h4`
-  ${defaultSubtitleSmall}
+  ${defaultBodyXsMedium}
 
   color: ${({ theme }) => theme.colors.gray30};
 `;

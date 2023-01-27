@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Bar } from "react-chartjs-2";
-import { defaultParagraphSmall } from "styles/typography/default";
+import { defaultBodyXsRegular } from "styles/typography/default";
 
 export const Container = styled.div`
   width: 700px;
@@ -43,7 +43,7 @@ export const Teste = styled.div`
 `;
 
 export const SecondaryText = styled.span`
-  ${defaultParagraphSmall}
+  ${defaultBodyXsRegular}
 
   color: ${({ theme }) => theme.colors.gray40};
 `;

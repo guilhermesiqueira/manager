@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Pie } from "react-chartjs-2";
-import { defaultParagraphSmall } from "styles/typography/default";
+import { defaultBodyXsRegular } from "styles/typography/default";
 
 export const Container = styled.div`
   width: 256px;
@@ -20,7 +20,7 @@ export const MainText = styled.div`
 `;
 
 export const MainValue = styled.span`
-  ${defaultParagraphSmall}
+  ${defaultBodyXsRegular}
 
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.gray40};
@@ -40,7 +40,7 @@ export const Teste = styled.div`
 `;
 
 export const SecondaryText = styled.span`
-  ${defaultParagraphSmall}
+  ${defaultBodyXsRegular}
 
   color: ${({ theme }) => theme.colors.gray40};
 `;
