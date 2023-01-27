@@ -1,8 +1,8 @@
 import { createGlobalStyle } from "styled-components";
 import normalize from "./normalize";
 import {
-  defaultButtonTextLarge,
-  defaultParagraphMedium,
+  defaultBodyMdSemibold,
+  defaultBodySmRegular,
 } from "./typography/default";
 import { typography } from "./typography/typography";
 
@@ -34,7 +34,7 @@ const GlobalStyle = createGlobalStyle`
     }
   
   button {
-    ${defaultButtonTextLarge}
+    ${defaultBodyMdSemibold}
     :hover {
       cursor: pointer;
     }
@@ -43,7 +43,7 @@ const GlobalStyle = createGlobalStyle`
   
   tbody td,
   tbody th {
-    ${defaultParagraphMedium}
+    ${defaultBodySmRegular}
     line-height: 20px;
   }
 

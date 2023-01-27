@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { defaultTitleMedium } from "styles/typography/default";
+import { defaultHeadingXxs } from "styles/typography/default";
 
 export const Text = styled.h3`
-  ${defaultTitleMedium}
+  ${defaultHeadingXxs}
 
   color: ${({ theme }) => theme.colors.gray40};
 `;

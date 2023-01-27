@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { defaultParagraphSmall } from "styles/typography/default";
+import { defaultBodyXsRegular } from "styles/typography/default";
 
 export const TextInput = styled.input`
   width: 100%;
@@ -57,7 +57,8 @@ export const DoubleItemSection = styled.div`
 `;
 
 export const Info = styled.p`
-  ${defaultParagraphSmall}
+  ${defaultBodyXsRegular}
+
   color: ${({ theme }) => theme.colors.gray30};
 `;
 

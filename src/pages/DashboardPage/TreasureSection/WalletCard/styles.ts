@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { defaultParagraphSmall } from "styles/typography/default";
+import { defaultBodyXsRegular } from "styles/typography/default";
 
 export const Title = styled.h3`
-  ${defaultParagraphSmall}
+  ${defaultBodyXsRegular}
 
   color: ${({ theme }) => theme.colors.gray30};
 `;
