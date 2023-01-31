@@ -74,9 +74,8 @@ function PurchasesListSection(): JSX.Element {
     <S.Container>
       <S.CheckboxContainer>
         {Object.keys(defaultStatusSelection).map((status: any) => (
-          <>
+          <div key={status}>
             <S.Checkbox
-              key={status}
               name="status"
               type="checkbox"
               value={status}
@@ -84,7 +83,7 @@ function PurchasesListSection(): JSX.Element {
               checked={selectedStatus[status]}
             />
             <S.Span>{t(`attributes.${status}`)}</S.Span>
-          </>
+          </div>
         ))}
       </S.CheckboxContainer>
       <S.SearchBar
