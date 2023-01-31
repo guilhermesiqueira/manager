@@ -114,6 +114,8 @@ function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
                   primaryButtonCallback={handleRefund}
                   secondaryButtonText={t("cancelButton")}
                   secondaryButtonBorderColor={gray30}
+                  secondaryButtonCallback={() => setVisible(false)}
+                  onClose={() => setVisible(false)}
                 />
               </th>
             )}
