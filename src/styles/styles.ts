@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 256px;
-  padding: 24px;
+  padding: ${({ theme }) => theme.spacing(24)};
   border: 1px solid ${({ theme }) => theme.colors.gray20};
   border-radius: 16px;
   position: absolute;
@@ -14,7 +14,7 @@ export const Container = styled.div`
 `;
 
 export const MainText = styled.div`
-  padding-bottom: 16px;
+  padding-bottom: ${({ theme }) => theme.spacing(16)};
   line-height: 1.6;
   color: ${({ theme }) => theme.colors.gray40};
 `;

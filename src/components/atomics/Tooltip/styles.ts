@@ -10,7 +10,7 @@ type TooltipProps = {
 };
 
 export const TooltipTip = styled.div<TooltipProps>`
-  padding: 0.5rem 1rem;
+  padding: ${({ theme }) => theme.spacing(8, 16)};
   border-radius: 0.5rem;
   position: absolute;
   top: 0;

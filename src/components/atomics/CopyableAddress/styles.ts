@@ -11,7 +11,7 @@ export const Container = styled.div`
 
   img {
     max-width: 17px;
-    margin-right: 0.4rem;
+    margin-right: ${({ theme }) => theme.spacing(8)};
   }
 
   span {
