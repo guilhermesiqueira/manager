@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
-  flex-direction: column;
   max-width: 564px;
+  margin-bottom: ${({ theme }) => theme.spacing(12)};
+  padding: ${({ theme }) => theme.spacing(24)};
   border: 2px solid ${({ theme }) => theme.colors.gray20};
   border-radius: 8px;
-  padding: 24px;
-  margin-bottom: 12px;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const CardContainer = styled.div`
@@ -31,15 +31,15 @@ export const CardDescription = styled.h6`
 `;
 
 export const LeftSection = styled.div`
-  display: flex;
   width: 30%;
+  display: flex;
 `;
 
 export const RightSection = styled.div`
+  width: 70%;
+  margin-left: ${({ theme }) => theme.spacing(24)};
   display: flex;
   flex-direction: column;
-  width: 70%;
-  margin-left: 24px;
 `;
 
 export const ItemBox = styled.div`

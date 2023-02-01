@@ -3,7 +3,7 @@ import { defaultBodyXsMedium } from "styles/typography/default";
 
 export const Container = styled.div`
   width: 100%;
-  margin-top: 12px;
+  margin-top: ${({ theme }) => theme.spacing(12)};
   display: flex;
   flex-direction: column;
 
@@ -18,7 +18,7 @@ export const Content = styled.div`
 `;
 
 export const Title = styled.h2`
-  margin: 84px 0 32px;
+  margin: ${({ theme }) => theme.spacing(80, 0, 32)};
   text-transform: uppercase;
 `;
 
@@ -43,15 +43,15 @@ export const CausesCardContainer = styled.div``;
 export const Subtitle = styled.h4``;
 
 export const SubtitleInfo = styled.h2`
-  margin-bottom: 16px;
+  margin-bottom: ${({ theme }) => theme.spacing(16)};
   color: ${({ theme }) => theme.colors.green30};
 `;
 
 export const CardProject = styled.div`
   width: 200px;
   min-height: 40px;
-  margin-top: 8px;
-  padding: 8px 16px;
+  margin-top: ${({ theme }) => theme.spacing(8)};
+  padding: ${({ theme }) => theme.spacing(8, 16)};
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -69,8 +69,8 @@ export const CardProjectInfo = styled.h4`
 `;
 
 export const StoriesContainer = styled.div`
-  margin-top: 16px;
-  padding: 12px 24px 24px;
+  margin-top: ${({ theme }) => theme.spacing(16)};
+  padding: ${({ theme }) => theme.spacing(12, 24, 24)};
   border: 2px solid ${({ theme }) => theme.colors.gray20};
   border-radius: 8px;
   display: flex;
@@ -90,5 +90,5 @@ export const CardImage = styled.img`
 `;
 
 export const ContainerStories = styled.div`
-  margin-top: 12px;
+  margin-top: ${({ theme }) => theme.spacing(12)};
 `;

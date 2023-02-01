@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  margin-top: 16px;
+  margin-top: ${({ theme }) => theme.spacing(16)};
   display: flex;
   flex-direction: column;
 
@@ -17,12 +17,12 @@ export const Content = styled.div`
 `;
 
 export const Title = styled.h2`
-  margin: 84px 0 32px;
+  margin: ${({ theme }) => theme.spacing(80, 0, 32)};
   text-transform: uppercase;
 `;
 
 export const Subtitle = styled.h3`
-  margin-top: 12px;
+  margin-top: ${({ theme }) => theme.spacing(12)};
 `;
 
 export const InfoValue = styled.p`

@@ -17,24 +17,24 @@ export const LeftSection = styled.div`
 `;
 
 export const Title = styled.h2`
-  margin: 84px 0 32px;
+  margin: ${({ theme }) => theme.spacing(80, 0, 32)};
   text-transform: uppercase;
 `;
 
 export const Subtitle = styled.h3`
-  margin-bottom: 12px;
+  margin-bottom: ${({ theme }) => theme.spacing(12)};
 `;
 
 export const SubtitleDescription = styled.h4`
-  margin-bottom: 4px;
+  margin-bottom: ${({ theme }) => theme.spacing(4)};
   font-weight: 400;
 `;
 
 export const TextInput = styled.input`
   min-width: 400px;
   max-width: 400px;
-  margin: 8px 0 12px;
-  padding: 8px 16px;
+  margin: ${({ theme }) => theme.spacing(8, 0, 12)};
+  padding: ${({ theme }) => theme.spacing(8, 16)};
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
   border-radius: 10px;
   display: block;
@@ -47,7 +47,7 @@ export const TextInput = styled.input`
 `;
 
 export const Span = styled.span`
-  margin: 5px 7px 30px 4px;
+  margin: ${({ theme }) => theme.spacing(4, 8, 32, 4)};
   display: inline-block;
   vertical-align: middle;
   color: ${({ color, theme }) => color || theme.colors.darkGray};
@@ -66,13 +66,13 @@ export const Error = styled.span`
 `;
 
 export const HelperText = styled.span`
-  font-size: 12px;
   margin-top: -24px;
+  font-size: 12px;
   color: ${({ theme }) => theme.colors.gray30};
 `;
 
 export const ButtonContainer = styled.div`
-  margin: 24px 0;
+  margin: ${({ theme }) => theme.spacing(24, 0)};
   display: flex;
 `;
 

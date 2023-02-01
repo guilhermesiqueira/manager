@@ -4,8 +4,8 @@ import styled from "styled-components";
 export const DotBox = styled.div`
   width: 150px;
   height: 150px;
-  margin: 5px 0;
-  padding: 15px;
+  margin: ${({ theme }) => theme.spacing(4, 0)};
+  padding: ${({ theme }) => theme.spacing(16)};
   border: 1px dashed ${({ theme }) => theme.colors.gray40};
   border-radius: 8px;
   display: inline-block;
@@ -31,5 +31,5 @@ export const Text = styled.h6`
   line-height: 24px;
 `;
 export const Icon = styled(Image)`
-  margin-bottom: 5px;
+  margin-bottom: ${({ theme }) => theme.spacing(4)};
 `;

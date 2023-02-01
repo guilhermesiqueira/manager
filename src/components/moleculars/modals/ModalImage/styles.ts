@@ -4,18 +4,18 @@ import ReactModal from "react-modal";
 export const ModalWithImage = styled(ReactModal)`
   width: 100%;
   max-width: 464px;
-  margin: 16px;
-  padding: 16px;
+  margin: ${({ theme }) => theme.spacing(16)};
+  padding: ${({ theme }) => theme.spacing(16)};
   border-radius: 16px;
   overflow: hidden;
   background-color: #fff;
 
   button,
   a {
-    margin-bottom: 8px;
+    margin-bottom: ${({ theme }) => theme.spacing(8)};
 
     &:last-child {
-      margin: 0;
+      margin: ${({ theme }) => theme.spacing(0)};
     }
   }
 `;
@@ -36,12 +36,12 @@ export const Title = styled.h3`
 `;
 
 export const Body = styled.p`
-  margin: 4px 0 16px;
+  margin: ${({ theme }) => theme.spacing(4, 0, 16)};
   text-align: center;
   color: ${({ theme }) => theme.colors.gray30};
 `;
 
 export const RowsModalRow = styled.div`
-  margin-bottom: 28px;
+  margin-bottom: ${({ theme }) => theme.spacing(32)};
   display: flex;
 `;

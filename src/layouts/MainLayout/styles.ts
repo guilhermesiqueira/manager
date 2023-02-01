@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 100%;
   min-width: 100%;
-  padding-bottom: 70px;
+  padding-bottom: ${({ theme }) => theme.spacing(80)};
   padding-left: 15%;
   background: ${({ theme }) => theme.colors.gray10};
   box-shadow: 0 0 20px ${({ theme }) => theme.colors.defaultShadow};

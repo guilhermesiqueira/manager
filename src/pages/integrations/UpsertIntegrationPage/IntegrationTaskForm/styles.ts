@@ -1,18 +1,18 @@
 import styled from "styled-components";
 
 export const Subtitle = styled.h3`
-  margin-bottom: 12px;
+  margin-bottom: ${({ theme }) => theme.spacing(12)};
 `;
 
 export const SubtitleDescription = styled.h4`
-  margin-bottom: 4px;
+  margin-bottom: ${({ theme }) => theme.spacing(4)};
   font-weight: 400;
 `;
 
 export const TextInput = styled.input`
   max-width: 400px;
-  margin: 8px 0;
-  padding: 8px 16px;
+  margin: ${({ theme }) => theme.spacing(8, 0)};
+  padding: ${({ theme }) => theme.spacing(8, 16)};
   border: 1px solid ${({ theme }) => theme.colors.gray40};
   border-radius: 10px;
   display: block;
