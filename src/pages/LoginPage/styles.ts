@@ -10,12 +10,12 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h6`
-  margin: 8px 0 24px;
+  margin: ${({ theme }) => theme.spacing(8, 0, 24)};
   color: ${({ theme }) => theme.colors.gray40};
 `;
 
 export const TitleError = styled.h6`
-  margin: 24px 0 8px;
+  margin: ${({ theme }) => theme.spacing(24, 0, 8)};
   color: ${({ theme }) => theme.colors.red30};
 `;
 

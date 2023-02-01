@@ -7,7 +7,7 @@ export const Container = styled.div`
 // create a component to table
 export const Table = styled.table`
   min-width: 500px;
-  margin: 25px 0;
+  margin: ${({ theme }) => theme.spacing(24, 0)};
   border-collapse: collapse;
 
   tr,
@@ -18,7 +18,7 @@ export const Table = styled.table`
 
   td,
   th {
-    padding: 10px 15px;
+    padding: ${({ theme }) => theme.spacing(12, 16)};
   }
 
   tbody tr th {
@@ -36,7 +36,7 @@ export const ActionsTableCell = styled.div`
   display: flex;
 
   img {
-    margin-right: 0.5rem;
+    margin-right: ${({ theme }) => theme.spacing(8)};
   }
 `;
 

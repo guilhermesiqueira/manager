@@ -23,7 +23,7 @@ export const Container = styled.div`
     width: 80px;
     height: 100%;
     min-height: 100vh;
-    padding: 50px 50px 0;
+    padding: ${({ theme }) => theme.spacing(48, 48, 0)};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -42,8 +42,8 @@ export const Title = styled.p`
 `;
 
 export const StyledLink = styled(Link)`
-  margin-bottom: 12px;
-  padding: 10px;
+  margin-bottom: ${({ theme }) => theme.spacing(12)};
+  padding: ${({ theme }) => theme.spacing(12)};
   display: flex;
   flex-direction: column;
   text-decoration: none;

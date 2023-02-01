@@ -4,7 +4,7 @@ import { defaultBodyXsRegular } from "styles/typography/default";
 
 export const Container = styled.div`
   width: 256px;
-  padding: 24px;
+  padding: ${({ theme }) => theme.spacing(24)};
   border: 1px solid ${({ theme }) => theme.colors.gray20};
   border-radius: 16px;
   display: flex;
@@ -15,7 +15,7 @@ export const Container = styled.div`
 `;
 
 export const MainText = styled.div`
-  padding-bottom: 16px;
+  padding-bottom: ${({ theme }) => theme.spacing(16)};
   color: ${({ theme }) => theme.colors.gray40};
 `;
 
@@ -54,11 +54,11 @@ export const SecondaryRightValue = styled.h6`
 `;
 
 export const Graph = styled(Pie)`
-  padding: 32px 16px 0;
+  padding: ${({ theme }) => theme.spacing(32, 16, 0)};
 `;
 
 export const CausesSection = styled.div`
-  padding: 12px 16px;
+  padding: ${({ theme }) => theme.spacing(12, 16)};
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -67,7 +67,7 @@ export const CausesSection = styled.div`
 
 export const CauseCard = styled.div`
   width: 25%;
-  margin-bottom: 20px;
+  margin-bottom: ${({ theme }) => theme.spacing(20)};
   display: flex;
   flex-direction: column;
 `;

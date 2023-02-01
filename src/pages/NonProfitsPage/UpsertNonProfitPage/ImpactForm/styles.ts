@@ -3,8 +3,8 @@ import { defaultBodyXsRegular } from "styles/typography/default";
 
 export const TextInput = styled.input`
   width: 100%;
-  margin: 8px 0 12px;
-  padding: 8px 16px;
+  margin: ${({ theme }) => theme.spacing(8, 0, 12)};
+  padding: ${({ theme }) => theme.spacing(8, 16)};
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
   border-radius: 4px;
   display: block;
@@ -18,8 +18,8 @@ export const TextInput = styled.input`
 
 export const AreaInput = styled.textarea`
   width: 100%;
-  margin: 8px 0 12px;
-  padding: 8px 16px;
+  margin: ${({ theme }) => theme.spacing(8, 0, 12)};
+  padding: ${({ theme }) => theme.spacing(8, 16)};
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
   border-radius: 4px;
   display: block;
@@ -32,7 +32,7 @@ export const AreaInput = styled.textarea`
 `;
 
 export const Span = styled.span`
-  margin: 5px 7px 30px 4px;
+  margin: ${({ theme }) => theme.spacing(4, 8, 32, 4)};
   display: inline-block;
   vertical-align: middle;
   color: ${({ color, theme }) => color || theme.colors.darkGray};
@@ -63,7 +63,7 @@ export const Info = styled.p`
 `;
 
 export const ItemBox = styled.div`
-  margin-right: 16px;
+  margin-right: ${({ theme }) => theme.spacing(16)};
   display: flex;
   flex-direction: column;
 `;

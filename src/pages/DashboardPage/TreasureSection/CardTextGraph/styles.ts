@@ -5,7 +5,7 @@ import { defaultBodyXsRegular } from "styles/typography/default";
 export const Container = styled.div`
   width: 700px;
   height: 100%;
-  padding: 24px;
+  padding: ${({ theme }) => theme.spacing(24)};
   border: 1px solid ${({ theme }) => theme.colors.gray20};
   border-radius: 16px;
   box-sizing: border-box;
@@ -15,7 +15,7 @@ export const Container = styled.div`
 `;
 
 export const MainText = styled.h1`
-  padding-bottom: 4px;
+  padding-bottom: ${({ theme }) => theme.spacing(4)};
   font-weight: 700;
   font-size: 18px;
   line-height: 20px;
@@ -23,7 +23,7 @@ export const MainText = styled.h1`
 `;
 
 export const MainValue = styled.h2`
-  margin-bottom: 12px;
+  margin-bottom: ${({ theme }) => theme.spacing(12)};
   font-weight: 700;
   font-size: 22px;
   color: ${({ theme }) => theme.colors.green40};
@@ -57,11 +57,11 @@ export const SecondaryRightValue = styled.h6`
 `;
 
 export const Graph = styled(Bar)`
-  padding: 16px;
+  padding: ${({ theme }) => theme.spacing(16)};
 `;
 
 export const CausesSection = styled.div`
-  padding: 12px 16px;
+  padding: ${({ theme }) => theme.spacing(12, 16)};
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -70,7 +70,7 @@ export const CausesSection = styled.div`
 
 export const CauseCard = styled.div`
   width: 25%;
-  margin-bottom: 20px;
+  margin-bottom: ${({ theme }) => theme.spacing(20)};
   display: flex;
   flex-direction: column;
 `;

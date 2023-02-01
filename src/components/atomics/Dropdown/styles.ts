@@ -1,17 +1,16 @@
 import styled from "styled-components";
 
 export const Input = styled.div`
-  margin: 8px 0 12px;
-  padding: 8px 16px;
-  border: 1px solid ${({ theme }) => theme.colors.darkGray};
-  border-radius: 4px;
-  color: ${({ theme }) => theme.colors.darkGray};
   height: 46px;
-  margin: 8px 0;
-  padding: 8px 16px;
+  margin: ${({ theme }) => theme.spacing(8, 0, 12)};
+  margin: ${({ theme }) => theme.spacing(8, 0)};
+  padding: ${({ theme }) => theme.spacing(8, 16)};
+  border: 1px solid ${({ theme }) => theme.colors.darkGray};
   border: 1px solid ${({ theme }) => theme.colors.gray40};
+  border-radius: 4px;
   display: flex;
   background-color: ${({ theme }) => theme.colors.neutral10};
+  color: ${({ theme }) => theme.colors.darkGray};
   color: ${({ theme }) => theme.colors.gray40};
 
   label {
@@ -54,7 +53,7 @@ export const Container = styled.div`
 `;
 
 export const OptionContainer = styled.div`
-  padding: 8px 16px;
+  padding: ${({ theme }) => theme.spacing(8, 16)};
 
   &:hover {
     background-color: ${({ theme }) => theme.colors.gray10};

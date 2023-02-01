@@ -10,7 +10,7 @@ export const Container = styled.div`
 export const Table = styled.table`
   min-width: 500px;
   max-width: 90%;
-  margin: 25px 0;
+  margin: ${({ theme }) => theme.spacing(24, 0)};
   border-collapse: collapse;
 
   tr,
@@ -21,7 +21,7 @@ export const Table = styled.table`
 
   td,
   th {
-    padding: 10px 15px;
+    padding: ${({ theme }) => theme.spacing(12, 16)};
   }
 
   tbody tr th {
@@ -39,7 +39,7 @@ export const ActionsTableCell = styled.div`
   display: flex;
 
   img {
-    margin-right: 0.5rem;
+    margin-right: ${({ theme }) => theme.spacing(8)};
   }
 `;
 
@@ -50,15 +50,15 @@ export const StatusTableCell = styled.span`
 export const Pagination = styled(ReactPaginate).attrs({
   activeClassName: "active", // default to "disabled"
 })`
-  margin-bottom: 2rem;
+  margin-bottom: ${({ theme }) => theme.spacing(32)};
   display: flex;
   flex-direction: row;
   justify-content: center;
   list-style-type: none;
 
   li a {
-    margin-left: 4px;
-    padding: 8px 16px;
+    margin-left: ${({ theme }) => theme.spacing(4)};
+    padding: ${({ theme }) => theme.spacing(8, 16)};
     border: 1px solid ${({ theme }) => theme.colors.gray30};
     border-radius: 16px;
     cursor: pointer;
@@ -90,7 +90,7 @@ export const Pagination = styled(ReactPaginate).attrs({
 export const SearchBar = styled.input`
   width: 90%;
   height: 44px;
-  padding-left: 14px;
+  padding-left: ${({ theme }) => theme.spacing(16)};
   border: 2px solid ${({ theme }) => theme.colors.gray30};
   border-radius: 8px;
   background-color: ${({ theme }) => theme.colors.gray10};
@@ -104,14 +104,14 @@ export const CheckboxContainer = styled.div`
 
 export const Checkbox = styled.input`
   accent-color: ${({ theme }) => theme.colors.green30};
-  margin: 5px 7px 30px 4px;
+  margin: ${({ theme }) => theme.spacing(4, 8, 32, 4)};
   display: inline-block;
   vertical-align: middle;
   transform: scale(1.5);
 `;
 
 export const Span = styled.span`
-  margin: 5px 18px 30px 4px;
+  margin: ${({ theme }) => theme.spacing(4, 20, 32, 4)};
   display: inline-block;
   vertical-align: middle;
   color: ${({ color, theme }) => color || theme.colors.darkGray};

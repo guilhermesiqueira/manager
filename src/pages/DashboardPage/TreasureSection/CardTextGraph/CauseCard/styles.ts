@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CauseCard = styled.div`
   width: 25%;
-  margin-bottom: 20px;
+  margin-bottom: ${({ theme }) => theme.spacing(20)};
   display: flex;
   flex-direction: column;
 `;

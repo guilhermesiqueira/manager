@@ -5,7 +5,7 @@ import { defaultBodyXsRegular } from "styles/typography/default";
 export const Container = styled(AspectRatio)`
   width: 154px;
   height: 148px;
-  margin-bottom: 24px;
+  margin-bottom: ${({ theme }) => theme.spacing(24)};
 `;
 
 export const Box = styled.div`
@@ -49,7 +49,7 @@ export const UploadIcon = styled(Image)``;
 export const Text = styled.p`
   ${defaultBodyXsRegular}
 
-  margin: 5px 0;
+  margin: ${({ theme }) => theme.spacing(4, 0)};
   text-align: center;
   color: ${({ theme }) => theme.colors.gray40};
 
