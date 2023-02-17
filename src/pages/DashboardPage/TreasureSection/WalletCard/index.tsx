@@ -14,7 +14,7 @@ function WalletCard(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "dashboard.walletDashboard",
   });
-  const { green20 } = theme.colors;
+  const { primary } = theme.colors.brand;
   const { getIntegration } = useIntegrations();
   const [integrationBalance, setIntegrationBalance] = useState<string>("...");
   const [integrationMatic, setIntegrationMatic] = useState<string>("...");
@@ -50,7 +50,7 @@ function WalletCard(): JSX.Element {
       <S.Title>{t("donationLimit")}</S.Title>
       <S.Value>{integrationBalance}</S.Value>
       <S.Title>{t("matic")}</S.Title>
-      <S.Value color={green20}>{integrationMatic}</S.Value>
+      <S.Value color={primary[200]}>{integrationMatic}</S.Value>
     </Card>
   );
 }
