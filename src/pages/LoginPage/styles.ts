@@ -16,9 +16,9 @@ export const Title = styled.h6`
 
 export const TitleError = styled.h6`
   margin: ${({ theme }) => theme.spacing(24, 0, 8)};
-  color: ${({ theme }) => theme.colors.red30};
+  color: ${({ theme }) => theme.colors.brand.tertiary[400]};
 `;
 
 export const SubTitleError = styled.h6`
-  color: ${({ theme }) => theme.colors.red30};
+  color: ${({ theme }) => theme.colors.brand.tertiary[400]};
 `;

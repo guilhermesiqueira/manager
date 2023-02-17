@@ -12,7 +12,8 @@ import * as S from "./styles";
 function IntegrationsListSection(): JSX.Element {
   const [allIntegrations, setAllIntegrations] = useState<any>([]);
   const { getAllApiIntegrations } = useApiIntegrations();
-  const { green30, red30 } = theme.colors;
+  const { green30 } = theme.colors;
+  const { tertiary } = theme.colors.brand;
 
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations.attributes",
@@ -20,7 +21,7 @@ function IntegrationsListSection(): JSX.Element {
 
   const statusColors: { [key: string]: string } = {
     active: green30,
-    inactive: red30,
+    inactive: tertiary[400],
   };
 
   const fetchAllIntegrations = useCallback(async () => {

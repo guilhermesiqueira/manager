@@ -3,7 +3,8 @@ import { renderComponent } from "config/testUtils";
 import theme from "styles/theme";
 import IntegrationCard from ".";
 
-const { green30, red30, yellow30 } = theme.colors;
+const { green30, yellow30 } = theme.colors;
+const { tertiary } = theme.colors.brand;
 
 describe("IntegrationCard", () => {
   it("should render without error", () => {
@@ -14,20 +15,20 @@ describe("IntegrationCard", () => {
   });
 
   describe("when value is 0", () => {
-    it("should render red30 icon", () => {
+    it("should render tertiary[400] icon", () => {
       renderComponent(<IntegrationCard title="title" value="0" />);
 
       expect(screen.getByAltText("warningIcon")).toBeInTheDocument();
     });
 
-    it("should render red30 text", () => {
+    it("should render tertiary[400] text", () => {
       const { component } = renderComponent(
         <IntegrationCard title="title" value="0" />,
       );
       const valueText = component.container.getElementsByTagName("p");
       const index = valueText.length - 1;
 
-      expect(valueText[index]).toHaveStyle(`color: ${red30}`);
+      expect(valueText[index]).toHaveStyle(`color: ${tertiary[400]}`);
     });
   });
 

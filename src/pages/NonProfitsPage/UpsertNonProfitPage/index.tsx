@@ -39,7 +39,8 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const [currentUnit, setCurrentUnit] = useState<string>("");
   const { getCauses } = useCauses();
   const [loading, setLoading] = useState(false);
-  const { gray10, gray40, gray30, red30 } = theme.colors;
+  const { gray10, gray40, gray30 } = theme.colors;
+  const { tertiary } = theme.colors.brand;
   const [statusCheckbox, setStatusCheckbox] = useState(true);
   const [stories, setStories] = useState<CreateStory[]>([]);
   const [logoFile, setLogoFile] = useState<string>("");
@@ -438,7 +439,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               visible={modalOpen}
               image={WarningRedIcon}
               primaryButtonText={t("upsert.create.modal.confirmButton")}
-              primaryButtonColor={red30}
+              primaryButtonColor={tertiary[400]}
               primaryButtonCallback={handleSave}
               secondaryButtonText={t("upsert.create.modal.cancelButton")}
               secondaryButtonBorderColor={gray30}

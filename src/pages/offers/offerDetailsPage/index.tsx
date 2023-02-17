@@ -17,10 +17,12 @@ function OfferDetailsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "offers",
   });
-  const { green30, red30, gray40, gray10, gray30 } = theme.colors;
+  const { green30, gray40, gray10, gray30 } = theme.colors;
+  const { tertiary } = theme.colors.brand;
+
   const statusColors: { [key: string]: string } = {
     active: green30,
-    inactive: red30,
+    inactive: tertiary[400],
   };
 
   const { getOffer } = useOffers();

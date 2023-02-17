@@ -1,3 +1,7 @@
+import brandColors from "./colors/brand";
+import feedbackColors from "./colors/feedback";
+import neutralColors from "./colors/neutral";
+
 export interface Breakpoint {
   mobile: string;
   mobileMedium: string;
@@ -28,9 +32,6 @@ const theme: ThemeType = {
   },
   colors: {
     neutral10: "#FFFFFF",
-    red10: "#FDEBFF",
-    red20: "#F2A9C3",
-    red30: "#FF6B6F",
     red40: "#912547",
     green10: "#D1FFDB",
     green20: "#8CE0BE",
@@ -48,6 +49,9 @@ const theme: ThemeType = {
     gray20: "#D4CEC3",
     gray30: "#867F70",
     gray40: "#28241C",
+    brand: brandColors,
+    feedback: feedbackColors,
+    neutral: neutralColors,
     defaultShadow: "rgba(40, 36, 28, 0.15)",
     backgroundOverlay: "rgba(40, 36, 28, 0.60)",
   },
