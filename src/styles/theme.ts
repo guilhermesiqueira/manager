@@ -32,13 +32,6 @@ const theme: ThemeType = {
   },
   colors: {
     neutral10: "#FFFFFF",
-    orange10: "#FFD5BF",
-    orange20: "#FF9661",
-    orange30: "#FA7203",
-    orange40: "#AF5333",
-    yellow10: "#F0E8C2",
-    yellow20: "#FFEB7A",
-    yellow30: "#FFCE00",
     yellow40: "#775B33",
     gray10: "#F2F2F0",
     gray20: "#D4CEC3",

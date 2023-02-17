@@ -3,8 +3,7 @@ import { renderComponent } from "config/testUtils";
 import theme from "styles/theme";
 import IntegrationCard from ".";
 
-const { yellow30 } = theme.colors;
-const { primary, tertiary } = theme.colors.brand;
+const { primary, tertiary, quaternary } = theme.colors.brand;
 
 describe("IntegrationCard", () => {
   it("should render without error", () => {
@@ -33,14 +32,14 @@ describe("IntegrationCard", () => {
   });
 
   describe("when value is less than 1000", () => {
-    it("should render yellow30 text", () => {
+    it("should render quaternary[200] text", () => {
       const { component } = renderComponent(
         <IntegrationCard title="title" value="999" />,
       );
       const valueText = component.container.getElementsByTagName("p");
       const index = valueText.length - 1;
 
-      expect(valueText[index]).toHaveStyle(`color:  ${yellow30}`);
+      expect(valueText[index]).toHaveStyle(`color:  ${quaternary[200]}`);
     });
   });
 
