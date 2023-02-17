@@ -8,7 +8,7 @@ export type Props = {
 };
 
 function Loading({
-  strokeColor = theme.colors.green30,
+  strokeColor = theme.colors.brand.primary[300],
   size = "xl",
 }: Props): JSX.Element {
   return (
@@ -21,6 +21,6 @@ function Loading({
 export default Loading;
 
 Loading.defaultProps = {
-  strokeColor: theme.colors.green30,
+  strokeColor: theme.colors.brand.primary[300],
   size: "xl",
 };

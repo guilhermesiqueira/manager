@@ -91,7 +91,7 @@ ModalImage.defaultProps = {
   body: null,
   primaryButtonText: null,
   primaryButtonTextColor: theme.colors.neutral10,
-  primaryButtonColor: theme.colors.green30,
+  primaryButtonColor: theme.colors.brand.primary[300],
   primaryButtonBorderColor: null,
   secondaryButtonText: null,
   secondaryButtonTextColor: theme.colors.gray30,

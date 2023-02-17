@@ -3,8 +3,8 @@ import { renderComponent } from "config/testUtils";
 import theme from "styles/theme";
 import IntegrationCard from ".";
 
-const { green30, yellow30 } = theme.colors;
-const { tertiary } = theme.colors.brand;
+const { yellow30 } = theme.colors;
+const { primary, tertiary } = theme.colors.brand;
 
 describe("IntegrationCard", () => {
   it("should render without error", () => {
@@ -52,7 +52,7 @@ describe("IntegrationCard", () => {
       const valueText = component.container.getElementsByTagName("p");
       const index = valueText.length - 1;
 
-      expect(valueText[index]).toHaveStyle(`color:  ${green30}`);
+      expect(valueText[index]).toHaveStyle(`color:  ${primary[300]}`);
     });
   });
 });

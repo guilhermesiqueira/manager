@@ -73,7 +73,7 @@ export const Pagination = styled(ReactPaginate).attrs({
   li.active a {
     min-width: 32px;
     border-color: transparent;
-    background-color: ${({ theme }) => theme.colors.green30};
+    background-color: ${({ theme }) => theme.colors.brand.primary[300]};
     color: ${({ theme }) => theme.colors.neutral10};
   }
 
@@ -105,5 +105,5 @@ export const SearchBar = styled.input`
 export const Link = styled.a`
   margin-bottom: ${({ theme }) => theme.spacing(16)};
   text-decoration: underline;
-  color: ${({ theme }) => theme.colors.green30};
+  color: ${({ theme }) => theme.colors.brand.primary[300]};
 `;

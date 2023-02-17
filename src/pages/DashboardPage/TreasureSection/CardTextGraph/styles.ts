@@ -26,7 +26,7 @@ export const MainValue = styled.h2`
   margin-bottom: ${({ theme }) => theme.spacing(12)};
   font-weight: 700;
   font-size: 22px;
-  color: ${({ theme }) => theme.colors.green40};
+  color: ${({ theme }) => theme.colors.brand.primary[800]};
 `;
 
 export const TreasureTitle = styled.h3`
@@ -49,7 +49,7 @@ export const SecondaryText = styled.span`
 `;
 
 export const SecondaryLeftValue = styled.h6`
-  color: ${({ theme }) => theme.colors.green30};
+  color: ${({ theme }) => theme.colors.brand.primary[300]};
 `;
 
 export const SecondaryRightValue = styled.h6`
@@ -81,5 +81,5 @@ export const CauseTitle = styled.h6`
 `;
 
 export const CauseValue = styled.h5`
-  color: ${({ theme }) => theme.colors.green30};
+  color: ${({ theme }) => theme.colors.brand.primary[300]};
 `;

@@ -11,8 +11,8 @@ export type Props = {
   value: string;
 };
 
-const { gray40, green30, gray20, yellow30, neutral10 } = theme.colors;
-const { tertiary } = theme.colors.brand;
+const { gray40, gray20, yellow30, neutral10 } = theme.colors;
+const { primary, tertiary } = theme.colors.brand;
 
 function IntegrationCard({ title, subtitle = "", value }: Props) {
   const { t } = useTranslation("translation", {
@@ -29,7 +29,7 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
     } else if (amount < 1000) {
       return yellow30;
     }
-    return green30;
+    return primary[300];
   };
 
   const textAccordingToValue = () => {

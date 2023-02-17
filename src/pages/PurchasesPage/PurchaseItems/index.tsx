@@ -17,8 +17,8 @@ type Props = {
 };
 
 function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
-  const { green30, gray30, gray40, orange40 } = theme.colors;
-  const { tertiary } = theme.colors.brand;
+  const { gray30, gray40, orange40 } = theme.colors;
+  const { primary, tertiary } = theme.colors.brand;
   const { creditCardRefund } = usePayments();
   const [visible, setVisible] = useState(false);
   const [externalId, setExternalId] = useState<string>("teste");
@@ -38,7 +38,7 @@ function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
 
   const statusColors: { [key: string]: string } = {
     processing: gray30,
-    paid: green30,
+    paid: primary[300],
     failed: tertiary[400],
     refunded: orange40,
   };

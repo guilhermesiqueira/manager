@@ -31,7 +31,7 @@ export const Subtitle = styled.h4`
 
 export const SubtitleInfo = styled.h2`
   margin-bottom: ${({ theme }) => theme.spacing(16)};
-  color: ${({ theme }) => theme.colors.green30};
+  color: ${({ theme }) => theme.colors.brand.primary[300]};
 `;
 
 export const CardProject = styled.div`

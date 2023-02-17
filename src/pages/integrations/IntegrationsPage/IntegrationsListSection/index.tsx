@@ -12,15 +12,14 @@ import * as S from "./styles";
 function IntegrationsListSection(): JSX.Element {
   const [allIntegrations, setAllIntegrations] = useState<any>([]);
   const { getAllApiIntegrations } = useApiIntegrations();
-  const { green30 } = theme.colors;
-  const { tertiary } = theme.colors.brand;
+  const { primary, tertiary } = theme.colors.brand;
 
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations.attributes",
   });
 
   const statusColors: { [key: string]: string } = {
-    active: green30,
+    active: primary[300],
     inactive: tertiary[400],
   };
 

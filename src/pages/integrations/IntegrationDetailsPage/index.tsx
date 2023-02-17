@@ -22,10 +22,10 @@ function IntegrationDetailsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations",
   });
-  const { green30, gray40, gray10, gray30 } = theme.colors;
-  const { tertiary } = theme.colors.brand;
+  const { gray40, gray10, gray30 } = theme.colors;
+  const { primary, tertiary } = theme.colors.brand;
   const statusColors: { [key: string]: string } = {
-    active: green30,
+    active: primary[300],
     inactive: tertiary[400],
   };
 

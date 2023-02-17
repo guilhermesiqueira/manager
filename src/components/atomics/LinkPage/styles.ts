@@ -20,6 +20,6 @@ export const Container = styled.div`
     text-decoration: underline;
     text-overflow: ellipsis;
     white-space: nowrap;
-    color: ${({ theme }) => theme.colors.green30};
+    color: ${({ theme }) => theme.colors.brand.primary[300]};
   }
 `;
