@@ -1,4 +1,3 @@
-import { gapi } from "gapi-script";
 import { useEffect } from "react";
 import { useAuthentication } from "contexts/authenticationContext";
 import { useTranslation } from "react-i18next";
@@ -17,16 +16,6 @@ function LoginPage(): JSX.Element {
   const { state } = useLocation();
   const { t } = useTranslation("translation", {
     keyPrefix: "login",
-  });
-
-  useEffect(() => {
-    const initClient = async () => {
-      await gapi.client.init({
-        clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-        scope: "",
-      });
-    };
-    gapi.load("client:auth2", initClient);
   });
 
   useEffect(() => {
