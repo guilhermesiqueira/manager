@@ -22,10 +22,11 @@ function IntegrationDetailsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations",
   });
-  const { green30, red30, gray40, gray10, gray30 } = theme.colors;
+  const { gray40, gray10, gray30 } = theme.colors;
+  const { primary, tertiary } = theme.colors.brand;
   const statusColors: { [key: string]: string } = {
-    active: green30,
-    inactive: red30,
+    active: primary[300],
+    inactive: tertiary[400],
   };
 
   const { currentNetwork } = useNetwork();

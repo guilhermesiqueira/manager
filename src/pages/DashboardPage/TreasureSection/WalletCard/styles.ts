@@ -8,5 +8,5 @@ export const Title = styled.h3`
 `;
 
 export const Value = styled.h4`
-  color: ${({ color, theme }) => color || theme.colors.green30};
+  color: ${({ color, theme }) => color || theme.colors.brand.primary[300]};
 `;

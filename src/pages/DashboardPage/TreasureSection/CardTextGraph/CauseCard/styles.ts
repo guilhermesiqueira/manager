@@ -13,5 +13,5 @@ export const CauseTitle = styled.h6`
 `;
 
 export const CauseValue = styled.h5`
-  color: ${({ theme }) => theme.colors.green30};
+  color: ${({ theme }) => theme.colors.brand.primary[300]};
 `;

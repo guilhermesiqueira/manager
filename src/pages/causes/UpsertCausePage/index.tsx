@@ -29,7 +29,8 @@ function UpsertCausePage({ isEdit }: Props) {
   const mode = isEdit ? "edit" : "create";
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { gray10, gray40, gray30, red30 } = theme.colors;
+  const { gray10, gray40, gray30 } = theme.colors;
+  const { tertiary } = theme.colors.brand;
   const navigate = useNavigate();
   const { id } = useParams();
   const { createCause, getCause, updateCause } = useCauses();
@@ -218,7 +219,7 @@ function UpsertCausePage({ isEdit }: Props) {
               visible={modalOpen}
               image={WarningRedIcon}
               primaryButtonText={t("upsert.create.modal.confirmButton")}
-              primaryButtonColor={red30}
+              primaryButtonColor={tertiary[400]}
               primaryButtonCallback={handleSave}
               secondaryButtonText={t("upsert.create.modal.cancelButton")}
               secondaryButtonBorderColor={gray30}

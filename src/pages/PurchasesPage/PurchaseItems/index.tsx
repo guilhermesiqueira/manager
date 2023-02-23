@@ -17,7 +17,8 @@ type Props = {
 };
 
 function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
-  const { green30, red30, gray30, gray40, orange40 } = theme.colors;
+  const { gray30, gray40 } = theme.colors;
+  const { primary, secondary, tertiary } = theme.colors.brand;
   const { creditCardRefund } = usePayments();
   const [visible, setVisible] = useState(false);
   const [externalId, setExternalId] = useState<string>("teste");
@@ -37,9 +38,9 @@ function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
 
   const statusColors: { [key: string]: string } = {
     processing: gray30,
-    paid: green30,
-    failed: red30,
-    refunded: orange40,
+    paid: primary[300],
+    failed: tertiary[400],
+    refunded: secondary[700],
   };
 
   const handleOpenModal = (id: string) => {
@@ -110,7 +111,7 @@ function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
                   visible={visible}
                   image={refundIcon}
                   primaryButtonText={t("confirmButton")}
-                  primaryButtonColor={red30}
+                  primaryButtonColor={tertiary[400]}
                   primaryButtonCallback={handleRefund}
                   secondaryButtonText={t("cancelButton")}
                   secondaryButtonBorderColor={gray30}

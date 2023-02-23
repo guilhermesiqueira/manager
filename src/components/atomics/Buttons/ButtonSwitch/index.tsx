@@ -3,8 +3,8 @@ import Switch from "react-switch";
 import theme from "styles/theme";
 import * as S from "./styles";
 
-const { colors } = theme;
-const { green20, neutral10, gray20 } = colors;
+const { neutral10, gray20 } = theme.colors;
+const { primary } = theme.colors.brand;
 
 export type Props = {
   leftText: string;
@@ -28,15 +28,15 @@ function ButtonSwitch({
   return (
     <S.Container>
       <S.BoxIcon>
-        <S.Text color={checked ? gray20 : green20}>{leftText}</S.Text>
+        <S.Text color={checked ? gray20 : primary[200]}>{leftText}</S.Text>
       </S.BoxIcon>
       <S.ContainerSwitch>
         <Switch
           id="switch"
           onChange={handleChange}
           checked={checked}
-          offColor={green20}
-          onColor={green20}
+          offColor={primary[200]}
+          onColor={primary[200]}
           onHandleColor={neutral10}
           offHandleColor={neutral10}
           handleDiameter={15}
@@ -47,7 +47,7 @@ function ButtonSwitch({
         />
       </S.ContainerSwitch>
       <S.BoxIcon>
-        <S.Text color={checked ? green20 : gray20}>{rightText}</S.Text>
+        <S.Text color={checked ? primary[200] : gray20}>{rightText}</S.Text>
       </S.BoxIcon>
     </S.Container>
   );

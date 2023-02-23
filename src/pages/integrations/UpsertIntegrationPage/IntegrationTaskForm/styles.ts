@@ -25,7 +25,7 @@ export const TextInput = styled.input`
 `;
 
 export const Error = styled.span`
-  color: ${({ color, theme }) => color || theme.colors.red30};
+  color: ${({ color, theme }) => color || theme.colors.brand.tertiary[400]};
 
   ::first-letter {
     text-transform: uppercase;

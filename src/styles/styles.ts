@@ -34,7 +34,7 @@ export const SecondaryText = styled.div`
 `;
 
 export const SecondaryLeftValue = styled.div`
-  color: ${({ theme }) => theme.colors.green30};
+  color: ${({ theme }) => theme.colors.brand.primary[300]};
 `;
 
 export const SecondaryRightValue = styled.div`
