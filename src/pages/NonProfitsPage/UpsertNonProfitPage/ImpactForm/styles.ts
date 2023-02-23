@@ -59,7 +59,7 @@ export const DoubleItemSection = styled.div`
 export const Info = styled.p`
   ${defaultBodyXsRegular}
 
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.neutral[500]};
 `;
 
 export const ItemBox = styled.div`

@@ -6,7 +6,7 @@ export const Container = styled.div`
   width: 700px;
   height: 100%;
   padding: ${({ theme }) => theme.spacing(24)};
-  border: 1px solid ${({ theme }) => theme.colors.gray20};
+  border: 1px solid ${({ theme }) => theme.colors.neutral[200]};
   border-radius: 16px;
   box-sizing: border-box;
   text-align: left;
@@ -19,7 +19,7 @@ export const MainText = styled.h1`
   font-weight: 700;
   font-size: 18px;
   line-height: 20px;
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 `;
 
 export const MainValue = styled.h2`
@@ -45,7 +45,7 @@ export const Teste = styled.div`
 export const SecondaryText = styled.span`
   ${defaultBodyXsRegular}
 
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 `;
 
 export const SecondaryLeftValue = styled.h6`
@@ -53,7 +53,7 @@ export const SecondaryLeftValue = styled.h6`
 `;
 
 export const SecondaryRightValue = styled.h6`
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.neutral[500]};
 `;
 
 export const Graph = styled(Bar)`
@@ -77,7 +77,7 @@ export const CauseCard = styled.div`
 
 export const CauseTitle = styled.h6`
   font-weight: 400;
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.neutral[500]};
 `;
 
 export const CauseValue = styled.h5`

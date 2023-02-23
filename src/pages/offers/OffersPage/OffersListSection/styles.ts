@@ -26,12 +26,12 @@ export const Table = styled.table`
 
   tbody tr th {
     text-align: left;
-    color: ${({ theme }) => theme.colors.gray30};
+    color: ${({ theme }) => theme.colors.neutral[500]};
   }
 
   thead tr {
     text-align: left;
-    color: ${({ theme }) => theme.colors.gray40};
+    color: ${({ theme }) => theme.colors.neutral[800]};
   }
 `;
 
@@ -59,7 +59,7 @@ export const Pagination = styled(ReactPaginate).attrs({
   li a {
     margin-left: ${({ theme }) => theme.spacing(4)};
     padding: ${({ theme }) => theme.spacing(8, 16)};
-    border: 1px solid ${({ theme }) => theme.colors.gray30};
+    border: 1px solid ${({ theme }) => theme.colors.neutral[500]};
     border-radius: 16px;
     cursor: pointer;
   }
@@ -78,7 +78,7 @@ export const Pagination = styled(ReactPaginate).attrs({
   }
 
   li.disabled a {
-    color: ${({ theme }) => theme.colors.gray30};
+    color: ${({ theme }) => theme.colors.neutral[500]};
   }
 
   li.disable,
@@ -96,7 +96,7 @@ export const SearchBar = styled.input`
   width: 80%;
   height: 44px;
   padding-left: ${({ theme }) => theme.spacing(16)};
-  border: 2px solid ${({ theme }) => theme.colors.gray30};
+  border: 2px solid ${({ theme }) => theme.colors.neutral[500]};
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.gray10};
+  background-color: ${({ theme }) => theme.colors.neutral[50]};
 `;

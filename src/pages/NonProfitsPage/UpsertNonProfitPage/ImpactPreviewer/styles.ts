@@ -5,5 +5,5 @@ export const Info = styled.p`
   ${defaultBodyXsRegular}
 
   margin-block: 12px;
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.neutral[500]};
 `;

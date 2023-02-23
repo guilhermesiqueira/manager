@@ -23,7 +23,7 @@ export const Title = styled.h2`
 `;
 
 export const InfoValue = styled.p`
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.neutral[500]};
 `;
 
 export const RightSection = styled.div`
@@ -78,5 +78,5 @@ export const ArrowOutward = styled.img``;
 export const CardProjectInfo = styled.h4`
   ${defaultBodyXsMedium}
 
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.neutral[500]};
 `;

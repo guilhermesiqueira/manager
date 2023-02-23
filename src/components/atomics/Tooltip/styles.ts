@@ -17,7 +17,7 @@ export const TooltipTip = styled.div<TooltipProps>`
   left: 0;
   z-index: ${({ theme }) => theme.zindex.tooltip};
   white-space: nowrap;
-  background: ${({ color, theme }) => color || theme.colors.gray40};
+  background: ${({ color, theme }) => color || theme.colors.neutral[800]};
   color: ${({ theme }) => theme.colors.neutral10};
   visibility: ${({ visible }: TooltipProps) =>
     visible ? "visible" : "hidden"};

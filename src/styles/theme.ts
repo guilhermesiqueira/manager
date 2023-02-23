@@ -32,10 +32,6 @@ const theme: ThemeType = {
   },
   colors: {
     neutral10: "#FFFFFF",
-    gray10: "#F2F2F0",
-    gray20: "#D4CEC3",
-    gray30: "#867F70",
-    gray40: "#28241C",
     brand: brandColors,
     feedback: feedbackColors,
     neutral: neutralColors,

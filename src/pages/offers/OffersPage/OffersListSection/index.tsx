@@ -22,7 +22,7 @@ function OffersListSection(): JSX.Element {
   const itemsPerPage = 10;
   const [searchTerm, setSearchTerm] = useState("");
 
-  const { gray10, gray30, gray40 } = theme.colors;
+  const { neutral } = theme.colors;
 
   const navigate = useNavigate();
 
@@ -62,9 +62,9 @@ function OffersListSection(): JSX.Element {
     <S.Container>
       <S.ButtonContainer>
         <Button
-          color={gray10}
-          backgroundColor={gray40}
-          _hover={{ bg: gray30 }}
+          color={neutral[50]}
+          backgroundColor={neutral[800]}
+          _hover={{ bg: neutral[500] }}
           marginLeft="8px"
           marginRight="8px"
           onClick={handleAddNew}
