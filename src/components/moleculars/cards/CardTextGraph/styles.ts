@@ -5,7 +5,7 @@ import { defaultBodyXsRegular } from "styles/typography/default";
 export const Container = styled.div`
   width: 256px;
   padding: ${({ theme }) => theme.spacing(24)};
-  border: 1px solid ${({ theme }) => theme.colors.gray20};
+  border: 1px solid ${({ theme }) => theme.colors.neutral[200]};
   border-radius: 16px;
   display: flex;
   flex-flow: row wrap;

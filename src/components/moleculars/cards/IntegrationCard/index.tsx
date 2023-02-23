@@ -11,7 +11,7 @@ export type Props = {
   value: string;
 };
 
-const { gray40, gray20, neutral10 } = theme.colors;
+const { gray40, neutral, neutral10 } = theme.colors;
 const { primary, tertiary, quaternary } = theme.colors.brand;
 
 function IntegrationCard({ title, subtitle = "", value }: Props) {
@@ -47,7 +47,7 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
         width="200px"
         padding="16px"
         border="1px"
-        borderColor={gray20}
+        borderColor={neutral[200]}
         backgroundColor={neutral10}
         borderRadius="16px"
       >

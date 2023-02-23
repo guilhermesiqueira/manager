@@ -6,7 +6,7 @@ export const Container = styled.div`
   width: 700px;
   height: 100%;
   padding: ${({ theme }) => theme.spacing(24)};
-  border: 1px solid ${({ theme }) => theme.colors.gray20};
+  border: 1px solid ${({ theme }) => theme.colors.neutral[200]};
   border-radius: 16px;
   box-sizing: border-box;
   text-align: left;

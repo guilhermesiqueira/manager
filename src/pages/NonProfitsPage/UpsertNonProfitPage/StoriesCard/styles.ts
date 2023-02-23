@@ -4,7 +4,7 @@ export const Container = styled.div`
   max-width: 564px;
   margin-bottom: ${({ theme }) => theme.spacing(12)};
   padding: ${({ theme }) => theme.spacing(24)};
-  border: 2px solid ${({ theme }) => theme.colors.gray20};
+  border: 2px solid ${({ theme }) => theme.colors.neutral[200]};
   border-radius: 8px;
   display: flex;
   flex-direction: column;

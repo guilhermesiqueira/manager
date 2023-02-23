@@ -71,7 +71,7 @@ export const CardProjectInfo = styled.h4`
 export const StoriesContainer = styled.div`
   margin-top: ${({ theme }) => theme.spacing(16)};
   padding: ${({ theme }) => theme.spacing(12, 24, 24)};
-  border: 2px solid ${({ theme }) => theme.colors.gray20};
+  border: 2px solid ${({ theme }) => theme.colors.neutral[200]};
   border-radius: 8px;
   display: flex;
   flex-direction: column;
