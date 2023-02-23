@@ -67,7 +67,7 @@ export const TextInput = styled.input`
   color: ${({ theme }) => theme.colors.gray40};
 
   ::placeholder {
-    color: ${({ theme }) => theme.colors.gray30};
+    color: ${({ theme }) => theme.colors.neutral[500]};
     opacity: 1;
   }
 `;

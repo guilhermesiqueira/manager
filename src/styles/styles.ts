@@ -38,5 +38,5 @@ export const SecondaryLeftValue = styled.div`
 `;
 
 export const SecondaryRightValue = styled.div`
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.neutral[500]};
 `;

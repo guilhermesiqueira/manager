@@ -10,7 +10,7 @@ function CausesPage(): JSX.Element {
     keyPrefix: "causes.list",
   });
 
-  const { neutral, gray30, gray40 } = theme.colors;
+  const { neutral, gray40 } = theme.colors;
 
   const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ function CausesPage(): JSX.Element {
       <S.AddButton
         color={neutral[50]}
         backgroundColor={gray40}
-        _hover={{ bg: gray30 }}
+        _hover={{ bg: neutral[500] }}
         marginLeft="8px"
         onClick={handleAddNew}
         leftIcon={AddIcon()}

@@ -17,7 +17,7 @@ function EditSettingsPage() {
     keyPrefix: "settings",
   });
 
-  const { neutral, gray40, gray30 } = theme.colors;
+  const { neutral, gray40 } = theme.colors;
   const navigate = useNavigate();
   const { getConfig, updateConfig } = useRibonConfig();
   const {
@@ -88,7 +88,7 @@ function EditSettingsPage() {
               type="submit"
               color={neutral[50]}
               backgroundColor={gray40}
-              _hover={{ bg: gray30 }}
+              _hover={{ bg: neutral[500] }}
               disabled={!formState?.isValid}
             >
               {t("edit.save")}

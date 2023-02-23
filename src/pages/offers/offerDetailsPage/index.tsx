@@ -17,7 +17,7 @@ function OfferDetailsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "offers",
   });
-  const { gray40, neutral, gray30 } = theme.colors;
+  const { gray40, neutral } = theme.colors;
   const { primary, tertiary } = theme.colors.brand;
 
   const statusColors: { [key: string]: string } = {
@@ -53,7 +53,7 @@ function OfferDetailsPage(): JSX.Element {
             <Button
               color={neutral[50]}
               background={gray40}
-              _hover={{ bg: gray30 }}
+              _hover={{ bg: neutral[500] }}
               leftIcon={<EditIcon />}
             >
               {t("details.edit")}

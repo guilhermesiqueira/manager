@@ -11,7 +11,7 @@ function IntegrationsPage(): JSX.Element {
     keyPrefix: "integrations.list",
   });
 
-  const { neutral, gray30, gray40 } = theme.colors;
+  const { neutral, gray40 } = theme.colors;
 
   const navigate = useNavigate();
 
@@ -25,7 +25,7 @@ function IntegrationsPage(): JSX.Element {
       <Button
         color={neutral[50]}
         backgroundColor={gray40}
-        _hover={{ bg: gray30 }}
+        _hover={{ bg: neutral[500] }}
         marginLeft="8px"
         onClick={handleAddNew}
         leftIcon={AddIcon()}

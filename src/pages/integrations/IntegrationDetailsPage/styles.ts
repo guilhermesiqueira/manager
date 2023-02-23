@@ -26,7 +26,7 @@ export const Subtitle = styled.h3`
 `;
 
 export const InfoValue = styled.p`
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.neutral[500]};
 `;
 
 export const RightSection = styled.div`

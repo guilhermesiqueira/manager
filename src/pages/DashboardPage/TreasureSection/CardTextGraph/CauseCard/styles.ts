@@ -9,7 +9,7 @@ export const CauseCard = styled.div`
 
 export const CauseTitle = styled.h6`
   font-weight: 400;
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.neutral[500]};
 `;
 
 export const CauseValue = styled.h5`

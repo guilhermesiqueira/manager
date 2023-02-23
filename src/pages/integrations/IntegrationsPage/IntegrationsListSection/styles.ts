@@ -23,7 +23,7 @@ export const Table = styled.table`
 
   tbody tr th {
     text-align: left;
-    color: ${({ theme }) => theme.colors.gray30};
+    color: ${({ theme }) => theme.colors.neutral[500]};
   }
 
   thead tr {

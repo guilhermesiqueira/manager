@@ -19,7 +19,7 @@ function SettingsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "settings",
   });
-  const { gray40, neutral, gray30 } = theme.colors;
+  const { gray40, neutral } = theme.colors;
 
   const [config, setConfig] = useState<RibonConfig>();
 
@@ -49,7 +49,7 @@ function SettingsPage(): JSX.Element {
           <Button
             color={neutral[50]}
             background={gray40}
-            _hover={{ bg: gray30 }}
+            _hover={{ bg: neutral[500] }}
             leftIcon={<EditIcon />}
           >
             {t("editButton")}

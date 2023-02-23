@@ -38,7 +38,7 @@ export const Title = styled.h3`
 export const Body = styled.p`
   margin: ${({ theme }) => theme.spacing(4, 0, 16)};
   text-align: center;
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.neutral[500]};
 `;
 
 export const RowsModalRow = styled.div`

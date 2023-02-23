@@ -32,7 +32,7 @@ function StoriesForm({
   const { t } = useTranslation("translation", {
     keyPrefix: "nonProfits.upsert.storiesForm",
   });
-  const { neutral, gray40, gray30 } = theme.colors;
+  const { neutral, gray40 } = theme.colors;
   const { fields, append, remove } = useFieldArray({
     name: "storiesAttributes",
     control: controlStory,
@@ -94,7 +94,7 @@ function StoriesForm({
             backgroundColor={neutral[50]}
             borderColor={gray40}
             border="2px"
-            _hover={{ bg: gray30 }}
+            _hover={{ bg: neutral[500] }}
             onClick={() =>
               append({
                 title: "Story",
@@ -147,7 +147,7 @@ function StoriesForm({
                   type="button"
                   color={neutral[50]}
                   backgroundColor={gray40}
-                  _hover={{ bg: gray30 }}
+                  _hover={{ bg: neutral[500] }}
                   onClick={() => handleDeleteStory(index)}
                 >
                   Delete Story

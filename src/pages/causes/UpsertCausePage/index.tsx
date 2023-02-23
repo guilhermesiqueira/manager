@@ -29,7 +29,7 @@ function UpsertCausePage({ isEdit }: Props) {
   const mode = isEdit ? "edit" : "create";
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { neutral, gray40, gray30 } = theme.colors;
+  const { neutral, gray40 } = theme.colors;
   const { tertiary } = theme.colors.brand;
   const navigate = useNavigate();
   const { id } = useParams();
@@ -196,7 +196,7 @@ function UpsertCausePage({ isEdit }: Props) {
               type="submit"
               color={neutral[50]}
               backgroundColor={gray40}
-              _hover={{ bg: gray30 }}
+              _hover={{ bg: neutral[500] }}
               disabled={!formState?.isValid}
             >
               {t(`upsert.${mode}.save`)}
@@ -222,7 +222,7 @@ function UpsertCausePage({ isEdit }: Props) {
               primaryButtonColor={tertiary[400]}
               primaryButtonCallback={handleSave}
               secondaryButtonText={t("upsert.create.modal.cancelButton")}
-              secondaryButtonBorderColor={gray30}
+              secondaryButtonBorderColor={neutral[500]}
               secondaryButtonCallback={handleCloseModal}
             />
           )}

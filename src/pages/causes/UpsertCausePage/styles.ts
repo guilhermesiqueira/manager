@@ -80,7 +80,7 @@ export const ImageRecommendation = styled.h6`
   font-weight: 400;
   font-size: 12px;
   white-space: pre-line;
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.neutral[500]};
 `;
 
 export const ItemBox = styled.div`

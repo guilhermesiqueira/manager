@@ -21,7 +21,7 @@ function NonProfitsDetailsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "nonProfits",
   });
-  const { gray40, neutral, gray30 } = theme.colors;
+  const { gray40, neutral } = theme.colors;
 
   const [nonProfit, setNonProfits] = useState<NonProfit>();
 
@@ -53,7 +53,7 @@ function NonProfitsDetailsPage(): JSX.Element {
             <Button
               color={neutral[50]}
               background={gray40}
-              _hover={{ bg: gray30 }}
+              _hover={{ bg: neutral[500] }}
               marginBottom="32px"
               leftIcon={<EditIcon />}
             >
