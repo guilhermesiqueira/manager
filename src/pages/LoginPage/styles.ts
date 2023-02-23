@@ -11,7 +11,7 @@ export const Container = styled.div`
 
 export const Title = styled.h6`
   margin: ${({ theme }) => theme.spacing(8, 0, 24)};
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 `;
 
 export const TitleError = styled.h6`

@@ -31,7 +31,7 @@ export const Table = styled.table`
 
   thead tr {
     text-align: left;
-    color: ${({ theme }) => theme.colors.gray40};
+    color: ${({ theme }) => theme.colors.neutral[800]};
   }
 `;
 

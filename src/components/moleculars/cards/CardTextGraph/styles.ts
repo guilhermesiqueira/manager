@@ -16,14 +16,14 @@ export const Container = styled.div`
 
 export const MainText = styled.div`
   padding-bottom: ${({ theme }) => theme.spacing(16)};
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 `;
 
 export const MainValue = styled.span`
   ${defaultBodyXsRegular}
 
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 `;
 
 export const TreasureTitle = styled.h3`
@@ -42,7 +42,7 @@ export const Teste = styled.div`
 export const SecondaryText = styled.span`
   ${defaultBodyXsRegular}
 
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 `;
 
 export const SecondaryLeftValue = styled.h6`

@@ -22,7 +22,7 @@ function IntegrationDetailsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations",
   });
-  const { gray40, neutral } = theme.colors;
+  const { neutral } = theme.colors;
   const { primary, tertiary } = theme.colors.brand;
   const statusColors: { [key: string]: string } = {
     active: primary[300],
@@ -102,7 +102,7 @@ function IntegrationDetailsPage(): JSX.Element {
           <Link to="edit">
             <Button
               color={neutral[50]}
-              background={gray40}
+              background={neutral[800]}
               _hover={{ bg: neutral[500] }}
               leftIcon={<EditIcon />}
             >

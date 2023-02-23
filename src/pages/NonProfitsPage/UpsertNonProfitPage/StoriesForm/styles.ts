@@ -61,10 +61,10 @@ export const TextInput = styled.input`
   width: 336px;
   margin: ${({ theme }) => theme.spacing(8, 0)};
   padding: ${({ theme }) => theme.spacing(8, 16)};
-  border: 1px solid ${({ theme }) => theme.colors.gray40};
+  border: 1px solid ${({ theme }) => theme.colors.neutral[800]};
   border-radius: 10px;
   display: block;
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 
   ::placeholder {
     color: ${({ theme }) => theme.colors.neutral[500]};

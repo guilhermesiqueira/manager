@@ -38,7 +38,7 @@ export const Title = styled.p`
   line-height: 20px;
   text-decoration: none;
   color: ${({ theme, enabled }: Props) =>
-    enabled ? theme.colors.gray40 : theme.colors.neutral[500]};
+    enabled ? theme.colors.neutral[800] : theme.colors.neutral[500]};
 `;
 
 export const StyledLink = styled(Link)`

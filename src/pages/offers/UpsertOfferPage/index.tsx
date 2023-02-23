@@ -23,7 +23,7 @@ function UpsertOfferPage({ isEdit }: Props) {
 
   const mode = isEdit ? "edit" : "create";
 
-  const { neutral, gray40 } = theme.colors;
+  const { neutral } = theme.colors;
   const navigate = useNavigate();
   const { id } = useParams();
   const { getOffer, createOffer, updateOffer } = useOffers();
@@ -196,7 +196,7 @@ function UpsertOfferPage({ isEdit }: Props) {
             <Button
               type="submit"
               color={neutral[50]}
-              backgroundColor={gray40}
+              backgroundColor={neutral[800]}
               _hover={{ bg: neutral[500] }}
               disabled={!formState?.isValid}
             >
@@ -204,9 +204,9 @@ function UpsertOfferPage({ isEdit }: Props) {
             </Button>
 
             <Button
-              color={gray40}
+              color={neutral[800]}
               backgroundColor={neutral[50]}
-              outlineColor={gray40}
+              outlineColor={neutral[800]}
               marginLeft="8px"
               onClick={handleCancel}
             >

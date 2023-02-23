@@ -32,7 +32,7 @@ export const Image = styled.img`
 
 export const Title = styled.h3`
   text-align: center;
-  color: ${({ theme, color }) => color || theme.colors.gray40};
+  color: ${({ theme, color }) => color || theme.colors.neutral[800]};
 `;
 
 export const Body = styled.p`

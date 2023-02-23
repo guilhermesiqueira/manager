@@ -10,7 +10,7 @@ function CausesPage(): JSX.Element {
     keyPrefix: "causes.list",
   });
 
-  const { neutral, gray40 } = theme.colors;
+  const { neutral } = theme.colors;
 
   const navigate = useNavigate();
 
@@ -23,7 +23,7 @@ function CausesPage(): JSX.Element {
       <S.Title>{t("title")}</S.Title>
       <S.AddButton
         color={neutral[50]}
-        backgroundColor={gray40}
+        backgroundColor={neutral[800]}
         _hover={{ bg: neutral[500] }}
         marginLeft="8px"
         onClick={handleAddNew}

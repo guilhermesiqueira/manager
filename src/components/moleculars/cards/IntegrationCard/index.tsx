@@ -11,7 +11,7 @@ export type Props = {
   value: string;
 };
 
-const { gray40, neutral, neutral10 } = theme.colors;
+const { neutral, neutral10 } = theme.colors;
 const { primary, tertiary, quaternary } = theme.colors.brand;
 
 function IntegrationCard({ title, subtitle = "", value }: Props) {
@@ -54,10 +54,10 @@ function IntegrationCard({ title, subtitle = "", value }: Props) {
         {showWarning && (
           <img src={icon} alt="warningIcon" style={{ float: "right" }} />
         )}
-        <Text textColor={gray40} fontWeight={600} fontSize="12px">
+        <Text textColor={neutral[800]} fontWeight={600} fontSize="12px">
           {title}
         </Text>
-        <Text textColor={gray40} fontWeight={400} fontSize="12px">
+        <Text textColor={neutral[800]} fontWeight={400} fontSize="12px">
           {subtitle}
         </Text>
         <Text

@@ -39,7 +39,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const [currentUnit, setCurrentUnit] = useState<string>("");
   const { getCauses } = useCauses();
   const [loading, setLoading] = useState(false);
-  const { neutral, gray40 } = theme.colors;
+  const { neutral } = theme.colors;
   const { tertiary } = theme.colors.brand;
   const [statusCheckbox, setStatusCheckbox] = useState(true);
   const [stories, setStories] = useState<CreateStory[]>([]);
@@ -414,7 +414,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
             <Button
               type="submit"
               color={neutral[50]}
-              backgroundColor={gray40}
+              backgroundColor={neutral[800]}
               value={t(`upsert.${mode}.save`)}
               _hover={{ bg: neutral[500] }}
             >
@@ -422,9 +422,9 @@ function UpsertNonProfitPage({ isEdit }: Props) {
             </Button>
 
             <Button
-              color={gray40}
+              color={neutral[800]}
               backgroundColor={neutral[50]}
-              borderColor={gray40}
+              borderColor={neutral[800]}
               border="2px"
               marginLeft="8px"
               onClick={handleCancel}

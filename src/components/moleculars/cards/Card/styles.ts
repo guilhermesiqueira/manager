@@ -4,7 +4,7 @@ import { defaultHeadingXxs } from "styles/typography/default";
 export const Text = styled.h3`
   ${defaultHeadingXxs}
 
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 `;
 
 export const Container = styled.div`

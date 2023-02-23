@@ -6,12 +6,12 @@ export const Input = styled.div`
   margin: ${({ theme }) => theme.spacing(8, 0)};
   padding: ${({ theme }) => theme.spacing(8, 16)};
   border: 1px solid ${({ theme }) => theme.colors.darkGray};
-  border: 1px solid ${({ theme }) => theme.colors.gray40};
+  border: 1px solid ${({ theme }) => theme.colors.neutral[800]};
   border-radius: 4px;
   display: flex;
   background-color: ${({ theme }) => theme.colors.neutral10};
   color: ${({ theme }) => theme.colors.darkGray};
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 
   label {
     display: none;
@@ -24,7 +24,7 @@ export const Input = styled.div`
     box-sizing: border-box;
     line-height: 20px;
     background: transparent;
-    color: ${({ theme }) => theme.colors.gray40};
+    color: ${({ theme }) => theme.colors.neutral[800]};
 
     &:hover {
       cursor: pointer;

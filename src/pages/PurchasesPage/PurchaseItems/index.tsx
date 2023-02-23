@@ -17,7 +17,7 @@ type Props = {
 };
 
 function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
-  const { neutral, gray40 } = theme.colors;
+  const { neutral } = theme.colors;
   const { primary, secondary, tertiary } = theme.colors.brand;
   const { creditCardRefund } = usePayments();
   const [visible, setVisible] = useState(false);
@@ -100,7 +100,7 @@ function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
                 <S.RefundButton
                   onClick={() => handleOpenModal(purchase.externalId)}
                 >
-                  <Tooltip text={t("tooltipText")} color={gray40}>
+                  <Tooltip text={t("tooltipText")} color={neutral[800]}>
                     <S.RefundIcon src={refundIcon} />
                   </Tooltip>
                 </S.RefundButton>

@@ -19,7 +19,7 @@ export const MainText = styled.h1`
   font-weight: 700;
   font-size: 18px;
   line-height: 20px;
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 `;
 
 export const MainValue = styled.h2`
@@ -45,7 +45,7 @@ export const Teste = styled.div`
 export const SecondaryText = styled.span`
   ${defaultBodyXsRegular}
 
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 `;
 
 export const SecondaryLeftValue = styled.h6`

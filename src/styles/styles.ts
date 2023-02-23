@@ -16,11 +16,11 @@ export const Container = styled.div`
 export const MainText = styled.div`
   padding-bottom: ${({ theme }) => theme.spacing(16)};
   line-height: 1.6;
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 `;
 
 export const MainValue = styled.p`
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 `;
 
 export const Teste = styled.div`
@@ -30,7 +30,7 @@ export const Teste = styled.div`
 `;
 
 export const SecondaryText = styled.div`
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 `;
 
 export const SecondaryLeftValue = styled.div`
