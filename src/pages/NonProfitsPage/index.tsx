@@ -9,7 +9,7 @@ function NonProfitsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "nonProfits.list",
   });
-  const { gray10, gray30, gray40 } = theme.colors;
+  const { neutral, gray30, gray40 } = theme.colors;
 
   const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ function NonProfitsPage(): JSX.Element {
     <S.Container>
       <S.Title>{t("title")}</S.Title>
       <S.AddButton
-        color={gray10}
+        color={neutral[50]}
         backgroundColor={gray40}
         _hover={{ bg: gray30 }}
         marginLeft="8px"

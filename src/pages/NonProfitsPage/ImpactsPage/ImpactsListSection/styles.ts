@@ -99,7 +99,7 @@ export const SearchBar = styled.input`
   padding-left: ${({ theme }) => theme.spacing(16)};
   border: 2px solid ${({ theme }) => theme.colors.gray30};
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.gray10};
+  background-color: ${({ theme }) => theme.colors.neutral[50]};
 `;
 
 export const Link = styled.a`
