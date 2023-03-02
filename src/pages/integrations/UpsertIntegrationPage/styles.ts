@@ -63,7 +63,7 @@ export const NumberInput = styled.input`
 `;
 
 export const Checkbox = styled.input`
-  accent-color: ${({ theme }) => theme.colors.green30};
+  accent-color: ${({ theme }) => theme.colors.brand.primary[300]};
   margin: ${({ theme }) => theme.spacing(4, 8, 32, 4)};
   display: inline-block;
   vertical-align: middle;
@@ -82,7 +82,7 @@ export const Span = styled.span`
 `;
 export const Error = styled.span`
   margin-top: -20px;
-  color: ${({ color, theme }) => color || theme.colors.red30};
+  color: ${({ color, theme }) => color || theme.colors.brand.tertiary[400]};
 
   ::first-letter {
     text-transform: uppercase;

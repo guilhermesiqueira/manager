@@ -17,10 +17,12 @@ function OfferDetailsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "offers",
   });
-  const { green30, red30, gray40, gray10, gray30 } = theme.colors;
+  const { neutral } = theme.colors;
+  const { primary, tertiary } = theme.colors.brand;
+
   const statusColors: { [key: string]: string } = {
-    active: green30,
-    inactive: red30,
+    active: primary[300],
+    inactive: tertiary[400],
   };
 
   const { getOffer } = useOffers();
@@ -49,9 +51,9 @@ function OfferDetailsPage(): JSX.Element {
         <S.LeftSection>
           <Link to="edit">
             <Button
-              color={gray10}
-              background={gray40}
-              _hover={{ bg: gray30 }}
+              color={neutral[50]}
+              background={neutral[800]}
+              _hover={{ bg: neutral[500] }}
               leftIcon={<EditIcon />}
             >
               {t("details.edit")}

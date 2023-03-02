@@ -26,12 +26,12 @@ export const Table = styled.table`
 
   tbody tr th {
     text-align: left;
-    color: ${({ theme }) => theme.colors.gray30};
+    color: ${({ theme }) => theme.colors.neutral[500]};
   }
 
   thead tr {
     text-align: left;
-    color: ${({ theme }) => theme.colors.gray40};
+    color: ${({ theme }) => theme.colors.neutral[800]};
   }
 `;
 
@@ -59,7 +59,7 @@ export const Pagination = styled(ReactPaginate).attrs({
   li a {
     margin-left: ${({ theme }) => theme.spacing(4)};
     padding: ${({ theme }) => theme.spacing(8, 16)};
-    border: 1px solid ${({ theme }) => theme.colors.gray30};
+    border: 1px solid ${({ theme }) => theme.colors.neutral[500]};
     border-radius: 16px;
     cursor: pointer;
   }
@@ -73,12 +73,12 @@ export const Pagination = styled(ReactPaginate).attrs({
   li.active a {
     min-width: 32px;
     border-color: transparent;
-    background-color: ${({ theme }) => theme.colors.green30};
+    background-color: ${({ theme }) => theme.colors.brand.primary[300]};
     color: ${({ theme }) => theme.colors.neutral10};
   }
 
   li.disabled a {
-    color: ${({ theme }) => theme.colors.gray30};
+    color: ${({ theme }) => theme.colors.neutral[500]};
   }
 
   li.disable,
@@ -91,9 +91,9 @@ export const SearchBar = styled.input`
   width: 90%;
   height: 44px;
   padding-left: ${({ theme }) => theme.spacing(16)};
-  border: 2px solid ${({ theme }) => theme.colors.gray30};
+  border: 2px solid ${({ theme }) => theme.colors.neutral[500]};
   border-radius: 8px;
-  background-color: ${({ theme }) => theme.colors.gray10};
+  background-color: ${({ theme }) => theme.colors.neutral[50]};
 `;
 
 export const CheckboxContainer = styled.div`
@@ -103,7 +103,7 @@ export const CheckboxContainer = styled.div`
 `;
 
 export const Checkbox = styled.input`
-  accent-color: ${({ theme }) => theme.colors.green30};
+  accent-color: ${({ theme }) => theme.colors.brand.primary[300]};
   margin: ${({ theme }) => theme.spacing(4, 8, 32, 4)};
   display: inline-block;
   vertical-align: middle;

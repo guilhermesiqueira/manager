@@ -21,7 +21,7 @@ function CausesDetailsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "causes",
   });
-  const { gray40, gray10, gray30 } = theme.colors;
+  const { neutral } = theme.colors;
 
   const [cause, setCause] = useState<Cause>();
   const [pool, setPool] = useState<Pool>();
@@ -68,9 +68,9 @@ function CausesDetailsPage(): JSX.Element {
 
           <Link to="edit">
             <Button
-              color={gray10}
-              background={gray40}
-              _hover={{ bg: gray30 }}
+              color={neutral[50]}
+              background={neutral[800]}
+              _hover={{ bg: neutral[500] }}
               leftIcon={<EditIcon />}
             >
               {t("details.edit")}

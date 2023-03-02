@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   padding: ${({ theme }) => theme.spacing(12, 24, 24)};
-  border: 2px solid ${({ theme }) => theme.colors.gray20};
+  border: 2px solid ${({ theme }) => theme.colors.neutral[200]};
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@ export const CheckboxContainer = styled.div`
 `;
 
 export const Checkbox = styled.input`
-  accent-color: ${({ theme }) => theme.colors.green30};
+  accent-color: ${({ theme }) => theme.colors.brand.primary[300]};
   margin: ${({ theme }) => theme.spacing(4, 8, 32, 4)};
   display: inline-block;
   vertical-align: middle;
@@ -61,19 +61,19 @@ export const TextInput = styled.input`
   width: 336px;
   margin: ${({ theme }) => theme.spacing(8, 0)};
   padding: ${({ theme }) => theme.spacing(8, 16)};
-  border: 1px solid ${({ theme }) => theme.colors.gray40};
+  border: 1px solid ${({ theme }) => theme.colors.neutral[800]};
   border-radius: 10px;
   display: block;
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 
   ::placeholder {
-    color: ${({ theme }) => theme.colors.gray30};
+    color: ${({ theme }) => theme.colors.neutral[500]};
     opacity: 1;
   }
 `;
 
 export const Error = styled.span`
-  color: ${({ color, theme }) => color || theme.colors.red30};
+  color: ${({ color, theme }) => color || theme.colors.brand.tertiary[400]};
 
   ::first-letter {
     text-transform: uppercase;

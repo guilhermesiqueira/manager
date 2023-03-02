@@ -29,7 +29,8 @@ function UpsertCausePage({ isEdit }: Props) {
   const mode = isEdit ? "edit" : "create";
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const { gray10, gray40, gray30, red30 } = theme.colors;
+  const { neutral } = theme.colors;
+  const { tertiary } = theme.colors.brand;
   const navigate = useNavigate();
   const { id } = useParams();
   const { createCause, getCause, updateCause } = useCauses();
@@ -193,18 +194,18 @@ function UpsertCausePage({ isEdit }: Props) {
           <S.ButtonContainer>
             <Button
               type="submit"
-              color={gray10}
-              backgroundColor={gray40}
-              _hover={{ bg: gray30 }}
+              color={neutral[50]}
+              backgroundColor={neutral[800]}
+              _hover={{ bg: neutral[500] }}
               disabled={!formState?.isValid}
             >
               {t(`upsert.${mode}.save`)}
             </Button>
 
             <Button
-              color={gray40}
-              backgroundColor={gray10}
-              outlineColor={gray40}
+              color={neutral[800]}
+              backgroundColor={neutral[50]}
+              outlineColor={neutral[800]}
               marginLeft="8px"
               onClick={handleCancel}
             >
@@ -218,10 +219,10 @@ function UpsertCausePage({ isEdit }: Props) {
               visible={modalOpen}
               image={WarningRedIcon}
               primaryButtonText={t("upsert.create.modal.confirmButton")}
-              primaryButtonColor={red30}
+              primaryButtonColor={tertiary[400]}
               primaryButtonCallback={handleSave}
               secondaryButtonText={t("upsert.create.modal.cancelButton")}
-              secondaryButtonBorderColor={gray30}
+              secondaryButtonBorderColor={neutral[500]}
               secondaryButtonCallback={handleCloseModal}
             />
           )}

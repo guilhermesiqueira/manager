@@ -5,7 +5,7 @@ import { defaultBodyXsRegular } from "styles/typography/default";
 export const Container = styled.div`
   width: 256px;
   padding: ${({ theme }) => theme.spacing(24)};
-  border: 1px solid ${({ theme }) => theme.colors.gray20};
+  border: 1px solid ${({ theme }) => theme.colors.neutral[200]};
   border-radius: 16px;
   display: flex;
   flex-flow: row wrap;
@@ -16,14 +16,14 @@ export const Container = styled.div`
 
 export const MainText = styled.div`
   padding-bottom: ${({ theme }) => theme.spacing(16)};
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 `;
 
 export const MainValue = styled.span`
   ${defaultBodyXsRegular}
 
   text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 `;
 
 export const TreasureTitle = styled.h3`
@@ -42,15 +42,15 @@ export const Teste = styled.div`
 export const SecondaryText = styled.span`
   ${defaultBodyXsRegular}
 
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 `;
 
 export const SecondaryLeftValue = styled.h6`
-  color: ${({ theme }) => theme.colors.green30};
+  color: ${({ theme }) => theme.colors.brand.primary[300]};
 `;
 
 export const SecondaryRightValue = styled.h6`
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.neutral[500]};
 `;
 
 export const Graph = styled(Pie)`
@@ -74,9 +74,9 @@ export const CauseCard = styled.div`
 
 export const CauseTitle = styled.h6`
   font-weight: 400;
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.neutral[500]};
 `;
 
 export const CauseValue = styled.h5`
-  color: ${({ theme }) => theme.colors.green30};
+  color: ${({ theme }) => theme.colors.brand.primary[300]};
 `;

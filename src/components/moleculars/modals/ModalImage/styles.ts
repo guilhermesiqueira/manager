@@ -32,13 +32,13 @@ export const Image = styled.img`
 
 export const Title = styled.h3`
   text-align: center;
-  color: ${({ theme, color }) => color || theme.colors.gray40};
+  color: ${({ theme, color }) => color || theme.colors.neutral[800]};
 `;
 
 export const Body = styled.p`
   margin: ${({ theme }) => theme.spacing(4, 0, 16)};
   text-align: center;
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.neutral[500]};
 `;
 
 export const RowsModalRow = styled.div`

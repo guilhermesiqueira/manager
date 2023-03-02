@@ -23,7 +23,7 @@ export const Title = styled.h2`
 `;
 
 export const InfoValue = styled.p`
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.neutral[500]};
 `;
 
 export const RightSection = styled.div`
@@ -56,7 +56,7 @@ export const Subtitle = styled.h4``;
 
 export const SubtitleInfo = styled.h2`
   margin-bottom: ${({ theme }) => theme.spacing(16)};
-  color: ${({ theme }) => theme.colors.green30};
+  color: ${({ theme }) => theme.colors.brand.primary[300]};
 `;
 
 export const CardProject = styled.div`
@@ -78,5 +78,5 @@ export const ArrowOutward = styled.img``;
 export const CardProjectInfo = styled.h4`
   ${defaultBodyXsMedium}
 
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.neutral[500]};
 `;

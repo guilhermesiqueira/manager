@@ -51,7 +51,7 @@ export const Text = styled.p`
 
   margin: ${({ theme }) => theme.spacing(4, 0)};
   text-align: center;
-  color: ${({ theme }) => theme.colors.gray40};
+  color: ${({ theme }) => theme.colors.neutral[800]};
 
   span {
     font-weight: 700;
@@ -62,5 +62,5 @@ export const Text = styled.p`
 export const span = styled.span`
   ${defaultBodyXsRegular}
 
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.neutral[500]};
 `;

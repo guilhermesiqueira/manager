@@ -39,7 +39,8 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const [currentUnit, setCurrentUnit] = useState<string>("");
   const { getCauses } = useCauses();
   const [loading, setLoading] = useState(false);
-  const { gray10, gray40, gray30, red30 } = theme.colors;
+  const { neutral } = theme.colors;
+  const { tertiary } = theme.colors.brand;
   const [statusCheckbox, setStatusCheckbox] = useState(true);
   const [stories, setStories] = useState<CreateStory[]>([]);
   const [logoFile, setLogoFile] = useState<string>("");
@@ -412,18 +413,18 @@ function UpsertNonProfitPage({ isEdit }: Props) {
           <S.ButtonContainer>
             <Button
               type="submit"
-              color={gray10}
-              backgroundColor={gray40}
+              color={neutral[50]}
+              backgroundColor={neutral[800]}
               value={t(`upsert.${mode}.save`)}
-              _hover={{ bg: gray30 }}
+              _hover={{ bg: neutral[500] }}
             >
               {t(`upsert.${mode}.save`)}
             </Button>
 
             <Button
-              color={gray40}
-              backgroundColor={gray10}
-              borderColor={gray40}
+              color={neutral[800]}
+              backgroundColor={neutral[50]}
+              borderColor={neutral[800]}
               border="2px"
               marginLeft="8px"
               onClick={handleCancel}
@@ -438,10 +439,10 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               visible={modalOpen}
               image={WarningRedIcon}
               primaryButtonText={t("upsert.create.modal.confirmButton")}
-              primaryButtonColor={red30}
+              primaryButtonColor={tertiary[400]}
               primaryButtonCallback={handleSave}
               secondaryButtonText={t("upsert.create.modal.cancelButton")}
-              secondaryButtonBorderColor={gray30}
+              secondaryButtonBorderColor={neutral[500]}
               secondaryButtonCallback={handleCloseModal}
             />
           )}

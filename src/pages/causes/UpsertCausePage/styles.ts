@@ -58,7 +58,7 @@ export const Span = styled.span`
 `;
 export const Error = styled.span`
   margin-top: -20px;
-  color: ${({ color, theme }) => color || theme.colors.red30};
+  color: ${({ color, theme }) => color || theme.colors.brand.tertiary[400]};
 
   ::first-letter {
     text-transform: uppercase;
@@ -80,7 +80,7 @@ export const ImageRecommendation = styled.h6`
   font-weight: 400;
   font-size: 12px;
   white-space: pre-line;
-  color: ${({ theme }) => theme.colors.gray30};
+  color: ${({ theme }) => theme.colors.neutral[500]};
 `;
 
 export const ItemBox = styled.div`
