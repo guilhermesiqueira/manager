@@ -12,6 +12,8 @@ import NgosIconOn from "./assets/ngosIconOn.svg";
 import NgosIconOff from "./assets/ngosIconOff.svg";
 import OffersIconOn from "./assets/offersIconOn.svg";
 import OffersIconOff from "./assets/offersIconOff.svg";
+import NewsIconOn from "./assets/newsIconOn.svg";
+import NewsIconOff from "./assets/newsIconOff.svg";
 import SettingsIconOff from "./assets/settingsIconOff.svg";
 import SettingsIconOn from "./assets/settingsIconOn.svg";
 
@@ -64,6 +66,12 @@ function Navigation(): JSX.Element {
       iconOn: OffersIconOn,
       iconOff: OffersIconOff,
       title: t("offersLabel"),
+    },
+    {
+      path: "/news/articles",
+      iconOn: NewsIconOn,
+      iconOff: NewsIconOff,
+      title: t("newsLabel"),
     },
     {
       path: "/settings",
