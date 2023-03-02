@@ -290,6 +290,28 @@
       }
     }
   },
+  "news": {
+    "attributes": {
+      "id": "ID",
+      "content": "Conteúdo",
+      "link": "Link da notícia",
+      "author": "Autor",
+      "publicationDate": "Data de publicação",
+      "image": "Imagem",
+      "visibility": "Visibilidade",
+      "visibilityOptions": {
+        "visible": "Visível",
+        "hidden": "Escondida"
+      }
+    },
+    "list": {
+      "title": "Lista de notícias",
+      "createNew": "Adicionar nova",
+      "search": "Procurar pelo título da notícia...",
+      "next": "próximo >",
+      "previous": "< anterior"
+    }
+  },
   "copyableAddress": {
     "copiedText": "Endereço copiado",
     "copyText": "Copiar para o clipboard"
@@ -332,6 +354,7 @@
     "dashboardLabel": "Dashboard Tesouro",
     "causesLabel": "Causas",
     "offersLabel": "Ofertas",
+    "newsLabel": "Notícias",
     "settingsLabel": "Configurações"
   },
   "login": {
