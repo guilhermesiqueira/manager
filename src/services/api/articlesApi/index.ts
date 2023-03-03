@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
-import { apiPost, apiPut, apiGetWithParams, apiGet } from "..";
 import { CreateArticle } from "types/apiResponses/article";
 import Article from "types/entities/Article";
+import { apiPost, apiPut, apiGetWithParams, apiGet } from "..";
 
 type ArticlesList = {
   perPage?: number;

@@ -292,6 +292,28 @@
       }
     }
   },
+  "news": {
+    "attributes": {
+      "id": "ID",
+      "content": "Content",
+      "link": "News link",
+      "author": "Author",
+      "publicationDate": "Publication date",
+      "image": "Imagee",
+      "visibility": "Visibility",
+      "visibilityOptions": {
+        "visible": "Visible",
+        "hidden": "Hidden"
+      }
+    },
+    "list": {
+      "title": "News List",
+      "createNew": "Add new",
+      "search": "Search by news title...",
+      "next": "next >",
+      "previous": "< previous"
+    }
+  },
   "settings": {
     "title": "Settings",
     "details": "Details",
@@ -334,6 +356,7 @@
     "causesLabel": "Causes",
     "ngosLabel": "Ngos",
     "offersLabel": "Offers",
+    "newsLabel": "News",
     "settingsLabel": "Settings"
   },
   "login": {
