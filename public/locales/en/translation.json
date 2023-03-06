@@ -299,12 +299,20 @@
       "link": "News link",
       "author": "Author",
       "publicationDate": "Publication date",
-      "image": "Imagee",
+      "image": "Image",
       "visibility": "Visibility",
+      "visibilityStatus": "Visibility status",
+      "createdAt": "Created at",
+      "updatedAt": "Updated at",
       "visibilityOptions": {
         "visible": "Visible",
         "hidden": "Hidden"
       }
+    },
+    "details": {
+      "title": "News details",
+      "details": "Details",
+      "edit": "Edit"
     },
     "list": {
       "title": "News List",

@@ -11,7 +11,7 @@ import CausesPage from "pages/causes/CausesPage";
 import CausesDetailsPage from "pages/causes/CausesDetailsPage";
 import UpsertCausePage from "pages/causes/UpsertCausePage";
 import NonProfitsPage from "pages/NonProfitsPage";
-import NewsPage from "pages/NewsPage";
+import NewsPage from "pages/news/NewsPage";
 import UpsertNonProfitPage from "pages/NonProfitsPage/UpsertNonProfitPage";
 import OfferDetailsPage from "pages/offers/offerDetailsPage";
 import OffersPage from "pages/offers/OffersPage";
@@ -20,6 +20,7 @@ import SettingsPage from "pages/SettingsPage";
 import EditSettingsPage from "pages/SettingsPage/EditSettingsPage";
 import NonProfitsDetailsPage from "pages/NonProfitsPage/NonProfitsDetailsPage";
 import ImpactsPage from "pages/NonProfitsPage/ImpactsPage";
+import NewsDetailsPage from "pages/news/NewsDetailsPage";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
 
@@ -232,6 +233,20 @@ function RoutesComponent(): JSX.Element {
               <Navigation />
               <MainLayout>
                 <NewsPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/news/articles/:id"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <NewsDetailsPage />
               </MainLayout>
             </Suspense>
           </PrivateRoute>
