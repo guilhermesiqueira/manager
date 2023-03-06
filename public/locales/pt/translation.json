@@ -298,11 +298,19 @@
       "author": "Autor",
       "publicationDate": "Data de publicação",
       "image": "Imagem",
+      "createdAt": "Criado em",
+      "updatedAt": "Atualizado em",
       "visibility": "Visibilidade",
+      "visibilityStatus": "Status de visibilidade",
       "visibilityOptions": {
         "visible": "Visível",
         "hidden": "Escondida"
       }
+    },
+    "details": {
+      "title": "Detalhes da notícia",
+      "edit": "Editar",
+      "details": "Detalhes"
     },
     "list": {
       "title": "Lista de notícias",
