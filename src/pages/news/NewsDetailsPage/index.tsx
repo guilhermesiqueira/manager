@@ -28,9 +28,9 @@ function NewsDetailsPage(): JSX.Element {
 
   const fetchArticle = useCallback(async () => {
     try {
-      const causeData = await getArticle(id);
+      const articleData = await getArticle(id);
 
-      setArticle(causeData);
+      setArticle(articleData);
     } catch (e) {
       logError(e);
     }
