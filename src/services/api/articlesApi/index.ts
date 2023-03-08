@@ -13,9 +13,10 @@ const articlesApi = {
     perPage = 10,
     page = 1,
   }: ArticlesList): Promise<AxiosResponse<Article[]>> =>
-    apiGetWithParams("news/articles?show_hidden_articles=true", {
+    apiGetWithParams("news/articles", {
       per: perPage,
       page,
+      show_hidden_articles: true,
     }),
   getArticle: (id: any): Promise<AxiosResponse<Article>> =>
     apiGet(`news/articles/${id}`),

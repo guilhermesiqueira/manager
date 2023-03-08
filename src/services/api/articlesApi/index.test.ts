@@ -3,7 +3,7 @@ import api from "..";
 
 describe("articlesApi", () => {
   describe("#getArticlesList", () => {
-    const params = { page: 1, per: 10 };
+    const params = { page: 1, per: 10, show_hidden_articles: true };
 
     beforeEach(() => {
       api.get = jest.fn();
