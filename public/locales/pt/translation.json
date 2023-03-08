@@ -203,7 +203,7 @@
       "costForOneImpact": "Cost to 1 impact unit (USDC)",
       "unit": "Unit",
       "cause": "Causa",
-      "causeCardImage": "Cause Card",
+      "causeCardImage": "Card da ONG",
       "imageRecommendation": "Tamanho recomendado:`\n`{{ size }}",
       "imagesSection": "Imagens",
       "availableToDonation": "Disponível para doação (USDC)"

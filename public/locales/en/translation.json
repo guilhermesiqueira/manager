@@ -207,7 +207,7 @@
       "imagesSection": "Images",
       "imageRecommendation": "Recommended size:\n{{ size }}",
       "cause": "Cause",
-      "causeCardImage": "Cause Card"
+      "causeCardImage": "NGO Card"
     },
     "list": {
       "title": "Ngos List",
