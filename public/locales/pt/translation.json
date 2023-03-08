@@ -203,7 +203,7 @@
       "costForOneImpact": "Cost to 1 impact unit (USDC)",
       "unit": "Unit",
       "cause": "Causa",
-      "causeCardImage": "Cause Card",
+      "causeCardImage": "Card da ONG",
       "imageRecommendation": "Tamanho recomendado:`\n`{{ size }}",
       "imagesSection": "Imagens",
       "availableToDonation": "Disponível para doação (USDC)"
@@ -286,8 +286,38 @@
         "costForOneImpact": "Custo por 1 unidade de impacto (USDC)",
         "logo": "Logo",
         "backgroundImage": "Support Image",
-        "cardCause": "Card da Causa"
+        "cardCause": "Card da ONG"
       }
+    }
+  },
+  "news": {
+    "attributes": {
+      "id": "ID",
+      "content": "Conteúdo",
+      "link": "Link da notícia",
+      "author": "Autor",
+      "publicationDate": "Data de publicação",
+      "image": "Imagem",
+      "createdAt": "Criado em",
+      "updatedAt": "Atualizado em",
+      "visibility": "Visibilidade",
+      "visibilityStatus": "Status de visibilidade",
+      "visibilityOptions": {
+        "visible": "Visível",
+        "hidden": "Escondida"
+      }
+    },
+    "details": {
+      "title": "Detalhes da notícia",
+      "edit": "Editar",
+      "details": "Detalhes"
+    },
+    "list": {
+      "title": "Lista de notícias",
+      "createNew": "Adicionar nova",
+      "search": "Procurar pelo título da notícia...",
+      "next": "próximo >",
+      "previous": "< anterior"
     }
   },
   "copyableAddress": {
@@ -332,6 +362,7 @@
     "dashboardLabel": "Dashboard Tesouro",
     "causesLabel": "Causas",
     "offersLabel": "Ofertas",
+    "newsLabel": "Notícias",
     "settingsLabel": "Configurações"
   },
   "login": {
