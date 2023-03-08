@@ -207,7 +207,7 @@
       "imagesSection": "Images",
       "imageRecommendation": "Recommended size:\n{{ size }}",
       "cause": "Cause",
-      "causeCardImage": "Cause Card"
+      "causeCardImage": "NGO Card"
     },
     "list": {
       "title": "Ngos List",
@@ -288,7 +288,7 @@
         "costForOneImpact": "Cost for 1 unit impact (USDC)",
         "logo": "Logo",
         "backgroundImage": "Support Image",
-        "cardCause": "Card Cause"
+        "cardCause": "NGO Card"
       }
     }
   },
