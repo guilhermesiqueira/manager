@@ -318,6 +318,18 @@
       "search": "Procurar pelo título da notícia...",
       "next": "próximo >",
       "previous": "< anterior"
+    },
+    "upsert": {
+      "title": "Adicionar notícia",
+      "visibilityStatus": "Visível no app",
+      "authorInstruction": "Se não encontrar o autor, preencha este campo com o nome desejado",
+      "date": "*Data e hora de publicação",
+      "imageInstruction": "Arraste a imagem ou clique para buscar",
+      "imageSupports": "Formatos: JPG, PNG",
+      "imageRecommendation": "Tamanho recomendado: {{ size }}",
+      "save": "Salvar",
+      "cancel": "Cancelar",
+      "required": "Este campo é obrigatório"
     }
   },
   "copyableAddress": {

@@ -320,6 +320,21 @@
       "search": "Search by news title...",
       "next": "next >",
       "previous": "< previous"
+    },
+    "upsert": {
+      "create": {
+        "title": "Add News"
+      },
+      "title": "Add news",
+      "visibilityStatus": "Visible in app",
+      "authorInstruction": "If you don't find the author, fill this field with the desired name",
+      "date": "Publication date and time",
+      "imageInstruction": "Drop the post's image here or browse",
+      "imageSupports": "Supports: JPG, PNG",
+      "imageRecommendation": "Recommended size: {{ size }}",
+      "save": "Save",
+      "cancel": "Cancel",
+      "required": "this is required"
     }
   },
   "settings": {

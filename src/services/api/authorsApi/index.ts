@@ -1,7 +1,7 @@
 import { AxiosResponse } from "axios";
-import { apiPost, apiPut, apiGetWithParams, apiGet } from "..";
 import { CreateAuthor } from "types/apiResponses/author";
 import Author from "types/entities/Author";
+import { apiPost, apiPut, apiGetWithParams, apiGet } from "..";
 
 type AuthorsList = {
   perPage?: number;
