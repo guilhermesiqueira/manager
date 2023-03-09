@@ -62,12 +62,10 @@ export const TextInput = styled.input`
 
 export const OptionContainer = styled.option`
   min-width: 400px;
-  background-color: white;
 `;
 
 export const DatalistContainer = styled.datalist`
   min-width: 400px;
-  background-color: white;
 `;
 
 export const Info = styled.p`
