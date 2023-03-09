@@ -30,7 +30,6 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
   const [imageFile, setImageFile] = useState<string>("");
   const [visibleCheckbox, setVisibleCheckbox] = useState(true);
   const [authors, setAuthors] = useState<Author[]>([]);
-  // const [author, setAuthor] = useState<CreateAuthor>;
   const { getAuthors, createAuthor } = useAuthors();
   const { createArticle } = useArticles();
   const {
@@ -71,7 +70,6 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
 
   useEffect(() => {
     fetchAuthors();
-    console.log(new Date().toLocaleDateString(), new Date().toLocaleString());
   }, [fetchAuthors]);
 
   const handleUploadImage = (image: File, attribute: "image") => {
@@ -83,7 +81,6 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
         if (error) {
           logError(error);
           setLoading(false);
-          console.log(loading);
         } else {
           setValue(attribute, blob.signed_id);
           setLoading(false);
@@ -124,7 +121,6 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
         ...ArticleObject(),
         author_id: await authorId(),
       };
-      console.log(articleObject);
 
       try {
         setLoading(true);
@@ -198,6 +194,7 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
             )}
 
             <InfoName>{t("attributes.author")}</InfoName>
+
             <S.TextInput
               list="author-dropdown"
               autoComplete="off"
@@ -209,7 +206,6 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
               formStateAuthor?.errors.name.type && (
                 <S.Error>{formStateAuthor?.errors.name.message}</S.Error>
               )}
-
             <S.DatalistContainer id="author-dropdown">
               {authors.map((author) => (
                 <S.OptionContainer key={author.id} value={author.name}>
@@ -217,7 +213,6 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
                 </S.OptionContainer>
               ))}
             </S.DatalistContainer>
-
             <S.Info>{t("upsert.authorInstruction")}</S.Info>
 
             <InfoName>{t("upsert.date")}</InfoName>
