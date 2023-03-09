@@ -21,6 +21,7 @@ import EditSettingsPage from "pages/SettingsPage/EditSettingsPage";
 import NonProfitsDetailsPage from "pages/NonProfitsPage/NonProfitsDetailsPage";
 import ImpactsPage from "pages/NonProfitsPage/ImpactsPage";
 import NewsDetailsPage from "pages/news/NewsDetailsPage";
+import UpsertArticleNewsPage from "pages/news/UpsertArticleNewsPage";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
 
@@ -247,6 +248,20 @@ function RoutesComponent(): JSX.Element {
               <Navigation />
               <MainLayout>
                 <NewsDetailsPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="news/articles/new"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <UpsertArticleNewsPage />
               </MainLayout>
             </Suspense>
           </PrivateRoute>
