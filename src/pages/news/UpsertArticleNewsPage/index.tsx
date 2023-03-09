@@ -187,6 +187,7 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
 
             <InfoName>{t("attributes.link")}</InfoName>
             <S.TextInput
+              autoComplete="off"
               {...register("link", { required: t("upsert.required") })}
             />
             {formState?.errors.link && formState?.errors.link.type && (

@@ -60,13 +60,9 @@ export const TextInput = styled.input`
   }
 `;
 
-export const OptionContainer = styled.option`
-  min-width: 400px;
-`;
+export const OptionContainer = styled.option``;
 
-export const DatalistContainer = styled.datalist`
-  min-width: 400px;
-`;
+export const DatalistContainer = styled.datalist``;
 
 export const Info = styled.p`
   ${defaultBodyXsRegular}
@@ -86,6 +82,7 @@ export const Span = styled.span`
 `;
 export const Error = styled.span`
   margin-top: -20px;
+  padding: ${({ theme }) => theme.spacing(8, 0)};
   color: ${({ color, theme }) => color || theme.colors.brand.tertiary[400]};
 
   ::first-letter {
