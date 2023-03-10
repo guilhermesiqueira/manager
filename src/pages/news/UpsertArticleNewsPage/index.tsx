@@ -71,9 +71,38 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
     }
   }, [setAuthors]);
 
+  const fetchArticle = useCallback(async () => {
+    try {
+      const article = await getArticle(id);
+      reset(article);
+      resetAuthor(article.author);
+      setImageFile(article.imageUrl);
+      setVisibleCheckbox(article.visible);
+      setValue("publishedAt", dateISOFormatter(article.publishedAt));
+    } catch (e) {
+      logError(e);
+    }
+  }, []);
+
   useEffect(() => {
     fetchAuthors();
   }, [fetchAuthors]);
+
+  useEffect(() => {
+    if (isEdit) {
+      fetchArticle();
+    } else {
+      setValue("visible", true);
+    }
+  }, []);
+
+  const handleActivityCheckboxChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const { checked } = e.target;
+    setValue("visible", checked);
+    setVisibleCheckbox(!visibleCheckbox);
+  };
 
   const handleUploadImage = (image: File, attribute: "image") => {
     try {
@@ -150,35 +179,6 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
       }
     }
   };
-
-  const handleActivityCheckboxChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const { checked } = e.target;
-    setValue("visible", checked);
-    setVisibleCheckbox(!visibleCheckbox);
-  };
-
-  const fetchArticle = useCallback(async () => {
-    try {
-      const article = await getArticle(id);
-      reset(article);
-      resetAuthor(article.author);
-      setImageFile(article.imageUrl);
-      setVisibleCheckbox(article.visible);
-      setValue("publishedAt", dateISOFormatter(article.publishedAt));
-    } catch (e) {
-      logError(e);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (isEdit) {
-      fetchArticle();
-    } else {
-      setValue("visible", true);
-    }
-  }, []);
 
   return (
     <>
