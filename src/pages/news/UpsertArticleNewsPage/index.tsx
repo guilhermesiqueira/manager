@@ -155,7 +155,7 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
     e: React.ChangeEvent<HTMLInputElement>,
   ) => {
     const { checked } = e.target;
-    setValue("visible", !checked);
+    setValue("visible", checked);
     setVisibleCheckbox(!visibleCheckbox);
   };
 
@@ -173,12 +173,10 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
   }, []);
 
   useEffect(() => {
-    setValue("visible", true);
-  });
-
-  useEffect(() => {
     if (isEdit) {
       fetchArticle();
+    } else {
+      setValue("visible", true);
     }
   }, []);
 
