@@ -334,7 +334,8 @@
       "imageRecommendation": "Recommended size: {{ size }}",
       "save": "Save",
       "cancel": "Cancel",
-      "required": "this is required"
+      "required": "this is required",
+      "optional": "Optional"
     }
   },
   "settings": {
