@@ -5,10 +5,11 @@ import Loading from "components/moleculars/Loading";
 import useArticles from "hooks/apiHooks/useArticles";
 import useAuthors from "hooks/apiHooks/useAuthors";
 import { useUploadFile } from "hooks/apiHooks/useUploadFile";
+import dateUTCFormatter from "lib/dateUTCFormatter";
 import React, { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { logError } from "services/crashReport";
 import neutral from "styles/colors/neutral";
 import { CreateArticle } from "types/apiResponses/article";
@@ -31,7 +32,8 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
   const [visibleCheckbox, setVisibleCheckbox] = useState(true);
   const [authors, setAuthors] = useState<Author[]>([]);
   const { getAuthors, createAuthor } = useAuthors();
-  const { createArticle } = useArticles();
+  const { createArticle, getArticle, updateArticle } = useArticles();
+  const { id } = useParams();
   const {
     getValues: ArticleObject,
     setValue,
@@ -48,6 +50,7 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
     getValues: AuthorObject,
     register: registerAuthor,
     formState: formStateAuthor,
+    reset: resetAuthor,
   } = useForm<CreateAuthor>({
     mode: "onChange",
     reValidateMode: "onChange",
@@ -123,21 +126,24 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
       };
 
       try {
-        setLoading(true);
-        await createArticle(articleObject)
-          .then((response) => {
-            reset(response?.data);
-            setLoading(false);
-          })
-          .catch((error) => {
-            setLoading(false);
-            toast({
-              description: error.response.data.formatted_message,
-              status: "error",
+        if (isEdit) {
+          await updateArticle(articleObject);
+        } else {
+          setLoading(true);
+          await createArticle(articleObject)
+            .then((response) => {
+              reset(response?.data);
+              setLoading(false);
+            })
+            .catch((error) => {
+              setLoading(false);
+              toast({
+                description: error.response.data.formatted_message,
+                status: "error",
+              });
+              throw Error(error.response.data.formatted_message);
             });
-            throw Error(error.response.data.formatted_message);
-          });
-
+        }
         navigate("/news/articles");
       } catch (e) {
         logError(e);
@@ -153,9 +159,28 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
     setVisibleCheckbox(!visibleCheckbox);
   };
 
+  const fetchArticle = useCallback(async () => {
+    try {
+      const article = await getArticle(id);
+      reset(article);
+      resetAuthor(article.author);
+      setImageFile(article.imageUrl);
+      setVisibleCheckbox(article.visible);
+      setValue("publishedAt", dateUTCFormatter(article.publishedAt));
+    } catch (e) {
+      logError(e);
+    }
+  }, []);
+
   useEffect(() => {
     setValue("visible", true);
   });
+
+  useEffect(() => {
+    if (isEdit) {
+      fetchArticle();
+    }
+  }, []);
 
   return (
     <>

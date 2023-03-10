@@ -25,12 +25,13 @@
       "name": "Nome",
       "status": "Status",
       "activityStatus": "Status de atividade",
-      "active": "Ativa",
-      "inactive": "Inativa",
+      "logo": "Logo da integração",
       "walletAddress": "Endereço da carteira",
       "integrationAddress": "Endereço da integração",
       "integrationDashboardAddress": "Endereço do dashboard da integração",
       "webhookUrl": "Link do Webhook",
+      "active": "Ativa",
+      "inactive": "Inativa",
       "ticketAvailability": "Disponibilidade de Ticket",
       "everydayAtMidnight": "Todo dia à meia noite",
       "everyMinutes": "A cada {{minutes}} minutos depois do recebimento",
@@ -39,8 +40,11 @@
       "createdAt": "Criado em",
       "lastEditedAt": "Última edição em",
       "modalInfo": "Modal 'Sem tickets'",
-      "ctaDescription": "Modal 'Sem tickets'",
-      "ctaLink": "Link de conversão"
+      "ctaDescription": "Descrição CTA",
+      "ctaLink": "Link de conversão",
+      "typeDescription": "Type description",
+      "linkName": "Link name",
+      "linkAddress": "Link address"
     },
     "list": {
       "title": "Lista de Integrações",
@@ -85,6 +89,7 @@
       "refunded": "Reembolsado"
     },
     "list": {
+      "title": "Lista de Pagamentos",
       "search": "Procurar por email...",
       "next": "próximo >",
       "previous": "< anterior",
@@ -104,15 +109,24 @@
       "token": "Token",
       "poolAddress": "Endereço da pool",
       "availableToDonation": "Disponível para doação (USDC)",
-      "title": "Lista de Causas",
+      "title": "Lista de causas",
       "mainImage": "Imagem principal",
       "coverImage": "Imagem de capa"
     },
     "list": {
+      "title": "Lista de causas",
       "createNew": "Adicionar nova",
       "search": "Procurar por nome...",
       "next": "próximo >",
       "previous": "< anterior"
+    },
+    "details": {
+      "title": "Detalhes da causa",
+      "availableToDonation": "Disponível para doação (USDC)",
+      "edit": "Editar",
+      "linkedProjects": "Projetos vinculados",
+      "coverImage": "Imagem de capa",
+      "mainImage": "Imagem principal"
     },
     "upsert": {
       "create": {
@@ -132,22 +146,16 @@
         "cancel": "Cancelar"
       },
       "required": "Campo obrigatório",
-      "details": "Detalhes"
+      "details": "Detalhes",
+      "cause": "Cause"
     },
     "causeCard": {
       "amountEnding": "A quantidade atribuída para doação está acabando",
       "amountEnded": "Não há quantidade atribuída à doação"
-    },
-    "details": {
-      "title": "Detalhes da causa",
-      "availableToDonation": "Disponível para doação (USDC)",
-      "edit": "Editar",
-      "linkedProjects": "Projetos vinculados",
-      "coverImage": "Imagem de capa",
-      "mainImage": "Imagem principal"
     }
   },
   "offers": {
+    "offer": "Oferta",
     "attributes": {
       "id": "ID",
       "currency": "Moeda",
@@ -162,11 +170,11 @@
       "lastEditedAt": "Última edição em"
     },
     "list": {
+      "title": "Ofertas",
+      "createNew": "Adicionar nova",
       "search": "Procurar por ID...",
       "next": "próximo >",
-      "previous": "< anterior",
-      "title": "Ofertas",
-      "createNew": "Adicionar nova"
+      "previous": "< anterior"
     },
     "details": {
       "title": "Detalhes da oferta",
@@ -193,8 +201,11 @@
   "nonProfits": {
     "nonProfit": "Ong",
     "attributes": {
+      "id": "Id",
       "name": "Nome",
+      "walletAddress": "Endereço da carteira",
       "token": "Token",
+      "status": "Status",
       "address": "Endereço da carteira",
       "logo": "Logo",
       "backgroundImage": "Support Image",
@@ -218,6 +229,7 @@
     "upsert": {
       "activityStatus": "Status",
       "details": "Detalhes",
+      "impacts": "Impactos",
       "create": {
         "title": "Adicionar Nova NonProfit",
         "save": "Salvar",
@@ -283,6 +295,7 @@
         "createdAt": "Criado em",
         "updatedAt": "Atualizado em",
         "impactDescription": "Descrição do impacto",
+        "donorRecipients": "Beneficiários",
         "costForOneImpact": "Custo por 1 unidade de impacto (USDC)",
         "logo": "Logo",
         "backgroundImage": "Support Image",
@@ -309,8 +322,8 @@
     },
     "details": {
       "title": "Detalhes da notícia",
-      "edit": "Editar",
-      "details": "Detalhes"
+      "details": "Detalhes",
+      "edit": "Editar"
     },
     "list": {
       "title": "Lista de notícias",
@@ -320,6 +333,12 @@
       "previous": "< anterior"
     },
     "upsert": {
+      "create": {
+        "title": "Adicionar notícia"
+      },
+      "edit": {
+        "title": "Editar notícia"
+      },
       "title": "Adicionar notícia",
       "visibilityStatus": "Visível no app",
       "authorInstruction": "Se não encontrar o autor, preencha este campo com o nome desejado",
@@ -331,10 +350,6 @@
       "cancel": "Cancelar",
       "required": "Este campo é obrigatório"
     }
-  },
-  "copyableAddress": {
-    "copiedText": "Endereço copiado",
-    "copyText": "Copiar para o clipboard"
   },
   "settings": {
     "title": "Configurações",
@@ -353,6 +368,10 @@
       "save": "Salvar",
       "cancel": "Cancelar"
     }
+  },
+  "copyableAddress": {
+    "copiedText": "Endereço copiado",
+    "copyText": "Copiar para o clipboard"
   },
   "impactsPage": {
     "title": "Impactos",
@@ -373,6 +392,7 @@
     "purchasesLabel": "Pagamentos",
     "dashboardLabel": "Dashboard Tesouro",
     "causesLabel": "Causas",
+    "ngosLabel": "ONGs",
     "offersLabel": "Ofertas",
     "newsLabel": "Notícias",
     "settingsLabel": "Configurações"
@@ -382,6 +402,14 @@
     "buttonText": "Login com o Google",
     "errorText": "O login falhou",
     "errorDescription": "Certifique-se de que seu email pertence ao domínio @ribon.io"
+  },
+  "commom": {
+    "notRegistered": "Não registrado"
+  },
+  "upload": {
+    "helpText": "Arraste a imagem ou clique para ",
+    "helpText2": "buscar",
+    "supports": "Formatos: JPG, PNG"
   },
   "impactNormalizer": {
     "year": "ano",

@@ -103,11 +103,13 @@
     }
   },
   "causes": {
+    "cause": "Cause",
     "attributes": {
       "name": "Name",
-      "availableToDonation": "Available to donation (USDC)",
-      "poolAddress": "Pool address",
       "token": "Token",
+      "poolAddress": "Pool address",
+      "availableToDonation": "Available to donation (USDC)",
+      "title": "Causes List",
       "mainImage": "Main image",
       "coverImage": "Cover image"
     },
@@ -120,6 +122,7 @@
     },
     "details": {
       "title": "Cause details",
+      "availableToDonation": "Available to donation (USDC)",
       "edit": "Edit",
       "linkedProjects": "Linked projects",
       "coverImage": "Cover image",
@@ -145,6 +148,10 @@
       "required": "this is required",
       "details": "Details",
       "cause": "Cause"
+    },
+    "causeCard": {
+      "amountEnding": "The amount assigned for donation is ending",
+      "amountEnded": "There is no amount assigned for donation"
     }
   },
   "offers": {
@@ -192,10 +199,12 @@
     }
   },
   "nonProfits": {
+    "nonProfit": "Ngo",
     "attributes": {
       "id": "Id",
       "name": "Name",
       "walletAddress": "Wallet address",
+      "token": "Token",
       "status": "Status",
       "address": "Wallet address",
       "logo": "Logo",
@@ -204,10 +213,11 @@
       "donorRecipients": "Donor Recipients",
       "costForOneImpact": "Cost to 1 impact unit (USDC)",
       "unit": "Unit",
-      "imagesSection": "Images",
-      "imageRecommendation": "Recommended size:\n{{ size }}",
       "cause": "Cause",
-      "causeCardImage": "NGO Card"
+      "causeCardImage": "NGO Card",
+      "imageRecommendation": "Recommended size:\n{{ size }}",
+      "imagesSection": "Images",
+      "availableToDonation": "Available to donation (USDC)"
     },
     "list": {
       "title": "Ngos List",
@@ -272,6 +282,7 @@
       }
     },
     "details": {
+      "title": "Ngo details",
       "edit": "Edit",
       "details": "Details",
       "impact": "Impact",
@@ -300,10 +311,10 @@
       "author": "Author",
       "publicationDate": "Publication date",
       "image": "Image",
-      "visibility": "Visibility",
-      "visibilityStatus": "Visibility status",
       "createdAt": "Created at",
       "updatedAt": "Updated at",
+      "visibility": "Visibility",
+      "visibilityStatus": "Visibility status",
       "visibilityOptions": {
         "visible": "Visible",
         "hidden": "Hidden"
@@ -324,6 +335,9 @@
     "upsert": {
       "create": {
         "title": "Add News"
+      },
+      "edit": {
+        "title": "Edit News"
       },
       "title": "Add news",
       "visibilityStatus": "Visible in app",
@@ -349,6 +363,7 @@
     },
     "edit": {
       "title": "Edit Settings",
+      "defaultTicketValue": "Ticket value (USDC)",
       "details": "Details",
       "save": "Save changes",
       "cancel": "Cancel"

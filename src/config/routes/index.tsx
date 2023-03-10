@@ -269,6 +269,20 @@ function RoutesComponent(): JSX.Element {
       />
 
       <Route
+        path="/news/articles/:id/edit"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <UpsertArticleNewsPage isEdit />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
         path="/offers"
         element={
           <PrivateRoute>
