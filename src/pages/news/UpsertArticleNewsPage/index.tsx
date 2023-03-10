@@ -5,7 +5,7 @@ import Loading from "components/moleculars/Loading";
 import useArticles from "hooks/apiHooks/useArticles";
 import useAuthors from "hooks/apiHooks/useAuthors";
 import { useUploadFile } from "hooks/apiHooks/useUploadFile";
-import dateUTCFormatter from "lib/dateUTCFormatter";
+import dateISOFormatter from "lib/dateISOFormatter";
 import React, { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
@@ -166,7 +166,7 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
       resetAuthor(article.author);
       setImageFile(article.imageUrl);
       setVisibleCheckbox(article.visible);
-      setValue("publishedAt", dateUTCFormatter(article.publishedAt));
+      setValue("publishedAt", dateISOFormatter(article.publishedAt));
     } catch (e) {
       logError(e);
     }

@@ -1,8 +1,8 @@
-import dateUTCFormatter from ".";
+import dateISOFormatter from ".";
 
 describe("dateUTCFormatter", () => {
   it("returns correct date", () => {
-    expect(dateUTCFormatter("2022-06-20 17:55:49 UTC")).toBe(
+    expect(dateISOFormatter("2022-06-20 17:55:00 UTC")).toBe(
       "2022-06-20T17:55",
     );
   });
