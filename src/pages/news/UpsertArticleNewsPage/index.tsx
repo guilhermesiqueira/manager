@@ -186,13 +186,11 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
             )}
 
             <InfoName>{t("attributes.link")}</InfoName>
-            <S.TextInput
-              autoComplete="off"
-              {...register("link", { required: t("upsert.required") })}
-            />
+            <S.TextInput autoComplete="off" {...register("link")} />
             {formState?.errors.link && formState?.errors.link.type && (
               <S.Error>{formState?.errors.link.message}</S.Error>
             )}
+            <S.Info>{t("upsert.optional")}</S.Info>
 
             <InfoName>{t("attributes.author")}</InfoName>
 
