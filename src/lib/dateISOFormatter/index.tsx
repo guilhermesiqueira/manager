@@ -1,4 +1,4 @@
-function dateISOFormatter(date: string) {
+export function dateISOFormatterFromString(date: string) {
   const dateToFormat = date
     .replace(" ", "T")
     .replaceAll("/", "-")
@@ -6,4 +6,15 @@ function dateISOFormatter(date: string) {
   return dateToFormat;
 }
 
-export default dateISOFormatter;
+export function dateISOFormatter(date: Date) {
+  console.log(new Date());
+  const pad = function (num: number) {
+    return (num < 10 ? "0" : "") + num;
+  };
+
+  const formattedDate = `${date.getFullYear()}-${pad(
+    date.getMonth() + 1,
+  )}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}`;
+
+  return formattedDate;
+}
