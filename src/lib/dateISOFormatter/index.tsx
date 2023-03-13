@@ -7,7 +7,6 @@ export function dateISOFormatterFromString(date: string) {
 }
 
 export function dateISOFormatter(date: Date) {
-  console.log(new Date());
   const pad = function (num: number) {
     return (num < 10 ? "0" : "") + num;
   };
