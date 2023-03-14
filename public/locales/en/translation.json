@@ -25,6 +25,7 @@
       "name": "Name",
       "status": "Status",
       "activityStatus": "Activity status",
+
       "logo": "Integration logo",
       "walletAddress": "Wallet address",
       "integrationAddress": "Integration address",
@@ -164,6 +165,7 @@
       "externalId": "External ID",
       "status": "Status",
       "activityStatus": "Activity status",
+      "subscription": "Subscription",
       "active": "Active",
       "inactive": "Inactive",
       "createdAt": "Created At",
@@ -195,7 +197,9 @@
       },
       "required": "this is required",
       "activeOffer": "Active Offer",
-      "inactiveOffer": "Inactive Offer"
+      "inactiveOffer": "Inactive Offer",
+      "active": "Active",
+      "inactive": "Inactive"
     }
   },
   "nonProfits": {

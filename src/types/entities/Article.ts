@@ -8,6 +8,6 @@ export default interface Article {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  link: string;
+  link?: string;
   author: Author;
 }

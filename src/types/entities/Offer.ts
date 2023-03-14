@@ -5,4 +5,5 @@ export default interface Offer {
   gateway: string;
   externalId: string;
   priceCents: number;
+  subscription: boolean;
 }

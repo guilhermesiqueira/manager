@@ -12,6 +12,7 @@ import theme from "styles/theme";
 import InfoName from "components/moleculars/infoName";
 import { Button } from "@chakra-ui/react";
 import Article from "types/entities/Article";
+import dateFormatterWithMinutes from "lib/dateFormatterWithMinutes";
 import * as S from "./styles";
 
 function NewsDetailsPage(): JSX.Element {
@@ -81,7 +82,9 @@ function NewsDetailsPage(): JSX.Element {
           <S.InfoValue>{article?.author.name}</S.InfoValue>
 
           <InfoName>{t("attributes.publicationDate")}</InfoName>
-          <S.InfoValue>{dateFormatter(article?.publishedAt ?? "")}</S.InfoValue>
+          <S.InfoValue>
+            {dateFormatterWithMinutes(article?.publishedAt ?? "")}
+          </S.InfoValue>
 
           <InfoName>{t("attributes.createdAt")}</InfoName>
           <S.InfoValue>{dateFormatter(article?.createdAt ?? "")}</S.InfoValue>
