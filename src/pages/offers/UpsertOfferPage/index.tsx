@@ -37,11 +37,13 @@ function UpsertOfferPage({ isEdit }: Props) {
   } = useForm<Offer>({ mode: "onChange", reValidateMode: "onChange" });
 
   const [statusCheckbox, setStatusCheckbox] = useState(true);
+  const [subscriptionCheckbox, setSubscriptionCheckbox] = useState(false);
 
   const fetchOffer = useCallback(async () => {
     try {
       const apiOffer = await getOffer(id);
       setStatusCheckbox(apiOffer.active === true);
+      setSubscriptionCheckbox(apiOffer.subscription);
 
       reset(apiOffer);
     } catch (e) {
@@ -57,6 +59,14 @@ function UpsertOfferPage({ isEdit }: Props) {
     setStatusCheckbox(!statusCheckbox);
   };
 
+  const handleActivityCheckboxSubscriptionChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const { checked } = e.target;
+    setValue("subscription", !!checked);
+    setSubscriptionCheckbox(!subscriptionCheckbox);
+  };
+
   const handleSave = async () => {
     if (offer()) {
       const offerObject = {
@@ -64,6 +74,7 @@ function UpsertOfferPage({ isEdit }: Props) {
         currency: offer().currency,
         priceCents: offer().priceCents,
         active: offer().active,
+        subscription: offer().subscription,
         offerGatewayAttributes: {
           gateway: offer().gateway,
           id: offer().id,
@@ -98,6 +109,7 @@ function UpsertOfferPage({ isEdit }: Props) {
         gateway: "stripe",
         externalId: "34324",
         active: true,
+        subscription: false,
       };
       reset(newOffer);
     }
@@ -120,6 +132,19 @@ function UpsertOfferPage({ isEdit }: Props) {
               {offer().active
                 ? t("upsert.activeOffer")
                 : t("upsert.inactiveOffer")}
+            </S.Span>
+          </S.CheckboxContainer>
+
+          <S.Subtitle>{t("attributes.subscription")}</S.Subtitle>
+          <S.CheckboxContainer>
+            <S.Checkbox
+              name="subscription"
+              type="checkbox"
+              onChange={handleActivityCheckboxSubscriptionChange}
+              checked={subscriptionCheckbox}
+            />
+            <S.Span>
+              {offer().subscription ? t("upsert.active") : t("upsert.inactive")}
             </S.Span>
           </S.CheckboxContainer>
           <br />

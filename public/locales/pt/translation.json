@@ -25,6 +25,7 @@
       "name": "Nome",
       "status": "Status",
       "activityStatus": "Status de atividade",
+
       "logo": "Logo da integração",
       "walletAddress": "Endereço da carteira",
       "integrationAddress": "Endereço da integração",
@@ -164,6 +165,7 @@
       "externalId": "ID Externo",
       "status": "Status",
       "activityStatus": "Status de atividade",
+      "subscription": "Assinatura",
       "active": "Ativo",
       "inactive": "Inativo",
       "createdAt": "Criado em",
@@ -195,7 +197,9 @@
       },
       "required": "Campo obrigatório",
       "activeOffer": "Oferta Ativa",
-      "inactiveOffer": "Oferta Inativa"
+      "inactiveOffer": "Oferta Inativa",
+      "active": "Ativa",
+      "inactive": "Inativa"
     }
   },
   "nonProfits": {

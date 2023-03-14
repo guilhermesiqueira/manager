@@ -5,6 +5,7 @@ import CopyableAddress from "components/atomics/CopyableAddress";
 import Article from "types/entities/Article";
 import { useTranslation } from "react-i18next";
 import theme from "styles/theme";
+import dateFormatterWithMinutes from "lib/dateFormatterWithMinutes";
 import * as S from "./styles";
 
 type Props = {
@@ -43,10 +44,10 @@ function NewsItems({ articles, searchTerm }: Props) {
             <S.ElipsedTableCell>{article?.title}</S.ElipsedTableCell>
           </th>
           <th>
-            <CopyableAddress text={article?.link} />
+            <CopyableAddress text={article?.link ?? ""} />
           </th>
           <th>{article.author.name}</th>
-          <th>{article?.publishedAt}</th>
+          <th>{dateFormatterWithMinutes(article?.publishedAt)}</th>
           <th style={{ color: article.visible ? primary[300] : tertiary[400] }}>
             {article.visible ? t("visible") : t("hidden")}
           </th>
