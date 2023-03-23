@@ -21,6 +21,8 @@ import EditSettingsPage from "pages/SettingsPage/EditSettingsPage";
 import NonProfitsDetailsPage from "pages/NonProfitsPage/NonProfitsDetailsPage";
 import ImpactsPage from "pages/NonProfitsPage/ImpactsPage";
 import NewsDetailsPage from "pages/news/NewsDetailsPage";
+import BigDonorsPage from "pages/bigDonors/BigDonorsPage";
+import BigDonationsPage from "pages/bigDonors/BigDonationsPage";
 import UpsertArticleNewsPage from "pages/news/UpsertArticleNewsPage";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
@@ -332,6 +334,34 @@ function RoutesComponent(): JSX.Element {
               <Navigation />
               <MainLayout>
                 <UpsertOfferPage isEdit />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/big-donors/index"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <BigDonorsPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/big-donors/donations"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <BigDonationsPage />
               </MainLayout>
             </Suspense>
           </PrivateRoute>
