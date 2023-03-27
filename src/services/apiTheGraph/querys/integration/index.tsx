@@ -5,7 +5,7 @@ export const ALL_INTEGRATIONS_QUERY_NAME = "ALL_INTEGRATIONS_QUERY";
 
 export const QUERY_INTEGRATION_ID = gql`
   query ${INTEGRATION_ID_QUERY_NAME}($integration: Bytes!) {
-    integrations(
+    integrationControllers(
       where: { id: $integration }
     ) {
       id
@@ -16,7 +16,7 @@ export const QUERY_INTEGRATION_ID = gql`
 
 export const QUERY_ALL_INTEGRATIONS = gql`
   query ${ALL_INTEGRATIONS_QUERY_NAME} {
-    integrations {
+    integrationControllers {
       id
       balance
     }
