@@ -400,6 +400,9 @@
     "ngosLabel": "ONGs",
     "offersLabel": "Ofertas",
     "newsLabel": "Notícias",
+    "bigDonationsLabel": "Grandes Doações",
+    "donorsLabel": "Doadores",
+    "donationsLabel": "Doações",
     "settingsLabel": "Configurações"
   },
   "login": {
