@@ -14,19 +14,30 @@ import OffersIconOn from "./assets/offersIconOn.svg";
 import OffersIconOff from "./assets/offersIconOff.svg";
 import NewsIconOn from "./assets/newsIconOn.svg";
 import NewsIconOff from "./assets/newsIconOff.svg";
+import LabelIconOn from "./assets/labelIconOn.svg";
+import LabelIconOff from "./assets/labelIconOff.svg";
 import SettingsIconOff from "./assets/settingsIconOff.svg";
 import SettingsIconOn from "./assets/settingsIconOn.svg";
-
 import * as S from "./styles";
 import NavigationLink from "./NavigationLink";
 
 function Navigation(): JSX.Element {
-  const location = useLocation();
   const { t } = useTranslation("translation", {
     keyPrefix: "menu",
   });
 
-  function isInPath(path: string) {
+  const location = useLocation();
+  const { search } = location;
+
+  function isInPath(route: any): boolean {
+    const { menuOptions, path } = route;
+
+    if (menuOptions) {
+      return menuOptions.some((menuOption: any) =>
+        [menuOption.path].includes(location.pathname),
+      );
+    }
+
     return [path].includes(location.pathname);
   }
 
@@ -74,6 +85,22 @@ function Navigation(): JSX.Element {
       title: t("newsLabel"),
     },
     {
+      path: "/big-donors/index",
+      iconOn: LabelIconOn,
+      iconOff: LabelIconOff,
+      title: t("bigDonationsLabel"),
+      menuOptions: [
+        {
+          path: "/big-donors/index",
+          title: t("donorsLabel"),
+        },
+        {
+          path: "/big-donors/donations",
+          title: t("donationsLabel"),
+        },
+      ],
+    },
+    {
       path: "/settings",
       iconOn: SettingsIconOn,
       iconOff: SettingsIconOff,
@@ -86,11 +113,17 @@ function Navigation(): JSX.Element {
       {routes.map((route) => (
         <NavigationLink
           key={route.path}
-          to={{ pathname: route.path }}
-          icon={isInPath(route.path) ? route.iconOn : route.iconOff}
+          to={{ pathname: route.path } as any}
+          icon={isInPath(route) ? route.iconOn : route.iconOff}
           title={route.title}
           enabled={isInPath(route.path)}
           onClick={() => {}}
+          menuOptions={
+            route?.menuOptions?.map((option) => ({
+              ...option,
+              search,
+            })) as any
+          }
         />
       ))}
     </S.Container>

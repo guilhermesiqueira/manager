@@ -400,6 +400,9 @@
     "ngosLabel": "Ngos",
     "offersLabel": "Offers",
     "newsLabel": "News",
+    "bigDonationsLabel": "Big Donations",
+    "donorsLabel": "Donors",
+    "donationsLabel": "Donations",
     "settingsLabel": "Settings"
   },
   "login": {
