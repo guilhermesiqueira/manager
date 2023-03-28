@@ -432,11 +432,12 @@
   },
   "bigDonations": {
     "bigDonors": {
-      "title": "Donors",
+      "title": "Doadores",
       "createNew": "Adicionar doador",
       "attributes": {
         "name": "Nome",
-        "email": "Email"
+        "email": "Email",
+        "noBigDonors": "Sem doadores cadastrados"
       }
     }
   }

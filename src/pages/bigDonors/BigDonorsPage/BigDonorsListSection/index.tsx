@@ -26,6 +26,13 @@ function BigDonorsListSection(): JSX.Element {
   }, []);
 
   function renderTableRowsForBigDonors() {
+    if (allBigDonors.length === 0)
+      return (
+        <tr key="noDonor">
+          <th>{t("noBigDonors")}</th>
+        </tr>
+      );
+
     return allBigDonors?.map((donor: any) => (
       <tr key={donor.id}>
         <th>{donor.name}</th>

@@ -436,7 +436,8 @@
       "createNew": "Add donor",
       "attributes": {
         "name": "Name",
-        "email": "Email"
+        "email": "Email",
+        "noBigDonors": "No donors found"
       }
     }
   }
