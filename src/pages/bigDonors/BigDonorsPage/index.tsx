@@ -13,7 +13,7 @@ function BigDonorsPage(): JSX.Element {
   const navigate = useNavigate();
 
   const handleAddNew = () => {
-    navigate("/donors/new");
+    navigate("/big-donors/new");
   };
 
   return (
