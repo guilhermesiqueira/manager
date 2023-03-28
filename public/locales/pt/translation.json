@@ -429,5 +429,15 @@
     "for": "para",
     "and": "e",
     "of": "de"
+  },
+  "bigDonations": {
+    "bigDonors": {
+      "title": "Donors",
+      "createNew": "Adicionar doador",
+      "attributes": {
+        "name": "Nome",
+        "email": "Email"
+      }
+    }
   }
 }
