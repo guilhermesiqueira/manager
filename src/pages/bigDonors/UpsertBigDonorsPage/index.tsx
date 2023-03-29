@@ -38,11 +38,7 @@ function UpsertBigDonorPage({ isEdit }: Props) {
       };
 
       try {
-        if (isEdit) {
-          // await updateBigDonor(BigDonorObject);
-        } else {
-          await createBigDonor(BigDonorObject);
-        }
+        await createBigDonor(BigDonorObject);
         navigate("/big-donors/index");
       } catch (e) {
         logError(e);
@@ -55,15 +51,11 @@ function UpsertBigDonorPage({ isEdit }: Props) {
   };
 
   useEffect(() => {
-    if (isEdit) {
-      // fetchBigDonor();
-    } else {
-      const newBigDonor: BigDonor = {
-        name: "New Big Donor",
-        email: "",
-      };
-      reset(newBigDonor);
-    }
+    const newBigDonor: BigDonor = {
+      name: "New Big Donor",
+      email: "",
+    };
+    reset(newBigDonor);
   }, []);
 
   return (
