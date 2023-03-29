@@ -7,7 +7,7 @@ describe("UpsertIntegrationPage", () => {
   it("should render the create page without error", async () => {
     renderComponent(<UpsertIntegrationPage />);
     await waitFor(() => {
-      expect(screen.getByText("Add New Donor")).toBeInTheDocument();
+      expect(screen.getByText("Add new donor")).toBeInTheDocument();
       expect(screen.getByText("Save")).toBeInTheDocument();
     });
   });
