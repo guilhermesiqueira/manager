@@ -437,7 +437,16 @@
       "attributes": {
         "name": "Name",
         "email": "Email",
+        "details": "Details",
         "noBigDonors": "No donors found"
+      },
+      "upsert": {
+        "create": {
+          "title": "Add new donor",
+          "save": "Save",
+          "cancel": "Cancel"
+        },
+        "required":"this is required"
       }
     }
   }
