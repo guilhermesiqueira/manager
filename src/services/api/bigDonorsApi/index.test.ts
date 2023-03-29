@@ -27,7 +27,7 @@ describe("bigDonorsApi", () => {
     it("expects to send a post request with the correct info: url and params", () => {
       bigDonorsApi.createBigDonor(data);
 
-      expect(api.post).toHaveBeenCalledWith("/api/v1/big-donors", data);
+      expect(api.post).toHaveBeenCalledWith("/api/v1/big_donors", data);
     });
   });
 });
