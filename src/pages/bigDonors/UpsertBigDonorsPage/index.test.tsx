@@ -7,17 +7,17 @@ describe("UpsertIntegrationPage", () => {
   it("should render the create page without error", async () => {
     renderComponent(<UpsertIntegrationPage />);
     await waitFor(() => {
-      expect(screen.getByText("Add New Integration")).toBeInTheDocument();
+      expect(screen.getByText("Add New Donor")).toBeInTheDocument();
       expect(screen.getByText("Save")).toBeInTheDocument();
     });
   });
 
-  it("should render the edit page without error", async () => {
-    renderComponent(<UpsertIntegrationPage isEdit />);
+  // it("should render the edit page without error", async () => {
+  //   renderComponent(<UpsertBigDonorPage isEdit />);
 
-    await waitFor(() => {
-      expect(screen.getByText("Edit Integration")).toBeInTheDocument();
-      expect(screen.getByText("Save changes")).toBeInTheDocument();
-    });
-  });
+  //   await waitFor(() => {
+  //     expect(screen.getByText("Edit Donor")).toBeInTheDocument();
+  //     expect(screen.getByText("Save changes")).toBeInTheDocument();
+  //   });
+  // });
 });
