@@ -437,7 +437,16 @@
       "attributes": {
         "name": "Nome",
         "email": "Email",
-        "noBigDonors": "Sem doadores cadastrados"
+        "details": "Detalhes",
+        "noBigDonors": "Nenhum doador encontrado"
+      },
+      "upsert": {
+        "create": {
+          "title": "Adicionar Doador",
+          "save": "Salvar",
+          "cancel": "Cancelar"
+        },
+        "required":"Este campo é obrigatório"
       }
     }
   }
