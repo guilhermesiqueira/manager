@@ -1,3 +1,4 @@
+import Dropdown from "components/atomics/Dropdown";
 import styled from "styled-components";
 import { defaultBodyXsRegular } from "styles/typography/default";
 
@@ -113,3 +114,5 @@ export const ItemBox = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+export const SelectInput = styled(Dropdown)``;

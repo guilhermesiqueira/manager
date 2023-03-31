@@ -1,10 +1,12 @@
 import { Button, useToast } from "@chakra-ui/react";
+import { Languages } from "@ribon.io/shared/types";
 import FileUpload from "components/moleculars/FileUpload";
 import InfoName from "components/moleculars/infoName";
 import Loading from "components/moleculars/Loading";
 import useArticles from "hooks/apiHooks/useArticles";
 import useAuthors from "hooks/apiHooks/useAuthors";
 import { useUploadFile } from "hooks/apiHooks/useUploadFile";
+import { useLanguage } from "hooks/useLanguage";
 import {
   dateISOFormatterFromString,
   dateISOFormatter,
@@ -36,6 +38,7 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
   const [authors, setAuthors] = useState<Author[]>([]);
   const { getAuthors, createAuthor } = useAuthors();
   const { createArticle, getArticle, updateArticle } = useArticles();
+  const { currentLang } = useLanguage();
   const { id } = useParams();
   const {
     getValues: ArticleObject,
@@ -239,6 +242,24 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
               ))}
             </S.DatalistContainer>
             <S.Info>{t("upsert.authorInstruction")}</S.Info>
+            <InfoName>{t("upsert.language")}</InfoName>
+            <S.SelectInput
+              values={[Languages.EN, Languages.PT]}
+              name="currency"
+              onOptionChanged={(value) =>
+                setValue("language", value.toLowerCase().replace("-", "_"))
+              }
+              defaultValue={
+                ArticleObject().language === "en_us"
+                  ? Languages.EN
+                  : Languages.PT || currentLang
+              }
+              containerId="language-dropdown"
+            />
+
+            {formState?.errors.language && formState?.errors.language.type && (
+              <S.Error>{formState?.errors.language.message}</S.Error>
+            )}
 
             <InfoName>{t("upsert.date")}</InfoName>
             <S.TextInput

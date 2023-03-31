@@ -13,6 +13,7 @@ import InfoName from "components/moleculars/infoName";
 import { Button } from "@chakra-ui/react";
 import Article from "types/entities/Article";
 import dateFormatterWithMinutes from "lib/dateFormatterWithMinutes";
+import { Languages } from "@ribon.io/shared/types";
 import * as S from "./styles";
 
 function NewsDetailsPage(): JSX.Element {
@@ -80,6 +81,11 @@ function NewsDetailsPage(): JSX.Element {
 
           <InfoName>{t("attributes.author")}</InfoName>
           <S.InfoValue>{article?.author.name}</S.InfoValue>
+
+          <InfoName>{t("attributes.language")}</InfoName>
+          <S.InfoValue>
+            {article?.language === "en_us" ? Languages.EN : Languages.PT}
+          </S.InfoValue>
 
           <InfoName>{t("attributes.publicationDate")}</InfoName>
           <S.InfoValue>

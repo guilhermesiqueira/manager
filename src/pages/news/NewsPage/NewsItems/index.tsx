@@ -6,6 +6,7 @@ import Article from "types/entities/Article";
 import { useTranslation } from "react-i18next";
 import theme from "styles/theme";
 import dateFormatterWithMinutes from "lib/dateFormatterWithMinutes";
+import { Languages } from "@ribon.io/shared/types";
 import * as S from "./styles";
 
 type Props = {
@@ -47,6 +48,7 @@ function NewsItems({ articles, searchTerm }: Props) {
             <CopyableAddress text={article?.link ?? ""} />
           </th>
           <th>{article.author.name}</th>
+          <th>{article?.language === "en_us" ? Languages.EN : Languages.PT}</th>
           <th>{dateFormatterWithMinutes(article?.publishedAt)}</th>
           <th style={{ color: article.visible ? primary[300] : tertiary[400] }}>
             {article.visible ? t("visible") : t("hidden")}
