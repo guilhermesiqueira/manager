@@ -6,7 +6,8 @@ export const Container = styled.div`
 
 // create a component to table
 export const Table = styled.table`
-  min-width: 500px;
+  min-width: 700px;
+  max-width: 90%;
   margin: ${({ theme }) => theme.spacing(24, 0)};
   border-collapse: collapse;
 
@@ -34,6 +35,7 @@ export const Table = styled.table`
 
 export const ActionsTableCell = styled.div`
   display: flex;
+  align-self: center;
 
   img {
     margin-right: ${({ theme }) => theme.spacing(8)};

@@ -1,12 +1,13 @@
-import { Button } from "@chakra-ui/react";
+import { Button, useToast } from "@chakra-ui/react";
 import useBigDonors from "hooks/apiHooks/useBigDonors";
-import { useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import { logError } from "services/crashReport";
 import BigDonor from "types/entities/BigDonor";
 import theme from "styles/theme";
+import Loading from "components/moleculars/Loading";
 import * as S from "./styles";
 
 export type Props = {
@@ -19,30 +20,60 @@ function UpsertBigDonorPage({ isEdit }: Props) {
   });
 
   const mode = isEdit ? "edit" : "create";
-
+  const [loading, setLoading] = useState(false);
   const { neutral } = theme.colors;
   const navigate = useNavigate();
-  const { createBigDonor } = useBigDonors();
+  const { id } = useParams();
+  const { createBigDonor, getBigDonor, updateBigDonor } = useBigDonors();
   const {
     register,
-    getValues: bigDonor,
+    getValues: BigDonorObject,
     reset,
     handleSubmit,
     formState,
   } = useForm<BigDonor>({ mode: "onChange", reValidateMode: "onChange" });
 
-  const handleSave = async () => {
-    if (bigDonor()) {
-      const BigDonorObject = {
-        ...bigDonor(),
-      };
+  const toast = useToast();
 
-      try {
-        await createBigDonor(BigDonorObject);
-        navigate("/big-donors/index");
-      } catch (e) {
-        logError(e);
+  const fetchBigDonor = useCallback(async () => {
+    try {
+      const bigDonor = await getBigDonor(id);
+      reset(bigDonor);
+    } catch (e) {
+      logError(e);
+    }
+  }, []);
+
+  function bigDonorUpdate() {
+    const bigDonor = BigDonorObject();
+
+    return bigDonor;
+  }
+
+  const handleSave = async () => {
+    try {
+      if (isEdit) {
+        await updateBigDonor(bigDonorUpdate());
+      } else {
+        setLoading(true);
+        await createBigDonor(BigDonorObject())
+          .then((response) => {
+            reset(response?.data);
+            setLoading(false);
+          })
+          .catch((error) => {
+            setLoading(false);
+            toast({
+              description: error?.response?.data?.message,
+              status: "error",
+            });
+            throw Error(error.response.data.formatted_message);
+          });
       }
+
+      navigate("/big-donors/index");
+    } catch (e) {
+      logError(e);
     }
   };
 
@@ -51,11 +82,15 @@ function UpsertBigDonorPage({ isEdit }: Props) {
   };
 
   useEffect(() => {
-    const newBigDonor: BigDonor = {
-      name: "New Big Donor",
-      email: "",
-    };
-    reset(newBigDonor);
+    if (isEdit) {
+      fetchBigDonor();
+    } else {
+      const newBigDonor: BigDonor = {
+        name: "New Big Donor",
+        email: "bigdonor@email.com",
+      };
+      reset(newBigDonor);
+    }
   }, []);
 
   return (
@@ -107,6 +142,7 @@ function UpsertBigDonorPage({ isEdit }: Props) {
           </S.ButtonContainer>
         </S.ContentSection>
       </form>
+      {loading && <Loading />}
     </>
   );
 }

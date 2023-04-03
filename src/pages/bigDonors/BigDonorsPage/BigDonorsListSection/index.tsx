@@ -1,7 +1,9 @@
 import { useEffect, useState, useCallback } from "react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import useBigDonors from "hooks/apiHooks/useBigDonors";
 import { logError } from "services/crashReport";
+import editIcon from "assets/icons/edit-icon.svg";
 import * as S from "./styles";
 
 function BigDonorsListSection(): JSX.Element {
@@ -37,6 +39,12 @@ function BigDonorsListSection(): JSX.Element {
       <tr key={donor.id}>
         <th>{donor.name}</th>
         <th>{donor.email}</th>
+
+        <th>
+          <Link to={`/big-donors/${donor.id}/edit`}>
+            <img src={editIcon} alt="edit big donor info" />
+          </Link>
+        </th>
       </tr>
     ));
   }

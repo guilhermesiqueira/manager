@@ -446,6 +446,11 @@
           "save": "Salvar",
           "cancel": "Cancelar"
         },
+        "edit": {
+          "title": "Editar Doador",
+          "save": "Salvar",
+          "cancel": "Cancelar"
+        },
         "required":"Este campo é obrigatório"
       }
     }
