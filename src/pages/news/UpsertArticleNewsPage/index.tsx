@@ -245,15 +245,11 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
             <InfoName>{t("upsert.language")}</InfoName>
             <S.SelectInput
               values={[Languages.EN, Languages.PT]}
-              name="currency"
+              name="language"
               onOptionChanged={(value) =>
-                setValue("language", value.toLowerCase().replace("-", "_"))
+                setValue("language", value === "en-US" ? 0 : 1)
               }
-              defaultValue={
-                ArticleObject().language === "en_us"
-                  ? Languages.EN
-                  : Languages.PT || currentLang
-              }
+              defaultValue={ArticleObject().language || currentLang}
               containerId="language-dropdown"
             />
 
