@@ -12,6 +12,10 @@ describe("NewsListSection", () => {
 
     expect(screen.getByText("News link")).toBeInTheDocument();
 
+    expect(screen.getByText("Author")).toBeInTheDocument();
+
+    expect(screen.getByText("Language")).toBeInTheDocument();
+
     expect(screen.getByText("Publication date")).toBeInTheDocument();
 
     expect(screen.getByText("Visibility")).toBeInTheDocument();

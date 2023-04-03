@@ -81,6 +81,9 @@ function NewsDetailsPage(): JSX.Element {
           <InfoName>{t("attributes.author")}</InfoName>
           <S.InfoValue>{article?.author.name}</S.InfoValue>
 
+          <InfoName>{t("attributes.language")}</InfoName>
+          <S.InfoValue>{article?.language}</S.InfoValue>
+
           <InfoName>{t("attributes.publicationDate")}</InfoName>
           <S.InfoValue>
             {dateFormatterWithMinutes(article?.publishedAt ?? "")}

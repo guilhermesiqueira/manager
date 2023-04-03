@@ -173,7 +173,7 @@ function UpsertOfferPage({ isEdit }: Props) {
                 onOptionChanged={(value) =>
                   setValue("currency", value.toLowerCase())
                 }
-                defaultValue={Currencies.BRL}
+                defaultValue={offer().currency || Currencies.BRL}
                 containerId="currencies-dropdown"
               />
 

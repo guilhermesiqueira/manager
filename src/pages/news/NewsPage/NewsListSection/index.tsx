@@ -85,6 +85,7 @@ function NewsListSection(): JSX.Element {
             <th>{t("attributes.content")}</th>
             <th>{t("attributes.link")}</th>
             <th>{t("attributes.author")}</th>
+            <th>{t("attributes.language")}</th>
             <th>{t("attributes.publicationDate")}</th>
             <th>{t("attributes.visibility")}</th>
           </tr>

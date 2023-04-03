@@ -12,6 +12,7 @@ describe("News Details Page", () => {
     expect(screen.getByText("Content")).toBeInTheDocument();
     expect(screen.getByText("News link")).toBeInTheDocument();
     expect(screen.getByText("Author")).toBeInTheDocument();
+    expect(screen.getByText("Language")).toBeInTheDocument();
     expect(screen.getByText("Publication date")).toBeInTheDocument();
     expect(screen.getByText("Created at")).toBeInTheDocument();
     expect(screen.getByText("Updated at")).toBeInTheDocument();
