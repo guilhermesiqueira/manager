@@ -8,4 +8,5 @@ export interface CreateArticle {
   publishedAt?: string;
   link?: string;
   author?: CreateAuthor;
+  language?: number;
 }
