@@ -47,6 +47,7 @@ function NewsItems({ articles, searchTerm }: Props) {
             <CopyableAddress text={article?.link ?? ""} />
           </th>
           <th>{article.author.name}</th>
+          <th>{article?.language}</th>
           <th>{dateFormatterWithMinutes(article?.publishedAt)}</th>
           <th style={{ color: article.visible ? primary[300] : tertiary[400] }}>
             {article.visible ? t("visible") : t("hidden")}

@@ -322,7 +322,8 @@
       "visibilityOptions": {
         "visible": "Visível",
         "hidden": "Escondida"
-      }
+      },
+      "language": "Idioma"
     },
     "details": {
       "title": "Detalhes da notícia",
@@ -353,7 +354,8 @@
       "save": "Salvar",
       "cancel": "Cancelar",
       "required": "Este campo é obrigatório",
-      "optional": "Opcional"
+      "optional": "Opcional",
+      "language": "Idioma"
     }
   },
   "settings": {
@@ -451,7 +453,7 @@
           "save": "Salvar",
           "cancel": "Cancelar"
         },
-        "required":"Este campo é obrigatório"
+        "required": "Este campo é obrigatório"
       }
     }
   }

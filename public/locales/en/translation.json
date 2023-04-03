@@ -322,7 +322,8 @@
       "visibilityOptions": {
         "visible": "Visible",
         "hidden": "Hidden"
-      }
+      },
+      "language": "Language"
     },
     "details": {
       "title": "News details",
@@ -353,7 +354,8 @@
       "save": "Save",
       "cancel": "Cancel",
       "required": "this is required",
-      "optional": "Optional"
+      "optional": "Optional",
+      "language": "Language"
     }
   },
   "settings": {
@@ -451,7 +453,7 @@
           "save": "Save",
           "cancel": "Cancel"
         },
-        "required":"this is required"
+        "required": "this is required"
       }
     }
   }
