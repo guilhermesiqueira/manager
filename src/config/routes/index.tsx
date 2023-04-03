@@ -384,6 +384,20 @@ function RoutesComponent(): JSX.Element {
       />
 
       <Route
+        path="/big-donors/:id/edit"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <UpsertBigDonorPage isEdit />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
         path="/settings"
         element={
           <PrivateRoute>

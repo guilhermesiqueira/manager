@@ -22,6 +22,19 @@ describe("useBigDonors", () => {
     });
   });
 
+  describe("#getBigDonor", () => {
+    beforeEach(() => {
+      bigDonorsApi.getBigDonor = jest.fn(() => ({} as any));
+    });
+
+    it("calls getBigDonor with correct params", () => {
+      hook.getBigDonor("1");
+
+      expect(bigDonorsApi.getBigDonor).toHaveBeenCalled();
+      expect(bigDonorsApi.getBigDonor).toHaveBeenCalledWith("1");
+    });
+  });
+
   describe("#createBigDonor", () => {
     const data = {
       name: "BigDonor 1",
@@ -37,6 +50,25 @@ describe("useBigDonors", () => {
 
       expect(bigDonorsApi.createBigDonor).toHaveBeenCalled();
       expect(bigDonorsApi.createBigDonor).toHaveBeenCalledWith(data);
+    });
+  });
+
+  describe("#updateBigDonor", () => {
+    const data = {
+      id: "1",
+      name: "BigDonor 1",
+      email: "email",
+    };
+
+    beforeEach(() => {
+      bigDonorsApi.updateBigDonor = jest.fn(() => ({} as any));
+    });
+
+    it("calls updateBigDonor with correct params", () => {
+      hook.updateBigDonor(data);
+
+      expect(bigDonorsApi.updateBigDonor).toHaveBeenCalled();
+      expect(bigDonorsApi.updateBigDonor).toHaveBeenCalledWith(data);
     });
   });
 });
