@@ -435,6 +435,7 @@
   "bigDonations": {
     "bigDonors": {
       "title": "Doadores",
+      "noBigDonors": "Nenhum doador encontrado",
       "attributes": {
         "createNew": "Adicionar doador",
         "name": "Nome",

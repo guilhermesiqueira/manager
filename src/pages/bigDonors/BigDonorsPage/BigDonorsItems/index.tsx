@@ -11,7 +11,7 @@ type Props = {
 
 function BigDonorsItems({ bigDonors, searchTerm }: Props) {
   const { t } = useTranslation("translation", {
-    keyPrefix: "BigDonors",
+    keyPrefix: "bigDonations.bigDonors",
   });
 
   function filterBigDonors(nonFilteredBigDonors: BigDonor[]) {
