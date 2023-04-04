@@ -435,12 +435,13 @@
   "bigDonations": {
     "bigDonors": {
       "title": "Doadores",
-      "createNew": "Adicionar doador",
       "attributes": {
+        "createNew": "Adicionar doador",
         "name": "Nome",
         "email": "Email",
         "details": "Detalhes",
-        "noBigDonors": "Nenhum doador encontrado"
+        "noBigDonors": "Nenhum doador encontrado",
+        "search":"Procurar pelo nome..."
       },
       "upsert": {
         "create": {
