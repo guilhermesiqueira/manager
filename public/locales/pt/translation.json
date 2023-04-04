@@ -335,7 +335,11 @@
       "createNew": "Adicionar nova",
       "search": "Procurar pelo título da notícia...",
       "next": "próximo >",
-      "previous": "< anterior"
+      "previous": "< anterior",
+      "languageOptions": {
+        "en": "Inglês",
+        "pt": "Português"
+      }
     },
     "upsert": {
       "create": {

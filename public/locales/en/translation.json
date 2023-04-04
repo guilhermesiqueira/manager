@@ -335,7 +335,11 @@
       "createNew": "Add new",
       "search": "Search by news title...",
       "next": "next >",
-      "previous": "< previous"
+      "previous": "< previous",
+      "languageOptions": {
+        "en": "English",
+        "pt": "Portuguese"
+      }
     },
     "upsert": {
       "create": {

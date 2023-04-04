@@ -9,6 +9,10 @@ import theme from "styles/theme";
 import NewsItems from "../NewsItems";
 import * as S from "./styles";
 
+interface LanguageObject {
+  [key: string]: boolean;
+}
+
 function NewsListSection(): JSX.Element {
   const [articles, setArticles] = useState<Article[]>([]);
   const { getArticles } = useArticles();
@@ -20,6 +24,13 @@ function NewsListSection(): JSX.Element {
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 10;
   const [searchTerm, setSearchTerm] = useState("");
+  const defaultLanguageSelection = {
+    pt: false,
+    en: false,
+  };
+  const [selectedLanguage, setSelectedLanguage] = useState<LanguageObject>(
+    defaultLanguageSelection,
+  );
 
   const fetchArticles = useCallback(async () => {
     try {
@@ -57,8 +68,30 @@ function NewsListSection(): JSX.Element {
     navigate("/news/articles/new");
   };
 
+  const handleLanguageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setSelectedLanguage({
+      ...selectedLanguage,
+      [value]: !selectedLanguage[value],
+    });
+  };
+
   return (
     <S.Container>
+      <S.CheckboxContainer>
+        {Object.keys(defaultLanguageSelection).map((language: any) => (
+          <div key={language}>
+            <S.Checkbox
+              name="language"
+              type="checkbox"
+              value={language}
+              onChange={handleLanguageChange}
+              checked={selectedLanguage[language]}
+            />
+            <S.Span>{t(`list.languageOptions.${language}`)}</S.Span>
+          </div>
+        ))}
+      </S.CheckboxContainer>
       <S.ButtonContainer>
         <S.AddButton
           color={neutral[50]}
