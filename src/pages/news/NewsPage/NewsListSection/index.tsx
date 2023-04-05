@@ -6,6 +6,7 @@ import { logError } from "services/crashReport";
 import Article from "types/entities/Article";
 import { useNavigate } from "react-router";
 import theme from "styles/theme";
+import { useLanguage } from "hooks/useLanguage";
 import NewsItems from "../NewsItems";
 import * as S from "./styles";
 
@@ -24,9 +25,10 @@ function NewsListSection(): JSX.Element {
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 10;
   const [searchTerm, setSearchTerm] = useState("");
+  const { currentLang } = useLanguage();
   const defaultLanguageSelection = {
-    pt: false,
-    en: false,
+    pt: currentLang === "pt-BR",
+    en: currentLang === "en",
   };
   const [selectedLanguage, setSelectedLanguage] = useState<LanguageObject>(
     defaultLanguageSelection,
@@ -41,6 +43,15 @@ function NewsListSection(): JSX.Element {
     }
   }, [setArticles]);
 
+  const filterArticlesByLanguage = (nonFilteredArticles: Article[]) =>
+    nonFilteredArticles.filter((articleData: Article) => {
+      if (articleData.language) {
+        const articleLanguage = articleData.language === 0 ? "pt" : "en";
+        if (selectedLanguage[articleLanguage]) return articleData;
+      }
+      return null;
+    });
+
   useEffect(() => {
     fetchArticles();
   }, [fetchArticles]);
@@ -50,7 +61,6 @@ function NewsListSection(): JSX.Element {
     const allItems = articles.slice(itemOffset, endOffset);
 
     setCurrentArticles(allItems);
-
     setPageCount(Math.ceil(articles.length / itemsPerPage));
   }, [itemOffset, itemsPerPage, articles]);
 
@@ -123,7 +133,10 @@ function NewsListSection(): JSX.Element {
             <th>{t("attributes.visibility")}</th>
           </tr>
         </thead>
-        <NewsItems searchTerm={searchTerm} articles={currentArticles} />
+        <NewsItems
+          searchTerm={searchTerm}
+          articles={filterArticlesByLanguage(currentArticles)}
+        />
       </S.Table>
 
       <S.Pagination
