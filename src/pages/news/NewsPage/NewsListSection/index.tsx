@@ -46,7 +46,7 @@ function NewsListSection(): JSX.Element {
   const filterArticlesByLanguage = (nonFilteredArticles: Article[]) =>
     nonFilteredArticles.filter((articleData: Article) => {
       if (articleData.language) {
-        const articleLanguage = articleData.language === 0 ? "pt" : "en";
+        const articleLanguage = articleData.language.toString().split("-")[0];
         if (selectedLanguage[articleLanguage]) return articleData;
       }
       return null;
