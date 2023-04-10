@@ -20,6 +20,10 @@ export const Menu = styled.div<{ visible: boolean }>`
   background: ${({ theme }) => theme.colors.neutral10};
   box-shadow: inset 7px 0 9px -7px ${({ theme }) => theme.colors.defaultShadow};
   transition: width 0.2s, border 0.2s;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    left: 144px;
+  }
 `;
 
 export const MenuItem = styled(Link)`

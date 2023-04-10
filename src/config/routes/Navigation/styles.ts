@@ -12,6 +12,7 @@ export const Container = styled.div`
   min-height: 100vh;
   padding: ${({ theme }) => theme.spacing(4, 12)};
   position: fixed;
+  top: 0;
   bottom: 0;
   z-index: ${({ theme }) => theme.zindex.navbar};
   display: flex;
@@ -34,6 +35,12 @@ export const Container = styled.div`
     background: ${({ theme }) => theme.colors.neutral10};
     box-shadow: 0 4px 12px ${({ theme }) => theme.colors.defaultShadow};
   }
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    max-width: 148px;
+    padding: ${({ theme }) => theme.spacing(64, 12)};
+    align-items: flex-start;
+  }
 `;
 
 export const Title = styled.p`
@@ -49,6 +56,10 @@ export const StyledLinkContainer = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    text-align: left;
+  }
 `;
 
 export const StyledLink = styled(Link)`
@@ -58,8 +69,10 @@ export const StyledLink = styled(Link)`
   justify-content: space-between;
   text-decoration: none;
 
-  @media (min-width: ${({ theme }) => theme.breakpoints.pad}) {
-    gap: 6px;
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}) {
+    flex-direction: row;
+    gap: 12px;
+    align-items: center;
   }
 `;
 
