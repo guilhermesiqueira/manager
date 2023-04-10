@@ -99,6 +99,10 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
       fetchArticle();
     } else {
       setValue("visible", true);
+      setValue(
+        "language",
+        currentLang === "pt-BR" ? Languages.PT : Languages.EN,
+      );
     }
   }, []);
 
@@ -247,7 +251,11 @@ function UpsertArticleNewsPage({ isEdit }: Props) {
               values={[Languages.EN, Languages.PT]}
               name="language"
               onOptionChanged={(value) => setValue("language", value)}
-              defaultValue={ArticleObject().language || currentLang}
+              defaultValue={
+                ArticleObject().language || currentLang === "pt-BR"
+                  ? Languages.PT
+                  : Languages.EN
+              }
               containerId="language-dropdown"
             />
 
