@@ -457,6 +457,37 @@
         },
         "required": "this is required"
       }
+    },
+    "bigDonations": {
+      "title": "Donations",
+      "noBigDonations": "No donations found",
+      "attributes": {
+        "createNew": "Add donation",
+        "donor": "Donor",
+        "amount": "Amount",
+        "details": "Details",
+        "noBigDonations": "No donations found",
+        "search":"Search by donor name...",
+        "donationId": "Donation ID",
+        "transactionHash":"Transaction Hash",
+        "value": "Value (USDC)",
+        "processingDate": "Processing Date",
+        "bigDonor": "Big Donor",
+        "status": "Status"
+      },
+      "upsert": {
+        "create": {
+          "title": "Add new donation",
+          "save": "Save",
+          "cancel": "Cancel"
+        },
+        "edit": {
+          "title": "Edit donation",
+          "save": "Save",
+          "cancel": "Cancel"
+        },
+        "required": "this is required"
+      }
     }
   }
 }
