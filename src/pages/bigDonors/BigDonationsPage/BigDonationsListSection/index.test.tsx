@@ -7,7 +7,7 @@ describe("BigDonorsListSection", () => {
   it("should render without error", () => {
     renderComponent(<BigDonorsListSection />);
 
-    expect(screen.getByText("Name")).toBeInTheDocument();
-    expect(screen.getByText("Email")).toBeInTheDocument();
+    expect(screen.getByText("Big Donor")).toBeInTheDocument();
+    expect(screen.getByText("Transaction Hash")).toBeInTheDocument();
   });
 });
