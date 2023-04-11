@@ -335,7 +335,11 @@
       "createNew": "Add new",
       "search": "Search by news title...",
       "next": "next >",
-      "previous": "< previous"
+      "previous": "< previous",
+      "languageOptions": {
+        "en": "English",
+        "pt": "Portuguese"
+      }
     },
     "upsert": {
       "create": {
@@ -435,16 +439,23 @@
   "bigDonations": {
     "bigDonors": {
       "title": "Donors",
-      "createNew": "Add donor",
+      "noBigDonors": "No donors found",
       "attributes": {
+        "createNew": "Add donor",
         "name": "Name",
         "email": "Email",
         "details": "Details",
-        "noBigDonors": "No donors found"
+        "noBigDonors": "No donors found",
+        "search":"Search by name..."
       },
       "upsert": {
         "create": {
           "title": "Add new donor",
+          "save": "Save",
+          "cancel": "Cancel"
+        },
+        "edit": {
+          "title": "Edit donor",
           "save": "Save",
           "cancel": "Cancel"
         },

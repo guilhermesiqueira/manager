@@ -335,7 +335,11 @@
       "createNew": "Adicionar nova",
       "search": "Procurar pelo título da notícia...",
       "next": "próximo >",
-      "previous": "< anterior"
+      "previous": "< anterior",
+      "languageOptions": {
+        "en": "Inglês",
+        "pt": "Português"
+      }
     },
     "upsert": {
       "create": {
@@ -435,16 +439,23 @@
   "bigDonations": {
     "bigDonors": {
       "title": "Doadores",
-      "createNew": "Adicionar doador",
+      "noBigDonors": "Nenhum doador encontrado",
       "attributes": {
+        "createNew": "Adicionar doador",
         "name": "Nome",
         "email": "Email",
         "details": "Detalhes",
-        "noBigDonors": "Nenhum doador encontrado"
+        "noBigDonors": "Nenhum doador encontrado",
+        "search":"Procurar pelo nome..."
       },
       "upsert": {
         "create": {
           "title": "Adicionar Doador",
+          "save": "Salvar",
+          "cancel": "Cancelar"
+        },
+        "edit": {
+          "title": "Editar Doador",
           "save": "Salvar",
           "cancel": "Cancelar"
         },
