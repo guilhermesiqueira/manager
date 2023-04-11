@@ -1,3 +1,6 @@
+import BigDonor from "./BigDonor";
+import CryptoUser from "./CryptoUser";
+import Customer from "./Customer";
 import Offer from "./Offer";
 import Person from "./Person";
 
@@ -12,4 +15,6 @@ export default interface PersonPayment {
   offer: Offer;
   person: Person;
   external_id: string;
+  payerIdentification: string;
+  payer: Customer | CryptoUser | BigDonor;
 }
