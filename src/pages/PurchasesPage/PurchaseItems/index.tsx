@@ -53,7 +53,7 @@ function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
       if (searchTerm === "") {
         return purchaseData;
       } else if (
-        purchaseData?.person?.customer?.email
+        purchaseData?.payerIdentification
           .toLowerCase()
           .includes(searchTerm.toLowerCase())
       ) {
