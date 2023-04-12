@@ -466,7 +466,7 @@
       "title": "Doações",
       "noBigDonations": "Nenhuma doação encontrada",
       "attributes": {
-        "createNew": "Adicionar doação",
+        "createNew": "Enviar doação para contrato",
         "donor": "Doador",
         "amount": "Valor",
         "date": "Data",

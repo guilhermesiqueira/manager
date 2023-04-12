@@ -466,7 +466,7 @@
       "title": "Donations",
       "noBigDonations": "No donations found",
       "attributes": {
-        "createNew": "Add donation",
+        "createNew": "Send Donation to contract",
         "donor": "Donor",
         "amount": "Amount",
         "details": "Details",
