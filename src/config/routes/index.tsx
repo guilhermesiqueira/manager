@@ -23,6 +23,7 @@ import ImpactsPage from "pages/NonProfitsPage/ImpactsPage";
 import NewsDetailsPage from "pages/news/NewsDetailsPage";
 import BigDonorsPage from "pages/bigDonors/BigDonorsPage";
 import BigDonationsPage from "pages/bigDonors/BigDonationsPage";
+import BigDonationsDetailsPage from "pages/bigDonors/BigDonationsDetailsPage";
 import UpsertBigDonorPage from "pages/bigDonors/UpsertBigDonorsPage";
 import UpsertArticleNewsPage from "pages/news/UpsertArticleNewsPage";
 import Navigation from "./Navigation";
@@ -363,6 +364,20 @@ function RoutesComponent(): JSX.Element {
               <Navigation />
               <MainLayout>
                 <BigDonationsPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/big-donors/donations/:id"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <BigDonationsDetailsPage />
               </MainLayout>
             </Suspense>
           </PrivateRoute>
