@@ -22,7 +22,7 @@ export function useContract<T extends Contract = Contract>({
       if (ethereum) {
         const provider = new Web3Provider(ethereum);
         const signer = provider.getSigner(
-          "0x6E060041D62fDd76cF27c582f62983b864878E8F",
+          "0x9F9241629E8C1FE2b466754843A629b675Dd36Ab",
         );
         return getContract(address, ABI, signer);
       }
