@@ -1,6 +1,6 @@
 import { AxiosResponse } from "axios";
 import PersonPayment from "types/entities/PersonPayment";
-import { apiGetWithParams } from "..";
+import { apiGet, apiGetWithParams } from "..";
 
 type PersonPaymentsParams = {
   perPage?: number;
@@ -18,6 +18,9 @@ const personPaymentsApi = {
         page,
       },
     }),
+
+  getBigDonorsPayments: (): Promise<AxiosResponse<PersonPayment[]>> =>
+    apiGet("person_payments/big_donors"),
 };
 
 export default personPaymentsApi;

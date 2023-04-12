@@ -461,6 +461,38 @@
         },
         "required": "Este campo é obrigatório"
       }
+    },
+    "bigDonations": {
+      "title": "Doações",
+      "noBigDonations": "Nenhuma doação encontrada",
+      "attributes": {
+        "createNew": "Adicionar doação",
+        "donor": "Doador",
+        "amount": "Valor",
+        "date": "Data",
+        "details": "Detalhes",
+        "noBigDonations": "Nenhuma doação encontrada",
+        "search":"Procurar pelo nome do doador...",
+        "donationId": "ID da Doação",
+        "transactionHash":"Hash da Transação",
+        "value": "Valor (USDC)",
+        "processingDate": "Data de Processamento",
+        "bigDonor": "Grande Doador",
+        "status": "Status"
+      },
+      "upsert": {
+        "create": {
+          "title": "Adicionar Doação",
+          "save": "Salvar",
+          "cancel": "Cancelar"
+        },
+        "edit": {
+          "title": "Editar Doação",
+          "save": "Salvar",
+          "cancel": "Cancelar"
+        },
+        "required": "Este campo é obrigatório"
+      }
     }
   }
 }

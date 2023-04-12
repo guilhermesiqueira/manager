@@ -6,6 +6,6 @@ describe("BigDonationsPage", () => {
   it("should render without error", () => {
     renderComponent(<BigDonationsPage />);
 
-    expectTextToBeInTheDocument("BigDonationsPage");
+    expectTextToBeInTheDocument("Donations");
   });
 });
