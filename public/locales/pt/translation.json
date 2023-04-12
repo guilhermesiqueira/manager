@@ -462,5 +462,18 @@
         "required": "Este campo é obrigatório"
       }
     }
+  },
+  "layouts":{
+    "walletLayout": {
+      "connectWallet": "conectar"
+    }
+  },
+  "contexts": {
+    "walletContext": {
+      "ethereumNotFoundMessage": "Instale a Metamask para continuar",
+      "userRejectedConnectionMessage": "Conexão com a carteira negada",
+      "onErrorMessage": "Falha na conexão da carteira",
+      "invalidNetworkMessage": "Conecte-se a uma rede válida"
+    }
   }
 }

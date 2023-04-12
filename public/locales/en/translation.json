@@ -462,5 +462,18 @@
         "required": "this is required"
       }
     }
+  },
+  "layouts":{
+    "walletLayout": {
+      "connectWallet": "connect"
+    }
+  },
+  "contexts": {
+    "walletContext": {
+      "ethereumNotFoundMessage": "Install Metamask to continue",
+      "userRejectedConnectionMessage": "Wallet connection rejected",
+      "onErrorMessage": "Wallet connection failed",
+      "invalidNetworkMessage": "Connect to a valid network"
+    }
   }
 }

@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import DonationTokenAbi from "utils/abis/DonationToken.json";
 import RibonAbi from "utils/abis/RibonAbi.json";
 import { useContract } from "hooks/useContract";
-import { useNetwork } from "hooks/useNetwork";
+import { useNetworkContext } from "contexts/networkContext";
 
 function useTokenDecimals() {
   const [tokenDecimals, setTokenDecimals] = useState<number>();
-  const { currentNetwork } = useNetwork();
+  const { currentNetwork } = useNetworkContext();
 
   const donationTokenContract = useContract({
     address: currentNetwork.donationTokenContractAddress,

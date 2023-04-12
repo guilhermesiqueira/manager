@@ -7,15 +7,15 @@ import { Link } from "react-router-dom";
 import { formatFromWei } from "lib/web3Helpers/etherFormatters";
 import { logError } from "services/crashReport";
 import { useContract } from "hooks/useContract";
-import { useNetwork } from "hooks/useNetwork";
 import RibonAbi from "utils/abis/RibonAbi.json";
+import { useNetworkContext } from "contexts/networkContext";
 import * as S from "./styles";
 
 function IntegrationsSection(): JSX.Element {
   const { t } = useTranslation("translation", {
     keyPrefix: "dashboard.treasureDashboard.integrationsSection",
   });
-  const { currentNetwork } = useNetwork();
+  const { currentNetwork } = useNetworkContext();
   const { getAllIntegrations } = useIntegrations();
   const { getAllApiIntegrations } = useApiIntegrations();
   const [apiIntegrations, setApiIntegrations] = useState<any>([]);
