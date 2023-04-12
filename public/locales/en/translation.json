@@ -91,7 +91,7 @@
     },
     "list": {
       "title": "Purchases List",
-      "search": "Search by email...",
+      "search": "Search by user identification...",
       "next": "next >",
       "previous": "< previous",
       "refundModal": {

@@ -91,7 +91,7 @@
     },
     "list": {
       "title": "Lista de Pagamentos",
-      "search": "Procurar por email...",
+      "search": "Procurar por identificação do usuário...",
       "next": "próximo >",
       "previous": "< anterior",
       "refundModal": {
