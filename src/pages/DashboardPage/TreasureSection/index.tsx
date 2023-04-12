@@ -1,6 +1,5 @@
 import React, { useEffect, useCallback, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNetwork } from "hooks/useNetwork";
 import DonationTokenAbi from "utils/abis/DonationToken.json";
 import { logError } from "services/crashReport";
 import useCauses from "hooks/apiHooks/useCauses";
@@ -11,6 +10,7 @@ import Cause from "types/entities/Cause";
 import { formatFromDecimals } from "lib/web3Helpers/etherFormatters";
 import moneyFormatter from "lib/moneyFormatter";
 import useTokenDecimals from "hooks/useTokenDecimals";
+import { useNetworkContext } from "contexts/networkContext";
 import CardTextGraph from "./CardTextGraph";
 import * as S from "./styles";
 import WalletCard from "./WalletCard";
@@ -21,12 +21,12 @@ function TreasureSection(): JSX.Element {
   const { getAllPools } = usePools();
   const [pools, setPools] = useState<Pool[]>([]);
   const { getCauses } = useCauses();
-  const { currentNetwork } = useNetwork();
+  const { currentNetwork } = useNetworkContext();
   const { t } = useTranslation("translation", {
     keyPrefix: "dashboard.treasureDashboard.treasureSection",
   });
-  const { tokenDecimals } = useTokenDecimals();
 
+  const { tokenDecimals } = useTokenDecimals();
   const donationTokenContract = useContract({
     address: currentNetwork.donationTokenContractAddress,
     ABI: DonationTokenAbi.abi,

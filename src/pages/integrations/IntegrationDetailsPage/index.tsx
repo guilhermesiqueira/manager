@@ -8,7 +8,6 @@ import CopyableAddress from "components/atomics/CopyableAddress";
 import { Link } from "react-router-dom";
 import EditIcon from "assets/icons/editIcon";
 import { useContract } from "hooks/useContract";
-import { useNetwork } from "hooks/useNetwork";
 import RibonAbi from "utils/abis/RibonAbi.json";
 import useIntegrations from "hooks/apiTheGraphHooks/useIntegrations";
 import { formatFromWei } from "lib/web3Helpers/etherFormatters";
@@ -16,6 +15,7 @@ import theme from "styles/theme";
 import LogoCard from "components/moleculars/LogoCard";
 import InfoName from "components/moleculars/infoName";
 import { Button } from "@chakra-ui/react";
+import { useNetworkContext } from "contexts/networkContext";
 import * as S from "./styles";
 
 function IntegrationDetailsPage(): JSX.Element {
@@ -29,7 +29,7 @@ function IntegrationDetailsPage(): JSX.Element {
     inactive: tertiary[400],
   };
 
-  const { currentNetwork } = useNetwork();
+  const { currentNetwork } = useNetworkContext();
   const [integrationBalance, setIntegrationBalance] = useState<string>("...");
   const [mobilityAttributes, setMobilityAttributes] = useState<string[]>([]);
   const { getIntegration } = useIntegrations();
