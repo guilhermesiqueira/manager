@@ -21,6 +21,14 @@ import {
   renderHook as renderTestingLibraryHook,
   RenderHookResult,
 } from "@testing-library/react-hooks";
+import WalletProvider, {
+  IWalletContext,
+  WalletContext,
+} from "contexts/walletContext";
+import NetworkProvider, {
+  INetworkContext,
+  NetworkContext,
+} from "contexts/networkContext";
 
 export interface RenderWithContextResult {
   component: RenderResult;
@@ -55,6 +63,8 @@ function renderProvider(
 export type RenderComponentProps = {
   history?: MemoryHistory;
   authenticationProviderValue?: Partial<IAuthenticationContext>;
+  walletProviderValue?: Partial<IWalletContext>;
+  networkProviderValue?: Partial<INetworkContext>;
   locationState?: Record<any, any>;
 };
 
@@ -63,6 +73,8 @@ function renderAllProviders(
   {
     history = createMemoryHistory(),
     authenticationProviderValue = {},
+    walletProviderValue = {},
+    networkProviderValue = {},
     locationState = {},
   }: RenderComponentProps = {},
 ) {
@@ -80,10 +92,20 @@ function renderAllProviders(
           <I18nextProvider i18n={i18n}>
             <Router location={locationState} navigator={historyObject}>
               {renderProvider(
-                AuthenticationProvider,
-                AuthenticationContext,
-                authenticationProviderValue,
-                children,
+                WalletProvider,
+                WalletContext,
+                walletProviderValue,
+                renderProvider(
+                  NetworkProvider,
+                  NetworkContext,
+                  networkProviderValue,
+                  renderProvider(
+                    AuthenticationProvider,
+                    AuthenticationContext,
+                    authenticationProviderValue,
+                    children,
+                  ),
+                ),
               )}
             </Router>
           </I18nextProvider>

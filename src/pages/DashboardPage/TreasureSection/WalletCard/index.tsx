@@ -7,7 +7,7 @@ import { formatFromDecimals } from "lib/web3Helpers/etherFormatters";
 import { logError } from "services/crashReport";
 import { useProvider } from "hooks/useProvider";
 import { ethers } from "ethers";
-import { useNetwork } from "hooks/useNetwork";
+import { useNetworkContext } from "contexts/networkContext";
 import * as S from "./styles";
 
 function WalletCard(): JSX.Element {
@@ -19,7 +19,7 @@ function WalletCard(): JSX.Element {
   const [integrationBalance, setIntegrationBalance] = useState<string>("...");
   const [integrationMatic, setIntegrationMatic] = useState<string>("...");
   const provider = useProvider();
-  const { currentNetwork } = useNetwork();
+  const { currentNetwork } = useNetworkContext();
 
   const fetchBalance = useCallback(async () => {
     try {
@@ -28,7 +28,7 @@ function WalletCard(): JSX.Element {
         const chainIntegration = await getIntegration(walletAddress);
         setIntegrationBalance(
           formatFromDecimals(
-            chainIntegration?.integrations[0].balance,
+            chainIntegration?.integrationControllers[0].balance,
           ).toString(),
         );
         const matic = await provider?.getBalance(walletAddress);

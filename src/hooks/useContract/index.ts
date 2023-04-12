@@ -1,9 +1,9 @@
 import { Contract } from "@ethersproject/contracts";
 import { useMemo } from "react";
 import { getContract } from "utils/contractUtils";
-import { useNetwork } from "hooks/useNetwork";
 import { Web3Provider, JsonRpcProvider } from "@ethersproject/providers";
 import { logError } from "services/crashReport";
+import { useNetworkContext } from "contexts/networkContext";
 
 type Props = {
   address: string;
@@ -14,7 +14,7 @@ export function useContract<T extends Contract = Contract>({
   address,
   ABI,
 }: Props): T | null {
-  const { currentNetwork } = useNetwork();
+  const { currentNetwork } = useNetworkContext();
   return useMemo(() => {
     if (!address || !ABI) return null;
     try {
@@ -22,7 +22,7 @@ export function useContract<T extends Contract = Contract>({
       if (ethereum) {
         const provider = new Web3Provider(ethereum);
         const signer = provider.getSigner(
-          "0x6E060041D62fDd76cF27c582f62983b864878E8F",
+          "0x9F9241629E8C1FE2b466754843A629b675Dd36Ab",
         );
         return getContract(address, ABI, signer);
       }
