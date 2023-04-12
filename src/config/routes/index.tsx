@@ -25,6 +25,9 @@ import BigDonorsPage from "pages/bigDonors/BigDonorsPage";
 import BigDonationsPage from "pages/bigDonors/BigDonationsPage";
 import UpsertBigDonorPage from "pages/bigDonors/UpsertBigDonorsPage";
 import UpsertArticleNewsPage from "pages/news/UpsertArticleNewsPage";
+import WalletLayout from "layouts/WalletLayout";
+import WalletProvider from "contexts/walletContext";
+import NetworkProvider from "contexts/networkContext";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
 
@@ -38,10 +41,12 @@ function RoutesComponent(): JSX.Element {
         element={
           <PrivateRoute>
             <Suspense fallback={<div />}>
-              <Navigation />
-              <MainLayout>
-                <DashboardPage />
-              </MainLayout>
+              <NetworkProvider>
+                <Navigation />
+                <MainLayout>
+                  <DashboardPage />
+                </MainLayout>
+              </NetworkProvider>
             </Suspense>
           </PrivateRoute>
         }
@@ -360,10 +365,15 @@ function RoutesComponent(): JSX.Element {
         element={
           <PrivateRoute>
             <Suspense fallback={<div />}>
-              <Navigation />
-              <MainLayout>
-                <BigDonationsPage />
-              </MainLayout>
+              <NetworkProvider>
+                <WalletProvider>
+                  <Navigation />
+
+                  <WalletLayout>
+                    <BigDonationsPage />
+                  </WalletLayout>
+                </WalletProvider>
+              </NetworkProvider>
             </Suspense>
           </PrivateRoute>
         }
