@@ -28,7 +28,7 @@ function WalletCard(): JSX.Element {
         const chainIntegration = await getIntegration(walletAddress);
         setIntegrationBalance(
           formatFromDecimals(
-            chainIntegration?.integrations[0].balance,
+            chainIntegration?.integrationControllers[0].balance,
           ).toString(),
         );
         const matic = await provider?.getBalance(walletAddress);
