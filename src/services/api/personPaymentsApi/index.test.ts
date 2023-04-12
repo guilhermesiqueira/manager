@@ -15,4 +15,18 @@ describe("personPaymentsApi", () => {
       });
     });
   });
+
+  describe("#getBigDonorsPayments", () => {
+    beforeEach(() => {
+      api.get = jest.fn();
+    });
+
+    it("expects to send a get request with the correct info: url", () => {
+      personPaymentsApi.getBigDonorsPayments();
+
+      expect(api.get).toHaveBeenCalledWith(
+        "/api/v1/person_payments/big_donors",
+      );
+    });
+  });
 });

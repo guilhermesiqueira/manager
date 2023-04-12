@@ -21,4 +21,16 @@ describe("useIntegrations", () => {
       expect(personPaymentsApi.getPersonPaymentsList).toHaveBeenCalled();
     });
   });
+
+  describe("#getBigDonorsPayments", () => {
+    beforeEach(() => {
+      personPaymentsApi.getBigDonorsPayments = jest.fn(() => ({} as any));
+    });
+
+    it("calls getBigDonorsPayments with correct params", () => {
+      hook.getBigDonorsPayments();
+
+      expect(personPaymentsApi.getBigDonorsPayments).toHaveBeenCalled();
+    });
+  });
 });

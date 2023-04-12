@@ -21,6 +21,13 @@ function usePersonPayments() {
     return allPersonPayments;
   }, [page]);
 
+  async function getBigDonorsPayments() {
+    const { data: bigDonorsPayments } =
+      await personPaymentsApi.getBigDonorsPayments();
+
+    return bigDonorsPayments;
+  }
+
   function incrementPage() {
     setPage((oldPage) => oldPage + 1);
   }
@@ -28,6 +35,7 @@ function usePersonPayments() {
   return {
     personPayments,
     getPersonPayments,
+    getBigDonorsPayments,
     incrementPage,
   };
 }
