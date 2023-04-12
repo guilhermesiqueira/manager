@@ -21,7 +21,13 @@ import EditSettingsPage from "pages/SettingsPage/EditSettingsPage";
 import NonProfitsDetailsPage from "pages/NonProfitsPage/NonProfitsDetailsPage";
 import ImpactsPage from "pages/NonProfitsPage/ImpactsPage";
 import NewsDetailsPage from "pages/news/NewsDetailsPage";
+import BigDonorsPage from "pages/bigDonors/BigDonorsPage";
+import BigDonationsPage from "pages/bigDonors/BigDonationsPage";
+import UpsertBigDonorPage from "pages/bigDonors/UpsertBigDonorsPage";
 import UpsertArticleNewsPage from "pages/news/UpsertArticleNewsPage";
+import WalletLayout from "layouts/WalletLayout";
+import WalletProvider from "contexts/walletContext";
+import NetworkProvider from "contexts/networkContext";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
 
@@ -35,10 +41,12 @@ function RoutesComponent(): JSX.Element {
         element={
           <PrivateRoute>
             <Suspense fallback={<div />}>
-              <Navigation />
-              <MainLayout>
-                <DashboardPage />
-              </MainLayout>
+              <NetworkProvider>
+                <Navigation />
+                <MainLayout>
+                  <DashboardPage />
+                </MainLayout>
+              </NetworkProvider>
             </Suspense>
           </PrivateRoute>
         }
@@ -332,6 +340,67 @@ function RoutesComponent(): JSX.Element {
               <Navigation />
               <MainLayout>
                 <UpsertOfferPage isEdit />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/big-donors/index"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <BigDonorsPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/big-donors/donations"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <NetworkProvider>
+                <WalletProvider>
+                  <Navigation />
+
+                  <WalletLayout>
+                    <BigDonationsPage />
+                  </WalletLayout>
+                </WalletProvider>
+              </NetworkProvider>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/big-donors/new"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <UpsertBigDonorPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/big-donors/:id/edit"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <UpsertBigDonorPage isEdit />
               </MainLayout>
             </Suspense>
           </PrivateRoute>

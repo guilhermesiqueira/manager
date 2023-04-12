@@ -10,4 +10,5 @@ export default interface Article {
   publishedAt: string;
   link?: string;
   author: Author;
+  language?: string;
 }

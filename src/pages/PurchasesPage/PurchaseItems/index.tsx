@@ -53,7 +53,7 @@ function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
       if (searchTerm === "") {
         return purchaseData;
       } else if (
-        purchaseData?.person?.customer?.email
+        purchaseData?.payerIdentification
           .toLowerCase()
           .includes(searchTerm.toLowerCase())
       ) {
@@ -79,11 +79,7 @@ function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
           <th>{dateFormatter(purchase?.paidDate)}</th>
           <th>{purchase?.externalId || "-"}</th>
           <th>{purchase?.paymentMethod}</th>
-          <th>
-            {purchase.paymentMethod === "crypto"
-              ? purchase?.person?.guest?.walletAddress
-              : purchase?.person?.customer?.email}
-          </th>
+          <th>{purchase?.payerIdentification}</th>
           <th>{purchase?.offer?.price || "-"}</th>
           <th>{amountUsdc(purchase)}</th>
           <th>

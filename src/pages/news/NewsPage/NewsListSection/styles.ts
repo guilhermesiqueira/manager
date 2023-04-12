@@ -44,8 +44,33 @@ export const ActionsTableCell = styled.div`
   }
 `;
 
+export const CheckboxContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const Checkbox = styled.input`
+  accent-color: ${({ theme }) => theme.colors.brand.primary[300]};
+  margin: ${({ theme }) => theme.spacing(4, 8, 32, 4)};
+  display: inline-block;
+  vertical-align: middle;
+  transform: scale(1.5);
+`;
+
 export const StatusTableCell = styled.span`
   text-transform: capitalize;
+`;
+
+export const Span = styled.span`
+  margin: ${({ theme }) => theme.spacing(4, 20, 32, 4)};
+  display: inline-block;
+  vertical-align: middle;
+  color: ${({ color, theme }) => color || theme.colors.darkGray};
+
+  ::first-letter {
+    text-transform: uppercase;
+  }
 `;
 
 export const Pagination = styled(ReactPaginate).attrs({

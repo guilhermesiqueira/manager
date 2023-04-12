@@ -12,6 +12,8 @@ export const networks = [
     blockExplorerUrls: "https://polygonscan.com/",
     defaultPoolAddress: "0x2108f76aB221999f3Af6d85567cF1c6C14E2A0D1",
     defaultIntegrationHolding: "0x9033d2afa81498762b57c6220208c4d7e40274b6",
+    subgraphUrl:
+      "https://api.thegraph.com/subgraphs/name/ribondao/subgraphribon",
   },
   {
     chainName: "Mumbai Testnet",
@@ -26,6 +28,8 @@ export const networks = [
     blockExplorerUrls: "https://mumbai.polygonscan.com/",
     defaultPoolAddress: "0x9B00b1a3C4ea8BFbBE984360513f7bE7e971e431",
     defaultIntegrationHolding: "0x9F9241629E8C1FE2b466754843A629b675Dd36Ab",
+    subgraphUrl:
+      "https://api.thegraph.com/subgraphs/name/ribondao/ribonsubgraph",
   },
   {
     chainName: "Localhost 8545",
@@ -39,5 +43,7 @@ export const networks = [
     blockExplorerUrls: "http://localhost:8545",
     defaultPoolAddress: "0x5FbDB2315678afecb367f032d93F642f64180aa3",
     defaultIntegrationHolding: "",
+    subgraphUrl:
+      "https://api.thegraph.com/subgraphs/name/ribondao/ribonsubgraph",
   },
 ];

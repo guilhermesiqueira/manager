@@ -91,7 +91,7 @@
     },
     "list": {
       "title": "Lista de Pagamentos",
-      "search": "Procurar por email...",
+      "search": "Procurar por identificação do usuário...",
       "next": "próximo >",
       "previous": "< anterior",
       "refundModal": {
@@ -322,7 +322,8 @@
       "visibilityOptions": {
         "visible": "Visível",
         "hidden": "Escondida"
-      }
+      },
+      "language": "Idioma"
     },
     "details": {
       "title": "Detalhes da notícia",
@@ -334,7 +335,11 @@
       "createNew": "Adicionar nova",
       "search": "Procurar pelo título da notícia...",
       "next": "próximo >",
-      "previous": "< anterior"
+      "previous": "< anterior",
+      "languageOptions": {
+        "en": "Inglês",
+        "pt": "Português"
+      }
     },
     "upsert": {
       "create": {
@@ -353,7 +358,8 @@
       "save": "Salvar",
       "cancel": "Cancelar",
       "required": "Este campo é obrigatório",
-      "optional": "Opcional"
+      "optional": "Opcional",
+      "language": "Idioma"
     }
   },
   "settings": {
@@ -400,6 +406,9 @@
     "ngosLabel": "ONGs",
     "offersLabel": "Ofertas",
     "newsLabel": "Notícias",
+    "bigDonationsLabel": "Grandes Doações",
+    "donorsLabel": "Doadores",
+    "donationsLabel": "Doações",
     "settingsLabel": "Configurações"
   },
   "login": {
@@ -426,5 +435,77 @@
     "for": "para",
     "and": "e",
     "of": "de"
+  },
+  "bigDonations": {
+    "bigDonors": {
+      "title": "Doadores",
+      "noBigDonors": "Nenhum doador encontrado",
+      "attributes": {
+        "createNew": "Adicionar doador",
+        "name": "Nome",
+        "email": "Email",
+        "details": "Detalhes",
+        "noBigDonors": "Nenhum doador encontrado",
+        "search":"Procurar pelo nome..."
+      },
+      "upsert": {
+        "create": {
+          "title": "Adicionar Doador",
+          "save": "Salvar",
+          "cancel": "Cancelar"
+        },
+        "edit": {
+          "title": "Editar Doador",
+          "save": "Salvar",
+          "cancel": "Cancelar"
+        },
+        "required": "Este campo é obrigatório"
+      }
+    },
+    "bigDonations": {
+      "title": "Doações",
+      "noBigDonations": "Nenhuma doação encontrada",
+      "attributes": {
+        "createNew": "Adicionar doação",
+        "donor": "Doador",
+        "amount": "Valor",
+        "date": "Data",
+        "details": "Detalhes",
+        "noBigDonations": "Nenhuma doação encontrada",
+        "search":"Procurar pelo nome do doador...",
+        "donationId": "ID da Doação",
+        "transactionHash":"Hash da Transação",
+        "value": "Valor (USDC)",
+        "processingDate": "Data de Processamento",
+        "bigDonor": "Grande Doador",
+        "status": "Status"
+      },
+      "upsert": {
+        "create": {
+          "title": "Adicionar Doação",
+          "save": "Salvar",
+          "cancel": "Cancelar"
+        },
+        "edit": {
+          "title": "Editar Doação",
+          "save": "Salvar",
+          "cancel": "Cancelar"
+        },
+        "required": "Este campo é obrigatório"
+      }
+    }
+  },
+  "layouts":{
+    "walletLayout": {
+      "connectWallet": "conectar"
+    }
+  },
+  "contexts": {
+    "walletContext": {
+      "ethereumNotFoundMessage": "Instale a Metamask para continuar",
+      "userRejectedConnectionMessage": "Conexão com a carteira negada",
+      "onErrorMessage": "Falha na conexão da carteira",
+      "invalidNetworkMessage": "Conecte-se a uma rede válida"
+    }
   }
 }

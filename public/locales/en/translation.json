@@ -91,7 +91,7 @@
     },
     "list": {
       "title": "Purchases List",
-      "search": "Search by email...",
+      "search": "Search by user identification...",
       "next": "next >",
       "previous": "< previous",
       "refundModal": {
@@ -322,7 +322,8 @@
       "visibilityOptions": {
         "visible": "Visible",
         "hidden": "Hidden"
-      }
+      },
+      "language": "Language"
     },
     "details": {
       "title": "News details",
@@ -334,7 +335,11 @@
       "createNew": "Add new",
       "search": "Search by news title...",
       "next": "next >",
-      "previous": "< previous"
+      "previous": "< previous",
+      "languageOptions": {
+        "en": "English",
+        "pt": "Portuguese"
+      }
     },
     "upsert": {
       "create": {
@@ -353,7 +358,8 @@
       "save": "Save",
       "cancel": "Cancel",
       "required": "this is required",
-      "optional": "Optional"
+      "optional": "Optional",
+      "language": "Language"
     }
   },
   "settings": {
@@ -400,6 +406,9 @@
     "ngosLabel": "Ngos",
     "offersLabel": "Offers",
     "newsLabel": "News",
+    "bigDonationsLabel": "Big Donations",
+    "donorsLabel": "Donors",
+    "donationsLabel": "Donations",
     "settingsLabel": "Settings"
   },
   "login": {
@@ -426,5 +435,76 @@
     "for": "for",
     "and": "and",
     "of": "of"
+  },
+  "bigDonations": {
+    "bigDonors": {
+      "title": "Donors",
+      "noBigDonors": "No donors found",
+      "attributes": {
+        "createNew": "Add donor",
+        "name": "Name",
+        "email": "Email",
+        "details": "Details",
+        "noBigDonors": "No donors found",
+        "search":"Search by name..."
+      },
+      "upsert": {
+        "create": {
+          "title": "Add new donor",
+          "save": "Save",
+          "cancel": "Cancel"
+        },
+        "edit": {
+          "title": "Edit donor",
+          "save": "Save",
+          "cancel": "Cancel"
+        },
+        "required": "this is required"
+      }
+    },
+    "bigDonations": {
+      "title": "Donations",
+      "noBigDonations": "No donations found",
+      "attributes": {
+        "createNew": "Add donation",
+        "donor": "Donor",
+        "amount": "Amount",
+        "details": "Details",
+        "noBigDonations": "No donations found",
+        "search":"Search by donor name...",
+        "donationId": "Donation ID",
+        "transactionHash":"Transaction Hash",
+        "value": "Value (USDC)",
+        "processingDate": "Processing Date",
+        "bigDonor": "Big Donor",
+        "status": "Status"
+      },
+      "upsert": {
+        "create": {
+          "title": "Add new donation",
+          "save": "Save",
+          "cancel": "Cancel"
+        },
+        "edit": {
+          "title": "Edit donation",
+          "save": "Save",
+          "cancel": "Cancel"
+        },
+        "required": "this is required"
+      }
+    }
+  },
+  "layouts":{
+    "walletLayout": {
+      "connectWallet": "connect"
+    }
+  },
+  "contexts": {
+    "walletContext": {
+      "ethereumNotFoundMessage": "Install Metamask to continue",
+      "userRejectedConnectionMessage": "Wallet connection rejected",
+      "onErrorMessage": "Wallet connection failed",
+      "invalidNetworkMessage": "Connect to a valid network"
+    }
   }
 }

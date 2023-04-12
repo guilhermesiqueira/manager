@@ -9,7 +9,6 @@ import {
   Legend,
 } from "chart.js";
 import { useContract } from "hooks/useContract";
-import { useNetwork } from "hooks/useNetwork";
 import useTokenDecimals from "hooks/useTokenDecimals";
 import { formatFromDecimals } from "lib/web3Helpers/etherFormatters";
 import { useCallback, useEffect, useState } from "react";
@@ -17,6 +16,7 @@ import { logError } from "services/crashReport";
 import Cause from "types/entities/Cause";
 import DonationTokenAbi from "utils/abis/DonationToken.json";
 import theme from "styles/theme";
+import { useNetworkContext } from "contexts/networkContext";
 import * as S from "./styles";
 
 export type Props = {
@@ -66,7 +66,7 @@ function CardTextGraph({
   };
 
   const [poolsBalance, setPoolsBalance] = useState<any[]>([]);
-  const { currentNetwork } = useNetwork();
+  const { currentNetwork } = useNetworkContext();
 
   const donationTokenContract = useContract({
     address: currentNetwork.donationTokenContractAddress,
