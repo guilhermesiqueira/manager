@@ -1,5 +1,7 @@
+import LinkPage from "components/atomics/LinkPage";
 import InfoName from "components/moleculars/infoName";
 import usePersonPayments from "hooks/apiHooks/usePersonPayments";
+import dateFormatterWithMinutes from "lib/dateFormatterWithMinutes";
 import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useParams } from "react-router";
@@ -40,13 +42,20 @@ function BigDonationsDetailsPage(): JSX.Element {
       <S.InfoValue>{bigDonorDonation.amountCents}</S.InfoValue>
 
       <InfoName>{t("attributes.bigDonor")}</InfoName>
-      <S.InfoValue>{bigDonorDonation.payer?.name}</S.InfoValue>
+      <LinkPage
+        page="/big-donors/index"
+        text={bigDonorDonation.payer?.name ?? ""}
+      />
 
       <InfoName>{t("attributes.cause")}</InfoName>
-      <S.InfoValue>{bigDonorDonation.cause || "not for cause"}</S.InfoValue>
-
+      <LinkPage
+        page={`/causes/${bigDonorDonation.cause?.id}`}
+        text={bigDonorDonation.cause?.name}
+      />
       <InfoName>{t("attributes.processingDate")}</InfoName>
-      <S.InfoValue>{bigDonorDonation.paidDate}</S.InfoValue>
+      <S.InfoValue>
+        {dateFormatterWithMinutes(bigDonorDonation.paidDate)}
+      </S.InfoValue>
 
       <InfoName>{t("attributes.status")}</InfoName>
       <S.InfoValue>{bigDonorDonation.status}</S.InfoValue>
