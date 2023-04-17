@@ -19,4 +19,5 @@ export default interface PersonPayment {
   payer: Customer | CryptoUser | BigDonor;
   blockchainStatus?: string;
   transactionHash?: string;
+  cause?: string;
 }
