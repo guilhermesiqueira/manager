@@ -8,4 +8,5 @@ export default interface Cause {
   nonProfits: NonProfit[];
   coverImage?: string;
   mainImage?: string;
+  defaultPool?: string;
 }

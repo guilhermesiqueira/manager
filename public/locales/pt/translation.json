@@ -436,66 +436,60 @@
     "and": "e",
     "of": "de"
   },
-  "bigDonations": {
-    "bigDonors": {
-      "title": "Doadores",
+  "bigDonors": {
+    "title": "Doadores",
+    "noBigDonors": "Nenhum doador encontrado",
+    "attributes": {
+      "createNew": "Adicionar doador",
+      "name": "Nome",
+      "email": "Email",
+      "details": "Detalhes",
       "noBigDonors": "Nenhum doador encontrado",
-      "attributes": {
-        "createNew": "Adicionar doador",
-        "name": "Nome",
-        "email": "Email",
-        "details": "Detalhes",
-        "noBigDonors": "Nenhum doador encontrado",
-        "search":"Procurar pelo nome..."
-      },
-      "upsert": {
-        "create": {
-          "title": "Adicionar Doador",
-          "save": "Salvar",
-          "cancel": "Cancelar"
-        },
-        "edit": {
-          "title": "Editar Doador",
-          "save": "Salvar",
-          "cancel": "Cancelar"
-        },
-        "required": "Este campo é obrigatório"
-      }
+      "search":"Procurar pelo nome..."
     },
-    "bigDonations": {
-      "title": "Doações",
-      "noBigDonations": "Nenhuma doação encontrada",
-      "attributes": {
-        "createNew": "Enviar doação para contrato",
-        "donor": "Doador",
-        "amount": "Valor",
-        "date": "Data",
-        "details": "Detalhes",
-        "noBigDonations": "Nenhuma doação encontrada",
-        "search":"Procurar pelo nome do doador...",
-        "donationId": "ID da Doação",
-        "transactionHash":"Hash da Transação",
-        "value": "Valor (USDC)",
-        "processingDate": "Data de Processamento",
-        "bigDonor": "Grande Doador",
-        "status": "Status"
+    "upsert": {
+      "create": {
+        "title": "Adicionar Doador",
+        "save": "Salvar",
+        "cancel": "Cancelar"
       },
-      "upsert": {
-        "create": {
-          "title": "Adicionar Doação",
-          "save": "Salvar",
-          "cancel": "Cancelar"
-        },
-        "edit": {
-          "title": "Editar Doação",
-          "save": "Salvar",
-          "cancel": "Cancelar"
-        },
-        "required": "Este campo é obrigatório"
-      }
+      "edit": {
+        "title": "Editar Doador",
+        "save": "Salvar",
+        "cancel": "Cancelar"
+      },
+      "required": "Este campo é obrigatório"
     }
   },
-  "layouts":{
+  "bigDonations": {
+    "title": "Doações",
+    "noBigDonations": "Nenhuma doação encontrada",
+    "attributes": {
+      "createNew": "Enviar doação para contrato",
+      "donor": "Doador",
+      "amount": "Valor",
+      "date": "Data",
+      "details": "Detalhes",
+      "donation": "Doação",
+      "cause": "Causa",
+      "noBigDonations": "Nenhuma doação encontrada",
+      "search":"Procurar pelo nome do doador...",
+      "donationId": "ID da Doação",
+      "transactionHash":"Hash da Transação",
+      "value": "Valor (USDC)",
+      "processingDate": "Data de Processamento",
+      "bigDonor": "Grande Doador",
+      "status": "Status"
+    },
+    "create": {
+      "title": "Enviar doação para contrato",
+      "save": "Enviar",
+      "cancel": "Cancelar",
+      "onErrorMessage": "Falha na transação"
+    },
+    "required": "Este campo é obrigatório"
+  },
+  "layouts": {
     "walletLayout": {
       "connectWallet": "conectar"
     }

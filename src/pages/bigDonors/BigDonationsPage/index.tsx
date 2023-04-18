@@ -4,7 +4,7 @@ import * as S from "./styles";
 
 function BigDonationsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
-    keyPrefix: "bigDonations.bigDonations",
+    keyPrefix: "bigDonations",
   });
 
   return (

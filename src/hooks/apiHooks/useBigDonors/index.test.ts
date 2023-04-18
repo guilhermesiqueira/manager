@@ -10,13 +10,13 @@ describe("useBigDonors", () => {
     hook = result.current;
   });
 
-  describe("#getAllBigDonors", () => {
+  describe("#getBigDonors", () => {
     beforeEach(() => {
       bigDonorsApi.getBigDonorsList = jest.fn(() => ({} as any));
     });
 
     it("calls getBigDonorsList", () => {
-      hook.getAllBigDonors();
+      hook.getBigDonors();
 
       expect(bigDonorsApi.getBigDonorsList).toHaveBeenCalled();
     });

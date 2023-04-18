@@ -4,7 +4,7 @@ import BigDonorsListSection from "./BigDonorsListSection";
 
 function BigDonorsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
-    keyPrefix: "bigDonations.bigDonors",
+    keyPrefix: "bigDonors",
   });
 
   return (

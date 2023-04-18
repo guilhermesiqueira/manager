@@ -13,7 +13,7 @@ type Props = {
 
 function BigDonationsItems({ bigDonations, searchTerm }: Props) {
   const { t } = useTranslation("translation", {
-    keyPrefix: "bigDonations.bigDonations",
+    keyPrefix: "bigDonations",
   });
 
   function filterBigDonations(nonFilteredBigDonations: any) {

@@ -14,15 +14,15 @@ function BigDonorsListSection(): JSX.Element {
   const navigate = useNavigate();
   const [allBigDonors, setAllBigDonors] = useState<any>([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const { getAllBigDonors } = useBigDonors();
+  const { getBigDonors } = useBigDonors();
 
   const { t } = useTranslation("translation", {
-    keyPrefix: "bigDonations.bigDonors.attributes",
+    keyPrefix: "bigDonors.attributes",
   });
 
   const fetchAllBigDonors = useCallback(async () => {
     try {
-      const bigDonors = await getAllBigDonors();
+      const bigDonors = await getBigDonors();
       setAllBigDonors(bigDonors);
     } catch (e) {
       logError(e);

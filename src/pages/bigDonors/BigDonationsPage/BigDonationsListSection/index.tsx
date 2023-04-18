@@ -6,6 +6,7 @@ import { logError } from "services/crashReport";
 import theme from "styles/theme";
 import AddIcon from "assets/icons/addIcon";
 import { Button } from "@chakra-ui/react";
+import { useWalletContext } from "contexts/walletContext";
 import BigDonationsItems from "../BigDonationsItems";
 import * as S from "./styles";
 
@@ -17,8 +18,11 @@ function BigDonationsListSection(): JSX.Element {
   const { getBigDonorsPayments } = usePersonPayments();
 
   const { t } = useTranslation("translation", {
-    keyPrefix: "bigDonations.bigDonations.attributes",
+    keyPrefix: "bigDonations.attributes",
   });
+
+  const { connectWallet, checkIfWalletIsConnected, wallet } =
+    useWalletContext();
 
   const fetchAllBigDonations = useCallback(async () => {
     try {
@@ -30,10 +34,15 @@ function BigDonationsListSection(): JSX.Element {
   }, []);
 
   const handleAddNew = () => {
-    navigate("/big-donations/new");
+    if (!wallet) {
+      connectWallet();
+    } else {
+      navigate("/big-donors/donations/new");
+    }
   };
 
   useEffect(() => {
+    checkIfWalletIsConnected();
     fetchAllBigDonations();
   }, []);
 

@@ -1,5 +1,6 @@
 import { useCallback, useState } from "react";
 import personPaymentsApi from "services/api/personPaymentsApi";
+import { CreateBigDonation } from "types/apiResponses/BigDonation";
 import PersonPayment from "types/entities/PersonPayment";
 
 function usePersonPayments() {
@@ -21,6 +22,12 @@ function usePersonPayments() {
     return allPersonPayments;
   }, [page]);
 
+  async function createBigDonation(data: CreateBigDonation) {
+    const bigDonation = personPaymentsApi.createBigDonation(data);
+
+    return bigDonation;
+  }
+
   async function getBigDonorsPayments() {
     const { data: bigDonorsPayments } =
       await personPaymentsApi.getBigDonorsPayments();
@@ -36,6 +43,7 @@ function usePersonPayments() {
     personPayments,
     getPersonPayments,
     getBigDonorsPayments,
+    createBigDonation,
     incrementPage,
   };
 }
