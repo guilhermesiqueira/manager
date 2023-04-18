@@ -26,28 +26,11 @@ export const SubtitleDescription = styled.h4`
   font-weight: 400;
 `;
 
-export const TextInput = styled.input`
-  min-width: 400px;
-  max-width: 400px;
-  margin: ${({ theme }) => theme.spacing(8, 0, 12)};
-  padding: ${({ theme }) => theme.spacing(8, 16)};
-  border: 1px solid ${({ theme }) => theme.colors.darkGray};
-  border-radius: 10px;
-  display: block;
-  color: ${({ theme }) => theme.colors.darkGray};
-
-  ::placeholder {
-    color: ${({ theme }) => theme.colors.gray};
-    opacity: 1;
-  }
-`;
-
 export const NumberInput = styled.input`
-  margin-inline: 6px;
-  width: 50%;
+  margin-bottom: ${({ theme }) => theme.spacing(8)};
   padding: ${({ theme }) => theme.spacing(8, 4)};
   border: 1.5px solid ${({ theme }) => theme.colors.darkGray};
-  border-radius: 10px;
+  border-radius: 4px;
   display: block;
   text-align: center;
   color: ${({ theme }) => theme.colors.darkGray};
@@ -72,7 +55,6 @@ export const Span = styled.span`
   }
 `;
 export const Error = styled.span`
-  margin-top: -20px;
   color: ${({ color, theme }) => color || theme.colors.brand.tertiary[400]};
 
   ::first-letter {
@@ -80,21 +62,7 @@ export const Error = styled.span`
   }
 `;
 
-export const TicketAvailabilityContainer = styled.div`
-  margin-bottom: ${({ theme }) => theme.spacing(20)};
-  display: inline-flex;
-  flex-direction: row;
-  align-items: center;
-  color: ${({ color, theme }) => color || theme.colors.darkGray};
-`;
-
 export const ButtonContainer = styled.div`
   margin: ${({ theme }) => theme.spacing(24, 0)};
   display: flex;
-`;
-
-export const RightSection = styled.div`
-  width: 50%;
-  display: flex;
-  flex-direction: column;
 `;

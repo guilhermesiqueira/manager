@@ -40,6 +40,7 @@ function CreateBigDonationPage() {
   const { getBigDonors } = useBigDonors();
   const [currentBigDonorId, setCurrentBigDonorId] = useState<number>(1);
 
+  const [fee, setFee] = useState<boolean>(true);
   const { currentNetwork } = useNetworkContext();
 
   const { tokenDecimals } = useTokenDecimals();
@@ -130,7 +131,7 @@ function CreateBigDonationPage() {
     contract?.functions.addPoolBalance(
       currentPool,
       formatToDecimals(BigDonationObject().amount, tokenDecimals).toString(),
-      true,
+      fee,
     );
 
   const handleDonationToContract = async () => {
@@ -166,25 +167,15 @@ function CreateBigDonationPage() {
       <form onSubmit={handleSubmit(handleDonationToContract)}>
         <S.ContentSection>
           <S.Subtitle>{t("attributes.donation")}</S.Subtitle>
-          <S.SubtitleDescription>
-            {t("attributes.amount")}
-          </S.SubtitleDescription>
+          <InfoName>{t("attributes.amount")}</InfoName>
           <S.NumberInput
             type="number"
-            {...register("amount", { required: t("upsert.required") })}
+            step="0.01"
+            {...register("amount", { required: t("required") })}
           />
           {formState?.errors.amount && formState?.errors.amount.type && (
             <S.Error>{formState?.errors.amount.message}</S.Error>
           )}
-          <InfoName>{t("attributes.cause")}</InfoName>
-          <Dropdown
-            values={causes.map((cause) => cause?.id)}
-            onOptionChanged={onCauseIdChanged}
-            valueText={causeText}
-            defaultValue={currentCauseId}
-            containerId="cause-dropdown"
-            name="causeId"
-          />
           <InfoName>{t("attributes.bigDonor")}</InfoName>
           <Dropdown
             values={bigDonors.map((bigDonor) => bigDonor?.id)}
@@ -194,6 +185,24 @@ function CreateBigDonationPage() {
             containerId="big-donor-dropdown"
             name="bigDonorId"
           />
+          <InfoName>{t("attributes.cause")}</InfoName>
+          <Dropdown
+            values={causes.map((cause) => cause?.id)}
+            onOptionChanged={onCauseIdChanged}
+            valueText={causeText}
+            defaultValue={currentCauseId}
+            containerId="cause-dropdown"
+            name="causeId"
+          />
+          <InfoName>{t("attributes.fee")}</InfoName>
+          <S.CheckboxContainer>
+            <S.Checkbox
+              name="fee"
+              type="checkbox"
+              onChange={(e) => setFee(e.target.checked)}
+              checked={fee}
+            />
+          </S.CheckboxContainer>
         </S.ContentSection>
         <S.ContentSection>
           <S.ButtonContainer>

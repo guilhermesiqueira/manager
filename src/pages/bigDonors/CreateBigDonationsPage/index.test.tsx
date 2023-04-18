@@ -7,7 +7,7 @@ describe("CreateBigDonationsPage", () => {
   it("should render the create page without error", async () => {
     renderComponent(<CreateBigDonationsPage />);
     await waitFor(() => {
-      expect(screen.getByText("Send donation to contract")).toBeInTheDocument();
+      expect(screen.getByText("Send Donation to contract")).toBeInTheDocument();
       expect(screen.getByText("Send")).toBeInTheDocument();
     });
   });

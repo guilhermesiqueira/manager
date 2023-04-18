@@ -479,7 +479,8 @@
       "value": "Valor (USDC)",
       "processingDate": "Data de Processamento",
       "bigDonor": "Grande Doador",
-      "status": "Status"
+      "status": "Status",
+      "fee": "Pagar taxa"
     },
     "create": {
       "title": "Enviar doação para contrato",
@@ -487,7 +488,9 @@
       "cancel": "Cancelar",
       "onErrorMessage": "Falha na transação"
     },
-    "required": "Este campo é obrigatório"
+    "required": "Este campo é obrigatório",
+    "yes": "Sim",
+    "no": "Não"
   },
   "layouts": {
     "walletLayout": {

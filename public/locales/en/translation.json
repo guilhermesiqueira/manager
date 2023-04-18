@@ -478,7 +478,9 @@
       "value": "Value (USDC)",
       "processingDate": "Processing Date",
       "bigDonor": "Big Donor",
-      "status": "Status"
+      "status": "Status",
+      "fee": "Pay fee"
+
     },
     "create": {
       "title": "Send Donation to contract",
@@ -486,7 +488,9 @@
       "cancel": "Cancel",
       "onErrorMessage": "Transaction failed"
     },
-    "required": "this is required"
+    "required": "this is required",
+    "yes": "Yes",
+    "no": "No"
 
   },
   "layouts":{
