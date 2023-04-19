@@ -27,7 +27,7 @@ const personPaymentsApi = {
   createBigDonation: (
     data: CreateBigDonation,
   ): Promise<AxiosResponse<BigDonation>> =>
-    apiPost("payments/crypto_currency/big_donation", data),
+    apiPost("manager/payments/cryptocurrency/big_donation", data),
 };
 
 export default personPaymentsApi;

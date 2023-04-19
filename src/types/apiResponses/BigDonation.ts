@@ -3,4 +3,5 @@ export interface CreateBigDonation {
   amount: number;
   causeId: number;
   bigDonorId: number;
+  integrationId: number;
 }

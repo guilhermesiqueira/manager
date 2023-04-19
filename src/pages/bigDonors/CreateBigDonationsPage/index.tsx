@@ -148,6 +148,7 @@ function CreateBigDonationPage() {
         amount: BigDonationObject().amount,
         bigDonorId: currentBigDonorId,
         causeId: currentCauseId,
+        integrationId: 1,
       });
     } catch (error) {
       logError(error);
