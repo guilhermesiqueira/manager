@@ -215,7 +215,7 @@
       "backgroundImage": "Support Image",
       "impactDescription": "Impact Description",
       "donorRecipients": "Donor Recipients",
-      "costForOneImpact": "Cost to 1 impact unit (USDC)",
+      "costForOneImpact": "Cost to 1 impact unit (USDC cents)",
       "unit": "Unit",
       "cause": "Cause",
       "causeCardImage": "NGO Card",
@@ -269,7 +269,7 @@
         "attributes": {
           "impactDescription": "Impact Description",
           "donorRecipients": "Donor Recipients",
-          "costForOneImpact": "Cost to 1 impact unit (USDC)",
+          "costForOneImpact": "Cost to 1 impact unit (USDC cents)",
           "unit": "Unit",
           "quantityWithoutDecimals": "Quantity without decimals",
           "daysMonthsAndYears": "Days, months and years",
@@ -504,7 +504,7 @@
       }
     }
   },
-  "layouts":{
+  "layouts": {
     "walletLayout": {
       "connectWallet": "connect"
     }
