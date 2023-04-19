@@ -480,7 +480,6 @@
       "bigDonor": "Big Donor",
       "status": "Status",
       "fee": "Pay fee"
-
     },
     "create": {
       "title": "Send Donation to contract",
@@ -490,8 +489,20 @@
     },
     "required": "this is required",
     "yes": "Yes",
-    "no": "No"
-
+    "no": "No",
+    "details": {
+      "title": "Donation details",
+      "details": "Details",
+      "edit": "Edit",
+      "attributes": {
+        "id": "ID",
+        "value": "Value (USDC)",
+        "bigDonor": "Big Donor",
+        "cause": "Cause",
+        "processingDate": "Processed in",
+        "status": "Status"
+      }
+    }
   },
   "layouts":{
     "walletLayout": {

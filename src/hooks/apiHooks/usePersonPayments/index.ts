@@ -35,6 +35,13 @@ function usePersonPayments() {
     return bigDonorsPayments;
   }
 
+  async function getBigDonorPersonPayment(id: string) {
+    const { data: bigDonorPersonPayment } =
+      await personPaymentsApi.getBigDonorPersonPayment(id);
+
+    return bigDonorPersonPayment;
+  }
+
   function incrementPage() {
     setPage((oldPage) => oldPage + 1);
   }
@@ -44,6 +51,7 @@ function usePersonPayments() {
     getPersonPayments,
     getBigDonorsPayments,
     createBigDonation,
+    getBigDonorPersonPayment,
     incrementPage,
   };
 }

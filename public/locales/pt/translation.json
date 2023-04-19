@@ -490,7 +490,20 @@
     },
     "required": "Este campo é obrigatório",
     "yes": "Sim",
-    "no": "Não"
+    "no": "Não",
+    "details": {
+      "title": "Detalhes da doação",
+      "details": "Detalhes",
+      "edit": "Editar",
+      "attributes": {
+        "id": "ID",
+        "value": "Valor (USDC)",
+        "bigDonor": "Grande Doador",
+        "cause": "Causa",
+        "processingDate": "Processado em",
+        "status": "Status"
+      }
+    }
   },
   "layouts": {
     "walletLayout": {

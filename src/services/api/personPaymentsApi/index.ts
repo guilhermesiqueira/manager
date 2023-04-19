@@ -28,6 +28,11 @@ const personPaymentsApi = {
     data: CreateBigDonation,
   ): Promise<AxiosResponse<BigDonation>> =>
     apiPost("manager/payments/cryptocurrency/big_donation", data),
+
+  getBigDonorPersonPayment: (
+    id: string,
+  ): Promise<AxiosResponse<PersonPayment>> =>
+    apiGet(`person_payments/big_donor_donation/${id}`),
 };
 
 export default personPaymentsApi;
