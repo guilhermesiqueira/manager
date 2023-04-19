@@ -144,12 +144,13 @@ function CreateBigDonationPage() {
       const { hash } = response;
 
       createBigDonation({
-        hash,
+        transactionHash: hash,
         amount: BigDonationObject().amount,
         bigDonorId: currentBigDonorId,
         causeId: currentCauseId,
         integrationId: 1,
       });
+      navigate("/big-donors/donations");
     } catch (error) {
       logError(error);
       toast({ status: "error", description: t("create.onErrorMessage") });

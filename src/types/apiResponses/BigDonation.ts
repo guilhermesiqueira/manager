@@ -1,5 +1,5 @@
 export interface CreateBigDonation {
-  hash: string;
+  transactionHash: string;
   amount: number;
   causeId: number;
   bigDonorId: number;
