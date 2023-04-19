@@ -21,6 +21,11 @@ const personPaymentsApi = {
 
   getBigDonorsPayments: (): Promise<AxiosResponse<PersonPayment[]>> =>
     apiGet("person_payments/big_donors"),
+
+  getBigDonorPersonPayment: (
+    id: string,
+  ): Promise<AxiosResponse<PersonPayment>> =>
+    apiGet(`person_payments/big_donor_donation/${id}`),
 };
 
 export default personPaymentsApi;

@@ -215,7 +215,7 @@
       "backgroundImage": "Support Image",
       "impactDescription": "Impact Description",
       "donorRecipients": "Donor Recipients",
-      "costForOneImpact": "Cost to 1 impact unit (USDC)",
+      "costForOneImpact": "Cost to 1 impact unit (USDC cents)",
       "unit": "Unit",
       "cause": "Cause",
       "causeCardImage": "NGO Card",
@@ -269,7 +269,7 @@
         "attributes": {
           "impactDescription": "Impact Description",
           "donorRecipients": "Donor Recipients",
-          "costForOneImpact": "Cost to 1 impact unit (USDC)",
+          "costForOneImpact": "Cost to 1 impact unit (USDC cents)",
           "unit": "Unit",
           "quantityWithoutDecimals": "Quantity without decimals",
           "daysMonthsAndYears": "Days, months and years",
@@ -446,7 +446,7 @@
         "email": "Email",
         "details": "Details",
         "noBigDonors": "No donors found",
-        "search":"Search by name..."
+        "search": "Search by name..."
       },
       "upsert": {
         "create": {
@@ -471,9 +471,9 @@
         "amount": "Amount",
         "details": "Details",
         "noBigDonations": "No donations found",
-        "search":"Search by donor name...",
+        "search": "Search by donor name...",
         "donationId": "Donation ID",
-        "transactionHash":"Transaction Hash",
+        "transactionHash": "Transaction Hash",
         "value": "Value (USDC)",
         "processingDate": "Processing Date",
         "bigDonor": "Big Donor",
@@ -491,10 +491,23 @@
           "cancel": "Cancel"
         },
         "required": "this is required"
+      },
+      "details": {
+        "title": "Donation details",
+        "details": "Details",
+        "edit": "Edit",
+        "attributes": {
+          "id": "ID",
+          "value": "Value (USDC)",
+          "bigDonor": "Big Donor",
+          "cause": "Cause",
+          "processingDate": "Processed in",
+          "status": "Status"
+        }
       }
     }
   },
-  "layouts":{
+  "layouts": {
     "walletLayout": {
       "connectWallet": "connect"
     }

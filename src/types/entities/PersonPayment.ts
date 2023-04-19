@@ -1,4 +1,5 @@
 import BigDonor from "./BigDonor";
+import Cause from "./Cause";
 import CryptoUser from "./CryptoUser";
 import Customer from "./Customer";
 import Offer from "./Offer";
@@ -19,4 +20,5 @@ export default interface PersonPayment {
   payer: Customer | CryptoUser | BigDonor;
   blockchainStatus?: string;
   transactionHash?: string;
+  cause?: Cause;
 }
