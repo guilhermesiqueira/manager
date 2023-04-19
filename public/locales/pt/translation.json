@@ -91,7 +91,7 @@
     },
     "list": {
       "title": "Lista de Pagamentos",
-      "search": "Procurar por identificação do usuário...",
+      "search": "Procurar por email...",
       "next": "próximo >",
       "previous": "< anterior",
       "refundModal": {
@@ -215,7 +215,7 @@
       "backgroundImage": "Support Image",
       "impactDescription": "Descrição do Impacto",
       "donorRecipients": "Beneficiários",
-      "costForOneImpact": "Cost to 1 impact unit (USDC)",
+      "costForOneImpact": "Custo por 1 unidade de impacto (centavos de USDC)",
       "unit": "Unit",
       "cause": "Causa",
       "causeCardImage": "Card da ONG",
@@ -269,7 +269,7 @@
         "attributes": {
           "impactDescription": "Descrição do Impacto",
           "donorRecipients": "Beneficiários",
-          "costForOneImpact": "Custo por 1 unidade de impacto (USDC)",
+          "costForOneImpact": "Custo por 1 unidade de impacto (centavos de USDC)",
           "unit": "Unidade",
           "quantityWithoutDecimals": "Quantidade sem decimais",
           "daysMonthsAndYears": "Dias, meses e anos",
@@ -446,7 +446,7 @@
         "email": "Email",
         "details": "Detalhes",
         "noBigDonors": "Nenhum doador encontrado",
-        "search":"Procurar pelo nome..."
+        "search": "Procurar pelo nome..."
       },
       "upsert": {
         "create": {
@@ -461,64 +461,6 @@
         },
         "required": "Este campo é obrigatório"
       }
-    },
-    "bigDonations": {
-      "title": "Doações",
-      "noBigDonations": "Nenhuma doação encontrada",
-      "attributes": {
-        "createNew": "Adicionar doação",
-        "donor": "Doador",
-        "amount": "Valor",
-        "date": "Data",
-        "details": "Detalhes",
-        "noBigDonations": "Nenhuma doação encontrada",
-        "search":"Procurar pelo nome do doador...",
-        "donationId": "ID da Doação",
-        "transactionHash":"Hash da Transação",
-        "value": "Valor (USDC)",
-        "processingDate": "Data de Processamento",
-        "bigDonor": "Grande Doador",
-        "status": "Status"
-      },
-      "upsert": {
-        "create": {
-          "title": "Adicionar Doação",
-          "save": "Salvar",
-          "cancel": "Cancelar"
-        },
-        "edit": {
-          "title": "Editar Doação",
-          "save": "Salvar",
-          "cancel": "Cancelar"
-        },
-        "required": "Este campo é obrigatório"
-      },
-      "details": {
-        "title": "Detalhes da doação",
-        "details": "Detalhes",
-        "edit": "Editar",
-        "attributes": {
-          "id": "ID",
-          "value": "Valor (USDC)",
-          "bigDonor": "Grande Doador",
-          "cause": "Causa",
-          "processingDate": "Processado em",
-          "status": "Status"
-        }
-      }
-    }
-  },
-  "layouts":{
-    "walletLayout": {
-      "connectWallet": "conectar"
-    }
-  },
-  "contexts": {
-    "walletContext": {
-      "ethereumNotFoundMessage": "Instale a Metamask para continuar",
-      "userRejectedConnectionMessage": "Conexão com a carteira negada",
-      "onErrorMessage": "Falha na conexão da carteira",
-      "invalidNetworkMessage": "Conecte-se a uma rede válida"
     }
   }
 }
