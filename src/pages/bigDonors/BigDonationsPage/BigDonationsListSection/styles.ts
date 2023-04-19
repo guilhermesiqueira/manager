@@ -52,7 +52,7 @@ export const ButtonContainer = styled.div`
 `;
 
 export const SearchBar = styled.input`
-  width: 80%;
+  width: 70%;
   height: 44px;
   padding-left: ${({ theme }) => theme.spacing(16)};
   border: 2px solid ${({ theme }) => theme.colors.neutral[500]};

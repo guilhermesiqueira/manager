@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import CopyableAddress from "components/atomics/CopyableAddress";
 import dateFormatter from "lib/dateFormatter";
 import LinkPage from "components/atomics/LinkPage";
+import * as S from "./styles";
 
 type Props = {
   bigDonations: any;
@@ -49,12 +50,18 @@ function BigDonationsItems({ bigDonations, searchTerm }: Props) {
           </th>
           <th>{donation.amountCents / 100}</th>
           <th>{dateFormatter(donation.paidDate)}</th>
-          <th>
+          <S.TH>
             <LinkPage
               page="/big-donors/index"
               text={donation.payer.name ?? ""}
             />
-          </th>
+          </S.TH>
+          <S.TH>
+            <LinkPage
+              page={`/causes/${donation.cause?.id}`}
+              text={donation.cause?.name ?? ""}
+            />
+          </S.TH>
           <th>{donation.blockchainStatus}</th>
 
           <th>

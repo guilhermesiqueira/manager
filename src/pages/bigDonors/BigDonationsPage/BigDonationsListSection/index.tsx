@@ -73,6 +73,7 @@ function BigDonationsListSection(): JSX.Element {
             <th>{t("value")}</th>
             <th>{t("processingDate")}</th>
             <th>{t("bigDonor")}</th>
+            <th>{t("cause")}</th>
             <th>{t("status")}</th>
           </tr>
         </thead>

@@ -4,7 +4,12 @@ export const Container = styled.div`
   display: flex;
 `;
 
-// create a component to table
+export const TH = styled.th`
+  span {
+    width: 100px;
+  }
+`;
+
 export const Table = styled.table`
   min-width: 500px;
   margin: ${({ theme }) => theme.spacing(24, 0)};
