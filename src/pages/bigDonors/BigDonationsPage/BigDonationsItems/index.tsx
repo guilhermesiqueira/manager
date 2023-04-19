@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import editIcon from "assets/icons/edit-icon.svg";
-
+import infoIcon from "assets/icons/info-icon.svg";
 import { useTranslation } from "react-i18next";
 import CopyableAddress from "components/atomics/CopyableAddress";
 import dateFormatter from "lib/dateFormatter";
@@ -59,8 +58,8 @@ function BigDonationsItems({ bigDonations, searchTerm }: Props) {
           <th>{donation.blockchainStatus}</th>
 
           <th>
-            <Link to={`/big-donations/${donation.id}/edit`}>
-              <img src={editIcon} alt="edit big Donations info" />
+            <Link to={`/big-donors/donations/${donation.id}`}>
+              <img src={infoIcon} alt="big donation info" />
             </Link>
           </th>
         </tr>

@@ -491,6 +491,19 @@
           "cancel": "Cancel"
         },
         "required": "this is required"
+      },
+      "details": {
+        "title": "Donation details",
+        "details": "Details",
+        "edit": "Edit",
+        "attributes": {
+          "id": "ID",
+          "value": "Value (USDC)",
+          "bigDonor": "Big Donor",
+          "cause": "Cause",
+          "processingDate": "Processed in",
+          "status": "Status"
+        }
       }
     }
   },
