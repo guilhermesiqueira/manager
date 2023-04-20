@@ -480,7 +480,7 @@
       "processingDate": "Data de Processamento",
       "bigDonor": "Grande Doador",
       "status": "Status",
-      "fee": "Pagar taxa"
+      "feeable": "Pagar taxa"
     },
     "create": {
       "title": "Enviar doação para contrato",

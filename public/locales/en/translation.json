@@ -479,7 +479,7 @@
       "processingDate": "Processing Date",
       "bigDonor": "Big Donor",
       "status": "Status",
-      "fee": "Pay fee"
+      "feeable": "Pay fee"
     },
     "create": {
       "title": "Send Donation to contract",

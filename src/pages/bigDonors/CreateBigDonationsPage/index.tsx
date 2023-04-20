@@ -40,7 +40,7 @@ function CreateBigDonationPage() {
   const { getBigDonors } = useBigDonors();
   const [currentBigDonorId, setCurrentBigDonorId] = useState<number>(1);
 
-  const [fee, setFee] = useState<boolean>(true);
+  const [feeable, setFeeable] = useState<boolean>(true);
   const { currentNetwork } = useNetworkContext();
 
   const { tokenDecimals } = useTokenDecimals();
@@ -131,7 +131,7 @@ function CreateBigDonationPage() {
     contract?.functions.addPoolBalance(
       currentPool,
       formatToDecimals(BigDonationObject().amount, tokenDecimals).toString(),
-      fee,
+      feeable,
     );
 
   const handleDonationToContract = async () => {
@@ -196,13 +196,13 @@ function CreateBigDonationPage() {
             containerId="cause-dropdown"
             name="causeId"
           />
-          <InfoName>{t("attributes.fee")}</InfoName>
+          <InfoName>{t("attributes.feeable")}</InfoName>
           <S.CheckboxContainer>
             <S.Checkbox
-              name="fee"
+              name="feeable"
               type="checkbox"
-              onChange={(e) => setFee(e.target.checked)}
-              checked={fee}
+              onChange={(e) => setFeeable(e.target.checked)}
+              checked={feeable}
             />
           </S.CheckboxContainer>
         </S.ContentSection>
