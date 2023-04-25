@@ -520,5 +520,10 @@
       "onErrorMessage": "Falha na conexão da carteira",
       "invalidNetworkMessage": "Conecte-se a uma rede válida"
     }
+  },
+  "components": {
+    "infoName": {
+      "optional": "(opcional)"
+    }
   }
 }

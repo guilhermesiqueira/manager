@@ -519,5 +519,10 @@
       "onErrorMessage": "Wallet connection failed",
       "invalidNetworkMessage": "Connect to a valid network"
     }
+  },
+  "components": {
+    "infoName": {
+      "optional": "(optional)"
+    }
   }
 }
