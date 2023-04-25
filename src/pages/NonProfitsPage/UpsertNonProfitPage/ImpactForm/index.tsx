@@ -80,7 +80,7 @@ function ImpactsForm({
             )}
         </S.ItemBox>
         <S.ItemBox>
-          <InfoName>{t("attributes.endDate")}</InfoName>
+          <InfoName optional>{t("attributes.endDate")}</InfoName>
           <S.TextInput type="date" {...registerImpact("endDate")} />
           {formStateImpact?.errors.endDate &&
             formStateImpact?.errors.endDate.type && (
