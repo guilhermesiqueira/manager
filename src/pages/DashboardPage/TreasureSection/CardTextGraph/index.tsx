@@ -61,7 +61,7 @@ function CardTextGraph({
 
   const [poolsBalance, setPoolsBalance] = useState<any[]>([]);
 
-  function calculateAssignedBalance() {
+  function updatePoolsBalance() {
     const newPoolBalances: any = [];
     pools.forEach((item) => {
       if (item.poolBalance !== null) {
@@ -77,10 +77,7 @@ function CardTextGraph({
     const pool = pools?.find(
       (p) => p.address.toLowerCase() === address.toLowerCase(),
     );
-    if (pool) {
-      return pool.poolBalance?.balance || 0;
-    }
-    return 0;
+    return pool?.poolBalance?.balance ?? 0;
   };
 
   function renderGraph() {
@@ -90,10 +87,8 @@ function CardTextGraph({
       labels,
       datasets: [
         {
-          data: causes.map((item: any) =>
-            handleBalance(
-              item?.pools[0] !== undefined ? item?.pools[0].address : "",
-            ),
+          data: causes.map((item) =>
+            handleBalance(item?.pools[0]?.address ?? ""),
           ),
           backgroundColor: theme.colors.brand.primary[300],
           borderColor: theme.colors.brand.primary[300],
@@ -106,7 +101,7 @@ function CardTextGraph({
   }
 
   useEffect(() => {
-    calculateAssignedBalance();
+    updatePoolsBalance();
   }, [pools]);
 
   return (
@@ -122,9 +117,7 @@ function CardTextGraph({
           <S.CauseCard key={cause.id}>
             <S.CauseTitle>{cause.name} (USDC)</S.CauseTitle>
             <S.CauseValue>
-              {handleBalance(
-                cause?.pools[0] !== undefined ? cause?.pools[0].address : "",
-              )}
+              {handleBalance(cause?.pools[0]?.address ?? "")}
             </S.CauseValue>
           </S.CauseCard>
         ))}
