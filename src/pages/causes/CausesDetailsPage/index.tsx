@@ -9,12 +9,11 @@ import theme from "styles/theme";
 import { useCallback, useEffect, useState } from "react";
 import { logError } from "services/crashReport";
 import useCauses from "hooks/apiHooks/useCauses";
+import usePools from "hooks/apiHooks/usePools";
 import Cause from "types/entities/Cause";
 import ArrowOutward from "assets/icons/arrow-outward.svg";
-import usePools from "hooks/apiTheGraphHooks/usePools";
-import Pool from "types/apiResponses/pool";
-import { formatFromDecimals } from "lib/web3Helpers/etherFormatters";
 import NonProfit from "types/entities/NonProfit";
+import Pool from "types/entities/Pool";
 import * as S from "./styles";
 
 function CausesDetailsPage(): JSX.Element {
@@ -27,7 +26,7 @@ function CausesDetailsPage(): JSX.Element {
   const [pool, setPool] = useState<Pool>();
 
   const { getCause } = useCauses();
-  const { getPool } = usePools();
+  const { getPools } = usePools();
 
   const navigate = useNavigate();
 
@@ -43,9 +42,9 @@ function CausesDetailsPage(): JSX.Element {
 
       setCause(causeData);
 
-      const apiPool = await getPool(causeData?.pools[0].address ?? "");
+      const apiPools = await getPools();
 
-      setPool(apiPool.pools[0]);
+      setPool(apiPools[0] ?? {});
     } catch (e) {
       logError(e);
     }
@@ -53,7 +52,7 @@ function CausesDetailsPage(): JSX.Element {
 
   useEffect(() => {
     fetchCause();
-  }, []);
+  }, [pool]);
 
   return (
     <S.Content>
@@ -62,9 +61,7 @@ function CausesDetailsPage(): JSX.Element {
       <S.Container>
         <S.LeftSection>
           <S.Subtitle>{t("attributes.availableToDonation")}</S.Subtitle>
-          <S.SubtitleInfo>
-            {formatFromDecimals(pool?.balance ?? 0).toFixed(2)}
-          </S.SubtitleInfo>
+          <S.SubtitleInfo>{pool?.poolBalance?.balance ?? 0}</S.SubtitleInfo>
 
           <Link to="edit">
             <Button
