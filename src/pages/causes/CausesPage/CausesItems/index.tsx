@@ -1,15 +1,12 @@
 import { Link } from "react-router-dom";
 import Cause from "types/entities/Cause";
+import Pool from "types/entities/Pool";
 import infoIcon from "assets/icons/info-icon.svg";
 import editIcon from "assets/icons/edit-icon.svg";
 import CopyableAddress from "components/atomics/CopyableAddress";
 import { useCallback, useEffect, useState } from "react";
-import usePools from "hooks/apiTheGraphHooks/usePools";
+import usePools from "hooks/apiHooks/usePools";
 import { logError } from "services/crashReport";
-import Pool from "types/apiResponses/pool";
-
-import { formatFromDecimals } from "lib/web3Helpers/etherFormatters";
-import moneyFormatter from "lib/moneyFormatter";
 import * as S from "./styles";
 
 type Props = {
@@ -18,7 +15,7 @@ type Props = {
 };
 
 function CauseItems({ causes, searchTerm }: Props) {
-  const { getAllPools } = usePools();
+  const { getPools } = usePools();
 
   const [pools, setPools] = useState<Pool[]>();
 
@@ -38,8 +35,8 @@ function CauseItems({ causes, searchTerm }: Props) {
 
   const fetchApiPools = useCallback(async () => {
     try {
-      const apiPools = await getAllPools();
-      setPools(apiPools.pools);
+      const apiPools = await getPools();
+      setPools(apiPools);
     } catch (e) {
       logError(e);
     }
@@ -50,9 +47,11 @@ function CauseItems({ causes, searchTerm }: Props) {
   }, []);
 
   const handleBalance = (address: string) => {
-    const pool = pools?.find((p) => p.id === address.toLowerCase());
+    const pool = pools?.find(
+      (p) => p.address.toLowerCase() === address.toLowerCase(),
+    );
     if (pool) {
-      return moneyFormatter(formatFromDecimals(Number(pool.balance)));
+      return pool.poolBalance?.balance || 0;
     }
     return 0;
   };
