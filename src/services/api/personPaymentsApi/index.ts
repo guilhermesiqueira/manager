@@ -1,6 +1,8 @@
 import { AxiosResponse } from "axios";
+import { CreateBigDonation } from "types/apiResponses/BigDonation";
+import BigDonation from "types/entities/BigDonation";
 import PersonPayment from "types/entities/PersonPayment";
-import { apiGet, apiGetWithParams } from "..";
+import { apiGet, apiGetWithParams, apiPost } from "..";
 
 type PersonPaymentsParams = {
   perPage?: number;
@@ -21,6 +23,11 @@ const personPaymentsApi = {
 
   getBigDonorsPayments: (): Promise<AxiosResponse<PersonPayment[]>> =>
     apiGet("person_payments/big_donors"),
+
+  createBigDonation: (
+    data: CreateBigDonation,
+  ): Promise<AxiosResponse<BigDonation>> =>
+    apiPost("manager/payments/cryptocurrency/big_donation", data),
 
   getBigDonorPersonPayment: (
     id: string,

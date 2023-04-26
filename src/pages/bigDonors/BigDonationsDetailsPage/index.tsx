@@ -10,7 +10,7 @@ import * as S from "./styles";
 
 function BigDonationsDetailsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
-    keyPrefix: "bigDonations.bigDonations.details",
+    keyPrefix: "bigDonations.details",
   });
 
   const { id } = useParams();

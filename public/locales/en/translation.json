@@ -436,74 +436,71 @@
     "and": "and",
     "of": "of"
   },
-  "bigDonations": {
-    "bigDonors": {
-      "title": "Donors",
+  "bigDonors": {
+    "title": "Donors",
+    "noBigDonors": "No donors found",
+    "attributes": {
+      "createNew": "Add donor",
+      "name": "Name",
+      "email": "Email",
+      "details": "Details",
       "noBigDonors": "No donors found",
-      "attributes": {
-        "createNew": "Add donor",
-        "name": "Name",
-        "email": "Email",
-        "details": "Details",
-        "noBigDonors": "No donors found",
-        "search": "Search by name..."
-      },
-      "upsert": {
-        "create": {
-          "title": "Add new donor",
-          "save": "Save",
-          "cancel": "Cancel"
-        },
-        "edit": {
-          "title": "Edit donor",
-          "save": "Save",
-          "cancel": "Cancel"
-        },
-        "required": "this is required"
-      }
+      "search":"Search by name..."
     },
-    "bigDonations": {
-      "title": "Donations",
+    "upsert": {
+      "create": {
+        "title": "Add new donor",
+        "save": "Save",
+        "cancel": "Cancel"
+      },
+      "edit": {
+        "title": "Edit donor",
+        "save": "Save",
+        "cancel": "Cancel"
+      },
+      "required": "this is required"
+    }
+  },
+  "bigDonations": {
+    "title": "Donations",
+    "noBigDonations": "No donations found",
+    "attributes": {
+      "createNew": "Send Donation to contract",
+      "donor": "Donor",
+      "amount": "Amount",
+      "details": "Details",
+      "donation": "Donation",
+      "cause": "Cause",
       "noBigDonations": "No donations found",
+      "search":"Search by donor name...",
+      "donationId": "Donation ID",
+      "transactionHash":"Transaction Hash",
+      "value": "Value (USDC)",
+      "processingDate": "Processing Date",
+      "bigDonor": "Big Donor",
+      "status": "Status",
+      "feeable": "Pay fee"
+    },
+    "create": {
+      "title": "Send Donation to contract",
+      "save": "Send",
+      "cancel": "Cancel",
+      "onErrorMessage": "Transaction failed"
+    },
+    "required": "this is required",
+    "yes": "Yes",
+    "no": "No",
+    "details": {
+      "title": "Donation details",
+      "details": "Details",
+      "edit": "Edit",
       "attributes": {
-        "createNew": "Add donation",
-        "donor": "Donor",
-        "amount": "Amount",
-        "details": "Details",
-        "noBigDonations": "No donations found",
-        "search": "Search by donor name...",
-        "donationId": "Donation ID",
-        "transactionHash": "Transaction Hash",
+        "id": "ID",
         "value": "Value (USDC)",
-        "processingDate": "Processing Date",
         "bigDonor": "Big Donor",
+        "cause": "Cause",
+        "processingDate": "Processed in",
         "status": "Status"
-      },
-      "upsert": {
-        "create": {
-          "title": "Add new donation",
-          "save": "Save",
-          "cancel": "Cancel"
-        },
-        "edit": {
-          "title": "Edit donation",
-          "save": "Save",
-          "cancel": "Cancel"
-        },
-        "required": "this is required"
-      },
-      "details": {
-        "title": "Donation details",
-        "details": "Details",
-        "edit": "Edit",
-        "attributes": {
-          "id": "ID",
-          "value": "Value (USDC)",
-          "bigDonor": "Big Donor",
-          "cause": "Cause",
-          "processingDate": "Processed in",
-          "status": "Status"
-        }
       }
     }
   },
