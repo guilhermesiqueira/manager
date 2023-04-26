@@ -45,8 +45,12 @@ function CausesDetailsPage(): JSX.Element {
       setCause(causeData);
 
       const apiPools = await getPools();
+      const poolData = apiPools.find(
+        (p) =>
+          p.address.toLowerCase() === causeData.pools[0].address.toLowerCase(),
+      );
 
-      setPool(apiPools[0] ?? {});
+      setPool(poolData);
     } catch (e) {
       logError(e);
     }
