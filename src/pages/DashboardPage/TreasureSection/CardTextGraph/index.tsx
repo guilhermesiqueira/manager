@@ -8,15 +8,9 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { useContract } from "hooks/useContract";
-import useTokenDecimals from "hooks/useTokenDecimals";
-import { formatFromDecimals } from "lib/web3Helpers/etherFormatters";
-import { useCallback, useEffect, useState } from "react";
-import { logError } from "services/crashReport";
+import { useEffect, useState } from "react";
 import Cause from "types/entities/Cause";
-import DonationTokenAbi from "utils/abis/DonationToken.json";
 import theme from "styles/theme";
-import { useNetworkContext } from "contexts/networkContext";
 import * as S from "./styles";
 
 export type Props = {
@@ -66,34 +60,25 @@ function CardTextGraph({
   };
 
   const [poolsBalance, setPoolsBalance] = useState<any[]>([]);
-  const { currentNetwork } = useNetworkContext();
 
-  const donationTokenContract = useContract({
-    address: currentNetwork.donationTokenContractAddress,
-    ABI: DonationTokenAbi.abi,
-  });
-
-  const { tokenDecimals } = useTokenDecimals();
-
-  const fetchAssignedBalance = useCallback(async () => {
-    try {
-      const balance: any = [];
-      await pools.map(async (item: any) => {
-        const contractBalance = await donationTokenContract?.balanceOf(item.id);
-        const usdc = formatFromDecimals(contractBalance, tokenDecimals);
-        balance.push({ id: item.id, balance: usdc });
-        setPoolsBalance(balance);
-      });
-    } catch (e) {
-      logError(e);
-    }
-  }, [pools]);
+  function calculateAssignedBalance() {
+    const newPoolBalances: any = [];
+    pools.forEach((item) => {
+      if (item.poolBalance !== null) {
+        newPoolBalances.push(item.poolBalance);
+      } else {
+        newPoolBalances.push(null);
+      }
+    });
+    setPoolsBalance(newPoolBalances);
+  }
 
   const handleBalance = (address: string) => {
-    const pool: any = pools?.find((p) => p.id === address.toLowerCase());
+    const pool = pools?.find(
+      (p) => p.address.toLowerCase() === address.toLowerCase(),
+    );
     if (pool) {
-      return poolsBalance?.find((p: any) => p.id === address.toLowerCase())
-        ?.balance;
+      return pool.poolBalance?.balance || 0;
     }
     return 0;
   };
@@ -121,7 +106,7 @@ function CardTextGraph({
   }
 
   useEffect(() => {
-    fetchAssignedBalance();
+    calculateAssignedBalance();
   }, [pools]);
 
   return (
