@@ -83,8 +83,7 @@ function ImpactsForm({
           <InfoName>{t("attributes.endDate")}</InfoName>
           <S.TextInput
             type="date"
-            {...(registerImpact("endDate"),
-            {
+            {...registerImpact("endDate", {
               required: t("upsert.required"),
             })}
           />
