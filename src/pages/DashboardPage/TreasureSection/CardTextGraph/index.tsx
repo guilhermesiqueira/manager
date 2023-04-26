@@ -62,14 +62,7 @@ function CardTextGraph({
   const [poolsBalance, setPoolsBalance] = useState<any[]>([]);
 
   function updatePoolsBalance() {
-    const newPoolBalances: any = [];
-    pools.forEach((item) => {
-      if (item.poolBalance !== null) {
-        newPoolBalances.push(item.poolBalance);
-      } else {
-        newPoolBalances.push(null);
-      }
-    });
+    const newPoolBalances = pools.map((item) => item.poolBalance ?? null);
     setPoolsBalance(newPoolBalances);
   }
 
