@@ -88,7 +88,7 @@ function CardTextGraph({
       datasets: [
         {
           data: causes.map((item) =>
-            handleBalance(item?.pools[0]?.address ?? ""),
+            handleBalance(item.pools[0]?.address ?? ""),
           ),
           backgroundColor: theme.colors.brand.primary[300],
           borderColor: theme.colors.brand.primary[300],
@@ -117,7 +117,7 @@ function CardTextGraph({
           <S.CauseCard key={cause.id}>
             <S.CauseTitle>{cause.name} (USDC)</S.CauseTitle>
             <S.CauseValue>
-              {handleBalance(cause?.pools[0]?.address ?? "")}
+              {handleBalance(cause.pools[0]?.address ?? "")}
             </S.CauseValue>
           </S.CauseCard>
         ))}

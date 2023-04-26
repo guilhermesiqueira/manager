@@ -1,19 +1,21 @@
-import { useTranslation } from "react-i18next";
-import CopyableAddress from "components/atomics/CopyableAddress";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import EditIcon from "assets/icons/editIcon";
-
-import InfoName from "components/moleculars/infoName";
 import { Button } from "@chakra-ui/react";
-import theme from "styles/theme";
+import { useTranslation } from "react-i18next";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
-import { logError } from "services/crashReport";
+
 import useCauses from "hooks/apiHooks/useCauses";
 import usePools from "hooks/apiHooks/usePools";
-import Cause from "types/entities/Cause";
-import ArrowOutward from "assets/icons/arrow-outward.svg";
+import { logError } from "services/crashReport";
+
 import NonProfit from "types/entities/NonProfit";
+import Cause from "types/entities/Cause";
 import Pool from "types/entities/Pool";
+import ArrowOutward from "assets/icons/arrow-outward.svg";
+
+import CopyableAddress from "components/atomics/CopyableAddress";
+import EditIcon from "assets/icons/editIcon";
+import InfoName from "components/moleculars/infoName";
+import theme from "styles/theme";
 import * as S from "./styles";
 
 function CausesDetailsPage(): JSX.Element {
@@ -52,7 +54,7 @@ function CausesDetailsPage(): JSX.Element {
 
   useEffect(() => {
     fetchCause();
-  }, [pool]);
+  }, []);
 
   return (
     <S.Content>
