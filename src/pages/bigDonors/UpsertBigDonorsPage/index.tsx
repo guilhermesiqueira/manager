@@ -16,7 +16,7 @@ export type Props = {
 
 function UpsertBigDonorPage({ isEdit }: Props) {
   const { t } = useTranslation("translation", {
-    keyPrefix: "bigDonations.bigDonors",
+    keyPrefix: "bigDonors",
   });
 
   const mode = isEdit ? "edit" : "create";

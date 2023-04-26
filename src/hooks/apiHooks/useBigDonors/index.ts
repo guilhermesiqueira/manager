@@ -2,7 +2,7 @@ import bigDonorsApi from "services/api/bigDonorsApi";
 import BigDonor from "types/entities/BigDonor";
 
 function useBigDonors() {
-  async function getAllBigDonors() {
+  async function getBigDonors() {
     const { data: bigDonors } = await bigDonorsApi.getBigDonorsList();
 
     return bigDonors;
@@ -27,7 +27,7 @@ function useBigDonors() {
   }
 
   return {
-    getAllBigDonors,
+    getBigDonors,
     getBigDonor,
     createBigDonor,
     updateBigDonor,
