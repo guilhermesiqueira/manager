@@ -21,9 +21,7 @@ export function useContract<T extends Contract = Contract>({
       const { ethereum } = window;
       if (ethereum) {
         const provider = new Web3Provider(ethereum);
-        const signer = provider.getSigner(
-          "0x9F9241629E8C1FE2b466754843A629b675Dd36Ab",
-        );
+        const signer = provider.getSigner();
         return getContract(address, ABI, signer);
       }
 
