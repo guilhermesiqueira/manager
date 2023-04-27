@@ -1,20 +1,21 @@
-import { useTranslation } from "react-i18next";
-import CopyableAddress from "components/atomics/CopyableAddress";
-import { Link, useNavigate, useParams } from "react-router-dom";
-import EditIcon from "assets/icons/editIcon";
-
-import InfoName from "components/moleculars/infoName";
 import { Button } from "@chakra-ui/react";
-import theme from "styles/theme";
+import { useTranslation } from "react-i18next";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useCallback, useEffect, useState } from "react";
-import { logError } from "services/crashReport";
+
 import useCauses from "hooks/apiHooks/useCauses";
-import Cause from "types/entities/Cause";
-import ArrowOutward from "assets/icons/arrow-outward.svg";
-import usePools from "hooks/apiTheGraphHooks/usePools";
-import Pool from "types/apiResponses/pool";
-import { formatFromDecimals } from "lib/web3Helpers/etherFormatters";
+import usePools from "hooks/apiHooks/usePools";
+import { logError } from "services/crashReport";
+
 import NonProfit from "types/entities/NonProfit";
+import Cause from "types/entities/Cause";
+import Pool from "types/entities/Pool";
+import ArrowOutward from "assets/icons/arrow-outward.svg";
+
+import CopyableAddress from "components/atomics/CopyableAddress";
+import EditIcon from "assets/icons/editIcon";
+import InfoName from "components/moleculars/infoName";
+import theme from "styles/theme";
 import * as S from "./styles";
 
 function CausesDetailsPage(): JSX.Element {
@@ -27,7 +28,7 @@ function CausesDetailsPage(): JSX.Element {
   const [pool, setPool] = useState<Pool>();
 
   const { getCause } = useCauses();
-  const { getPool } = usePools();
+  const { getPools } = usePools();
 
   const navigate = useNavigate();
 
@@ -43,9 +44,13 @@ function CausesDetailsPage(): JSX.Element {
 
       setCause(causeData);
 
-      const apiPool = await getPool(causeData?.pools[0].address ?? "");
+      const apiPools = await getPools();
+      const poolData = apiPools.find(
+        (p) =>
+          p.address.toLowerCase() === causeData.pools[0].address.toLowerCase(),
+      );
 
-      setPool(apiPool.pools[0]);
+      setPool(poolData);
     } catch (e) {
       logError(e);
     }
@@ -62,9 +67,7 @@ function CausesDetailsPage(): JSX.Element {
       <S.Container>
         <S.LeftSection>
           <S.Subtitle>{t("attributes.availableToDonation")}</S.Subtitle>
-          <S.SubtitleInfo>
-            {formatFromDecimals(pool?.balance ?? 0).toFixed(2)}
-          </S.SubtitleInfo>
+          <S.SubtitleInfo>{pool?.poolBalance?.balance ?? 0}</S.SubtitleInfo>
 
           <Link to="edit">
             <Button

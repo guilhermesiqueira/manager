@@ -1,35 +1,21 @@
-import React, { useEffect, useCallback, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
-import DonationTokenAbi from "utils/abis/DonationToken.json";
 import { logError } from "services/crashReport";
 import useCauses from "hooks/apiHooks/useCauses";
-import usePools from "hooks/apiTheGraphHooks/usePools";
-import { useContract } from "hooks/useContract";
+import usePools from "hooks/apiHooks/usePools";
 import Pool from "types/entities/Pool";
 import Cause from "types/entities/Cause";
-import { formatFromDecimals } from "lib/web3Helpers/etherFormatters";
-import moneyFormatter from "lib/moneyFormatter";
-import useTokenDecimals from "hooks/useTokenDecimals";
-import { useNetworkContext } from "contexts/networkContext";
 import CardTextGraph from "./CardTextGraph";
 import * as S from "./styles";
 import WalletCard from "./WalletCard";
 
 function TreasureSection(): JSX.Element {
-  const [assignedValue, setAssignedValue] = useState<number>(0);
   const [causes, setCauses] = useState<Cause[]>([]);
-  const { getAllPools } = usePools();
+  const { getPools } = usePools();
   const [pools, setPools] = useState<Pool[]>([]);
   const { getCauses } = useCauses();
-  const { currentNetwork } = useNetworkContext();
   const { t } = useTranslation("translation", {
     keyPrefix: "dashboard.treasureDashboard.treasureSection",
-  });
-
-  const { tokenDecimals } = useTokenDecimals();
-  const donationTokenContract = useContract({
-    address: currentNetwork.donationTokenContractAddress,
-    ABI: DonationTokenAbi.abi,
   });
 
   const fetchCauses = async () => {
@@ -43,35 +29,25 @@ function TreasureSection(): JSX.Element {
 
   const fetchPools = async () => {
     try {
-      const poolsData = await getAllPools();
-      setPools(poolsData.pools);
+      const poolsData = await getPools();
+      setPools(poolsData);
     } catch (e) {
       logError(e);
     }
   };
 
-  const fetchAssignedBalance = useCallback(async () => {
-    try {
-      let assignedAmount = 0;
-      await pools.map(async (item: any) => {
-        const contractBalance = await donationTokenContract?.balanceOf(item.id);
-        const usdc = formatFromDecimals(contractBalance, tokenDecimals);
-        assignedAmount += usdc;
-        setAssignedValue(assignedAmount);
-      });
-    } catch (e) {
-      logError(e);
+  const assignedAmount = pools.reduce((acc, curr) => {
+    if (curr.poolBalance && curr.poolBalance.balance) {
+      return acc + Number(curr.poolBalance.balance);
+    } else {
+      return acc;
     }
-  }, [pools]);
+  }, 0);
 
   useEffect(() => {
     fetchCauses();
     fetchPools();
   }, []);
-
-  useEffect(() => {
-    fetchAssignedBalance();
-  }, [pools]);
 
   return (
     <S.Container>
@@ -80,7 +56,7 @@ function TreasureSection(): JSX.Element {
         pools={pools}
         title={t("mainText")}
         leftText={t("causesTitle")}
-        treasureBalance={moneyFormatter(assignedValue)}
+        treasureBalance={assignedAmount}
       />
       <WalletCard />
     </S.Container>
