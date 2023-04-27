@@ -5,4 +5,8 @@ export default interface Pool {
   name: string;
   address: string;
   token: Token;
+  poolBalance?: {
+    id: string;
+    balance: number;
+  };
 }

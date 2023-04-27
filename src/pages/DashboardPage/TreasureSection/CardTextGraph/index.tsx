@@ -8,15 +8,9 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import { useContract } from "hooks/useContract";
-import useTokenDecimals from "hooks/useTokenDecimals";
-import { formatFromDecimals } from "lib/web3Helpers/etherFormatters";
-import { useCallback, useEffect, useState } from "react";
-import { logError } from "services/crashReport";
+import { useEffect, useState } from "react";
 import Cause from "types/entities/Cause";
-import DonationTokenAbi from "utils/abis/DonationToken.json";
 import theme from "styles/theme";
-import { useNetworkContext } from "contexts/networkContext";
 import * as S from "./styles";
 
 export type Props = {
@@ -66,36 +60,17 @@ function CardTextGraph({
   };
 
   const [poolsBalance, setPoolsBalance] = useState<any[]>([]);
-  const { currentNetwork } = useNetworkContext();
 
-  const donationTokenContract = useContract({
-    address: currentNetwork.donationTokenContractAddress,
-    ABI: DonationTokenAbi.abi,
-  });
-
-  const { tokenDecimals } = useTokenDecimals();
-
-  const fetchAssignedBalance = useCallback(async () => {
-    try {
-      const balance: any = [];
-      await pools.map(async (item: any) => {
-        const contractBalance = await donationTokenContract?.balanceOf(item.id);
-        const usdc = formatFromDecimals(contractBalance, tokenDecimals);
-        balance.push({ id: item.id, balance: usdc });
-        setPoolsBalance(balance);
-      });
-    } catch (e) {
-      logError(e);
-    }
-  }, [pools]);
+  function updatePoolsBalance() {
+    const newPoolBalances = pools.map((item) => item.poolBalance ?? null);
+    setPoolsBalance(newPoolBalances);
+  }
 
   const handleBalance = (address: string) => {
-    const pool: any = pools?.find((p) => p.id === address.toLowerCase());
-    if (pool) {
-      return poolsBalance?.find((p: any) => p.id === address.toLowerCase())
-        ?.balance;
-    }
-    return 0;
+    const pool = pools?.find(
+      (p) => p.address.toLowerCase() === address.toLowerCase(),
+    );
+    return pool?.poolBalance?.balance ?? 0;
   };
 
   function renderGraph() {
@@ -105,10 +80,8 @@ function CardTextGraph({
       labels,
       datasets: [
         {
-          data: causes.map((item: any) =>
-            handleBalance(
-              item?.pools[0] !== undefined ? item?.pools[0].address : "",
-            ),
+          data: causes.map((item) =>
+            handleBalance(item.pools[0]?.address ?? ""),
           ),
           backgroundColor: theme.colors.brand.primary[300],
           borderColor: theme.colors.brand.primary[300],
@@ -121,7 +94,7 @@ function CardTextGraph({
   }
 
   useEffect(() => {
-    fetchAssignedBalance();
+    updatePoolsBalance();
   }, [pools]);
 
   return (
@@ -137,9 +110,7 @@ function CardTextGraph({
           <S.CauseCard key={cause.id}>
             <S.CauseTitle>{cause.name} (USDC)</S.CauseTitle>
             <S.CauseValue>
-              {handleBalance(
-                cause?.pools[0] !== undefined ? cause?.pools[0].address : "",
-              )}
+              {handleBalance(cause.pools[0]?.address ?? "")}
             </S.CauseValue>
           </S.CauseCard>
         ))}
