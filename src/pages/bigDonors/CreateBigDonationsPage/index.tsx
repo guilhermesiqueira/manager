@@ -149,6 +149,7 @@ function CreateBigDonationPage() {
         bigDonorId: currentBigDonorId,
         causeId: currentCauseId,
         integrationId: 1,
+        feeable,
       });
       navigate("/big-donors/donations");
     } catch (error) {
