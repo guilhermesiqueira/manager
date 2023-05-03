@@ -6,10 +6,8 @@ import { useNavigate, useParams } from "react-router";
 import { logError } from "services/crashReport";
 import theme from "styles/theme";
 
-import Offer from "types/entities/Offer";
+import { Offer, Currencies, Gateways } from "@ribon.io/shared/types";
 import useOffers from "hooks/apiHooks/useOffers";
-import { Currencies } from "types/enums/Currencies";
-import { Gateways } from "types/enums/Gateways";
 import * as S from "./styles";
 
 export type Props = {

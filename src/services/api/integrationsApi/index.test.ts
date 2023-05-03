@@ -1,4 +1,4 @@
-import IntegrationWallet from "types/entities/IntegrationWallet";
+import { IntegrationWallet } from "@ribon.io/shared/types";
 import integrationsApi from ".";
 import api from "..";
 

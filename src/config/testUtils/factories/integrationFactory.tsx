@@ -1,4 +1,4 @@
-import Integration from "types/apiResponses/integration";
+import { Integration } from "@ribon.io/shared/types";
 
 function integrationFactory(params: Partial<Integration> = {}): Integration {
   const defaultValues: Integration = {

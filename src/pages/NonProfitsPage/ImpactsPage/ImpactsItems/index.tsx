@@ -1,5 +1,5 @@
 import dateFormatter from "lib/dateFormatter";
-import { NonProfitImpact } from "types/entities/NonProfitImpact";
+import { NonProfitImpact } from "@ribon.io/shared/types";
 
 type Props = {
   impacts: NonProfitImpact[];

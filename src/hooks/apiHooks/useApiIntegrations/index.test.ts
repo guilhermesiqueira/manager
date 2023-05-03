@@ -1,6 +1,6 @@
 import { renderHook } from "@testing-library/react-hooks";
 import integrationsApi from "services/api/integrationsApi";
-import IntegrationWallet from "types/entities/IntegrationWallet";
+import { IntegrationWallet } from "@ribon.io/shared/types";
 import useApiIntegrations from ".";
 
 describe("useIntegrations", () => {

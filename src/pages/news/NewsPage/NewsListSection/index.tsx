@@ -3,7 +3,7 @@ import { useCallback, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import AddIcon from "assets/icons/addIcon";
 import { logError } from "services/crashReport";
-import Article from "types/entities/Article";
+import { Article } from "@ribon.io/shared/types";
 import { useNavigate } from "react-router";
 import theme from "styles/theme";
 import { useLanguage } from "hooks/useLanguage";

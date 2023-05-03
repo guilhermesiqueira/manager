@@ -7,12 +7,12 @@ import { Button } from "@chakra-ui/react";
 import theme from "styles/theme";
 import { useCallback, useEffect, useState } from "react";
 import { logError } from "services/crashReport";
-import NonProfit from "types/entities/NonProfit";
+import { NonProfit } from "@ribon.io/shared/types";
 import useNonProfits from "hooks/apiHooks/useNonProfits";
 
 import dateFormatter from "lib/dateFormatter";
 import LinkPage from "components/atomics/LinkPage";
-import Story from "types/entities/Story";
+import { Story } from "@ribon.io/shared/types";
 import snakeToCamelCase from "lib/snakeToCamelCase";
 import * as S from "./styles";
 import StoriesCard from "../UpsertNonProfitPage/StoriesCard";
