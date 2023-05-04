@@ -89,8 +89,8 @@ function CausesDetailsPage(): JSX.Element {
 
         <S.RightSection>
           <S.Subtitle>{t("details.linkedProjects")}</S.Subtitle>
-          {cause?.nonProfits.map((nonProfit: NonProfit) => (
-            <S.CardProject onClick={() => handleClick(nonProfit.id)}>
+          {cause?.nonProfits?.map((nonProfit: NonProfit) => (
+            <S.CardProject onClick={() => handleClick(nonProfit.id.toString())}>
               <S.CardProjectInfo>{nonProfit.name}</S.CardProjectInfo>{" "}
               <S.ArrowOutward src={ArrowOutward} alt="project link" />
             </S.CardProject>

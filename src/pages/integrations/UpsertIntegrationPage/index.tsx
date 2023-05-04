@@ -150,7 +150,6 @@ function UpsertIntegrationPage({ isEdit }: Props) {
         status: "active",
         webhookUrl: "",
         ticketAvailabilityInMinutes: null,
-        integrationTask: null,
       };
       reset(newIntegration);
     }

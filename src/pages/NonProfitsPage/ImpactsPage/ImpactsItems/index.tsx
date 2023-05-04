@@ -26,7 +26,7 @@ function ImpactsItems({ impacts, searchTerm }: Props) {
         <tr key={impact?.id}>
           <th>{impact?.id}</th>
           <th>{impact?.usdCentsToOneImpactUnit}</th>
-          <th>{dateFormatter(impact.startDate)}</th>
+          <th>{dateFormatter(impact?.startDate)}</th>
           <th>{dateFormatter(impact?.endDate)}</th>
         </tr>
       ))

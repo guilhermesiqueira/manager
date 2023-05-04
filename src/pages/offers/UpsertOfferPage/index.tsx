@@ -106,6 +106,10 @@ function UpsertOfferPage({ isEdit }: Props) {
         currency: "brl",
         gateway: "stripe",
         externalId: "34324",
+        id: 1,
+        price: "1.23",
+        priceValue: 1.23,
+        positionOrder: 1,
         active: true,
         subscription: false,
       };

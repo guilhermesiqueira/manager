@@ -14,11 +14,13 @@ function integrationApiFactory(params: Partial<Integration> = {}): Integration {
     created_at: "2020-01-01T00:00:00.000Z",
     updated_at: "2020-01-01T00:00:00.000Z",
     integrationTaskAttributes: {
+      id: 1,
       description: "Faça uma compra",
       link: "Comprar",
       linkAddress: "https://renner.com",
     },
     integrationTask: {
+      id: 1,
       description: "Faça uma compra",
       link: "Comprar",
       linkAddress: "https://renner.com",
