@@ -215,13 +215,15 @@
       "backgroundImage": "Support Image",
       "impactDescription": "Impact Description",
       "donorRecipients": "Donor Recipients",
+      "confirmationImage": "Confirmation Image",
       "costForOneImpact": "Cost to 1 impact unit (USDC cents)",
       "unit": "Unit",
       "cause": "Cause",
       "causeCardImage": "NGO Card",
       "imageRecommendation": "Recommended size:\n{{ size }}",
       "imagesSection": "Images",
-      "availableToDonation": "Available to donation (USDC)"
+      "availableToDonation": "Available to donation (USDC)",
+      "altText": "Alt text"
     },
     "list": {
       "title": "Ngos List",
@@ -255,6 +257,7 @@
         "description": "Description",
         "position": "Position",
         "status": "Status",
+        "altText":"Alt text",
         "save": "Save",
         "cancel": "Cancel",
         "required": "* Required",

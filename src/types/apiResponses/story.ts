@@ -5,4 +5,5 @@ export interface CreateStory {
   position?: string;
   description: string;
   image?: any;
+  imageDescription?: string;
 }

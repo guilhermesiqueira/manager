@@ -46,6 +46,8 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const [logoFile, setLogoFile] = useState<string>("");
   const [mainImageFile, setMainImageFile] = useState<string>("");
   const [backgroundImageFile, setBackgroundImageFile] = useState<string>("");
+  const [confirmationImageFile, setConfirmationImageFile] =
+    useState<string>("");
   const navigate = useNavigate();
   const { id } = useParams();
   const { createNonProfit, getNonProfit, updateNonProfit } = useNonProfits();
@@ -112,6 +114,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               title: story.title,
               description: story.description,
               position: story.position,
+              imageDescription: story.imageDescription,
             }
           : story,
       );
@@ -210,7 +213,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
 
   const handleUploadImage = (
     image: File,
-    attribute: "logo" | "backgroundImage" | "mainImage",
+    attribute: "logo" | "backgroundImage" | "mainImage" | "confirmationImage",
   ) => {
     try {
       setLoading(true);
@@ -252,6 +255,15 @@ function UpsertNonProfitPage({ isEdit }: Props) {
 
     setBackgroundImageFile(URL.createObjectURL(backgroundImage));
     handleUploadImage(backgroundImage, "backgroundImage");
+  };
+
+  const handleConfirmationImageChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const confirmationImage = e.target.files![0];
+
+    setConfirmationImageFile(URL.createObjectURL(confirmationImage));
+    handleUploadImage(confirmationImage, "confirmationImage");
   };
 
   const fetchCauses = useCallback(async () => {
@@ -379,10 +391,19 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                   value={logoFile}
                 />
                 <S.ImageRecommendation>
-                  {t("attributes.imageRecommendation", { size: "300x300" })}
+                  {t("attributes.imageRecommendation", { size: "200x200" })}
                 </S.ImageRecommendation>
               </S.ItemBox>
+              <S.ItemBox>
+                <InfoName hasTranslation>{t("attributes.altText")}</InfoName>
+                <S.TextInput {...register("logoDescription")} />
+                {formState?.errors.name && formState?.errors.name.type && (
+                  <S.Error>{formState?.errors.name.message}</S.Error>
+                )}
+              </S.ItemBox>
+            </S.FlexRow>
 
+            <S.FlexRow>
               <S.ItemBox>
                 <InfoName>{t("attributes.causeCardImage")}</InfoName>
                 <FileUpload
@@ -391,10 +412,18 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                   value={mainImageFile}
                 />
                 <S.ImageRecommendation>
-                  {t("attributes.imageRecommendation", { size: "600x560" })}
+                  {t("attributes.imageRecommendation", { size: "512x512" })}
                 </S.ImageRecommendation>
               </S.ItemBox>
-
+              <S.ItemBox>
+                <InfoName hasTranslation>{t("attributes.altText")}</InfoName>
+                <S.TextInput {...register("mainImageDescription")} />
+                {formState?.errors.name && formState?.errors.name.type && (
+                  <S.Error>{formState?.errors.name.message}</S.Error>
+                )}
+              </S.ItemBox>
+            </S.FlexRow>
+            <S.FlexRow>
               <S.ItemBox>
                 <InfoName>{t("attributes.backgroundImage")}</InfoName>
                 <FileUpload
@@ -403,8 +432,35 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                   value={backgroundImageFile}
                 />
                 <S.ImageRecommendation>
-                  {t("attributes.imageRecommendation", { size: "300x300" })}
+                  {t("attributes.imageRecommendation", { size: "656x272" })}
                 </S.ImageRecommendation>
+              </S.ItemBox>
+              <S.ItemBox>
+                <InfoName hasTranslation>{t("attributes.altText")}</InfoName>
+                <S.TextInput {...register("backgroundImageDescription")} />
+                {formState?.errors.name && formState?.errors.name.type && (
+                  <S.Error>{formState?.errors.name.message}</S.Error>
+                )}
+              </S.ItemBox>
+            </S.FlexRow>
+            <S.FlexRow>
+              <S.ItemBox>
+                <InfoName>{t("attributes.confirmationImage")}</InfoName>
+                <FileUpload
+                  onChange={handleConfirmationImageChange}
+                  logo={NonProfitObject().confirmationImage}
+                  value={confirmationImageFile}
+                />
+                <S.ImageRecommendation>
+                  {t("attributes.imageRecommendation", { size: "400x400" })}
+                </S.ImageRecommendation>
+              </S.ItemBox>
+              <S.ItemBox>
+                <InfoName hasTranslation>{t("attributes.altText")}</InfoName>
+                <S.TextInput {...register("confirmationImageDescription")} />
+                {formState?.errors.name && formState?.errors.name.type && (
+                  <S.Error>{formState?.errors.name.message}</S.Error>
+                )}
               </S.ItemBox>
             </S.FlexRow>
           </S.RightSection>

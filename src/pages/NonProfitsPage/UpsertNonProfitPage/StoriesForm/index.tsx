@@ -102,6 +102,7 @@ function StoriesForm({
                 image: null,
                 active: true,
                 position: fields.length + 1,
+                imageDescription: "Image description",
               })
             }
           >
@@ -140,6 +141,14 @@ function StoriesForm({
               <S.TextInput
                 {...registerStory(`storiesAttributes.${index}.position`)}
                 placeholder={t("position")}
+              />
+
+              <InfoName hasTranslation>{t("altText")}</InfoName>
+              <S.TextInput
+                {...registerStory(
+                  `storiesAttributes.${index}.imageDescription`,
+                )}
+                placeholder={t("altText")}
               />
 
               <S.ButtonContainer>
