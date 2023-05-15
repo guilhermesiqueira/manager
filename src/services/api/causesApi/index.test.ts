@@ -12,7 +12,7 @@ describe("causesApi", () => {
     it("expects to send a get request with the correct info: url, params and headers", () => {
       causesApi.getCausesList({});
 
-      expect(api.get).toHaveBeenCalledWith("/api/v1/causes", {
+      expect(api.get).toHaveBeenCalledWith("/managers/v1/causes", {
         params,
       });
     });
@@ -30,7 +30,7 @@ describe("causesApi", () => {
     it("expects to send a post request with the correct info: url and params", () => {
       causesApi.createCause(data);
 
-      expect(api.post).toHaveBeenCalledWith("/api/v1/causes", data);
+      expect(api.post).toHaveBeenCalledWith("/managers/v1/causes", data);
     });
   });
 
@@ -49,7 +49,7 @@ describe("causesApi", () => {
     it("expects to send a put request with the correct info: url and params", () => {
       causesApi.updateCause(1, data);
 
-      expect(api.put).toHaveBeenCalledWith(`/api/v1/causes/${id}`, data);
+      expect(api.put).toHaveBeenCalledWith(`/managers/v1/causes/${id}`, data);
     });
   });
 });

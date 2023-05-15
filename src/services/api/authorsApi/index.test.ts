@@ -12,7 +12,7 @@ describe("authorsApi", () => {
     it("expects to send a get request with the correct info: url, params and headers", () => {
       authorsApi.getAuthorsList({});
 
-      expect(api.get).toHaveBeenCalledWith("/api/v1/news/authors", {
+      expect(api.get).toHaveBeenCalledWith("/managers/v1/news/authors", {
         params,
       });
     });
@@ -30,7 +30,7 @@ describe("authorsApi", () => {
     it("expects to send a post request with the correct info: url and params", () => {
       authorsApi.createAuthor(data);
 
-      expect(api.post).toHaveBeenCalledWith("/api/v1/news/authors", data);
+      expect(api.post).toHaveBeenCalledWith("/managers/v1/news/authors", data);
     });
   });
 
@@ -49,7 +49,10 @@ describe("authorsApi", () => {
     it("expects to send a put request with the correct info: url and params", () => {
       authorsApi.updateAuthor(1, data);
 
-      expect(api.put).toHaveBeenCalledWith(`/api/v1/news/authors/${id}`, data);
+      expect(api.put).toHaveBeenCalledWith(
+        `/managers/v1/news/authors/${id}`,
+        data,
+      );
     });
   });
 });

@@ -12,7 +12,7 @@ describe("articlesApi", () => {
     it("expects to send a get request with the correct info: url, params and headers", () => {
       articlesApi.getArticlesList({});
 
-      expect(api.get).toHaveBeenCalledWith("/api/v1/news/articles", {
+      expect(api.get).toHaveBeenCalledWith("/managers/v1/news/articles", {
         params,
       });
     });
@@ -34,7 +34,7 @@ describe("articlesApi", () => {
     it("expects to send a post request with the correct info: url and params", () => {
       articlesApi.createArticle(data);
 
-      expect(api.post).toHaveBeenCalledWith("/api/v1/news/articles", data);
+      expect(api.post).toHaveBeenCalledWith("/managers/v1/news/articles", data);
     });
   });
 
@@ -57,7 +57,10 @@ describe("articlesApi", () => {
     it("expects to send a put request with the correct info: url and params", () => {
       articlesApi.updateArticle(1, data);
 
-      expect(api.put).toHaveBeenCalledWith(`/api/v1/news/articles/${id}`, data);
+      expect(api.put).toHaveBeenCalledWith(
+        `/managers/v1/news/articles/${id}`,
+        data,
+      );
     });
   });
 });

@@ -4,7 +4,7 @@ import { RIBON_API } from "utils/constants";
 export function useUploadFile(file: File) {
   const upload = new DirectUpload(
     file,
-    `${RIBON_API}/api/v1/rails/active_storage/direct_uploads`,
+    `${RIBON_API}/managers/v1/rails/active_storage/direct_uploads`,
   );
 
   return upload;
