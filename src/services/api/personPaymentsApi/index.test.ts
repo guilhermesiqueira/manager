@@ -10,7 +10,7 @@ describe("personPaymentsApi", () => {
     it("expects to send a get request with the correct info: url, params and headers", () => {
       personPaymentsApi.getPersonPaymentsList();
 
-      expect(api.get).toHaveBeenCalledWith("/api/v1/person_payments", {
+      expect(api.get).toHaveBeenCalledWith("/managers/v1/person_payments", {
         params: { params: {} },
       });
     });
@@ -25,7 +25,7 @@ describe("personPaymentsApi", () => {
       personPaymentsApi.getBigDonorsPayments();
 
       expect(api.get).toHaveBeenCalledWith(
-        "/api/v1/person_payments/big_donors",
+        "/managers/v1/person_payments/big_donors",
       );
     });
   });

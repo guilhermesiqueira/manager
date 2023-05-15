@@ -10,7 +10,7 @@ describe("ribonConfigApi", () => {
     it("expects to send a get request with the correct info: url, params and headers", () => {
       ribonConfigApi.getConfig();
 
-      expect(api.get).toHaveBeenCalledWith("/api/v1/configs/settings");
+      expect(api.get).toHaveBeenCalledWith("/managers/v1/configs/settings");
     });
   });
 
@@ -31,7 +31,7 @@ describe("ribonConfigApi", () => {
       ribonConfigApi.updateConfig(id, data);
 
       expect(api.put).toHaveBeenCalledWith(
-        `/api/v1/configs/settings/${id}`,
+        `/managers/v1/configs/settings/${id}`,
         data,
       );
     });

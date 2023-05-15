@@ -10,7 +10,7 @@ describe("usersApi", () => {
     it("expects to send a get request with the correct info: url, params and headers", () => {
       usersApi.postCreateUser("user@ribon.io");
 
-      expect(api.post).toHaveBeenCalledWith("/api/v1/users", {
+      expect(api.post).toHaveBeenCalledWith("/managers/v1/users", {
         email: "user@ribon.io",
       });
     });
@@ -24,7 +24,7 @@ describe("usersApi", () => {
     it("expects to send a get request with the correct info: url, params and headers", () => {
       usersApi.postSearchUser("user@ribon.io");
 
-      expect(api.post).toHaveBeenCalledWith("/api/v1/users/search", {
+      expect(api.post).toHaveBeenCalledWith("/managers/v1/users/search", {
         email: "user@ribon.io",
       });
     });

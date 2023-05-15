@@ -11,7 +11,7 @@ describe("integrationsApi", () => {
     it("expects to send a get request with the correct info: url, params and headers", () => {
       integrationsApi.getIntegrationsList();
 
-      expect(api.get).toHaveBeenCalledWith("/api/v1/integrations");
+      expect(api.get).toHaveBeenCalledWith("/managers/v1/integrations");
     });
   });
 
@@ -28,7 +28,7 @@ describe("integrationsApi", () => {
     it("expects to send a post request with the correct info: url and params", () => {
       integrationsApi.createIntegration(data);
 
-      expect(api.post).toHaveBeenCalledWith("/api/v1/integrations", data);
+      expect(api.post).toHaveBeenCalledWith("/managers/v1/integrations", data);
     });
   });
 
@@ -62,7 +62,10 @@ describe("integrationsApi", () => {
     it("expects to send a put request with the correct info: url and params", () => {
       integrationsApi.updateIntegration(1, data);
 
-      expect(api.put).toHaveBeenCalledWith(`/api/v1/integrations/${id}`, data);
+      expect(api.put).toHaveBeenCalledWith(
+        `/managers/v1/integrations/${id}`,
+        data,
+      );
     });
   });
 });
