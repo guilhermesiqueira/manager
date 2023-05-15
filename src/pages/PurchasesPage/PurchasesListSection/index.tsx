@@ -36,10 +36,19 @@ function PurchasesListSection(): JSX.Element {
     setSelectedStatus({ ...selectedStatus, [value]: !selectedStatus[value] });
   };
 
-  const filterPurchasesByStatus = (nonFilteredPurchases: PersonPayment[]) =>
+  const filterPurchases = (nonFilteredPurchases: PersonPayment[]) =>
     nonFilteredPurchases.filter((purchaseData: PersonPayment) => {
-      if (selectedStatus[purchaseData.status]) return purchaseData;
-      return null;
+      if (searchTerm === "" && selectedStatus[purchaseData.status]) {
+        return true;
+      } else if (
+        purchaseData.payerIdentification
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase()) &&
+        selectedStatus[purchaseData.status]
+      ) {
+        return true;
+      }
+      return false;
     });
 
   const fetchPurchases = useCallback(async () => {
@@ -56,19 +65,23 @@ function PurchasesListSection(): JSX.Element {
   }, [fetchPurchases]);
 
   useEffect(() => {
-    const endOffset = itemOffset + itemsPerPage;
-    const allItems = purchases.slice(itemOffset, endOffset);
+    const filteredPurchases = filterPurchases(purchases);
 
-    setCurrentPurchases(allItems);
-
-    setPageCount(Math.ceil(purchases.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage, purchases, selectedStatus]);
+    setCurrentPurchases(filteredPurchases);
+    setPageCount(Math.ceil(filteredPurchases.length / itemsPerPage));
+    setItemOffset(pageCount - 1);
+  }, [purchases, itemsPerPage, selectedStatus, searchTerm]);
 
   const handlePageClick = (event: any) => {
-    const newOffset = (event.selected * itemsPerPage) % purchases.length;
+    const newOffset = (event.selected * itemsPerPage) % currentPurchases.length;
 
     setItemOffset(newOffset);
   };
+
+  const displayedPurchases = currentPurchases.slice(
+    itemOffset,
+    itemOffset + itemsPerPage,
+  );
 
   return (
     <S.Container>
@@ -106,13 +119,13 @@ function PurchasesListSection(): JSX.Element {
           </tr>
         </thead>
         <PurchaseItems
-          purchases={filterPurchasesByStatus(currentPurchases)}
+          purchases={displayedPurchases}
           fetchPurchases={fetchPurchases}
-          searchTerm={searchTerm}
         />
       </S.Table>
 
       <S.Pagination
+        key={currentPurchases.length}
         breakLabel="..."
         previousLabel={t("list.previous")}
         nextLabel={t("list.next")}
