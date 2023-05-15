@@ -85,6 +85,7 @@ function PurchasesListSection(): JSX.Element {
 
   return (
     <S.Container>
+      <p>{currentPurchases.length} payments</p>
       <S.CheckboxContainer>
         {Object.keys(defaultStatusSelection).map((status: any) => (
           <div key={status}>
