@@ -11,7 +11,7 @@ describe("personPaymentsApi", () => {
       personPaymentsApi.getPersonPaymentsList();
 
       expect(api.get).toHaveBeenCalledWith("/managers/v1/person_payments", {
-        params: { params: {} },
+        params: {},
       });
     });
   });
