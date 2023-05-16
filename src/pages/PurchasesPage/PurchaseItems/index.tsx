@@ -12,11 +12,10 @@ import * as S from "./styles";
 
 type Props = {
   purchases: PersonPayment[];
-  searchTerm: string;
   fetchPurchases: () => void;
 };
 
-function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
+function PurchaseItems({ purchases, fetchPurchases }: Props) {
   const { neutral } = theme.colors;
   const { primary, secondary, tertiary } = theme.colors.brand;
   const { creditCardRefund } = usePayments();
@@ -48,22 +47,6 @@ function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
     setVisible(true);
   };
 
-  function filterPurchases(nonFilteredPurchases: any) {
-    return nonFilteredPurchases.filter((purchaseData: any) => {
-      if (searchTerm === "") {
-        return purchaseData;
-      } else if (
-        purchaseData?.payerIdentification
-          .toLowerCase()
-          .includes(searchTerm.toLowerCase())
-      ) {
-        return purchaseData;
-      } else {
-        return null;
-      }
-    });
-  }
-
   function amountUsdc(purchase: PersonPayment) {
     if (purchase.paymentMethod === "crypto") {
       return purchase.amountCents ? purchase.amountCents / 100 : "-";
@@ -72,53 +55,48 @@ function PurchaseItems({ purchases, fetchPurchases, searchTerm }: Props) {
   }
 
   function renderPurchases() {
-    return (
-      purchases &&
-      filterPurchases(purchases).map((purchase: any) => (
-        <tr key={purchase.id}>
-          <th>{dateFormatter(purchase?.paidDate)}</th>
-          <th>{purchase?.externalId || "-"}</th>
-          <th>{purchase?.paymentMethod}</th>
-          <th>{purchase?.payerIdentification}</th>
-          <th>{purchase?.offer?.price || "-"}</th>
-          <th>{amountUsdc(purchase)}</th>
-          <th>
-            <S.StatusTableCell
-              style={{ color: statusColors[purchase?.status] }}
-            >
-              {purchase?.status}
-            </S.StatusTableCell>
-          </th>
+    return purchases.map((purchase: any) => (
+      <tr key={purchase.id}>
+        <th>{dateFormatter(purchase?.paidDate)}</th>
+        <th>{purchase?.externalId || "-"}</th>
+        <th>{purchase?.paymentMethod}</th>
+        <th>{purchase?.payerIdentification}</th>
+        <th>{purchase?.offer?.price || "-"}</th>
+        <th>{amountUsdc(purchase)}</th>
+        <th>
+          <S.StatusTableCell style={{ color: statusColors[purchase?.status] }}>
+            {purchase?.status}
+          </S.StatusTableCell>
+        </th>
 
-          {purchase.status === "paid" &&
-            purchase.paymentMethod === "credit_card" && (
-              <th>
-                <S.RefundButton
-                  onClick={() => handleOpenModal(purchase.externalId)}
-                >
-                  <Tooltip text={t("tooltipText")} color={neutral[800]}>
-                    <S.RefundIcon src={refundIcon} />
-                  </Tooltip>
-                </S.RefundButton>
+        {purchase.status === "paid" &&
+          purchase.paymentMethod === "credit_card" && (
+            <th>
+              <S.RefundButton
+                onClick={() => handleOpenModal(purchase.externalId)}
+              >
+                <Tooltip text={t("tooltipText")} color={neutral[800]}>
+                  <S.RefundIcon src={refundIcon} />
+                </Tooltip>
+              </S.RefundButton>
 
-                <ModalImage
-                  title={t("title")}
-                  body={t("body")}
-                  visible={visible}
-                  image={refundIcon}
-                  primaryButtonText={t("confirmButton")}
-                  primaryButtonColor={tertiary[400]}
-                  primaryButtonCallback={handleRefund}
-                  secondaryButtonText={t("cancelButton")}
-                  secondaryButtonBorderColor={neutral[500]}
-                  secondaryButtonCallback={() => setVisible(false)}
-                  onClose={() => setVisible(false)}
-                />
-              </th>
-            )}
-        </tr>
-      ))
-    );
+              <ModalImage
+                title={t("title")}
+                body={t("body")}
+                visible={visible}
+                image={refundIcon}
+                primaryButtonText={t("confirmButton")}
+                primaryButtonColor={tertiary[400]}
+                primaryButtonCallback={handleRefund}
+                secondaryButtonText={t("cancelButton")}
+                secondaryButtonBorderColor={neutral[500]}
+                secondaryButtonCallback={() => setVisible(false)}
+                onClose={() => setVisible(false)}
+              />
+            </th>
+          )}
+      </tr>
+    ));
   }
 
   return <tbody>{renderPurchases()}</tbody>;
