@@ -26,6 +26,7 @@ function PurchasesListSection(): JSX.Element {
     keyPrefix: "purchases",
   });
   const [currentPurchases, setCurrentPurchases] = useState<PersonPayment[]>([]);
+  const [currentPage, setCurrentPage] = useState(0);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 10;
@@ -46,6 +47,12 @@ function PurchasesListSection(): JSX.Element {
           .includes(searchTerm.toLowerCase()) &&
         selectedStatus[purchaseData.status]
       ) {
+        if (
+          pageCount < currentPage ||
+          itemOffset > currentPage * itemsPerPage
+        ) {
+          setCurrentPage(0);
+        }
         return true;
       }
       return false;
@@ -69,11 +76,19 @@ function PurchasesListSection(): JSX.Element {
 
     setCurrentPurchases(filteredPurchases);
     setPageCount(Math.ceil(filteredPurchases.length / itemsPerPage));
-    setItemOffset(pageCount - 1);
-  }, [purchases, itemsPerPage, selectedStatus, searchTerm]);
+    setItemOffset(currentPage * itemsPerPage);
+  }, [
+    purchases,
+    itemsPerPage,
+    selectedStatus,
+    searchTerm,
+    currentPage,
+    itemOffset,
+  ]);
 
   const handlePageClick = (event: any) => {
-    const newOffset = (event.selected * itemsPerPage) % currentPurchases.length;
+    setCurrentPage(event.selected);
+    const newOffset = (currentPage * itemsPerPage) % currentPurchases.length;
 
     setItemOffset(newOffset);
   };
@@ -85,7 +100,6 @@ function PurchasesListSection(): JSX.Element {
 
   return (
     <S.Container>
-      <p>{currentPurchases.length} payments</p>
       <S.CheckboxContainer>
         {Object.keys(defaultStatusSelection).map((status: any) => (
           <div key={status}>
