@@ -4,22 +4,9 @@ import BigDonation from "types/entities/BigDonation";
 import PersonPayment from "types/entities/PersonPayment";
 import { apiGet, apiGetWithParams, apiPost } from "..";
 
-type PersonPaymentsParams = {
-  perPage?: number;
-  page?: number;
-};
-
 const personPaymentsApi = {
-  getPersonPaymentsList: ({
-    perPage = 10,
-    page = 3,
-  }: PersonPaymentsParams): Promise<AxiosResponse<PersonPayment[]>> =>
-    apiGetWithParams("person_payments", {
-      params: {
-        per_page: perPage,
-        page,
-      },
-    }),
+  getPersonPaymentsList: (): Promise<AxiosResponse<PersonPayment[]>> =>
+    apiGetWithParams("person_payments", {}),
 
   getBigDonorsPayments: (): Promise<AxiosResponse<PersonPayment[]>> =>
     apiGet("person_payments/big_donors"),

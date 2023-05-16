@@ -8,10 +8,10 @@ describe("personPaymentsApi", () => {
     });
 
     it("expects to send a get request with the correct info: url, params and headers", () => {
-      personPaymentsApi.getPersonPaymentsList({ page: 1, perPage: 10 });
+      personPaymentsApi.getPersonPaymentsList();
 
       expect(api.get).toHaveBeenCalledWith("/managers/v1/person_payments", {
-        params: { params: { page: 1, per_page: 10 } },
+        params: {},
       });
     });
   });
