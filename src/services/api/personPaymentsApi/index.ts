@@ -14,7 +14,7 @@ const personPaymentsApi = {
   createBigDonation: (
     data: CreateBigDonation,
   ): Promise<AxiosResponse<BigDonation>> =>
-    apiPost("manager/payments/cryptocurrency/big_donation", data),
+    apiPost("payments/cryptocurrency/big_donation", data),
 
   getBigDonorPersonPayment: (
     id: string,
