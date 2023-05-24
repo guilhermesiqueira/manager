@@ -1,5 +1,6 @@
 import Axios, { AxiosRequestConfig } from "axios";
 import camelCaseKeys from "camelcase-keys";
+import Cookies from "js-cookie";
 import { normalizedLanguage } from "lib/currentLanguage";
 import snakeCaseKeys from "snakecase-keys";
 import { RIBON_API } from "utils/constants";
@@ -11,6 +12,8 @@ const api = Axios.create({
   baseURL,
   headers: {
     "Content-Type": "application/json",
+    Authorization: `Bearer ${Cookies.get("jwt-token")}`,
+    AccessToken: `${localStorage.get("token")}`,
   },
   validateStatus: (status) => status >= 200 && status < 300,
 });

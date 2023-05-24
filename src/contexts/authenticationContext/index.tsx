@@ -8,6 +8,7 @@ import {
   User,
 } from "firebase/auth";
 import userManagerApi from "services/api/userManagerApi";
+import Cookies from "js-cookie";
 import firebaseApp from "services/firebase";
 import { useNavigate } from "react-router-dom";
 import { TOKEN_KEY } from "utils/constants";
@@ -65,6 +66,9 @@ function AuthenticationProvider({ children }: Props) {
 
         localStorage.setItem(TOKEN_KEY, token);
         setAccessToken(token);
+
+        const jwtToken = await userManagerResponse.headers["jwt-token"];
+        Cookies.set("jwt-token", jwtToken, { expires: 7, path: "/" });
 
         navigate("dashboard");
       } else {

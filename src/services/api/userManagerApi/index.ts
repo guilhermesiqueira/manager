@@ -7,7 +7,7 @@ interface Data {
 
 const userManagerApi = {
   postUserManager: (data: Data, config: any): Promise<AxiosResponse<any>> =>
-    apiPost("manager/auth/request", { data }, config),
+    apiPost("managers/auth/request", { data }, config),
 };
 
 export default userManagerApi;
