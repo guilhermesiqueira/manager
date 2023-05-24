@@ -52,10 +52,10 @@
     "yarn": "^1.22.19"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "testCoverage": "react-scripts test --coverage --watchAll=false",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "testCoverage": "craco test --coverage --watchAll=false",
     "eject": "react-scripts eject",
     "lint": "eslint src/**/*.ts src/**/*.tsx && prettier --check src/**/*.ts src/**/*.tsx",
     "lint:css": "stylelint src/**/styles.ts",
@@ -85,6 +85,7 @@
     "@chakra-ui/storybook-addon": "^4.0.3",
     "@commitlint/cli": "^17.0.3",
     "@commitlint/config-conventional": "^17.0.3",
+    "@craco/craco": "^7.1.0",
     "@storybook/addon-actions": "^6.4.13",
     "@storybook/addon-essentials": "^6.4.13",
     "@storybook/addon-links": "^6.4.13",
@@ -128,7 +129,8 @@
     "stylelint-config-standard-scss": "^3.0.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-custom-processor-loader": "^0.6.0",
-    "stylelint-order": "^5.0.0"
+    "stylelint-order": "^5.0.0",
+    "webpack": "5.74.0"
   },
   "lint-staged": {
     "*.ts": [
@@ -162,5 +164,14 @@
       "!<rootDir>/src/reportWebVitals.ts",
       "!<rootDir>/src/index.tsx"
     ]
+  },
+  "browser": {
+    "crypto": false,
+    "fs": false,
+    "path": false,
+    "os": false,
+    "net": false,
+    "stream": false,
+    "tls": false
   }
 }
