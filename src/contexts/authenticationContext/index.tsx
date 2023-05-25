@@ -61,7 +61,7 @@ function AuthenticationProvider({ children }: Props) {
           },
         );
 
-        const token = await userManagerResponse.headers["access-token"];
+        const token = userManagerResponse.headers["access-token"];
 
         localStorage.setItem(TOKEN_KEY, token);
         setAccessToken(token);
