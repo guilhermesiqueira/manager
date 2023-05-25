@@ -22,4 +22,9 @@ export default interface NonProfit {
   causeId: number;
   nonProfitImpacts?: NonProfitImpact[];
   nonProfitImpactsAttributes?: CreateNonProfitImpacts[];
+  confirmationImage?: any;
+  logoDescription?: string;
+  mainImageDescription?: string;
+  backgroundImageDescription?: string;
+  confirmationImageDescription?: string;
 }

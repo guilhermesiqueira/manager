@@ -88,3 +88,9 @@ export const ItemBox = styled.div`
   display: flex;
   flex-direction: column;
 `;
+
+export const FlexRow = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+`;
