@@ -5,4 +5,5 @@ export default interface Story {
   position?: string;
   description: string;
   image?: any;
+  imageDescription?: string;
 }

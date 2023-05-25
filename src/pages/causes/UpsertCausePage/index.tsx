@@ -171,23 +171,52 @@ function UpsertCausePage({ isEdit }: Props) {
           </S.LeftSection>
 
           <S.RightSection>
-            <S.ItemBox>
-              <InfoName>{t("attributes.mainImage")}</InfoName>
-              <FileUpload
-                onChange={handleMainImageChange}
-                logo={CauseObject().mainImage}
-                value={mainImageFile}
-              />
-            </S.ItemBox>
-
-            <S.ItemBox>
-              <InfoName>{t("attributes.coverImage")}</InfoName>
-              <FileUpload
-                onChange={handleCoverImageChange}
-                logo={CauseObject().coverImage}
-                value={coverImageFile}
-              />
-            </S.ItemBox>
+            <S.FlexRow>
+              <S.ItemBox>
+                <InfoName>{t("attributes.mainImage")}</InfoName>
+                <FileUpload
+                  onChange={handleMainImageChange}
+                  logo={CauseObject().mainImage}
+                  value={mainImageFile}
+                />
+              </S.ItemBox>
+              <S.ItemBox>
+                <InfoName hasTranslation>
+                  {t("attributes.mainImageDescription")}
+                </InfoName>
+                <S.TextInput
+                  {...register("mainImageDescription", {
+                    required: t("upsert.required"),
+                  })}
+                />
+                {formState?.errors.name && formState?.errors.name.type && (
+                  <S.Error>{formState?.errors.name.message}</S.Error>
+                )}
+              </S.ItemBox>
+            </S.FlexRow>
+            <S.FlexRow>
+              <S.ItemBox>
+                <InfoName>{t("attributes.coverImage")}</InfoName>
+                <FileUpload
+                  onChange={handleCoverImageChange}
+                  logo={CauseObject().coverImage}
+                  value={coverImageFile}
+                />
+              </S.ItemBox>
+              <S.ItemBox>
+                <InfoName hasTranslation>
+                  {t("attributes.coverImageDescription")}
+                </InfoName>
+                <S.TextInput
+                  {...register("coverImageDescription", {
+                    required: t("upsert.required"),
+                  })}
+                />
+                {formState?.errors.name && formState?.errors.name.type && (
+                  <S.Error>{formState?.errors.name.message}</S.Error>
+                )}
+              </S.ItemBox>
+            </S.FlexRow>
           </S.RightSection>
         </S.ContentSection>
         <S.ContentSection>

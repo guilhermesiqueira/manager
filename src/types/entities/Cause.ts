@@ -9,4 +9,6 @@ export default interface Cause {
   coverImage?: string;
   mainImage?: string;
   defaultPool?: string;
+  mainImageDescription?: string;
+  coverImageDescription?: string;
 }
