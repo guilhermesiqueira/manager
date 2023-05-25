@@ -3626,10 +3626,10 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha512-Vvn3zZrhQZkkBE8LSuW3em98c0FwgO4nxzv6OdSxPKJIEKY2bGbHn+mhGIPerzI4twdxaP8/0+06HBpwf345Lw==
 
-"@ribon.io/shared@1.0.53":
-  version "1.0.53"
-  resolved "https://registry.yarnpkg.com/@ribon.io/shared/-/shared-1.0.53.tgz#c66c30db3fe2475c5a7a4134417811362512627c"
-  integrity sha512-O8alO+opG3dfH5JkeTBn7FfpABg5TA7+gH1ItFVJmEQ3k+J2flDoyfZC4BPQSi093srXt4UGLcY5vbbhiErCPQ==
+"@ribon.io/shared@1.0.60":
+  version "1.0.60"
+  resolved "https://registry.yarnpkg.com/@ribon.io/shared/-/shared-1.0.60.tgz#e64925f3231fd8a80eb1363548820a1f5563af23"
+  integrity sha512-1/yRkFmriTeQK7hOUUpIhBIK8d1mp9wH8k6ZjX5lQyzpZfbB0LAtvy1UJKruKftSZHowSrxUgS4dzZwsjKgHeQ==
   dependencies:
     "@apollo/client" "^3.6.9"
     "@types/base-64" "^1.0.0"
