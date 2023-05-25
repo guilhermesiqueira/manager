@@ -112,7 +112,9 @@
       "availableToDonation": "Available to donation (USDC)",
       "title": "Causes List",
       "mainImage": "Main image",
-      "coverImage": "Cover image"
+      "coverImage": "Cover image",
+      "mainImageDescription": "Main image description",
+      "coverImageDescription": "Cover image description"
     },
     "list": {
       "title": "Causes List",
