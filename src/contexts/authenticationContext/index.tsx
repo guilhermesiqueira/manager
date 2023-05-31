@@ -10,7 +10,7 @@ import {
 import userManagerApi from "services/api/userManagerApi";
 import firebaseApp from "services/firebase";
 import { useNavigate } from "react-router-dom";
-import { TOKEN_KEY } from "utils/constants";
+import {REFRESH_TOKEN_KEY, TOKEN_KEY} from "utils/constants";
 
 export interface IAuthenticationContext {
   signInManagerWithGoogle: (response: any) => void;
@@ -62,8 +62,10 @@ function AuthenticationProvider({ children }: Props) {
         );
 
         const token = userManagerResponse.headers["access-token"];
+        const refreshToken = userManagerResponse.headers["refresh-token"];
 
         localStorage.setItem(TOKEN_KEY, token);
+        localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);
         setAccessToken(token);
 
         navigate("dashboard");
