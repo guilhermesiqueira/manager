@@ -10,7 +10,7 @@ import {
 import userManagerApi from "services/api/userManagerApi";
 import firebaseApp from "services/firebase";
 import { useNavigate } from "react-router-dom";
-import {REFRESH_TOKEN_KEY, TOKEN_KEY} from "utils/constants";
+import { REFRESH_TOKEN_KEY, TOKEN_KEY } from "utils/constants";
 
 export interface IAuthenticationContext {
   signInManagerWithGoogle: (response: any) => void;
