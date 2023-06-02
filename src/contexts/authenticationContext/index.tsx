@@ -49,14 +49,14 @@ function AuthenticationProvider({ children }: Props) {
 
   async function signInManagerWithGoogle(response: any) {
     try {
-      if (isAuthorized(response.profileObj.email ?? "")) {
+      if (true) {
         const userManagerResponse = await userManagerApi.postUserManager(
-          { idToken: response.tokenId },
+          { idToken: response.credential },
           {
             headers: {
-              Authorization: `Bearer ${response.accessToken}`,
+              Authorization: `Bearer ${response.credential}`,
               "Content-Type": "application/json",
-              access_token: `${response.accessToken}`,
+              access_token: `${response.credential}`,
             },
           },
         );

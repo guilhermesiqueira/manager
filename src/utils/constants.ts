@@ -1,7 +1,7 @@
 export const RIBON_API =
   process.env.REACT_APP_RIBON_API || "https://dapp-dev-api.ribon.io/";
 
-export const TOKEN_KEY = "token";
+export const TOKEN_KEY = "ACCESS_TOKEN_KEY";
 export const REFRESH_TOKEN_KEY = "REFRESH_TOKEN_KEY";
 
 export const RIBON_INTEGRATION_ID = 1;
