@@ -112,7 +112,9 @@
       "availableToDonation": "Disponível para doação (USDC)",
       "title": "Lista de causas",
       "mainImage": "Imagem principal",
-      "coverImage": "Imagem de capa"
+      "coverImage": "Imagem de capa",
+      "mainImageDescription": "Descrição da imagem principal",
+      "coverImageDescription": "Descrição da imagem de capa"
     },
     "list": {
       "title": "Lista de causas",
@@ -221,7 +223,8 @@
       "causeCardImage": "Card da ONG",
       "imageRecommendation": "Tamanho recomendado:`\n`{{ size }}",
       "imagesSection": "Imagens",
-      "availableToDonation": "Disponível para doação (USDC)"
+      "availableToDonation": "Disponível para doação (USDC)",
+      "altText": "Texto alternativo"
     },
     "list": {
       "title": "Lista de Ongs",
@@ -257,6 +260,7 @@
         "status": "Status",
         "save": "Salvar",
         "cancel": "Cancelar",
+        "altText":"Texto alternativo",
         "required": "* Obrigatório",
         "modal": {
           "title": "Are you sure?",
@@ -355,6 +359,7 @@
       "imageInstruction": "Arraste a imagem ou clique para buscar",
       "imageSupports": "Formatos: JPG, PNG",
       "imageRecommendation": "Tamanho recomendado: {{ size }}",
+      "confirmationImage": "Imagem de confirmação",
       "save": "Salvar",
       "cancel": "Cancelar",
       "required": "Este campo é obrigatório",

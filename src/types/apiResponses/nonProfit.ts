@@ -14,4 +14,9 @@ export interface CreateNonProfit {
   storiesAttributes?: CreateStory[];
   nonProfitImpactsAttributes?: CreateNonProfitImpacts[];
   cause?: CreateCause;
+  confirmationImage?: any;
+  logoDescription?: string;
+  mainImageDescription?: string;
+  backgroundImageDescription?: string;
+  confirmationImageDescription?: string;
 }

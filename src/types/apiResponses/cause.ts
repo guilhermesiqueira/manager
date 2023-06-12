@@ -3,4 +3,6 @@ export interface CreateCause {
   name: string;
   mainImage?: any;
   coverImage?: any;
+  mainImageDescription?: string;
+  coverImageDescription?: string;
 }

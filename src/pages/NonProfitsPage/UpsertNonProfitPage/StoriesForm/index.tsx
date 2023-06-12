@@ -102,6 +102,7 @@ function StoriesForm({
                 image: null,
                 active: true,
                 position: fields.length + 1,
+                imageDescription: "Image description",
               })
             }
           >
@@ -136,7 +137,7 @@ function StoriesForm({
                 placeholder={t("description")}
               />
 
-              <InfoName hasTranslation>{t("position")}</InfoName>
+              <InfoName>{t("position")}</InfoName>
               <S.TextInput
                 {...registerStory(`storiesAttributes.${index}.position`)}
                 placeholder={t("position")}
