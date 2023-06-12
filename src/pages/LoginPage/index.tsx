@@ -26,7 +26,8 @@ function LoginPage(): JSX.Element {
   };
 
   const onFailure = () => {
-    console.log("Login failed: ");
+    // eslint-disable-next-line no-alert
+    alert("Login failed. Please try again later");
   };
 
   const loginButton = () => (

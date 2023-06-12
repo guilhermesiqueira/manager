@@ -49,29 +49,22 @@ function AuthenticationProvider({ children }: Props) {
 
   async function signInManagerWithGoogle(response: any) {
     try {
-      if (true) {
-        const userManagerResponse = await userManagerApi.postUserManager(
-          { idToken: response.credential },
-          {
-            headers: {
-              Authorization: `Bearer ${response.credential}`,
-              "Content-Type": "application/json",
-              access_token: `${response.credential}`,
-            },
+      const userManagerResponse = await userManagerApi.postUserManager(
+        { idToken: response.credential },
+        {
+          headers: {
+            Authorization: `Bearer ${response.credential}`,
+            "Content-Type": "application/json",
+            access_token: `${response.credential}`,
           },
-        );
-
-        const token = userManagerResponse.headers["access-token"];
-        const refreshToken = userManagerResponse.headers["refresh-token"];
-
-        localStorage.setItem(TOKEN_KEY, token);
-        localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);
-        setAccessToken(token);
-
-        navigate("dashboard");
-      } else {
-        navigate("/", { state: { incorrectDomain: true } });
-      }
+        },
+      );
+      const token = userManagerResponse.headers["access-token"];
+      const refreshToken = userManagerResponse.headers["refresh-token"];
+      localStorage.setItem(TOKEN_KEY, token);
+      localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);
+      setAccessToken(token);
+      navigate("dashboard");
     } catch (error) {
       navigate("/", { state: { error } });
     }
