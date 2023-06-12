@@ -1,8 +1,30 @@
 import { screen } from "@testing-library/react";
-import { renderComponent } from "config/testUtils";
+import { renderComponent } from "config/testUtils/renders";
 
 import LoginPage from ".";
 
+jest.mock("@react-oauth/google", () => {
+  const defaultMockSuccess = {
+    tokenId: "tokenId",
+  };
+
+  function GoogleLogin({ onSuccess, text }: any) {
+    const handleClick = () => {
+      onSuccess(defaultMockSuccess);
+    };
+
+    return (
+      <button type="button" onClick={handleClick}>
+        {text}
+      </button>
+    );
+  }
+
+  return {
+    ...jest.requireActual("@react-oauth/google"),
+    GoogleLogin,
+  };
+});
 describe("Login", () => {
   it("should render without error", () => {
     renderComponent(<LoginPage />);
@@ -14,7 +36,7 @@ describe("Login", () => {
     const mockFunction = jest.fn(() => ({ Response } as any));
     renderComponent(<LoginPage />, {
       authenticationProviderValue: {
-        signInManagerWithGoogle: mockFunction(),
+        signInManagerWithGoogle: mockFunction,
       },
     });
 
