@@ -48,8 +48,12 @@ function LoginPage(): JSX.Element {
       <S.Title>{t("title")}</S.Title>
 
       {loginButton()}
-      <S.Text>{t("or")}</S.Text>
-      <PasswordLoginSection />
+      {process.env.REACT_APP_NODE_ENV !== "production" && (
+        <>
+          <S.Text>{t("or")}</S.Text>
+          <PasswordLoginSection />
+        </>
+      )}
 
       {!allowed && !!state && (
         <>
