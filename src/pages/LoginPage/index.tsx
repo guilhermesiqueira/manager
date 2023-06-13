@@ -51,7 +51,6 @@ function LoginPage(): JSX.Element {
       <S.Text>{t("or")}</S.Text>
       <PasswordLoginSection />
 
-
       {!allowed && !!state && (
         <>
           <S.TitleError>{t("errorText")}</S.TitleError>
