@@ -11,7 +11,6 @@ function DashboardPage(): JSX.Element {
   return (
     <S.Container>
       <S.Title>{t("title")}</S.Title>
-
       <Flex>
         <TreasureSection />
       </Flex>

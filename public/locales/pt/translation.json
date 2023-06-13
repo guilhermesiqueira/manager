@@ -420,7 +420,8 @@
     "title": "Dapp Manager",
     "buttonText": "Login com o Google",
     "errorText": "O login falhou",
-    "errorDescription": "Certifique-se de que seu email pertence ao domínio @ribon.io"
+    "errorDescription": "Certifique-se de que seu email pertence ao domínio @ribon.io",
+    "or": "ou"
   },
   "commom": {
     "notRegistered": "Não registrado"
