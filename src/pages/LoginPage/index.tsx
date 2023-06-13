@@ -36,6 +36,8 @@ function LoginPage(): JSX.Element {
       onSuccess={onSuccess}
       onError={onFailure}
       state_cookie_domain="single_host_origin"
+      hosted_domain="ribon.io"
+      shape="pill"
     />
   );
 
@@ -45,6 +47,7 @@ function LoginPage(): JSX.Element {
       <S.Title>{t("title")}</S.Title>
 
       {loginButton()}
+
 
       {!allowed && !!state && (
         <>

@@ -1,20 +1,12 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-
-import {
-  getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signOut,
-  User,
-} from "firebase/auth";
+import { User } from "firebase/auth";
 import userManagerApi from "services/api/userManagerApi";
-import firebaseApp from "services/firebase";
 import { useNavigate } from "react-router-dom";
 import { REFRESH_TOKEN_KEY, TOKEN_KEY } from "utils/constants";
 
 export interface IAuthenticationContext {
   signInManagerWithGoogle: (response: any) => void;
-  signInWithFirebase: () => void;
+  signInWithEmailAndPassword: (email: string, password: string) => void;
   accessToken: string | null;
   isAuthorized: (email: string) => boolean;
   user: User | undefined;
@@ -32,7 +24,6 @@ export const AuthenticationContext = createContext<IAuthenticationContext>(
 );
 
 function AuthenticationProvider({ children }: Props) {
-  const firebaseAuth = getAuth(firebaseApp);
   const navigate = useNavigate();
 
   const [user, setUser] = useState<User>();
@@ -70,35 +61,31 @@ function AuthenticationProvider({ children }: Props) {
     }
   }
 
-  const signInWithFirebase = () => {
-    const provider = new GoogleAuthProvider();
-
-    signInWithPopup(firebaseAuth, provider)
-      .then(async (result) => {
-        if (isAuthorized(result.user.email ?? "")) {
-          const token = await result.user.getIdToken();
-          localStorage.setItem(TOKEN_KEY, token);
-          setAccessToken(token);
-          navigate("dashboard");
-        } else {
-          navigate("/", { state: { incorrectDomain: true } });
-        }
-      })
-      .catch((error) => {
-        navigate("/", { state: { error } });
-      });
+  const signInWithEmailAndPassword = async (
+    email: string,
+    password: string,
+  ) => {
+    try {
+      const userManagerResponse = await userManagerApi.postPasswordAuthManager(
+        email,
+        password,
+      );
+      const token = userManagerResponse.headers["access-token"];
+      const refreshToken = userManagerResponse.headers["refresh-token"];
+      localStorage.setItem(TOKEN_KEY, token);
+      localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);
+      setAccessToken(token);
+      navigate("dashboard");
+    } catch (error) {
+      navigate("/", { state: { error } });
+    }
   };
 
   function logout() {
-    signOut(firebaseAuth)
-      .then(() => {
-        localStorage.removeItem(TOKEN_KEY);
-        setUser(undefined);
-      })
-      .catch(() => {})
-      .finally(() => {
-        navigate("/");
-      });
+    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(REFRESH_TOKEN_KEY);
+    setUser(undefined);
+    navigate("/");
   }
 
   useEffect(() => {
@@ -116,7 +103,7 @@ function AuthenticationProvider({ children }: Props) {
       logout,
       accessToken,
       signInManagerWithGoogle,
-      signInWithFirebase,
+      signInWithEmailAndPassword,
     }),
     [user, allowed, accessToken],
   );
