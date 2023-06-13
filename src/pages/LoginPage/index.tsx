@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import RibonIcon from "assets/icons/ribon-icon.svg";
 import { GoogleLogin } from "@react-oauth/google";
+import PasswordLoginSection from "pages/LoginPage/PasswordLoginSection";
 import * as S from "./styles";
 
 function LoginPage(): JSX.Element {
@@ -47,6 +48,8 @@ function LoginPage(): JSX.Element {
       <S.Title>{t("title")}</S.Title>
 
       {loginButton()}
+      <S.Text>{t("or")}</S.Text>
+      <PasswordLoginSection />
 
 
       {!allowed && !!state && (
