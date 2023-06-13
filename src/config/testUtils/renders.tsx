@@ -16,6 +16,7 @@ import {
   renderHook as renderTestingLibraryHook,
   RenderHookResult,
 } from "@testing-library/react-hooks";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 export interface RenderWithContextResult {
   component: RenderResult;
@@ -74,12 +75,16 @@ function renderAllProviders(
         <QueryClientProvider client={queryClient}>
           <I18nextProvider i18n={i18n}>
             <Router location={locationState} navigator={historyObject}>
-              {renderProvider(
-                AuthenticationProvider,
-                AuthenticationContext,
-                authenticationProviderValue,
-                children,
-              )}
+              <GoogleOAuthProvider
+                clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID!}
+              >
+                {renderProvider(
+                  AuthenticationProvider,
+                  AuthenticationContext,
+                  authenticationProviderValue,
+                  children,
+                )}
+              </GoogleOAuthProvider>
             </Router>
           </I18nextProvider>
         </QueryClientProvider>

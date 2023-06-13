@@ -2,7 +2,8 @@ import Axios, { AxiosRequestConfig } from "axios";
 import camelCaseKeys from "camelcase-keys";
 import { normalizedLanguage } from "lib/currentLanguage";
 import snakeCaseKeys from "snakecase-keys";
-import { RIBON_API } from "utils/constants";
+import { REFRESH_TOKEN_KEY, RIBON_API, TOKEN_KEY } from "utils/constants";
+import userManagerApi from "services/api/userManagerApi";
 
 export const baseURL = RIBON_API;
 export const API_SCOPE = "/managers/v1";
@@ -21,17 +22,48 @@ api.interceptors.request.use((request) =>
     : request,
 );
 
+async function requestNewToken() {
+  try {
+    const refreshToken = localStorage.getItem(REFRESH_TOKEN_KEY);
+    if (!refreshToken) return null;
+
+    const res = await userManagerApi.postRefreshToken(refreshToken);
+    const newToken = res.headers["access-token"];
+    const newRefreshToken = res.headers["refresh-token"];
+
+    localStorage.setItem(TOKEN_KEY, newToken);
+    localStorage.setItem(REFRESH_TOKEN_KEY, newRefreshToken);
+
+    return newToken;
+  } catch (err) {
+    return null;
+  }
+}
 api.interceptors.response.use(
   (response) => ({
     ...response,
     data: camelCaseKeys(response.data, { deep: true }),
   }),
-  (error) => Promise.reject(error),
+  async (error) => {
+    const originalRequest = error.config;
+    // eslint-disable-next-line no-underscore-dangle
+    if (error.response.status === 403 && !originalRequest._retry) {
+      // eslint-disable-next-line no-underscore-dangle
+      originalRequest._retry = true;
+      const newToken = await requestNewToken();
+      originalRequest.headers.Authorization = `Bearer ${newToken}`;
+      return api(originalRequest);
+    }
+    return Promise.reject(error);
+  },
 );
 
 api.interceptors.request.use((config) => {
   const lang = normalizedLanguage();
-  const authHeaders = { Language: lang };
+  const authHeaders = {
+    Language: lang,
+    Authorization: `Bearer ${localStorage.getItem(TOKEN_KEY)}`,
+  };
   // eslint-disable-next-line no-param-reassign
   config.headers = { ...authHeaders, ...config.headers };
 

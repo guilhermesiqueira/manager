@@ -3,14 +3,12 @@ import { useAuthentication } from "contexts/authenticationContext";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import RibonIcon from "assets/icons/ribon-icon.svg";
-import { GoogleLogin } from "react-google-login";
-import { Button } from "@chakra-ui/react";
-import { GoogleIcon } from "assets/icons/googleIcon";
+import { GoogleLogin } from "@react-oauth/google";
+import PasswordLoginSection from "pages/LoginPage/PasswordLoginSection";
 import * as S from "./styles";
 
 function LoginPage(): JSX.Element {
-  const { allowed, accessToken, signInManagerWithGoogle, signInWithFirebase } =
-    useAuthentication();
+  const { allowed, accessToken, signInManagerWithGoogle } = useAuthentication();
 
   const navigate = useNavigate();
   const { state } = useLocation();
@@ -28,25 +26,21 @@ function LoginPage(): JSX.Element {
     signInManagerWithGoogle(response);
   };
 
-  const loginButton = () => {
-    if (process.env.REACT_APP_NODE_ENV === "production") {
-      return (
-        <GoogleLogin
-          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID!}
-          buttonText={t("buttonText")}
-          onSuccess={onSuccess}
-          cookiePolicy="single_host_origin"
-          isSignedIn
-        />
-      );
-    } else {
-      return (
-        <Button leftIcon={<GoogleIcon />} onClick={signInWithFirebase}>
-          {t("buttonText")}
-        </Button>
-      );
-    }
+  const onFailure = () => {
+    // eslint-disable-next-line no-alert
+    alert("Login failed. Please try again later");
   };
+
+  const loginButton = () => (
+    <GoogleLogin
+      text={t("buttonText")}
+      onSuccess={onSuccess}
+      onError={onFailure}
+      state_cookie_domain="single_host_origin"
+      hosted_domain="ribon.io"
+      shape="pill"
+    />
+  );
 
   return (
     <S.Container>
@@ -54,6 +48,12 @@ function LoginPage(): JSX.Element {
       <S.Title>{t("title")}</S.Title>
 
       {loginButton()}
+      {process.env.REACT_APP_NODE_ENV !== "production" && (
+        <>
+          <S.Text>{t("or")}</S.Text>
+          <PasswordLoginSection />
+        </>
+      )}
 
       {!allowed && !!state && (
         <>
