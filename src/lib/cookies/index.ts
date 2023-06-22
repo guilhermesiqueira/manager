@@ -1,23 +1,21 @@
-import Cookies from "js-cookie";
+import Cookies from "universal-cookie";
 
-const isHttpsEnv = process.env.NODE_ENV !== "development";
+export const cookies = new Cookies();
 
 export function setCookiesItem(key: string, value: string): void {
-  Cookies.set(key, value, {
+  cookies.set(key, value, {
     secure: true,
     sameSite: "strict",
-    httpOnly: isHttpsEnv,
   });
 }
 
 export function getCookiesItem(key: string): string | null {
-  return Cookies.get(key) || null;
+  return cookies.get(key) || null;
 }
 
 export function removeCookiesItem(key: string) {
-  Cookies.remove(key, {
+  cookies.remove(key, {
     secure: true,
     sameSite: "strict",
-    httpOnly: isHttpsEnv,
   });
 }
