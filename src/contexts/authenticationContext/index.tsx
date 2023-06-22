@@ -3,6 +3,7 @@ import { User } from "firebase/auth";
 import userManagerApi from "services/api/userManagerApi";
 import { useNavigate } from "react-router-dom";
 import { REFRESH_TOKEN_KEY, TOKEN_KEY } from "utils/constants";
+import { getCookiesItem, removeCookiesItem, setCookiesItem } from "lib/cookies";
 
 export interface IAuthenticationContext {
   signInManagerWithGoogle: (response: any) => void;
@@ -27,9 +28,7 @@ function AuthenticationProvider({ children }: Props) {
   const navigate = useNavigate();
 
   const [user, setUser] = useState<User>();
-  const [accessToken, setAccessToken] = useState(
-    localStorage.getItem(TOKEN_KEY),
-  );
+  const [accessToken, setAccessToken] = useState(getCookiesItem(TOKEN_KEY));
 
   function isAuthorized(email: string) {
     if (!email) return false;
@@ -52,8 +51,8 @@ function AuthenticationProvider({ children }: Props) {
       );
       const token = userManagerResponse.headers["access-token"];
       const refreshToken = userManagerResponse.headers["refresh-token"];
-      localStorage.setItem(TOKEN_KEY, token);
-      localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);
+      setCookiesItem(TOKEN_KEY, token);
+      setCookiesItem(REFRESH_TOKEN_KEY, refreshToken);
       setAccessToken(token);
       navigate("dashboard");
     } catch (error) {
@@ -72,8 +71,8 @@ function AuthenticationProvider({ children }: Props) {
       );
       const token = userManagerResponse.headers["access-token"];
       const refreshToken = userManagerResponse.headers["refresh-token"];
-      localStorage.setItem(TOKEN_KEY, token);
-      localStorage.setItem(REFRESH_TOKEN_KEY, refreshToken);
+      setCookiesItem(TOKEN_KEY, token);
+      setCookiesItem(REFRESH_TOKEN_KEY, refreshToken);
       setAccessToken(token);
       navigate("dashboard");
     } catch (error) {
@@ -82,8 +81,8 @@ function AuthenticationProvider({ children }: Props) {
   };
 
   function logout() {
-    localStorage.removeItem(TOKEN_KEY);
-    localStorage.removeItem(REFRESH_TOKEN_KEY);
+    removeCookiesItem(TOKEN_KEY);
+    removeCookiesItem(REFRESH_TOKEN_KEY);
     setUser(undefined);
     navigate("/");
   }
