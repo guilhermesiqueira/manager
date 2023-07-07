@@ -45,7 +45,7 @@ function CreateBigDonationPage() {
 
   const { tokenDecimals } = useTokenDecimals();
   const [currentPool, setCurrentPool] = useState(
-    currentNetwork.defaultPoolAddress,
+    currentNetwork?.defaultPoolAddress,
   );
 
   const { createBigDonation } = usePersonPayments();
@@ -109,18 +109,18 @@ function CreateBigDonationPage() {
   };
 
   const contract = useContract({
-    address: currentNetwork.ribonContractAddress,
+    address: currentNetwork?.ribonContractAddress,
     ABI: RibonAbi.abi,
   });
   const donationTokenContract = useContract({
-    address: currentNetwork.donationTokenContractAddress,
+    address: currentNetwork?.donationTokenContractAddress,
     ABI: DonationTokenAbi.abi,
   });
   const { wallet } = useWalletContext();
 
   const approveAmount = async () =>
     donationTokenContract?.functions.approve(
-      currentNetwork.ribonContractAddress,
+      currentNetwork?.ribonContractAddress,
       formatToDecimals(BigDonationObject().amount, tokenDecimals).toString(),
       {
         from: wallet,
