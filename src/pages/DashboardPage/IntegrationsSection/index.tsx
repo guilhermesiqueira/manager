@@ -24,7 +24,7 @@ function IntegrationsSection(): JSX.Element {
   );
 
   const contract = useContract({
-    address: currentNetwork.ribonContractAddress,
+    address: currentNetwork?.ribonContractAddress,
     ABI: RibonAbi.abi,
   });
 

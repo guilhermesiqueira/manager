@@ -17,6 +17,14 @@ import {
   RenderHookResult,
 } from "@testing-library/react-hooks";
 import { GoogleOAuthProvider } from "@react-oauth/google";
+import WalletProvider, {
+  IWalletContext,
+  WalletContext,
+} from "contexts/walletContext";
+import NetworkProvider, {
+  INetworkContext,
+  NetworkContext,
+} from "contexts/networkContext";
 
 export interface RenderWithContextResult {
   component: RenderResult;
@@ -27,6 +35,8 @@ export type RenderComponentProps = {
   history?: MemoryHistory;
   authenticationProviderValue?: Partial<IAuthenticationContext>;
   locationState?: Record<any, any>;
+  networkProviderValue?: Partial<INetworkContext>;
+  walletProviderValue?: Partial<IWalletContext>;
 };
 
 function renderProvider(
@@ -60,6 +70,8 @@ function renderAllProviders(
     history = createMemoryHistory(),
     authenticationProviderValue = {},
     locationState = {},
+    networkProviderValue = {},
+    walletProviderValue = {},
   }: RenderComponentProps = {},
 ) {
   const queryClient = new QueryClient();
@@ -82,7 +94,17 @@ function renderAllProviders(
                   AuthenticationProvider,
                   AuthenticationContext,
                   authenticationProviderValue,
-                  children,
+                  renderProvider(
+                    WalletProvider,
+                    WalletContext,
+                    walletProviderValue,
+                    renderProvider(
+                      NetworkProvider,
+                      NetworkContext,
+                      networkProviderValue,
+                      children,
+                    ),
+                  ),
                 )}
               </GoogleOAuthProvider>
             </Router>

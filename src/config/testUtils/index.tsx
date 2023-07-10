@@ -92,17 +92,17 @@ function renderAllProviders(
           <I18nextProvider i18n={i18n}>
             <Router location={locationState} navigator={historyObject}>
               {renderProvider(
-                WalletProvider,
-                WalletContext,
-                walletProviderValue,
+                AuthenticationProvider,
+                AuthenticationContext,
+                authenticationProviderValue,
                 renderProvider(
                   NetworkProvider,
                   NetworkContext,
                   networkProviderValue,
                   renderProvider(
-                    AuthenticationProvider,
-                    AuthenticationContext,
-                    authenticationProviderValue,
+                    WalletProvider,
+                    WalletContext,
+                    walletProviderValue,
                     children,
                   ),
                 ),
