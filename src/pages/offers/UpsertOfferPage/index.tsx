@@ -193,7 +193,7 @@ function UpsertOfferPage({ isEdit }: Props) {
                 values={[Gateways.stripe, Gateways.stripe_global]}
                 name="currency"
                 onOptionChanged={(value) =>
-                  setValue("gateway", value.toLowerCase())
+                  setValue("gateway", value.toLowerCase().replace(" ", "_"))
                 }
                 defaultValue={Gateways.stripe}
                 containerId="gateway-dropdown"
