@@ -190,7 +190,7 @@ function UpsertOfferPage({ isEdit }: Props) {
                 {t("attributes.gateway")}
               </S.SubtitleDescription>
               <S.SelectInput
-                values={[Gateways.stripe]}
+                values={[Gateways.stripe, Gateways.stripe_global]}
                 name="currency"
                 onOptionChanged={(value) =>
                   setValue("gateway", value.toLowerCase())
