@@ -23,7 +23,7 @@ function WalletCard(): JSX.Element {
 
   const fetchBalance = useCallback(async () => {
     try {
-      const walletAddress = currentNetwork.defaultIntegrationHolding;
+      const walletAddress = currentNetwork?.defaultIntegrationHolding;
       if (walletAddress) {
         const chainIntegration = await getIntegration(walletAddress);
         setIntegrationBalance(
