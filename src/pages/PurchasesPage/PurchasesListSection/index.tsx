@@ -6,6 +6,7 @@ import PersonPayment from "types/entities/PersonPayment";
 import PurchaseItems from "../PurchaseItems";
 import * as S from "./styles";
 
+
 interface StatusObject {
   [key: string]: boolean;
 }
@@ -21,8 +22,7 @@ function PurchasesListSection(): JSX.Element {
   const [selectedStatus, setSelectedStatus] = useState<StatusObject>(
     defaultStatusSelection,
   );
-  const { getPersonPayments, updatePage, updateSearchTerm } =
-    usePersonPayments();
+  const { getPersonPayments, updatePage, updateSearchTerm, searchTerm, setSearchTerm } = usePersonPayments();
   const { t } = useTranslation("translation", {
     keyPrefix: "purchases",
   });
@@ -31,8 +31,7 @@ function PurchasesListSection(): JSX.Element {
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 10;
-  const [searchTerm, setSearchTerm] = useState("");
-
+  
   const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setSelectedStatus({ ...selectedStatus, [value]: !selectedStatus[value] });
@@ -62,7 +61,7 @@ function PurchasesListSection(): JSX.Element {
   const fetchPurchases = useCallback(async () => {
     try {
       const allPurchases = await getPersonPayments();
-      setPurchases(allPurchases);
+      setPurchases(allPurchases); 
     } catch (e) {
       logError(e);
     }
@@ -91,7 +90,7 @@ function PurchasesListSection(): JSX.Element {
   const handlePageClick = (event: any) => {
     setCurrentPage(event.selected);
     updatePage(event.selected + 1);
-
+    
     const newOffset = (currentPage * itemsPerPage) % currentPurchases.length;
 
     setItemOffset(newOffset);
@@ -115,19 +114,18 @@ function PurchasesListSection(): JSX.Element {
       </S.CheckboxContainer>
 
       <S.SearchContainer>
-        <S.SearchBar
-          placeholder={t("list.search")}
-          onChange={(event) => {
-            setSearchTerm(event.target.value);
-          }}
-        />
-        <S.Button
-          text={t("list.searchButton")}
-          onClick={() => {
-            updateSearchTerm(searchTerm);
-            fetchPurchases();
-          }}
-        />
+      <S.SearchBar
+        placeholder={t("list.search")}
+        onChange={(event) => {
+          setSearchTerm(event.target.value);
+        }}
+        
+      />
+      
+      <S.Button
+        text={t("list.searchButton")}
+        onClick={() => {updateSearchTerm(searchTerm); fetchPurchases()}}
+      />
       </S.SearchContainer>
 
       <S.Table>
@@ -142,7 +140,10 @@ function PurchasesListSection(): JSX.Element {
             <th>{t("attributes.status")}</th>
           </tr>
         </thead>
-        <PurchaseItems purchases={purchases} fetchPurchases={fetchPurchases} />
+        <PurchaseItems
+          purchases={purchases}
+          fetchPurchases={fetchPurchases}
+        />
       </S.Table>
 
       <S.Pagination

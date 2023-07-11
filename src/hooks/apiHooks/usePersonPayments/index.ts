@@ -50,6 +50,8 @@ function usePersonPayments() {
 
   return {
     incrementPage,
+    searchTerm,
+    setSearchTerm,
     updateSearchTerm,
     updatePage,
     setPerPage,
