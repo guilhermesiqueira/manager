@@ -7,7 +7,7 @@ import { CreateBigDonation } from "types/apiResponses/BigDonation";
 
 function usePersonPayments() {
  
-  const [perPage, setPerPage] = useState(10);
+  
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [status, setStatus] = useState<string[]>([]);
@@ -17,7 +17,7 @@ function usePersonPayments() {
       await personPaymentsApi.getPersonPaymentsList({page, perPage: 10, searchTerm, status});
       
     return allPersonPayments;
-  }, [page, perPage, searchTerm, status]);
+  }, [page, searchTerm, status]);
 
 
   function updatePage(newPage: number) {
@@ -56,7 +56,6 @@ function usePersonPayments() {
     setSearchTerm,
     updateSearchTerm,
     updatePage,
-    setPerPage,
     getPersonPayments,
     getBigDonorsPayments,
     createBigDonation,
