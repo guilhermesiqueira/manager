@@ -1,23 +1,24 @@
+
 import { useCallback, useState } from "react";
 import personPaymentsApi from "services/api/personPaymentsApi";
 import { CreateBigDonation } from "types/apiResponses/BigDonation";
+
+
 
 function usePersonPayments() {
  
   const [perPage, setPerPage] = useState(10);
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const [status, setStatus] = useState<string[]>([]);
   const getPersonPayments = useCallback(async () => {
     
     const { data: allPersonPayments } =
-      await personPaymentsApi.getPersonPaymentsList({page, perPage: 10, searchTerm});
+      await personPaymentsApi.getPersonPaymentsList({page, perPage: 10, searchTerm, status});
       
     return allPersonPayments;
-  }, [page, perPage, setPage, searchTerm]);
+  }, [page, perPage, setPage, searchTerm, status]);
 
-  function incrementPage() {
-    setPage((oldPage) => oldPage + 1);
-  }
 
   function updatePage(newPage: number) {
     setPage(newPage);
@@ -49,7 +50,8 @@ function usePersonPayments() {
   }
 
   return {
-    incrementPage,
+    status,
+    setStatus,
     searchTerm,
     setSearchTerm,
     updateSearchTerm,
