@@ -17,7 +17,7 @@ function usePersonPayments() {
       await personPaymentsApi.getPersonPaymentsList({page, perPage: 10, searchTerm, status});
       
     return allPersonPayments;
-  }, [page, perPage, setPage, searchTerm, status]);
+  }, [page, perPage, searchTerm, status]);
 
 
   function updatePage(newPage: number) {
@@ -57,7 +57,6 @@ function usePersonPayments() {
     updateSearchTerm,
     updatePage,
     setPerPage,
-    setPage,
     getPersonPayments,
     getBigDonorsPayments,
     createBigDonation,
