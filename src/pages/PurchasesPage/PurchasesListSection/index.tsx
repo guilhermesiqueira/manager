@@ -22,7 +22,7 @@ function PurchasesListSection(): JSX.Element {
   const [selectedStatus, setSelectedStatus] = useState<StatusObject>(
     defaultStatusSelection,
   );
-  const { getPersonPayments, updatePage, updateSearchTerm, searchTerm, setSearchTerm } = usePersonPayments();
+  const { getPersonPayments, updatePage, updateSearchTerm, searchTerm, setSearchTerm, status, setStatus } = usePersonPayments();
   const { t } = useTranslation("translation", {
     keyPrefix: "purchases",
   });
@@ -34,34 +34,19 @@ function PurchasesListSection(): JSX.Element {
   
   const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
-    setSelectedStatus({ ...selectedStatus, [value]: !selectedStatus[value] });
-  };
+    setSelectedStatus({ ...selectedStatus, [value]: !selectedStatus[value] });};
 
-  const filterPurchases = (nonFilteredPurchases: PersonPayment[]) =>
-    nonFilteredPurchases.filter((purchaseData: PersonPayment) => {
-      if (searchTerm === "" && selectedStatus[purchaseData.status]) {
-        return true;
-      } else if (
-        purchaseData.payerIdentification
-          .toLowerCase()
-          .includes(searchTerm.toLowerCase()) &&
-        selectedStatus[purchaseData.status]
-      ) {
-        if (
-          pageCount < currentPage ||
-          itemOffset > currentPage * itemsPerPage
-        ) {
-          setCurrentPage(0);
-        }
-        return true;
-      }
-      return false;
-    });
+  useEffect(() => {
+    const selectedStatusKeys = Object.keys(selectedStatus).filter(
+      (statusKey) => selectedStatus[statusKey],
+    );
+    setStatus(selectedStatusKeys);
+  }, [selectedStatus, setStatus]);
 
   const fetchPurchases = useCallback(async () => {
     try {
       const allPurchases = await getPersonPayments();
-      setPurchases(allPurchases); 
+      setPurchases(allPurchases);
     } catch (e) {
       logError(e);
     }
@@ -69,11 +54,10 @@ function PurchasesListSection(): JSX.Element {
 
   useEffect(() => {
     fetchPurchases();
-  }, [currentPage]);
+  }, [currentPage, status]);
 
   useEffect(() => {
-    const filteredPurchases = filterPurchases(purchases);
-    setCurrentPurchases(filteredPurchases);
+    setCurrentPurchases(purchases);
     if (purchases.length > 0 && purchases[0].totalPages) {
       setPageCount(purchases[0].totalPages);
     }
@@ -84,7 +68,7 @@ function PurchasesListSection(): JSX.Element {
     selectedStatus,
     searchTerm,
     currentPage,
-    itemOffset,
+    itemOffset
   ]);
 
   const handlePageClick = (event: any) => {
@@ -99,16 +83,16 @@ function PurchasesListSection(): JSX.Element {
   return (
     <S.Container>
       <S.CheckboxContainer>
-        {Object.keys(defaultStatusSelection).map((status: any) => (
-          <div key={status}>
+        {Object.keys(defaultStatusSelection).map((statusKey) => (
+          <div key={statusKey}>
             <S.Checkbox
               name="status"
               type="checkbox"
-              value={status}
+              value={statusKey}
               onChange={handleStatusChange}
-              checked={selectedStatus[status]}
+              checked={selectedStatus[statusKey]}
             />
-            <S.Span>{t(`attributes.${status}`)}</S.Span>
+            <S.Span>{t(`attributes.${statusKey}`)}</S.Span>
           </div>
         ))}
       </S.CheckboxContainer>
