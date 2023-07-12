@@ -8,15 +8,17 @@ type PersonPaymentsParams = {
   perPage?: number;
   page?: number;
   searchTerm?: string;
+  status?: string[];
 };
 
 const personPaymentsApi = {
   getPersonPaymentsList: ({
     page = 1,
     perPage = 10,
-    searchTerm = "" }: PersonPaymentsParams): Promise<AxiosResponse<PersonPayment[]>> =>
+    searchTerm = "",
+    status = [] }: PersonPaymentsParams): Promise<AxiosResponse<PersonPayment[]>> =>
     apiGetWithParams("person_payments", { 
-      params: { per_page: perPage, page, search_term: searchTerm }, }),
+      params: { per_page: perPage, page, search_term: searchTerm, status }, }),
 
   getBigDonorsPayments: (): Promise<AxiosResponse<PersonPayment[]>> =>
     apiGet("person_payments/big_donors"),
