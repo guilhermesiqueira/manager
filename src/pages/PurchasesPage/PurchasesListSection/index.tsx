@@ -80,10 +80,11 @@ function PurchasesListSection(): JSX.Element {
   ]);
 
   const handlePageClick = (event: any) => {
-    setCurrentPage(event.selected);
-    updatePage(event.selected + 1);
+    const newPage = event.selected;
+    setCurrentPage(newPage);
+    updatePage(newPage + 1);
 
-    const newOffset = (currentPage * itemsPerPage) % currentPurchases.length;
+    const newOffset = (newPage * itemsPerPage) % currentPurchases.length;
 
     setItemOffset(newOffset);
   };
@@ -139,6 +140,7 @@ function PurchasesListSection(): JSX.Element {
 
       <S.Pagination
         key={currentPurchases.length}
+        forcePage={currentPage}
         breakLabel="..."
         previousLabel={t("list.previous")}
         nextLabel={t("list.next")}
