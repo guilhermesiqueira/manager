@@ -118,6 +118,8 @@ function PurchasesListSection(): JSX.Element {
           text={t("list.searchButton")}
           onClick={() => {
             updateSearchTerm(searchTerm);
+            updatePage(1);
+            setCurrentPage(0);
             fetchPurchases();
           }}
         />
