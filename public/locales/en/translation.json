@@ -92,6 +92,7 @@
     "list": {
       "title": "Purchases List",
       "search": "Search by user identification...",
+      "searchButton": "Search",
       "next": "next >",
       "previous": "< previous",
       "refundModal": {
