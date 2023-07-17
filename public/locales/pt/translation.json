@@ -92,6 +92,7 @@
     "list": {
       "title": "Lista de Pagamentos",
       "search": "Procurar por identificação do usuário...",
+      "searchButton": "Buscar",
       "next": "próximo >",
       "previous": "< anterior",
       "refundModal": {

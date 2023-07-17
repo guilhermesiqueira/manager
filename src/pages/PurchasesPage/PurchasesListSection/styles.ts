@@ -1,3 +1,4 @@
+import ButtonSecondary from "components/atomics/Buttons/ButtonSecondary";
 import ReactPaginate from "react-paginate";
 import styled from "styled-components";
 
@@ -120,3 +121,14 @@ export const Span = styled.span`
     text-transform: uppercase;
   }
 `;
+
+export const Button = styled(ButtonSecondary)`
+`
+;
+
+export const SearchContainer = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: ${({ theme }) => theme.spacing(8)};
+  `;

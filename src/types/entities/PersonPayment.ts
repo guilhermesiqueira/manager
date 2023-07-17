@@ -21,4 +21,5 @@ export default interface PersonPayment {
   blockchainStatus?: string;
   transactionHash?: string;
   cause?: Cause;
+  totalPages?: number;
 }

@@ -21,7 +21,15 @@ function PurchasesListSection(): JSX.Element {
   const [selectedStatus, setSelectedStatus] = useState<StatusObject>(
     defaultStatusSelection,
   );
-  const { getPersonPayments } = usePersonPayments();
+  const {
+    getPersonPayments,
+    updatePage,
+    updateSearchTerm,
+    searchTerm,
+    setSearchTerm,
+    status,
+    setStatus,
+  } = usePersonPayments();
   const { t } = useTranslation("translation", {
     keyPrefix: "purchases",
   });
@@ -30,33 +38,20 @@ function PurchasesListSection(): JSX.Element {
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 10;
-  const [searchTerm, setSearchTerm] = useState("");
 
   const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setSelectedStatus({ ...selectedStatus, [value]: !selectedStatus[value] });
   };
 
-  const filterPurchases = (nonFilteredPurchases: PersonPayment[]) =>
-    nonFilteredPurchases.filter((purchaseData: PersonPayment) => {
-      if (searchTerm === "" && selectedStatus[purchaseData.status]) {
-        return true;
-      } else if (
-        purchaseData.payerIdentification
-          .toLowerCase()
-          .includes(searchTerm.toLowerCase()) &&
-        selectedStatus[purchaseData.status]
-      ) {
-        if (
-          pageCount < currentPage ||
-          itemOffset > currentPage * itemsPerPage
-        ) {
-          setCurrentPage(0);
-        }
-        return true;
-      }
-      return false;
-    });
+  useEffect(() => {
+    const selectedStatusKeys = Object.keys(selectedStatus).filter(
+      (statusKey) => selectedStatus[statusKey],
+    );
+    setStatus(selectedStatusKeys);
+    setCurrentPage(0);
+    updatePage(1);
+  }, [selectedStatus, setStatus]);
 
   const fetchPurchases = useCallback(async () => {
     try {
@@ -65,17 +60,17 @@ function PurchasesListSection(): JSX.Element {
     } catch (e) {
       logError(e);
     }
-  }, [setPurchases]);
+  }, [setPurchases, updatePage]);
 
   useEffect(() => {
     fetchPurchases();
-  }, [fetchPurchases]);
+  }, [currentPage, status]);
 
   useEffect(() => {
-    const filteredPurchases = filterPurchases(purchases);
-
-    setCurrentPurchases(filteredPurchases);
-    setPageCount(Math.ceil(filteredPurchases.length / itemsPerPage));
+    setCurrentPurchases(purchases);
+    if (purchases.length > 0 && purchases[0].totalPages) {
+      setPageCount(purchases[0].totalPages);
+    }
     setItemOffset(currentPage * itemsPerPage);
   }, [
     purchases,
@@ -87,39 +82,50 @@ function PurchasesListSection(): JSX.Element {
   ]);
 
   const handlePageClick = (event: any) => {
-    setCurrentPage(event.selected);
-    const newOffset = (currentPage * itemsPerPage) % currentPurchases.length;
+    const newPage = event.selected;
+    setCurrentPage(newPage);
+    updatePage(newPage + 1);
+
+    const newOffset = (newPage * itemsPerPage) % currentPurchases.length;
 
     setItemOffset(newOffset);
   };
 
-  const displayedPurchases = currentPurchases.slice(
-    itemOffset,
-    itemOffset + itemsPerPage,
-  );
-
   return (
     <S.Container>
       <S.CheckboxContainer>
-        {Object.keys(defaultStatusSelection).map((status: any) => (
-          <div key={status}>
+        {Object.keys(defaultStatusSelection).map((statusKey) => (
+          <div key={statusKey}>
             <S.Checkbox
               name="status"
               type="checkbox"
-              value={status}
+              value={statusKey}
               onChange={handleStatusChange}
-              checked={selectedStatus[status]}
+              checked={selectedStatus[statusKey]}
             />
-            <S.Span>{t(`attributes.${status}`)}</S.Span>
+            <S.Span>{t(`attributes.${statusKey}`)}</S.Span>
           </div>
         ))}
       </S.CheckboxContainer>
-      <S.SearchBar
-        placeholder={t("list.search")}
-        onChange={(event) => {
-          setSearchTerm(event.target.value);
-        }}
-      />
+
+      <S.SearchContainer>
+        <S.SearchBar
+          placeholder={t("list.search")}
+          onChange={(event) => {
+            setSearchTerm(event.target.value);
+          }}
+        />
+
+        <S.Button
+          text={t("list.searchButton")}
+          onClick={() => {
+            updateSearchTerm(searchTerm);
+            updatePage(1);
+            setCurrentPage(0);
+            fetchPurchases();
+          }}
+        />
+      </S.SearchContainer>
 
       <S.Table>
         <thead>
@@ -133,19 +139,17 @@ function PurchasesListSection(): JSX.Element {
             <th>{t("attributes.status")}</th>
           </tr>
         </thead>
-        <PurchaseItems
-          purchases={displayedPurchases}
-          fetchPurchases={fetchPurchases}
-        />
+        <PurchaseItems purchases={purchases} fetchPurchases={fetchPurchases} />
       </S.Table>
 
       <S.Pagination
         key={currentPurchases.length}
+        forcePage={currentPage}
         breakLabel="..."
         previousLabel={t("list.previous")}
         nextLabel={t("list.next")}
         onPageChange={handlePageClick}
-        pageRangeDisplayed={10}
+        pageRangeDisplayed={5}
         pageCount={pageCount}
       />
     </S.Container>
