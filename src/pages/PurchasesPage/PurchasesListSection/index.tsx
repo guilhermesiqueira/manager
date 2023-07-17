@@ -49,6 +49,8 @@ function PurchasesListSection(): JSX.Element {
       (statusKey) => selectedStatus[statusKey],
     );
     setStatus(selectedStatusKeys);
+    setCurrentPage(0);
+    updatePage(1);
   }, [selectedStatus, setStatus]);
 
   const fetchPurchases = useCallback(async () => {
