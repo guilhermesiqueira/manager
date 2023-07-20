@@ -132,6 +132,9 @@ function UpsertNonProfitPage({ isEdit }: Props) {
       if (NonProfitObject().mainImage?.includes("http")) {
         delete nonProfit.mainImage;
       }
+      if (NonProfitObject().confirmationImage?.includes("http")) {
+        delete nonProfit.confirmationImage;
+      }
       return nonProfit;
     }
 
