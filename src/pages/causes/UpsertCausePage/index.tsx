@@ -29,6 +29,7 @@ function UpsertCausePage({ isEdit }: Props) {
   const mode = isEdit ? "edit" : "create";
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [activeCheckbox, setActiveCheckbox] = useState(true);
   const { neutral } = theme.colors;
   const { tertiary } = theme.colors.brand;
   const navigate = useNavigate();
@@ -49,6 +50,7 @@ function UpsertCausePage({ isEdit }: Props) {
     try {
       const cause = await getCause(id);
       reset(cause);
+      setActiveCheckbox(cause.active);
     } catch (e) {
       logError(e);
     }
@@ -112,6 +114,7 @@ function UpsertCausePage({ isEdit }: Props) {
     } else {
       const newCause: CreateCause = {
         name: "New Cause",
+        active: true,
       };
       reset(newCause);
     }
@@ -140,6 +143,14 @@ function UpsertCausePage({ isEdit }: Props) {
     }
   };
 
+  const handleActivityCheckboxChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const { checked } = e.target;
+    setValue("active", !!checked);
+    setActiveCheckbox(!activeCheckbox);
+  };
+
   const handleMainImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const mainImage = e.target.files![0];
 
@@ -160,6 +171,20 @@ function UpsertCausePage({ isEdit }: Props) {
       <form onSubmit={handleSubmit(isEdit ? handleSave : handleOpenModal)}>
         <S.ContentSection>
           <S.LeftSection>
+            <S.Subtitle>{t("upsert.status")}</S.Subtitle>
+            <S.CheckboxContainer>
+              <S.Checkbox
+                name="active"
+                type="checkbox"
+                onChange={handleActivityCheckboxChange}
+                checked={activeCheckbox}
+              />
+              <S.Span>
+                {CauseObject().active
+                  ? t("upsert.activeCause")
+                  : t("upsert.inactiveCause")}
+              </S.Span>{" "}
+            </S.CheckboxContainer>
             <S.Subtitle>{t("upsert.details")}</S.Subtitle>
             <InfoName hasTranslation>{t("attributes.name")}</InfoName>
             <S.TextInput
