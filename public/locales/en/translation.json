@@ -115,7 +115,8 @@
       "mainImage": "Main image",
       "coverImage": "Cover image",
       "mainImageDescription": "Main image description",
-      "coverImageDescription": "Cover image description"
+      "coverImageDescription": "Cover image description",
+      "status": "Status"
     },
     "list": {
       "title": "Causes List",
@@ -137,6 +138,7 @@
         "title": "Add New Cause",
         "save": "Save",
         "cancel": "Cancel",
+
         "modal": {
           "title": "are you sure?",
           "body": "After confirmed, this action will create a pool.",
@@ -151,7 +153,12 @@
       },
       "required": "this is required",
       "details": "Details",
-      "cause": "Cause"
+      "cause": "Cause",
+      "status": "Status",
+      "activeCause": "Active cause",
+      "inactiveCause": "Inactive cause",
+      "active": "Active",
+      "inactive": "Inactive"
     },
     "causeCard": {
       "amountEnding": "The amount assigned for donation is ending",
@@ -260,7 +267,7 @@
         "description": "Description",
         "position": "Position",
         "status": "Status",
-        "altText":"Alt text",
+        "altText": "Alt text",
         "save": "Save",
         "cancel": "Cancel",
         "required": "* Required",
@@ -452,7 +459,7 @@
       "email": "Email",
       "details": "Details",
       "noBigDonors": "No donors found",
-      "search":"Search by name..."
+      "search": "Search by name..."
     },
     "upsert": {
       "create": {
@@ -479,9 +486,9 @@
       "donation": "Donation",
       "cause": "Cause",
       "noBigDonations": "No donations found",
-      "search":"Search by donor name...",
+      "search": "Search by donor name...",
       "donationId": "Donation ID",
-      "transactionHash":"Transaction Hash",
+      "transactionHash": "Transaction Hash",
       "value": "Value (USDC)",
       "processingDate": "Processing Date",
       "bigDonor": "Big Donor",

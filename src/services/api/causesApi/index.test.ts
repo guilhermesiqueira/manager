@@ -21,6 +21,7 @@ describe("causesApi", () => {
   describe("#createCause", () => {
     const data = {
       name: "Cause 1",
+      active: true,
     };
 
     beforeEach(() => {
@@ -40,6 +41,7 @@ describe("causesApi", () => {
     const data = {
       id: 1,
       name: "Cause 1",
+      active: true,
     };
 
     beforeEach(() => {

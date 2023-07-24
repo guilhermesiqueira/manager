@@ -62,6 +62,7 @@ function CausesListSection(): JSX.Element {
             <th>{t("attributes.token")}</th>
             <th>{t("attributes.availableToDonation")}</th>
             <th>{t("attributes.poolAddress")}</th>
+            <th>{t("attributes.status")}</th>
           </tr>
         </thead>
         <CauseItems searchTerm={searchTerm} causes={currentCauses} />
