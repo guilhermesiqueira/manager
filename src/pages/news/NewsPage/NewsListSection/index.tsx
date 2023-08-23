@@ -6,7 +6,6 @@ import { logError } from "services/crashReport";
 import Article from "types/entities/Article";
 import { useNavigate } from "react-router";
 import theme from "styles/theme";
-import { useLanguage } from "hooks/useLanguage";
 import NewsItems from "../NewsItems";
 import * as S from "./styles";
 
@@ -25,10 +24,10 @@ function NewsListSection(): JSX.Element {
   const [itemOffset, setItemOffset] = useState(0);
   const itemsPerPage = 10;
   const [searchTerm, setSearchTerm] = useState("");
-  const { currentLang } = useLanguage();
+
   const defaultLanguageSelection = {
-    pt: currentLang === "pt-BR",
-    en: currentLang === "en",
+    pt: true,
+    en: true,
   };
   const [selectedLanguage, setSelectedLanguage] = useState<LanguageObject>(
     defaultLanguageSelection,
@@ -54,7 +53,7 @@ function NewsListSection(): JSX.Element {
 
   useEffect(() => {
     fetchArticles();
-  }, [fetchArticles]);
+  }, []);
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;

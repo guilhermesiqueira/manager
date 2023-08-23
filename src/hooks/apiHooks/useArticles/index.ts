@@ -10,7 +10,7 @@ function useArticles() {
   const getArticles = useCallback(async () => {
     const { data: allArticles } = await articlesApi.getArticlesList({
       page,
-      perPage: 15,
+      perPage: 100,
     });
 
     setArticles((oldArticles) => [...oldArticles, ...allArticles]);
