@@ -38,6 +38,7 @@ describe("useCauses", () => {
   describe("#createCause", () => {
     const data = {
       name: "Cause 1",
+      active: true,
     };
 
     beforeEach(() => {
@@ -56,6 +57,7 @@ describe("useCauses", () => {
     const data = {
       id: 1,
       name: "Cause 1",
+      active: true,
     };
 
     beforeEach(() => {

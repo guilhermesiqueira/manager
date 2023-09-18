@@ -27,6 +27,8 @@ function CausesDetailsPage(): JSX.Element {
   const [cause, setCause] = useState<Cause>();
   const [pool, setPool] = useState<Pool>();
 
+  const { primary, tertiary } = theme.colors.brand;
+
   const { getCause } = useCauses();
   const { getPools } = usePools();
 
@@ -82,6 +84,13 @@ function CausesDetailsPage(): JSX.Element {
 
           <InfoName>{t("attributes.name")}</InfoName>
           <S.InfoValue>{cause?.name}</S.InfoValue>
+
+          <InfoName>{t("attributes.status")}</InfoName>
+          <S.InfoValue
+            style={{ color: cause?.active ? primary[300] : tertiary[400] }}
+          >
+            {cause?.active ? t("upsert.active") : t("upsert.inactive")}
+          </S.InfoValue>
 
           <InfoName>{t("attributes.poolAddress")}</InfoName>
           <CopyableAddress

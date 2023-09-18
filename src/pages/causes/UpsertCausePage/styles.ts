@@ -94,3 +94,15 @@ export const FlexRow = styled.div`
   display: flex;
   flex-direction: row;
 `;
+
+export const CheckboxContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+`;
+export const Checkbox = styled.input`
+  accent-color: ${({ theme }) => theme.colors.brand.primary[300]};
+  margin: ${({ theme }) => theme.spacing(4, 8, 32, 4)};
+  display: inline-block;
+  vertical-align: middle;
+  transform: scale(1.5);
+`;
