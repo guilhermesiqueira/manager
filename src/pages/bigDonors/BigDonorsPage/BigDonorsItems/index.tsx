@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import editIcon from "assets/icons/edit-icon.svg";
+import dashboardLinkIcon from "assets/icons/arrow-outward.svg";
 
 import BigDonor from "types/entities/BigDonor";
 import { useTranslation } from "react-i18next";
@@ -45,6 +46,11 @@ function BigDonorsItems({ bigDonors, searchTerm }: Props) {
         <tr key={donor.id}>
           <th>{donor.name}</th>
           <th>{donor.email}</th>
+          <th>
+            <a href={donor.dashboardLink} target="_blank" rel="noreferrer">
+              <img src={dashboardLinkIcon} alt="dashboard link" />
+            </a>
+          </th>
 
           <th>
             <Link to={`/big-donors/${donor.id}/edit`}>
