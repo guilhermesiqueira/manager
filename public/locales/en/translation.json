@@ -452,7 +452,8 @@
       "email": "Email",
       "details": "Details",
       "noBigDonors": "No donors found",
-      "search":"Search by name..."
+      "search":"Search by name...",
+      "dashboardLink": "Link to dashboard"
     },
     "upsert": {
       "create": {
