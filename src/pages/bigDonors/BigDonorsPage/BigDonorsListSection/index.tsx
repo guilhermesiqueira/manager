@@ -61,6 +61,7 @@ function BigDonorsListSection(): JSX.Element {
           <tr>
             <th>{t("name")}</th>
             <th>{t("email")}</th>
+            <th>{t("dashboardLink")}</th>
           </tr>
         </thead>
         <BigDonorsItems searchTerm={searchTerm} bigDonors={allBigDonors} />
