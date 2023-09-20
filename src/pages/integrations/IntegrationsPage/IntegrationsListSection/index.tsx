@@ -41,11 +41,14 @@ function IntegrationsListSection(): JSX.Element {
       <tr key={item.id}>
         <th>{item.id}</th>
         <th>{item.name}</th>
-        <th>
+        <S.walletColumn>
           <CopyableAddress text={item.integrationWallet?.publicKey} />
-        </th>
+        </S.walletColumn>
         <th>
           <CopyableAddress text={item.integrationAddress} />
+        </th>
+        <th>
+          <CopyableAddress text={item.integrationDeeplinkAddress} />
         </th>
         <th>
           <CopyableAddress text={item.integrationDashboardAddress} />
@@ -79,6 +82,7 @@ function IntegrationsListSection(): JSX.Element {
             <th>{t("name")}</th>
             <th>{t("walletAddress")}</th>
             <th>{t("integrationAddress")}</th>
+            <th>{t("integrationDeeplinkAddress")}</th>
             <th>{t("integrationDashboardAddress")}</th>
             <th>{t("status")}</th>
           </tr>

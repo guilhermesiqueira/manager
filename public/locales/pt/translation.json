@@ -29,6 +29,7 @@
       "logo": "Logo da integração",
       "walletAddress": "Endereço da carteira",
       "integrationAddress": "Endereço da integração",
+      "integrationDeeplinkAddress": "Endereço deeplink da integração",
       "integrationDashboardAddress": "Endereço do dashboard da integração",
       "webhookUrl": "Link do Webhook",
       "active": "Ativa",
