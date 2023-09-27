@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { defaultBodyXsRegular } from "styles/typography/default";
 
 export const ContentSection = styled.div`
   width: 100%;
@@ -93,4 +94,16 @@ export const FlexRow = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
+`;
+
+export const CharLimit = styled.div`
+  width: 400px;
+  margin-top: -4px;
+  margin-bottom: ${({ theme }) => theme.spacing(8)};
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const CharLimitText = styled.p`
+  ${defaultBodyXsRegular}
 `;
