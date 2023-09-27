@@ -30,10 +30,26 @@ function ImpactPreviewer({ nonProfit, defaultAmountInUsd = 100 }: Props) {
   return (
     nonProfit?.nonProfitImpacts &&
     roundedImpact && (
-      <S.Info>
-        ${defaultAmountInUsd} {t("fund")}{" "}
-        {impactNormalizer(nonProfit, roundedImpact, normalizerTranslations)}
-      </S.Info>
+      <S.Container>
+        <S.Title>{t("previewTicket")}</S.Title>
+        <S.Info>
+          {t("oneTicket")}{" "}
+          {impactNormalizer(
+            nonProfit,
+            nonProfit?.nonProfitImpacts[0].usdCentsToOneImpactUnit,
+            normalizerTranslations,
+          ).join(" ")}
+        </S.Info>
+        <S.Title>{t("previewContribution")}</S.Title>
+        <S.Info>
+          ${defaultAmountInUsd} {t("fund")}{" "}
+          {impactNormalizer(
+            nonProfit,
+            roundedImpact,
+            normalizerTranslations,
+          ).join(" ")}
+        </S.Info>
+      </S.Container>
     )
   );
 }

@@ -353,13 +353,6 @@ function UpsertNonProfitPage({ isEdit }: Props) {
             <S.Divider />
 
             <S.Subtitle>{t("upsert.impacts")}</S.Subtitle>
-            <ImpactsForm
-              registerImpact={registerImpact}
-              setCurrentUnit={setCurrentUnit}
-              currentUnit={currentUnit}
-              formStateImpact={formStateImpact}
-              setValueImpact={setValueImpact}
-            />
             {watchImpactFields && (
               <ImpactPreviewer
                 nonProfit={{
@@ -368,6 +361,14 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                 }}
               />
             )}
+            <ImpactsForm
+              registerImpact={registerImpact}
+              setCurrentUnit={setCurrentUnit}
+              currentUnit={currentUnit}
+              formStateImpact={formStateImpact}
+              setValueImpact={setValueImpact}
+            />
+
             <S.Divider />
 
             <StoriesForm

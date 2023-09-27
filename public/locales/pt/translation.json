@@ -262,7 +262,7 @@
         "status": "Status",
         "save": "Salvar",
         "cancel": "Cancelar",
-        "altText":"Texto alternativo",
+        "altText": "Texto alternativo",
         "required": "* Obrigatório",
         "modal": {
           "title": "Are you sure?",
@@ -288,7 +288,10 @@
         }
       },
       "impactPreviewer": {
-        "fund": "geram"
+        "fund": "geram",
+        "previewTicket": "Prévia de impacto de ticket",
+        "previewContribution": "Prévia de impacto de contribuição",
+        "oneTicket": "1 ticket gera "
       }
     },
     "details": {
@@ -440,7 +443,7 @@
     "months": "meses",
     "day": "dia",
     "days": "dias",
-    "for": "para",
+    "for": "para ",
     "and": "e",
     "of": "de"
   },
@@ -453,7 +456,7 @@
       "email": "Email",
       "details": "Detalhes",
       "noBigDonors": "Nenhum doador encontrado",
-      "search":"Procurar pelo nome...",
+      "search": "Procurar pelo nome...",
       "dashboardLink": "Link para dashboard"
     },
     "upsert": {
@@ -482,9 +485,9 @@
       "donation": "Doação",
       "cause": "Causa",
       "noBigDonations": "Nenhuma doação encontrada",
-      "search":"Procurar pelo nome do doador...",
+      "search": "Procurar pelo nome do doador...",
       "donationId": "ID da Doação",
-      "transactionHash":"Hash da Transação",
+      "transactionHash": "Hash da Transação",
       "value": "Valor (USDC)",
       "processingDate": "Data de Processamento",
       "bigDonor": "Grande Doador",
