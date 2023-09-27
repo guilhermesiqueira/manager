@@ -135,11 +135,14 @@ export const ImageRecommendation = styled.h6`
   color: ${({ theme }) => theme.colors.neutral[500]};
 `;
 
-export const CharLimit = styled.div`
+export const CharLimit = styled.div<{
+  color?: string;
+}>`
   margin-top: -4px;
   margin-bottom: ${({ theme }) => theme.spacing(8)};
   display: flex;
   justify-content: space-between;
+  color: ${({ color, theme }) => color || theme.colors.neutral[500]};
 `;
 
 export const CharLimitText = styled.p`

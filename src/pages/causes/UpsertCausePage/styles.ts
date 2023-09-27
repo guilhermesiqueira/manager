@@ -96,12 +96,15 @@ export const FlexRow = styled.div`
   flex-direction: row;
 `;
 
-export const CharLimit = styled.div`
+export const CharLimit = styled.div<{
+  color?: string;
+}>`
   width: 400px;
   margin-top: -4px;
   margin-bottom: ${({ theme }) => theme.spacing(8)};
   display: flex;
   justify-content: space-between;
+  color: ${({ color, theme }) => color || theme.colors.neutral[500]};
 `;
 
 export const CharLimitText = styled.p`
