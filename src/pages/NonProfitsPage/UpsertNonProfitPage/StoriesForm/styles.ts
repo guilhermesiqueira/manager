@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { defaultBodyXsRegular } from "styles/typography/default";
 
 export const Container = styled.div`
   padding: ${({ theme }) => theme.spacing(12, 24, 24)};
@@ -91,4 +92,15 @@ export const ButtonContainer = styled.div`
   margin-top: ${({ theme }) => theme.spacing(12)};
   display: flex;
   justify-content: flex-start;
+`;
+
+export const CharLimit = styled.div`
+  margin-top: -4px;
+  margin-bottom: ${({ theme }) => theme.spacing(8)};
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const CharLimitText = styled.p`
+  ${defaultBodyXsRegular}
 `;
