@@ -36,7 +36,7 @@ function ImpactPreviewer({ nonProfit, defaultAmountInUsd = 100 }: Props) {
           {t("oneTicket")}{" "}
           {impactNormalizer(
             nonProfit,
-            nonProfit?.nonProfitImpacts[0].usdCentsToOneImpactUnit,
+            nonProfit?.impactByTicket,
             normalizerTranslations,
           ).join(" ")}
         </S.Info>
