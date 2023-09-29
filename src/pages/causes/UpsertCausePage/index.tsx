@@ -42,6 +42,7 @@ function UpsertCausePage({ isEdit }: Props) {
     reset,
     handleSubmit,
     formState,
+    watch,
   } = useForm<CreateCause>({ mode: "onChange", reValidateMode: "onChange" });
 
   const toast = useToast();
@@ -165,6 +166,9 @@ function UpsertCausePage({ isEdit }: Props) {
     handleUploadImage(coverImage, "coverImage");
   };
 
+  const causeName = watch().name;
+  const maxLengthCauseName = 30;
+
   return (
     <>
       <S.Title>{t(`upsert.${mode}.title`)}</S.Title>
@@ -188,8 +192,17 @@ function UpsertCausePage({ isEdit }: Props) {
             <S.Subtitle>{t("upsert.details")}</S.Subtitle>
             <InfoName hasTranslation>{t("attributes.name")}</InfoName>
             <S.TextInput
+              maxLength={maxLengthCauseName}
               {...register("name", { required: t("upsert.required") })}
             />
+            {causeName && (
+              <S.CharLimit>
+                <S.CharLimitText>{t("upsert.maxCharacters")}</S.CharLimitText>
+                <S.CharLimitText>
+                  {causeName.length ?? 0}/{maxLengthCauseName}
+                </S.CharLimitText>
+              </S.CharLimit>
+            )}
             {formState?.errors.name && formState?.errors.name.type && (
               <S.Error>{formState?.errors.name.message}</S.Error>
             )}

@@ -58,6 +58,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     reset,
     handleSubmit,
     formState,
+    watch: watchNonProfit,
   } = useForm<CreateNonProfit>({
     mode: "onChange",
     reValidateMode: "onChange",
@@ -68,6 +69,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     setValue: setValueStory,
     formState: formStateStory,
     control: controlStory,
+    watch: watchStory,
   } = useForm<CreateStory[]>({ mode: "onChange", reValidateMode: "onChange" });
 
   const {
@@ -290,7 +292,10 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const causeText = (value: any) =>
     causes.find((cause) => cause.id === value)?.name ?? "";
 
+  const nonProfitName = watchNonProfit()?.name;
+  const watchStoryValues = watchStory();
   const watchImpactFields = watch();
+  const maxLengthNonProfitName = 25;
 
   return (
     <>
@@ -317,12 +322,23 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               <S.ItemBox>
                 <InfoName hasTranslation>{t("attributes.name")}</InfoName>
                 <S.TextInput
+                  maxLength={maxLengthNonProfitName}
                   {...register("name", {
                     required: t("upsert.required"),
                   })}
                 />
                 {formState?.errors.name && formState?.errors.name.type && (
                   <S.Error>{formState?.errors.name.message}</S.Error>
+                )}
+                {nonProfitName && (
+                  <S.CharLimit>
+                    <S.CharLimitText>
+                      {t("upsert.maxCharacters")}
+                    </S.CharLimitText>
+                    <S.CharLimitText>
+                      {nonProfitName?.length}/{maxLengthNonProfitName}
+                    </S.CharLimitText>
+                  </S.CharLimit>
                 )}
               </S.ItemBox>
 
@@ -378,6 +394,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               handleSubmitStory={handleSubmit}
               formStateStory={formStateStory}
               controlStory={controlStory}
+              watchStory={watchStoryValues}
             />
             <S.Divider />
           </S.LeftSection>

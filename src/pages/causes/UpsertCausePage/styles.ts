@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { defaultBodyXsRegular } from "styles/typography/default";
 
 export const ContentSection = styled.div`
   width: 100%;
@@ -95,10 +96,26 @@ export const FlexRow = styled.div`
   flex-direction: row;
 `;
 
+export const CharLimit = styled.div<{
+  color?: string;
+}>`
+  width: 400px;
+  margin-top: -4px;
+  margin-bottom: ${({ theme }) => theme.spacing(8)};
+  display: flex;
+  justify-content: space-between;
+  color: ${({ color, theme }) => color || theme.colors.neutral[500]};
+`;
+
+export const CharLimitText = styled.p`
+  ${defaultBodyXsRegular}
+`;
+
 export const CheckboxContainer = styled.div`
   display: flex;
   flex-direction: row;
 `;
+
 export const Checkbox = styled.input`
   accent-color: ${({ theme }) => theme.colors.brand.primary[300]};
   margin: ${({ theme }) => theme.spacing(4, 8, 32, 4)};

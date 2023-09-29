@@ -19,6 +19,7 @@ export type Props = {
   formStateStory: any;
   controlStory: any;
   stories: CreateStory[];
+  watchStory: any;
 };
 
 function StoriesForm({
@@ -27,6 +28,7 @@ function StoriesForm({
   setValueStory,
   controlStory,
   stories,
+  watchStory,
 }: Props) {
   const [files, setFiles] = useState<any>({});
   const { t } = useTranslation("translation", {
@@ -84,6 +86,13 @@ function StoriesForm({
     remove(index);
   }
 
+  const storyTitle =
+    watchStory?.storiesAttributes?.[0]?.title || "Default Title";
+  const maxLengthStoryTitle = 30;
+  const storyDescription =
+    watchStory?.storiesAttributes?.[0]?.description || "Default Description";
+  const maxLengthStoryDescription = 175;
+
   return (
     <S.Container>
       <S.FormContainer>
@@ -127,15 +136,33 @@ function StoriesForm({
             <S.RightSection>
               <InfoName hasTranslation>{t("title")}</InfoName>
               <S.TextInput
+                maxLength={maxLengthStoryTitle}
                 {...registerStory(`storiesAttributes.${index}.title`)}
                 placeholder={t("title")}
               />
+              {storyTitle && (
+                <S.CharLimit>
+                  <S.CharLimitText>{t("maxCharacters")}</S.CharLimitText>
+                  <S.CharLimitText>
+                    {storyTitle.length ?? 0}/{maxLengthStoryTitle}
+                  </S.CharLimitText>
+                </S.CharLimit>
+              )}
 
               <InfoName hasTranslation>{t("description")}</InfoName>
               <S.TextInput
+                maxLength={maxLengthStoryDescription}
                 {...registerStory(`storiesAttributes.${index}.description`)}
                 placeholder={t("description")}
               />
+              {storyDescription && (
+                <S.CharLimit>
+                  <S.CharLimitText>{t("maxCharacters")}</S.CharLimitText>
+                  <S.CharLimitText>
+                    {storyDescription.length ?? 0}/{maxLengthStoryDescription}
+                  </S.CharLimitText>
+                </S.CharLimit>
+              )}
 
               <InfoName>{t("position")}</InfoName>
               <S.TextInput

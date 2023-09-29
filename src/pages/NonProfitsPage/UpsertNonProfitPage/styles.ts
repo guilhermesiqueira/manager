@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { defaultBodyXsRegular } from "styles/typography/default";
 
 export const ContentSection = styled.div`
   max-width: 1200px;
@@ -132,4 +133,18 @@ export const ImageRecommendation = styled.h6`
   font-size: 12px;
   white-space: pre-line;
   color: ${({ theme }) => theme.colors.neutral[500]};
+`;
+
+export const CharLimit = styled.div<{
+  color?: string;
+}>`
+  margin-top: -4px;
+  margin-bottom: ${({ theme }) => theme.spacing(8)};
+  display: flex;
+  justify-content: space-between;
+  color: ${({ color, theme }) => color || theme.colors.neutral[500]};
+`;
+
+export const CharLimitText = styled.p`
+  ${defaultBodyXsRegular}
 `;
