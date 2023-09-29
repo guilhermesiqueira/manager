@@ -92,14 +92,6 @@ function StoriesForm({
   const storyDescription =
     watchStory?.storiesAttributes?.[0]?.description || "Default Description";
   const maxLengthStoryDescription = 175;
-  const warningColorTitle =
-    storyTitle?.length === maxLengthStoryTitle
-      ? theme.colors.feedback.error[800]
-      : neutral;
-  const warningColorDescription =
-    storyDescription?.length === maxLengthStoryDescription
-      ? theme.colors.feedback.error[800]
-      : neutral;
 
   return (
     <S.Container>
@@ -149,7 +141,7 @@ function StoriesForm({
                 placeholder={t("title")}
               />
               {storyTitle && (
-                <S.CharLimit color={warningColorTitle}>
+                <S.CharLimit>
                   <S.CharLimitText>{t("maxCharacters")}</S.CharLimitText>
                   <S.CharLimitText>
                     {storyTitle.length ?? 0}/{maxLengthStoryTitle}
@@ -164,7 +156,7 @@ function StoriesForm({
                 placeholder={t("description")}
               />
               {storyDescription && (
-                <S.CharLimit color={warningColorDescription}>
+                <S.CharLimit>
                   <S.CharLimitText>{t("maxCharacters")}</S.CharLimitText>
                   <S.CharLimitText>
                     {storyDescription.length ?? 0}/{maxLengthStoryDescription}

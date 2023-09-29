@@ -296,10 +296,6 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const watchStoryValues = watchStory();
   const watchImpactFields = watch();
   const maxLengthNonProfitName = 25;
-  const warningColor =
-    nonProfitName?.length === maxLengthNonProfitName
-      ? theme.colors.feedback.error[800]
-      : neutral;
 
   return (
     <>
@@ -335,7 +331,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                   <S.Error>{formState?.errors.name.message}</S.Error>
                 )}
                 {nonProfitName && (
-                  <S.CharLimit color={warningColor}>
+                  <S.CharLimit>
                     <S.CharLimitText>
                       {t("upsert.maxCharacters")}
                     </S.CharLimitText>

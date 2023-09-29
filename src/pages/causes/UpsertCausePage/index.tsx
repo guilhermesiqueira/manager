@@ -157,10 +157,6 @@ function UpsertCausePage({ isEdit }: Props) {
 
   const causeName = watch().name;
   const maxLengthCauseName = 30;
-  const warningColor =
-    causeName?.length === maxLengthCauseName
-      ? theme.colors.feedback.error[800]
-      : neutral;
 
   return (
     <>
@@ -175,7 +171,7 @@ function UpsertCausePage({ isEdit }: Props) {
               {...register("name", { required: t("upsert.required") })}
             />
             {causeName && (
-              <S.CharLimit color={warningColor}>
+              <S.CharLimit>
                 <S.CharLimitText>{t("upsert.maxCharacters")}</S.CharLimitText>
                 <S.CharLimitText>
                   {causeName.length ?? 0}/{maxLengthCauseName}
