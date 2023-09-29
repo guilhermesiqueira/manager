@@ -7,6 +7,8 @@ import CopyableAddress from "components/atomics/CopyableAddress";
 import { useCallback, useEffect, useState } from "react";
 import usePools from "hooks/apiHooks/usePools";
 import { logError } from "services/crashReport";
+import { theme } from "@ribon.io/shared/styles";
+import { useTranslation } from "react-i18next";
 import * as S from "./styles";
 
 type Props = {
@@ -18,6 +20,12 @@ function CauseItems({ causes, searchTerm }: Props) {
   const { getPools } = usePools();
 
   const [pools, setPools] = useState<Pool[]>();
+
+  const { primary, tertiary } = theme.colors.brand;
+
+  const { t } = useTranslation("translation", {
+    keyPrefix: "causes",
+  });
 
   function filterCauses(nonFilteredCauses: Cause[]) {
     return nonFilteredCauses.filter((causeData: Cause) => {
@@ -70,6 +78,13 @@ function CauseItems({ causes, searchTerm }: Props) {
             <CopyableAddress
               text={cause?.pools.length ? cause?.pools[0].address : "-"}
             />
+          </th>
+          <th>
+            <S.StatusTableCell
+              style={{ color: cause?.active ? primary[300] : tertiary[400] }}
+            >
+              {cause?.active ? t("upsert.active") : t("upsert.inactive")}
+            </S.StatusTableCell>
           </th>
           <th>
             <S.ActionsTableCell>
