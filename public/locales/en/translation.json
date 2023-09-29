@@ -152,6 +152,7 @@
       },
       "required": "this is required",
       "details": "Details",
+      "maxCharacters": "Character limit",
       "cause": "Cause"
     },
     "causeCard": {
@@ -240,6 +241,8 @@
       "activityStatus": "Activity status",
       "details": "Details",
       "impacts": "Impacts",
+      "maxCharacters": "Character limit",
+      "required": "* Required",
       "create": {
         "title": "Add New NonProfit",
         "save": "Save",
@@ -265,6 +268,7 @@
         "save": "Save",
         "cancel": "Cancel",
         "required": "* Required",
+        "maxCharacters": "Character limit",
         "modal": {
           "title": "Are you sure?",
           "body": "After confirmed, this action will create a Story.",

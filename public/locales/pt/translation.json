@@ -151,6 +151,7 @@
         "cancel": "Cancelar"
       },
       "required": "Campo obrigatório",
+      "maxCharacters": "Limite de caracteres",
       "details": "Detalhes",
       "cause": "Cause"
     },
@@ -239,6 +240,7 @@
       "activityStatus": "Status",
       "details": "Detalhes",
       "impacts": "Impactos",
+      "maxCharacters": "Limite de caracteres",
       "create": {
         "title": "Adicionar Nova NonProfit",
         "save": "Salvar",
@@ -264,6 +266,7 @@
         "cancel": "Cancelar",
         "altText":"Texto alternativo",
         "required": "* Obrigatório",
+        "maxCharacters": "Limite de caracteres",
         "modal": {
           "title": "Are you sure?",
           "body": "After confirmed, this action will create a Story.",
