@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { impactNormalizer } from "@ribon.io/shared/lib";
+import { useNonProfitImpact } from "@ribon.io/shared/hooks";
+import { Currencies } from "types/enums/Currencies";
 import * as S from "./styles";
 
 export type Props = {
@@ -9,7 +10,6 @@ export type Props = {
 };
 
 function ImpactPreviewer({ nonProfit, defaultAmountInUsd = 100 }: Props) {
-  const [roundedImpact, setRoundedImpact] = useState(0);
   const { t } = useTranslation("translation", {
     keyPrefix: "nonProfits.upsert.impactPreviewer",
   });
@@ -18,22 +18,35 @@ function ImpactPreviewer({ nonProfit, defaultAmountInUsd = 100 }: Props) {
     keyPrefix: "impactNormalizer",
   });
 
-  useEffect(() => {
-    if (nonProfit?.nonProfitImpacts) {
-      setRoundedImpact(
-        defaultAmountInUsd /
-          Number(nonProfit?.nonProfitImpacts[0]?.usdCentsToOneImpactUnit),
-      );
-    }
-  }, [nonProfit?.nonProfitImpacts]);
+  const { nonProfitImpact } = useNonProfitImpact(
+    nonProfit?.id,
+    defaultAmountInUsd,
+    Currencies.USD,
+  );
 
   return (
     nonProfit?.nonProfitImpacts &&
-    roundedImpact && (
-      <S.Info>
-        ${defaultAmountInUsd} {t("fund")}{" "}
-        {impactNormalizer(nonProfit, roundedImpact, normalizerTranslations)}
-      </S.Info>
+    nonProfitImpact && (
+      <S.Container>
+        <S.Title>{t("previewTicket")}</S.Title>
+        <S.Info>
+          {t("oneTicket")}{" "}
+          {impactNormalizer(
+            nonProfit,
+            nonProfit?.impactByTicket,
+            normalizerTranslations,
+          ).join(" ")}
+        </S.Info>
+        <S.Title>{t("previewContribution")}</S.Title>
+        <S.Info>
+          ${defaultAmountInUsd} {t("fund")}{" "}
+          {impactNormalizer(
+            nonProfit,
+            Number(nonProfitImpact?.roundedImpact),
+            normalizerTranslations,
+          ).join(" ")}
+        </S.Info>
+      </S.Container>
     )
   );
 }

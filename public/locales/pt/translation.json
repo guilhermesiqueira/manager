@@ -298,7 +298,10 @@
         }
       },
       "impactPreviewer": {
-        "fund": "geram"
+        "fund": "geram",
+        "previewTicket": "Prévia de impacto de ticket",
+        "previewContribution": "Prévia de impacto de contribuição",
+        "oneTicket": "1 ticket gera "
       }
     },
     "details": {
@@ -450,7 +453,7 @@
     "months": "meses",
     "day": "dia",
     "days": "dias",
-    "for": "para",
+    "for": "para ",
     "and": "e",
     "of": "de"
   },
@@ -463,7 +466,7 @@
       "email": "Email",
       "details": "Detalhes",
       "noBigDonors": "Nenhum doador encontrado",
-      "search":"Procurar pelo nome...",
+      "search": "Procurar pelo nome...",
       "dashboardLink": "Link para dashboard"
     },
     "upsert": {

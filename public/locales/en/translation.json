@@ -300,7 +300,10 @@
         }
       },
       "impactPreviewer": {
-        "fund": "fund"
+        "fund": "fund",
+        "previewTicket": "Ticket impact preview",
+        "previewContribution": "Contribution impact preview",
+        "oneTicket": "1 ticket funds "
       }
     },
     "details": {
@@ -451,7 +454,7 @@
     "months": "months",
     "day": "day",
     "days": "days",
-    "for": "for",
+    "for": "for ",
     "and": "and",
     "of": "of"
   },
@@ -464,7 +467,7 @@
       "email": "Email",
       "details": "Details",
       "noBigDonors": "No donors found",
-      "search":"Search by name...",
+      "search": "Search by name...",
       "dashboardLink": "Link to dashboard"
     },
     "upsert": {
