@@ -264,7 +264,7 @@
         "description": "Description",
         "position": "Position",
         "status": "Status",
-        "altText":"Alt text",
+        "altText": "Alt text",
         "save": "Save",
         "cancel": "Cancel",
         "required": "* Required",
@@ -293,7 +293,10 @@
         }
       },
       "impactPreviewer": {
-        "fund": "fund"
+        "fund": "fund",
+        "previewTicket": "Ticket impact preview",
+        "previewContribution": "Contribution impact preview",
+        "oneTicket": "1 ticket funds "
       }
     },
     "details": {
@@ -444,7 +447,7 @@
     "months": "months",
     "day": "day",
     "days": "days",
-    "for": "for",
+    "for": "for ",
     "and": "and",
     "of": "of"
   },
@@ -457,7 +460,7 @@
       "email": "Email",
       "details": "Details",
       "noBigDonors": "No donors found",
-      "search":"Search by name...",
+      "search": "Search by name...",
       "dashboardLink": "Link to dashboard"
     },
     "upsert": {
@@ -485,9 +488,9 @@
       "donation": "Donation",
       "cause": "Cause",
       "noBigDonations": "No donations found",
-      "search":"Search by donor name...",
+      "search": "Search by donor name...",
       "donationId": "Donation ID",
-      "transactionHash":"Transaction Hash",
+      "transactionHash": "Transaction Hash",
       "value": "Value (USDC)",
       "processingDate": "Processing Date",
       "bigDonor": "Big Donor",
