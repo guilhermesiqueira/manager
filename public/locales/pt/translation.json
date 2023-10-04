@@ -116,7 +116,8 @@
       "mainImage": "Imagem principal",
       "coverImage": "Imagem de capa",
       "mainImageDescription": "Descrição da imagem principal",
-      "coverImageDescription": "Descrição da imagem de capa"
+      "coverImageDescription": "Descrição da imagem de capa",
+      "status": "Status"
     },
     "list": {
       "title": "Lista de causas",
@@ -138,6 +139,7 @@
         "title": "Adicionar nova Causa",
         "save": "Salvar",
         "cancel": "Cancelar",
+
         "modal": {
           "title": "Tem certeza?",
           "body": "Após confirmação, uma pool será criada",
@@ -153,7 +155,12 @@
       "required": "Campo obrigatório",
       "maxCharacters": "Limite de caracteres",
       "details": "Detalhes",
-      "cause": "Cause"
+      "cause": "Cause",
+      "status": "Status",
+      "activeCause": "Causa ativa",
+      "inactiveCause": "Causa inativa",
+      "active": "Ativa",
+      "inactive": "Inativa"
     },
     "causeCard": {
       "amountEnding": "A quantidade atribuída para doação está acabando",
