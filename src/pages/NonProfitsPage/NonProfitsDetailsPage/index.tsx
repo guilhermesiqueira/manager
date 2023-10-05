@@ -8,14 +8,17 @@ import theme from "styles/theme";
 import { useCallback, useEffect, useState } from "react";
 import { logError } from "services/crashReport";
 import NonProfit from "types/entities/NonProfit";
+import { NonProfitImpact } from "types/entities/NonProfitImpact";
 import useNonProfits from "hooks/apiHooks/useNonProfits";
 
 import dateFormatter from "lib/dateFormatter";
 import LinkPage from "components/atomics/LinkPage";
 import Story from "types/entities/Story";
 import snakeToCamelCase from "lib/snakeToCamelCase";
+
 import * as S from "./styles";
 import StoriesCard from "../UpsertNonProfitPage/StoriesCard";
+import ImpactPreviewer from "../UpsertNonProfitPage/ImpactPreviewer";
 
 function NonProfitsDetailsPage(): JSX.Element {
   const { t } = useTranslation("translation", {
@@ -23,7 +26,8 @@ function NonProfitsDetailsPage(): JSX.Element {
   });
   const { neutral } = theme.colors;
 
-  const [nonProfit, setNonProfits] = useState<NonProfit>();
+  const [nonProfit, setNonProfit] = useState<NonProfit>();
+  const [nonProfitImpact, setNonProfitImpact] = useState<NonProfitImpact>();
 
   const { getNonProfit } = useNonProfits();
 
@@ -33,7 +37,13 @@ function NonProfitsDetailsPage(): JSX.Element {
     try {
       const nonProfitData = await getNonProfit(id);
 
-      setNonProfits(nonProfitData);
+      setNonProfit(nonProfitData);
+      if (nonProfitData && nonProfitData.nonProfitImpacts)
+        setNonProfitImpact(
+          nonProfitData.nonProfitImpacts?.[
+            nonProfitData.nonProfitImpacts.length - 1
+          ],
+        );
     } catch (e) {
       logError(e);
     }
@@ -153,6 +163,12 @@ function NonProfitsDetailsPage(): JSX.Element {
             <LinkPage page={`/ngos/${id}/impacts`} text={t("viewHistory")} />
           </S.Container>
 
+          {nonProfitImpact && nonProfitImpact.usdCentsToOneImpactUnit && (
+            <ImpactPreviewer
+              nonProfit={nonProfit}
+              usdCentsToOneImpactUnit={nonProfitImpact.usdCentsToOneImpactUnit}
+            />
+          )}
           <S.Subtitle>{t("details.images")}</S.Subtitle>
           <S.Container>
             <S.LeftSection>
