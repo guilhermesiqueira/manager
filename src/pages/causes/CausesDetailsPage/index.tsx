@@ -87,9 +87,11 @@ function CausesDetailsPage(): JSX.Element {
 
           <InfoName>{t("attributes.status")}</InfoName>
           <S.InfoValue
-            style={{ color: cause?.active ? primary[300] : tertiary[400] }}
+            style={{
+              color: cause?.status === "active" ? primary[300] : tertiary[400],
+            }}
           >
-            {cause?.active ? t("upsert.active") : t("upsert.inactive")}
+            {cause?.status}
           </S.InfoValue>
 
           <InfoName>{t("attributes.poolAddress")}</InfoName>

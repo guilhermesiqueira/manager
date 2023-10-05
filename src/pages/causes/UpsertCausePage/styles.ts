@@ -111,7 +111,8 @@ export const CharLimitText = styled.p`
   ${defaultBodyXsRegular}
 `;
 
-export const CheckboxContainer = styled.div`
+export const StatusContainer = styled.div`
+  width: 50%;
   display: flex;
   flex-direction: row;
 `;

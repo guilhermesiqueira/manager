@@ -17,7 +17,6 @@ import useNonProfits from "hooks/apiHooks/useNonProfits";
 import { CreateNonProfit } from "types/apiResponses/nonProfit";
 import { CreateStory } from "types/apiResponses/story";
 import { NonProfitImpact } from "types/entities/NonProfitImpact";
-// import { NonProfit } from "@ribon.io/shared/types/entities";
 import { useUploadFile } from "hooks/apiHooks/useUploadFile";
 import { CreateNonProfitImpacts } from "types/apiResponses/nonProfitImpacts";
 import NonProfit from "types/entities/NonProfit";
@@ -331,7 +330,6 @@ function UpsertNonProfitPage({ isEdit }: Props) {
                 containerId="status-dropdown"
                 name="status"
               />
-              <S.Span>{NonProfitObject().status}</S.Span>{" "}
             </S.ItemBox>
 
             <S.Divider />
