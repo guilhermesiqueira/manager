@@ -17,8 +17,10 @@ import useNonProfits from "hooks/apiHooks/useNonProfits";
 import { CreateNonProfit } from "types/apiResponses/nonProfit";
 import { CreateStory } from "types/apiResponses/story";
 import { NonProfitImpact } from "types/entities/NonProfitImpact";
+// import { NonProfit } from "@ribon.io/shared/types/entities";
 import { useUploadFile } from "hooks/apiHooks/useUploadFile";
 import { CreateNonProfitImpacts } from "types/apiResponses/nonProfitImpacts";
+import NonProfit from "types/entities/NonProfit";
 import ImpactsForm from "./ImpactForm";
 import ImpactPreviewer from "./ImpactPreviewer";
 import StoriesForm from "./StoriesForm";
@@ -35,13 +37,14 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const mode = isEdit ? "edit" : "create";
   const [modalOpen, setModalOpen] = useState(false);
   const [causes, setCauses] = useState<Cause[]>([]);
+  const [nonProfits, setNonProfits] = useState<NonProfit[]>([]);
   const [currentCauseId, setCurrentCauseId] = useState<number>(1);
   const [currentUnit, setCurrentUnit] = useState<string>("");
   const { getCauses } = useCauses();
   const [loading, setLoading] = useState(false);
   const { neutral } = theme.colors;
   const { tertiary } = theme.colors.brand;
-  const [statusCheckbox, setStatusCheckbox] = useState(true);
+  const [statusNonProfit, setStatusNonProfit] = useState("");
   const [stories, setStories] = useState<CreateStory[]>([]);
   const [logoFile, setLogoFile] = useState<string>("");
   const [mainImageFile, setMainImageFile] = useState<string>("");
@@ -50,7 +53,8 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     useState<string>("");
   const navigate = useNavigate();
   const { id } = useParams();
-  const { createNonProfit, getNonProfit, updateNonProfit } = useNonProfits();
+  const { getNonProfits, createNonProfit, getNonProfit, updateNonProfit } =
+    useNonProfits();
   const {
     register,
     getValues: NonProfitObject,
@@ -100,6 +104,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
         nonProfit.nonProfitImpacts![nonProfit.nonProfitImpacts!.length - 1]
           .measurementUnit,
       );
+      setStatusNonProfit(nonProfit.status);
     } catch (e) {
       logError(e);
     }
@@ -208,12 +213,9 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     }
   }, []);
 
-  const handleActivityCheckboxChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const { checked } = e.target;
-    setValue("status", checked ? "active" : "inactive");
-    setStatusCheckbox(!statusCheckbox);
+  const onStatusChanged = (status: string) => {
+    setValue("status", status);
+    setStatusNonProfit(status);
   };
 
   const handleUploadImage = (
@@ -284,6 +286,19 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     fetchCauses();
   }, [fetchCauses]);
 
+  const fetchNonProfits = useCallback(async () => {
+    try {
+      const allNonProfits = await getNonProfits();
+      setNonProfits(allNonProfits);
+    } catch (e) {
+      logError(e);
+    }
+  }, [setNonProfits]);
+
+  useEffect(() => {
+    fetchNonProfits();
+  }, [fetchNonProfits]);
+
   const onCauseIdChanged = (causeId: number) => {
     setCurrentCauseId(causeId);
     setValue("causeId", causeId);
@@ -291,6 +306,9 @@ function UpsertNonProfitPage({ isEdit }: Props) {
 
   const causeText = (value: any) =>
     causes.find((cause) => cause.id === value)?.name ?? "";
+
+  const nonProfitText = (value: any) =>
+    nonProfits.find((nonProfit) => nonProfit.status === value)?.status ?? "";
 
   const nonProfitName = watchNonProfit()?.name;
   const watchStoryValues = watchStory();
@@ -304,15 +322,17 @@ function UpsertNonProfitPage({ isEdit }: Props) {
         <S.ContentSection>
           <S.LeftSection>
             <S.Subtitle>{t("upsert.activityStatus")}</S.Subtitle>
-            <S.CheckboxContainer>
-              <S.Checkbox
+            <S.ItemBox>
+              <Dropdown
+                values={["active", "inactive", "test"]}
+                onOptionChanged={onStatusChanged}
+                valueText={nonProfitText}
+                defaultValue={statusNonProfit}
+                containerId="status-dropdown"
                 name="status"
-                type="checkbox"
-                onChange={handleActivityCheckboxChange}
-                checked={statusCheckbox}
               />
               <S.Span>{NonProfitObject().status}</S.Span>{" "}
-            </S.CheckboxContainer>
+            </S.ItemBox>
 
             <S.Divider />
 
