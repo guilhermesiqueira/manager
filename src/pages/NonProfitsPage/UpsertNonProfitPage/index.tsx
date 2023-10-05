@@ -369,12 +369,13 @@ function UpsertNonProfitPage({ isEdit }: Props) {
             <S.Divider />
 
             <S.Subtitle>{t("upsert.impacts")}</S.Subtitle>
-            {watchImpactFields && (
+            {watchImpactFields && ImpactObject().usdCentsToOneImpactUnit && (
               <ImpactPreviewer
                 nonProfit={{
                   ...NonProfitObject(),
                   nonProfitImpacts: [watchImpactFields],
                 }}
+                usdCentsToOneImpactUnit={ImpactObject().usdCentsToOneImpactUnit}
               />
             )}
             <ImpactsForm
