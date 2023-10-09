@@ -14,7 +14,6 @@ import { CreateCause } from "types/apiResponses/cause";
 import FileUpload from "components/moleculars/FileUpload";
 import { useUploadFile } from "hooks/apiHooks/useUploadFile";
 import Dropdown from "components/atomics/Dropdown";
-import Cause from "types/entities/Cause";
 import * as S from "./styles";
 
 export type Props = {
@@ -27,7 +26,6 @@ function UpsertCausePage({ isEdit }: Props) {
   });
 
   const [coverImageFile, setCoverImageFile] = useState<string>("");
-  const [causes, setCauses] = useState<Cause[]>([]);
   const [statusCause, setStatusCause] = useState("");
   const [mainImageFile, setMainImageFile] = useState<string>("");
   const mode = isEdit ? "edit" : "create";
@@ -37,7 +35,7 @@ function UpsertCausePage({ isEdit }: Props) {
   const { tertiary } = theme.colors.brand;
   const navigate = useNavigate();
   const { id } = useParams();
-  const { getCauses, createCause, getCause, updateCause } = useCauses();
+  const { createCause, getCause, updateCause } = useCauses();
   const {
     register,
     getValues: CauseObject,
@@ -59,19 +57,6 @@ function UpsertCausePage({ isEdit }: Props) {
       logError(e);
     }
   }, []);
-
-  const fetchCauses = useCallback(async () => {
-    try {
-      const allCauses = await getCauses();
-      setCauses(allCauses);
-    } catch (e) {
-      logError(e);
-    }
-  }, [setCauses]);
-
-  useEffect(() => {
-    fetchCauses();
-  }, [fetchCauses]);
 
   function causeUpdate() {
     const cause = CauseObject();
@@ -181,8 +166,6 @@ function UpsertCausePage({ isEdit }: Props) {
 
   const causeName = watch().name;
   const maxLengthCauseName = 30;
-  const statusText = (value: any) =>
-    causes.find((cause) => cause.status === value)?.status ?? "inactive";
 
   return (
     <>
@@ -195,11 +178,12 @@ function UpsertCausePage({ isEdit }: Props) {
               <Dropdown
                 values={["active", "inactive", "test"]}
                 onOptionChanged={onStatusChanged}
-                valueText={statusText}
                 defaultValue={statusCause}
                 containerId="status-dropdown"
                 name="status"
               />
+              {CauseObject().status}
+              {causeUpdate().status}
             </S.StatusContainer>
             <S.Subtitle>{t("upsert.details")}</S.Subtitle>
             <InfoName hasTranslation>{t("attributes.name")}</InfoName>
