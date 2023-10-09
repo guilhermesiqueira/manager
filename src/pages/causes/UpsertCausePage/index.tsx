@@ -182,8 +182,6 @@ function UpsertCausePage({ isEdit }: Props) {
                 containerId="status-dropdown"
                 name="status"
               />
-              {CauseObject().status}
-              {causeUpdate().status}
             </S.StatusContainer>
             <S.Subtitle>{t("upsert.details")}</S.Subtitle>
             <InfoName hasTranslation>{t("attributes.name")}</InfoName>
