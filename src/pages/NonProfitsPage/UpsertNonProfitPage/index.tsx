@@ -19,7 +19,6 @@ import { CreateStory } from "types/apiResponses/story";
 import { NonProfitImpact } from "types/entities/NonProfitImpact";
 import { useUploadFile } from "hooks/apiHooks/useUploadFile";
 import { CreateNonProfitImpacts } from "types/apiResponses/nonProfitImpacts";
-import NonProfit from "types/entities/NonProfit";
 import ImpactsForm from "./ImpactForm";
 import ImpactPreviewer from "./ImpactPreviewer";
 import StoriesForm from "./StoriesForm";
@@ -36,7 +35,6 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const mode = isEdit ? "edit" : "create";
   const [modalOpen, setModalOpen] = useState(false);
   const [causes, setCauses] = useState<Cause[]>([]);
-  const [nonProfits, setNonProfits] = useState<NonProfit[]>([]);
   const [currentCauseId, setCurrentCauseId] = useState<number>(1);
   const [currentUnit, setCurrentUnit] = useState<string>("");
   const { getCauses } = useCauses();
@@ -52,8 +50,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     useState<string>("");
   const navigate = useNavigate();
   const { id } = useParams();
-  const { getNonProfits, createNonProfit, getNonProfit, updateNonProfit } =
-    useNonProfits();
+  const { createNonProfit, getNonProfit, updateNonProfit } = useNonProfits();
   const {
     register,
     getValues: NonProfitObject,
@@ -285,19 +282,6 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     fetchCauses();
   }, [fetchCauses]);
 
-  const fetchNonProfits = useCallback(async () => {
-    try {
-      const allNonProfits = await getNonProfits();
-      setNonProfits(allNonProfits);
-    } catch (e) {
-      logError(e);
-    }
-  }, [setNonProfits]);
-
-  useEffect(() => {
-    fetchNonProfits();
-  }, [fetchNonProfits]);
-
   const onCauseIdChanged = (causeId: number) => {
     setCurrentCauseId(causeId);
     setValue("causeId", causeId);
@@ -305,9 +289,6 @@ function UpsertNonProfitPage({ isEdit }: Props) {
 
   const causeText = (value: any) =>
     causes.find((cause) => cause.id === value)?.name ?? "";
-
-  const nonProfitText = (value: any) =>
-    nonProfits.find((nonProfit) => nonProfit.status === value)?.status ?? "";
 
   const nonProfitName = watchNonProfit()?.name;
   const watchStoryValues = watchStory();
@@ -325,7 +306,6 @@ function UpsertNonProfitPage({ isEdit }: Props) {
               <Dropdown
                 values={["active", "inactive", "test"]}
                 onOptionChanged={onStatusChanged}
-                valueText={nonProfitText}
                 defaultValue={statusNonProfit}
                 containerId="status-dropdown"
                 name="status"
