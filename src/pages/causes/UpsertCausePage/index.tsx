@@ -13,6 +13,7 @@ import useCauses from "hooks/apiHooks/useCauses";
 import { CreateCause } from "types/apiResponses/cause";
 import FileUpload from "components/moleculars/FileUpload";
 import { useUploadFile } from "hooks/apiHooks/useUploadFile";
+import Dropdown from "components/atomics/Dropdown";
 import * as S from "./styles";
 
 export type Props = {
@@ -25,11 +26,11 @@ function UpsertCausePage({ isEdit }: Props) {
   });
 
   const [coverImageFile, setCoverImageFile] = useState<string>("");
+  const [statusCause, setStatusCause] = useState("");
   const [mainImageFile, setMainImageFile] = useState<string>("");
   const mode = isEdit ? "edit" : "create";
   const [modalOpen, setModalOpen] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [activeCheckbox, setActiveCheckbox] = useState(true);
   const { neutral } = theme.colors;
   const { tertiary } = theme.colors.brand;
   const navigate = useNavigate();
@@ -51,7 +52,7 @@ function UpsertCausePage({ isEdit }: Props) {
     try {
       const cause = await getCause(id);
       reset(cause);
-      setActiveCheckbox(cause.active);
+      setStatusCause(cause.status);
     } catch (e) {
       logError(e);
     }
@@ -115,7 +116,7 @@ function UpsertCausePage({ isEdit }: Props) {
     } else {
       const newCause: CreateCause = {
         name: "New Cause",
-        active: true,
+        status: "active",
       };
       reset(newCause);
     }
@@ -144,12 +145,9 @@ function UpsertCausePage({ isEdit }: Props) {
     }
   };
 
-  const handleActivityCheckboxChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const { checked } = e.target;
-    setValue("active", !!checked);
-    setActiveCheckbox(!activeCheckbox);
+  const onStatusChanged = (status: string) => {
+    setValue("status", status);
+    setStatusCause(status);
   };
 
   const handleMainImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -176,19 +174,15 @@ function UpsertCausePage({ isEdit }: Props) {
         <S.ContentSection>
           <S.LeftSection>
             <S.Subtitle>{t("upsert.status")}</S.Subtitle>
-            <S.CheckboxContainer>
-              <S.Checkbox
-                name="active"
-                type="checkbox"
-                onChange={handleActivityCheckboxChange}
-                checked={activeCheckbox}
+            <S.StatusContainer>
+              <Dropdown
+                values={["active", "inactive", "test"]}
+                onOptionChanged={onStatusChanged}
+                defaultValue={statusCause}
+                containerId="status-dropdown"
+                name="status"
               />
-              <S.Span>
-                {CauseObject().active
-                  ? t("upsert.activeCause")
-                  : t("upsert.inactiveCause")}
-              </S.Span>{" "}
-            </S.CheckboxContainer>
+            </S.StatusContainer>
             <S.Subtitle>{t("upsert.details")}</S.Subtitle>
             <InfoName hasTranslation>{t("attributes.name")}</InfoName>
             <S.TextInput

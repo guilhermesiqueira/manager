@@ -11,5 +11,5 @@ export default interface Cause {
   defaultPool?: string;
   mainImageDescription?: string;
   coverImageDescription?: string;
-  active: boolean;
+  status: string;
 }
