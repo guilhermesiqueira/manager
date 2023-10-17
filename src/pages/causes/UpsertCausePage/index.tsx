@@ -165,7 +165,7 @@ function UpsertCausePage({ isEdit }: Props) {
   };
 
   const causeName = watch().name;
-  const maxLengthCauseName = 30;
+  const maxLengthCauseName = 28;
 
   return (
     <>
@@ -216,11 +216,7 @@ function UpsertCausePage({ isEdit }: Props) {
                 <InfoName hasTranslation>
                   {t("attributes.mainImageDescription")}
                 </InfoName>
-                <S.TextInput
-                  {...register("mainImageDescription", {
-                    required: t("upsert.required"),
-                  })}
-                />
+                <S.TextInput {...register("mainImageDescription")} />
                 {formState?.errors.name && formState?.errors.name.type && (
                   <S.Error>{formState?.errors.name.message}</S.Error>
                 )}
@@ -239,11 +235,7 @@ function UpsertCausePage({ isEdit }: Props) {
                 <InfoName hasTranslation>
                   {t("attributes.coverImageDescription")}
                 </InfoName>
-                <S.TextInput
-                  {...register("coverImageDescription", {
-                    required: t("upsert.required"),
-                  })}
-                />
+                <S.TextInput {...register("coverImageDescription")} />
                 {formState?.errors.name && formState?.errors.name.type && (
                   <S.Error>{formState?.errors.name.message}</S.Error>
                 )}
