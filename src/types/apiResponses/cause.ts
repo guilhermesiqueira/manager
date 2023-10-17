@@ -5,5 +5,5 @@ export interface CreateCause {
   coverImage?: any;
   mainImageDescription?: string;
   coverImageDescription?: string;
-  active: boolean;
+  status: string;
 }

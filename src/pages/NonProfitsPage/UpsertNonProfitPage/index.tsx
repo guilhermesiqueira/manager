@@ -41,7 +41,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
   const [loading, setLoading] = useState(false);
   const { neutral } = theme.colors;
   const { tertiary } = theme.colors.brand;
-  const [statusCheckbox, setStatusCheckbox] = useState(true);
+  const [statusNonProfit, setStatusNonProfit] = useState("");
   const [stories, setStories] = useState<CreateStory[]>([]);
   const [logoFile, setLogoFile] = useState<string>("");
   const [mainImageFile, setMainImageFile] = useState<string>("");
@@ -100,6 +100,7 @@ function UpsertNonProfitPage({ isEdit }: Props) {
         nonProfit.nonProfitImpacts![nonProfit.nonProfitImpacts!.length - 1]
           .measurementUnit,
       );
+      setStatusNonProfit(nonProfit.status);
     } catch (e) {
       logError(e);
     }
@@ -208,12 +209,9 @@ function UpsertNonProfitPage({ isEdit }: Props) {
     }
   }, []);
 
-  const handleActivityCheckboxChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    const { checked } = e.target;
-    setValue("status", checked ? "active" : "inactive");
-    setStatusCheckbox(!statusCheckbox);
+  const onStatusChanged = (status: string) => {
+    setValue("status", status);
+    setStatusNonProfit(status);
   };
 
   const handleUploadImage = (
@@ -304,15 +302,15 @@ function UpsertNonProfitPage({ isEdit }: Props) {
         <S.ContentSection>
           <S.LeftSection>
             <S.Subtitle>{t("upsert.activityStatus")}</S.Subtitle>
-            <S.CheckboxContainer>
-              <S.Checkbox
+            <S.ItemBox>
+              <Dropdown
+                values={["active", "inactive", "test"]}
+                onOptionChanged={onStatusChanged}
+                defaultValue={statusNonProfit}
+                containerId="status-dropdown"
                 name="status"
-                type="checkbox"
-                onChange={handleActivityCheckboxChange}
-                checked={statusCheckbox}
               />
-              <S.Span>{NonProfitObject().status}</S.Span>{" "}
-            </S.CheckboxContainer>
+            </S.ItemBox>
 
             <S.Divider />
 

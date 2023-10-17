@@ -54,6 +54,12 @@ function PurchaseItems({ purchases, fetchPurchases }: Props) {
     return purchase?.cryptoAmount || "-";
   }
 
+  const isRefundable = (purchase: PersonPayment) =>
+    purchase.status === "paid" &&
+    (purchase.paymentMethod === "credit_card" ||
+      purchase.paymentMethod === "google_pay" ||
+      purchase.paymentMethod === "apple_pay");
+
   function renderPurchases() {
     return purchases.map((purchase: any) => (
       <tr key={purchase.id}>
@@ -69,32 +75,31 @@ function PurchaseItems({ purchases, fetchPurchases }: Props) {
           </S.StatusTableCell>
         </th>
 
-        {purchase.status === "paid" &&
-          purchase.paymentMethod === "credit_card" && (
-            <th>
-              <S.RefundButton
-                onClick={() => handleOpenModal(purchase.externalId)}
-              >
-                <Tooltip text={t("tooltipText")} color={neutral[800]}>
-                  <S.RefundIcon src={refundIcon} />
-                </Tooltip>
-              </S.RefundButton>
+        {isRefundable(purchase) && (
+          <th>
+            <S.RefundButton
+              onClick={() => handleOpenModal(purchase.externalId)}
+            >
+              <Tooltip text={t("tooltipText")} color={neutral[800]}>
+                <S.RefundIcon src={refundIcon} />
+              </Tooltip>
+            </S.RefundButton>
 
-              <ModalImage
-                title={t("title")}
-                body={t("body")}
-                visible={visible}
-                image={refundIcon}
-                primaryButtonText={t("confirmButton")}
-                primaryButtonColor={tertiary[400]}
-                primaryButtonCallback={handleRefund}
-                secondaryButtonText={t("cancelButton")}
-                secondaryButtonBorderColor={neutral[500]}
-                secondaryButtonCallback={() => setVisible(false)}
-                onClose={() => setVisible(false)}
-              />
-            </th>
-          )}
+            <ModalImage
+              title={t("title")}
+              body={t("body")}
+              visible={visible}
+              image={refundIcon}
+              primaryButtonText={t("confirmButton")}
+              primaryButtonColor={tertiary[400]}
+              primaryButtonCallback={handleRefund}
+              secondaryButtonText={t("cancelButton")}
+              secondaryButtonBorderColor={neutral[500]}
+              secondaryButtonCallback={() => setVisible(false)}
+              onClose={() => setVisible(false)}
+            />
+          </th>
+        )}
       </tr>
     ));
   }
