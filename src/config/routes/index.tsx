@@ -30,6 +30,9 @@ import WalletLayout from "layouts/WalletLayout";
 import WalletProvider from "contexts/walletContext";
 import NetworkProvider from "contexts/networkContext";
 import CreateBigDonationsPage from "pages/bigDonors/CreateBigDonationsPage";
+import ImpressionCardsPage from "pages/impressionCards/ImpressionCardsPage";
+import UpsertImpressionCardPage from "pages/impressionCards/UpsertImpressionCardPage";
+import ImpressionCardDetailsPage from "pages/impressionCards/ImpressionCardDetailsPage";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
 
@@ -434,6 +437,62 @@ function RoutesComponent(): JSX.Element {
               <Navigation />
               <MainLayout>
                 <BigDonationsDetailsPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/impression-cards"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <ImpressionCardsPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/impression-cards/new"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <UpsertImpressionCardPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/impression-cards/:id/edit"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <UpsertImpressionCardPage isEdit />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/impression-cards/:id"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <ImpressionCardDetailsPage />
               </MainLayout>
             </Suspense>
           </PrivateRoute>
