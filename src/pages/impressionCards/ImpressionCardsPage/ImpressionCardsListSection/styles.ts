@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  margin-bottom: ${({ theme }) => theme.spacing(0)};
+  padding-bottom: ${({ theme }) => theme.spacing(0)};
   display: flex;
   overflow-x: scroll;
 `;
 
 // create a component to table
 export const Table = styled.table`
+  width: 90%;
   min-width: 500px;
   margin: ${({ theme }) => theme.spacing(24, 0)};
   border-collapse: collapse;

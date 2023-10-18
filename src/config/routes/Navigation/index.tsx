@@ -85,6 +85,12 @@ function Navigation(): JSX.Element {
       title: t("newsLabel"),
     },
     {
+      path: "/impression-cards",
+      iconOn: IntegrationsIconOn,
+      iconOff: IntegrationsIconOff,
+      title: t("impressionCardsLabel"),
+    },
+    {
       path: "/big-donors/index",
       iconOn: LabelIconOn,
       iconOff: LabelIconOff,
