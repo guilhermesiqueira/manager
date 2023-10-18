@@ -3,6 +3,9 @@ import { useTranslation } from "react-i18next";
 import { logError } from "services/crashReport";
 import useImpressionCards from "hooks/apiHooks/useImpressionCards";
 import ImpressionCard from "types/entities/ImpressionCard";
+import infoIcon from "assets/icons/info-icon.svg";
+import editIcon from "assets/icons/edit-icon.svg";
+import { Link } from "react-router-dom";
 import * as S from "./styles";
 
 function ImpressionCardsListSection(): JSX.Element {
@@ -33,6 +36,17 @@ function ImpressionCardsListSection(): JSX.Element {
         <th>{item.headline}</th>
         <th>{item.title}</th>
         <th>{item.description}</th>
+        <th>
+          <S.ActionsTableCell>
+            <Link to={`/impression-cards/${item?.id}`}>
+              <img src={infoIcon} alt="view impression card info" />
+            </Link>
+
+            <Link to={`/impression-cards/${item.id}/edit`}>
+              <img src={editIcon} alt="edit impression card info" />
+            </Link>
+          </S.ActionsTableCell>
+        </th>
       </tr>
     ));
   }
