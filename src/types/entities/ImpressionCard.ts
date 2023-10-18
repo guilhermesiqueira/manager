@@ -1,10 +1,10 @@
 export default interface ImpressionCard {
-  id: number;
+  id?: number;
   headline: string;
   title: string;
   description: string;
-  videoUrl: string;
+  videoUrl?: string;
   ctaText: string;
   ctaUrl: string;
-  image: string;
+  image?: any;
 }
