@@ -487,6 +487,7 @@
   "impressionCards": {
     "title": "Cards de impressão",
     "createNew":"Adicionar novo",
+    "edit": "Editar",
     "details": "Detalhes",
     "attributes": {
       "id": "ID",

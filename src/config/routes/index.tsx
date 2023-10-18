@@ -31,7 +31,8 @@ import WalletProvider from "contexts/walletContext";
 import NetworkProvider from "contexts/networkContext";
 import CreateBigDonationsPage from "pages/bigDonors/CreateBigDonationsPage";
 import ImpressionCardsPage from "pages/impressionCards/ImpressionCardsPage";
-import UpsertImpressionCardPage from "pages/impressionCards/UpsertIntegrationCardPage";
+import UpsertImpressionCardPage from "pages/impressionCards/UpsertImpressionCardPage";
+import ImpressionCardDetailsPage from "pages/impressionCards/ImpressionCardDetailsPage";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
 
@@ -478,6 +479,20 @@ function RoutesComponent(): JSX.Element {
               <Navigation />
               <MainLayout>
                 <UpsertImpressionCardPage isEdit />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/impression-cards/:id"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <ImpressionCardDetailsPage />
               </MainLayout>
             </Suspense>
           </PrivateRoute>

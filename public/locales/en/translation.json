@@ -488,6 +488,7 @@
   "impressionCards": {
     "title": "Impression cards",
     "createNew":"Add new",
+    "edit": "Edit",
     "details": "Details",
     "attributes": {
       "id": "ID",
