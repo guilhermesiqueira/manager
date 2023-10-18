@@ -484,6 +484,21 @@
       "required": "this is required"
     }
   },
+  "impressionCards": {
+    "title": "Impression cards",
+    "createNew":"Add new",
+    "attributes": {
+      "id": "ID",
+      "headline": "Headline",
+      "title": "Title",
+      "description": "Description",
+      "image": "Image",
+      "videoUrl": "Video URL",
+      "ctaText": "CTA text",
+      "ctaUrl": "CTA URL"
+    }
+  },
+
   "bigDonations": {
     "title": "Donations",
     "noBigDonations": "No donations found",

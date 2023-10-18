@@ -30,6 +30,7 @@ import WalletLayout from "layouts/WalletLayout";
 import WalletProvider from "contexts/walletContext";
 import NetworkProvider from "contexts/networkContext";
 import CreateBigDonationsPage from "pages/bigDonors/CreateBigDonationsPage";
+import ImpressionCardsPage from "pages/impressionCards/ImpressionCardsPage";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
 
@@ -434,6 +435,20 @@ function RoutesComponent(): JSX.Element {
               <Navigation />
               <MainLayout>
                 <BigDonationsDetailsPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/impression-cards"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <ImpressionCardsPage />
               </MainLayout>
             </Suspense>
           </PrivateRoute>

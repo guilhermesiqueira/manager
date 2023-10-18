@@ -483,6 +483,20 @@
       "required": "Este campo é obrigatório"
     }
   },
+  "impressionCards": {
+    "title": "Cards de impressão",
+    "createNew":"Adicionar novo",
+    "attributes": {
+      "id": "ID",
+      "headline": "Headline",
+      "title": "Título",
+      "description": "Descrição",
+      "image": "Imagem",
+      "videoUrl": "URL do vídeo",
+      "ctaText": "Texto do CTA",
+      "ctaUrl": "Link do CTA"
+    }
+  },
   "bigDonations": {
     "title": "Doações",
     "noBigDonations": "Nenhuma doação encontrada",
