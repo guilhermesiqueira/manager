@@ -430,6 +430,7 @@
     "bigDonationsLabel": "Big Donations",
     "donorsLabel": "Donors",
     "donationsLabel": "Donations",
+    "impressionCardsLabel": "Impression Cards",
     "settingsLabel": "Settings"
   },
   "login": {
@@ -484,6 +485,50 @@
       "required": "this is required"
     }
   },
+  "impressionCards": {
+    "title": "Impression cards",
+    "createNew":"Add new",
+    "edit": "Edit",
+    "details": "Details",
+    "attributes": {
+      "id": "ID",
+      "headline": "Headline",
+      "title": "Title",
+      "description": "Description",
+      "image": "Image",
+      "videoUrl": "Video URL",
+      "ctaText": "CTA text",
+      "ctaUrl": "CTA URL"
+    },
+    "upsert": {
+      "create": {
+        "title": "Add new Impression Card",
+        "save": "Save",
+        "cancel": "Cancel"
+      },
+      "edit": {
+        "title": "Edit Impression Card",
+        "save": "Save",
+        "cancel": "Cancel"
+      },
+      "required": "this is required"
+    },
+    "instructions": {
+      "title": "Where goes each field",
+      "usage": {
+        "title": "Usage",
+        "youtube": "We only accept Youtube videos",
+        "onlyImage": "If you don't want a video, leave the video field empty",
+        "noImageAndVideo": "If you don't want an image or a video, leave both fields empty",
+        "imageAsThumb": "The image will be used as a thumbnail for the video, if you don't have a image, the YouTube thumbnail will be used"
+      }
+    },
+    "implementation": {
+      "title": "Implementation",
+      "description": "To implement the impression card, you need to use the following code in somethere in our web or app. We recommend to use some implemented card if you don't have a specific reason to create a new one."
+    }
+  },
+
   "bigDonations": {
     "title": "Donations",
     "noBigDonations": "No donations found",
