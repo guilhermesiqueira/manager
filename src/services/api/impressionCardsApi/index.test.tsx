@@ -24,6 +24,8 @@ describe("impressionCardsApi", () => {
       ctaText: "Donate now",
       ctaUrl: "https://ribon.io/donate",
       image: "https://ribon.io/donate.jpg",
+      active: true,
+      client: "web",
     };
 
     beforeEach(() => {
@@ -52,6 +54,8 @@ describe("impressionCardsApi", () => {
       ctaText: "Donate now",
       ctaUrl: "https://ribon.io/donate",
       image: "https://ribon.io/donate.jpg",
+      active: true,
+      client: "web",
     };
 
     beforeEach(() => {

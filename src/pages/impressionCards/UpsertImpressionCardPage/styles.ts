@@ -116,3 +116,8 @@ export const CodeSnippet = styled.code`
   background-color: ${({ theme }) => theme.colors.neutral10};
   color: ${({ theme }) => theme.colors.darkGray};
 `;
+
+export const ItemBox = styled.div`
+  min-width: 400px;
+  max-width: 400px;
+`;

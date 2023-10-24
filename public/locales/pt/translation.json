@@ -497,7 +497,11 @@
       "image": "Imagem",
       "videoUrl": "URL do vídeo",
       "ctaText": "Texto do CTA",
-      "ctaUrl": "Link do CTA"
+      "ctaUrl": "Link do CTA",
+      "status": "Status",
+      "active": "Ativo",
+      "inactive": "Inativo",
+      "client": "Cliente"
     },
     "upsert": {
       "create": {
@@ -519,12 +523,12 @@
         "youtube": "Para vídeos, só são aceitos links do Youtube",
         "onlyImage": "Se você não quiser um vídeo, deixe o campo de URL vazio",
         "noImageAndVideo": "Se você não quiser uma imagem, deixe o campo de imagem vazio",
-        "imageAsThumb": "A imagem será usada como thumbnail do vídeo, caso não haja imagem, será usada a thumb padrão do Youtube",
-      },
-      "implementation": {
-        "title": "Implementação",
-        "description": "Para que seu card de impressão apareça, é necessário que ele esteja implementado em algum lugar do código (web ou app). Recomendamos reaproveitar algum card já implementado caso seja algo urgente."
+        "imageAsThumb": "A imagem será usada como thumbnail do vídeo, caso não haja imagem, será usada a thumb padrão do Youtube"
       }
+    },
+    "implementation": {
+      "title": "Implementação",
+      "description": "Para que seu card de impressão apareça, é necessário que ele esteja implementado em algum lugar do código (web ou app). Recomendamos reaproveitar algum card já implementado caso seja algo urgente."
     }
   },
   "bigDonations": {
