@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { useNavigate, useParams } from "react-router";
+import Dropdown from "components/atomics/Dropdown";
 import { logError } from "services/crashReport";
 import theme from "styles/theme";
 import FileUpload from "components/moleculars/FileUpload";
@@ -33,10 +34,14 @@ function UpsertImpressionCardPage({ isEdit }: Props) {
     useForm<ImpressionCard>({ mode: "onChange", reValidateMode: "onChange" });
 
   const [file, setFile] = useState<string>("");
+  const [statusCheckbox, setStatusCheckbox] = useState(true);
+  const [client, setClient] = useState("web");
 
   const fetchImpressionCard = useCallback(async () => {
     try {
       const impressionCard = await getImpressionCard(id);
+      setStatusCheckbox(impressionCard.active);
+      setClient(impressionCard.client);
       reset(impressionCard);
     } catch (e) {
       logError(e);
@@ -86,10 +91,25 @@ function UpsertImpressionCardPage({ isEdit }: Props) {
         ctaUrl: "",
         ctaText: "",
         image: null,
+        active: true,
+        client: "web",
       };
       reset(newImpressionCard);
     }
   }, []);
+
+  const onClientChanged = (clientValue: string) => {
+    setValue("client", clientValue);
+    setClient(clientValue);
+  };
+
+  const handleStatusCheckboxChanged = (
+    e: React.ChangeEvent<HTMLInputElement>,
+  ) => {
+    const { checked } = e.target;
+    setValue("active", checked);
+    setStatusCheckbox(!statusCheckbox);
+  };
 
   return (
     <>
@@ -98,6 +118,24 @@ function UpsertImpressionCardPage({ isEdit }: Props) {
         <S.ContentSection>
           <S.LeftSection>
             <S.Subtitle>{t("details")}</S.Subtitle>
+            <div>
+              <S.SubtitleDescription>
+                {t("attributes.status")}
+              </S.SubtitleDescription>
+              <S.CheckboxContainer>
+                <S.Checkbox
+                  name="active"
+                  type="checkbox"
+                  onChange={handleStatusCheckboxChanged}
+                  checked={statusCheckbox}
+                />
+                <S.Span>
+                  {t(
+                    `attributes.${getValues().active ? "active" : "inactive"}`,
+                  )}
+                </S.Span>{" "}
+              </S.CheckboxContainer>
+            </div>
             <div>
               <S.SubtitleDescription>
                 {t("attributes.headline")}
@@ -133,16 +171,30 @@ function UpsertImpressionCardPage({ isEdit }: Props) {
                   <S.Error>{formState?.errors.description.message}</S.Error>
                 )}
             </div>
-
             <div>
-              <S.Subtitle>{t("attributes.image")}</S.Subtitle>
+              <S.SubtitleDescription>
+                {t("attributes.client")}
+              </S.SubtitleDescription>
+              <S.ItemBox>
+                <Dropdown
+                  values={["web", "app"]}
+                  onOptionChanged={onClientChanged}
+                  defaultValue={client}
+                  containerId="client-dropdown"
+                  name="client"
+                />
+              </S.ItemBox>
+            </div>
+            <div>
+              <S.SubtitleDescription>
+                {t("attributes.image")}
+              </S.SubtitleDescription>
               <FileUpload
                 onChange={handleLogoChange}
                 logo={getValues().image}
                 value={file}
               />
             </div>
-
             <div>
               <S.SubtitleDescription>
                 {t("attributes.videoUrl")}
@@ -167,7 +219,6 @@ function UpsertImpressionCardPage({ isEdit }: Props) {
                 <S.Error>{formState?.errors.ctaText.message}</S.Error>
               )}
             </div>
-
             <div>
               <S.SubtitleDescription>
                 {t("attributes.ctaUrl")}
@@ -197,7 +248,7 @@ function UpsertImpressionCardPage({ isEdit }: Props) {
             <br />
             <pre>
               <S.CodeSnippet>
-                {`<CampaignCard id="${id || "YOUR_IMPRESSION_CARD_ID"}" />`}
+                {`<CampaignCard cardId="${id || "IMPRESSION_CARD_ID"}" />`}
               </S.CodeSnippet>
             </pre>
           </S.RightSection>

@@ -7,4 +7,6 @@ export default interface ImpressionCard {
   ctaText: string;
   ctaUrl: string;
   image?: any;
+  active: boolean;
+  client: string;
 }

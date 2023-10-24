@@ -46,6 +46,8 @@ describe("useImpressionCards", () => {
       ctaText: "Donate now",
       ctaUrl: "https://ribon.io/donate",
       image: "https://ribon.io/donate.jpg",
+      active: true,
+      client: "web",
     };
 
     const file = "";
@@ -75,6 +77,8 @@ describe("useImpressionCards", () => {
       ctaText: "Donate now",
       ctaUrl: "https://ribon.io/donate",
       image: "https://ribon.io/donate.jpg",
+      active: true,
+      client: "web",
     };
 
     const file = "";
