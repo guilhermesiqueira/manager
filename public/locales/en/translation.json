@@ -498,7 +498,11 @@
       "image": "Image",
       "videoUrl": "Video URL",
       "ctaText": "CTA text",
-      "ctaUrl": "CTA URL"
+      "ctaUrl": "CTA URL",
+      "status": "Status",
+      "active": "Active",
+      "inactive": "Inactive",
+      "client": "Client"
     },
     "upsert": {
       "create": {
