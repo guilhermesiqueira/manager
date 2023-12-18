@@ -12,6 +12,7 @@ interface StatusObject {
 
 function IntegrationsListSection(): JSX.Element {
   const [allIntegrations, setAllIntegrations] = useState<any>([]);
+  const [filteredIntegrations, setFilteredIntegrations] = useState<any>([]);
   const { getAllApiIntegrations } = useApiIntegrations();
 
   const { t } = useTranslation("translation", {
@@ -42,12 +43,17 @@ function IntegrationsListSection(): JSX.Element {
         const articleStatus = integrationData.status.toString().split("-")[0];
         if (selectedStatus[articleStatus]) return integrationData;
       }
-      return null;
+      return false;
     });
 
   useEffect(() => {
     fetchAllIntegrations();
   }, []);
+
+  useEffect(() => {
+    const allItems = filterIntegrationsByStatus(allIntegrations);
+    setFilteredIntegrations(allItems);
+  }, [selectedStatus, allIntegrations]);
 
   const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -56,12 +62,6 @@ function IntegrationsListSection(): JSX.Element {
       [value]: !selectedStatus[value],
     });
   };
-
-  function renderTableRowsForIntegrations() {
-    return filterIntegrationsByStatus(allIntegrations)?.map((item: any) => (
-      <IntegrationItem integration={item} />
-    ));
-  }
 
   return (
     <S.Container>
@@ -91,7 +91,11 @@ function IntegrationsListSection(): JSX.Element {
             <th>{t("status")}</th>
           </tr>
         </thead>
-        <tbody>{renderTableRowsForIntegrations()}</tbody>
+        <tbody>
+          {filteredIntegrations.map((integration: Integration) => (
+            <IntegrationItem key={integration.id} integration={integration} />
+          ))}
+        </tbody>
       </S.Table>
     </S.Container>
   );
