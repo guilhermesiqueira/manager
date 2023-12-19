@@ -2,26 +2,31 @@ import { useEffect, useState, useCallback } from "react";
 import { useTranslation } from "react-i18next";
 import useApiIntegrations from "hooks/apiHooks/useApiIntegrations";
 import { logError } from "services/crashReport";
-import CopyableAddress from "components/atomics/CopyableAddress";
-import infoIcon from "assets/icons/info-icon.svg";
-import editIcon from "assets/icons/edit-icon.svg";
-import { Link } from "react-router-dom";
-import theme from "styles/theme";
+import { Integration } from "@ribon.io/shared/types";
 import * as S from "./styles";
+import IntegrationItem from "../IntegrationItem";
+
+interface StatusObject {
+  [key: string]: boolean;
+}
 
 function IntegrationsListSection(): JSX.Element {
   const [allIntegrations, setAllIntegrations] = useState<any>([]);
+  const [filteredIntegrations, setFilteredIntegrations] = useState<any>([]);
   const { getAllApiIntegrations } = useApiIntegrations();
-  const { primary, tertiary } = theme.colors.brand;
 
   const { t } = useTranslation("translation", {
     keyPrefix: "integrations.attributes",
   });
 
-  const statusColors: { [key: string]: string } = {
-    active: primary[300],
-    inactive: tertiary[400],
+  const defaultStatusSelection = {
+    active: true,
+    inactive: true,
   };
+
+  const [selectedStatus, setSelectedStatus] = useState<StatusObject>(
+    defaultStatusSelection,
+  );
 
   const fetchAllIntegrations = useCallback(async () => {
     try {
@@ -32,49 +37,48 @@ function IntegrationsListSection(): JSX.Element {
     }
   }, []);
 
+  const filterIntegrationsByStatus = (nonFilteredIntegrations: Integration[]) =>
+    nonFilteredIntegrations.filter((integrationData: Integration) => {
+      if (integrationData.status) {
+        const articleStatus = integrationData.status.toString().split("-")[0];
+        if (selectedStatus[articleStatus]) return integrationData;
+      }
+      return false;
+    });
+
   useEffect(() => {
     fetchAllIntegrations();
   }, []);
 
-  function renderTableRowsForIntegrations() {
-    return allIntegrations?.map((item: any) => (
-      <tr key={item.id}>
-        <th>{item.id}</th>
-        <th>{item.name}</th>
-        <S.walletColumn>
-          <CopyableAddress text={item.integrationWallet?.publicKey} />
-        </S.walletColumn>
-        <th>
-          <CopyableAddress text={item.integrationAddress} />
-        </th>
-        <th>
-          <CopyableAddress text={item.integrationDeeplinkAddress} />
-        </th>
-        <th>
-          <CopyableAddress text={item.integrationDashboardAddress} />
-        </th>
-        <th>
-          <S.StatusTableCell style={{ color: statusColors[item.status] }}>
-            {item.status}
-          </S.StatusTableCell>
-        </th>
-        <th>
-          <S.ActionsTableCell>
-            <Link to={`/integrations/${item?.id}`}>
-              <img src={infoIcon} alt="view integration info" />
-            </Link>
+  useEffect(() => {
+    const allItems = filterIntegrationsByStatus(allIntegrations);
+    setFilteredIntegrations(allItems);
+  }, [selectedStatus, allIntegrations]);
 
-            <Link to={`/integrations/${item.id}/edit`}>
-              <img src={editIcon} alt="edit integration info" />
-            </Link>
-          </S.ActionsTableCell>
-        </th>
-      </tr>
-    ));
-  }
+  const handleStatusChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setSelectedStatus({
+      ...selectedStatus,
+      [value]: !selectedStatus[value],
+    });
+  };
 
   return (
     <S.Container>
+      <S.CheckboxContainer>
+        {Object.keys(defaultStatusSelection).map((status: any) => (
+          <div key={status}>
+            <S.Checkbox
+              name="status"
+              type="checkbox"
+              value={status}
+              onChange={handleStatusChange}
+              checked={selectedStatus[status]}
+            />
+            <S.Span>{t(`${status}`)}</S.Span>
+          </div>
+        ))}
+      </S.CheckboxContainer>
       <S.Table>
         <thead>
           <tr>
@@ -87,7 +91,11 @@ function IntegrationsListSection(): JSX.Element {
             <th>{t("status")}</th>
           </tr>
         </thead>
-        <tbody>{renderTableRowsForIntegrations()}</tbody>
+        <tbody>
+          {filteredIntegrations.map((integration: Integration) => (
+            <IntegrationItem key={integration.id} integration={integration} />
+          ))}
+        </tbody>
       </S.Table>
     </S.Container>
   );
