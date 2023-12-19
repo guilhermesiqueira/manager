@@ -2,13 +2,13 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
   overflow-x: scroll;
 `;
 
 // create a component to table
 export const Table = styled.table`
   min-width: 500px;
-  margin: ${({ theme }) => theme.spacing(24, 0)};
   border-collapse: collapse;
 
   tr,
@@ -49,5 +49,33 @@ export const StatusTableCell = styled.span`
 export const walletColumn = styled.th`
   span {
     width: 100px;
+  }
+`;
+
+export const CheckboxContainer = styled.div`
+  margin-top: ${({ theme }) => theme.spacing(24)};
+  margin-left: ${({ theme }) => theme.spacing(12)};
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const Checkbox = styled.input`
+  accent-color: ${({ theme }) => theme.colors.brand.primary[300]};
+  margin: ${({ theme }) => theme.spacing(4, 8, 32, 4)};
+  display: inline-block;
+  vertical-align: middle;
+  transform: scale(1.5);
+`;
+
+export const Span = styled.span`
+  margin: ${({ theme }) => theme.spacing(4, 20, 32, 4)};
+  display: inline-block;
+  vertical-align: middle;
+  color: ${({ color, theme }) => color || theme.colors.darkGray};
+
+  ::first-letter {
+    text-transform: uppercase;
   }
 `;
