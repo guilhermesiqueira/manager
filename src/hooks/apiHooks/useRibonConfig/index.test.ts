@@ -25,7 +25,7 @@ describe("useRibonConfig", () => {
   describe("#updateRibonConfig", () => {
     const data = {
       id: "1",
-      defaultTicketValue: "100.4",
+      defaultTicketValue: 100.4,
       updatedAt: "",
     };
 

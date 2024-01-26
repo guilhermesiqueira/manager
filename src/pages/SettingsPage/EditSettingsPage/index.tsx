@@ -33,7 +33,7 @@ function EditSettingsPage() {
       const config = await getConfig();
       reset({
         ...config[0],
-        defaultTicketValue: Number(config[0].defaultTicketValue).toFixed(0),
+        defaultTicketValue: Number(config[0].defaultTicketValue),
       });
     } catch (e) {
       logError(e);

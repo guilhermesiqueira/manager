@@ -25,7 +25,7 @@ function SettingsPage(): JSX.Element {
 
   const { getConfig } = useRibonConfig();
 
-  const ticketValueInCents = Number(config?.defaultTicketValue).toFixed(0);
+  const ticketValueInCents = config?.defaultTicketValue || 0;
 
   const fetchConfig = useCallback(async () => {
     try {
@@ -57,7 +57,7 @@ function SettingsPage(): JSX.Element {
         </Link>
         <S.Subtitle>{t("details")}</S.Subtitle>
         <InfoName>{t("attributes.defaultTicketValue")}</InfoName>
-        <S.InfoValue>{centsFormatter(Number(ticketValueInCents))}</S.InfoValue>
+        <S.InfoValue>{centsFormatter(ticketValueInCents)}</S.InfoValue>
         <S.InfoValue>
           {ticketValueInCents}
           {t("inCents")}

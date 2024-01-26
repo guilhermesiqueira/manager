@@ -398,6 +398,9 @@
       "details": "Detalhes",
       "save": "Salvar",
       "cancel": "Cancelar"
+    },
+    "upsert": {
+      "required": "Campo obrigatório"
     }
   },
   "copyableAddress": {

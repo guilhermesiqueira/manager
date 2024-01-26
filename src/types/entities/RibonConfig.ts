@@ -1,5 +1,5 @@
 export interface RibonConfig {
   id: string;
-  defaultTicketValue: string;
+  defaultTicketValue: number;
   updatedAt: string;
 }
