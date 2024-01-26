@@ -399,6 +399,9 @@
       "details": "Details",
       "save": "Save changes",
       "cancel": "Cancel"
+    },
+    "upsert": {
+      "required": "required"
     }
   },
   "copyableAddress": {

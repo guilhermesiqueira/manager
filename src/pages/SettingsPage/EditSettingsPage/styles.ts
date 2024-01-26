@@ -57,7 +57,7 @@ export const Span = styled.span`
   }
 `;
 export const Error = styled.span`
-  margin-top: -20px;
+  margin-top: 8px;
   color: ${({ color, theme }) => color || theme.colors.brand.tertiary[400]};
 
   ::first-letter {
@@ -66,7 +66,7 @@ export const Error = styled.span`
 `;
 
 export const HelperText = styled.span`
-  margin-top: -24px;
+  margin-top: -12px;
   font-size: 12px;
   color: ${({ theme }) => theme.colors.neutral[500]};
 `;
