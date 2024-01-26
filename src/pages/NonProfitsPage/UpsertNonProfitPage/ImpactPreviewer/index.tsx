@@ -26,7 +26,7 @@ function ImpactPreviewer({
   });
 
   const { getConfig } = useRibonConfig();
-  const [defaultTicket, setDefaultTicket] = useState<string>("0");
+  const [defaultTicket, setDefaultTicket] = useState<number>(0);
 
   async function fetchdefaultTicketValue() {
     const config = await getConfig();
@@ -52,12 +52,7 @@ function ImpactPreviewer({
           {t("oneTicket")}{" "}
           {impactNormalizer(
             nonProfit,
-            parseInt(
-              (
-                parseFloat(defaultTicket) / parseFloat(usdCentsToOneImpactUnit)
-              ).toFixed(2),
-              10,
-            ),
+            defaultTicket / parseFloat(usdCentsToOneImpactUnit),
             normalizerTranslations,
           ).join(" ")}
         </S.Info>
