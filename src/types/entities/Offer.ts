@@ -6,4 +6,5 @@ export default interface Offer {
   externalId: string;
   priceCents: number;
   subscription: boolean;
+  category: string;
 }

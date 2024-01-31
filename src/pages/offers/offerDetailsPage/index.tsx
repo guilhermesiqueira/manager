@@ -68,6 +68,8 @@ function OfferDetailsPage(): JSX.Element {
           >
             {t(`attributes.${offer.active ? "active" : "inactive"}`)}
           </S.InfoValue>
+          <InfoName>{t("attributes.category")}</InfoName>
+          <S.InfoValue>{offer.category}</S.InfoValue>
 
           <S.Subtitle>{t("details.details")}</S.Subtitle>
           <InfoName>{t("attributes.id")}</InfoName>

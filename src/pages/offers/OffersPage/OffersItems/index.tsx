@@ -55,6 +55,7 @@ function OffersItems({ offers, searchTerm }: Props) {
                 : t("attributes.inactive")}
             </S.StatusTableCell>
           </th>
+          <th>{offer.category}</th>
           <th>
             <S.ActionsTableCell>
               <Link to={`/offers/${offer.id}`}>
