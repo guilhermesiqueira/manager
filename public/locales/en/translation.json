@@ -182,7 +182,15 @@
       "inactive": "Inactive",
       "createdAt": "Created At",
       "lastEditedAt": "Last Edited At",
-      "category": "Category"
+      "category": "Category",
+      "plan" : {
+        "title": "Plan",
+        "status": "Status",
+        "active": "Active",
+        "inactive": "Inactive",
+        "dailyTickets": "Daily Tickets",
+        "monthlyTickets": "Monthly Tickets"
+      }
     },
     "list": {
       "title": "Offers",
@@ -195,7 +203,15 @@
       "title": "Offer details",
       "details": "Details",
       "edit": "Edit",
-      "gatewayInfo": "Gateway information"
+      "gatewayInfo": "Gateway information",
+      "plan" : {
+        "title": "Plan",
+        "status": "Status",
+        "active": "Active",
+        "inactive": "Inactive",
+        "dailyTickets": "Daily Tickets",
+        "monthlyTickets": "Monthly Tickets"
+      }
     },
     "upsert": {
       "create": {
