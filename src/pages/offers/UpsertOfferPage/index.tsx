@@ -80,6 +80,7 @@ function UpsertOfferPage({ isEdit }: Props) {
           id: offer().id,
           externalId: offer().externalId,
         },
+        category: offer().category,
       };
 
       try {
@@ -110,6 +111,7 @@ function UpsertOfferPage({ isEdit }: Props) {
         externalId: "34324",
         active: true,
         subscription: false,
+        category: "direct_contribution",
       };
       reset(newOffer);
     }
@@ -147,6 +149,18 @@ function UpsertOfferPage({ isEdit }: Props) {
               {offer().subscription ? t("upsert.active") : t("upsert.inactive")}
             </S.Span>
           </S.CheckboxContainer>
+          <S.ContentSection>
+            <S.LeftSection>
+              <S.Subtitle>{t("attributes.category")}</S.Subtitle>
+              <S.SelectInput
+                values={["direct_contribution", "club"]}
+                name="gategory"
+                onOptionChanged={(value) => setValue("category", value)}
+                defaultValue={offer().category || "direct_contribution"}
+                containerId="category-dropdown"
+              />
+            </S.LeftSection>
+          </S.ContentSection>
           <br />
           <S.Subtitle>{t("details.details")}</S.Subtitle>
           <S.ContentSection>

@@ -181,7 +181,8 @@
       "active": "Ativo",
       "inactive": "Inativo",
       "createdAt": "Criado em",
-      "lastEditedAt": "Última edição em"
+      "lastEditedAt": "Última edição em",
+      "category": "Categoria"
     },
     "list": {
       "title": "Ofertas",
