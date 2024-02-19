@@ -63,7 +63,7 @@ export const SelectInput = styled(Dropdown)``;
 
 export const NumberInput = styled.input`
   margin-inline: 6px;
-  width: 40px;
+  width: 60px;
   padding: ${({ theme }) => theme.spacing(8, 4)};
   border: 1.5px solid ${({ theme }) => theme.colors.darkGray};
   border-radius: 10px;
@@ -116,4 +116,10 @@ export const RightSection = styled.div`
   width: 50%;
   display: flex;
   flex-direction: column;
+`;
+
+export const PlanContainer = styled.div`
+  width: 40%;
+  padding: 20px;
+  border: 1px solid black;
 `;

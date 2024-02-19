@@ -181,7 +181,16 @@
       "active": "Ativo",
       "inactive": "Inativo",
       "createdAt": "Criado em",
-      "lastEditedAt": "Última edição em"
+      "lastEditedAt": "Última edição em",
+      "category": "Categoria",
+      "plan" : {
+        "title": "Plano",
+        "status": "Status",
+        "active": "Ativo",
+        "inactive": "Inativo",
+        "dailyTickets": "Tickets diários",
+        "monthlyTickets": "Tickets mensais"
+      }
     },
     "list": {
       "title": "Ofertas",
@@ -194,7 +203,15 @@
       "title": "Detalhes da oferta",
       "details": "Detalhes",
       "edit": "Editar",
-      "gatewayInfo": "Informação do meio de pagamento"
+      "gatewayInfo": "Informação do meio de pagamento",
+      "plan" : {
+        "title": "Plano",
+        "status": "Status",
+        "active": "Ativo",
+        "inactive": "Inativo",
+        "dailyTickets": "Tickets diários",
+        "monthlyTickets": "Tickets mensais"
+      }
     },
     "upsert": {
       "create": {

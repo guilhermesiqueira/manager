@@ -68,6 +68,8 @@ function OfferDetailsPage(): JSX.Element {
           >
             {t(`attributes.${offer.active ? "active" : "inactive"}`)}
           </S.InfoValue>
+          <InfoName>{t("attributes.category")}</InfoName>
+          <S.InfoValue>{offer.category}</S.InfoValue>
 
           <S.Subtitle>{t("details.details")}</S.Subtitle>
           <InfoName>{t("attributes.id")}</InfoName>
@@ -96,6 +98,35 @@ function OfferDetailsPage(): JSX.Element {
 
           <InfoName>{t("attributes.externalId")}</InfoName>
           <CopyableAddress text={offer.externalId} />
+
+          {offer.plan && (
+            <>
+              <br />
+              <S.Subtitle>{t("details.plan.title")}</S.Subtitle>
+
+              <InfoName>{t("attributes.plan.status")}</InfoName>
+              <S.InfoValue
+                style={{
+                  color: `${
+                    statusColors[
+                      offer.plan.status === "active" ? "active" : "inactive"
+                    ]
+                  }`,
+                }}
+              >
+                {t(
+                  `attributes.${
+                    offer.plan.status === "active" ? "active" : "inactive"
+                  }`,
+                )}
+              </S.InfoValue>
+              <InfoName>{t("attributes.plan.dailyTickets")}</InfoName>
+              <S.InfoValue>{offer.plan.dailyTickets}</S.InfoValue>
+
+              <InfoName>{t("attributes.plan.monthlyTickets")}</InfoName>
+              <S.InfoValue>{offer.plan.monthlyTickets}</S.InfoValue>
+            </>
+          )}
         </S.RightSection>
       </S.Container>
     </S.Content>

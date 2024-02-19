@@ -89,6 +89,7 @@ function OffersListSection(): JSX.Element {
             <th>{t("attributes.gateway")}</th>
             <th>{t("attributes.externalId")}</th>
             <th>{t("attributes.status")}</th>
+            <th>{t("attributes.category")}</th>
           </tr>
         </thead>
         <OffersItems searchTerm={searchTerm} offers={currentOffers} />

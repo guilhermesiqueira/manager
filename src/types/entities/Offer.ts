@@ -1,3 +1,5 @@
+import Plan from "./Plan";
+
 export default interface Offer {
   id?: number;
   active: boolean;
@@ -6,4 +8,6 @@ export default interface Offer {
   externalId: string;
   priceCents: number;
   subscription: boolean;
+  category: string;
+  plan: Plan;
 }
