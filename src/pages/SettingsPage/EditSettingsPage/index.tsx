@@ -86,6 +86,9 @@ function EditSettingsPage() {
                 required: t("upsert.required"),
               })}
             />
+            <S.HelperText>
+              {t("attributes.ribonClubFeePercentageHelperText")}
+            </S.HelperText>
             {formState?.errors.defaultTicketValue &&
               formState?.errors.defaultTicketValue.type && (
                 <S.Error>

@@ -409,7 +409,8 @@
       "defaultTicketValue": "Default ticket value (USDC)",
       "lastUpdated": "Last updated",
       "defaultTicketValueHelperText": "Insert the value in USDC without decimals (cents)",
-      "ribonClubFeePercentage": "Ribon club fee percentage"
+      "ribonClubFeePercentage": "Ribon club fee percentage",
+      "ribonClubFeePercentageHelperText": "Percentage from ribon club that goes to fee. Insert without decimals (ex: 15 = 15%)"
     },
     "edit": {
       "title": "Edit Settings",

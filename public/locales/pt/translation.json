@@ -406,9 +406,10 @@
     "inCents": " (em centavos)",
     "attributes": {
       "defaultTicketValue": "Valor do ticket (USDC)",
-      "ribonClubFeePercentage": "Porcentagem de fee do Clube Ribon",
       "lastUpdated": "Última modificação",
-      "defaultTicketValueHelperText": "Insira o valor em USDC sem casas decimais (em centavos)"
+      "defaultTicketValueHelperText": "Insira o valor em USDC sem casas decimais (em centavos)",
+      "ribonClubFeePercentage": "Porcentagem de fee do Clube Ribon",
+      "ribonClubFeePercentageHelperText": "Porcentagem do Clube Ribon que vai para a taxa. Insira sem casas decimais (ex: 15 = 15%)"
     },
     "edit": {
       "title": "Editar Configurações",
