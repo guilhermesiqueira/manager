@@ -34,6 +34,7 @@ function EditSettingsPage() {
       reset({
         ...config[0],
         defaultTicketValue: Number(config[0].defaultTicketValue),
+        ribonClubFeePercentage: Number(config[0].ribonClubFeePercentage),
       });
     } catch (e) {
       logError(e);
@@ -73,7 +74,21 @@ function EditSettingsPage() {
                 required: t("upsert.required"),
               })}
             />
-            <S.HelperText>{t("attributes.helperText")}</S.HelperText>
+            <S.HelperText>
+              {t("attributes.defaultTicketValueHelperText")}
+            </S.HelperText>
+            <InfoName hasTranslation>
+              {t("attributes.ribonClubFeePercentage")}
+            </InfoName>
+
+            <S.TextInput
+              {...register("ribonClubFeePercentage", {
+                required: t("upsert.required"),
+              })}
+            />
+            <S.HelperText>
+              {t("attributes.ribonClubFeePercentageHelperText")}
+            </S.HelperText>
             {formState?.errors.defaultTicketValue &&
               formState?.errors.defaultTicketValue.type && (
                 <S.Error>
