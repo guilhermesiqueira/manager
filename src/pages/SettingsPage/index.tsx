@@ -26,6 +26,7 @@ function SettingsPage(): JSX.Element {
   const { getConfig } = useRibonConfig();
 
   const ticketValueInCents = config?.defaultTicketValue || 0;
+  const ribonClubFeePercentage = config?.ribonClubFeePercentage || 0;
 
   const fetchConfig = useCallback(async () => {
     try {
@@ -55,13 +56,19 @@ function SettingsPage(): JSX.Element {
             {t("editButton")}
           </Button>
         </Link>
+
         <S.Subtitle>{t("details")}</S.Subtitle>
+
         <InfoName>{t("attributes.defaultTicketValue")}</InfoName>
         <S.InfoValue>{centsFormatter(ticketValueInCents)}</S.InfoValue>
         <S.InfoValue>
           {ticketValueInCents}
           {t("inCents")}
         </S.InfoValue>
+
+        <InfoName>{t("attributes.ribonClubFeePercentage")}</InfoName>
+        <S.InfoValue>{ribonClubFeePercentage}</S.InfoValue>
+
         <InfoName>{t("attributes.lastUpdated")}</InfoName>
         <S.InfoValue>
           {dateFormatterWithMinutes(config?.updatedAt ?? "")}
