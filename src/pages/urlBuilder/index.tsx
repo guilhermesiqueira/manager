@@ -43,6 +43,7 @@ function UrlBuilder() {
     };
 
     const nonEmptyParams = Object.fromEntries(
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       Object.entries(params).filter(([_, v]) => v !== ""),
     );
 
