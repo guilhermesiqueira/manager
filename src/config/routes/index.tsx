@@ -29,6 +29,7 @@ import UpsertArticleNewsPage from "pages/news/UpsertArticleNewsPage";
 import WalletLayout from "layouts/WalletLayout";
 import WalletProvider from "contexts/walletContext";
 import NetworkProvider from "contexts/networkContext";
+import UrlBuilder from "pages/urlBuilder";
 import CreateBigDonationsPage from "pages/bigDonors/CreateBigDonationsPage";
 import ImpressionCardsPage from "pages/impressionCards/ImpressionCardsPage";
 import UpsertImpressionCardPage from "pages/impressionCards/UpsertImpressionCardPage";
@@ -535,6 +536,19 @@ function RoutesComponent(): JSX.Element {
               <Navigation />
               <MainLayout>
                 <ImpactsPage />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/url-builder"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <UrlBuilder />
               </MainLayout>
             </Suspense>
           </PrivateRoute>

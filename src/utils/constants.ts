@@ -9,3 +9,8 @@ export const RIBON_INTEGRATION_ID = 1;
 export const THE_GRAPH_API =
   process.env.REACT_APP_THE_GRAPH_API ||
   "https://api.thegraph.com/subgraphs/name/ribondao/subgraphribon";
+
+export const DAPP_URL =
+  process.env.REACT_APP_DAPP_URL || "https://dapp.ribon.io/";
+
+export const URL_SIGNATURE_KEY = process.env.REACT_APP_URL_SIGNATURE_KEY || "";

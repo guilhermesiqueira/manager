@@ -107,6 +107,12 @@ function Navigation(): JSX.Element {
       ],
     },
     {
+      path: "/url-builder",
+      iconOn: LabelIconOn,
+      iconOff: LabelIconOff,
+      title: t("urlBuilderLabel"),
+    },
+    {
       path: "/settings",
       iconOn: SettingsIconOn,
       iconOff: SettingsIconOff,
