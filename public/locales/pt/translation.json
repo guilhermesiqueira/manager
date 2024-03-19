@@ -453,7 +453,8 @@
     "donorsLabel": "Doadores",
     "donationsLabel": "Doações",
     "impressionCardsLabel": "Cards de impressão",
-    "settingsLabel": "Configurações"
+    "settingsLabel": "Configurações",
+    "urlBuilderLabel": "URL Builder"
   },
   "login": {
     "title": "Dapp Manager",
@@ -480,6 +481,22 @@
     "for": "para ",
     "and": "e",
     "of": "de"
+  },
+  "urlBuilder": {
+    "title": "URL Builder para redirects",
+    "attributes": {
+      "details": "Details",
+      "baseUrl": "URL Base",
+      "redirectUrl": "URL de redirecionamento",
+      "redirectUrlPlaceholder": "Sempre use URLs com HTTPS na frente",
+      "utmSource": "UTM Source",
+      "utmMedium": "UTM Medium",
+      "utmCampaign": "UTM Campaign",
+      "eventName": "Nome do evento",
+      "eventFrom": "Parâmetro 'from' do evento",
+      "generatedUrl": "URL Gerada",
+      "openInNewTab": "Testar em uma nova aba"
+    }
   },
   "bigDonors": {
     "title": "Doadores",
