@@ -13,4 +13,4 @@ export const THE_GRAPH_API =
 export const DAPP_URL =
   process.env.REACT_APP_DAPP_URL || "https://dapp.ribon.io/";
 
-export const URL_SIGNATURE_KEY = process.env.URL_SIGNATURE_KEY || "";
+export const URL_SIGNATURE_KEY = process.env.REACT_APP_URL_SIGNATURE_KEY || "";
