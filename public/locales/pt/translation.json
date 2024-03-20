@@ -454,7 +454,8 @@
     "donationsLabel": "Doações",
     "impressionCardsLabel": "Cards de impressão",
     "settingsLabel": "Configurações",
-    "urlBuilderLabel": "URL Builder"
+    "urlBuilderLabel": "URL Builder",
+    "reportsLabel": "Relatórios"
   },
   "login": {
     "title": "Dapp Manager",
@@ -631,6 +632,14 @@
   "components": {
     "infoName": {
       "optional": "(opcional)"
+    }
+  },
+  "reports": {
+    "title": "Relatórios",
+    "addButton": "Adicionar relatório",
+    "table": {
+      "name": "Nome",
+      "link": "Link"
     }
   }
 }

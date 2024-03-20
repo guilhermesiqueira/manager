@@ -34,6 +34,7 @@ import CreateBigDonationsPage from "pages/bigDonors/CreateBigDonationsPage";
 import ImpressionCardsPage from "pages/impressionCards/ImpressionCardsPage";
 import UpsertImpressionCardPage from "pages/impressionCards/UpsertImpressionCardPage";
 import ImpressionCardDetailsPage from "pages/impressionCards/ImpressionCardDetailsPage";
+import ReportsPage from "pages/ReportsPage";
 import Navigation from "./Navigation";
 import PrivateRoute from "./privateRoute";
 
@@ -549,6 +550,19 @@ function RoutesComponent(): JSX.Element {
               <Navigation />
               <MainLayout>
                 <UrlBuilder />
+              </MainLayout>
+            </Suspense>
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/reports"
+        element={
+          <PrivateRoute>
+            <Suspense fallback={<div />}>
+              <Navigation />
+              <MainLayout>
+                <ReportsPage />
               </MainLayout>
             </Suspense>
           </PrivateRoute>

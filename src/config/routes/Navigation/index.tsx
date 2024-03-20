@@ -18,6 +18,8 @@ import LabelIconOn from "./assets/labelIconOn.svg";
 import LabelIconOff from "./assets/labelIconOff.svg";
 import SettingsIconOff from "./assets/settingsIconOff.svg";
 import SettingsIconOn from "./assets/settingsIconOn.svg";
+import ReportsIconOff from "./assets/reportsIconOff.svg";
+import ReportsIconOn from "./assets/reportsIconOn.svg";
 import * as S from "./styles";
 import NavigationLink from "./NavigationLink";
 
@@ -111,6 +113,12 @@ function Navigation(): JSX.Element {
       iconOn: LabelIconOn,
       iconOff: LabelIconOff,
       title: t("urlBuilderLabel"),
+    },
+    {
+      path: "/reports",
+      iconOn: ReportsIconOn,
+      iconOff: ReportsIconOff,
+      title: t("reportsLabel"),
     },
     {
       path: "/settings",
